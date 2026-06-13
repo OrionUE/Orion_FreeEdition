@@ -34,5 +34,9 @@ public class OrionSteamShared : ModuleRules
 			"Projects",
 			"AudioCaptureCore",
 		});
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

@@ -87,5 +87,9 @@ public class GameCore : ModuleRules
 		PublicDefinitions.Add("SHIPPING_DRAW_DEBUG_ERROR=1");
 
 		SetupIrisSupport(Target);
+
+		bPrecompile = true;
+		bUsePrecompiled = false;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

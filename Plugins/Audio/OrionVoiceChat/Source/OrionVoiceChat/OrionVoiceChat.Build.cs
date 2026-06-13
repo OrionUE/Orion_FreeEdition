@@ -93,5 +93,9 @@ public class OrionVoiceChat : ModuleRules
 			string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
 			AdditionalPropertiesForReceipt.Add("IOSPlugin", Path.Combine(PluginPath, "OrionVoiceChat_IOSAPL.xml"));
 		}
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

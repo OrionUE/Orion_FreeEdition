@@ -53,5 +53,9 @@ public class OrionOnlineSubsystemSteam : ModuleRules
 		{
 			PrivateDependencyModuleNames.Add("OnlineBase");
 		}
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

@@ -55,5 +55,9 @@ public class OrionSteamSDKAPI : ModuleRules
 		}
 
 		PublicDependencyModuleNames.Add("DeveloperSettings");
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

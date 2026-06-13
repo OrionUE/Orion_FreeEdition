@@ -1,0 +1,11 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\..\\..\\..\\..\\..\\..\\Intermediate\\Build\\Win64\\x64\\OrionGame\\Shipping\\Engine\\SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\Module.OrionVoiceChat.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\OrionAudioCaptureAndroid.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\OrionAudioCaptureIOS.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\OrionMicrophoneSpeakComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\OrionVoiceChat.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\OrionVoiceChat\\OrionVoiceChatActor.cpp.obj"
+	]
+}

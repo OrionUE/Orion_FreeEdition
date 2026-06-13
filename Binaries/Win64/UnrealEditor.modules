@@ -1,0 +1,11 @@
+{
+	"BuildId": "43139311",
+	"Modules": 
+	{
+		"BBL": "UnrealEditor-BBL.dll",
+		"GameCore": "UnrealEditor-GameCore.dll",
+		"GameUI": "UnrealEditor-GameUI.dll",
+		"OrionEditor": "UnrealEditor-OrionEditor.dll",
+		"OrionGame": "UnrealEditor-OrionGame.dll"
+	}
+}

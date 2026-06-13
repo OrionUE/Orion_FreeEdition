@@ -1,0 +1,11 @@
+{
+	"BuildId": "43139311",
+	"Modules": 
+	{
+		"OrionOnlineSubsystemSteam": "UnrealEditor-OrionOnlineSubsystemSteam.dll",
+		"OrionSteamSDKAPI": "UnrealEditor-OrionSteamSDKAPI.dll",
+		"OrionSteamShared": "UnrealEditor-OrionSteamShared.dll",
+		"OrionSteamSockets": "UnrealEditor-OrionSteamSockets.dll",
+		"OrionSteamWebAPI": "UnrealEditor-OrionSteamWebAPI.dll"
+	}
+}

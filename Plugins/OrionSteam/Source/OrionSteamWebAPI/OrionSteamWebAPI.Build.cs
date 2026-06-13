@@ -26,5 +26,9 @@ public class OrionSteamWebAPI : ModuleRules
 
 		if (Target.Version.MinorVersion >= 26 || Target.Version.MajorVersion == 5)
 			PrivateDependencyModuleNames.Add("DeveloperSettings");
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

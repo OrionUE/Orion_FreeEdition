@@ -30,5 +30,9 @@ public class OrionSteamSockets : ModuleRules
 			"OrionSteamShared",
 			"OrionOnlineSubsystemSteam"
 		});
+
+		bPrecompile = true;
+		bUsePrecompiled = true;
+		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }
