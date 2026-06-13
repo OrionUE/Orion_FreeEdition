@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Source Navigator"
+  short_description: "Navigate Unreal source and APIs across platforms"
+  default_prompt: "Use $unreal-source-code-navigator to inspect Unreal source APIs and module dependencies before writing code."

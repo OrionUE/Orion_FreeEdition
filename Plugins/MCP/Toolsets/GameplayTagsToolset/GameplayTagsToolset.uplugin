@@ -1,0 +1,30 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Gameplay Tags Toolset",
+	"Description": "Toolset for reading and managing gameplay tags via the AI Toolset Registry.",
+	"Category": "Other",
+	"EditorOnly": true,
+	"IsExperimentalVersion": true,
+	"NoRedist": true,
+	"EnabledByDefault": false,
+	"Modules": [
+		{
+			"Name": "GameplayTagsToolset",
+			"Type": "EditorNoCommandlet",
+			"LoadingPhase": "PostEngineInit",
+			"TargetAllowList": ["Editor"]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ToolsetRegistry",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayTagsEditor",
+			"Enabled": true
+		}
+	]
+}

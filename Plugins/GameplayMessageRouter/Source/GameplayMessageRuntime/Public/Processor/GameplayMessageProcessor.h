@@ -1,0 +1,41 @@
+// Copyright (c) Ideality Century, Inc. All Rights Reserved.
+// Author: LiuZe
+
+#pragma once
+
+#include "Components/ActorComponent.h"
+#include "GameFramework/GameplayMessageSubsystem.h"
+
+#include "GameplayMessageProcessor.generated.h"
+
+/**
+ * UGameplayMessageProcessor
+ *
+ * Base class for any message processor which observes other gameplay messages
+ * and potentially re-emits updates (e.g., when a chain or combo is detected)
+ *
+ * Note that these processors are spawned on the server once (not per player)
+ * and should do their own internal filtering if only relevant for some players.
+ * 这些处理器只在服务器上生成一次(而不是每个玩家)；如果只与某些玩家相关，则应该执行自己的内部过滤
+ */
+UCLASS(Abstract, BlueprintType, Blueprintable, meta=(BlueprintSpawnableComponent))
+class GAMEPLAYMESSAGERUNTIME_API UGameplayMessageProcessor : public UActorComponent
+{
+	GENERATED_BODY()
+
+public:
+	//~UActorComponent interface
+	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	//~End of UActorComponent interface
+
+	virtual void StartListening() {};
+	virtual void StopListening() {};
+
+protected:
+	void AddListenerHandle(FGameplayMessageListenerHandle&& Handle);
+	double GetServerTime() const;
+
+private:
+	TArray<FGameplayMessageListenerHandle> ListenerHandles;
+};

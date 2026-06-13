@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Source Index"
+  short_description: "Generate and query UE source indexes"
+  default_prompt: "Use $unreal-source-index to generate or query relative-path Unreal Engine source indexes for Engine modules, Engine plugins, plugin modules, Build.cs files, uplugin descriptors, module ownership, and source roots before broad engine searches."

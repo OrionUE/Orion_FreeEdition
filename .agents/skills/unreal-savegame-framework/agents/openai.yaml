@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unreal Savegame Framework"
+  short_description: "处理 UE 框架存档、ArchiveManager、世界/玩家存档和自动保存流程"

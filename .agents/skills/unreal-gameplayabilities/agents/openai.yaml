@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal GameplayAbilities"
+  short_description: "GAS source and ability-system guide"
+  default_prompt: "Use $unreal-gameplayabilities to inspect GAS abilities, ASC, gameplay effects, attributes, prediction, target data, and gameplay cues before changing ability-system code."

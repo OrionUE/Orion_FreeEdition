@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal EnhancedInput"
+  short_description: "EnhancedInput source and gameplay input guide"
+  default_prompt: "Use $unreal-enhancedinput to inspect EnhancedInput actions, mapping contexts, triggers, modifiers, bindings, user settings, and input rebuild behavior before changing gameplay input code."

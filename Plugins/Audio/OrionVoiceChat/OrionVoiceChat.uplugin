@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"FriendlyName": "OrionVoiceChat",
+	"Description": "Voice Chat",
+	"Category": "Audio",
+	"CreatedBy": "Orion",
+	"CreatedByURL": "https://orionue.com",
+	"SupportURL": "https://orionue.com",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "OrionVoiceChat",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Linux",
+				"Mac",
+				"IOS",
+				"Android"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "AudioCapture",
+			"Enabled": true
+		}
+	]
+}

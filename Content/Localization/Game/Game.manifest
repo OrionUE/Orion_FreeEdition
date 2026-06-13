@@ -1,0 +1,4019 @@
+{
+	"FormatVersion": 1,
+	"Namespace": "",
+	"Children": [
+		{
+			"Source":
+			{
+				"Text": "AO"
+			},
+			"Keys": [
+				{
+					"Key": "9C7A76AB47ABAA47CC1295BE037E3F4A",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_4.ChannelNames.G"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Anisotropic"
+			},
+			"Keys": [
+				{
+					"Key": "C81A2C31431F3F21405B8BA5A5795185",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_4.ChannelNames.R"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Apply"
+			},
+			"Keys": [
+				{
+					"Key": "6FB58AF0487D52EFB55324A03BE5A834",
+					"Path": "/Game/UI/Settings/DT_SaveActions.DT_SaveActions.Apply.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Attachment1"
+			},
+			"Keys": [
+				{
+					"Key": "54CE31404DBDF88425D708B44CE0031A",
+					"Path": "/GameTest/Inventory/Attachment1/ItemDef_Attachment1.ItemDef_Attachment1.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Back"
+			},
+			"Keys": [
+				{
+					"Key": "277B08A047C548E7B2F7AD9F87389E1F",
+					"Path": "Config/DefaultInput.ini(29)"
+				},
+				{
+					"Key": "92CD56E240D63F3071A3AA859C564E04",
+					"Path": "/Game/UI/DT_UniversalActions.DT_UniversalActions.DefaultBack.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "ButtonText"
+			},
+			"Keys": [
+				{
+					"Key": "803206B24FB47F14AD0EC1B2F2D19C7D",
+					"Path": "/Game/UI/Foundation/Buttons/W_ButtonBase.W_ButtonBase_C:WidgetTree.ButtonTextBlock.Text"
+				},
+				{
+					"Key": "A58355DE488F0D124900268526079A5B",
+					"Path": "/Game/UI/Foundation/Buttons/W_TabButton.W_TabButton_C:WidgetTree.ButtonTextBlock.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Cancel Changes"
+			},
+			"Keys": [
+				{
+					"Key": "B1DBF5B742B8E3D23488CF9448B22A6A",
+					"Path": "/Game/UI/Settings/DT_SaveActions.DT_SaveActions.CancelChanges.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "ClearCoat"
+			},
+			"Keys": [
+				{
+					"Key": "F9BE6F6C4A009273A21841B630210109",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_5.ChannelNames.G"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "ClearCoatRoughness"
+			},
+			"Keys": [
+				{
+					"Key": "6E0FE12D45AB3B05A7FAB89D34C752FC",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_5.ChannelNames.R"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Controller"
+			},
+			"Keys": [
+				{
+					"Key": "02E77A6145C878D7D975239D9542F169",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS4/CommonInput_Gamepad_PS4.Default__CommonInput_Gamepad_PS4_C.GamepadCategory"
+				},
+				{
+					"Key": "596BD2C94671CA046BFC62BE7CC20188",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadSwitch/CommonInput_Gamepad_Switch.Default__CommonInput_Gamepad_Switch_C.GamepadCategory"
+				},
+				{
+					"Key": "9E97BA75491D6F5AC0E034BB1FB2A057",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS5/CommonInput_Gamepad_PS5.Default__CommonInput_Gamepad_PS5_C.GamepadCategory"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Description Text"
+			},
+			"Keys": [
+				{
+					"Key": "6E3BB7EE47C1D4A39BFE3EAE2A89ADD9",
+					"Path": "/Game/UI/Foundation/Dialogs/W_ConfirmationDialog.W_ConfirmationDialog_C:WidgetTree.RichText_Description.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Dual Sense"
+			},
+			"Keys": [
+				{
+					"Key": "56B94F8C41C6D7C26C888B800AF8BD9F",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS5/CommonInput_Gamepad_PS5.Default__CommonInput_Gamepad_PS5_C.GamepadDisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Dual Shock 4"
+			},
+			"Keys": [
+				{
+					"Key": "845C671A47C204E52EC0169312E07BFF",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS4/CommonInput_Gamepad_PS4.Default__CommonInput_Gamepad_PS4_C.GamepadDisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Error"
+			},
+			"Keys": [
+				{
+					"Key": "E4B62D6642C6C3CA2D374682BE7ACF26",
+					"Path": "/Game/UI/Menu/Experiences/W_MultiPlayerScreen.W_MultiPlayerScreen_C:ExecuteUbergraph_W_MultiPlayerScreen [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Interact"
+			},
+			"Keys": [
+				{
+					"Key": "2F7291294E8900083675349B524C8BF2",
+					"Path": "/Game/UI/Interaction/W_Interact.W_Interact_C:WidgetTree.CommonTextBlock_37.Text"
+				},
+				{
+					"Key": "D9D0093E487A25403E77E29BB482CE8C",
+					"Path": "/ShooterInventory/Input/Mappings/IMC_Inventory.IMC_Inventory:PlayerMappableKeySettings_0.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test"
+			},
+			"Keys": [
+				{
+					"Key": "753BCE964FAFEE54DE31A2BF26D3DB88",
+					"Path": "/GameTest/Inventory/ItemTest/ItemDef_ItemTest.ItemDef_ItemTest.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test2"
+			},
+			"Keys": [
+				{
+					"Key": "F4BEA98C43DB080C9BE0BCA497FB442B",
+					"Path": "/GameTest/Inventory/ItemTest2/ItemDef_ItemTest2.ItemDef_ItemTest2.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test3"
+			},
+			"Keys": [
+				{
+					"Key": "3A0E9605420B9901A4DB1D9896ED6B5F",
+					"Path": "/GameTest/Inventory/ItemTest3/ItemDef_ItemTest3.ItemDef_ItemTest3.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Joycons"
+			},
+			"Keys": [
+				{
+					"Key": "663EDAE54CE37DCDF45443AAF5DB448A",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadSwitch/CommonInput_Gamepad_Switch.Default__CommonInput_Gamepad_Switch_C.GamepadDisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Loading"
+			},
+			"Keys": [
+				{
+					"Key": "0240AD784D959FC5D48FE78B98CE6370",
+					"Path": "/Game/UI/Foundation/LoadingScreen/W_LoadingScreen_DefaultContent.W_LoadingScreen_DefaultContent_C:WidgetTree.TextBlock_69.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Loading GameTest"
+			},
+			"Keys": [
+				{
+					"Key": "A21F365346DD58DFFFFD6E997878E3EC",
+					"Path": "/GameTest/System/Playlists/W_LoadingScreen_GameTest.W_LoadingScreen_GameTest_C:WidgetTree.TextBlock_114.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "MetalPaintMask"
+			},
+			"Keys": [
+				{
+					"Key": "A8063FF24DD22F4932960B88103C6E75",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_4.ChannelNames.B"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Metallic"
+			},
+			"Keys": [
+				{
+					"Key": "897A07A048BCF1BB3FB2A1BA93E50F17",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_6.ChannelNames.R"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Backwards"
+			},
+			"Keys": [
+				{
+					"Key": "8B01794D44FB8D879B4BD0ACF7BB7138",
+					"Path": "/Game/Input/Mappings/IMC_Default.IMC_Default:PlayerMappableKeySettings_1.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Forward"
+			},
+			"Keys": [
+				{
+					"Key": "122EB7EC42E0A097016D40A1A81F71D2",
+					"Path": "/Game/Input/Mappings/IMC_Default.IMC_Default:PlayerMappableKeySettings_0.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Left"
+			},
+			"Keys": [
+				{
+					"Key": "1AB38CB7457EBE42D506EB8D3510A1D0",
+					"Path": "/Game/Input/Mappings/IMC_Default.IMC_Default:PlayerMappableKeySettings_2.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Right"
+			},
+			"Keys": [
+				{
+					"Key": "24E303EA49CE722A1CE7F0BBAE4D8D62",
+					"Path": "/Game/Input/Mappings/IMC_Default.IMC_Default:PlayerMappableKeySettings_3.DisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Nintendo Switch"
+			},
+			"Keys": [
+				{
+					"Key": "2E4E25CB47829BC54412B794999A6623",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadSwitch/CommonInput_Gamepad_Switch.Default__CommonInput_Gamepad_Switch_C.GamepadPlatformName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Not Bound"
+			},
+			"Keys": [
+				{
+					"Key": "BCD4CA90404492131F7C0EB552121C10",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_KBMBinding.W_SettingsListEntry_KBMBinding_C:WidgetTree.Button_SecondaryKey.ButtonText"
+				},
+				{
+					"Key": "BEEBD3304A1777D788BA0F934E449CC4",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_KBMBinding.W_SettingsListEntry_KBMBinding_C:WidgetTree.Button_PrimaryKey.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Option"
+			},
+			"Keys": [
+				{
+					"Key": "C5F8FE4547D14A9F94D6C0B323BF4450",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsRotator.W_SettingsRotator_C:WidgetTree.MyText.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Option Loading"
+			},
+			"Keys": [
+				{
+					"Key": "5F89807E43656609C9FAD4B206599B91",
+					"Path": "/Game/UI/Foundation/LoadingScreen/W_OptionLoading.W_OptionLoading_C:WidgetTree.TextBlock_151.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "PlasticMask"
+			},
+			"Keys": [
+				{
+					"Key": "1C7DE49D4CFB880F4CFA349087C1BC0F",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_5.ChannelNames.B"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Playstation®4"
+			},
+			"Keys": [
+				{
+					"Key": "327F041B48C2F270B56721BA7FF59448",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS4/CommonInput_Gamepad_PS4.Default__CommonInput_Gamepad_PS4_C.GamepadPlatformName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Playstation®5"
+			},
+			"Keys": [
+				{
+					"Key": "3C439BB8461C9A566FE740B3E9989B8F",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadPS5/CommonInput_Gamepad_PS5.Default__CommonInput_Gamepad_PS5_C.GamepadPlatformName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Press any key to continue or Press escape to cancel."
+			},
+			"Keys": [
+				{
+					"Key": "836FB3AF46A80B2434B3E280F581C8F0",
+					"Path": "/Game/UI/Settings/Screens/W_SettingsKBMBinding_KeyAlreadyBoundWarning.W_SettingsKBMBinding_KeyAlreadyBoundWarning_C:WidgetTree.CancelText.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Reset"
+			},
+			"Keys": [
+				{
+					"Key": "70B9C63A4E7D97187380A184864A3CDD",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_KBMBinding.W_SettingsListEntry_KBMBinding_C:WidgetTree.Button_ResetToDefault.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Roughness"
+			},
+			"Keys": [
+				{
+					"Key": "83F09F34474937FADFEF66AC87E969B4",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_6.ChannelNames.B"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Session Create"
+			},
+			"Keys": [
+				{
+					"Key": "9B5CAB0A45AFEF816A05DDB088EBF0C3",
+					"Path": "/Game/UI/Menu/Experiences/W_MultiPlayerScreen.W_MultiPlayerScreen_C:ExecuteUbergraph_W_MultiPlayerScreen [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Session Name"
+			},
+			"Keys": [
+				{
+					"Key": "0765D14E4A88558AAB8AEA949B3921AD",
+					"Path": "/Game/UI/Menu/Experiences/W_SessionButton.W_SessionButton_C:WidgetTree.SessionNameText.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Sessions"
+			},
+			"Keys": [
+				{
+					"Key": "43D1F8514F15A5A835EC58BB46840727",
+					"Path": "/Game/UI/Menu/Experiences/W_SessionBrowserScreen.W_SessionBrowserScreen_C:WidgetTree.CommonTextBlock_98.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Description"
+			},
+			"Keys": [
+				{
+					"Key": "D7FE44E6445440379600479131FBDE3C",
+					"Path": "/Game/UI/Settings/W_GameSettingsDetailView.W_GameSettingsDetailView_C:WidgetTree.RichText_Description.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Keys": [
+				{
+					"Key": "7B09978C4F3698E6FF8AE8A4E12AACCA",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_SubCollection.W_SettingsListEntry_SubCollection_C:WidgetTree.Text_SettingName.Text"
+				},
+				{
+					"Key": "954600CA49DC12462D4C2F88550A7DC3",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Action.W_SettingsListEntry_Action_C:WidgetTree.Text_SettingName.Text"
+				},
+				{
+					"Key": "9A4F64464D656FAECE88DBAC1073B8DF",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Discrete.W_SettingsListEntry_Discrete_C:WidgetTree.Text_SettingName.Text"
+				},
+				{
+					"Key": "D1FB148B43D79BB3E72999833509F71A",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Scalar.W_SettingsListEntry_Scalar_C:WidgetTree.Text_SettingName.Text"
+				},
+				{
+					"Key": "E759D9B44A0DFA35E363E995AFCC0743",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_KBMBinding.W_SettingsListEntry_KBMBinding_C:WidgetTree.Text_SettingName.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Spec"
+			},
+			"Keys": [
+				{
+					"Key": "69257E464C83136D5D7DE28FAEFF56E8",
+					"Path": "/ShooterMaps/FrontendBackground/Materials/M_Mannequin_Black.M_Mannequin_Black:MaterialExpressionTextureSampleParameter2D_6.ChannelNames.G"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "The key pressed has other actions bound to it."
+			},
+			"Keys": [
+				{
+					"Key": "2B27626E4C6E728201F54188559D8E8E",
+					"Path": "/Game/UI/Settings/Screens/W_SettingsKBMBinding_KeyAlreadyBoundWarning.W_SettingsKBMBinding_KeyAlreadyBoundWarning_C:WidgetTree.WarningText.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Value"
+			},
+			"Keys": [
+				{
+					"Key": "BA4F49984FE48F217E6DF7B3DEE1DB71",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Scalar.W_SettingsListEntry_Scalar_C:WidgetTree.Text_SettingValue.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Wireless Controller"
+			},
+			"Keys": [
+				{
+					"Key": "5DDD0C9145ED691F998EF2ABA1056ADA",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxSeriesX/CommonInput_Gamepad_XSX.Default__CommonInput_Gamepad_XSX_C.GamepadCategory"
+				},
+				{
+					"Key": "D086A5324B000302144FA2A57D925E87",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxOne/CommonInput_Gamepad_XboxOne.Default__CommonInput_Gamepad_XboxOne_C.GamepadCategory"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox Controller"
+			},
+			"Keys": [
+				{
+					"Key": "39ACE3D74B1E7F69CCB56CBE3F6F290C",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxOne/CommonInput_Gamepad_XboxOne.Default__CommonInput_Gamepad_XboxOne_C.GamepadDisplayName"
+				},
+				{
+					"Key": "90C04A53441DAB7CC7D259838013F16D",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxSeriesX/CommonInput_Gamepad_XSX.Default__CommonInput_Gamepad_XSX_C.GamepadDisplayName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox One"
+			},
+			"Keys": [
+				{
+					"Key": "A622ACF8477B043394C3E3B869899D2E",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxOne/CommonInput_Gamepad_XboxOne.Default__CommonInput_Gamepad_XboxOne_C.GamepadPlatformName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox Series X"
+			},
+			"Keys": [
+				{
+					"Key": "58060FA24F1BA9C51A410286083C65EA",
+					"Path": "/Game/UI/Foundation/Platform/Input/GamepadXboxSeriesX/CommonInput_Gamepad_XSX.Default__CommonInput_Gamepad_XSX_C.GamepadPlatformName"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{Action}"
+			},
+			"Keys": [
+				{
+					"Key": "A897F475498C940C79D3E38CF3D700B1",
+					"Path": "/Game/UI/Foundation/Widgets/BottomBar/W_BoundActionButton.W_BoundActionButton_C:WidgetTree.Text_ActionName.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{ButtonText}"
+			},
+			"Keys": [
+				{
+					"Key": "29A7A9FB464ED68A94D0A2918C5EDCA1",
+					"Path": "/Game/UI/Foundation/Buttons/W_ButtonBase.Default__W_ButtonBase_C.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{Header Text}"
+			},
+			"Keys": [
+				{
+					"Key": "142591784AC31D6B3D86818E7EE3209A",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Header.W_SettingsListEntry_Header_C:WidgetTree.Text_SettingName.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{Setting Name}"
+			},
+			"Keys": [
+				{
+					"Key": "7ECCEB4C4A1915A1FC256791CD7C8421",
+					"Path": "/Game/UI/Settings/Editors/W_SettingsListEntry_Missing.W_SettingsListEntry_Missing_C:WidgetTree.Text_SettingName.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{Settings Title}"
+			},
+			"Keys": [
+				{
+					"Key": "3A3E46EE49DB31DD430600AA205BD17A",
+					"Path": "/Game/UI/Settings/W_GameSettingsDetailView.W_GameSettingsDetailView_C:WidgetTree.Text_SettingName.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "{Title text}"
+			},
+			"Keys": [
+				{
+					"Key": "2A073A364736809E4E1DC3A47245800F",
+					"Path": "/Game/UI/Foundation/Dialogs/W_ConfirmationDialog.W_ConfirmationDialog_C:WidgetTree.Text_Title.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "创建房间"
+			},
+			"Keys": [
+				{
+					"Key": "69A700BE45419EDACF57298538CA6732",
+					"Path": "/Game/UI/Menu/Experiences/W_MultiPlayerScreen.W_MultiPlayerScreen_C:WidgetTree.CreateSessionButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "单人游戏"
+			},
+			"Keys": [
+				{
+					"Key": "EE1D605E49474F36CBDD75B4A6059F51",
+					"Path": "/Game/UI/Menu/Experiences/W_ExperienceSelectionScreen.W_ExperienceSelectionScreen_C:WidgetTree.SinglePlayerButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "地图"
+			},
+			"Keys": [
+				{
+					"Key": "8BAA06FE4517555ED11606876F6FA2B7",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu.W_GameMenu_C:WidgetTree.TopOptionTabs.PreregisteredTabInfoArray(1).PreregisteredTabInfoArray.TabText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "多人游戏"
+			},
+			"Keys": [
+				{
+					"Key": "FA884AFD4E2D9B4D2004D9AFA8F8A710",
+					"Path": "/Game/UI/Menu/Experiences/W_ExperienceSelectionScreen.W_ExperienceSelectionScreen_C:WidgetTree.MultiPlayerButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "开始游戏"
+			},
+			"Keys": [
+				{
+					"Key": "952F3A2E41031400918AECA5865433C9",
+					"Path": "/Game/UI/Menu/W_FrontEnd.W_FrontEnd_C:WidgetTree.PlayButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "按下任意键"
+			},
+			"Keys": [
+				{
+					"Key": "0E3EB5314CA4D0E62B07018E310951B2",
+					"Path": "/Game/UI/Menu/W_StartUp.W_StartUp_C:WidgetTree.PressButton.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "搜索房间"
+			},
+			"Keys": [
+				{
+					"Key": "988E0EE24D59FC918FF411B30D28113C",
+					"Path": "/Game/UI/Menu/Experiences/W_MultiPlayerScreen.W_MultiPlayerScreen_C:WidgetTree.SearchSessionsButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "是否确定退出游戏"
+			},
+			"Keys": [
+				{
+					"Key": "B062F2F1452D4C86A3103FBE85E4C654",
+					"Path": "/Game/UI/Menu/W_FrontEnd.W_FrontEnd_C:ExecuteUbergraph_W_FrontEnd [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "是否返回至主菜单"
+			},
+			"Keys": [
+				{
+					"Key": "98D4723C4D15513F854FB797D9C89155",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:ExecuteUbergraph_W_GameMenu_Option [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "是否返回至桌面"
+			},
+			"Keys": [
+				{
+					"Key": "5FC1D51E4352E58A391A97B556054C6C",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:ExecuteUbergraph_W_GameMenu_Option [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "有极少数人在接触到特定光线、图案或图像时，可能突然癫痫发作，即使此前并无癫痫或痉挛发作史。这类未经诊断的症状称为“光刺激诱发癫痫症”。\r\n癫痫症状包括头昏眼花、视幻觉、眼部或脸部抽搐、手脚痉挛、暂失方向感、精神混淆或暂时失去意识。癫痫发作时可能因为失去意识或抽筋之故，跌落地面而受伤或碰撞到周遭物品。若出现以上所述任何症状，请立即停止该游戏并送医诊断。如果您自己或您的亲友有癫痫史，请在进行游戏之前先与医师咨询。"
+			},
+			"Keys": [
+				{
+					"Key": "3DAFD497403A424392DD9881089A164A",
+					"Path": "/Game/UI/Foundation/LoadingScreen/StartUp/W_StartUp_Warning.W_StartUp_Warning_C:WidgetTree.WarningContent.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "正在编译着色器..."
+			},
+			"Keys": [
+				{
+					"Key": "BCD4046842B3FBF2AB0987823FC020F4",
+					"Path": "/Game/UI/Foundation/LoadingScreen/StartUp/W_StartUp_CompilingShaders.W_StartUp_CompilingShaders_C:WidgetTree.CompilationTips.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "确定应用设置变更吗？"
+			},
+			"Keys": [
+				{
+					"Key": "2D8D437A448F7615D8F442BC929988F5",
+					"Path": "/Game/UI/Settings/W_SettingScreen.W_SettingScreen_C:ExecuteUbergraph_W_SettingScreen [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "背包"
+			},
+			"Keys": [
+				{
+					"Key": "15798BA64DB83637052B52A4D0B9EF4C",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu.W_GameMenu_C:WidgetTree.TopOptionTabs.PreregisteredTabInfoArray(0).PreregisteredTabInfoArray.TabText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "警告：癫痫风险"
+			},
+			"Keys": [
+				{
+					"Key": "BF930DF64BE1A5AF6982AD9A885FA562",
+					"Path": "/Game/UI/Foundation/LoadingScreen/StartUp/W_StartUp_Warning.W_StartUp_Warning_C:WidgetTree.WarningText.Text"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "设置"
+			},
+			"Keys": [
+				{
+					"Key": "4A518683452751FB43EEDFA8392482EC",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:WidgetTree.SettingsButton.ButtonText"
+				},
+				{
+					"Key": "A39C8DD9436D39640130FEB540CEFE18",
+					"Path": "/Game/UI/Menu/W_FrontEnd.W_FrontEnd_C:WidgetTree.SettingsButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至主菜单"
+			},
+			"Keys": [
+				{
+					"Key": "7779A52E4AB3D8ADBC11C0A7B7CCE0E6",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:ExecuteUbergraph_W_GameMenu_Option [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至桌面"
+			},
+			"Keys": [
+				{
+					"Key": "6946ED254D175F162F93E19937571370",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:WidgetTree.ReturnDesktopButton.ButtonText"
+				},
+				{
+					"Key": "C328CFBD452FB16F14DA838F6216A4F1",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:ExecuteUbergraph_W_GameMenu_Option [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至菜单"
+			},
+			"Keys": [
+				{
+					"Key": "04F755A644C35C31A1E0E199052D3B33",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu_Option.W_GameMenu_Option_C:WidgetTree.ReturnMenuButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "退出"
+			},
+			"Keys": [
+				{
+					"Key": "2B8CAFB6463C08D6259664851D780482",
+					"Path": "/Game/UI/Menu/W_FrontEnd.W_FrontEnd_C:WidgetTree.QuitGameButton.ButtonText"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "退出游戏"
+			},
+			"Keys": [
+				{
+					"Key": "25CC72534CD4988EE5EF139D93BDC198",
+					"Path": "/Game/UI/Menu/W_FrontEnd.W_FrontEnd_C:ExecuteUbergraph_W_FrontEnd [Script Bytecode]"
+				}
+			]
+		},
+		{
+			"Source":
+			{
+				"Text": "选项"
+			},
+			"Keys": [
+				{
+					"Key": "44E43C444E191325C36380BB1A93C868",
+					"Path": "/Game/UI/Menu/GameMenu/W_GameMenu.W_GameMenu_C:WidgetTree.TopOptionTabs.PreregisteredTabInfoArray(2).PreregisteredTabInfoArray.TabText"
+				}
+			]
+		}
+	],
+	"Subnamespaces": [
+		{
+			"Namespace": "CommonGame",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Requested Session Failed"
+					},
+					"Keys": [
+						{
+							"Key": "Warning_RequestedSessionFailed",
+							"Path": "Plugins/CommonGame/Source/Private/CommonGameInstance.cpp(143)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "CommonKeybindWidget",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Unbound"
+					},
+					"Keys": [
+						{
+							"Key": "Unbound",
+							"Path": "Plugins/CommonGame/Source/Private/CommonPlayerInputKey.cpp(338)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "CommonUser",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "A network connection is required"
+					},
+					"Keys": [
+						{
+							"Key": "ResultNetworkConnectionUnavailable",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2278)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "A valid game license is required"
+					},
+					"Keys": [
+						{
+							"Key": "ResultLicenseInvalid",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2274)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to Request Login"
+					},
+					"Keys": [
+						{
+							"Key": "FailedToRequest",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(1691)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Guest"
+					},
+					"Keys": [
+						{
+							"Key": "GuestNickname",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(259)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invalid Platform User"
+					},
+					"Keys": [
+						{
+							"Key": "InvalidPlatformUser",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(1493)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Login Failure"
+					},
+					"Keys": [
+						{
+							"Key": "LoginFailedTitle",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(1412)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Not allowed"
+					},
+					"Keys": [
+						{
+							"Key": "ResultPlatformFailure",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2286)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "The game or hardware needs to be updated"
+					},
+					"Keys": [
+						{
+							"Key": "VersionOutdated",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2276)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "The user is allowed"
+					},
+					"Keys": [
+						{
+							"Key": "ResultAvailable",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2270)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "The user must login"
+					},
+					"Keys": [
+						{
+							"Key": "ResultUserNotLoggedIn",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2272)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "This account is not allowed"
+					},
+					"Keys": [
+						{
+							"Key": "ResultAccountUseRestricted",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2284)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "This account type does not have access"
+					},
+					"Keys": [
+						{
+							"Key": "ResultAccountTypeRestricted",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2282)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "This age restricted account is not allowed"
+					},
+					"Keys": [
+						{
+							"Key": "ResultAgeRestricted",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2280)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Unable to start login process"
+					},
+					"Keys": [
+						{
+							"Key": "LoginFailedEarly",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/AsyncAction_CommonUserInitialize.cpp(69)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Unknown if the user is allowed"
+					},
+					"Keys": [
+						{
+							"Key": "ResultUnknown",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2268)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "access user content"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanUseUserGeneratedContent",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2254)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "communicate with text"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanCommunicateViaTextOnline",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2250)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "communicate with voice"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanCommunicateViaVoiceOnline",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2252)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "play online"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanPlayOnline",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2248)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "play the game"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanPlay",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2246)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "play with other platforms"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeCanUseCrossPlay",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(2256)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} to {1}"
+					},
+					"Keys": [
+						{
+							"Key": "PrivilegeFailureFormat",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonUserSubsystem.cpp(1842)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "EditorValidator",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "!!!!!!! Your checked out content has issues. Don't submit until they are fixed !!!!!!!\r\n\r\nSee the MessageLog and OutputLog for details"
+					},
+					"Keys": [
+						{
+							"Key": "ContentValidationFailed",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(135)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "All checked out content passed. Nice job."
+					},
+					"Keys": [
+						{
+							"Key": "ContentValidationPassed",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(143)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Checking content..."
+					},
+					"Keys": [
+						{
+							"Key": "CheckingContentTask",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(108)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to get package load warnings and errors"
+					},
+					"Keys": [
+						{
+							"Key": "Load_FailedLoad",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator_Load.cpp(45)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Finishing shader compiles before checking content..."
+					},
+					"Keys": [
+						{
+							"Key": "CompilingShadersBeforeCheckingContentTask",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(102)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "No errors or warnings were found, but there was an error return code. Look in the OutputLog and log file for details. You may need engineering help."
+					},
+					"Keys": [
+						{
+							"Key": "ContentValidationFailedWithNoMessages",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(139)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "References {0} which is not marked for add in source control"
+					},
+					"Keys": [
+						{
+							"Key": "SourceControl_NotMarkedForAdd",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator_SourceControl.cpp(49)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Still discovering assets. Try again once it is complete."
+					},
+					"Keys": [
+						{
+							"Key": "DiscoveringAssets",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(41)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Validate Packages"
+					},
+					"Keys": [
+						{
+							"Key": "ValidatePackages",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/Validation/EditorValidator.cpp(173)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "FCommonEditorModule",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Check Content"
+					},
+					"Keys": [
+						{
+							"Key": "CheckContentButton",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/CommonEditor.cpp(143)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Common Maps"
+					},
+					"Keys": [
+						{
+							"Key": "CommonMaps_Label",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/CommonEditor.cpp(159)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Opens this map in the editor"
+					},
+					"Keys": [
+						{
+							"Key": "CommonPathDescription",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/CommonEditor.cpp(116)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Runs the Content Validation job on all checked out assets to look for warnings and errors"
+					},
+					"Keys": [
+						{
+							"Key": "CheckContentDescription",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/CommonEditor.cpp(144)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Some commonly desired maps while using the editor"
+					},
+					"Keys": [
+						{
+							"Key": "CommonMaps_ToolTip",
+							"Path": "Plugins/CommonEditorExtension/Source/CommonEditor/Private/CommonEditor.cpp(160)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "GameInputSettings",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Default Experiences"
+					},
+					"Keys": [
+						{
+							"Key": "GameInputDefaults",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(150)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "GameSetting",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "<Icon.Warning></> There are fewer options than available due to Parental Controls."
+					},
+					"Keys": [
+						{
+							"Key": "DisabledOptionReasonLine",
+							"Path": "Plugins/GameSettings/Source/Private/Widgets/GameSettingDetailView.cpp(109)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "<Icon.Warning></> {0}"
+					},
+					"Keys": [
+						{
+							"Key": "DisabledReasonLine",
+							"Path": "Plugins/GameSettings/Source/Private/Widgets/GameSettingDetailView.cpp(103)"
+						},
+						{
+							"Key": "WarningReasonLine",
+							"Path": "Plugins/GameSettings/Source/Private/Widgets/GameSettingDetailView.cpp(79)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Can only be changed by the primary player."
+					},
+					"Keys": [
+						{
+							"Key": "OnlyPrimaryPlayerEditable",
+							"Path": "Plugins/GameSettings/Source/Private/EditCondition/WhenPlayingAsPrimaryPlayer.cpp(19)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}%"
+					},
+					"Keys": [
+						{
+							"Key": "PercentFormat",
+							"Path": "Plugins/GameSettings/Source/Private/GameSettingValueScalarDynamic.cpp(16)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}{1}"
+					},
+					"Keys": [
+						{
+							"Key": "DevDynamicDetailsFormat",
+							"Path": "Plugins/GameSettings/Source/Private/GameSetting.cpp(296)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "GameSettings",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "10:16"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-10:16",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(429)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "16:10"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-16:10",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(417)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "16:9"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-16:9",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(413)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "3:4"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-3:4",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(421)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "4:3"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-4:3",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(409)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "9:16"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio-9:16",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(425)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "<strong>Note: Changing the Quality setting to {0} or higher might limit your framerate.</>"
+					},
+					"Keys": [
+						{
+							"Key": "OverallQuality_Mobile_ImpactsFramerate",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(89)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "<strong>Note: Changing the framerate setting to {0} or higher might lower your Quality Presets.</>"
+					},
+					"Keys": [
+						{
+							"Key": "MobileFPSType_Note",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_MobileFPSType.cpp(74)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Bindings for {0}"
+					},
+					"Keys": [
+						{
+							"Key": "DynamicDetails_KeyboardInputAction",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingKeyboardInput.cpp(70)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_Cinematic",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(81)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Custom"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_Custom",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(84)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Default Output - {0}"
+					},
+					"Keys": [
+						{
+							"Key": "DefaultAudioOutputDevice",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscreteDynamic_AudioOutputDevice.cpp(69)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_Epic",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(80)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_High",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(79)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Language Changed"
+					},
+					"Keys": [
+						{
+							"Key": "WarningLanguage_Title",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Language.cpp(158)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_Low",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(77)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Keys": [
+						{
+							"Key": "VideoQualityOverall_Medium",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_OverallQuality.cpp(78)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "System Default ({0})"
+					},
+					"Keys": [
+						{
+							"Key": "SystemDefaultLanguage",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Language.cpp(111)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Unknown Mapping"
+					},
+					"Keys": [
+						{
+							"Key": "GameSettingsErrors_UnknownMappingName",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingKeyboardInput.cpp(14)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "You will need to restart the game completely for all language related changes to take effect."
+					},
+					"Keys": [
+						{
+							"Key": "WarningLanguage_Message",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Language.cpp(159)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} FPS"
+					},
+					"Keys": [
+						{
+							"Key": "MobileFrameRateOption",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_MobileFPSType.cpp(97)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{X} x {Y}"
+					},
+					"Keys": [
+						{
+							"Key": "AspectRatio",
+							"Path": "Source/OrionGame/Settings/CustomSettings/GameSettingValueDiscrete_Resolution.cpp(441)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "GameSettingValueDiscreteDynamic",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "OFF"
+					},
+					"Keys": [
+						{
+							"Key": "OFF",
+							"Path": "Plugins/GameSettings/Source/Private/GameSettingValueDiscreteDynamic.cpp(193)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "ON"
+					},
+					"Keys": [
+						{
+							"Key": "ON",
+							"Path": "Plugins/GameSettings/Source/Private/GameSettingValueDiscreteDynamic.cpp(194)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "Orion",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "1 (Slow)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_Slow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(123)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "10 (Insane)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_Insane",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(132)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "2 (Slow+)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_SlowPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(124)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "3 (Slow++)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_SlowPlusPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(125)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "3D Headphones"
+					},
+					"Keys": [
+						{
+							"Key": "HeadphoneMode_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(172)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "3D Resolution"
+					},
+					"Keys": [
+						{
+							"Key": "ResolutionScale_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(422)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "4 (Normal)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_Normal",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(126)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "5 (Normal+)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_NormalPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(127)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "6 (Normal++)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_NormalPlusPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(128)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "7 (Fast)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_Fast",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(129)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "8 (Fast+)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_FastPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(130)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "9 (Fast++)"
+					},
+					"Keys": [
+						{
+							"Key": "EFortGamepadSensitivity_FastPlusPlus",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(131)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Advanced Graphics"
+					},
+					"Keys": [
+						{
+							"Key": "AdvancedGraphics_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(639)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Aim Sensitivity (ADS)"
+					},
+					"Keys": [
+						{
+							"Key": "LookSensitivityPresetAds_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(157)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Aim Sensitivity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "LookSensitivityPresetAds_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(158)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "All Sounds"
+					},
+					"Keys": [
+						{
+							"Key": "EORIONAllowBackgroundAudioSetting_AllSounds",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(158)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Anti-Aliasing"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasing_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(490)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "AntiAliasing Tips"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasing_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(491)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Audio"
+					},
+					"Keys": [
+						{
+							"Key": "AudioCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(26)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Audio Output Device"
+					},
+					"Keys": [
+						{
+							"Key": "AudioOutputDevice_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(132)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "AudioOutputDevice Tips"
+					},
+					"Keys": [
+						{
+							"Key": "AudioOutputDevice_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(133)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Auto-Set"
+					},
+					"Keys": [
+						{
+							"Key": "AutoSetQuality_Action",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(357)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Auto-Set Quality"
+					},
+					"Keys": [
+						{
+							"Key": "AutoSetQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(353)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "AutoSetQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "AutoSetQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(354)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Background Audio"
+					},
+					"Keys": [
+						{
+							"Key": "BackgroundAudio_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(150)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Background Opacity"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleBackground_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(278)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "BackgroundAudio Tips"
+					},
+					"Keys": [
+						{
+							"Key": "BackgroundAudio_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(151)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Brightness"
+					},
+					"Keys": [
+						{
+							"Key": "Brightness_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(174)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Brightness Tips"
+					},
+					"Keys": [
+						{
+							"Key": "Brightness_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(175)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasingCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(499)"
+						},
+						{
+							"Key": "PostProcessingQualityCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(620)"
+						},
+						{
+							"Key": "ReflectionQualityCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(596)"
+						},
+						{
+							"Key": "ShadowCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(475)"
+						},
+						{
+							"Key": "TextureQualityCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(548)"
+						},
+						{
+							"Key": "ViewDistanceCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(523)"
+						},
+						{
+							"Key": "VisualEffectQualityCinematic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(451)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Clear"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleBackgroundOpacity_Clear",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(284)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller DeadZone"
+					},
+					"Keys": [
+						{
+							"Key": "DeadZoneCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(179)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller Hardware"
+					},
+					"Keys": [
+						{
+							"Key": "ControllerHardware_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(35)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller Hardware Tips"
+					},
+					"Keys": [
+						{
+							"Key": "ControllerHardware_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(36)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "DeviceProfileSuffix Tips"
+					},
+					"Keys": [
+						{
+							"Key": "DeviceProfileSuffix_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(315)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Dialogue"
+					},
+					"Keys": [
+						{
+							"Key": "DialogueVolume_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(89)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "DialogueVolume Tips"
+					},
+					"Keys": [
+						{
+							"Key": "DialogueVolume_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(90)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Display"
+					},
+					"Keys": [
+						{
+							"Key": "DisplayCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(113)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Drop Shadow"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextBorder_DropShadow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(270)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Effects"
+					},
+					"Keys": [
+						{
+							"Key": "VisualEffectQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(563)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasingEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(498)"
+						},
+						{
+							"Key": "PostProcessingQualityEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(619)"
+						},
+						{
+							"Key": "ReflectionQualityEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(595)"
+						},
+						{
+							"Key": "ShadowEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(474)"
+						},
+						{
+							"Key": "TextureQualityEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(547)"
+						},
+						{
+							"Key": "ViewDistanceEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(522)"
+						},
+						{
+							"Key": "VisualEffectQualityEpic",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(450)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Extra Large"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextSize_ExtraLarge",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(237)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Extra Small"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextSize_ExtraSmall",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(233)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Far"
+					},
+					"Keys": [
+						{
+							"Key": "ViewDistanceFar",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(521)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_Always_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(741)"
+						},
+						{
+							"Key": "FrameRateLimit_Mobile_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(342)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (Background)"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_WhenBackground_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(725)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (Menu)"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_InMenu_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(709)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (On Battery)"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_OnBattery_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(691)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit Tips"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_Mobile_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(343)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_Always Tips"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_Always_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(742)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_InMenu Tips"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_InMenu_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(710)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_OnBattery Tips"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_OnBattery_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(692)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_WhenBackground Tips"
+					},
+					"Keys": [
+						{
+							"Key": "FrameRateLimit_WhenBackground_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(726)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Fullscreen"
+					},
+					"Keys": [
+						{
+							"Key": "WindowModeFullscreen",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(126)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Game"
+					},
+					"Keys": [
+						{
+							"Key": "GameCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Game.cpp(16)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Gamepad"
+					},
+					"Keys": [
+						{
+							"Key": "GamepadCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(20)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Global Illumination"
+					},
+					"Keys": [
+						{
+							"Key": "GlobalIlluminationQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(442)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "GlobalIlluminationQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "GlobalIlluminationQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(443)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Graphics"
+					},
+					"Keys": [
+						{
+							"Key": "GraphicsCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(167)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Graphics Quality"
+					},
+					"Keys": [
+						{
+							"Key": "GraphicsQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(303)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "GraphicsQualityPresets Tips"
+					},
+					"Keys": [
+						{
+							"Key": "GraphicsQualityPresets_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(402)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "HDRAudioMode Tips"
+					},
+					"Keys": [
+						{
+							"Key": "HDRAudioMode_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(197)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Hardware"
+					},
+					"Keys": [
+						{
+							"Key": "HardwareCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(28)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "HeadphoneMode Tips"
+					},
+					"Keys": [
+						{
+							"Key": "HeadphoneMode_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(173)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasingHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(497)"
+						},
+						{
+							"Key": "ESubtitleBackgroundOpacity_High",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(287)"
+						},
+						{
+							"Key": "PostProcessingQualityHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(618)"
+						},
+						{
+							"Key": "ReflectionQualityHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(594)"
+						},
+						{
+							"Key": "ShadowHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(473)"
+						},
+						{
+							"Key": "TextureQualityHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(546)"
+						},
+						{
+							"Key": "VisualEffectQualityHigh",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(449)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "High Dynamic Range Audio"
+					},
+					"Keys": [
+						{
+							"Key": "HDRAudioMode_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(196)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis"
+					},
+					"Keys": [
+						{
+							"Key": "InvertHorizontalAxis_Gamepad_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(101)"
+						},
+						{
+							"Key": "InvertHorizontalAxis_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(117)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis Tips"
+					},
+					"Keys": [
+						{
+							"Key": "InvertHorizontalAxis_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(118)"
+						},
+						{
+							"Key": "InvertHorizontalAxis_Gamepad_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(102)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis"
+					},
+					"Keys": [
+						{
+							"Key": "InvertVerticalAxis_Gamepad_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(88)"
+						},
+						{
+							"Key": "InvertVerticalAxis_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(102)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis Tips"
+					},
+					"Keys": [
+						{
+							"Key": "InvertVerticalAxis_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(103)"
+						},
+						{
+							"Key": "InvertVerticalAxis_Gamepad_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(89)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Keyboard and Mouse"
+					},
+					"Keys": [
+						{
+							"Key": "KeyBindingCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(136)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Language"
+					},
+					"Keys": [
+						{
+							"Key": "LanguageCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Game.cpp(24)"
+						},
+						{
+							"Key": "LanguageSetting_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Game.cpp(31)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Language Tips"
+					},
+					"Keys": [
+						{
+							"Key": "LanguageSetting_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Game.cpp(32)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Large"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextSize_Large",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(236)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Left Stick DeadZone"
+					},
+					"Keys": [
+						{
+							"Key": "MoveStickDeadZone_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(186)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Left Stick DeadZone Tips"
+					},
+					"Keys": [
+						{
+							"Key": "MoveStickDeadZone_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(187)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Look Sensitivity"
+					},
+					"Keys": [
+						{
+							"Key": "LookSensitivityPreset_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(139)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Look Sensitivity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "LookSensitivityPreset_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(140)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleBackgroundOpacity_Low",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(285)"
+						},
+						{
+							"Key": "PostProcessingQualityLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(616)"
+						},
+						{
+							"Key": "ReflectionQualityLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(592)"
+						},
+						{
+							"Key": "TextureQualityLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(544)"
+						},
+						{
+							"Key": "VisualEffectQualityLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(447)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasingMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(496)"
+						},
+						{
+							"Key": "ESubtitleBackgroundOpacity_Medium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(286)"
+						},
+						{
+							"Key": "ESubtitleTextSize_Medium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(235)"
+						},
+						{
+							"Key": "PostProcessingQualityMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(617)"
+						},
+						{
+							"Key": "ReflectionQualityMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(593)"
+						},
+						{
+							"Key": "ShadowMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(472)"
+						},
+						{
+							"Key": "TextureQualityMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(545)"
+						},
+						{
+							"Key": "ViewDistanceMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(520)"
+						},
+						{
+							"Key": "VisualEffectQualityMedium",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(448)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Mouse and Keyboard"
+					},
+					"Keys": [
+						{
+							"Key": "MouseAndKeyboardCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(23)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Music"
+					},
+					"Keys": [
+						{
+							"Key": "MusicVolume_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(57)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "MusicVolume Tips"
+					},
+					"Keys": [
+						{
+							"Key": "MusicVolume_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(58)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Near"
+					},
+					"Keys": [
+						{
+							"Key": "ViewDistanceNear",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(519)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "None"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextBorder_None",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(268)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Off"
+					},
+					"Keys": [
+						{
+							"Key": "AntiAliasingLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(495)"
+						},
+						{
+							"Key": "EORIONAllowBackgroundAudioSetting_Off",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(157)"
+						},
+						{
+							"Key": "ShadowLow",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(471)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Options"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitlePage_Navigation",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(196)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Outline"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextBorder_Outline",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(269)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Overall"
+					},
+					"Keys": [
+						{
+							"Key": "OverallVolume_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(41)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "OverallVolume Tips"
+					},
+					"Keys": [
+						{
+							"Key": "OverallVolume_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(42)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Post Processing"
+					},
+					"Keys": [
+						{
+							"Key": "PostProcessingQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(611)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "PostProcessingQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "PostProcessingQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(612)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Press escape to cancel, or press {InKey} again to confirm rebinding."
+					},
+					"Keys": [
+						{
+							"Key": "CancelText",
+							"Path": "Source/OrionGame/UI/Settings/ORIONSettingsListEntry_KeyboardInput.cpp(125)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Quality Presets"
+					},
+					"Keys": [
+						{
+							"Key": "DeviceProfileSuffix_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(314)"
+						},
+						{
+							"Key": "GraphicsQualityPresets_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(401)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "ReflectionQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "ReflectionQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(588)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Reflections"
+					},
+					"Keys": [
+						{
+							"Key": "ReflectionQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(587)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Resolution"
+					},
+					"Keys": [
+						{
+							"Key": "Resolution_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(140)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Resolution Tips"
+					},
+					"Keys": [
+						{
+							"Key": "Resolution_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(141)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "ResolutionScale Tips"
+					},
+					"Keys": [
+						{
+							"Key": "ResolutionScale_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(423)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Right Stick DeadZone"
+					},
+					"Keys": [
+						{
+							"Key": "LookStickDeadZone_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(202)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Right Stick DeadZone Tips"
+					},
+					"Keys": [
+						{
+							"Key": "LookStickDeadZone_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(203)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Sensitivity"
+					},
+					"Keys": [
+						{
+							"Key": "BasicSensitivityCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(118)"
+						},
+						{
+							"Key": "MouseSensitivityCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(41)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Shadows"
+					},
+					"Keys": [
+						{
+							"Key": "Shadows_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(466)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Shadows Tips"
+					},
+					"Keys": [
+						{
+							"Key": "Shadows_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(467)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Small"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleTextSize_Small",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(234)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Solid"
+					},
+					"Keys": [
+						{
+							"Key": "ESubtitleBackgroundOpacity_Solid",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(288)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Sound"
+					},
+					"Keys": [
+						{
+							"Key": "SoundCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(125)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Sound Effects"
+					},
+					"Keys": [
+						{
+							"Key": "SoundEffectsVolume_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(73)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "SoundEffectsVolume Tips"
+					},
+					"Keys": [
+						{
+							"Key": "SoundEffectsVolume_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(74)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleBackgroundOpacity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleBackgroundOpacity_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(279)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitlePage Tips"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitlePage_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(195)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleTextBorder Tips"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleTextBorder_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(263)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleTextSize Tips"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleTextSize_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(228)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitlePage_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(194)"
+						},
+						{
+							"Key": "SubtitlesCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(207)"
+						},
+						{
+							"Key": "Subtitles_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(214)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles Tips"
+					},
+					"Keys": [
+						{
+							"Key": "Subtitles_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(215)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Targeting Sensitivity"
+					},
+					"Keys": [
+						{
+							"Key": "MouseTargetingMultiplier_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(84)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Targeting Sensitivity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "MouseTargetingMultiplier_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(85)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Text Border"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleBackgroundStyle_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(262)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Text Size"
+					},
+					"Keys": [
+						{
+							"Key": "SubtitleTextSize_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(227)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "TextureQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "TextureQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(540)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Textures"
+					},
+					"Keys": [
+						{
+							"Key": "TextureQuality_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(538)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "This feature only works if 'Window Mode' is set to 'Fullscreen'."
+					},
+					"Keys": [
+						{
+							"Key": "FullscreenNeededForVSync",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(659)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Unlimited"
+					},
+					"Keys": [
+						{
+							"Key": "UnlimitedFPS",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(680)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Vertical Sync"
+					},
+					"Keys": [
+						{
+							"Key": "VerticalSync_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(646)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "VerticalSync Tips"
+					},
+					"Keys": [
+						{
+							"Key": "VerticalSync_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(647)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Vibration"
+					},
+					"Keys": [
+						{
+							"Key": "GamepadVibration_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(75)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Vibration Tips"
+					},
+					"Keys": [
+						{
+							"Key": "GamepadVibration_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Gamepad.cpp(76)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Video"
+					},
+					"Keys": [
+						{
+							"Key": "VideoCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(98)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "View Distance"
+					},
+					"Keys": [
+						{
+							"Key": "ViewDistance_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(514)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "ViewDistance Tips"
+					},
+					"Keys": [
+						{
+							"Key": "ViewDistance_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(515)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "VisualEffectQuality Tips"
+					},
+					"Keys": [
+						{
+							"Key": "VisualEffectQuality_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(564)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Voice Chat"
+					},
+					"Keys": [
+						{
+							"Key": "VoiceChatVolume_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(105)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "VoiceChatVolume Tips"
+					},
+					"Keys": [
+						{
+							"Key": "VoiceChatVolume_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(106)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Volume"
+					},
+					"Keys": [
+						{
+							"Key": "VolumeCollection_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Audio.cpp(34)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "When the Window Mode is set to <strong>Windowed Fullscreen</>, the resolution must match the native desktop resolution."
+					},
+					"Keys": [
+						{
+							"Key": "ResolutionWindowedFullscreen_Disabled",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(149)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Window Mode"
+					},
+					"Keys": [
+						{
+							"Key": "WindowMode_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(120)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "WindowMode Tips"
+					},
+					"Keys": [
+						{
+							"Key": "WindowMode_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(122)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Windowed"
+					},
+					"Keys": [
+						{
+							"Key": "WindowModeWindowed",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(128)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Windowed Fullscreen"
+					},
+					"Keys": [
+						{
+							"Key": "WindowModeWindowedFullscreen",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(127)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "X-Axis Sensitivity"
+					},
+					"Keys": [
+						{
+							"Key": "MouseSensitivityYaw_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(48)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "X-Axis Sensitivity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "MouseSensitivityYaw_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(49)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Y-Axis Sensitivity"
+					},
+					"Keys": [
+						{
+							"Key": "MouseSensitivityPitch_Name",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(66)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Y-Axis Sensitivity Tips"
+					},
+					"Keys": [
+						{
+							"Key": "MouseSensitivityPitch_Description",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_MouseAndKeyboard.cpp(67)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} FPS"
+					},
+					"Keys": [
+						{
+							"Key": "FPSFormat",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(675)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}%"
+					},
+					"Keys": [
+						{
+							"Key": "BrightnessFormat",
+							"Path": "Source/OrionGame/Settings/GameSettingRegistry_Video.cpp(181)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "{InKey} is already bound to {ActionNames} are you sure you want to rebind it?"
+					},
+					"Keys": [
+						{
+							"Key": "WarningText",
+							"Path": "Source/OrionGame/UI/Settings/ORIONSettingsListEntry_KeyboardInput.cpp(124)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "K2Node",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "\n\nThe message structure that we received"
+					},
+					"Keys": [
+						{
+							"Key": "PayloadOutTooltip",
+							"Path": "Plugins/GameplayMessageRouter/Source/GameplayMessageNodes/Private/K2Node_AsyncAction_ListenForGameplayMessages.cpp(52)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "Messaging",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Cancel"
+					},
+					"Keys": [
+						{
+							"Key": "Cancel",
+							"Path": "Plugins/CommonGame/Source/Private/Messaging/CommonGameDialog.cpp(38)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "No"
+					},
+					"Keys": [
+						{
+							"Key": "No",
+							"Path": "Plugins/CommonGame/Source/Private/Messaging/CommonGameDialog.cpp(58)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Ok"
+					},
+					"Keys": [
+						{
+							"Key": "Ok",
+							"Path": "Plugins/CommonGame/Source/Private/Messaging/CommonGameDialog.cpp(19)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Yes"
+					},
+					"Keys": [
+						{
+							"Key": "Yes",
+							"Path": "Plugins/CommonGame/Source/Private/Messaging/CommonGameDialog.cpp(54)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "NetworkErrors",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Can't find asset data for MapID {0}, hosting request failed."
+					},
+					"Keys": [
+						{
+							"Key": "InvalidMapFormat",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(243)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Cannot host offline game as client."
+					},
+					"Keys": [
+						{
+							"Key": "CannotHostAsClient",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(429)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Client builds cannot host game sessions."
+					},
+					"Keys": [
+						{
+							"Key": "ClientBuildCannotHost",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(251)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to create session."
+					},
+					"Keys": [
+						{
+							"Key": "CreateSessionFailed",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(874)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Game is full."
+					},
+					"Keys": [
+						{
+							"Key": "SessionIsFull",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(1107)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Game no longer exists."
+					},
+					"Keys": [
+						{
+							"Key": "SessionDoesNotExist",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(1110)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "HostSession passed an invalid request."
+					},
+					"Keys": [
+						{
+							"Key": "InvalidRequest",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(404)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "HostingPlayer is invalid."
+					},
+					"Keys": [
+						{
+							"Key": "InvalidHostingPlayer",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(412)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Invalid Player Controller"
+					},
+					"Keys": [
+						{
+							"Key": "InvalidPlayerController",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(1236)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Join failed."
+					},
+					"Keys": [
+						{
+							"Key": "JoinSessionFailed",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(1113)"
+						}
+					]
+				},
+				{
+					"Source":
+					{
+						"Text": "Travel to Session failed."
+					},
+					"Keys": [
+						{
+							"Key": "TravelSessionFailed",
+							"Path": "Plugins/CommonUser/Source/CommonUser/Private/CommonSessionSubsystem.cpp(1252)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "OnlineSubsystemSteamCore",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Steam"
+					},
+					"Keys": [
+						{
+							"Key": "OnlineServiceName",
+							"Path": "Plugins/SteamCorePro/Source/OnlineSubsystemSteamCore/Private/OnlineSubsystemSteamCore.cpp(727)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"Namespace": "UIExtension",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Extension Point\n{0}"
+					},
+					"Keys": [
+						{
+							"Key": "DesignTime_ExtensionPointLabel",
+							"Path": "Plugins/UIExtension/Source/Private/Widgets/UIExtensionPointWidget.cpp(47)"
+						}
+					]
+				}
+			]
+		}
+	]
+}

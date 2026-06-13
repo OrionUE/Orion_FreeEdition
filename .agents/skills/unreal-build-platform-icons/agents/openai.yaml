@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE Build Platform Icons"
+  short_description: "Generate Unreal Build platform app icons"
+  default_prompt: "Use $unreal-build-platform-icons to replace Unreal Build folder platform app icons from a source logo."

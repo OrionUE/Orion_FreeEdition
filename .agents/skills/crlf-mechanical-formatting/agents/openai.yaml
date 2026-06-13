@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRLF Formatting"
+  short_description: "Preserve CRLF during bulk formatting"
+  default_prompt: "Use $crlf-mechanical-formatting to normalize Windows text files safely."

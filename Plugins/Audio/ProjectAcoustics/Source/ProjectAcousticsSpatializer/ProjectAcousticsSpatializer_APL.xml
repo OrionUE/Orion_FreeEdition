@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2022 Microsoft Corporation. All rights reserved. -->
+<!-- Licensed under the MIT License. -->
+<!-- steps to add to build additions -->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- init section is always evaluated once per architecture -->
+    <init>
+        <log text="ProjectAcousticsSpatializer init"/>
+        <setBool result="bSupported" value="false"/>
+        <isArch arch="armeabi-v7a">
+            <setBool result="bSupported" value="true"/>
+        </isArch>
+        <isArch arch="arm64-v8a">
+            <setBool result="bSupported" value="true"/>
+        </isArch>
+        <isArch arch="x86">
+            <setBool result="bSupported" value="true"/>
+        </isArch>
+    </init>
+
+    <!-- optional files or directories to copy to Intermediate/Android/APK -->
+    <resourceCopies>
+        <isArch arch="armeabi-v7a">
+            <log text="Copying libHrtpDsp.so"/>
+            <copyFile src="$S(AbsPluginDir)/../ThirdParty/Android/armeabi-v7a/libHrtfDsp.so"
+                              dst="$S(BuildDir)/libs/armeabi-v7a/libHrtfDsp.so" />
+        </isArch>
+        <isArch arch="arm64-v8a">
+            <log text="Copying libHrtpDsp.so"/>
+            <copyFile src="$S(AbsPluginDir)/../ThirdParty/Android/arm64-v8a/libHrtfDsp.so"
+                              dst="$S(BuildDir)/libs/arm64-v8a/libHrtfDsp.so" />
+        </isArch>
+        <isArch arch="x86">
+            <log text="Copying libHrtpDsp.so"/>
+            <copyFile src="$S(AbsPluginDir)/../ThirdParty/Android/x86/libHrtfDsp.so"
+                              dst="$S(BuildDir)/libs/x86/libHrtfDsp.so" />
+        </isArch>
+    </resourceCopies>
+</root>

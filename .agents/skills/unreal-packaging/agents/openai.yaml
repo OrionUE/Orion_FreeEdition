@@ -1,0 +1,7 @@
+interface:
+  display_name: "Unreal Packaging"
+  short_description: "Windows Steam 打包 Profile 流程"
+  default_prompt: "Use $unreal-packaging to package or validate an Unreal Engine Windows Steam build with Legacy Project Launcher profiles."
+
+policy:
+  allow_implicit_invocation: true

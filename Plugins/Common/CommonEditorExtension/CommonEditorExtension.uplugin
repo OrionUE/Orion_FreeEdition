@@ -1,0 +1,29 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"FriendlyName": "CommonEditor",
+	"Description": "通用编辑器功能扩展",
+	"Category": "Editor",
+	"CreatedBy": "Orion",
+	"CreatedByURL": "https://orionue.com",
+	"SupportURL": "https://orionue.com",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CommonEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "DataValidation",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		}
+	]
+}

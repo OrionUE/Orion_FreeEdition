@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Character Pawn"
+  short_description: "Guide characters, PawnData, and control."
+  default_prompt: "Use $unreal-character-pawn-framework to configure characters and PawnData."

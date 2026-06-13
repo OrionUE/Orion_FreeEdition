@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Online Steam Framework"
+  short_description: "Routes OnlineSubsystem, Steam, Session, and Online UI work."
+  default_prompt: "Implement or debug Steam, OnlineSubsystem, Session, and Online UI features using framework conventions."

@@ -1,0 +1,4109 @@
+{
+	"FormatVersion": 2,
+	"Namespace": "",
+	"Children": [
+		{
+			"Source":
+			{
+				"Text": "AO"
+			},
+			"Translation":
+			{
+				"Text": "AO"
+			},
+			"Key": "9C7A76AB47ABAA47CC1295BE037E3F4A"
+		},
+		{
+			"Source":
+			{
+				"Text": "Anisotropic"
+			},
+			"Translation":
+			{
+				"Text": "Anisotropic"
+			},
+			"Key": "C81A2C31431F3F21405B8BA5A5795185"
+		},
+		{
+			"Source":
+			{
+				"Text": "Apply"
+			},
+			"Translation":
+			{
+				"Text": "应用"
+			},
+			"Key": "6FB58AF0487D52EFB55324A03BE5A834"
+		},
+		{
+			"Source":
+			{
+				"Text": "Attachment1"
+			},
+			"Translation":
+			{
+				"Text": "Attachment1"
+			},
+			"Key": "54CE31404DBDF88425D708B44CE0031A"
+		},
+		{
+			"Source":
+			{
+				"Text": "Back"
+			},
+			"Translation":
+			{
+				"Text": "返回"
+			},
+			"Key": "277B08A047C548E7B2F7AD9F87389E1F"
+		},
+		{
+			"Source":
+			{
+				"Text": "Back"
+			},
+			"Translation":
+			{
+				"Text": "返回"
+			},
+			"Key": "92CD56E240D63F3071A3AA859C564E04"
+		},
+		{
+			"Source":
+			{
+				"Text": "ButtonText"
+			},
+			"Translation":
+			{
+				"Text": "ButtonText"
+			},
+			"Key": "803206B24FB47F14AD0EC1B2F2D19C7D"
+		},
+		{
+			"Source":
+			{
+				"Text": "ButtonText"
+			},
+			"Translation":
+			{
+				"Text": "ButtonText"
+			},
+			"Key": "A58355DE488F0D124900268526079A5B"
+		},
+		{
+			"Source":
+			{
+				"Text": "Cancel Changes"
+			},
+			"Translation":
+			{
+				"Text": "取消更改"
+			},
+			"Key": "B1DBF5B742B8E3D23488CF9448B22A6A"
+		},
+		{
+			"Source":
+			{
+				"Text": "ClearCoat"
+			},
+			"Translation":
+			{
+				"Text": "ClearCoat"
+			},
+			"Key": "F9BE6F6C4A009273A21841B630210109"
+		},
+		{
+			"Source":
+			{
+				"Text": "ClearCoatRoughness"
+			},
+			"Translation":
+			{
+				"Text": "ClearCoatRoughness"
+			},
+			"Key": "6E0FE12D45AB3B05A7FAB89D34C752FC"
+		},
+		{
+			"Source":
+			{
+				"Text": "Controller"
+			},
+			"Translation":
+			{
+				"Text": "控制器"
+			},
+			"Key": "02E77A6145C878D7D975239D9542F169"
+		},
+		{
+			"Source":
+			{
+				"Text": "Controller"
+			},
+			"Translation":
+			{
+				"Text": "控制器"
+			},
+			"Key": "596BD2C94671CA046BFC62BE7CC20188"
+		},
+		{
+			"Source":
+			{
+				"Text": "Controller"
+			},
+			"Translation":
+			{
+				"Text": "控制器"
+			},
+			"Key": "9E97BA75491D6F5AC0E034BB1FB2A057"
+		},
+		{
+			"Source":
+			{
+				"Text": "Description Text"
+			},
+			"Translation":
+			{
+				"Text": "Description Text"
+			},
+			"Key": "6E3BB7EE47C1D4A39BFE3EAE2A89ADD9"
+		},
+		{
+			"Source":
+			{
+				"Text": "Dual Sense"
+			},
+			"Translation":
+			{
+				"Text": "Dual Sense"
+			},
+			"Key": "56B94F8C41C6D7C26C888B800AF8BD9F"
+		},
+		{
+			"Source":
+			{
+				"Text": "Dual Shock 4"
+			},
+			"Translation":
+			{
+				"Text": "Dual Shock 4"
+			},
+			"Key": "845C671A47C204E52EC0169312E07BFF"
+		},
+		{
+			"Source":
+			{
+				"Text": "Error"
+			},
+			"Translation":
+			{
+				"Text": "Error"
+			},
+			"Key": "E4B62D6642C6C3CA2D374682BE7ACF26"
+		},
+		{
+			"Source":
+			{
+				"Text": "Interact"
+			},
+			"Translation":
+			{
+				"Text": "交互"
+			},
+			"Key": "2F7291294E8900083675349B524C8BF2"
+		},
+		{
+			"Source":
+			{
+				"Text": "Interact"
+			},
+			"Translation":
+			{
+				"Text": "交互"
+			},
+			"Key": "D9D0093E487A25403E77E29BB482CE8C"
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test"
+			},
+			"Translation":
+			{
+				"Text": "Item Test"
+			},
+			"Key": "753BCE964FAFEE54DE31A2BF26D3DB88"
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test2"
+			},
+			"Translation":
+			{
+				"Text": "Item Test2"
+			},
+			"Key": "F4BEA98C43DB080C9BE0BCA497FB442B"
+		},
+		{
+			"Source":
+			{
+				"Text": "Item Test3"
+			},
+			"Translation":
+			{
+				"Text": "Item Test3"
+			},
+			"Key": "3A0E9605420B9901A4DB1D9896ED6B5F"
+		},
+		{
+			"Source":
+			{
+				"Text": "Joycons"
+			},
+			"Translation":
+			{
+				"Text": "Joycons"
+			},
+			"Key": "663EDAE54CE37DCDF45443AAF5DB448A"
+		},
+		{
+			"Source":
+			{
+				"Text": "Loading"
+			},
+			"Translation":
+			{
+				"Text": "正在加载"
+			},
+			"Key": "0240AD784D959FC5D48FE78B98CE6370"
+		},
+		{
+			"Source":
+			{
+				"Text": "Loading GameTest"
+			},
+			"Translation":
+			{
+				"Text": "正在加载GameTest"
+			},
+			"Key": "A21F365346DD58DFFFFD6E997878E3EC"
+		},
+		{
+			"Source":
+			{
+				"Text": "MetalPaintMask"
+			},
+			"Translation":
+			{
+				"Text": "MetalPaintMask"
+			},
+			"Key": "A8063FF24DD22F4932960B88103C6E75"
+		},
+		{
+			"Source":
+			{
+				"Text": "Metallic"
+			},
+			"Translation":
+			{
+				"Text": "Metallic"
+			},
+			"Key": "897A07A048BCF1BB3FB2A1BA93E50F17"
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Backwards"
+			},
+			"Translation":
+			{
+				"Text": "后退"
+			},
+			"Key": "8B01794D44FB8D879B4BD0ACF7BB7138"
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Forward"
+			},
+			"Translation":
+			{
+				"Text": "前进"
+			},
+			"Key": "122EB7EC42E0A097016D40A1A81F71D2"
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Left"
+			},
+			"Translation":
+			{
+				"Text": "左移"
+			},
+			"Key": "1AB38CB7457EBE42D506EB8D3510A1D0"
+		},
+		{
+			"Source":
+			{
+				"Text": "Move Right"
+			},
+			"Translation":
+			{
+				"Text": "右移"
+			},
+			"Key": "24E303EA49CE722A1CE7F0BBAE4D8D62"
+		},
+		{
+			"Source":
+			{
+				"Text": "Nintendo Switch"
+			},
+			"Translation":
+			{
+				"Text": "Nintendo Switch"
+			},
+			"Key": "2E4E25CB47829BC54412B794999A6623"
+		},
+		{
+			"Source":
+			{
+				"Text": "Not Bound"
+			},
+			"Translation":
+			{
+				"Text": "非绑定"
+			},
+			"Key": "BCD4CA90404492131F7C0EB552121C10"
+		},
+		{
+			"Source":
+			{
+				"Text": "Not Bound"
+			},
+			"Translation":
+			{
+				"Text": "非绑定"
+			},
+			"Key": "BEEBD3304A1777D788BA0F934E449CC4"
+		},
+		{
+			"Source":
+			{
+				"Text": "Option"
+			},
+			"Translation":
+			{
+				"Text": "选项"
+			},
+			"Key": "C5F8FE4547D14A9F94D6C0B323BF4450"
+		},
+		{
+			"Source":
+			{
+				"Text": "Option Loading"
+			},
+			"Translation":
+			{
+				"Text": "Option Loading"
+			},
+			"Key": "5F89807E43656609C9FAD4B206599B91"
+		},
+		{
+			"Source":
+			{
+				"Text": "PlasticMask"
+			},
+			"Translation":
+			{
+				"Text": "PlasticMask"
+			},
+			"Key": "1C7DE49D4CFB880F4CFA349087C1BC0F"
+		},
+		{
+			"Source":
+			{
+				"Text": "Playstation®4"
+			},
+			"Translation":
+			{
+				"Text": "Playstation®4"
+			},
+			"Key": "327F041B48C2F270B56721BA7FF59448"
+		},
+		{
+			"Source":
+			{
+				"Text": "Playstation®5"
+			},
+			"Translation":
+			{
+				"Text": "Playstation®5"
+			},
+			"Key": "3C439BB8461C9A566FE740B3E9989B8F"
+		},
+		{
+			"Source":
+			{
+				"Text": "Press any key to continue or Press escape to cancel."
+			},
+			"Translation":
+			{
+				"Text": "Press any key to continue or Press escape to cancel."
+			},
+			"Key": "836FB3AF46A80B2434B3E280F581C8F0"
+		},
+		{
+			"Source":
+			{
+				"Text": "Reset"
+			},
+			"Translation":
+			{
+				"Text": "重置"
+			},
+			"Key": "70B9C63A4E7D97187380A184864A3CDD"
+		},
+		{
+			"Source":
+			{
+				"Text": "Roughness"
+			},
+			"Translation":
+			{
+				"Text": "Roughness"
+			},
+			"Key": "83F09F34474937FADFEF66AC87E969B4"
+		},
+		{
+			"Source":
+			{
+				"Text": "Session Create"
+			},
+			"Translation":
+			{
+				"Text": "Session Create"
+			},
+			"Key": "9B5CAB0A45AFEF816A05DDB088EBF0C3"
+		},
+		{
+			"Source":
+			{
+				"Text": "Session Name"
+			},
+			"Translation":
+			{
+				"Text": "房间名称"
+			},
+			"Key": "0765D14E4A88558AAB8AEA949B3921AD"
+		},
+		{
+			"Source":
+			{
+				"Text": "Sessions"
+			},
+			"Translation":
+			{
+				"Text": "房间"
+			},
+			"Key": "43D1F8514F15A5A835EC58BB46840727"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Description"
+			},
+			"Translation":
+			{
+				"Text": "Setting Description"
+			},
+			"Key": "D7FE44E6445440379600479131FBDE3C"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Translation":
+			{
+				"Text": "Setting Name"
+			},
+			"Key": "7B09978C4F3698E6FF8AE8A4E12AACCA"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Translation":
+			{
+				"Text": "Setting Name"
+			},
+			"Key": "954600CA49DC12462D4C2F88550A7DC3"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Translation":
+			{
+				"Text": "Setting Name"
+			},
+			"Key": "9A4F64464D656FAECE88DBAC1073B8DF"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Translation":
+			{
+				"Text": "Setting Name"
+			},
+			"Key": "D1FB148B43D79BB3E72999833509F71A"
+		},
+		{
+			"Source":
+			{
+				"Text": "Setting Name"
+			},
+			"Translation":
+			{
+				"Text": "Setting Name"
+			},
+			"Key": "E759D9B44A0DFA35E363E995AFCC0743"
+		},
+		{
+			"Source":
+			{
+				"Text": "Spec"
+			},
+			"Translation":
+			{
+				"Text": "Spec"
+			},
+			"Key": "69257E464C83136D5D7DE28FAEFF56E8"
+		},
+		{
+			"Source":
+			{
+				"Text": "The key pressed has other actions bound to it."
+			},
+			"Translation":
+			{
+				"Text": "The key pressed has other actions bound to it."
+			},
+			"Key": "2B27626E4C6E728201F54188559D8E8E"
+		},
+		{
+			"Source":
+			{
+				"Text": "Value"
+			},
+			"Translation":
+			{
+				"Text": "Value"
+			},
+			"Key": "BA4F49984FE48F217E6DF7B3DEE1DB71"
+		},
+		{
+			"Source":
+			{
+				"Text": "Wireless Controller"
+			},
+			"Translation":
+			{
+				"Text": "无线控制器"
+			},
+			"Key": "5DDD0C9145ED691F998EF2ABA1056ADA"
+		},
+		{
+			"Source":
+			{
+				"Text": "Wireless Controller"
+			},
+			"Translation":
+			{
+				"Text": "无线控制器"
+			},
+			"Key": "D086A5324B000302144FA2A57D925E87"
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox Controller"
+			},
+			"Translation":
+			{
+				"Text": "Xbox 控制器"
+			},
+			"Key": "39ACE3D74B1E7F69CCB56CBE3F6F290C"
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox Controller"
+			},
+			"Translation":
+			{
+				"Text": "Xbox 控制器"
+			},
+			"Key": "90C04A53441DAB7CC7D259838013F16D"
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox One"
+			},
+			"Translation":
+			{
+				"Text": "Xbox One"
+			},
+			"Key": "A622ACF8477B043394C3E3B869899D2E"
+		},
+		{
+			"Source":
+			{
+				"Text": "Xbox Series X"
+			},
+			"Translation":
+			{
+				"Text": "Xbox Series X"
+			},
+			"Key": "58060FA24F1BA9C51A410286083C65EA"
+		},
+		{
+			"Source":
+			{
+				"Text": "{Action}"
+			},
+			"Translation":
+			{
+				"Text": "{Action}"
+			},
+			"Key": "A897F475498C940C79D3E38CF3D700B1"
+		},
+		{
+			"Source":
+			{
+				"Text": "{ButtonText}"
+			},
+			"Translation":
+			{
+				"Text": "{ButtonText}"
+			},
+			"Key": "29A7A9FB464ED68A94D0A2918C5EDCA1"
+		},
+		{
+			"Source":
+			{
+				"Text": "{Header Text}"
+			},
+			"Translation":
+			{
+				"Text": "{Header Text}"
+			},
+			"Key": "142591784AC31D6B3D86818E7EE3209A"
+		},
+		{
+			"Source":
+			{
+				"Text": "{Setting Name}"
+			},
+			"Translation":
+			{
+				"Text": "{Setting Name}"
+			},
+			"Key": "7ECCEB4C4A1915A1FC256791CD7C8421"
+		},
+		{
+			"Source":
+			{
+				"Text": "{Settings Title}"
+			},
+			"Translation":
+			{
+				"Text": "{Settings Title}"
+			},
+			"Key": "3A3E46EE49DB31DD430600AA205BD17A"
+		},
+		{
+			"Source":
+			{
+				"Text": "{Title text}"
+			},
+			"Translation":
+			{
+				"Text": "{Title text}"
+			},
+			"Key": "2A073A364736809E4E1DC3A47245800F"
+		},
+		{
+			"Source":
+			{
+				"Text": "创建房间"
+			},
+			"Translation":
+			{
+				"Text": "创建房间"
+			},
+			"Key": "69A700BE45419EDACF57298538CA6732"
+		},
+		{
+			"Source":
+			{
+				"Text": "单人游戏"
+			},
+			"Translation":
+			{
+				"Text": "单人游戏"
+			},
+			"Key": "EE1D605E49474F36CBDD75B4A6059F51"
+		},
+		{
+			"Source":
+			{
+				"Text": "地图"
+			},
+			"Translation":
+			{
+				"Text": "地图"
+			},
+			"Key": "8BAA06FE4517555ED11606876F6FA2B7"
+		},
+		{
+			"Source":
+			{
+				"Text": "多人游戏"
+			},
+			"Translation":
+			{
+				"Text": "多人游戏"
+			},
+			"Key": "FA884AFD4E2D9B4D2004D9AFA8F8A710"
+		},
+		{
+			"Source":
+			{
+				"Text": "开始游戏"
+			},
+			"Translation":
+			{
+				"Text": "开始游戏"
+			},
+			"Key": "952F3A2E41031400918AECA5865433C9"
+		},
+		{
+			"Source":
+			{
+				"Text": "按下任意键"
+			},
+			"Translation":
+			{
+				"Text": "按下任意键"
+			},
+			"Key": "0E3EB5314CA4D0E62B07018E310951B2"
+		},
+		{
+			"Source":
+			{
+				"Text": "搜索房间"
+			},
+			"Translation":
+			{
+				"Text": "搜索房间"
+			},
+			"Key": "988E0EE24D59FC918FF411B30D28113C"
+		},
+		{
+			"Source":
+			{
+				"Text": "是否确定退出游戏"
+			},
+			"Translation":
+			{
+				"Text": "是否确定退出游戏"
+			},
+			"Key": "B062F2F1452D4C86A3103FBE85E4C654"
+		},
+		{
+			"Source":
+			{
+				"Text": "是否返回至主菜单"
+			},
+			"Translation":
+			{
+				"Text": "是否返回至主菜单"
+			},
+			"Key": "98D4723C4D15513F854FB797D9C89155"
+		},
+		{
+			"Source":
+			{
+				"Text": "是否返回至桌面"
+			},
+			"Translation":
+			{
+				"Text": "是否返回至桌面"
+			},
+			"Key": "5FC1D51E4352E58A391A97B556054C6C"
+		},
+		{
+			"Source":
+			{
+				"Text": "有极少数人在接触到特定光线、图案或图像时，可能突然癫痫发作，即使此前并无癫痫或痉挛发作史。这类未经诊断的症状称为“光刺激诱发癫痫症”。\r\n癫痫症状包括头昏眼花、视幻觉、眼部或脸部抽搐、手脚痉挛、暂失方向感、精神混淆或暂时失去意识。癫痫发作时可能因为失去意识或抽筋之故，跌落地面而受伤或碰撞到周遭物品。若出现以上所述任何症状，请立即停止该游戏并送医诊断。如果您自己或您的亲友有癫痫史，请在进行游戏之前先与医师咨询。"
+			},
+			"Translation":
+			{
+				"Text": "有极少数人在接触到特定光线、图案或图像时，可能突然癫痫发作，即使此前并无癫痫或痉挛发作史。这类未经诊断的症状称为“光刺激诱发癫痫症”。\r\n癫痫症状包括头昏眼花、视幻觉、眼部或脸部抽搐、手脚痉挛、暂失方向感、精神混淆或暂时失去意识。癫痫发作时可能因为失去意识或抽筋之故，跌落地面而受伤或碰撞到周遭物品。若出现以上所述任何症状，请立即停止该游戏并送医诊断。如果您自己或您的亲友有癫痫史，请在进行游戏之前先与医师咨询。"
+			},
+			"Key": "3DAFD497403A424392DD9881089A164A"
+		},
+		{
+			"Source":
+			{
+				"Text": "正在编译着色器..."
+			},
+			"Translation":
+			{
+				"Text": "正在编译着色器..."
+			},
+			"Key": "BCD4046842B3FBF2AB0987823FC020F4"
+		},
+		{
+			"Source":
+			{
+				"Text": "确定应用设置变更吗？"
+			},
+			"Translation":
+			{
+				"Text": "确定应用设置变更吗？"
+			},
+			"Key": "2D8D437A448F7615D8F442BC929988F5"
+		},
+		{
+			"Source":
+			{
+				"Text": "背包"
+			},
+			"Translation":
+			{
+				"Text": "背包"
+			},
+			"Key": "15798BA64DB83637052B52A4D0B9EF4C"
+		},
+		{
+			"Source":
+			{
+				"Text": "警告：癫痫风险"
+			},
+			"Translation":
+			{
+				"Text": "警告：癫痫风险"
+			},
+			"Key": "BF930DF64BE1A5AF6982AD9A885FA562"
+		},
+		{
+			"Source":
+			{
+				"Text": "设置"
+			},
+			"Translation":
+			{
+				"Text": "设置"
+			},
+			"Key": "4A518683452751FB43EEDFA8392482EC"
+		},
+		{
+			"Source":
+			{
+				"Text": "设置"
+			},
+			"Translation":
+			{
+				"Text": "设置"
+			},
+			"Key": "A39C8DD9436D39640130FEB540CEFE18"
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至主菜单"
+			},
+			"Translation":
+			{
+				"Text": "返回至主菜单"
+			},
+			"Key": "7779A52E4AB3D8ADBC11C0A7B7CCE0E6"
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至桌面"
+			},
+			"Translation":
+			{
+				"Text": "返回至桌面"
+			},
+			"Key": "6946ED254D175F162F93E19937571370"
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至桌面"
+			},
+			"Translation":
+			{
+				"Text": "返回至桌面"
+			},
+			"Key": "C328CFBD452FB16F14DA838F6216A4F1"
+		},
+		{
+			"Source":
+			{
+				"Text": "返回至菜单"
+			},
+			"Translation":
+			{
+				"Text": "返回至菜单"
+			},
+			"Key": "04F755A644C35C31A1E0E199052D3B33"
+		},
+		{
+			"Source":
+			{
+				"Text": "退出"
+			},
+			"Translation":
+			{
+				"Text": "退出"
+			},
+			"Key": "2B8CAFB6463C08D6259664851D780482"
+		},
+		{
+			"Source":
+			{
+				"Text": "退出游戏"
+			},
+			"Translation":
+			{
+				"Text": "退出游戏"
+			},
+			"Key": "25CC72534CD4988EE5EF139D93BDC198"
+		},
+		{
+			"Source":
+			{
+				"Text": "选项"
+			},
+			"Translation":
+			{
+				"Text": "选项"
+			},
+			"Key": "44E43C444E191325C36380BB1A93C868"
+		}
+	],
+	"Subnamespaces": [
+		{
+			"Namespace": "CommonGame",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Requested Session Failed"
+					},
+					"Translation":
+					{
+						"Text": "Requested Session Failed"
+					},
+					"Key": "Warning_RequestedSessionFailed"
+				}
+			]
+		},
+		{
+			"Namespace": "CommonKeybindWidget",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Unbound"
+					},
+					"Translation":
+					{
+						"Text": "Unbound"
+					},
+					"Key": "Unbound"
+				}
+			]
+		},
+		{
+			"Namespace": "CommonUser",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "A network connection is required"
+					},
+					"Translation":
+					{
+						"Text": "A network connection is required"
+					},
+					"Key": "ResultNetworkConnectionUnavailable"
+				},
+				{
+					"Source":
+					{
+						"Text": "A valid game license is required"
+					},
+					"Translation":
+					{
+						"Text": "A valid game license is required"
+					},
+					"Key": "ResultLicenseInvalid"
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to Request Login"
+					},
+					"Translation":
+					{
+						"Text": "Failed to Request Login"
+					},
+					"Key": "FailedToRequest"
+				},
+				{
+					"Source":
+					{
+						"Text": "Guest"
+					},
+					"Translation":
+					{
+						"Text": "Guest"
+					},
+					"Key": "GuestNickname"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invalid Platform User"
+					},
+					"Translation":
+					{
+						"Text": "Invalid Platform User"
+					},
+					"Key": "InvalidPlatformUser"
+				},
+				{
+					"Source":
+					{
+						"Text": "Login Failure"
+					},
+					"Translation":
+					{
+						"Text": "Login Failure"
+					},
+					"Key": "LoginFailedTitle"
+				},
+				{
+					"Source":
+					{
+						"Text": "Not allowed"
+					},
+					"Translation":
+					{
+						"Text": "Not allowed"
+					},
+					"Key": "ResultPlatformFailure"
+				},
+				{
+					"Source":
+					{
+						"Text": "The game or hardware needs to be updated"
+					},
+					"Translation":
+					{
+						"Text": "The game or hardware needs to be updated"
+					},
+					"Key": "VersionOutdated"
+				},
+				{
+					"Source":
+					{
+						"Text": "The user is allowed"
+					},
+					"Translation":
+					{
+						"Text": "The user is allowed"
+					},
+					"Key": "ResultAvailable"
+				},
+				{
+					"Source":
+					{
+						"Text": "The user must login"
+					},
+					"Translation":
+					{
+						"Text": "The user must login"
+					},
+					"Key": "ResultUserNotLoggedIn"
+				},
+				{
+					"Source":
+					{
+						"Text": "This account is not allowed"
+					},
+					"Translation":
+					{
+						"Text": "This account is not allowed"
+					},
+					"Key": "ResultAccountUseRestricted"
+				},
+				{
+					"Source":
+					{
+						"Text": "This account type does not have access"
+					},
+					"Translation":
+					{
+						"Text": "This account type does not have access"
+					},
+					"Key": "ResultAccountTypeRestricted"
+				},
+				{
+					"Source":
+					{
+						"Text": "This age restricted account is not allowed"
+					},
+					"Translation":
+					{
+						"Text": "This age restricted account is not allowed"
+					},
+					"Key": "ResultAgeRestricted"
+				},
+				{
+					"Source":
+					{
+						"Text": "Unable to start login process"
+					},
+					"Translation":
+					{
+						"Text": "Unable to start login process"
+					},
+					"Key": "LoginFailedEarly"
+				},
+				{
+					"Source":
+					{
+						"Text": "Unknown if the user is allowed"
+					},
+					"Translation":
+					{
+						"Text": "Unknown if the user is allowed"
+					},
+					"Key": "ResultUnknown"
+				},
+				{
+					"Source":
+					{
+						"Text": "access user content"
+					},
+					"Translation":
+					{
+						"Text": "access user content"
+					},
+					"Key": "PrivilegeCanUseUserGeneratedContent"
+				},
+				{
+					"Source":
+					{
+						"Text": "communicate with text"
+					},
+					"Translation":
+					{
+						"Text": "communicate with text"
+					},
+					"Key": "PrivilegeCanCommunicateViaTextOnline"
+				},
+				{
+					"Source":
+					{
+						"Text": "communicate with voice"
+					},
+					"Translation":
+					{
+						"Text": "communicate with voice"
+					},
+					"Key": "PrivilegeCanCommunicateViaVoiceOnline"
+				},
+				{
+					"Source":
+					{
+						"Text": "play online"
+					},
+					"Translation":
+					{
+						"Text": "play online"
+					},
+					"Key": "PrivilegeCanPlayOnline"
+				},
+				{
+					"Source":
+					{
+						"Text": "play the game"
+					},
+					"Translation":
+					{
+						"Text": "play the game"
+					},
+					"Key": "PrivilegeCanPlay"
+				},
+				{
+					"Source":
+					{
+						"Text": "play with other platforms"
+					},
+					"Translation":
+					{
+						"Text": "play with other platforms"
+					},
+					"Key": "PrivilegeCanUseCrossPlay"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} to {1}"
+					},
+					"Translation":
+					{
+						"Text": "{0} to {1}"
+					},
+					"Key": "PrivilegeFailureFormat"
+				}
+			]
+		},
+		{
+			"Namespace": "EditorValidator",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "!!!!!!! Your checked out content has issues. Don't submit until they are fixed !!!!!!!\r\n\r\nSee the MessageLog and OutputLog for details"
+					},
+					"Translation":
+					{
+						"Text": "!!!!!!! Your checked out content has issues. Don't submit until they are fixed !!!!!!!\r\n\r\nSee the MessageLog and OutputLog for details"
+					},
+					"Key": "ContentValidationFailed"
+				},
+				{
+					"Source":
+					{
+						"Text": "All checked out content passed. Nice job."
+					},
+					"Translation":
+					{
+						"Text": "All checked out content passed. Nice job."
+					},
+					"Key": "ContentValidationPassed"
+				},
+				{
+					"Source":
+					{
+						"Text": "Checking content..."
+					},
+					"Translation":
+					{
+						"Text": "Checking content..."
+					},
+					"Key": "CheckingContentTask"
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to get package load warnings and errors"
+					},
+					"Translation":
+					{
+						"Text": "Failed to get package load warnings and errors"
+					},
+					"Key": "Load_FailedLoad"
+				},
+				{
+					"Source":
+					{
+						"Text": "Finishing shader compiles before checking content..."
+					},
+					"Translation":
+					{
+						"Text": "Finishing shader compiles before checking content..."
+					},
+					"Key": "CompilingShadersBeforeCheckingContentTask"
+				},
+				{
+					"Source":
+					{
+						"Text": "No errors or warnings were found, but there was an error return code. Look in the OutputLog and log file for details. You may need engineering help."
+					},
+					"Translation":
+					{
+						"Text": "No errors or warnings were found, but there was an error return code. Look in the OutputLog and log file for details. You may need engineering help."
+					},
+					"Key": "ContentValidationFailedWithNoMessages"
+				},
+				{
+					"Source":
+					{
+						"Text": "References {0} which is not marked for add in source control"
+					},
+					"Translation":
+					{
+						"Text": "References {0} which is not marked for add in source control"
+					},
+					"Key": "SourceControl_NotMarkedForAdd"
+				},
+				{
+					"Source":
+					{
+						"Text": "Still discovering assets. Try again once it is complete."
+					},
+					"Translation":
+					{
+						"Text": "Still discovering assets. Try again once it is complete."
+					},
+					"Key": "DiscoveringAssets"
+				},
+				{
+					"Source":
+					{
+						"Text": "Validate Packages"
+					},
+					"Translation":
+					{
+						"Text": "Validate Packages"
+					},
+					"Key": "ValidatePackages"
+				}
+			]
+		},
+		{
+			"Namespace": "FCommonEditorModule",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Check Content"
+					},
+					"Translation":
+					{
+						"Text": "Check Content"
+					},
+					"Key": "CheckContentButton"
+				},
+				{
+					"Source":
+					{
+						"Text": "Common Maps"
+					},
+					"Translation":
+					{
+						"Text": "Common Maps"
+					},
+					"Key": "CommonMaps_Label"
+				},
+				{
+					"Source":
+					{
+						"Text": "Opens this map in the editor"
+					},
+					"Translation":
+					{
+						"Text": "Opens this map in the editor"
+					},
+					"Key": "CommonPathDescription"
+				},
+				{
+					"Source":
+					{
+						"Text": "Runs the Content Validation job on all checked out assets to look for warnings and errors"
+					},
+					"Translation":
+					{
+						"Text": "Runs the Content Validation job on all checked out assets to look for warnings and errors"
+					},
+					"Key": "CheckContentDescription"
+				},
+				{
+					"Source":
+					{
+						"Text": "Some commonly desired maps while using the editor"
+					},
+					"Translation":
+					{
+						"Text": "Some commonly desired maps while using the editor"
+					},
+					"Key": "CommonMaps_ToolTip"
+				}
+			]
+		},
+		{
+			"Namespace": "GameInputSettings",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Default Experiences"
+					},
+					"Translation":
+					{
+						"Text": "Default Experiences"
+					},
+					"Key": "GameInputDefaults"
+				}
+			]
+		},
+		{
+			"Namespace": "GameSetting",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "<Icon.Warning></> There are fewer options than available due to Parental Controls."
+					},
+					"Translation":
+					{
+						"Text": "<Icon.Warning></> There are fewer options than available due to Parental Controls."
+					},
+					"Key": "DisabledOptionReasonLine"
+				},
+				{
+					"Source":
+					{
+						"Text": "<Icon.Warning></> {0}"
+					},
+					"Translation":
+					{
+						"Text": "<Icon.Warning></> {0}"
+					},
+					"Key": "DisabledReasonLine"
+				},
+				{
+					"Source":
+					{
+						"Text": "<Icon.Warning></> {0}"
+					},
+					"Translation":
+					{
+						"Text": "<Icon.Warning></> {0}"
+					},
+					"Key": "WarningReasonLine"
+				},
+				{
+					"Source":
+					{
+						"Text": "Can only be changed by the primary player."
+					},
+					"Translation":
+					{
+						"Text": "Can only be changed by the primary player."
+					},
+					"Key": "OnlyPrimaryPlayerEditable"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}%"
+					},
+					"Translation":
+					{
+						"Text": "{0}%"
+					},
+					"Key": "PercentFormat"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}{1}"
+					},
+					"Translation":
+					{
+						"Text": "{0}{1}"
+					},
+					"Key": "DevDynamicDetailsFormat"
+				}
+			]
+		},
+		{
+			"Namespace": "GameSettings",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "10:16"
+					},
+					"Translation":
+					{
+						"Text": "10:16"
+					},
+					"Key": "AspectRatio-10:16"
+				},
+				{
+					"Source":
+					{
+						"Text": "16:10"
+					},
+					"Translation":
+					{
+						"Text": "16:10"
+					},
+					"Key": "AspectRatio-16:10"
+				},
+				{
+					"Source":
+					{
+						"Text": "16:9"
+					},
+					"Translation":
+					{
+						"Text": "16:9"
+					},
+					"Key": "AspectRatio-16:9"
+				},
+				{
+					"Source":
+					{
+						"Text": "3:4"
+					},
+					"Translation":
+					{
+						"Text": "3:4"
+					},
+					"Key": "AspectRatio-3:4"
+				},
+				{
+					"Source":
+					{
+						"Text": "4:3"
+					},
+					"Translation":
+					{
+						"Text": "4:3"
+					},
+					"Key": "AspectRatio-4:3"
+				},
+				{
+					"Source":
+					{
+						"Text": "9:16"
+					},
+					"Translation":
+					{
+						"Text": "9:16"
+					},
+					"Key": "AspectRatio-9:16"
+				},
+				{
+					"Source":
+					{
+						"Text": "<strong>Note: Changing the Quality setting to {0} or higher might limit your framerate.</>"
+					},
+					"Translation":
+					{
+						"Text": "<strong>Note: Changing the Quality setting to {0} or higher might limit your framerate.</>"
+					},
+					"Key": "OverallQuality_Mobile_ImpactsFramerate"
+				},
+				{
+					"Source":
+					{
+						"Text": "<strong>Note: Changing the framerate setting to {0} or higher might lower your Quality Presets.</>"
+					},
+					"Translation":
+					{
+						"Text": "<strong>Note: Changing the framerate setting to {0} or higher might lower your Quality Presets.</>"
+					},
+					"Key": "MobileFPSType_Note"
+				},
+				{
+					"Source":
+					{
+						"Text": "Bindings for {0}"
+					},
+					"Translation":
+					{
+						"Text": "Bindings for {0}"
+					},
+					"Key": "DynamicDetails_KeyboardInputAction"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "VideoQualityOverall_Cinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Custom"
+					},
+					"Translation":
+					{
+						"Text": "自定义"
+					},
+					"Key": "VideoQualityOverall_Custom"
+				},
+				{
+					"Source":
+					{
+						"Text": "Default Output - {0}"
+					},
+					"Translation":
+					{
+						"Text": "默认输出 - {0}"
+					},
+					"Key": "DefaultAudioOutputDevice"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "VideoQualityOverall_Epic"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "VideoQualityOverall_High"
+				},
+				{
+					"Source":
+					{
+						"Text": "Language Changed"
+					},
+					"Translation":
+					{
+						"Text": "Language Changed"
+					},
+					"Key": "WarningLanguage_Title"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "VideoQualityOverall_Low"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "VideoQualityOverall_Medium"
+				},
+				{
+					"Source":
+					{
+						"Text": "System Default ({0})"
+					},
+					"Translation":
+					{
+						"Text": "System Default ({0})"
+					},
+					"Key": "SystemDefaultLanguage"
+				},
+				{
+					"Source":
+					{
+						"Text": "Unknown Mapping"
+					},
+					"Translation":
+					{
+						"Text": "Unknown Mapping"
+					},
+					"Key": "GameSettingsErrors_UnknownMappingName"
+				},
+				{
+					"Source":
+					{
+						"Text": "You will need to restart the game completely for all language related changes to take effect."
+					},
+					"Translation":
+					{
+						"Text": "You will need to restart the game completely for all language related changes to take effect."
+					},
+					"Key": "WarningLanguage_Message"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} FPS"
+					},
+					"Translation":
+					{
+						"Text": "{0} FPS"
+					},
+					"Key": "MobileFrameRateOption"
+				},
+				{
+					"Source":
+					{
+						"Text": "{X} x {Y}"
+					},
+					"Translation":
+					{
+						"Text": "{X} x {Y}"
+					},
+					"Key": "AspectRatio"
+				}
+			]
+		},
+		{
+			"Namespace": "GameSettingValueDiscreteDynamic",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "OFF"
+					},
+					"Translation":
+					{
+						"Text": "关闭"
+					},
+					"Key": "OFF"
+				},
+				{
+					"Source":
+					{
+						"Text": "ON"
+					},
+					"Translation":
+					{
+						"Text": "开"
+					},
+					"Key": "ON"
+				}
+			]
+		},
+		{
+			"Namespace": "Orion",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "1 (Slow)"
+					},
+					"Translation":
+					{
+						"Text": "1（慢）"
+					},
+					"Key": "EFortGamepadSensitivity_Slow"
+				},
+				{
+					"Source":
+					{
+						"Text": "10 (Insane)"
+					},
+					"Translation":
+					{
+						"Text": "10（疯狂）"
+					},
+					"Key": "EFortGamepadSensitivity_Insane"
+				},
+				{
+					"Source":
+					{
+						"Text": "2 (Slow+)"
+					},
+					"Translation":
+					{
+						"Text": "2（慢+）"
+					},
+					"Key": "EFortGamepadSensitivity_SlowPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "3 (Slow++)"
+					},
+					"Translation":
+					{
+						"Text": "3（慢++）"
+					},
+					"Key": "EFortGamepadSensitivity_SlowPlusPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "3D Headphones"
+					},
+					"Translation":
+					{
+						"Text": "3D 耳机"
+					},
+					"Key": "HeadphoneMode_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "3D Resolution"
+					},
+					"Translation":
+					{
+						"Text": "3D 分辨率"
+					},
+					"Key": "ResolutionScale_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "4 (Normal)"
+					},
+					"Translation":
+					{
+						"Text": "4（通常）"
+					},
+					"Key": "EFortGamepadSensitivity_Normal"
+				},
+				{
+					"Source":
+					{
+						"Text": "5 (Normal+)"
+					},
+					"Translation":
+					{
+						"Text": "5（通常+）"
+					},
+					"Key": "EFortGamepadSensitivity_NormalPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "6 (Normal++)"
+					},
+					"Translation":
+					{
+						"Text": "6（通常++）"
+					},
+					"Key": "EFortGamepadSensitivity_NormalPlusPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "7 (Fast)"
+					},
+					"Translation":
+					{
+						"Text": "7（快）"
+					},
+					"Key": "EFortGamepadSensitivity_Fast"
+				},
+				{
+					"Source":
+					{
+						"Text": "8 (Fast+)"
+					},
+					"Translation":
+					{
+						"Text": "8（快+）"
+					},
+					"Key": "EFortGamepadSensitivity_FastPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "9 (Fast++)"
+					},
+					"Translation":
+					{
+						"Text": "9（快++）"
+					},
+					"Key": "EFortGamepadSensitivity_FastPlusPlus"
+				},
+				{
+					"Source":
+					{
+						"Text": "Advanced Graphics"
+					},
+					"Translation":
+					{
+						"Text": "高级图形"
+					},
+					"Key": "AdvancedGraphics_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Aim Sensitivity (ADS)"
+					},
+					"Translation":
+					{
+						"Text": "机械瞄准灵敏度 (ADS)"
+					},
+					"Key": "LookSensitivityPresetAds_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Aim Sensitivity Tips"
+					},
+					"Translation":
+					{
+						"Text": "Aim Sensitivity Tips"
+					},
+					"Key": "LookSensitivityPresetAds_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "All Sounds"
+					},
+					"Translation":
+					{
+						"Text": "允许游戏为后台时声音播放"
+					},
+					"Key": "EORIONAllowBackgroundAudioSetting_AllSounds"
+				},
+				{
+					"Source":
+					{
+						"Text": "Anti-Aliasing"
+					},
+					"Translation":
+					{
+						"Text": "抗锯齿"
+					},
+					"Key": "AntiAliasing_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "AntiAliasing Tips"
+					},
+					"Translation":
+					{
+						"Text": "AntiAliasing Tips"
+					},
+					"Key": "AntiAliasing_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Audio"
+					},
+					"Translation":
+					{
+						"Text": "音频"
+					},
+					"Key": "AudioCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Audio Output Device"
+					},
+					"Translation":
+					{
+						"Text": "音频输出设备"
+					},
+					"Key": "AudioOutputDevice_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "AudioOutputDevice Tips"
+					},
+					"Translation":
+					{
+						"Text": "AudioOutputDevice Tips"
+					},
+					"Key": "AudioOutputDevice_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Auto-Set"
+					},
+					"Translation":
+					{
+						"Text": "自动配置"
+					},
+					"Key": "AutoSetQuality_Action"
+				},
+				{
+					"Source":
+					{
+						"Text": "Auto-Set Quality"
+					},
+					"Translation":
+					{
+						"Text": "自动配置质量"
+					},
+					"Key": "AutoSetQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "AutoSetQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "AutoSetQuality Tips"
+					},
+					"Key": "AutoSetQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Background Audio"
+					},
+					"Translation":
+					{
+						"Text": "游戏为后台时声音播放"
+					},
+					"Key": "BackgroundAudio_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Background Opacity"
+					},
+					"Translation":
+					{
+						"Text": "背景透明度"
+					},
+					"Key": "SubtitleBackground_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "BackgroundAudio Tips"
+					},
+					"Translation":
+					{
+						"Text": "BackgroundAudio Tips"
+					},
+					"Key": "BackgroundAudio_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Brightness"
+					},
+					"Translation":
+					{
+						"Text": "亮度"
+					},
+					"Key": "Brightness_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Brightness Tips"
+					},
+					"Translation":
+					{
+						"Text": "Brightness Tips"
+					},
+					"Key": "Brightness_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "AntiAliasingCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "PostProcessingQualityCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "ReflectionQualityCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "ShadowCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "TextureQualityCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "ViewDistanceCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cinematic"
+					},
+					"Translation":
+					{
+						"Text": "影视级"
+					},
+					"Key": "VisualEffectQualityCinematic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Clear"
+					},
+					"Translation":
+					{
+						"Text": "清除"
+					},
+					"Key": "ESubtitleBackgroundOpacity_Clear"
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller DeadZone"
+					},
+					"Translation":
+					{
+						"Text": "控制器死区"
+					},
+					"Key": "DeadZoneCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller Hardware"
+					},
+					"Translation":
+					{
+						"Text": "控制器"
+					},
+					"Key": "ControllerHardware_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Controller Hardware Tips"
+					},
+					"Translation":
+					{
+						"Text": "Controller Hardware Tips"
+					},
+					"Key": "ControllerHardware_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "DeviceProfileSuffix Tips"
+					},
+					"Translation":
+					{
+						"Text": "DeviceProfileSuffix Tips"
+					},
+					"Key": "DeviceProfileSuffix_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Dialogue"
+					},
+					"Translation":
+					{
+						"Text": "对话"
+					},
+					"Key": "DialogueVolume_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "DialogueVolume Tips"
+					},
+					"Translation":
+					{
+						"Text": "DialogueVolume Tips"
+					},
+					"Key": "DialogueVolume_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Display"
+					},
+					"Translation":
+					{
+						"Text": "显示"
+					},
+					"Key": "DisplayCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Drop Shadow"
+					},
+					"Translation":
+					{
+						"Text": "掉落阴影"
+					},
+					"Key": "ESubtitleTextBorder_DropShadow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Effects"
+					},
+					"Translation":
+					{
+						"Text": "特效"
+					},
+					"Key": "VisualEffectQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "AntiAliasingEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "PostProcessingQualityEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "ReflectionQualityEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "ShadowEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "TextureQualityEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "ViewDistanceEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Epic"
+					},
+					"Translation":
+					{
+						"Text": "极高"
+					},
+					"Key": "VisualEffectQualityEpic"
+				},
+				{
+					"Source":
+					{
+						"Text": "Extra Large"
+					},
+					"Translation":
+					{
+						"Text": "特大"
+					},
+					"Key": "ESubtitleTextSize_ExtraLarge"
+				},
+				{
+					"Source":
+					{
+						"Text": "Extra Small"
+					},
+					"Translation":
+					{
+						"Text": "特小"
+					},
+					"Key": "ESubtitleTextSize_ExtraSmall"
+				},
+				{
+					"Source":
+					{
+						"Text": "Far"
+					},
+					"Translation":
+					{
+						"Text": "远"
+					},
+					"Key": "ViewDistanceFar"
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit"
+					},
+					"Translation":
+					{
+						"Text": "帧率限制"
+					},
+					"Key": "FrameRateLimit_Always_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit"
+					},
+					"Translation":
+					{
+						"Text": "帧率限制"
+					},
+					"Key": "FrameRateLimit_Mobile_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (Background)"
+					},
+					"Translation":
+					{
+						"Text": "帧率限制（后台）"
+					},
+					"Key": "FrameRateLimit_WhenBackground_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (Menu)"
+					},
+					"Translation":
+					{
+						"Text": "帧率限制（菜单）"
+					},
+					"Key": "FrameRateLimit_InMenu_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Frame Rate Limit (On Battery)"
+					},
+					"Translation":
+					{
+						"Text": "帧率限制（电池供电时）"
+					},
+					"Key": "FrameRateLimit_OnBattery_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit Tips"
+					},
+					"Translation":
+					{
+						"Text": "FrameRateLimit Tips"
+					},
+					"Key": "FrameRateLimit_Mobile_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_Always Tips"
+					},
+					"Translation":
+					{
+						"Text": "FrameRateLimit_Always Tips"
+					},
+					"Key": "FrameRateLimit_Always_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_InMenu Tips"
+					},
+					"Translation":
+					{
+						"Text": "FrameRateLimit_InMenu Tips"
+					},
+					"Key": "FrameRateLimit_InMenu_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_OnBattery Tips"
+					},
+					"Translation":
+					{
+						"Text": "FrameRateLimit_OnBattery Tips"
+					},
+					"Key": "FrameRateLimit_OnBattery_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "FrameRateLimit_WhenBackground Tips"
+					},
+					"Translation":
+					{
+						"Text": "FrameRateLimit_WhenBackground Tips"
+					},
+					"Key": "FrameRateLimit_WhenBackground_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Fullscreen"
+					},
+					"Translation":
+					{
+						"Text": "全屏"
+					},
+					"Key": "WindowModeFullscreen"
+				},
+				{
+					"Source":
+					{
+						"Text": "Game"
+					},
+					"Translation":
+					{
+						"Text": "游戏"
+					},
+					"Key": "GameCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Gamepad"
+					},
+					"Translation":
+					{
+						"Text": "手柄"
+					},
+					"Key": "GamepadCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Global Illumination"
+					},
+					"Translation":
+					{
+						"Text": "全局光照"
+					},
+					"Key": "GlobalIlluminationQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "GlobalIlluminationQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "GlobalIlluminationQuality Tips"
+					},
+					"Key": "GlobalIlluminationQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Graphics"
+					},
+					"Translation":
+					{
+						"Text": "图像"
+					},
+					"Key": "GraphicsCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Graphics Quality"
+					},
+					"Translation":
+					{
+						"Text": "图像质量"
+					},
+					"Key": "GraphicsQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "GraphicsQualityPresets Tips"
+					},
+					"Translation":
+					{
+						"Text": "GraphicsQualityPresets Tips"
+					},
+					"Key": "GraphicsQualityPresets_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "HDRAudioMode Tips"
+					},
+					"Translation":
+					{
+						"Text": "HDRAudioMode Tips"
+					},
+					"Key": "HDRAudioMode_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Hardware"
+					},
+					"Translation":
+					{
+						"Text": "硬件"
+					},
+					"Key": "HardwareCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "HeadphoneMode Tips"
+					},
+					"Translation":
+					{
+						"Text": "HeadphoneMode Tips"
+					},
+					"Key": "HeadphoneMode_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "AntiAliasingHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "ESubtitleBackgroundOpacity_High"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "PostProcessingQualityHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "ReflectionQualityHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "ShadowHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "TextureQualityHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High"
+					},
+					"Translation":
+					{
+						"Text": "高"
+					},
+					"Key": "VisualEffectQualityHigh"
+				},
+				{
+					"Source":
+					{
+						"Text": "High Dynamic Range Audio"
+					},
+					"Translation":
+					{
+						"Text": "高动态范围音频"
+					},
+					"Key": "HDRAudioMode_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis"
+					},
+					"Translation":
+					{
+						"Text": "反转水平轴"
+					},
+					"Key": "InvertHorizontalAxis_Gamepad_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis"
+					},
+					"Translation":
+					{
+						"Text": "反转水平轴"
+					},
+					"Key": "InvertHorizontalAxis_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis Tips"
+					},
+					"Translation":
+					{
+						"Text": "Invert Horizontal Axis Tips"
+					},
+					"Key": "InvertHorizontalAxis_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Horizontal Axis Tips"
+					},
+					"Translation":
+					{
+						"Text": "Invert Horizontal Axis Tips"
+					},
+					"Key": "InvertHorizontalAxis_Gamepad_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis"
+					},
+					"Translation":
+					{
+						"Text": "反转垂直轴"
+					},
+					"Key": "InvertVerticalAxis_Gamepad_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis"
+					},
+					"Translation":
+					{
+						"Text": "反转垂直轴"
+					},
+					"Key": "InvertVerticalAxis_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis Tips"
+					},
+					"Translation":
+					{
+						"Text": "Invert Vertical Axis Tips"
+					},
+					"Key": "InvertVerticalAxis_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invert Vertical Axis Tips"
+					},
+					"Translation":
+					{
+						"Text": "Invert Vertical Axis Tips"
+					},
+					"Key": "InvertVerticalAxis_Gamepad_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Keyboard and Mouse"
+					},
+					"Translation":
+					{
+						"Text": "键盘与鼠标"
+					},
+					"Key": "KeyBindingCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Language"
+					},
+					"Translation":
+					{
+						"Text": "语言"
+					},
+					"Key": "LanguageCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Language"
+					},
+					"Translation":
+					{
+						"Text": "语言"
+					},
+					"Key": "LanguageSetting_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Language Tips"
+					},
+					"Translation":
+					{
+						"Text": "Language Tips"
+					},
+					"Key": "LanguageSetting_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Large"
+					},
+					"Translation":
+					{
+						"Text": "大"
+					},
+					"Key": "ESubtitleTextSize_Large"
+				},
+				{
+					"Source":
+					{
+						"Text": "Left Stick DeadZone"
+					},
+					"Translation":
+					{
+						"Text": "左摇杆死区"
+					},
+					"Key": "MoveStickDeadZone_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Left Stick DeadZone Tips"
+					},
+					"Translation":
+					{
+						"Text": "Left Stick DeadZone Tips"
+					},
+					"Key": "MoveStickDeadZone_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Look Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "视线灵敏度"
+					},
+					"Key": "LookSensitivityPreset_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Look Sensitivity Tips"
+					},
+					"Translation":
+					{
+						"Text": "Look Sensitivity Tips"
+					},
+					"Key": "LookSensitivityPreset_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "VisualEffectQualityLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "ESubtitleBackgroundOpacity_Low"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "PostProcessingQualityLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "ReflectionQualityLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Low"
+					},
+					"Translation":
+					{
+						"Text": "低"
+					},
+					"Key": "TextureQualityLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "AntiAliasingMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "ESubtitleBackgroundOpacity_Medium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "ESubtitleTextSize_Medium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "PostProcessingQualityMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "ReflectionQualityMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "ShadowMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "TextureQualityMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "ViewDistanceMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Medium"
+					},
+					"Translation":
+					{
+						"Text": "中"
+					},
+					"Key": "VisualEffectQualityMedium"
+				},
+				{
+					"Source":
+					{
+						"Text": "Mouse and Keyboard"
+					},
+					"Translation":
+					{
+						"Text": "鼠标与键盘"
+					},
+					"Key": "MouseAndKeyboardCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Music"
+					},
+					"Translation":
+					{
+						"Text": "音乐"
+					},
+					"Key": "MusicVolume_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "MusicVolume Tips"
+					},
+					"Translation":
+					{
+						"Text": "MusicVolume Tips"
+					},
+					"Key": "MusicVolume_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Near"
+					},
+					"Translation":
+					{
+						"Text": "近"
+					},
+					"Key": "ViewDistanceNear"
+				},
+				{
+					"Source":
+					{
+						"Text": "None"
+					},
+					"Translation":
+					{
+						"Text": "无"
+					},
+					"Key": "ESubtitleTextBorder_None"
+				},
+				{
+					"Source":
+					{
+						"Text": "Off"
+					},
+					"Translation":
+					{
+						"Text": "关闭"
+					},
+					"Key": "EORIONAllowBackgroundAudioSetting_Off"
+				},
+				{
+					"Source":
+					{
+						"Text": "Off"
+					},
+					"Translation":
+					{
+						"Text": "关闭"
+					},
+					"Key": "ShadowLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Off"
+					},
+					"Translation":
+					{
+						"Text": "关闭"
+					},
+					"Key": "AntiAliasingLow"
+				},
+				{
+					"Source":
+					{
+						"Text": "Options"
+					},
+					"Translation":
+					{
+						"Text": "选项"
+					},
+					"Key": "SubtitlePage_Navigation"
+				},
+				{
+					"Source":
+					{
+						"Text": "Outline"
+					},
+					"Translation":
+					{
+						"Text": "描边"
+					},
+					"Key": "ESubtitleTextBorder_Outline"
+				},
+				{
+					"Source":
+					{
+						"Text": "Overall"
+					},
+					"Translation":
+					{
+						"Text": "整体"
+					},
+					"Key": "OverallVolume_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "OverallVolume Tips"
+					},
+					"Translation":
+					{
+						"Text": "OverallVolume Tips"
+					},
+					"Key": "OverallVolume_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Post Processing"
+					},
+					"Translation":
+					{
+						"Text": "后处理"
+					},
+					"Key": "PostProcessingQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "PostProcessingQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "PostProcessingQuality Tips"
+					},
+					"Key": "PostProcessingQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Press escape to cancel, or press {InKey} again to confirm rebinding."
+					},
+					"Translation":
+					{
+						"Text": "Press escape to cancel, or press {InKey} again to confirm rebinding."
+					},
+					"Key": "CancelText"
+				},
+				{
+					"Source":
+					{
+						"Text": "Quality Presets"
+					},
+					"Translation":
+					{
+						"Text": "质量预设"
+					},
+					"Key": "DeviceProfileSuffix_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Quality Presets"
+					},
+					"Translation":
+					{
+						"Text": "质量预设"
+					},
+					"Key": "GraphicsQualityPresets_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "ReflectionQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "ReflectionQuality Tips"
+					},
+					"Key": "ReflectionQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Reflections"
+					},
+					"Translation":
+					{
+						"Text": "反射"
+					},
+					"Key": "ReflectionQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Resolution"
+					},
+					"Translation":
+					{
+						"Text": "分辨率"
+					},
+					"Key": "Resolution_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Resolution Tips"
+					},
+					"Translation":
+					{
+						"Text": "Resolution Tips"
+					},
+					"Key": "Resolution_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "ResolutionScale Tips"
+					},
+					"Translation":
+					{
+						"Text": "ResolutionScale Tips"
+					},
+					"Key": "ResolutionScale_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Right Stick DeadZone"
+					},
+					"Translation":
+					{
+						"Text": "右摇杆死区"
+					},
+					"Key": "LookStickDeadZone_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Right Stick DeadZone Tips"
+					},
+					"Translation":
+					{
+						"Text": "Right Stick DeadZone Tips"
+					},
+					"Key": "LookStickDeadZone_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "灵敏度"
+					},
+					"Key": "BasicSensitivityCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "灵敏度"
+					},
+					"Key": "MouseSensitivityCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Shadows"
+					},
+					"Translation":
+					{
+						"Text": "阴影"
+					},
+					"Key": "Shadows_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Shadows Tips"
+					},
+					"Translation":
+					{
+						"Text": "Shadows Tips"
+					},
+					"Key": "Shadows_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Small"
+					},
+					"Translation":
+					{
+						"Text": "小"
+					},
+					"Key": "ESubtitleTextSize_Small"
+				},
+				{
+					"Source":
+					{
+						"Text": "Solid"
+					},
+					"Translation":
+					{
+						"Text": "固体"
+					},
+					"Key": "ESubtitleBackgroundOpacity_Solid"
+				},
+				{
+					"Source":
+					{
+						"Text": "Sound"
+					},
+					"Translation":
+					{
+						"Text": "声音"
+					},
+					"Key": "SoundCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Sound Effects"
+					},
+					"Translation":
+					{
+						"Text": "音效"
+					},
+					"Key": "SoundEffectsVolume_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "SoundEffectsVolume Tips"
+					},
+					"Translation":
+					{
+						"Text": "SoundEffectsVolume Tips"
+					},
+					"Key": "SoundEffectsVolume_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleBackgroundOpacity Tips"
+					},
+					"Translation":
+					{
+						"Text": "SubtitleBackgroundOpacity Tips"
+					},
+					"Key": "SubtitleBackgroundOpacity_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitlePage Tips"
+					},
+					"Translation":
+					{
+						"Text": "SubtitlePage Tips"
+					},
+					"Key": "SubtitlePage_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleTextBorder Tips"
+					},
+					"Translation":
+					{
+						"Text": "SubtitleTextBorder Tips"
+					},
+					"Key": "SubtitleTextBorder_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "SubtitleTextSize Tips"
+					},
+					"Translation":
+					{
+						"Text": "SubtitleTextSize Tips"
+					},
+					"Key": "SubtitleTextSize_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles"
+					},
+					"Translation":
+					{
+						"Text": "字幕"
+					},
+					"Key": "SubtitlePage_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles"
+					},
+					"Translation":
+					{
+						"Text": "字幕"
+					},
+					"Key": "SubtitlesCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles"
+					},
+					"Translation":
+					{
+						"Text": "字幕"
+					},
+					"Key": "Subtitles_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Subtitles Tips"
+					},
+					"Translation":
+					{
+						"Text": "Subtitles Tips"
+					},
+					"Key": "Subtitles_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Targeting Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "瞄准灵敏度"
+					},
+					"Key": "MouseTargetingMultiplier_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Targeting Sensitivity Tips"
+					},
+					"Translation":
+					{
+						"Text": "Targeting Sensitivity Tips"
+					},
+					"Key": "MouseTargetingMultiplier_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Text Border"
+					},
+					"Translation":
+					{
+						"Text": "文本框"
+					},
+					"Key": "SubtitleBackgroundStyle_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Text Size"
+					},
+					"Translation":
+					{
+						"Text": "文本大小"
+					},
+					"Key": "SubtitleTextSize_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "TextureQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "TextureQuality Tips"
+					},
+					"Key": "TextureQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Textures"
+					},
+					"Translation":
+					{
+						"Text": "纹理"
+					},
+					"Key": "TextureQuality_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "This feature only works if 'Window Mode' is set to 'Fullscreen'."
+					},
+					"Translation":
+					{
+						"Text": "该功能只有当 \"窗口模式\" 被设置为 \"全屏\" 时才会生效。"
+					},
+					"Key": "FullscreenNeededForVSync"
+				},
+				{
+					"Source":
+					{
+						"Text": "Unlimited"
+					},
+					"Translation":
+					{
+						"Text": "无限制"
+					},
+					"Key": "UnlimitedFPS"
+				},
+				{
+					"Source":
+					{
+						"Text": "Vertical Sync"
+					},
+					"Translation":
+					{
+						"Text": "垂直同步"
+					},
+					"Key": "VerticalSync_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "VerticalSync Tips"
+					},
+					"Translation":
+					{
+						"Text": "VerticalSync Tips"
+					},
+					"Key": "VerticalSync_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Vibration"
+					},
+					"Translation":
+					{
+						"Text": "震动"
+					},
+					"Key": "GamepadVibration_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Vibration Tips"
+					},
+					"Translation":
+					{
+						"Text": "Vibration Tips"
+					},
+					"Key": "GamepadVibration_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Video"
+					},
+					"Translation":
+					{
+						"Text": "视频"
+					},
+					"Key": "VideoCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "View Distance"
+					},
+					"Translation":
+					{
+						"Text": "可视距离"
+					},
+					"Key": "ViewDistance_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "ViewDistance Tips"
+					},
+					"Translation":
+					{
+						"Text": "ViewDistance Tips"
+					},
+					"Key": "ViewDistance_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "VisualEffectQuality Tips"
+					},
+					"Translation":
+					{
+						"Text": "VisualEffectQuality Tips"
+					},
+					"Key": "VisualEffectQuality_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Voice Chat"
+					},
+					"Translation":
+					{
+						"Text": "语音聊天"
+					},
+					"Key": "VoiceChatVolume_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "VoiceChatVolume Tips"
+					},
+					"Translation":
+					{
+						"Text": "VoiceChatVolume Tips"
+					},
+					"Key": "VoiceChatVolume_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Volume"
+					},
+					"Translation":
+					{
+						"Text": "音量"
+					},
+					"Key": "VolumeCollection_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "When the Window Mode is set to <strong>Windowed Fullscreen</>, the resolution must match the native desktop resolution."
+					},
+					"Translation":
+					{
+						"Text": "当窗口模式未设置为<strong>窗口全屏</>时，分辨率需匹配原始桌面分辨率。"
+					},
+					"Key": "ResolutionWindowedFullscreen_Disabled"
+				},
+				{
+					"Source":
+					{
+						"Text": "Window Mode"
+					},
+					"Translation":
+					{
+						"Text": "窗口模式"
+					},
+					"Key": "WindowMode_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "WindowMode Tips"
+					},
+					"Translation":
+					{
+						"Text": "WindowMode Tips"
+					},
+					"Key": "WindowMode_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Windowed"
+					},
+					"Translation":
+					{
+						"Text": "窗口化"
+					},
+					"Key": "WindowModeWindowed"
+				},
+				{
+					"Source":
+					{
+						"Text": "Windowed Fullscreen"
+					},
+					"Translation":
+					{
+						"Text": "窗口全屏"
+					},
+					"Key": "WindowModeWindowedFullscreen"
+				},
+				{
+					"Source":
+					{
+						"Text": "X-Axis Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "X 轴灵敏度"
+					},
+					"Key": "MouseSensitivityYaw_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "X-Axis Sensitivity Tips"
+					},
+					"Translation":
+					{
+						"Text": "X-Axis Sensitivity Tips"
+					},
+					"Key": "MouseSensitivityYaw_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "Y-Axis Sensitivity"
+					},
+					"Translation":
+					{
+						"Text": "Y 轴灵敏度"
+					},
+					"Key": "MouseSensitivityPitch_Name"
+				},
+				{
+					"Source":
+					{
+						"Text": "Y-Axis Sensitivity Tips"
+					},
+					"Translation":
+					{
+						"Text": "Y-Axis Sensitivity Tips"
+					},
+					"Key": "MouseSensitivityPitch_Description"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0} FPS"
+					},
+					"Translation":
+					{
+						"Text": "{0} FPS"
+					},
+					"Key": "FPSFormat"
+				},
+				{
+					"Source":
+					{
+						"Text": "{0}%"
+					},
+					"Translation":
+					{
+						"Text": "{0}%"
+					},
+					"Key": "BrightnessFormat"
+				},
+				{
+					"Source":
+					{
+						"Text": "{InKey} is already bound to {ActionNames} are you sure you want to rebind it?"
+					},
+					"Translation":
+					{
+						"Text": "{InKey} is already bound to {ActionNames} are you sure you want to rebind it?"
+					},
+					"Key": "WarningText"
+				}
+			]
+		},
+		{
+			"Namespace": "K2Node",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "\n\nThe message structure that we received"
+					},
+					"Translation":
+					{
+						"Text": "\n\nThe message structure that we received"
+					},
+					"Key": "PayloadOutTooltip"
+				}
+			]
+		},
+		{
+			"Namespace": "Messaging",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Cancel"
+					},
+					"Translation":
+					{
+						"Text": "取消"
+					},
+					"Key": "Cancel"
+				},
+				{
+					"Source":
+					{
+						"Text": "No"
+					},
+					"Translation":
+					{
+						"Text": "否"
+					},
+					"Key": "No"
+				},
+				{
+					"Source":
+					{
+						"Text": "Ok"
+					},
+					"Translation":
+					{
+						"Text": "确定"
+					},
+					"Key": "Ok"
+				},
+				{
+					"Source":
+					{
+						"Text": "Yes"
+					},
+					"Translation":
+					{
+						"Text": "是"
+					},
+					"Key": "Yes"
+				}
+			]
+		},
+		{
+			"Namespace": "NetworkErrors",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Can't find asset data for MapID {0}, hosting request failed."
+					},
+					"Translation":
+					{
+						"Text": "Can't find asset data for MapID {0}, hosting request failed."
+					},
+					"Key": "InvalidMapFormat"
+				},
+				{
+					"Source":
+					{
+						"Text": "Cannot host offline game as client."
+					},
+					"Translation":
+					{
+						"Text": "Cannot host offline game as client."
+					},
+					"Key": "CannotHostAsClient"
+				},
+				{
+					"Source":
+					{
+						"Text": "Client builds cannot host game sessions."
+					},
+					"Translation":
+					{
+						"Text": "Client builds cannot host game sessions."
+					},
+					"Key": "ClientBuildCannotHost"
+				},
+				{
+					"Source":
+					{
+						"Text": "Failed to create session."
+					},
+					"Translation":
+					{
+						"Text": "Failed to create session."
+					},
+					"Key": "CreateSessionFailed"
+				},
+				{
+					"Source":
+					{
+						"Text": "Game is full."
+					},
+					"Translation":
+					{
+						"Text": "Game is full."
+					},
+					"Key": "SessionIsFull"
+				},
+				{
+					"Source":
+					{
+						"Text": "Game no longer exists."
+					},
+					"Translation":
+					{
+						"Text": "Game no longer exists."
+					},
+					"Key": "SessionDoesNotExist"
+				},
+				{
+					"Source":
+					{
+						"Text": "HostSession passed an invalid request."
+					},
+					"Translation":
+					{
+						"Text": "HostSession passed an invalid request."
+					},
+					"Key": "InvalidRequest"
+				},
+				{
+					"Source":
+					{
+						"Text": "HostingPlayer is invalid."
+					},
+					"Translation":
+					{
+						"Text": "HostingPlayer is invalid."
+					},
+					"Key": "InvalidHostingPlayer"
+				},
+				{
+					"Source":
+					{
+						"Text": "Invalid Player Controller"
+					},
+					"Translation":
+					{
+						"Text": "Invalid Player Controller"
+					},
+					"Key": "InvalidPlayerController"
+				},
+				{
+					"Source":
+					{
+						"Text": "Join failed."
+					},
+					"Translation":
+					{
+						"Text": "Join failed."
+					},
+					"Key": "JoinSessionFailed"
+				},
+				{
+					"Source":
+					{
+						"Text": "Travel to Session failed."
+					},
+					"Translation":
+					{
+						"Text": "Travel to Session failed."
+					},
+					"Key": "TravelSessionFailed"
+				}
+			]
+		},
+		{
+			"Namespace": "OnlineSubsystemSteamCore",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Steam"
+					},
+					"Translation":
+					{
+						"Text": "Steam"
+					},
+					"Key": "OnlineServiceName"
+				}
+			]
+		},
+		{
+			"Namespace": "UIExtension",
+			"Children": [
+				{
+					"Source":
+					{
+						"Text": "Extension Point\n{0}"
+					},
+					"Translation":
+					{
+						"Text": "Extension Point\n{0}"
+					},
+					"Key": "DesignTime_ExtensionPointLabel"
+				}
+			]
+		}
+	]
+}

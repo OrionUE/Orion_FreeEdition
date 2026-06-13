@@ -1,0 +1,3 @@
+interface:
+  display_name: "Unreal Game Settings Framework"
+  short_description: "Work with Unreal player settings and settings UI"

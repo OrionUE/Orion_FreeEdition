@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal MCP Project Toolsets"
+  short_description: "Use project-local UE MCP BlueprintGraph and Experience toolsets."
+  default_prompt: "Use the project-local OrionProjectToolsets MCP toolsets to inspect or edit Blueprint graphs and Experience/GameFeature assets."

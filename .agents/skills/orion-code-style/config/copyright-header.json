@@ -1,0 +1,9 @@
+{
+	"template": "/*\n * {CopyrightNotice}\n * {Website}\n */",
+	"fields": {
+		"CopyrightNotice": "Copyright (c) 2026 Orion. All Rights Reserved.",
+		"Website": "https://orionue.com",
+		"Author": "",
+		"Date": ""
+	}
+}

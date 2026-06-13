@@ -1,0 +1,32 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1",
+	"FriendlyName": "File Sandbox",
+	"Description": "Core functionality for sandboxing files in the editor.",
+	"Category": "Developer",
+	"CreatedBy": "Epic Games, Inc.",
+	"CreatedByURL": "https://epicgames.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": false,
+	"CanContainContent": false,
+	"EditorOnly": true,
+	"Hidden": true,
+	"IsBetaVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "FileSandboxCore",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "Default",
+			"TargetAllowList": ["Editor"]
+		},
+		{
+			"Name": "FileSandboxUI",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal InputCore"
+  short_description: "InputCore FKey and legacy input guide"
+  default_prompt: "Use $unreal-inputcore to inspect FKey, EKeys, InputCore key metadata, platform key conversion, UPlayerInput, and UInputComponent before changing low-level input code."

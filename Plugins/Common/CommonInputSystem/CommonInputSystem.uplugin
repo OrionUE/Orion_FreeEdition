@@ -1,0 +1,33 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"FriendlyName": "CommonInputSystem",
+	"Description": "通用增强输入系统",
+	"Category": "Gameplay",
+	"CreatedBy": "Orion",
+	"CreatedByURL": "https://orionue.com",
+	"SupportURL": "https://orionue.com",
+	"CanContainContent": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CommonInputSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "GameplayAbilities",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
+		}
+	]
+}

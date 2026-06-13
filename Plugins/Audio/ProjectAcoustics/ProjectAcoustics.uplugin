@@ -1,0 +1,80 @@
+{
+	"FileVersion": 3,
+	"Version": 6,
+	"VersionName": "2022.1.426",
+	"FriendlyName": "Project Acoustics for Unreal Audio",
+	"Description": "Sound propagation design using accurate wave physics. Performs per-source processing of acoustic parameters and renders using native Unreal Audio. Implements Unreal's Source Data Override audio extension.",
+	"Category": "Audio",
+	"CreatedBy": "Microsoft Corporation",
+	"CreatedByURL": "http://www.microsoft.com",
+	"EngineVersion": "5.6.0",
+	"CanContainContent": true,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64",
+		"Android"
+	],
+	"Modules": [
+		{
+			"Name": "ProjectAcoustics",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Android"
+			]
+		},
+		{
+			"Name": "ProjectAcousticsBakeUI",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "ProjectAcousticsNative",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Android"
+			]
+		},
+		{
+			"Name": "ProjectAcousticsNativeEditor",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "ProjectAcousticsSpatializer",
+			"Type": "Runtime",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64",
+				"Android"
+			]
+		},
+		{
+			"Name": "ProjectAcousticsSpatializerEditor",
+			"Type": "UncookedOnly",
+			"LoadingPhase": "PreDefault",
+			"PlatformAllowList": [
+				"Win64"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "MetaSound",
+			"Enabled": true
+		}
+	]
+}

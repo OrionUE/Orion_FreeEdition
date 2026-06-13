@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE Framework Skill Authoring"
+  short_description: "将 UE 框架模块知识沉淀为通用可发布 Skill"
+  default_prompt: "Use $ue-framework-skill-authoring to turn this Unreal framework module usage into a portable Skill."

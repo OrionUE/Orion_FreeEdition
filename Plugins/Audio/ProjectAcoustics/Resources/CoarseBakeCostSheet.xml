@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AzureCostBasis>
+  <EvaluationConfiguration Frequency="250" ProbeCount="1138" ProbeSpacing="3.5" ReceiverSpacing="1.5" SimulationVolume="144000" Nodes="20" />
+  <VirtualMachines>
+    <Machine Name="Standard_F8s_v2" Cores="8" Memory="16" TotalCost="00:32:44.8285349" />
+    <Machine Name="Standard_F16s_v2" Cores="16" Memory="32" TotalCost="00:24:24.0791506" />
+    <Machine Name="Standard_H8" Cores="8" Memory="56" TotalCost="00:27:37.9220505" />
+    <Machine Name="Standard_H16" Cores="16" Memory="112" TotalCost="00:26:49.3727676" />
+  </VirtualMachines>
+</AzureCostBasis>

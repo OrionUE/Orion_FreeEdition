@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Localization Framework"
+  short_description: "Guide Unreal Engine localization workflows."
+  default_prompt: "Use $unreal-localization-framework to work on Unreal localization."

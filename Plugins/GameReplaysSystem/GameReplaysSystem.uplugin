@@ -1,0 +1,25 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"FriendlyName": "GameReplaysSystem",
+	"Description": "游戏回放系统",
+	"Category": "Gameplay",
+	"CreatedBy": "Orion",
+	"CreatedByURL": "http://idealitycentury.com/",
+	"SupportURL": "https://orionue.com",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "GameReplaysSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "CommonUI",
+			"Enabled": true
+		}
+	]
+}

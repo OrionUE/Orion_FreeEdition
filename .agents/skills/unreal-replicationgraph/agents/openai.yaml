@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal ReplicationGraph"
+  short_description: "ReplicationGraph networking guide"
+  default_prompt: "Use $unreal-replicationgraph to inspect UReplicationGraph, graph nodes, connection nodes, spatialization, dormancy, owner-only routing, ReplicationDriverClassName config, and RepGraph debugging before changing network replication scalability code."

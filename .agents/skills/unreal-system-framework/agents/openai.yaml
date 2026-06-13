@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal System Framework"
+  short_description: "Guide Unreal system layer work"
+  default_prompt: "Use $unreal-system-framework before implementing or reviewing system-layer framework code."

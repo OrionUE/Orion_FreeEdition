@@ -1,0 +1,19 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"FriendlyName": "CommonGameEffects",
+	"Description": "通用游戏效果插件",
+	"Category": "Gameplay",
+	"CreatedBy": "Orion",
+	"CreatedByURL": "https://orionue.com",
+	"SupportURL": "https://orionue.com",
+	"CanContainContent": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CommonGameEffects",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

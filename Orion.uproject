@@ -1,0 +1,533 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.6",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "GameCore",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "GameUI",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "BBL",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "OrionGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"DeveloperSettings",
+				"Engine"
+			]
+		},
+		{
+			"Name": "OrionEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "AESGCMHandlerComponent",
+			"Description": "提供数据包处理程序组件，用于AES GCM加密和解密",
+			"Enabled": true
+		},
+		{
+			"Name": "DTLSHandlerComponent",
+			"Description": "提供数据包处理程序组件来执行DTLS加密和解密",
+			"Enabled": true
+		},
+		{
+			"Name": "Gauntlet",
+			"Description": "提供一个帮助类，用于在游戏中创建和管理测试",
+			"Enabled": true
+		},
+		{
+			"Name": "Volumetrics",
+			"Description": "一个使用蓝图的卷创建和渲染工具库",
+			"Enabled": true
+		},
+		{
+			"Name": "D3DExternalGPUStatistics",
+			"Enabled": true,
+			"Optional": true,
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "GameplayAbilities",
+			"Description": "GAS系统插件",
+			"Enabled": true
+		},
+		{
+			"Name": "GameFeatures",
+			"Description": "GameFeatures插件",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplay",
+			"Description": "基类和子系统支持模块化使用的游戏框架",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Description": "增强输入",
+			"Enabled": true
+		},
+		{
+			"Name": "WinDualShock",
+			"Description": "Windows平台下PS4 DualShock控制器的输入设备插件",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "PlayFabParty",
+			"Enabled": true,
+			"PlatformAllowList": [
+				"XB1",
+				"XSX",
+				"WinGDK"
+			],
+			"SupportedTargetPlatforms": [
+				"XB1",
+				"XSX",
+				"WinGDK"
+			]
+		},
+		{
+			"Name": "DataRegistry",
+			"Description": "添加数据注册表系统，该系统可用作在运行时从多个源获取结构数据的通用接口",
+			"Enabled": true
+		},
+		{
+			"Name": "ReplicationGraph",
+			"Description": "通过在图结构中维护持久复制的参与者列表，为actor和连接提供了一个Replication Driver实现",
+			"Enabled": true
+		},
+		{
+			"Name": "SignificanceManager",
+			"Description": "提供了一个可扩展的框架，允许游戏计算对象的重要性并改变行为作为回应",
+			"Enabled": true
+		},
+		{
+			"Name": "Niagara",
+			"Description": "粒子系统",
+			"Enabled": true
+		},
+		{
+			"Name": "HDRIBackdrop",
+			"Description": "HDRI",
+			"Enabled": true
+		},
+		{
+			"Name": "PCG",
+			"Description": "PCG插件",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
+			"Description": "CommonUI插件",
+			"Enabled": true
+		},
+		{
+			"Name": "BinkMedia",
+			"Description": "Bink格式视频播放插件",
+			"Enabled": false
+		},
+		{
+			"Name": "WmfMedia",
+			"Description": "媒体播放器",
+			"Enabled": true
+		},
+		{
+			"Name": "Metasound",
+			"Description": "高性能的音频系统",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioGameplay",
+			"Description": "游戏音频核心",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioModulation",
+			"Description": "默认实现音频调制",
+			"Enabled": true
+		},
+		{
+			"Name": "AudioGameplayVolume",
+			"Description": "游戏音量插件",
+			"Enabled": true
+		},
+		{
+			"Name": "SoundUtilities",
+			"Description": "音频工具包",
+			"Enabled": true
+		},
+		{
+			"Name": "Spatialization",
+			"Description": "插件具有各种基本的音频空间化解决方案",
+			"Enabled": true
+		},
+		{
+			"Name": "AnimationLocomotionLibrary",
+			"Enabled": true
+		},
+		{
+			"Name": "AnimationWarping",
+			"Description": "用于动画和姿态扭曲的框架",
+			"Enabled": true
+		},
+		{
+			"Name": "MotionWarping",
+			"Enabled": true
+		},
+		{
+			"Name": "RigLogic",
+			"Enabled": true
+		},
+		{
+			"Name": "HairStrands",
+			"Enabled": true
+		},
+		{
+			"Name": "PoseSearch",
+			"Enabled": true
+		},
+		{
+			"Name": "Chooser",
+			"Enabled": true
+		},
+		{
+			"Name": "PhysicsControl",
+			"Enabled": true
+		},
+		{
+			"Name": "ControlFlows",
+			"Description": "实现异步操作",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetReferenceRestrictions",
+			"Description": "对如何引用不同文件夹或插件中的内容应用特定于项目的限制",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineFramework",
+			"Description": "用于与在线游戏服务交互的共享代码",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineServicesNull",
+			"Description": "没有外部服务的在线服务实现",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineServicesOSSAdapter",
+			"Description": "用于在线子系统实现的在线服务适配器",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystem",
+			"Description": "在线子系统插件",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemUtils",
+			"Description": "在线服务交互和在线子系统实现",
+			"Enabled": true
+		},
+
+
+		{
+			"Name": "CommonEditorExtension",
+			"Description": "通用编辑器功能扩展",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonGame",
+			"Description": "通用游戏功能",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonGameEffects",
+			"Description": "通用游戏效果",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonInputSystem",
+			"Description": "通用输入系统",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonLoadingScreen",
+			"Description": "加载屏幕管理器，处理指定的加载屏幕小部件的创建和显示",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUser",
+			"Description": "为在线和平台操作提供游戏代码和蓝图包装",
+			"Enabled": true
+		},
+		{
+			"Name": "ModularGameplayActors",
+			"Description": "提供模块化Gameplay基类",
+			"Enabled": true
+		},
+		{
+			"Name": "GameInventorySystem",
+			"Description": "游戏背包库存交互系统",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayMessageRouter",
+			"Description": "消息系统",
+			"Enabled": true
+		},
+		{
+			"Name": "GameReplaysSystem",
+			"Description": "游戏回放系统",
+			"Enabled": true
+		},
+		{
+			"Name": "GameSettings",
+			"Description": "游戏设置功能",
+			"Enabled": true
+		},
+		{
+			"Name": "GameSubtitles",
+			"Description": "游戏字幕系统",
+			"Enabled": true
+		},
+		{
+			"Name": "UIExtension",
+			"Description": "以模块化的方式扩展UI的系统",
+			"Enabled": true
+		},
+		{
+			"Name": "SteamAudio",
+			"Description": "SteamAudio音频插件",
+			"Enabled": true
+		},
+		{
+			"Name": "ProjectAcoustics",
+			"Description": "音频物理模拟插件",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"Android"
+			]
+		},
+		{
+			"Name": "OrionVoiceChat",
+			"Description": "语音聊天插件",
+			"Enabled": true
+		},
+		{
+			"Name": "OrionSteam",
+			"Description": "接入Steam插件",
+			"Enabled": true
+		},
+		{
+			"Name": "DLSS",
+			"Enabled": true
+		},
+		{
+			"Name": "NIS",
+			"Enabled": true
+		},
+		{
+			"Name": "StreamlineNGXCommon",
+			"Enabled": true
+		},
+		{
+			"Name": "StreamlineCore",
+			"Enabled": true
+		},
+		{
+			"Name": "StreamlineDeepDVC",
+			"Enabled": true
+		},
+		{
+			"Name": "StreamlineDLSSG",
+			"Enabled": true
+		},
+		{
+			"Name": "StreamlineReflex",
+			"Enabled": true
+		},
+		{
+			"Name": "OrionGameTemplate",
+			"Description": "Orion template demo",
+			"Enabled": true
+		},
+
+
+		{
+			"Name": "FileSandbox",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "ToolsetRegistry",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "MCPClientToolset",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "AllToolsets",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+
+
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Description": "禁止建模模块",
+			"Enabled": false,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "MagicLeap",
+			"Enabled": false
+		},
+		{
+			"Name": "MagicLeapMedia",
+			"Enabled": false
+		},
+		{
+			"Name": "MagicLeapPassableWorld",
+			"Enabled": false
+		},
+		{
+			"Name": "OpenXREyeTracker",
+			"Description": "禁止OpenXR眼动仪",
+			"Enabled": false
+		},
+		{
+			"Name": "OpenXRHandTracking",
+			"Description": "禁止OpenXR手部追踪",
+			"Enabled": false
+		},
+		{
+			"Name": "OpenXRHMD",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamVR",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamAudio",
+			"Enabled": false
+		},
+		{
+			"Name": "GearVR",
+			"Enabled": false
+		},
+		{
+			"Name": "LuminPlatformFeatures",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Lumin"
+			]
+		},
+		{
+			"Name": "MLSDK",
+			"Enabled": false
+		},
+		{
+			"Name": "ResonanceAudio",
+			"Description": "禁止3D音频空间化和室内声学模拟插件",
+			"Enabled": false
+		},
+		{
+			"Name": "RuntimePhysXCooking",
+			"Enabled": false
+		},
+		{
+			"Name": "AndroidMedia",
+			"Enabled": false
+		},
+		{
+			"Name": "AndroidMoviePlayer",
+			"Enabled": false
+		},
+		{
+			"Name": "AvfMedia",
+			"Enabled": false
+		},
+		{
+			"Name": "MediaPlate",
+			"Enabled": false
+		},
+		{
+			"Name": "MediaCompositing",
+			"Enabled": false
+		},
+		{
+			"Name": "ImgMedia",
+			"Enabled": false
+		},
+		{
+			"Name": "WindowsMoviePlayer",
+			"Enabled": false
+		},
+		{
+			"Name": "Reflex",
+			"Description": "已使用StreamlineReflex插件，则禁用Reflex插件",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamSockets",
+			"Description": "已使用OrionSteam插件，则禁用SteamSockets插件",
+			"Enabled": false
+		},
+		{
+			"Name": "OnlineSubsystemSteam",
+			"Description": "已使用OrionSteam插件，则禁用OnlineSubsystemSteam插件",
+			"Enabled": false
+		},
+		{
+			"Name": "SteamShared",
+			"Description": "已使用OrionSteam插件，则禁用SteamShared插件",
+			"Enabled": false
+		},
+		{
+			"Name": "XGEController",
+			"Enabled": false
+		}
+	]
+}
