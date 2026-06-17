@@ -12,21 +12,21 @@
 #define GAMECORE_CoreGameInstance_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreGameInstance ********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameInstance_NoRegister();
+struct Z_Construct_UClass_UCoreGameInstance_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameInstance(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_System_CoreGameInstance_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameInstance(); \
-	friend struct Z_Construct_UClass_UCoreGameInstance_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameInstance_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameInstance_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameInstance(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameInstance, UCommonGameInstance, COMPILED_IN_FLAGS(0 | CLASS_Transient), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameInstance_NoRegister) \
+	DECLARE_CLASS2(UCoreGameInstance, UCommonGameInstance, COMPILED_IN_FLAGS(0 | CLASS_Transient), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameInstance) \
 	DECLARE_SERIALIZER(UCoreGameInstance)
 
 

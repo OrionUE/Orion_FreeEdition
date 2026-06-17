@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebPublishedItemVotingAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionItemVoteSummary;
 class UOrionSteamWebAPIAsyncActionUserVoteSummary;
@@ -25,16 +25,15 @@ class UOrionSteamWebAPIAsyncActionUserVoteSummary;
 	DECLARE_FUNCTION(execItemVoteSummaryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PublishedItemVoting_WebPublishedItemVotingAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionItemVoteSummary(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionItemVoteSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionItemVoteSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionItemVoteSummary) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionItemVoteSummary)
 
 
@@ -70,16 +69,15 @@ class UOrionSteamWebAPIAsyncActionItemVoteSummary;
 	DECLARE_FUNCTION(execUserVoteSummaryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PublishedItemVoting_WebPublishedItemVotingAsyncActions_h_37_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionUserVoteSummary(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUserVoteSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUserVoteSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUserVoteSummary) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionUserVoteSummary)
 
 

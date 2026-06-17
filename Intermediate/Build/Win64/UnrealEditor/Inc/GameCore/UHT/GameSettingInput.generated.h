@@ -12,21 +12,22 @@
 #define GAMECORE_GameSettingInput_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UGameSettingInput ********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameSettingInput_NoRegister();
+struct Z_Construct_UClass_UGameSettingInput_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameSettingInput(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Settings_GameSettingInput_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameSettingInput(); \
-	friend struct Z_Construct_UClass_UGameSettingInput_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameSettingInput_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameSettingInput_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameSettingInput(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameSettingInput, UGameSettingValue, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameSettingInput_NoRegister) \
+	DECLARE_CLASS2(UGameSettingInput, UGameSettingValue, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameSettingInput) \
 	DECLARE_SERIALIZER(UGameSettingInput)
 
 
@@ -65,7 +66,7 @@ class UGameSettingInput;
 
 enum class EGameSettingKeyboardSlot : uint8;
 template<> struct TIsUEnumClass<EGameSettingKeyboardSlot> { enum { Value = true }; };
-template<> GAMECORE_API UEnum* StaticEnum<EGameSettingKeyboardSlot>();
+template<> UE_NODEBUG GAMECORE_NON_ATTRIBUTED_API UEnum* StaticEnum<EGameSettingKeyboardSlot>();
 // ********** End Enum EGameSettingKeyboardSlot ****************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

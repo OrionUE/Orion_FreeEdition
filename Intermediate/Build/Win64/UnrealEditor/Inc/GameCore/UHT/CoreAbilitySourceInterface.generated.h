@@ -12,12 +12,14 @@
 #define GAMECORE_CoreAbilitySourceInterface_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Interface UCoreAbilitySourceInterface ******************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySourceInterface_NoRegister();
+struct Z_Construct_UClass_UCoreAbilitySourceInterface_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySourceInterface(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySourceInterface_h_21_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
@@ -33,12 +35,10 @@ GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySourceInterface_NoRegister()
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySourceInterface_h_21_GENERATED_UINTERFACE_BODY() \
 private: \
-	static void StaticRegisterNativesUCoreAbilitySourceInterface(); \
-	friend struct Z_Construct_UClass_UCoreAbilitySourceInterface_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySourceInterface_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAbilitySourceInterface_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAbilitySourceInterface(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAbilitySourceInterface, UInterface, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Interface), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySourceInterface_NoRegister) \
+	DECLARE_CLASS2(UCoreAbilitySourceInterface, UInterface, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Interface), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySourceInterface) \
 	DECLARE_SERIALIZER(UCoreAbilitySourceInterface)
 
 
@@ -55,7 +55,7 @@ protected: \
 public: \
 	typedef UCoreAbilitySourceInterface UClassType; \
 	typedef ICoreAbilitySourceInterface ThisClass; \
-	virtual UObject* _getUObject() const { return nullptr; }
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const { return nullptr; }
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySourceInterface_h_18_PROLOG

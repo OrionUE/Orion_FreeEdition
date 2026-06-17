@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebSteamGameServerStats_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -21,16 +22,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execGetGameServerPlayerStatsForGame);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamGameServerStats_NoRegister();
+struct Z_Construct_UClass_UWebSteamGameServerStats_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamGameServerStats(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamGameServerStats_WebSteamGameServerStats_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebSteamGameServerStats(); \
-	friend struct Z_Construct_UClass_UWebSteamGameServerStats_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamGameServerStats_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebSteamGameServerStats_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebSteamGameServerStats(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebSteamGameServerStats, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamGameServerStats_NoRegister) \
+	DECLARE_CLASS2(UWebSteamGameServerStats, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamGameServerStats) \
 	DECLARE_SERIALIZER(UWebSteamGameServerStats)
 
 

@@ -1,0 +1,15 @@
+{
+	"OutputFiles": [
+		"../../../../../../../../../Intermediate/Build/Win64/x64/OrionGame/Shipping/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"Module.OrionSteamSockets.cpp.obj",
+		"IPAddressOrionSteamSockets.cpp.obj",
+		"OrionSteamSocket.cpp.obj",
+		"OrionSteamSocketsModule.cpp.obj",
+		"OrionSteamSocketsNetConnection.cpp.obj",
+		"OrionSteamSocketsNetDriver.cpp.obj",
+		"OrionSteamSocketsPing.cpp.obj",
+		"OrionSteamSocketsSubsystem.cpp.obj",
+		"OrionSteamSocketsTaskManager.cpp.obj"
+	],
+	"ToolChainVersion": "14.44.35228"
+}

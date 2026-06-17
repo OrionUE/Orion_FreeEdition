@@ -14,6 +14,7 @@
 #include "PostProcess/TemporalAA.h"
 #include "SceneTextureParameters.h"
 #include "ScenePrivate.h"
+#include "SceneViewState.h"
 
 
 static TAutoConsoleVariable<int32> CVarNGXDLSSReflectionsTemporalAA(

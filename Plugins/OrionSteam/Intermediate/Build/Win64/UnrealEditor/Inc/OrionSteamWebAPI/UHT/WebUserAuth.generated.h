@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebUserAuth_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -22,16 +23,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execAuthenticateUser);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebUserAuth_NoRegister();
+struct Z_Construct_UClass_UWebUserAuth_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebUserAuth(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamUserAuth_WebUserAuth_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebUserAuth(); \
-	friend struct Z_Construct_UClass_UWebUserAuth_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebUserAuth_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebUserAuth_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebUserAuth(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebUserAuth, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebUserAuth_NoRegister) \
+	DECLARE_CLASS2(UWebUserAuth, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebUserAuth) \
 	DECLARE_SERIALIZER(UWebUserAuth)
 
 

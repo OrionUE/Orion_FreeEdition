@@ -12,21 +12,21 @@
 #define GAMECORE_CoreWorldSettings_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ACoreWorldSettings *******************************************************
-GAMECORE_API UClass* Z_Construct_UClass_ACoreWorldSettings_NoRegister();
+struct Z_Construct_UClass_ACoreWorldSettings_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACoreWorldSettings(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreWorldSettings_h_27_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACoreWorldSettings(); \
-	friend struct Z_Construct_UClass_ACoreWorldSettings_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACoreWorldSettings_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACoreWorldSettings_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACoreWorldSettings(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACoreWorldSettings, AWorldSettings, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreWorldSettings_NoRegister) \
+	DECLARE_CLASS2(ACoreWorldSettings, AWorldSettings, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreWorldSettings) \
 	DECLARE_SERIALIZER(ACoreWorldSettings)
 
 

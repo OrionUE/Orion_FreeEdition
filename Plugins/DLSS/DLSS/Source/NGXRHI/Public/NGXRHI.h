@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -237,6 +237,7 @@ struct FRHIDLSSArguments
 
 	float PreExposure = 1.0f;
 	bool bUseAutoExposure = false;
+	float ExposureScale = 1.0f;
 	
 	bool bEnableAlphaUpscaling = false;
 

@@ -238,7 +238,7 @@ bool FAcousticsEdMode::TagNavigation(bool tag)
                     UE_LOG(
                         LogAcoustics,
                         Error,
-                        TEXT("Attempted to tag a NavMeshBoundsVolume as Navigation, which is not supported. Please tag "
+                        TEXT("Attempted to tag NavMeshBoundsVolume '%s' as Navigation, which is not supported. Please tag "
                              "the RecastNavMesh actor as Navigation."),
                         *(actor->GetName()));
                     continue;

@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+TaskGraph.RenderThreadPollPeriodMs,CVar,int,1,TaskGraph,光线追踪,All,true,false,false,false,false,,`TaskGraph.RenderThreadPollPeriodMs=<值>` / `TaskGraph.RenderThreadPollPeriodMs <值>` 或 INI 中配置,"Render thread polling period in milliseconds. If value < 0, task graph tasks explicitly wake up RT, otherwise RT polls for tasks.",

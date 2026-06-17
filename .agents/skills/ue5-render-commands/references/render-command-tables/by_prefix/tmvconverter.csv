@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+TmvConverter.TintMipmaps,CVar,string,,TmvConverter,光线追踪,All,true,false,false,false,false,,`TmvConverter.TintMipmaps=<值>` / `TmvConverter.TintMipmaps <值>` 或 INI 中配置,"The TMV sample converter will tint the mipmaps for visualizing (0-Red, 1-Green, 2-blue, 3-Yellow, 4+Pink).\n",ECVF_RenderThreadSafe

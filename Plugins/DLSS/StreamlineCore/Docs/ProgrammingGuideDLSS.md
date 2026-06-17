@@ -6,7 +6,7 @@ Streamline - DLSS
 >The focus of this guide is on using Streamline to integrate DLSS into an application.  For more information about DLSS itself, please visit the [NVIDIA Developer DLSS Page](https://developer.nvidia.com/rtx/dlss)
 >For information on user interface considerations when using the DLSS plugin, please see the ["RTX UI Developer Guidelines.pdf"](<RTX UI Developer Guidelines.pdf>) document included with this SDK.
 
-Version 2.10.3
+Version 2.11.1
 =======
 
 ### 1.0 INITIALIZE AND SHUTDOWN
@@ -170,8 +170,8 @@ sl::DLSSOptions dlssOptions = {};
 dlssOptions.dlaaPreset = sl::DLSSPreset::ePresetK;
 dlssOptions.qualityPreset = sl::DLSSPreset::ePresetK;
 dlssOptions.balancedPreset = sl::DLSSPreset::ePresetK;
-dlssOptions.performancePreset = sl::DLSSPreset::ePresetK;
-dlssOptions.ultraPerformancePreset = sl::DLSSPreset::ePresetF;
+dlssOptions.performancePreset = sl::DLSSPreset::ePresetM;
+dlssOptions.ultraPerformancePreset = sl::DLSSPreset::ePresetL;
 // These are populated based on user selection in the UI
 dlssOptions.mode = myUI->getDLSSMode(); // e.g. sl::eDLSSModeBalanced;
 dlssOptions.outputWidth = myUI->getOutputWidth();    // e.g 1920;
@@ -187,7 +187,8 @@ if(SL_FAILED(result, slDLSSSetOptions(viewport, dlssOptions)))
 ```
 
 > **NOTE:**
-> `sl::DLSSPreset::ePresetA` to `sl::DLSSPreset::ePresetE` are no longer available. `sl::DLSSPreset::ePresetG` to `sl::DLSSPreset::ePresetI` are reserved and should also not be used.
+> `sl::DLSSPreset::ePresetA` to `sl::DLSSPreset::ePresetD` are no longer available. `sl::DLSSPreset::ePresetG` to `sl::DLSSPreset::ePresetI` are reserved and should also not be used.
+`sl::DLSSPreset::ePresetE` and `sl::DLSSPreset::ePresetF` are legacy presets. Support for these has been deprecated.
 
 > **NOTE:**
 > To turn off DLSS set `sl::DLSSOptions.mode` to `sl::DLSSMode::eOff`, note that this does NOT release any resources, for that please use `slFreeResources`

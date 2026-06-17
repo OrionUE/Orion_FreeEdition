@@ -12,11 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmakingServersTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
- 
 struct FGameServerItem;
 struct FGameServerRule;
 
@@ -48,16 +47,15 @@ struct FGameServerRule;
 	DECLARE_FUNCTION(execAddFilterMap);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UServerFilter_NoRegister();
+struct Z_Construct_UClass_UServerFilter_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UServerFilter(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUServerFilter(); \
-	friend struct Z_Construct_UClass_UServerFilter_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UServerFilter_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UServerFilter_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UServerFilter(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UServerFilter, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UServerFilter_NoRegister) \
+	DECLARE_CLASS2(UServerFilter, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UServerFilter) \
 	DECLARE_SERIALIZER(UServerFilter)
 
 
@@ -86,59 +84,40 @@ class UServerFilter;
 // ********** End Class UServerFilter **************************************************************
 
 // ********** Begin ScriptStruct FSteamServerAddr **************************************************
+struct Z_Construct_UScriptStruct_FSteamServerAddr_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamServerAddr(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_224_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamServerAddr_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamServerAddr_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamServerAddr(ETypeConstructPhase::Inner); }
 
 
 struct FSteamServerAddr;
 // ********** End ScriptStruct FSteamServerAddr ****************************************************
 
 // ********** Begin ScriptStruct FGameServerItem ***************************************************
+struct Z_Construct_UScriptStruct_FGameServerItem_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameServerItem(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_254_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameServerItem_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameServerItem_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameServerItem(ETypeConstructPhase::Inner); }
 
 
 struct FGameServerItem;
 // ********** End ScriptStruct FGameServerItem *****************************************************
 
 // ********** Begin ScriptStruct FGameServerRule ***************************************************
+struct Z_Construct_UScriptStruct_FGameServerRule_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameServerRule(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_316_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameServerRule_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameServerRule_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameServerRule(ETypeConstructPhase::Inner); }
 
 
 struct FGameServerRule;
 // ********** End ScriptStruct FGameServerRule *****************************************************
-
-// ********** Begin Delegate FOnServerUpdated ******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_335_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerUpdated_DelegateWrapper(const FScriptDelegate& OnServerUpdated, FGameServerItem const& data);
-
-
-// ********** End Delegate FOnServerUpdated ********************************************************
-
-// ********** Begin Delegate FOnServerPing *********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_336_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerPing_DelegateWrapper(const FScriptDelegate& OnServerPing, FGameServerItem const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnServerPing ***********************************************************
-
-// ********** Begin Delegate FOnServerRules ********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_337_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerRules_DelegateWrapper(const FScriptDelegate& OnServerRules, TArray<FGameServerRule> const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnServerRules **********************************************************
-
-// ********** Begin Delegate FOnServerRefreshCompleted *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h_338_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerRefreshCompleted_DelegateWrapper(const FScriptDelegate& OnServerRefreshCompleted);
-
-
-// ********** End Delegate FOnServerRefreshCompleted ***********************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersTypes_h

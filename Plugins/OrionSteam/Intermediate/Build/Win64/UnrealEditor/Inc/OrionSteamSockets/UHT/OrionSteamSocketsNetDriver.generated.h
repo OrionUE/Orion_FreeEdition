@@ -12,21 +12,21 @@
 #define ORIONSTEAMSOCKETS_OrionSteamSocketsNetDriver_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionSteamSocketsNetDriver **********************************************
-ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetDriver_NoRegister();
+struct Z_Construct_UClass_UOrionSteamSocketsNetDriver_Statics;
+ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetDriver(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSockets_Public_OrionSteamSocketsNetDriver_h_19_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamSocketsNetDriver(); \
-	friend struct Z_Construct_UClass_UOrionSteamSocketsNetDriver_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetDriver_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamSocketsNetDriver_Statics; \
+	friend ORIONSTEAMSOCKETS_API UClass* ::Z_Construct_UClass_UOrionSteamSocketsNetDriver(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamSocketsNetDriver, UNetDriver, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSockets"), Z_Construct_UClass_UOrionSteamSocketsNetDriver_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamSocketsNetDriver, UNetDriver, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSockets"), Z_Construct_UClass_UOrionSteamSocketsNetDriver) \
 	DECLARE_SERIALIZER(UOrionSteamSocketsNetDriver)
 
 

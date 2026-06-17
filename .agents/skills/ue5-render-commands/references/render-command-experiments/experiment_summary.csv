@@ -1,0 +1,17 @@
+metric,count
+test_method:manual_command_review,141
+test_method:manual_or_excluded_diagnostic,801
+test_method:manual_value_review,1496
+test_method:platform_not_current_windows,193
+test_method:runtime_low_priority,905
+test_method:runtime_quality_candidate,1114
+test_method:runtime_renderer_setting_candidate,51
+test_method:runtime_scalability_candidate,130
+test_method:startup_restart_required,516
+test_priority:P0,181
+test_priority:P1,1114
+test_priority:P2,516
+test_priority:P3,3536
+project_render_overrides,1326
+baseline_preserve_ray_tracing_overrides,34
+baseline_temporary_reset_overrides,1292

@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebCheatReporting_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -28,16 +29,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execReportPlayerCheating);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebCheatReporting_NoRegister();
+struct Z_Construct_UClass_UWebCheatReporting_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebCheatReporting(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReporting_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebCheatReporting(); \
-	friend struct Z_Construct_UClass_UWebCheatReporting_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebCheatReporting_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebCheatReporting_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebCheatReporting(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebCheatReporting, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebCheatReporting_NoRegister) \
+	DECLARE_CLASS2(UWebCheatReporting, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebCheatReporting) \
 	DECLARE_SERIALIZER(UWebCheatReporting)
 
 

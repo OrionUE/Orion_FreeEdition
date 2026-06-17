@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_OrionSteamGameSearch_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamGameSearch;
 enum class ESteamGameSearchErrorCode : uint8;
 enum class ESteamPlayerResult : uint8;
@@ -40,16 +40,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamGameSearch);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamGameSearch_NoRegister();
+struct Z_Construct_UClass_UOrionSteamGameSearch_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamGameSearch(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamGameSearch_OrionSteamGameSearch_h_20_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamGameSearch(); \
-	friend struct Z_Construct_UClass_UOrionSteamGameSearch_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamGameSearch_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamGameSearch_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamGameSearch(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamGameSearch, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamGameSearch_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamGameSearch, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamGameSearch) \
 	DECLARE_SERIALIZER(UOrionSteamGameSearch)
 
 

@@ -98,7 +98,8 @@ private:
 
 		if (FJsonSerializer::Deserialize(JsonReader, JsonParsed))
 		{
-			if (const auto AppListArray = JsonParsed->Values["applist"])
+			const TSharedPtr<FJsonValue> AppListArray = JsonParsed->TryGetField(TEXT("applist"));
+			if (AppListArray.IsValid() && AppListArray->Type == EJson::Object)
 			{
 				for (auto It = AppListArray->AsObject()->Values.CreateConstIterator(); It; ++It)
 				{

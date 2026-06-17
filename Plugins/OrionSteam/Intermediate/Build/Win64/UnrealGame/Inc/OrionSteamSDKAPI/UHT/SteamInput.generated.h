@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamInput_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamInput;
 enum class EOrionSteamControllerPad : uint8;
 enum class EOrionSteamInputConfigurationEnableType : uint8;
@@ -83,16 +83,15 @@ struct FScePadTriggerEffectCommand;
 	DECLARE_FUNCTION(execGetSteamInput);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInput_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInput_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInput(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInput_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInput(); \
-	friend struct Z_Construct_UClass_UOrionSteamInput_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInput_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInput_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInput(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInput, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInput_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInput, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInput) \
 	DECLARE_SERIALIZER(UOrionSteamInput)
 
 

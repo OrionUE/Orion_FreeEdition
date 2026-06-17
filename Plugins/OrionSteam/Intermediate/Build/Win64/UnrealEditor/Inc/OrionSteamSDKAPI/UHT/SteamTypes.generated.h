@@ -12,113 +12,151 @@
 #define ORIONSTEAMSDKAPI_SteamTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FSteamID **********************************************************
+struct Z_Construct_UScriptStruct_FSteamID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_754_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamID_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamID(ETypeConstructPhase::Inner); }
 
 
 struct FSteamID;
 // ********** End ScriptStruct FSteamID ************************************************************
 
 // ********** Begin ScriptStruct FSteamGameID ******************************************************
+struct Z_Construct_UScriptStruct_FSteamGameID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamGameID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_828_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamGameID_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamGameID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamGameID(ETypeConstructPhase::Inner); }
 
 
 struct FSteamGameID;
 // ********** End ScriptStruct FSteamGameID ********************************************************
 
 // ********** Begin ScriptStruct FSteamUGCHandle ***************************************************
+struct Z_Construct_UScriptStruct_FSteamUGCHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamUGCHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_888_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamUGCHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamUGCHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamUGCHandle(ETypeConstructPhase::Inner); }
 
 
 struct FSteamUGCHandle;
 // ********** End ScriptStruct FSteamUGCHandle *****************************************************
 
 // ********** Begin ScriptStruct FSteamInventoryUpdateHandle ***************************************
+struct Z_Construct_UScriptStruct_FSteamInventoryUpdateHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamInventoryUpdateHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_920_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamInventoryUpdateHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamInventoryUpdateHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamInventoryUpdateHandle(ETypeConstructPhase::Inner); }
 
 
 struct FSteamInventoryUpdateHandle;
 // ********** End ScriptStruct FSteamInventoryUpdateHandle *****************************************
 
 // ********** Begin ScriptStruct FSteamNetworkingIdentity ******************************************
+struct Z_Construct_UScriptStruct_FSteamNetworkingIdentity_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamNetworkingIdentity(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1016_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamNetworkingIdentity_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamNetworkingIdentity_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamNetworkingIdentity(ETypeConstructPhase::Inner); }
 
 
 struct FSteamNetworkingIdentity;
 // ********** End ScriptStruct FSteamNetworkingIdentity ********************************************
 
 // ********** Begin ScriptStruct FSteamTicketHandle ************************************************
+struct Z_Construct_UScriptStruct_FSteamTicketHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamTicketHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1036_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamTicketHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamTicketHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamTicketHandle(ETypeConstructPhase::Inner); }
 
 
 struct FSteamTicketHandle;
 // ********** End ScriptStruct FSteamTicketHandle **************************************************
 
 // ********** Begin ScriptStruct FValidateAuthTicketResponse ***************************************
+struct Z_Construct_UScriptStruct_FValidateAuthTicketResponse_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FValidateAuthTicketResponse(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1069_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FValidateAuthTicketResponse_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FValidateAuthTicketResponse_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FValidateAuthTicketResponse(ETypeConstructPhase::Inner); }
 
 
 struct FValidateAuthTicketResponse;
 // ********** End ScriptStruct FValidateAuthTicketResponse *****************************************
 
 // ********** Begin ScriptStruct FPublishedFileID **************************************************
+struct Z_Construct_UScriptStruct_FPublishedFileID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FPublishedFileID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1095_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FPublishedFileID_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FPublishedFileID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FPublishedFileID(ETypeConstructPhase::Inner); }
 
 
 struct FPublishedFileID;
 // ********** End ScriptStruct FPublishedFileID ****************************************************
 
 // ********** Begin ScriptStruct FRemoteStorageSubscribePublishedFileResult ************************
+struct Z_Construct_UScriptStruct_FRemoteStorageSubscribePublishedFileResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemoteStorageSubscribePublishedFileResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1136_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemoteStorageSubscribePublishedFileResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemoteStorageSubscribePublishedFileResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemoteStorageSubscribePublishedFileResult(ETypeConstructPhase::Inner); }
 
 
 struct FRemoteStorageSubscribePublishedFileResult;
 // ********** End ScriptStruct FRemoteStorageSubscribePublishedFileResult **************************
 
 // ********** Begin ScriptStruct FSteamSessionSearchSetting ****************************************
+struct Z_Construct_UScriptStruct_FSteamSessionSearchSetting_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamSessionSearchSetting(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1160_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamSessionSearchSetting_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamSessionSearchSetting_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamSessionSearchSetting(ETypeConstructPhase::Inner); }
 
 
 struct FSteamSessionSearchSetting;
 // ********** End ScriptStruct FSteamSessionSearchSetting ******************************************
 
 // ********** Begin ScriptStruct FSteamSessionResult ***********************************************
+struct Z_Construct_UScriptStruct_FSteamSessionResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamSessionResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1193_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamSessionResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamSessionResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamSessionResult(ETypeConstructPhase::Inner); }
 
 
 struct FSteamSessionResult;
 // ********** End ScriptStruct FSteamSessionResult *************************************************
 
 // ********** Begin ScriptStruct FPartyBeaconID ****************************************************
+struct Z_Construct_UScriptStruct_FPartyBeaconID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FPartyBeaconID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_SteamTypes_h_1217_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FPartyBeaconID_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FPartyBeaconID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FPartyBeaconID(ETypeConstructPhase::Inner); }
 
 
 struct FPartyBeaconID;
@@ -135,7 +173,7 @@ struct FPartyBeaconID;
 
 enum class ESteamAttributeType : uint8;
 template<> struct TIsUEnumClass<ESteamAttributeType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAttributeType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamAttributeType>();
 // ********** End Enum ESteamAttributeType *********************************************************
 
 // ********** Begin Enum ESteamComparisonOp ********************************************************
@@ -152,7 +190,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAttributeType>();
 
 enum class ESteamComparisonOp : uint8;
 template<> struct TIsUEnumClass<ESteamComparisonOp> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamComparisonOp>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamComparisonOp>();
 // ********** End Enum ESteamComparisonOp **********************************************************
 
 // ********** Begin Enum ESteamMessageType *********************************************************
@@ -163,7 +201,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamComparisonOp>();
 
 enum class ESteamMessageType : uint8;
 template<> struct TIsUEnumClass<ESteamMessageType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamMessageType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamMessageType>();
 // ********** End Enum ESteamMessageType ***********************************************************
 
 // ********** Begin Enum EOnlineComparison *********************************************************
@@ -177,7 +215,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamMessageType>();
 
 enum class EOnlineComparison : uint8;
 template<> struct TIsUEnumClass<EOnlineComparison> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOnlineComparison>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOnlineComparison>();
 // ********** End Enum EOnlineComparison ***********************************************************
 
 // ********** Begin Enum ESteamDenyReason **********************************************************
@@ -201,7 +239,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOnlineComparison>();
 
 enum class ESteamDenyReason : uint8;
 template<> struct TIsUEnumClass<ESteamDenyReason> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamDenyReason>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamDenyReason>();
 // ********** End Enum ESteamDenyReason ************************************************************
 
 // ********** Begin Enum ESteamAuthSessionResponse *************************************************
@@ -219,7 +257,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamDenyReason>();
 
 enum class ESteamAuthSessionResponse : uint8;
 template<> struct TIsUEnumClass<ESteamAuthSessionResponse> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAuthSessionResponse>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamAuthSessionResponse>();
 // ********** End Enum ESteamAuthSessionResponse ***************************************************
 
 // ********** Begin Enum ESteamUserHasLicenseForAppResult ******************************************
@@ -230,7 +268,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAuthSessionResponse>();
 
 enum class ESteamUserHasLicenseForAppResult : uint8;
 template<> struct TIsUEnumClass<ESteamUserHasLicenseForAppResult> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserHasLicenseForAppResult>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUserHasLicenseForAppResult>();
 // ********** End Enum ESteamUserHasLicenseForAppResult ********************************************
 
 // ********** Begin Enum ESteamBeginAuthSessionResult **********************************************
@@ -244,7 +282,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserHasLicenseForAppResu
 
 enum class ESteamBeginAuthSessionResult : uint8;
 template<> struct TIsUEnumClass<ESteamBeginAuthSessionResult> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamBeginAuthSessionResult>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamBeginAuthSessionResult>();
 // ********** End Enum ESteamBeginAuthSessionResult ************************************************
 
 // ********** Begin Enum ESteamResult **************************************************************
@@ -366,7 +404,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamBeginAuthSessionResult>(
 
 enum class ESteamResult : uint8;
 template<> struct TIsUEnumClass<ESteamResult> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamResult>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamResult>();
 // ********** End Enum ESteamResult ****************************************************************
 
 // ********** Begin Enum ESteamChatRoomEnterResponse ***********************************************
@@ -387,7 +425,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamResult>();
 
 enum class ESteamChatRoomEnterResponse : uint8;
 template<> struct TIsUEnumClass<ESteamChatRoomEnterResponse> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatRoomEnterResponse>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamChatRoomEnterResponse>();
 // ********** End Enum ESteamChatRoomEnterResponse *************************************************
 
 // ********** Begin Enum ESteamChatEntryType *******************************************************
@@ -407,7 +445,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatRoomEnterResponse>()
 
 enum class ESteamChatEntryType : uint8;
 template<> struct TIsUEnumClass<ESteamChatEntryType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatEntryType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamChatEntryType>();
 // ********** End Enum ESteamChatEntryType *********************************************************
 
 // ********** Begin Enum ESteamAccountType *********************************************************
@@ -427,7 +465,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatEntryType>();
 
 enum class ESteamAccountType : uint8;
 template<> struct TIsUEnumClass<ESteamAccountType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAccountType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamAccountType>();
 // ********** End Enum ESteamAccountType ***********************************************************
 
 // ********** Begin Enum EOrionSteamNetworkingIdentityType *****************************************
@@ -445,7 +483,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAccountType>();
 
 enum class EOrionSteamNetworkingIdentityType : uint8;
 template<> struct TIsUEnumClass<EOrionSteamNetworkingIdentityType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamNetworkingIdentityType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamNetworkingIdentityType>();
 // ********** End Enum EOrionSteamNetworkingIdentityType *******************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

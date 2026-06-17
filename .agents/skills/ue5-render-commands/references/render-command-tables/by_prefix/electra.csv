@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Electra.AndroidUseGpuOutputPath,CVar,int32,0,Electra,通用,Android,true,false,false,false,false,,`Electra.AndroidUseGpuOutputPath=<值>` / `Electra.AndroidUseGpuOutputPath <值>` 或 INI 中配置,Use experimental direct to GPU output path on Android.\n,ECVF_Default
+Electra.HDR.ToneMapMethod,CVar,int32,static_cast<int32>(MediaShaders::EToneMapMethod::Hable),Electra,后处理,All,true,false,false,false,false,,`Electra.HDR.ToneMapMethod=<值>` / `Electra.HDR.ToneMapMethod <值>` 或 INI 中配置,Tone mapping method applied on source HDR media:\n,ECVF_Default

@@ -12,21 +12,21 @@
 #define ORIONONLINESUBSYSTEMSTEAM_OrionOnlineSteamNetDriver_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionOnlineSteamNetDriver ***********************************************
-ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetDriver_NoRegister();
+struct Z_Construct_UClass_UOrionOnlineSteamNetDriver_Statics;
+ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetDriver(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionOnlineSubsystemSteam_Private_OrionOnlineSteamNetDriver_h_19_INCLASS \
 private: \
-	static void StaticRegisterNativesUOrionOnlineSteamNetDriver(); \
-	friend struct Z_Construct_UClass_UOrionOnlineSteamNetDriver_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetDriver_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionOnlineSteamNetDriver_Statics; \
+	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* ::Z_Construct_UClass_UOrionOnlineSteamNetDriver(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionOnlineSteamNetDriver, UIpNetDriver, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamNetDriver_NoRegister) \
+	DECLARE_CLASS2(UOrionOnlineSteamNetDriver, UIpNetDriver, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamNetDriver) \
 	DECLARE_SERIALIZER(UOrionOnlineSteamNetDriver)
 
 

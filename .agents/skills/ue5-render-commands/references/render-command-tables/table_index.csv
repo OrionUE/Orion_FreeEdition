@@ -1,0 +1,109 @@
+table_id,path,category,row_count,use_when
+all,references/render-command-tables/all_render_commands.csv,all,5347,需要全量检索或不知道命令属于哪个分类时使用。
+config_renderer_settings,references/render-command-tables/config/renderer_settings.csv,config,114,查找可放入 DefaultEngine.ini [/Script/Engine.RendererSettings] 的命令。
+config_scalability,references/render-command-tables/config/scalability.csv,config,182,查找可放入 DefaultScalability.ini 的命令。
+config_scalability_group_flag,references/render-command-tables/config/scalability_group_flag.csv,config,1199,查找源码标记 ECVF_Scalability 或 ECVF_ScalabilityGroup 的命令。
+feature_GI,references/render-command-tables/by_feature/GI.csv,feature,227,查找GI相关渲染命令。
+feature_Lumen,references/render-command-tables/by_feature/Lumen.csv,feature,536,查找Lumen相关渲染命令。
+feature_Nanite,references/render-command-tables/by_feature/Nanite.csv,feature,133,查找Nanite相关渲染命令。
+feature_rhi_low_level_interface,references/render-command-tables/by_feature/rhi_low_level_interface.csv,feature,360,查找RHI/底层渲染接口相关渲染命令。
+feature_VR_XR,references/render-command-tables/by_feature/VR_XR.csv,feature,52,查找VR/XR相关渲染命令。
+feature_ray_tracing,references/render-command-tables/by_feature/ray_tracing.csv,feature,923,查找光线追踪相关渲染命令。
+feature_post_processing,references/render-command-tables/by_feature/post_processing.csv,feature,598,查找后处理相关渲染命令。
+feature_landscape_foliage,references/render-command-tables/by_feature/landscape_foliage.csv,feature,47,查找景观/植被相关渲染命令。
+feature_materials,references/render-command-tables/by_feature/materials.csv,feature,444,查找材质相关渲染命令。
+feature_water,references/render-command-tables/by_feature/water.csv,feature,81,查找水体相关渲染命令。
+feature_render_pipeline,references/render-command-tables/by_feature/render_pipeline.csv,feature,207,查找渲染管线相关渲染命令。
+feature_render_debug_visualization,references/render-command-tables/by_feature/render_debug_visualization.csv,feature,311,查找渲染调试/可视化相关渲染命令。
+feature_general,references/render-command-tables/by_feature/general.csv,feature,1184,查找通用相关渲染命令。
+feature_shadows,references/render-command-tables/by_feature/shadows.csv,feature,244,查找阴影相关渲染命令。
+kind_command,references/render-command-tables/kind/command.csv,kind,141,只查控制台命令 Command。
+kind_cvar,references/render-command-tables/kind/cvar.csv,kind,5206,只查控制台变量 CVar。
+lifecycle_runtime_editable,references/render-command-tables/lifecycle/runtime_editable.csv,lifecycle,4679,查找运行后可通过控制台或配置实时改变的命令。
+lifecycle_startup_only,references/render-command-tables/lifecycle/startup_only.csv,lifecycle,668,查找只能启动前生效或 ReadOnly 的命令。
+platform_All,references/render-command-tables/by_platform/All.csv,platform,5012,查找平台/渲染后端 All 相关命令。
+platform_Android,references/render-command-tables/by_platform/Android.csv,platform,22,查找平台/渲染后端 Android 相关命令。
+platform_DirectX,references/render-command-tables/by_platform/DirectX.csv,platform,127,查找平台/渲染后端 DirectX 相关命令。
+platform_Metal,references/render-command-tables/by_platform/Metal.csv,platform,1,查找平台/渲染后端 Metal 相关命令。
+platform_OpenGL,references/render-command-tables/by_platform/OpenGL.csv,platform,53,查找平台/渲染后端 OpenGL 相关命令。
+platform_Vulkan,references/render-command-tables/by_platform/Vulkan.csv,platform,137,查找平台/渲染后端 Vulkan 相关命令。
+platform_Windows,references/render-command-tables/by_platform/Windows.csv,platform,41,查找平台/渲染后端 Windows 相关命令。
+prefix_android,references/render-command-tables/by_prefix/android.csv,prefix,11,查找前缀 android 的渲染命令。
+prefix_arcore,references/render-command-tables/by_prefix/arcore.csv,prefix,1,查找前缀 arcore 的渲染命令。
+prefix_au,references/render-command-tables/by_prefix/au.csv,prefix,3,查找前缀 au 的渲染命令。
+prefix_composite,references/render-command-tables/by_prefix/composite.csv,prefix,1,查找前缀 composite 的渲染命令。
+prefix_computekernel,references/render-command-tables/by_prefix/computekernel.csv,prefix,1,查找前缀 computekernel 的渲染命令。
+prefix_cook,references/render-command-tables/by_prefix/cook.csv,prefix,2,查找前缀 cook 的渲染命令。
+prefix_criticalpathstall,references/render-command-tables/by_prefix/criticalpathstall.csv,prefix,1,查找前缀 criticalpathstall 的渲染命令。
+prefix_d3d11,references/render-command-tables/by_prefix/d3d11.csv,prefix,1,查找前缀 d3d11 的渲染命令。
+prefix_d3d12,references/render-command-tables/by_prefix/d3d12.csv,prefix,66,查找前缀 d3d12 的渲染命令。
+prefix_dc,references/render-command-tables/by_prefix/dc.csv,prefix,7,查找前缀 dc 的渲染命令。
+prefix_dm,references/render-command-tables/by_prefix/dm.csv,prefix,1,查找前缀 dm 的渲染命令。
+prefix_dumpdetailedprimitives,references/render-command-tables/by_prefix/dumpdetailedprimitives.csv,prefix,1,查找前缀 dumpdetailedprimitives 的渲染命令。
+prefix_dumpprimitivedrawcalls,references/render-command-tables/by_prefix/dumpprimitivedrawcalls.csv,prefix,1,查找前缀 dumpprimitivedrawcalls 的渲染命令。
+prefix_editor,references/render-command-tables/by_prefix/editor.csv,prefix,2,查找前缀 editor 的渲染命令。
+prefix_electra,references/render-command-tables/by_prefix/electra.csv,prefix,2,查找前缀 electra 的渲染命令。
+prefix_enablepaneldrawer,references/render-command-tables/by_prefix/enablepaneldrawer.csv,prefix,1,查找前缀 enablepaneldrawer 的渲染命令。
+prefix_findredundantmics,references/render-command-tables/by_prefix/findredundantmics.csv,prefix,1,查找前缀 findredundantmics 的渲染命令。
+prefix_foliage,references/render-command-tables/by_prefix/foliage.csv,prefix,31,查找前缀 foliage 的渲染命令。
+prefix_fx,references/render-command-tables/by_prefix/fx.csv,prefix,345,查找前缀 fx 的渲染命令。
+prefix_g,references/render-command-tables/by_prefix/g.csv,prefix,3,查找前缀 g 的渲染命令。
+prefix_generatenanitedisplacedmesh,references/render-command-tables/by_prefix/generatenanitedisplacedmesh.csv,prefix,1,查找前缀 generatenanitedisplacedmesh 的渲染命令。
+prefix_gpulm,references/render-command-tables/by_prefix/gpulm.csv,prefix,1,查找前缀 gpulm 的渲染命令。
+prefix_ios,references/render-command-tables/by_prefix/ios.csv,prefix,2,查找前缀 ios 的渲染命令。
+prefix_landscape,references/render-command-tables/by_prefix/landscape.csv,prefix,13,查找前缀 landscape 的渲染命令。
+prefix_landscapepatch,references/render-command-tables/by_prefix/landscapepatch.csv,prefix,1,查找前缀 landscapepatch 的渲染命令。
+prefix_listshaderlibraries,references/render-command-tables/by_prefix/listshaderlibraries.csv,prefix,1,查找前缀 listshaderlibraries 的渲染命令。
+prefix_listshadermaps,references/render-command-tables/by_prefix/listshadermaps.csv,prefix,1,查找前缀 listshadermaps 的渲染命令。
+prefix_listshaders,references/render-command-tables/by_prefix/listshaders.csv,prefix,1,查找前缀 listshaders 的渲染命令。
+prefix_materialbaking,references/render-command-tables/by_prefix/materialbaking.csv,prefix,5,查找前缀 materialbaking 的渲染命令。
+prefix_materialutilities,references/render-command-tables/by_prefix/materialutilities.csv,prefix,1,查找前缀 materialutilities 的渲染命令。
+prefix_mediaio,references/render-command-tables/by_prefix/mediaio.csv,prefix,1,查找前缀 mediaio 的渲染命令。
+prefix_megamesh,references/render-command-tables/by_prefix/megamesh.csv,prefix,6,查找前缀 megamesh 的渲染命令。
+prefix_meshpartition,references/render-command-tables/by_prefix/meshpartition.csv,prefix,1,查找前缀 meshpartition 的渲染命令。
+prefix_metal,references/render-command-tables/by_prefix/metal.csv,prefix,5,查找前缀 metal 的渲染命令。
+prefix_metalrhi,references/render-command-tables/by_prefix/metalrhi.csv,prefix,2,查找前缀 metalrhi 的渲染命令。
+prefix_mh,references/render-command-tables/by_prefix/mh.csv,prefix,1,查找前缀 mh 的渲染命令。
+prefix_motiondesign,references/render-command-tables/by_prefix/motiondesign.csv,prefix,4,查找前缀 motiondesign 的渲染命令。
+prefix_movierenderpipeline,references/render-command-tables/by_prefix/movierenderpipeline.csv,prefix,6,查找前缀 movierenderpipeline 的渲染命令。
+prefix_nanitedisplacedmesh,references/render-command-tables/by_prefix/nanitedisplacedmesh.csv,prefix,1,查找前缀 nanitedisplacedmesh 的渲染命令。
+prefix_nanitedisplacedmeshes,references/render-command-tables/by_prefix/nanitedisplacedmeshes.csv,prefix,1,查找前缀 nanitedisplacedmeshes 的渲染命令。
+prefix_ndisplay,references/render-command-tables/by_prefix/ndisplay.csv,prefix,73,查找前缀 ndisplay 的渲染命令。
+prefix_niagara,references/render-command-tables/by_prefix/niagara.csv,prefix,17,查找前缀 niagara 的渲染命令。
+prefix_nne,references/render-command-tables/by_prefix/nne.csv,prefix,3,查找前缀 nne 的渲染命令。
+prefix_nneruntimeiree,references/render-command-tables/by_prefix/nneruntimeiree.csv,prefix,1,查找前缀 nneruntimeiree 的渲染命令。
+prefix_odsc,references/render-command-tables/by_prefix/odsc.csv,prefix,4,查找前缀 odsc 的渲染命令。
+prefix_opencolorio,references/render-command-tables/by_prefix/opencolorio.csv,prefix,2,查找前缀 opencolorio 的渲染命令。
+prefix_opengl,references/render-command-tables/by_prefix/opengl.csv,prefix,11,查找前缀 opengl 的渲染命令。
+prefix_p,references/render-command-tables/by_prefix/p.csv,prefix,7,查找前缀 p 的渲染命令。
+prefix_profilegpu,references/render-command-tables/by_prefix/profilegpu.csv,prefix,1,查找前缀 profilegpu 的渲染命令。
+prefix_r,references/render-command-tables/by_prefix/r.csv,prefix,4383,查找前缀 r 的渲染命令。
+prefix_reloadglobalshaders,references/render-command-tables/by_prefix/reloadglobalshaders.csv,prefix,1,查找前缀 reloadglobalshaders 的渲染命令。
+prefix_renderdoc,references/render-command-tables/by_prefix/renderdoc.csv,prefix,16,查找前缀 renderdoc 的渲染命令。
+prefix_rendertrace,references/render-command-tables/by_prefix/rendertrace.csv,prefix,1,查找前缀 rendertrace 的渲染命令。
+prefix_rhi,references/render-command-tables/by_prefix/rhi.csv,prefix,59,查找前缀 rhi 的渲染命令。
+prefix_rhipoolallocator,references/render-command-tables/by_prefix/rhipoolallocator.csv,prefix,3,查找前缀 rhipoolallocator 的渲染命令。
+prefix_safezone,references/render-command-tables/by_prefix/safezone.csv,prefix,2,查找前缀 safezone 的渲染命令。
+prefix_sequencer,references/render-command-tables/by_prefix/sequencer.csv,prefix,3,查找前缀 sequencer 的渲染命令。
+prefix_setglobalshadercacheoverridedirectory,references/render-command-tables/by_prefix/setglobalshadercacheoverridedirectory.csv,prefix,1,查找前缀 setglobalshadercacheoverridedirectory 的渲染命令。
+prefix_sg,references/render-command-tables/by_prefix/sg.csv,prefix,26,查找前缀 sg 的渲染命令。
+prefix_shaderpipeline,references/render-command-tables/by_prefix/shaderpipeline.csv,prefix,1,查找前缀 shaderpipeline 的渲染命令。
+prefix_slate,references/render-command-tables/by_prefix/slate.csv,prefix,137,查找前缀 slate 的渲染命令。
+prefix_slatedebugger,references/render-command-tables/by_prefix/slatedebugger.csv,prefix,1,查找前缀 slatedebugger 的渲染命令。
+prefix_slateinspectortoolset,references/render-command-tables/by_prefix/slateinspectortoolset.csv,prefix,1,查找前缀 slateinspectortoolset 的渲染命令。
+prefix_slatesdftext,references/render-command-tables/by_prefix/slatesdftext.csv,prefix,1,查找前缀 slatesdftext 的渲染命令。
+prefix_stats,references/render-command-tables/by_prefix/stats.csv,prefix,1,查找前缀 stats 的渲染命令。
+prefix_taskgraph,references/render-command-tables/by_prefix/taskgraph.csv,prefix,1,查找前缀 taskgraph 的渲染命令。
+prefix_tex,references/render-command-tables/by_prefix/tex.csv,prefix,1,查找前缀 tex 的渲染命令。
+prefix_text3d,references/render-command-tables/by_prefix/text3d.csv,prefix,1,查找前缀 text3d 的渲染命令。
+prefix_texturegraph,references/render-command-tables/by_prefix/texturegraph.csv,prefix,1,查找前缀 texturegraph 的渲染命令。
+prefix_textureshare,references/render-command-tables/by_prefix/textureshare.csv,prefix,3,查找前缀 textureshare 的渲染命令。
+prefix_tg,references/render-command-tables/by_prefix/tg.csv,prefix,3,查找前缀 tg 的渲染命令。
+prefix_tmvconverter,references/render-command-tables/by_prefix/tmvconverter.csv,prefix,1,查找前缀 tmvconverter 的渲染命令。
+prefix_ts,references/render-command-tables/by_prefix/ts.csv,prefix,8,查找前缀 ts 的渲染命令。
+prefix_ui,references/render-command-tables/by_prefix/ui.csv,prefix,4,查找前缀 ui 的渲染命令。
+prefix_umg,references/render-command-tables/by_prefix/umg.csv,prefix,1,查找前缀 umg 的渲染命令。
+prefix_vr,references/render-command-tables/by_prefix/vr.csv,prefix,19,查找前缀 vr 的渲染命令。
+prefix_wg,references/render-command-tables/by_prefix/wg.csv,prefix,1,查找前缀 wg 的渲染命令。
+prefix_widgetreflector,references/render-command-tables/by_prefix/widgetreflector.csv,prefix,2,查找前缀 widgetreflector 的渲染命令。
+prefix_xr,references/render-command-tables/by_prefix/xr.csv,prefix,8,查找前缀 xr 的渲染命令。

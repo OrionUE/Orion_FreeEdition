@@ -12,21 +12,21 @@
 #define GAMECORE_CoreAbilityCost_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreAbilityCost *********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityCost_NoRegister();
+struct Z_Construct_UClass_UCoreAbilityCost_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityCost(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_Abilities_CoreAbilityCost_h_20_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAbilityCost(); \
-	friend struct Z_Construct_UClass_UCoreAbilityCost_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityCost_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAbilityCost_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAbilityCost(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAbilityCost, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilityCost_NoRegister) \
+	DECLARE_CLASS2(UCoreAbilityCost, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilityCost) \
 	DECLARE_SERIALIZER(UCoreAbilityCost)
 
 

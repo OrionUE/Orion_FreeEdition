@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Composite.Pool.FramesUntilFlush,CVar,int32,1,Composite,渲染管线,All,true,false,false,false,false,,`Composite.Pool.FramesUntilFlush=<值>` / `Composite.Pool.FramesUntilFlush <值>` 或 INI 中配置,"In editor, you can alter the target size and render format.",

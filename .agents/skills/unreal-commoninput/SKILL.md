@@ -22,6 +22,7 @@ description: "Use when Codex works on Unreal Engine CommonInput or CommonUI inpu
 
 ## 路由
 
+- 处理 `Content/UI/BP_CommonInputData`、`Content/UI/DT_UniversalActions`、`Content/UI/DA_GameUIInputActionDomainTable`、`W_OverallUILayout` 的 UI root/input 蓝图资产时，配合 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 查源码位置、模块依赖和符号声明时，优先配合 `../unreal-source-code-navigator/SKILL.md`。
 - 涉及 `FKey`、`EKeys`、key metadata、key category、paired axis、platform key conversion 或 key 分类时，配合 `../unreal-inputcore/SKILL.md`。
 - 只涉及 EnhancedInput action、mapping、trigger、modifier 时，使用 `../unreal-enhancedinput/SKILL.md`。

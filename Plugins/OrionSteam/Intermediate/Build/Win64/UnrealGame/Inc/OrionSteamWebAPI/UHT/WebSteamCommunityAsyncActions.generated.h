@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebSteamCommunityAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionReportAbuse;
 
@@ -24,16 +24,15 @@ class UOrionSteamWebAPIAsyncActionReportAbuse;
 	DECLARE_FUNCTION(execReportAbuseAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamCommunity_WebSteamCommunityAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionReportAbuse(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportAbuse, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportAbuse, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportAbuse) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionReportAbuse)
 
 

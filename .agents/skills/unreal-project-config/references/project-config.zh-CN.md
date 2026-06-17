@@ -13,6 +13,7 @@
 | `Config/<Platform>/<Platform>GameUserSettings.ini` | 某平台的用户设置默认值。当前框架用它给 `UOrionSettingsLocal` 写默认 fullscreen/window mode 等初始值，运行后用户保存值可能写到 Saved/config 或平台用户目录。 |
 | `Config/DefaultCrypto.ini` | `Crypto` 配置域。由 CryptoKeys、UnrealPak/UAT 等读取，用于 Pak/IoStore 加密、Pak index/ini 加密和 Pak 签名。 |
 | `Config/DefaultEngine.ini` 与平台 `Engine.ini` | 引擎、音频插件、渲染、PSO、平台 CVar 等。只有任务涉及这些系统时再进入。 |
+| `Config/Custom/Steam/DefaultEngine.ini` | Steam Target 通过 `CustomConfig=Steam` 选择的 Engine 配置层。Steam OnlineSubsystem、NetDriver、PacketHandler、AppID 等 Steam 专用配置放这里。 |
 | `Config/DefaultEditor*.ini` | 编辑器扩展和编辑器用户体验配置。编辑器任务继续读取 `unreal-editor-extension-framework`。 |
 
 判断规则：
@@ -22,7 +23,7 @@
 3. 字段必须有 `UPROPERTY(Config)` 或 owner class 自己在源码中手动读 `GConfig`，否则 ini 值不会自动注入。
 4. 玩家设置 UI 只说明“可调入口”，不等同于全部写在 `GameUserSettings.ini`；本地设备值多走 `UOrionSettingsLocal`，账号/档案共享值多走 `UOrionSettingsShared` 或 save game。
 5. `RendererSettings`、DLSS/Streamline、PSO、`DefaultScalability.ini` 和平台 `Engine.ini` 渲染覆盖继续读取 `unreal-rendering-framework`，不要只按普通 `Game` 配置处理。
-6. `OrionOnlineSubsystemSteam`、`OnlineSubsystem`、Steam NetDriver、Steam Web API settings 和 AppID 发布配置继续读取 `unreal-online-steam-framework`，不要把真实 AppID 或 Web API key 写进可发布文档。
+6. Steam 专用 `OnlineSubsystem`、Steam NetDriver、Steam Web API settings 和 AppID 发布配置默认读取 `Config/Custom/Steam/DefaultEngine.ini` 并继续读取 `unreal-online-steam-framework`，不要把真实 AppID 或 Web API key 写进可发布文档。
 7. `MoviePlayerSettings`、`StartupMovies`、`BinkMoviePlayerSettings`、`bSkipMovies`、`UFSMovies`、`NonUFSMovies` 和 movie staging 继续读取 `unreal-movie-media-framework`，不要把视频路径写成本机绝对路径。
 8. `CommonLoadingScreenSettings`、加载屏 Widget、进度条参数、加载屏 hold/heartbeat 或 `LoadingScreenControlBusMix` 继续读取 `unreal-loading-screen-framework`。
 
@@ -45,9 +46,9 @@
 | `[/Script/GameCore.CoreAudioSettings]` | `UCoreAudioSettings` | ControlBusMix、volume ControlBus、HDR/LDR Submix effect chain | 音频任务继续读 audio Skill。 |
 | `[/Script/GameFeatures.GameFeaturesSubsystemSettings]` | `UGameFeaturesSubsystemSettings` | `GameFeaturesManagerClassName` / project policy | 当前框架通过 Core GameFeatures policy 管理 GameFeature 行为。 |
 
-## `DefaultEngine.ini` Steam 配置
+## `Config/Custom/Steam/DefaultEngine.ini` Steam 配置
 
-Steam OnlineSubsystem 配置属于 Engine 配置域，重点 section 包括：
+Steam OnlineSubsystem 配置属于 Engine 配置域，但 Steam Target 使用 `CustomConfig=Steam` 后，Steam 专用配置应放在 `Config/Custom/Steam/DefaultEngine.ini`。根 `Config/DefaultEngine.ini` 只放公共 Engine 配置，避免普通包误启 Steam。重点 section 包括：
 
 - `[OrionOnlineSubsystemSteam]`：`bEnabled`、`SteamDevAppId`、`SteamAppId`、端口、VAC、P2P relay、relaunch、server query port、server product 信息。
 - `[OnlineSubsystem]`：`DefaultPlatformService=OrionSteam`、`NativePlatformService=OrionSteam`、`AdditionalModulesToLoad`、`ModuleRedirects`。

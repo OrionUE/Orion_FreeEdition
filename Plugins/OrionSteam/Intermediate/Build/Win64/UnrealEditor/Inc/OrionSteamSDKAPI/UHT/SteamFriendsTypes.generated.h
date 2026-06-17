@@ -12,10 +12,11 @@
 #define ORIONSTEAMSDKAPI_SteamFriendsTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FAvatarImageLoaded;
 struct FClanOfficerListResponse;
 struct FDownloadClanActivityCountsResult;
@@ -37,345 +38,244 @@ struct FJoinClanChatRoomCompletionResult;
 struct FPersonaStateChange;
 
 // ********** Begin ScriptStruct FSteamFriendsGroupID **********************************************
+struct Z_Construct_UScriptStruct_FSteamFriendsGroupID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamFriendsGroupID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_197_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamFriendsGroupID_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamFriendsGroupID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamFriendsGroupID(ETypeConstructPhase::Inner); }
 
 
 struct FSteamFriendsGroupID;
 // ********** End ScriptStruct FSteamFriendsGroupID ************************************************
 
 // ********** Begin ScriptStruct FAvatarImageLoaded ************************************************
+struct Z_Construct_UScriptStruct_FAvatarImageLoaded_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FAvatarImageLoaded(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_222_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FAvatarImageLoaded_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FAvatarImageLoaded_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FAvatarImageLoaded(ETypeConstructPhase::Inner); }
 
 
 struct FAvatarImageLoaded;
 // ********** End ScriptStruct FAvatarImageLoaded **************************************************
 
 // ********** Begin ScriptStruct FFriendRichPresenceUpdate *****************************************
+struct Z_Construct_UScriptStruct_FFriendRichPresenceUpdate_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFriendRichPresenceUpdate(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_247_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFriendRichPresenceUpdate_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFriendRichPresenceUpdate_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFriendRichPresenceUpdate(ETypeConstructPhase::Inner); }
 
 
 struct FFriendRichPresenceUpdate;
 // ********** End ScriptStruct FFriendRichPresenceUpdate *******************************************
 
 // ********** Begin ScriptStruct FGameConnectedChatJoin ********************************************
+struct Z_Construct_UScriptStruct_FGameConnectedChatJoin_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameConnectedChatJoin(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_270_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameConnectedChatJoin_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameConnectedChatJoin_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameConnectedChatJoin(ETypeConstructPhase::Inner); }
 
 
 struct FGameConnectedChatJoin;
 // ********** End ScriptStruct FGameConnectedChatJoin **********************************************
 
 // ********** Begin ScriptStruct FGameConnectedChatLeave *******************************************
+struct Z_Construct_UScriptStruct_FGameConnectedChatLeave_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameConnectedChatLeave(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_290_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameConnectedChatLeave_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameConnectedChatLeave_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameConnectedChatLeave(ETypeConstructPhase::Inner); }
 
 
 struct FGameConnectedChatLeave;
 // ********** End ScriptStruct FGameConnectedChatLeave *********************************************
 
 // ********** Begin ScriptStruct FGameConnectedClanChatMsg *****************************************
+struct Z_Construct_UScriptStruct_FGameConnectedClanChatMsg_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameConnectedClanChatMsg(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_317_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameConnectedClanChatMsg_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameConnectedClanChatMsg_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameConnectedClanChatMsg(ETypeConstructPhase::Inner); }
 
 
 struct FGameConnectedClanChatMsg;
 // ********** End ScriptStruct FGameConnectedClanChatMsg *******************************************
 
 // ********** Begin ScriptStruct FGameConnectedFriendChatMsg ***************************************
+struct Z_Construct_UScriptStruct_FGameConnectedFriendChatMsg_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameConnectedFriendChatMsg(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_342_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameConnectedFriendChatMsg_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameConnectedFriendChatMsg_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameConnectedFriendChatMsg(ETypeConstructPhase::Inner); }
 
 
 struct FGameConnectedFriendChatMsg;
 // ********** End ScriptStruct FGameConnectedFriendChatMsg *****************************************
 
 // ********** Begin ScriptStruct FGameLobbyJoinRequested *******************************************
+struct Z_Construct_UScriptStruct_FGameLobbyJoinRequested_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameLobbyJoinRequested(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_365_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameLobbyJoinRequested_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameLobbyJoinRequested_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameLobbyJoinRequested(ETypeConstructPhase::Inner); }
 
 
 struct FGameLobbyJoinRequested;
 // ********** End ScriptStruct FGameLobbyJoinRequested *********************************************
 
 // ********** Begin ScriptStruct FGameOverlayActivated *********************************************
+struct Z_Construct_UScriptStruct_FGameOverlayActivated_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameOverlayActivated(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_385_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameOverlayActivated_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameOverlayActivated_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameOverlayActivated(ETypeConstructPhase::Inner); }
 
 
 struct FGameOverlayActivated;
 // ********** End ScriptStruct FGameOverlayActivated ***********************************************
 
 // ********** Begin ScriptStruct FGameRichPresenceJoinRequested ************************************
+struct Z_Construct_UScriptStruct_FGameRichPresenceJoinRequested_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameRichPresenceJoinRequested(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_410_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameRichPresenceJoinRequested_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameRichPresenceJoinRequested_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameRichPresenceJoinRequested(ETypeConstructPhase::Inner); }
 
 
 struct FGameRichPresenceJoinRequested;
 // ********** End ScriptStruct FGameRichPresenceJoinRequested **************************************
 
 // ********** Begin ScriptStruct FGameServerChangeRequested ****************************************
+struct Z_Construct_UScriptStruct_FGameServerChangeRequested_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGameServerChangeRequested(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_430_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameServerChangeRequested_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGameServerChangeRequested_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameServerChangeRequested(ETypeConstructPhase::Inner); }
 
 
 struct FGameServerChangeRequested;
 // ********** End ScriptStruct FGameServerChangeRequested ******************************************
 
 // ********** Begin ScriptStruct FPersonaStateChange ***********************************************
+struct Z_Construct_UScriptStruct_FPersonaStateChange_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FPersonaStateChange(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_450_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FPersonaStateChange_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FPersonaStateChange_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FPersonaStateChange(ETypeConstructPhase::Inner); }
 
 
 struct FPersonaStateChange;
 // ********** End ScriptStruct FPersonaStateChange *************************************************
 
 // ********** Begin ScriptStruct FEquippedProfileItemsChanged **************************************
+struct Z_Construct_UScriptStruct_FEquippedProfileItemsChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FEquippedProfileItemsChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_477_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FEquippedProfileItemsChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FEquippedProfileItemsChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FEquippedProfileItemsChanged(ETypeConstructPhase::Inner); }
 
 
 struct FEquippedProfileItemsChanged;
 // ********** End ScriptStruct FEquippedProfileItemsChanged ****************************************
 
 // ********** Begin ScriptStruct FEquippedProfileItems *********************************************
+struct Z_Construct_UScriptStruct_FEquippedProfileItems_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FEquippedProfileItems(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_495_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FEquippedProfileItems_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FEquippedProfileItems_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FEquippedProfileItems(ETypeConstructPhase::Inner); }
 
 
 struct FEquippedProfileItems;
 // ********** End ScriptStruct FEquippedProfileItems ***********************************************
 
 // ********** Begin ScriptStruct FDownloadClanActivityCountsResult *********************************
+struct Z_Construct_UScriptStruct_FDownloadClanActivityCountsResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FDownloadClanActivityCountsResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_528_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FDownloadClanActivityCountsResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FDownloadClanActivityCountsResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FDownloadClanActivityCountsResult(ETypeConstructPhase::Inner); }
 
 
 struct FDownloadClanActivityCountsResult;
 // ********** End ScriptStruct FDownloadClanActivityCountsResult ***********************************
 
 // ********** Begin ScriptStruct FClanOfficerListResponse ******************************************
+struct Z_Construct_UScriptStruct_FClanOfficerListResponse_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FClanOfficerListResponse(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_549_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FClanOfficerListResponse_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FClanOfficerListResponse_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FClanOfficerListResponse(ETypeConstructPhase::Inner); }
 
 
 struct FClanOfficerListResponse;
 // ********** End ScriptStruct FClanOfficerListResponse ********************************************
 
 // ********** Begin ScriptStruct FJoinClanChatRoomCompletionResult *********************************
+struct Z_Construct_UScriptStruct_FJoinClanChatRoomCompletionResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FJoinClanChatRoomCompletionResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_574_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FJoinClanChatRoomCompletionResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FJoinClanChatRoomCompletionResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FJoinClanChatRoomCompletionResult(ETypeConstructPhase::Inner); }
 
 
 struct FJoinClanChatRoomCompletionResult;
 // ********** End ScriptStruct FJoinClanChatRoomCompletionResult ***********************************
 
 // ********** Begin ScriptStruct FFriendsGetFollowerCount ******************************************
+struct Z_Construct_UScriptStruct_FFriendsGetFollowerCount_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFriendsGetFollowerCount(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_597_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFriendsGetFollowerCount_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFriendsGetFollowerCount_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFriendsGetFollowerCount(ETypeConstructPhase::Inner); }
 
 
 struct FFriendsGetFollowerCount;
 // ********** End ScriptStruct FFriendsGetFollowerCount ********************************************
 
 // ********** Begin ScriptStruct FFriendsIsFollowing ***********************************************
+struct Z_Construct_UScriptStruct_FFriendsIsFollowing_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFriendsIsFollowing(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_622_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFriendsIsFollowing_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFriendsIsFollowing_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFriendsIsFollowing(ETypeConstructPhase::Inner); }
 
 
 struct FFriendsIsFollowing;
 // ********** End ScriptStruct FFriendsIsFollowing *************************************************
 
 // ********** Begin ScriptStruct FFriendsEnumerateFollowingList ************************************
+struct Z_Construct_UScriptStruct_FFriendsEnumerateFollowingList_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFriendsEnumerateFollowingList(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_647_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFriendsEnumerateFollowingList_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFriendsEnumerateFollowingList_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFriendsEnumerateFollowingList(ETypeConstructPhase::Inner); }
 
 
 struct FFriendsEnumerateFollowingList;
 // ********** End ScriptStruct FFriendsEnumerateFollowingList **************************************
-
-// ********** Begin Delegate FOnGameOverlayActivated ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_678_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameOverlayActivated_DelegateWrapper(const FMulticastScriptDelegate& OnGameOverlayActivated, FGameOverlayActivated const& Data);
-
-
-// ********** End Delegate FOnGameOverlayActivated *************************************************
-
-// ********** Begin Delegate FOnAvatarImageLoaded **************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_679_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAvatarImageLoaded_DelegateWrapper(const FMulticastScriptDelegate& OnAvatarImageLoaded, FAvatarImageLoaded const& Data);
-
-
-// ********** End Delegate FOnAvatarImageLoaded ****************************************************
-
-// ********** Begin Delegate FOnGameServerChangeRequested ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_680_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameServerChangeRequested_DelegateWrapper(const FMulticastScriptDelegate& OnGameServerChangeRequested, FGameServerChangeRequested const& Data);
-
-
-// ********** End Delegate FOnGameServerChangeRequested ********************************************
-
-// ********** Begin Delegate FOnGameConnectedFriendChatMsg *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_681_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameConnectedFriendChatMsg_DelegateWrapper(const FMulticastScriptDelegate& OnGameConnectedFriendChatMsg, FGameConnectedFriendChatMsg const& Data);
-
-
-// ********** End Delegate FOnGameConnectedFriendChatMsg *******************************************
-
-// ********** Begin Delegate FOnGameLobbyJoinRequested *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_682_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameLobbyJoinRequested_DelegateWrapper(const FMulticastScriptDelegate& OnGameLobbyJoinRequested, FGameLobbyJoinRequested const& Data);
-
-
-// ********** End Delegate FOnGameLobbyJoinRequested ***********************************************
-
-// ********** Begin Delegate FOnGameRichPresenceJoinRequested **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_683_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameRichPresenceJoinRequested_DelegateWrapper(const FMulticastScriptDelegate& OnGameRichPresenceJoinRequested, FGameRichPresenceJoinRequested const& Data);
-
-
-// ********** End Delegate FOnGameRichPresenceJoinRequested ****************************************
-
-// ********** Begin Delegate FOnPersonaStateChange *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_684_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnPersonaStateChange_DelegateWrapper(const FMulticastScriptDelegate& OnPersonaStateChange, FPersonaStateChange const& Data);
-
-
-// ********** End Delegate FOnPersonaStateChange ***************************************************
-
-// ********** Begin Delegate FOnClanOfficerListResponse ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_685_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnClanOfficerListResponse_DelegateWrapper(const FMulticastScriptDelegate& OnClanOfficerListResponse, FClanOfficerListResponse const& Data);
-
-
-// ********** End Delegate FOnClanOfficerListResponse **********************************************
-
-// ********** Begin Delegate FOnFriendRichPresenceUpdate *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_686_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFriendRichPresenceUpdate_DelegateWrapper(const FMulticastScriptDelegate& OnFriendRichPresenceUpdate, FFriendRichPresenceUpdate const& Data);
-
-
-// ********** End Delegate FOnFriendRichPresenceUpdate *********************************************
-
-// ********** Begin Delegate FOnGameConnectedClanChatMsg *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_687_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameConnectedClanChatMsg_DelegateWrapper(const FMulticastScriptDelegate& OnGameConnectedClanChatMsg, FGameConnectedClanChatMsg const& Data);
-
-
-// ********** End Delegate FOnGameConnectedClanChatMsg *********************************************
-
-// ********** Begin Delegate FOnGameConnectedChatJoin **********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_688_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameConnectedChatJoin_DelegateWrapper(const FMulticastScriptDelegate& OnGameConnectedChatJoin, FGameConnectedChatJoin const& Data);
-
-
-// ********** End Delegate FOnGameConnectedChatJoin ************************************************
-
-// ********** Begin Delegate FOnGameConnectedChatLeave *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_689_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGameConnectedChatLeave_DelegateWrapper(const FMulticastScriptDelegate& OnGameConnectedChatLeave, FGameConnectedChatLeave const& Data);
-
-
-// ********** End Delegate FOnGameConnectedChatLeave ***********************************************
-
-// ********** Begin Delegate FOnDownloadClanActivityCountsResult ***********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_690_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadClanActivityCountsResult_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadClanActivityCountsResult, FDownloadClanActivityCountsResult const& Data);
-
-
-// ********** End Delegate FOnDownloadClanActivityCountsResult *************************************
-
-// ********** Begin Delegate FOnJoinClanChatRoomCompletionResult ***********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_691_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinClanChatRoomCompletionResult_DelegateWrapper(const FMulticastScriptDelegate& OnJoinClanChatRoomCompletionResult, FJoinClanChatRoomCompletionResult const& Data);
-
-
-// ********** End Delegate FOnJoinClanChatRoomCompletionResult *************************************
-
-// ********** Begin Delegate FOnEquippedProfileItemsChanged ****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_692_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnEquippedProfileItemsChanged_DelegateWrapper(const FMulticastScriptDelegate& OnEquippedProfileItemsChanged, FEquippedProfileItemsChanged const& Data);
-
-
-// ********** End Delegate FOnEquippedProfileItemsChanged ******************************************
-
-// ********** Begin Delegate FOnDownloadClanActivityCounts *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_694_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadClanActivityCounts_DelegateWrapper(const FScriptDelegate& OnDownloadClanActivityCounts, FDownloadClanActivityCountsResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadClanActivityCounts *******************************************
-
-// ********** Begin Delegate FOnRequestClanOfficerList *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_695_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestClanOfficerList_DelegateWrapper(const FScriptDelegate& OnRequestClanOfficerList, FClanOfficerListResponse const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestClanOfficerList ***********************************************
-
-// ********** Begin Delegate FOnJoinClanChatRoom ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_696_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinClanChatRoom_DelegateWrapper(const FScriptDelegate& OnJoinClanChatRoom, FJoinClanChatRoomCompletionResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinClanChatRoom *****************************************************
-
-// ********** Begin Delegate FOnGetFollowerCount ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_697_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetFollowerCount_DelegateWrapper(const FScriptDelegate& OnGetFollowerCount, FFriendsGetFollowerCount const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetFollowerCount *****************************************************
-
-// ********** Begin Delegate FOnRequestFriendRichPresence ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_698_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestFriendRichPresence_DelegateWrapper(const FScriptDelegate& OnRequestFriendRichPresence, FFriendRichPresenceUpdate const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestFriendRichPresence ********************************************
-
-// ********** Begin Delegate FOnIsFollowing ********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_699_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnIsFollowing_DelegateWrapper(const FScriptDelegate& OnIsFollowing, FFriendsIsFollowing const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnIsFollowing **********************************************************
-
-// ********** Begin Delegate FOnEnumerateFollowingList *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_700_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnEnumerateFollowingList_DelegateWrapper(const FScriptDelegate& OnEnumerateFollowingList, FFriendsEnumerateFollowingList const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnEnumerateFollowingList ***********************************************
-
-// ********** Begin Delegate FOnRequestEquippedProfileItems ****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h_701_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestEquippedProfileItems_DelegateWrapper(const FScriptDelegate& OnRequestEquippedProfileItems, FEquippedProfileItems const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestEquippedProfileItems ******************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsTypes_h
@@ -387,7 +287,7 @@ ORIONSTEAMSDKAPI_API void FOnRequestEquippedProfileItems_DelegateWrapper(const F
 
 enum class ESteamActivateGameOverlayToWebPageMode : uint8;
 template<> struct TIsUEnumClass<ESteamActivateGameOverlayToWebPageMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamActivateGameOverlayToWebPageMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamActivateGameOverlayToWebPageMode>();
 // ********** End Enum ESteamActivateGameOverlayToWebPageMode **************************************
 
 // ********** Begin Enum ESteamFriendRelationship **************************************************
@@ -404,7 +304,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamActivateGameOverlayToWeb
 
 enum class ESteamFriendRelationship : uint8;
 template<> struct TIsUEnumClass<ESteamFriendRelationship> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFriendRelationship>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamFriendRelationship>();
 // ********** End Enum ESteamFriendRelationship ****************************************************
 
 // ********** Begin Enum ESteamPersonaState ********************************************************
@@ -420,7 +320,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFriendRelationship>();
 
 enum class ESteamPersonaState : uint8;
 template<> struct TIsUEnumClass<ESteamPersonaState> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPersonaState>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamPersonaState>();
 // ********** End Enum ESteamPersonaState **********************************************************
 
 // ********** Begin Enum ESteamFriendFlags *********************************************************
@@ -440,7 +340,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPersonaState>();
 
 enum class ESteamFriendFlags : uint8;
 template<> struct TIsUEnumClass<ESteamFriendFlags> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFriendFlags>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamFriendFlags>();
 // ********** End Enum ESteamFriendFlags ***********************************************************
 
 // ********** Begin Enum ESteamPersonaChange *******************************************************
@@ -462,7 +362,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFriendFlags>();
 
 enum class ESteamPersonaChange : uint8;
 template<> struct TIsUEnumClass<ESteamPersonaChange> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPersonaChange>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamPersonaChange>();
 // ********** End Enum ESteamPersonaChange *********************************************************
 
 // ********** Begin Enum ESteamOverlayToStoreFlag **************************************************
@@ -473,7 +373,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPersonaChange>();
 
 enum class ESteamOverlayToStoreFlag : uint8;
 template<> struct TIsUEnumClass<ESteamOverlayToStoreFlag> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamOverlayToStoreFlag>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamOverlayToStoreFlag>();
 // ********** End Enum ESteamOverlayToStoreFlag ****************************************************
 
 // ********** Begin Enum ESteamCommunityProfileItemType ********************************************
@@ -486,7 +386,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamOverlayToStoreFlag>();
 
 enum class ESteamCommunityProfileItemType : uint8;
 template<> struct TIsUEnumClass<ESteamCommunityProfileItemType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamCommunityProfileItemType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamCommunityProfileItemType>();
 // ********** End Enum ESteamCommunityProfileItemType **********************************************
 
 // ********** Begin Enum ESteamCommunityProfileItemProperty ****************************************
@@ -506,7 +406,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamCommunityProfileItemType
 
 enum class ESteamCommunityProfileItemProperty : uint8;
 template<> struct TIsUEnumClass<ESteamCommunityProfileItemProperty> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamCommunityProfileItemProperty>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamCommunityProfileItemProperty>();
 // ********** End Enum ESteamCommunityProfileItemProperty ******************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

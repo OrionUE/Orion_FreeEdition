@@ -12,53 +12,49 @@
 #define ORIONSTEAMSDKAPI_SteamTimelineTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FSteamTimelineEventRecordingExists;
 struct FSteamTimelineGamePhaseRecordingExists;
 
 // ********** Begin ScriptStruct FTimelineEventHandle **********************************************
+struct Z_Construct_UScriptStruct_FTimelineEventHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FTimelineEventHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h_47_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FTimelineEventHandle_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FTimelineEventHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FTimelineEventHandle(ETypeConstructPhase::Inner); }
 
 
 struct FTimelineEventHandle;
 // ********** End ScriptStruct FTimelineEventHandle ************************************************
 
 // ********** Begin ScriptStruct FSteamTimelineEventRecordingExists ********************************
+struct Z_Construct_UScriptStruct_FSteamTimelineEventRecordingExists_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamTimelineEventRecordingExists(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h_70_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamTimelineEventRecordingExists_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamTimelineEventRecordingExists_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamTimelineEventRecordingExists(ETypeConstructPhase::Inner); }
 
 
 struct FSteamTimelineEventRecordingExists;
 // ********** End ScriptStruct FSteamTimelineEventRecordingExists **********************************
 
 // ********** Begin ScriptStruct FSteamTimelineGamePhaseRecordingExists ****************************
+struct Z_Construct_UScriptStruct_FSteamTimelineGamePhaseRecordingExists_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamTimelineGamePhaseRecordingExists(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h_93_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamTimelineGamePhaseRecordingExists_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamTimelineGamePhaseRecordingExists_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamTimelineGamePhaseRecordingExists(ETypeConstructPhase::Inner); }
 
 
 struct FSteamTimelineGamePhaseRecordingExists;
 // ********** End ScriptStruct FSteamTimelineGamePhaseRecordingExists ******************************
-
-// ********** Begin Delegate FOnSteamTimelineEventRecordingExists **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h_122_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamTimelineEventRecordingExists_DelegateWrapper(const FMulticastScriptDelegate& OnSteamTimelineEventRecordingExists, FSteamTimelineEventRecordingExists const& Data);
-
-
-// ********** End Delegate FOnSteamTimelineEventRecordingExists ************************************
-
-// ********** Begin Delegate FOnSteamTimelineGamePhaseRecordingExists ******************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h_123_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamTimelineGamePhaseRecordingExists_DelegateWrapper(const FMulticastScriptDelegate& OnSteamTimelineGamePhaseRecordingExists, FSteamTimelineGamePhaseRecordingExists const& Data);
-
-
-// ********** End Delegate FOnSteamTimelineGamePhaseRecordingExists ********************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimelineTypes_h
@@ -74,7 +70,7 @@ ORIONSTEAMSDKAPI_API void FOnSteamTimelineGamePhaseRecordingExists_DelegateWrapp
 
 enum class ESteamTimelineGameMode : uint8;
 template<> struct TIsUEnumClass<ESteamTimelineGameMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamTimelineGameMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamTimelineGameMode>();
 // ********** End Enum ESteamTimelineGameMode ******************************************************
 
 // ********** Begin Enum ESteamTimelineEventClipPriority *******************************************
@@ -86,7 +82,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamTimelineGameMode>();
 
 enum class ESteamTimelineEventClipPriority : uint8;
 template<> struct TIsUEnumClass<ESteamTimelineEventClipPriority> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamTimelineEventClipPriority>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamTimelineEventClipPriority>();
 // ********** End Enum ESteamTimelineEventClipPriority *********************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

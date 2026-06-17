@@ -36,7 +36,7 @@
 | `Source/OrionGame/**/Session` | 游戏层 session component、game session、邀请处理和退出当前世界逻辑。 |
 | `Source/GameUI/**/Online` | 好友、邀请、在线列表等通用 UI。 |
 | `Content/System/Session/BP_SessionComponent` | 默认 Session 组件蓝图子类；通常由 GameFeature 挂载到 GameState。 |
-| `Config/DefaultEngine.ini` | Steam OnlineSubsystem、NetDriver、auth packet handler、CommonSession 默认行为。 |
+| `Config/Custom/Steam/DefaultEngine.ini` | Steam 专用 OnlineSubsystem、NetDriver、auth packet handler、CommonSession 默认行为；由 Steam Target 的 `CustomConfig=Steam` 选择。 |
 
 需要确认引擎行为时，对照 UE 源码：
 
@@ -138,7 +138,7 @@ UMG/CommonUI 修改继续读取 `../unreal-umg/SKILL.md`、`../unreal-commoninpu
 
 ## 配置清单
 
-Steam 配置集中在 `Config/DefaultEngine.ini` 的 Steam block。发布、调试或平台切换时重点看：
+Steam 配置集中在 `Config/Custom/Steam/DefaultEngine.ini` 的 Steam block。根 `Config/DefaultEngine.ini` 只放公共 Engine 配置；不要为了 Steam 包把 Steam 专用 block 写回根配置。发布、调试或平台切换时重点看：
 
 ```ini
 [OrionOnlineSubsystemSteam]
@@ -224,11 +224,12 @@ Steam 目标常见特征：
 
 ### 修改 Steam 发布配置
 
-1. 读取 `DefaultEngine.ini` 的 Steam block 和平台覆盖 `Config/<Platform>/<Platform>Engine.ini`。
+1. 读取 `Config/Custom/Steam/DefaultEngine.ini` 的 Steam block 和平台覆盖 `Config/<Platform>/<Platform>Engine.ini`。
 2. 确认 `SteamDevAppId`、`SteamAppId`、query port、VAC、P2P relay、relaunch 和 server 信息。
-3. 确认 Steam target 是否定义 `WITH_STEAM`，Shipping 是否使用正确 AppID。
-4. 确认 Steam DLL staging、NetDriver、packet handler 和 Web API key 不泄漏。
-5. 做 Development Steam build 和 Shipping Steam build 分别验证。
+3. 确认 Steam target 是否定义 `CustomConfig = "Steam"` 和 `WITH_STEAM`，Shipping 是否使用正确 AppID。
+4. 确认 Steam 打包命令或 Profile 会让 UAT/Stage 看到 `CustomConfig=Steam`，并验证包内 UFS manifest 包含 `Config/Custom/Steam/DefaultEngine.ini`。
+5. 确认 Steam DLL staging、NetDriver、packet handler 和 Web API key 不泄漏。
+6. 做 Development Steam build 和 Shipping Steam build 分别验证。
 
 ## 发布检查
 
@@ -249,7 +250,7 @@ Steam 目标常见特征：
 
 现象：开发环境能启动，发布到 Steam 后 overlay、session、invite 或 server browser 行为不对。
 
-修复：发布前检查 `SteamDevAppId` 与 `SteamAppId`；Shipping 使用正式 AppID，开发使用测试 AppID。
+修复：发布前检查 `Config/Custom/Steam/DefaultEngine.ini` 中的 `SteamDevAppId` 与 `SteamAppId`；Shipping 使用正式 AppID，开发使用测试 AppID。
 
 ### 使用错误 OnlineSubsystem 名称
 

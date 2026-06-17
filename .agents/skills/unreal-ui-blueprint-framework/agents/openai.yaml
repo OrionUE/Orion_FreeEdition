@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal UI Blueprint Framework"
+  short_description: "Document and edit reusable Unreal UI Blueprint framework assets."
+  default_prompt: "Use $unreal-ui-blueprint-framework to document or extend Content/UI framework Blueprints."

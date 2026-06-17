@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -10,7 +10,6 @@
 */
 
 #include "StreamlineDLSSG.h"
-#include "StreamlineLatewarp.h"
 #include "StreamlineCore.h"
 #include "StreamlineShaders.h"
 #include "StreamlineCorePrivate.h"
@@ -23,9 +22,13 @@
 
 #include "CoreMinimal.h"
 #include "Framework/Application/SlateApplication.h"
+#if UE_VERSION_AT_LEAST(5,8,0)
+#include "Slate/SlateViewportProvider.h"
+#endif
 #include "RenderGraphBuilder.h"
 #include "Runtime/Launch/Resources/Version.h"
 #include "ScenePrivate.h"
+#include "SceneViewState.h"
 #include "SystemTextures.h"
 #include "HAL/PlatformApplicationMisc.h"
 
@@ -42,7 +45,8 @@ static TAutoConsoleVariable<int32> CVarStreamlineDLSSGEnable(
 	TEXT("DLSS-FG mode (default = 0)\n")
 	TEXT("0: off\n")
 	TEXT("1: always on\n")
-	TEXT("2: auto mode (on only when it helps)\n"),
+	TEXT("2: auto mode (on only when it helps)\n")
+	TEXT("3: dynamic, if available otherwise reverts to auto"),
 	ECVF_Default);
 
 static TAutoConsoleVariable<int32> CVarStreamlineDLSSGAdjustMotionBlurTimeScale(
@@ -132,7 +136,14 @@ bool ForceTagStreamlineBuffers()
 
 bool ShouldTagStreamlineBuffers()
 {
-	return ForceTagStreamlineBuffers() || IsDLSSGActive() || IsLatewarpActive();
+	return ForceTagStreamlineBuffers() || IsDLSSGActive();
+}
+
+bool ShouldTrackViews()
+{
+	// Currently view tracking is only used to look up info needed for the UI hint extraction pass in
+	// DLSSGOnBackBufferReadyToPresent(). So it doesn't make sense to track views when FG isn't active.
+	return IsDLSSGActive();
 }
 
 
@@ -188,7 +199,13 @@ static FIntRect GetViewportRect(SWindow& InWindow)
 	return ViewportRect;
 }
 
-static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHIRef& InBackBuffer)
+static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow 
+#if UE_VERSION_OLDER_THAN(5,8,0)
+	, const FTextureRHIRef& InBackBuffer
+#else
+	, ISlateViewportProvider& InViewportProvider
+#endif
+)
 {
 	check(IsInRenderingThread());
 
@@ -203,9 +220,15 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 		return;
 	}
 
+#if UE_VERSION_OLDER_THAN(5,8,0)
+	FRHITexture* BackBuffer = InBackBuffer;
+#else
+	FRHITexture* BackBuffer = InViewportProvider.GetBackBufferResource();
+#endif
+
 	// we need to "consume" the views for this backbuffer, even if we don't tag them
 #if DEBUG_STREAMLINE_VIEW_TRACKING
-	FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s Entry %s Backbuffer=%p"), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), InBackBuffer->GetTexture2D()));
+	FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s Entry %s Backbuffer=%p"), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), BackBuffer->GetTexture2D()));
 #endif
 	TArray<FTrackedView>& TrackedViews = FStreamlineViewExtension::GetTrackedViews();
 
@@ -214,7 +237,7 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 	// in game mode, this is the actual backbuffer (same as the argument to this callback)
 	// in the editor, this is a different, intermediate rendertarget (BufferedRT)
 	// so we need to handle either case to associate views to this backbuffer
-	FRHITexture* RealOrBufferedBackBuffer = InBackBuffer->GetTexture2D();
+	FRHITexture* RealOrBufferedBackBuffer = BackBuffer->GetTexture2D();
 
 	if (AreSlateSharedPointersThreadSafe())
 	{
@@ -251,6 +274,12 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 	{
 		if (TrackedViews[ViewRectIndex].Texture->GetTexture2D() == RealOrBufferedBackBuffer)
 		{
+
+#if DEBUG_STREAMLINE_VIEW_TRACKING
+			UE_CLOG(FStreamlineViewExtension::DebugViewTracking(), LogStreamline, Log, TEXT("%s %s Backbuffer=%p contains View %u, removing it from TrackedViews"), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(),
+				BackBuffer->GetTexture2D(), TrackedViews[ViewRectIndex].ViewKey);
+#endif
+
 			ViewsInThisBackBuffer.Add(TrackedViews[ViewRectIndex]);
 			TrackedViews.RemoveAtSwap(ViewRectIndex);
 		}
@@ -287,7 +316,7 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 		}
 		);
 		UE_LOG(LogStreamline, Log, TEXT("  ViewsInThisBackBuffer=%s"), *ViewRectString);
-		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s Exit %s Backbuffer=%p "), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), InBackBuffer->GetTexture2D()));
+		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s Exit %s Backbuffer=%p "), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), BackBuffer->GetTexture2D()));
 	}
 #endif
 	
@@ -312,7 +341,7 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 	FSLUIHintTagShaderParameters* PassParameters = GraphBuilder.AllocParameters<FSLUIHintTagShaderParameters>();
 	FStreamlineRHI* RHIExtensions = FStreamlineCoreModule::GetStreamlineRHI();
 	
-	FIntPoint BackBufferDimension = { int32(InBackBuffer->GetTexture2D()->GetSizeX()), int32(InBackBuffer->GetTexture2D()->GetSizeY()) };
+	FIntPoint BackBufferDimension = { int32(BackBuffer->GetTexture2D()->GetSizeX()), int32(BackBuffer->GetTexture2D()->GetSizeY()) };
 	
 	const FIntRect WindowClientAreaRect = GetViewportRect(InWindow);
 
@@ -343,13 +372,13 @@ static void DLSSGOnBackBufferReadyToPresent(SWindow& InWindow, const FTextureRHI
 	
 	if (bTagBackbuffer)
 	{
-		PassParameters->BackBuffer = GraphBuilder.RegisterExternalTexture(CreateRenderTarget(InBackBuffer, TEXT("InBackBuffer")));
+		PassParameters->BackBuffer = GraphBuilder.RegisterExternalTexture(CreateRenderTarget(BackBuffer, TEXT("InBackBuffer")));
 	}
 		
 	if (bTagUIColorAlpha)
 	{
 		const float AlphaThreshold = CVarStreamlineTagUIColorAlphaThreshold.GetValueOnRenderThread();
-		FRDGTextureRef UIHintTexture = AddStreamlineUIHintExtractionPass(GraphBuilder, AlphaThreshold, InBackBuffer);
+		FRDGTextureRef UIHintTexture = AddStreamlineUIHintExtractionPass(GraphBuilder, AlphaThreshold, BackBuffer);
 		PassParameters->UIColorAndAlpha = UIHintTexture;
 	}
 
@@ -416,8 +445,17 @@ namespace
 
 	int32 GDLSSGMinGeneratedFrames = 0;
 	int32 GDLSSGMaxGeneratedFrames = 0;
+
+	bool GDLSSGIsVsyncSupportAvailable = false;
+	bool GDLSSGIsDynamicMFGSupported = false;
 }
 
+static FAutoConsoleVariableRef CVarDLSSGIsVsyncSupportAvailable(
+	TEXT("r.Streamline.DLSSGIsVsyncSupportAvailable"),
+	GDLSSGIsVsyncSupportAvailable,
+	TEXT(""),
+	ECVF_RenderThreadSafe | ECVF_ReadOnly
+);
 
 STREAMLINECORE_API Streamline::EStreamlineFeatureSupport QueryStreamlineDLSSGSupport()
 {
@@ -476,7 +514,7 @@ bool IsStreamlineDLSSGSupported()
 
 static sl::DLSSGMode SLDLSSGModeFromCvar()
 {
-	static_assert(uint32_t(sl::DLSSGMode::eCount) == 3U, "sl::DLSSGMode enum value mismatch. Dear NVIDIA Streamline plugin developer, please update this code!");
+	static_assert(uint32_t(sl::DLSSGMode::eCount) == 4U, "sl::DLSSGMode enum value mismatch. Dear NVIDIA Streamline plugin developer, please update this code!");
 
 	int32 DLSSGMode = CVarStreamlineDLSSGEnable.GetValueOnAnyThread();
 	switch (DLSSGMode)
@@ -487,6 +525,8 @@ static sl::DLSSGMode SLDLSSGModeFromCvar()
 		return sl::DLSSGMode::eOn;
 	case 2:
 		return sl::DLSSGMode::eAuto;
+	case 3: 
+		return IsStreamlineDynamicDLSSGAvailable() ? sl::DLSSGMode::eDynamic : sl::DLSSGMode::eAuto;
 	default:
 		UE_LOG(LogStreamline, Error, TEXT("Invalid r.Streamline.DLSSG.Enable value %d"), DLSSGMode);
 		return sl::DLSSGMode::eOff;
@@ -518,6 +558,16 @@ void GetStreamlineDLSSGMinMaxGeneratedFrames(int32& MinGeneratedFrames, int32& M
 	MaxGeneratedFrames = GDLSSGMaxGeneratedFrames;
 }
 
+bool IsStreamlineDynamicDLSSGAvailable()
+{
+	return GDLSSGIsDynamicMFGSupported;
+}
+
+bool IsStreamlineVsyncSupportAvailable()
+{
+	return GDLSSGIsVsyncSupportAvailable;
+}
+
 DECLARE_STATS_GROUP(TEXT("DLSS-G"), STATGROUP_DLSSG, STATCAT_Advanced);
 DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Frames Presented"), STAT_DLSSGFramesPresented, STATGROUP_DLSSG);
 DECLARE_FLOAT_COUNTER_STAT(TEXT("DLSS-G: Average FPS"), STAT_DLSSGAverageFPS, STATGROUP_DLSSG);
@@ -527,6 +577,8 @@ DECLARE_FLOAT_COUNTER_STAT(TEXT("DLSS-G: VRAM Estimate (MiB)"), STAT_DLSSGVRAMEs
 DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Minimum Width or Height "), STAT_DLSSGMinWidthOrHeight, STATGROUP_DLSSG);
 DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Minimum Number of Generated Frames "), STAT_DLSSGMinGeneratedFrames, STATGROUP_DLSSG);
 DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Maximum Number of Generated Frames "), STAT_DLSSGMaxGeneratedFrames, STATGROUP_DLSSG);
+DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Is Vsync Support Available"), STAT_DLSSGIsVsyncSupportAvailable, STATGROUP_DLSSG);
+DECLARE_DWORD_COUNTER_STAT(TEXT("DLSS-G: Is Dynamic MFG Supported"), STAT_DLSSGIsDynamicMFGSupported, STATGROUP_DLSSG);
 
 
 namespace sl
@@ -605,8 +657,16 @@ void GetDLSSGStatusFromStreamline(bool bQueryOncePerAppLifetimeValues)
 		GLastDLSSGVRAMEstimate = float(State.estimatedVRAMUsageInBytes) / (1024 * 1024);
 		SET_FLOAT_STAT(STAT_DLSSGVRAMEstimate, GLastDLSSGVRAMEstimate);
 #endif
+
+
 		if (bQueryOncePerAppLifetimeValues)
 		{
+			GDLSSGIsVsyncSupportAvailable = State.bIsVsyncSupportAvailable == sl::Boolean::eTrue;
+			SET_DWORD_STAT(STAT_DLSSGIsVsyncSupportAvailable, GDLSSGIsVsyncSupportAvailable);
+			
+			GDLSSGIsDynamicMFGSupported = State.bIsDynamicMFGSupported == sl::Boolean::eTrue;
+			SET_DWORD_STAT(STAT_DLSSGIsDynamicMFGSupported, GDLSSGIsDynamicMFGSupported);
+			
 			GDLSSGMinWidthOrHeight = State.minWidthOrHeight;
 			SET_DWORD_STAT(STAT_DLSSGMinWidthOrHeight, GDLSSGMinWidthOrHeight);
 

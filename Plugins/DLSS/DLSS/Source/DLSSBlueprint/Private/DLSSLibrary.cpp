@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -105,9 +105,21 @@ void UDLSSLibrary::GetDLSSOnScreenMessages(TMultiMap<FCoreDelegates::EOnScreenMe
 
 		bool bShowNotSupportedMessage = bIsNVIDIA && (UDLSSSupport::Supported != DLSSSRSupport);
 
-		if ((UDLSSSupport::NotSupportedIncompatibleAPICaptureToolActive == DLSSSRSupport) && !GetMutableDefault<UDLSSOverrideSettings>()->bShowDLSSIncompatiblePluginsToolsWarnings )
+		auto OverrideSettings = GetDefault<UDLSSOverrideSettings>();
+
+		if ((UDLSSSupport::NotSupportedIncompatibleAPICaptureToolActive == DLSSSRSupport))
 		{
-			bShowNotSupportedMessage = false;
+			if (OverrideSettings->ShowDLSSSDebugOnScreenMessages == EDLSSSettingOverride::UseProjectSettings)
+			{
+				const UDLSSSettings* ProjectSettings = GetDefault<UDLSSSettings>();
+				bShowNotSupportedMessage = ProjectSettings->bShowDLSSIncompatiblePluginsToolsWarnings;
+
+			}
+			else
+			{
+				bShowNotSupportedMessage = OverrideSettings->bShowDLSSIncompatiblePluginsToolsWarnings;
+			}
+			
 		}
 
 		if (bShowNotSupportedMessage)
@@ -463,6 +475,9 @@ void UDLSSLibrary::EnableDLSS(bool bEnabled)
 		{
 			static const auto CVarTemporalAAUpscaler = IConsoleManager::Get().FindConsoleVariable(TEXT("r.TemporalAA.Upscaler"));
 			CVarTemporalAAUpscaler->Set(1, ECVF_SetByCommandline);
+
+			static const auto CVarTemporalAAUpsampling = IConsoleManager::Get().FindConsoleVariable(TEXT("r.TemporalAA.Upsampling"));
+			CVarTemporalAAUpsampling->Set(1,ECVF_SetByCommandline);
 			// restore denoising state in case it was disabled before
 			EnableDLSSRR(bDenoisingRequested);
 		}

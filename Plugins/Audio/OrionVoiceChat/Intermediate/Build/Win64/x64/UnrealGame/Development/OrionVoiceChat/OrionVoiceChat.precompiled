@@ -1,0 +1,12 @@
+{
+	"OutputFiles": [
+		"../../../../../../../../../../Intermediate/Build/Win64/x64/OrionGame/Development/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"Module.OrionVoiceChat.cpp.obj",
+		"OrionAudioCaptureAndroid.cpp.obj",
+		"OrionAudioCaptureIOS.cpp.obj",
+		"OrionMicrophoneSpeakComponent.cpp.obj",
+		"OrionVoiceChat.cpp.obj",
+		"OrionVoiceChatActor.cpp.obj"
+	],
+	"ToolChainVersion": "14.44.35228"
+}

@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebSteamEconomyAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionCanTrade;
 class UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction;
@@ -31,16 +31,15 @@ class UOrionSteamWebAPIAsyncActionStartTrade;
 	DECLARE_FUNCTION(execCanTradeAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionCanTrade(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCanTrade, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCanTrade, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCanTrade) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionCanTrade)
 
 
@@ -76,16 +75,15 @@ class UOrionSteamWebAPIAsyncActionCanTrade;
 	DECLARE_FUNCTION(execFinalizeAssetTransactionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_37_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionFinalizeAssetTransaction(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction)
 
 
@@ -121,16 +119,15 @@ class UOrionSteamWebAPIAsyncActionFinalizeAssetTransaction;
 	DECLARE_FUNCTION(execGetAssetClassInfoAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_58_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetAssetClassInfo(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetAssetClassInfo, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetAssetClassInfo, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetClassInfo) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetAssetClassInfo)
 
 
@@ -166,16 +163,15 @@ class UOrionSteamWebAPIAsyncActionGetAssetClassInfo;
 	DECLARE_FUNCTION(execGetAssetPricesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_80_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetAssetPrices(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetAssetPrices, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetAssetPrices, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetAssetPrices) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetAssetPrices)
 
 
@@ -211,16 +207,15 @@ class UOrionSteamWebAPIAsyncActionGetAssetPrices;
 	DECLARE_FUNCTION(execGetExportedAssetsForUserAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_100_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetExportedAssetsForUser(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser)
 
 
@@ -256,16 +251,15 @@ class UOrionSteamWebAPIAsyncActionGetExportedAssetsForUser;
 	DECLARE_FUNCTION(execGetMarketPricesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_120_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetMarketPrices(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetMarketPrices, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetMarketPrices, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetMarketPrices) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetMarketPrices)
 
 
@@ -301,16 +295,15 @@ class UOrionSteamWebAPIAsyncActionGetMarketPrices;
 	DECLARE_FUNCTION(execStartAssetTransactionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_138_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionStartAssetTransaction(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartAssetTransaction, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartAssetTransaction, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartAssetTransaction) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionStartAssetTransaction)
 
 
@@ -346,16 +339,15 @@ class UOrionSteamWebAPIAsyncActionStartAssetTransaction;
 	DECLARE_FUNCTION(execStartTradeAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomyAsyncActions_h_164_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionStartTrade(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartTrade, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartTrade, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartTrade) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionStartTrade)
 
 

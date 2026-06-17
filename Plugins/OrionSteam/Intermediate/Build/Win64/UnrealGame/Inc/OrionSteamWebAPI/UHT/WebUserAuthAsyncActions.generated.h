@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebUserAuthAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionAuthenticateUser;
 class UOrionSteamWebAPIAsyncActionAuthenticateUserTicket;
@@ -25,16 +25,15 @@ class UOrionSteamWebAPIAsyncActionAuthenticateUserTicket;
 	DECLARE_FUNCTION(execAuthenticateUserAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamUserAuth_WebUserAuthAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionAuthenticateUser(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionAuthenticateUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionAuthenticateUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUser) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionAuthenticateUser)
 
 
@@ -70,16 +69,15 @@ class UOrionSteamWebAPIAsyncActionAuthenticateUser;
 	DECLARE_FUNCTION(execAuthenticateUserTicketAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamUserAuth_WebUserAuthAsyncActions_h_36_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionAuthenticateUserTicket(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionAuthenticateUserTicket, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionAuthenticateUserTicket, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionAuthenticateUserTicket) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionAuthenticateUserTicket)
 
 

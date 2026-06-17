@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamFriendsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamFriendsAsyncActionDownloadClanActivityCounts;
 class UOrionSteamFriendsAsyncActionEnumerateFollowingList;
@@ -32,71 +32,21 @@ struct FFriendsIsFollowing;
 struct FJoinClanChatRoomCompletionResult;
 struct FSteamID;
 
-// ********** Begin Delegate FOnDownloadClanActivityCountsAsyncDelegate ****************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadClanActivityCountsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadClanActivityCountsAsyncDelegate, FDownloadClanActivityCountsResult const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadClanActivityCountsAsyncDelegate ******************************
-
-// ********** Begin Delegate FOnRequestClanOfficerListAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestClanOfficerListAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestClanOfficerListAsyncDelegate, FClanOfficerListResponse const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestClanOfficerListAsyncDelegate **********************************
-
-// ********** Begin Delegate FOnJoinClanChatRoomAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_18_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinClanChatRoomAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnJoinClanChatRoomAsyncDelegate, FJoinClanChatRoomCompletionResult const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinClanChatRoomAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnEnumerateFollowingListAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_19_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnEnumerateFollowingListAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnEnumerateFollowingListAsyncDelegate, FFriendsEnumerateFollowingList const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnEnumerateFollowingListAsyncDelegate **********************************
-
-// ********** Begin Delegate FOnIsFollowingAsyncDelegate *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_20_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnIsFollowingAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnIsFollowingAsyncDelegate, FFriendsIsFollowing const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnIsFollowingAsyncDelegate *********************************************
-
-// ********** Begin Delegate FOnGetFollowerCountAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_21_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetFollowerCountAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnGetFollowerCountAsyncDelegate, FFriendsGetFollowerCount const& data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetFollowerCountAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnRequestUserInformationAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_22_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestUserInformationAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestUserInformationAsyncDelegate);
-
-
-// ********** End Delegate FOnRequestUserInformationAsyncDelegate **********************************
-
 // ********** Begin Class UOrionSteamFriendsAsyncActionDownloadClanActivityCounts ******************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_30_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
 	DECLARE_FUNCTION(execDownloadClanActivityCountsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_30_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionDownloadClanActivityCounts(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionDownloadClanActivityCounts, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionDownloadClanActivityCounts, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionDownloadClanActivityCounts) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionDownloadClanActivityCounts)
 
 
@@ -133,16 +83,15 @@ class UOrionSteamFriendsAsyncActionDownloadClanActivityCounts;
 	DECLARE_FUNCTION(execRequestClanOfficerListAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_58_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionRequestClanOfficerList(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionRequestClanOfficerList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionRequestClanOfficerList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestClanOfficerList) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionRequestClanOfficerList)
 
 
@@ -179,16 +128,15 @@ class UOrionSteamFriendsAsyncActionRequestClanOfficerList;
 	DECLARE_FUNCTION(execJoinClanChatRoomAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_86_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionJoinClanChatRoom(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionJoinClanChatRoom, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionJoinClanChatRoom, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionJoinClanChatRoom) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionJoinClanChatRoom)
 
 
@@ -225,16 +173,15 @@ class UOrionSteamFriendsAsyncActionJoinClanChatRoom;
 	DECLARE_FUNCTION(execEnumerateFollowingListAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_114_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionEnumerateFollowingList(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionEnumerateFollowingList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionEnumerateFollowingList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionEnumerateFollowingList) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionEnumerateFollowingList)
 
 
@@ -271,16 +218,15 @@ class UOrionSteamFriendsAsyncActionEnumerateFollowingList;
 	DECLARE_FUNCTION(execIsFollowingAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_143_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionIsFollowing(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionIsFollowing, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionIsFollowing, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionIsFollowing) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionIsFollowing)
 
 
@@ -317,16 +263,15 @@ class UOrionSteamFriendsAsyncActionIsFollowing;
 	DECLARE_FUNCTION(execGetFollowerCountAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_169_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionGetFollowerCount(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionGetFollowerCount, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionGetFollowerCount, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionGetFollowerCount) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionGetFollowerCount)
 
 
@@ -363,16 +308,15 @@ class UOrionSteamFriendsAsyncActionGetFollowerCount;
 	DECLARE_FUNCTION(execRequestUserInformationAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriendsAsyncActions_h_195_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriendsAsyncActionRequestUserInformation(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionRequestUserInformation, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriendsAsyncActionRequestUserInformation, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriendsAsyncActionRequestUserInformation) \
 	DECLARE_SERIALIZER(UOrionSteamFriendsAsyncActionRequestUserInformation)
 
 

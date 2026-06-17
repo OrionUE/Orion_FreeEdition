@@ -12,21 +12,21 @@
 #define ORIONSTEAMSDKAPI_OrionSteamSDKAPIModule_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionSteam **************************************************************
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteam_NoRegister();
+struct Z_Construct_UClass_UOrionSteam_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteam(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamSDKAPIModule_h_37_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteam(); \
-	friend struct Z_Construct_UClass_UOrionSteam_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteam_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteam_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteam(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteam, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteam_NoRegister) \
+	DECLARE_CLASS2(UOrionSteam, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteam) \
 	DECLARE_SERIALIZER(UOrionSteam)
 
 
@@ -57,16 +57,15 @@ class UOrionSteam;
 // ********** End Class UOrionSteam ****************************************************************
 
 // ********** Begin Class UOrionSteamInterface *****************************************************
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInterface_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInterface_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInterface(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamSDKAPIModule_h_43_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInterface(); \
-	friend struct Z_Construct_UClass_UOrionSteamInterface_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInterface_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInterface_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInterface(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInterface, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInterface_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInterface, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInterface) \
 	DECLARE_SERIALIZER(UOrionSteamInterface)
 
 
@@ -94,16 +93,15 @@ class UOrionSteamInterface;
 // ********** End Class UOrionSteamInterface *******************************************************
 
 // ********** Begin Class UOrionSteamSubsystem *****************************************************
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamSubsystem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamSubsystem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamSubsystem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamSDKAPIModule_h_54_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamSubsystem(); \
-	friend struct Z_Construct_UClass_UOrionSteamSubsystem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamSubsystem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamSubsystem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamSubsystem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamSubsystem, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamSubsystem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamSubsystem, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamSubsystem) \
 	DECLARE_SERIALIZER(UOrionSteamSubsystem)
 
 

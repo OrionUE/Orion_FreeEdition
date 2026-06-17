@@ -12,14 +12,18 @@
 #define GAMECORE_GameplayTagStack_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FGameplayTagStack *************************************************
+struct Z_Construct_UScriptStruct_FGameplayTagStack_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FGameplayTagStack(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_System_GameplayTagStack_h_21_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameplayTagStack_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct(); \
+	friend struct ::Z_Construct_UScriptStruct_FGameplayTagStack_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameplayTagStack(ETypeConstructPhase::Inner); } \
 	typedef FFastArraySerializerItem Super;
 
 
@@ -27,9 +31,12 @@ struct FGameplayTagStack;
 // ********** End ScriptStruct FGameplayTagStack ***************************************************
 
 // ********** Begin ScriptStruct FGameplayTagStackContainer ****************************************
+struct Z_Construct_UScriptStruct_FGameplayTagStackContainer_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FGameplayTagStackContainer(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_System_GameplayTagStack_h_51_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGameplayTagStackContainer_Statics; \
-	static class UScriptStruct* StaticStruct(); \
+	friend struct ::Z_Construct_UScriptStruct_FGameplayTagStackContainer_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGameplayTagStackContainer(ETypeConstructPhase::Inner); } \
 	typedef FFastArraySerializer Super; \
 	UE_NET_DECLARE_FASTARRAY(FGameplayTagStackContainer, Stacks, );
 

@@ -1,0 +1,4 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+au.nrt.RenderEveryTick,CVar,string,,au,光线追踪,All,true,false,false,false,false,,`au.nrt.RenderEveryTick=<值>` / `au.nrt.RenderEveryTick <值>` 或 INI 中配置,"When set to 1, calls the RenderAudio call every tick.\n",ECVF_Default
+au.nrt.RenderFrameSize,CVar,string,,au,光线追踪,All,true,false,false,false,false,,`au.nrt.RenderFrameSize=<值>` / `au.nrt.RenderFrameSize <值>` 或 INI 中配置,Selects the number of frames to render in a single callback .\n,ECVF_Default
+au.Wasapi.UseDefaultQualitySRC,CVar,string,,au,通用,Windows,true,false,false,false,false,,`au.Wasapi.UseDefaultQualitySRC=<值>` / `au.Wasapi.UseDefaultQualitySRC <值>` 或 INI 中配置,Enable Wasapi default SRC quality.\n,ECVF_Default

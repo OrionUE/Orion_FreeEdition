@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+OpenColorIO.NoShaderDDC,CVar,bool,false,OpenColorIO,后处理,All,true,false,false,false,false,,`OpenColorIO.NoShaderDDC=<值>` / `OpenColorIO.NoShaderDDC <值>` 或 INI 中配置,"When enabled, we don't check the DDC for compiled shaders to simulate a cold DDC.",
+OpenColorIO.ShowShaderCompilerWarnings,CVar,string,,OpenColorIO,后处理,All,true,false,false,false,false,,`OpenColorIO.ShowShaderCompilerWarnings=<值>` / `OpenColorIO.ShowShaderCompilerWarnings <值>` 或 INI 中配置,"When set to 1, will display all warnings from OpenColorIO shader compiles.",

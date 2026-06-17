@@ -114,6 +114,16 @@ git diff --check -- <touched-paths>
 
 ## 常见问题
 
+### 写回和校验并行导致 LF-only 误判
+
+现象：`normalize-windows-text-format.ps1` 报告已写回文件，但同时启动的字节扫描或代码规范校验仍报告 `contains LF-only line endings`。
+
+原因：写文件和读文件校验被并行执行，校验可能读到写回前或写回中的文件状态。
+
+修复：先等待 normalize 脚本结束，再串行运行 CRLF 字节扫描、`check-code-style.ps1` 和 `git diff --check`。不要把写回命令和验证命令放进同一次并行工具调用。
+
+验证：串行复查时字节扫描无 LF-only，代码规范脚本通过，`git diff --check` 无输出。
+
 ### 批量格式化后校验报 LF-only
 
 现象：`check-code-style.ps1` 报 `contains LF-only line endings`，或 `git diff --stat` 打印大量 `LF will be replaced by CRLF`。

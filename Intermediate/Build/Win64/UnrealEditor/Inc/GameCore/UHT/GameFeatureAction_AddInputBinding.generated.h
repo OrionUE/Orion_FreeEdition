@@ -12,21 +12,21 @@
 #define GAMECORE_GameFeatureAction_AddInputBinding_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UGameFeatureAction_AddInputBinding ***************************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputBinding_NoRegister();
+struct Z_Construct_UClass_UGameFeatureAction_AddInputBinding_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputBinding(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddInputBinding_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameFeatureAction_AddInputBinding(); \
-	friend struct Z_Construct_UClass_UGameFeatureAction_AddInputBinding_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputBinding_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameFeatureAction_AddInputBinding_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameFeatureAction_AddInputBinding(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameFeatureAction_AddInputBinding, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddInputBinding_NoRegister) \
+	DECLARE_CLASS2(UGameFeatureAction_AddInputBinding, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddInputBinding) \
 	DECLARE_SERIALIZER(UGameFeatureAction_AddInputBinding)
 
 
@@ -39,7 +39,7 @@ public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(GAMECORE_API, UGameFeatureAction_AddInputBinding); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGameFeatureAction_AddInputBinding); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UGameFeatureAction_AddInputBinding) \
-	GAMECORE_API virtual ~UGameFeatureAction_AddInputBinding();
+	GAMECORE_API ~UGameFeatureAction_AddInputBinding();
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddInputBinding_h_23_PROLOG

@@ -12,14 +12,19 @@
 #define ORIONSTEAMSDKAPI_OrionSteamTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FOrionSteamId *****************************************************
+struct Z_Construct_UScriptStruct_FOrionSteamId_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FOrionSteamId(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamTypes_h_17_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FOrionSteamId_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FOrionSteamId_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FOrionSteamId(ETypeConstructPhase::Inner); }
 
 
 struct FOrionSteamId;
@@ -41,7 +46,7 @@ struct FOrionSteamId;
 
 enum class EOrionSteamPersonaState : uint8;
 template<> struct TIsUEnumClass<EOrionSteamPersonaState> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamPersonaState>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamPersonaState>();
 // ********** End Enum EOrionSteamPersonaState *****************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

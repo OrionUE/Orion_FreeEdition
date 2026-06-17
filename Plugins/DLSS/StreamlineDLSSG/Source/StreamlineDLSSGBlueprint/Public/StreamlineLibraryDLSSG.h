@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -36,9 +36,13 @@ enum class EStreamlineDLSSGMode : uint8
 	
 	Off  = 0   UMETA(DisplayName = "Off"),
 	Auto = 251 UMETA(DisplayName = "Auto"),
+	OnDynamic = 241 UMETA(DisplayName = "Dynamic"),
 	On2X = 17  UMETA(DisplayName = "2X"),
 	On3X = 23  UMETA(DisplayName = "3X"),
 	On4X = 31  UMETA(DisplayName = "4X"),
+	On5X = 37  UMETA(DisplayName = "5X"),
+	On6X = 41  UMETA(DisplayName = "6X"),
+	
 };
 
 
@@ -88,6 +92,10 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Streamline|DLSS-FG", meta = (DisplayName = "Get DLSS-FG  frame rate and presented frames"))
 	static UE_API void GetDLSSGFrameTiming(float& FrameRateInHertz, int32& FramesPresented);
 
+	/* Returns is vsync support available*/
+	UFUNCTION(BlueprintPure, Category = "Streamline|DLSS-FG", meta = (DisplayName = "Get DLSS-FG is vsync available"))
+	static UE_API bool GetDLSSGIsVsyncSupportAvailable();
+
 	static void Startup();
 	static void Shutdown();
 private:
@@ -114,9 +122,6 @@ private:
 	static void GetDLSSOnScreenMessages(TMultiMap<FCoreDelegates::EOnScreenMessageSeverity, FText>& OutMessages);
 	static FDelegateHandle DLSSOnScreenMessagesDelegateHandle;
 #endif
-
-
-
 
 #endif
 };

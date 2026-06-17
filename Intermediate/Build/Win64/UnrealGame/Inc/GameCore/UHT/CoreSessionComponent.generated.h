@@ -12,10 +12,10 @@
 #define GAMECORE_CoreSessionComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UCommonSession_SearchResult;
 class UCoreExperienceUserFacingDefinition;
 class USessionScreeningCondition;
@@ -29,16 +29,15 @@ class USessionScreeningCondition;
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_CoreSessionComponent_h_19_CALLBACK_WRAPPERS
-GAMECORE_API UClass* Z_Construct_UClass_UCoreSessionComponent_NoRegister();
+struct Z_Construct_UClass_UCoreSessionComponent_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreSessionComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_CoreSessionComponent_h_19_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreSessionComponent(); \
-	friend struct Z_Construct_UClass_UCoreSessionComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreSessionComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreSessionComponent_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreSessionComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreSessionComponent, UGameStateComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreSessionComponent_NoRegister) \
+	DECLARE_CLASS2(UCoreSessionComponent, UGameStateComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreSessionComponent) \
 	DECLARE_SERIALIZER(UCoreSessionComponent)
 
 

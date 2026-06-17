@@ -12,14 +12,18 @@
 #define GAMECORE_CoreGameplayEffectContext_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FCoreGameplayEffectContext ****************************************
+struct Z_Construct_UScriptStruct_FCoreGameplayEffectContext_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreGameplayEffectContext(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreGameplayEffectContext_h_17_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreGameplayEffectContext_Statics; \
-	static class UScriptStruct* StaticStruct(); \
+	friend struct ::Z_Construct_UScriptStruct_FCoreGameplayEffectContext_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreGameplayEffectContext(ETypeConstructPhase::Inner); } \
 	typedef FGameplayEffectContext Super;
 
 

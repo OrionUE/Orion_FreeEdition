@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -45,6 +45,7 @@ public class StreamlineD3D11RHI : ModuleRules
 				"RenderCore",
 				"RHI",
 				"Streamline",
+				"StreamlineDXGIRHI",
 				"StreamlineRHI",
 			}
 		);

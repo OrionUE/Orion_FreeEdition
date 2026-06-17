@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2026 Orion. All Rights Reserved. 
+ * Copyright (c) 2026 Orion. All Rights Reserved.
  * https://orionue.com
  */
 
@@ -11,6 +11,7 @@ public class OrionEditorTarget : TargetRules
 	public OrionEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
+		bOverrideBuildEnvironment = true;
 
 		ExtraModuleNames.AddRange(new string[]
 		{

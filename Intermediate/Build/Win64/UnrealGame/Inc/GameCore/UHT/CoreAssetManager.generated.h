@@ -12,23 +12,23 @@
 #define GAMECORE_CoreAssetManager_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreAssetManager ********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAssetManager_NoRegister();
+struct Z_Construct_UClass_UCoreAssetManager_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAssetManager(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_System_CoreAssetManager_h_39_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAssetManager(); \
-	friend struct Z_Construct_UClass_UCoreAssetManager_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAssetManager_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAssetManager_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAssetManager(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAssetManager, UAssetManager, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAssetManager_NoRegister) \
+	DECLARE_CLASS2(UCoreAssetManager, UAssetManager, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAssetManager) \
 	DECLARE_SERIALIZER(UCoreAssetManager) \
-	static const TCHAR* StaticConfigName() {return TEXT("Game");} \
+	static constexpr const TCHAR* StaticConfigName() {return TEXT("Game");} \
 
 
 

@@ -1,9 +1,0 @@
-{
-	"OutputFiles": [
-		"..\\..\\..\\..\\..\\..\\..\\..\\Intermediate\\Build\\Win64\\x64\\OrionGame\\Development\\Engine\\SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Development\\OrionSteamShared\\Module.OrionSteamShared.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Development\\OrionSteamShared\\OrionSteamSharedAudioSubsystem.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Development\\OrionSteamShared\\OrionSteamSharedModule.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Development\\OrionSteamShared\\OrionSteamSharedTypes.cpp.obj"
-	]
-}

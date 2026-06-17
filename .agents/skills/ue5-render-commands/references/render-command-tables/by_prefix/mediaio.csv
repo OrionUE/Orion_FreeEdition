@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+MediaIO.EnableGPUDirect,CVar,bool,false,MediaIO,通用,All,true,false,false,false,false,,`MediaIO.EnableGPUDirect=<值>` / `MediaIO.EnableGPUDirect <值>` 或 INI 中配置,Whether to enable GPU direct for faster video frame copies. (Experimental),ECVF_RenderThreadSafe

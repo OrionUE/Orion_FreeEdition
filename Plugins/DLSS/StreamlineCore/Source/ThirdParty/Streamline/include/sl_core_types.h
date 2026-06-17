@@ -200,6 +200,11 @@ constexpr BufferType kBufferTypeColorBeforeDepthOfField = 65;
 constexpr BufferType kBufferTypeColorAfterDepthOfField = 66;
 //! Optional - Color buffer that overrides the alpha channel of kBufferTypeScalingOutputColor
 constexpr BufferType kBufferTypeScalingOutputAlpha  = 67;
+//! Optional - UI Alpha
+//! A 1 channel resource containing the alpha value of on-screen elements, between 0.0f and 1.0f inclusive.
+//!  Similar to kBufferTypeUIColorAndAlpha, but only the alpha channel for optimized run-time performance.
+constexpr BufferType kBufferTypeUIAlpha = 68;
+
 //! Features supported with this SDK
 //! 
 //! IMPORTANT: Each feature must use a unique id

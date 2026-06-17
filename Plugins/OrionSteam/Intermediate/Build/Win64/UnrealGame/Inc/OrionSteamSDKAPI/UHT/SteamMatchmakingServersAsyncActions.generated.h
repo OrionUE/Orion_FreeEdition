@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmakingServersAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamMatchmakingServersAsyncActionPingServer;
 class UOrionSteamMatchmakingServersAsyncActionRequestServerList;
@@ -24,34 +24,6 @@ class UServerFilter;
 struct FGameServerItem;
 struct FGameServerRule;
 
-// ********** Begin Delegate FOnPingServerAsyncDelegate ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnPingServerAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnPingServerAsyncDelegate, FGameServerItem const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnPingServerAsyncDelegate **********************************************
-
-// ********** Begin Delegate FOnServerUpdatedAsyncDelegate *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerUpdatedAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnServerUpdatedAsyncDelegate, FGameServerItem const& Data);
-
-
-// ********** End Delegate FOnServerUpdatedAsyncDelegate *******************************************
-
-// ********** Begin Delegate FOnServerRuleAsyncDelegate ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerRuleAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnServerRuleAsyncDelegate, TArray<FGameServerRule> const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnServerRuleAsyncDelegate **********************************************
-
-// ********** Begin Delegate FOnServerRefreshCompleteDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_18_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnServerRefreshCompleteDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnServerRefreshCompleteDelegate);
-
-
-// ********** End Delegate FOnServerRefreshCompleteDelegate ****************************************
-
 // ********** Begin Class UOrionSteamMatchmakingServersAsyncActionPingServer ***********************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
@@ -59,16 +31,15 @@ ORIONSTEAMSDKAPI_API void FOnServerRefreshCompleteDelegate_DelegateWrapper(const
 	DECLARE_FUNCTION(execPingServerAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingServersAsyncActionPingServer(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionPingServer, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionPingServer, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionPingServer) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingServersAsyncActionPingServer)
 
 
@@ -112,16 +83,15 @@ class UOrionSteamMatchmakingServersAsyncActionPingServer;
 	DECLARE_FUNCTION(execRequestFavoritesServerListAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_59_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingServersAsyncActionRequestServerList(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionRequestServerList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionRequestServerList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionRequestServerList) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingServersAsyncActionRequestServerList)
 
 
@@ -159,16 +129,15 @@ class UOrionSteamMatchmakingServersAsyncActionRequestServerList;
 	DECLARE_FUNCTION(execServerRulesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServersAsyncActions_h_143_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingServersAsyncActionServerRules(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionServerRules, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingServersAsyncActionServerRules, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServersAsyncActionServerRules) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingServersAsyncActionServerRules)
 
 

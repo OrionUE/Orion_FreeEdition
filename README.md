@@ -6,7 +6,8 @@
 </p>
 
 <p align="center">
-  <img alt="Unreal Engine" src="https://img.shields.io/badge/Unreal%20Engine-5.6-0E1128?style=flat-square&logo=unrealengine&logoColor=white">
+  <img alt="Version" src="https://img.shields.io/badge/Version-1.0.1-0E1128?style=flat-square">
+  <img alt="Unreal Engine" src="https://img.shields.io/badge/Unreal%20Engine-5.8-0E1128?style=flat-square&logo=unrealengine&logoColor=white">
   <img alt="Platform" src="https://img.shields.io/badge/Primary%20Platform-Windows%20%2F%20Steam-1b2838?style=flat-square&logo=steam&logoColor=white">
   <img alt="Localization" src="https://img.shields.io/badge/Localization-zh--Hans%20%7C%20en-2E7D32?style=flat-square">
   <img alt="AI Skills" src="https://img.shields.io/badge/AI%20Skills-Project%20Local-6A4CFF?style=flat-square">
@@ -16,21 +17,24 @@
 
 > **开发状态 / Development Status**
 >
-> Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
+> 当前版本：1.0.1。Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
 >
-> Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
+> Current version: 1.0.1. Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
 
 ## 简体中文
 
-Orion 是一个基于 Unreal Engine 5.6 的模块化游戏制作框架。它把可复用的游戏基础系统、UI、输入、GAS、GameFeature、Steam、语音、存档、渲染和本地化能力组织成清晰的工程层级，并通过项目本地 `.agents/skills` 为 AI 辅助开发提供可复用的工程知识。
+Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把可复用的游戏基础系统、UI、输入、GAS、GameFeature、Steam、语音、存档、渲染和本地化能力组织成清晰的工程层级，并通过项目本地 `.agents/skills` 为 AI 辅助开发提供可复用的工程知识。
 
 目标是让创作者能从“描述玩法”快速进入“可运行原型”，同时保留 C++ 工程的可维护性、扩展性和发布能力。
+
+当前版本：1.0.1
 
 官网：[https://orionue.com](https://orionue.com)
 
 ### 目录
 
 - [项目特点](#项目特点)
+- [更新内容](#更新内容)
 - [功能概览](#功能概览)
 - [工程结构](#工程结构)
 - [AI Skill 系统](#ai-skill-系统)
@@ -44,11 +48,21 @@ Orion 是一个基于 Unreal Engine 5.6 的模块化游戏制作框架。它把�
 
 ### 项目特点
 
-- **UE 5.6 模块化框架**：以 `GameCore`、`GameUI`、`BBL`、`OrionGame`、`OrionEditor` 分层组织运行时、UI、蓝图桥接、宿主游戏逻辑和编辑器扩展。
+- **UE 5.8 模块化框架**：以 `GameCore`、`GameUI`、`BBL`、`OrionGame`、`OrionEditor` 分层组织运行时、UI、蓝图桥接、宿主游戏逻辑和编辑器扩展。
 - **Experience + GameFeature 工作流**：支持通过 Experience、ActionSet、GameFeature 插件拆分玩法、输入、Ability、UI 和数据。
 - **AI 友好的工程知识库**：项目内置 `.agents/skills`，把架构、代码风格、资产、打包、MCP、GAS、UMG、Steam 等规则固化为可复用 Skill。
 - **面向发布的系统能力**：包含 Steam OnlineSubsystem、Steam Sockets、Steam Web API、语音聊天、加载屏、存档、设置、本地化、PSO、DLSS/NIS/Streamline 等发布相关能力。
 - **C++ 与 Blueprint 协同**：核心逻辑保留在 C++ 层，常用扩展点通过 BBL、GameFeature 和蓝图资产暴露给设计与内容制作流程。
+
+### 更新内容
+
+#### 1.0.1
+
+- **引擎基线升级至 Unreal Engine 5.8**：`Orion.uproject` 的 `EngineAssociation` 已更新为 `5.8`，Target 规则切换到 UE 5.8 对应的 `BuildSettingsVersion.V7`，并补充构建环境覆盖以适配升级后的编译要求。
+- **Steam 专用配置拆分**：新增 `Config/Custom/Steam/DefaultEngine.ini`，Steam 打包与运行配置改为通过 `customconfig=Steam` 读取独立的 OnlineSubsystem、SteamCoreSockets、NetDriver 和连接参数。
+- **渲染配置迁移与审计**：围绕 UE 5.8 RendererSettings / CVar 规则重整 `Config/DefaultEngine.ini` 与 `Config/DefaultScalability.ini`，补充 UE 5.8 渲染命令 Skill、实验表和项目候选配置记录。
+- **AI / MCP 工具链升级**：启用 `OrionProjectToolsets`，新增 VS 工程生成、项目清理、UI 蓝图框架、UE 5.8 渲染命令等项目本地 Skill，并整理 MCP / Toolset 兼容层。
+- **插件与发布链路更新**：更新 DLSS、NIS、Streamline、OrionSteam、ProjectAcoustics 等插件或配置，清理旧 Toolset 依赖，并让打包 Skill 明确使用 Steam CustomConfig 工作流。
 
 ### 功能概览
 
@@ -78,7 +92,7 @@ Orion 是一个基于 Unreal Engine 5.6 的模块化游戏制作框架。它把�
 ├── Content/                 # 项目正式资产
 ├── Plugins/                 # 框架插件、MCP Toolsets、GameFeature、Steam、Audio、DLSS 等
 ├── Source/                  # C++ 模块与 Target
-└── Orion.uproject           # UE 5.6 工程入口
+└── Orion.uproject           # UE 5.8 工程入口
 ```
 
 #### Source 模块
@@ -135,7 +149,7 @@ Orion 是一个基于 Unreal Engine 5.6 的模块化游戏制作框架。它把�
 
 #### 环境要求
 
-- Unreal Engine 5.6。
+- Unreal Engine 5.8。
 - Windows + Visual Studio 2022，安装 C++ 桌面开发与 Unreal 相关组件。
 - Git LFS，用于 `.uasset`、`.umap`、二进制库和大型资产。
 - Steam 相关功能需要 Steam 客户端、Steamworks AppId/配置和对应 Target。
@@ -160,12 +174,12 @@ git lfs pull
 
 #### 打开编辑器
 
-1. 右键 `Orion.uproject`，选择使用 Unreal Engine 5.6 生成项目文件。
+1. 右键 `Orion.uproject`，选择使用 Unreal Engine 5.8 生成项目文件。
 2. 打开 `Orion.sln` 或直接打开 `Orion.uproject`。
 3. 首次打开前建议先构建 `OrionEditor`。
 
 ```powershell
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionEditor Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionEditor Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
 ```
 
 ### 常用构建目标
@@ -182,8 +196,8 @@ git lfs pull
 示例：
 
 ```powershell
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionGame Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionGameSteam Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionGame Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionGameSteam Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
 ```
 
 ### 本地化与语言
@@ -233,15 +247,18 @@ Copyright (c) 2026 Orion. All Rights Reserved.
 
 ## English
 
-Orion is a modular game-development framework built on Unreal Engine 5.6. It organizes reusable gameplay foundations, UI, input, GAS, GameFeature workflows, Steam integration, voice chat, save systems, rendering, packaging, and localization into clear engineering layers. It also ships project-local `.agents/skills` so AI-assisted development can follow the actual project architecture instead of relying on generic Unreal advice.
+Orion is a modular game-development framework built on Unreal Engine 5.8. It organizes reusable gameplay foundations, UI, input, GAS, GameFeature workflows, Steam integration, voice chat, save systems, rendering, packaging, and localization into clear engineering layers. It also ships project-local `.agents/skills` so AI-assisted development can follow the actual project architecture instead of relying on generic Unreal advice.
 
 The goal is to move from a gameplay idea to a runnable prototype quickly, while keeping the maintainability, extensibility, and release discipline of a C++ Unreal project.
+
+Current version: 1.0.1
 
 Website: [https://orionue.com](https://orionue.com)
 
 ### Table of Contents
 
 - [Highlights](#highlights)
+- [What's New](#whats-new)
 - [Feature Overview](#feature-overview)
 - [Project Structure](#project-structure)
 - [AI Skill System](#ai-skill-system)
@@ -255,11 +272,21 @@ Website: [https://orionue.com](https://orionue.com)
 
 ### Highlights
 
-- **UE 5.6 modular framework**: Runtime, UI, Blueprint bridge, host-game code, and editor tooling are separated through `GameCore`, `GameUI`, `BBL`, `OrionGame`, and `OrionEditor`.
+- **UE 5.8 modular framework**: Runtime, UI, Blueprint bridge, host-game code, and editor tooling are separated through `GameCore`, `GameUI`, `BBL`, `OrionGame`, and `OrionEditor`.
 - **Experience + GameFeature workflow**: Gameplay can be split by Experience, ActionSet, GameFeature plugins, input mappings, abilities, UI, and data.
 - **AI-ready engineering knowledge base**: Project-local `.agents/skills` capture architecture, code style, assets, packaging, MCP, GAS, UMG, Steam, and validation rules.
 - **Release-oriented systems**: Steam OnlineSubsystem, Steam Sockets, Steam Web API, voice chat, loading screens, archives, settings, localization, PSO workflows, DLSS/NIS/Streamline, and platform packaging are already represented in the project.
 - **C++ and Blueprint collaboration**: Core behavior stays in C++, while BBL, GameFeature assets, and Blueprint-friendly APIs expose extension points to designers and content workflows.
+
+### What's New
+
+#### 1.0.1
+
+- **Engine baseline upgraded to Unreal Engine 5.8**: `Orion.uproject` now uses `EngineAssociation` `5.8`, targets use the UE 5.8-facing `BuildSettingsVersion.V7`, and build-environment overrides were added for the upgraded compilation path.
+- **Steam-specific configuration split**: `Config/Custom/Steam/DefaultEngine.ini` now carries the Steam OnlineSubsystem, SteamCoreSockets, NetDriver, and connection settings loaded through `customconfig=Steam`.
+- **Rendering configuration migration and audit**: `Config/DefaultEngine.ini` and `Config/DefaultScalability.ini` were reorganized around UE 5.8 RendererSettings / CVar rules, with a UE 5.8 render-command Skill, experiment tables, and project candidate configuration records added.
+- **AI / MCP toolchain upgrade**: `OrionProjectToolsets` is enabled, project-local Skills were added for Visual Studio project generation, project cleanup, UI Blueprint framework work, and UE 5.8 render commands, and the MCP / Toolset compatibility layer was cleaned up.
+- **Plugin and release workflow updates**: DLSS, NIS, Streamline, OrionSteam, ProjectAcoustics, and related plugin/configuration files were updated, older Toolset dependencies were removed, and the packaging Skill now documents the Steam CustomConfig workflow.
 
 ### Feature Overview
 
@@ -289,7 +316,7 @@ Website: [https://orionue.com](https://orionue.com)
 ├── Content/                 # Production assets
 ├── Plugins/                 # Framework plugins, MCP Toolsets, GameFeature, Steam, Audio, DLSS
 ├── Source/                  # C++ modules and targets
-└── Orion.uproject           # Unreal Engine 5.6 project entry
+└── Orion.uproject           # Unreal Engine 5.8 project entry
 ```
 
 #### Source Modules
@@ -346,7 +373,7 @@ Orion includes project-local `.agents/skills` that guide AI agents before they m
 
 #### Requirements
 
-- Unreal Engine 5.6.
+- Unreal Engine 5.8.
 - Windows with Visual Studio 2022 and C++/Unreal development components.
 - Git LFS for `.uasset`, `.umap`, binary libraries, and large assets.
 - Steam features require the Steam client, Steamworks AppId/configuration, and the Steam-specific targets.
@@ -371,12 +398,12 @@ If you receive the project through an archive or internal sync, make sure these 
 
 #### Open the Editor
 
-1. Right-click `Orion.uproject` and generate project files with Unreal Engine 5.6.
+1. Right-click `Orion.uproject` and generate project files with Unreal Engine 5.8.
 2. Open `Orion.sln` or open `Orion.uproject` directly.
 3. Build `OrionEditor` before the first editor launch.
 
 ```powershell
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionEditor Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionEditor Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
 ```
 
 ### Build Targets
@@ -393,8 +420,8 @@ If you receive the project through an archive or internal sync, make sure these 
 Examples:
 
 ```powershell
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionGame Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
-<UE_5.6>\Engine\Build\BatchFiles\Build.bat OrionGameSteam Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionGame Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
+<UE_5.8>\Engine\Build\BatchFiles\Build.bat OrionGameSteam Win64 Development -Project="%CD%\Orion.uproject" -WaitMutex
 ```
 
 ### Localization and Languages

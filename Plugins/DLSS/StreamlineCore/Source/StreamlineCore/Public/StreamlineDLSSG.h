@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -23,6 +23,8 @@ extern STREAMLINECORE_API bool IsStreamlineDLSSGSupported();
 
 extern STREAMLINECORE_API int32 GetStreamlineDLSSGNumFramesToGenerate();
 extern STREAMLINECORE_API void GetStreamlineDLSSGMinMaxGeneratedFrames(int32& MinGeneratedFrames, int32& MaxGeneratedFrames);
+extern STREAMLINECORE_API bool IsStreamlineDynamicDLSSGAvailable();
+extern STREAMLINECORE_API bool IsStreamlineVsyncSupportAvailable();
 
 extern STREAMLINECORE_API void GetStreamlineDLSSGFrameTiming(float& FrameRateInHertz, int32& FramesPresented);
 

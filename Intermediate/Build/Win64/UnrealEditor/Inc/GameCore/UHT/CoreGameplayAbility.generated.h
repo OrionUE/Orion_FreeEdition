@@ -12,10 +12,11 @@
 #define GAMECORE_CoreGameplayAbility_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class AController;
 class ACoreCharacter;
 class ACorePlayerController;
@@ -25,18 +26,24 @@ enum class ECoreAbilityActivationGroup : uint8;
 struct FGameplayTagContainer;
 
 // ********** Begin ScriptStruct FCoreAbilitySimpleFailureMessage **********************************
+struct Z_Construct_UScriptStruct_FCoreAbilitySimpleFailureMessage_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilitySimpleFailureMessage(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_Abilities_CoreGameplayAbility_h_74_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilitySimpleFailureMessage_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilitySimpleFailureMessage_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilitySimpleFailureMessage(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilitySimpleFailureMessage;
 // ********** End ScriptStruct FCoreAbilitySimpleFailureMessage ************************************
 
 // ********** Begin ScriptStruct FCoreAbilityMontageFailureMessage *********************************
+struct Z_Construct_UScriptStruct_FCoreAbilityMontageFailureMessage_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilityMontageFailureMessage(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_Abilities_CoreGameplayAbility_h_94_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilityMontageFailureMessage_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilityMontageFailureMessage_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilityMontageFailureMessage(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilityMontageFailureMessage;
@@ -54,16 +61,15 @@ struct FCoreAbilityMontageFailureMessage;
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_Abilities_CoreGameplayAbility_h_121_CALLBACK_WRAPPERS
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayAbility_NoRegister();
+struct Z_Construct_UClass_UCoreGameplayAbility_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayAbility(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_Abilities_CoreGameplayAbility_h_121_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameplayAbility(); \
-	friend struct Z_Construct_UClass_UCoreGameplayAbility_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayAbility_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameplayAbility_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameplayAbility(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameplayAbility, UGameplayAbility, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameplayAbility_NoRegister) \
+	DECLARE_CLASS2(UCoreGameplayAbility, UGameplayAbility, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameplayAbility) \
 	DECLARE_SERIALIZER(UCoreGameplayAbility)
 
 
@@ -105,7 +111,7 @@ class UCoreGameplayAbility;
 
 enum class ECoreAbilityActivationPolicy : uint8;
 template<> struct TIsUEnumClass<ECoreAbilityActivationPolicy> { enum { Value = true }; };
-template<> GAMECORE_API UEnum* StaticEnum<ECoreAbilityActivationPolicy>();
+template<> UE_NODEBUG GAMECORE_NON_ATTRIBUTED_API UEnum* StaticEnum<ECoreAbilityActivationPolicy>();
 // ********** End Enum ECoreAbilityActivationPolicy ************************************************
 
 // ********** Begin Enum ECoreAbilityActivationGroup ***********************************************
@@ -116,7 +122,7 @@ template<> GAMECORE_API UEnum* StaticEnum<ECoreAbilityActivationPolicy>();
 
 enum class ECoreAbilityActivationGroup : uint8;
 template<> struct TIsUEnumClass<ECoreAbilityActivationGroup> { enum { Value = true }; };
-template<> GAMECORE_API UEnum* StaticEnum<ECoreAbilityActivationGroup>();
+template<> UE_NODEBUG GAMECORE_NON_ATTRIBUTED_API UEnum* StaticEnum<ECoreAbilityActivationGroup>();
 // ********** End Enum ECoreAbilityActivationGroup *************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -103,11 +103,15 @@ private: static TArray<FTrackedView> TrackedViews;
 public:
 
 	static bool DebugViewTracking();
+	static void LogViewNotTrackedReason(const TCHAR* Callsite, const FSceneView& View);
+	static const bool IsProperGraphicsView(const FSceneView& InView);
+#if DEBUG_STREAMLINE_VIEW_TRACKING
+	static bool bLogStreamlineLogTrackedViews;
+#endif
 
 	static void LogTrackedViews(const TCHAR* CallSite);
 	static TArray<FTrackedView>& GetTrackedViews()
 	{
-		
 		return TrackedViews;
 	}
 	void UntrackViewsForBackbuffer(void *InViewport);
@@ -127,12 +131,9 @@ public:
 				break;
 			}
 		}
-		
-
 
 		check(ViewIndex < InView->Family->Views.Num());
 		return ViewIndex;
-
 	}
 
 private:
@@ -144,4 +145,7 @@ private:
 	TArray< TTuple<uint64, uint32> > FramesWhereStreamlineConstantsWereSet;
 	static FDelegateHandle OnPreResizeWindowBackBufferHandle;
 	static FDelegateHandle OnSlateWindowDestroyedHandle;
+
+	class FStreamlineDLSSGCustomPresent* SLCustomPresent = nullptr;
 };
+

@@ -12,10 +12,10 @@
 #define ORIONSTEAMSHARED_OrionSteamSharedAudioSubsystem_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 struct FOrionSteamAudioInputDeviceInfo;
 
@@ -25,16 +25,15 @@ struct FOrionSteamAudioInputDeviceInfo;
 	DECLARE_FUNCTION(execConv_AudioInputDeviceInfoToString);
 
 
-ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_Statics;
+ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamShared_Public_OrionSteamSharedAudioSubsystem_h_18_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAudioCaptureBlueprintLibrary(); \
-	friend struct Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_Statics; \
+	friend ORIONSTEAMSHARED_API UClass* ::Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAudioCaptureBlueprintLibrary, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamShared"), Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAudioCaptureBlueprintLibrary, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamShared"), Z_Construct_UClass_UOrionSteamAudioCaptureBlueprintLibrary) \
 	DECLARE_SERIALIZER(UOrionSteamAudioCaptureBlueprintLibrary)
 
 
@@ -72,28 +71,27 @@ class UOrionSteamAudioCaptureBlueprintLibrary;
 	DECLARE_FUNCTION(execK2_FindAudioDeviceInfoFromDeviceId);
 
 
-ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_Statics;
+ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamSharedAudioSubsystem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamShared_Public_OrionSteamSharedAudioSubsystem_h_43_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamSharedAudioSubsystem(); \
-	friend struct Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSHARED_API UClass* Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_Statics; \
+	friend ORIONSTEAMSHARED_API UClass* ::Z_Construct_UClass_UOrionSteamSharedAudioSubsystem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamSharedAudioSubsystem, UWorldSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamShared"), Z_Construct_UClass_UOrionSteamSharedAudioSubsystem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamSharedAudioSubsystem, UWorldSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamShared"), Z_Construct_UClass_UOrionSteamSharedAudioSubsystem) \
 	DECLARE_SERIALIZER(UOrionSteamSharedAudioSubsystem)
 
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamShared_Public_OrionSteamSharedAudioSubsystem_h_43_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UOrionSteamSharedAudioSubsystem(); \
+	NO_API UOrionSteamSharedAudioSubsystem(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UOrionSteamSharedAudioSubsystem(UOrionSteamSharedAudioSubsystem&&) = delete; \
 	UOrionSteamSharedAudioSubsystem(const UOrionSteamSharedAudioSubsystem&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UOrionSteamSharedAudioSubsystem); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UOrionSteamSharedAudioSubsystem); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UOrionSteamSharedAudioSubsystem) \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UOrionSteamSharedAudioSubsystem) \
 	NO_API virtual ~UOrionSteamSharedAudioSubsystem();
 
 

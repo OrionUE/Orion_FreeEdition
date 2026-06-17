@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamNetworking_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamNetworking;
 enum class ESteamP2PSend : uint8;
 struct FSteamID;
@@ -34,16 +34,15 @@ struct FSteamP2PSessionState;
 	DECLARE_FUNCTION(execGetSteamNetworking);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamNetworking_NoRegister();
+struct Z_Construct_UClass_UOrionSteamNetworking_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamNetworking(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworking_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamNetworking(); \
-	friend struct Z_Construct_UClass_UOrionSteamNetworking_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamNetworking_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamNetworking_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamNetworking(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamNetworking, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamNetworking_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamNetworking, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamNetworking) \
 	DECLARE_SERIALIZER(UOrionSteamNetworking)
 
 

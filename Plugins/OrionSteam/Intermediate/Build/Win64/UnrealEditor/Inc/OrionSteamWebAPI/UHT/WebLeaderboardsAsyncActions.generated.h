@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebLeaderboardsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionDeleteLeaderboard;
 class UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard;
@@ -29,16 +29,15 @@ class UOrionSteamWebAPIAsyncActionSetLeaderboardScore;
 	DECLARE_FUNCTION(execDeleteLeaderboardAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionDeleteLeaderboard(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteLeaderboard) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionDeleteLeaderboard)
 
 
@@ -74,16 +73,15 @@ class UOrionSteamWebAPIAsyncActionDeleteLeaderboard;
 	DECLARE_FUNCTION(execFindOrCreateLeaderboardAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_36_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard)
 
 
@@ -119,16 +117,15 @@ class UOrionSteamWebAPIAsyncActionFindOrCreateLeaderboard;
 	DECLARE_FUNCTION(execGetLeaderboardEntriesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_60_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetLeaderboardEntries(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetLeaderboardEntries, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetLeaderboardEntries, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardEntries) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetLeaderboardEntries)
 
 
@@ -164,16 +161,15 @@ class UOrionSteamWebAPIAsyncActionGetLeaderboardEntries;
 	DECLARE_FUNCTION(execGetLeaderboardsForGameAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_83_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetLeaderboardsForGame(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame)
 
 
@@ -209,16 +205,15 @@ class UOrionSteamWebAPIAsyncActionGetLeaderboardsForGame;
 	DECLARE_FUNCTION(execResetLeaderboardAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_101_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionResetLeaderboard(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionResetLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionResetLeaderboard, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionResetLeaderboard) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionResetLeaderboard)
 
 
@@ -254,16 +249,15 @@ class UOrionSteamWebAPIAsyncActionResetLeaderboard;
 	DECLARE_FUNCTION(execSetLeaderboardScoreAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Leaderboards_WebLeaderboardsAsyncActions_h_120_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionSetLeaderboardScore(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSetLeaderboardScore, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSetLeaderboardScore, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetLeaderboardScore) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionSetLeaderboardScore)
 
 

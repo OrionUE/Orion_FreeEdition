@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+ProfileGPU,Command,string,,ProfileGPU,渲染调试/可视化,All,true,false,false,false,false,,`ProfileGPU`（可带参数，具体见帮助说明）,Captures statistics about a frame of GPU work and prints the results to the log.,

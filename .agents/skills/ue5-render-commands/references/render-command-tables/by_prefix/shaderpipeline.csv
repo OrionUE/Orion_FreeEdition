@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+shaderpipeline.MinPrecompileTasksInFlight,CVar,string,,shaderpipeline,材质,All,true,false,false,false,false,,`shaderpipeline.MinPrecompileTasksInFlight=<值>` / `shaderpipeline.MinPrecompileTasksInFlight <值>` 或 INI 中配置,Note: Only used when threadpool PSO precompiling is active.\n,ECVF_RenderThreadSafe

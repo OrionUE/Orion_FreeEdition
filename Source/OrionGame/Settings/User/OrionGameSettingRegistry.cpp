@@ -18,7 +18,7 @@ UOrionGameSettingRegistry::UOrionGameSettingRegistry()
 
 UOrionGameSettingRegistry* UOrionGameSettingRegistry::Get(UCoreLocalPlayer* InLocalPlayer)
 {
-	UOrionGameSettingRegistry* Registry = FindObject<UOrionGameSettingRegistry>(InLocalPlayer, TEXT("OrionGameSettingRegistry"), true);
+	UOrionGameSettingRegistry* Registry = FindObject<UOrionGameSettingRegistry>(InLocalPlayer, TEXT("OrionGameSettingRegistry"), EFindObjectFlags::ExactClass);
 	if (Registry == nullptr)
 	{
 		Registry = NewObject<UOrionGameSettingRegistry>(InLocalPlayer, TEXT("OrionGameSettingRegistry"));

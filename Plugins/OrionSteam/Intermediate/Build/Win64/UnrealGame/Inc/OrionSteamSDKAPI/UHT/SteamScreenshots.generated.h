@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamScreenshots_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamScreenshots;
 enum class ESteamVRScreenshotType : uint8;
 struct FPublishedFileID;
@@ -36,16 +36,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamScreenshots);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamScreenshots_NoRegister();
+struct Z_Construct_UClass_UOrionSteamScreenshots_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamScreenshots(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamScreenshots_SteamScreenshots_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamScreenshots(); \
-	friend struct Z_Construct_UClass_UOrionSteamScreenshots_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamScreenshots_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamScreenshots_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamScreenshots(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamScreenshots, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamScreenshots_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamScreenshots, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamScreenshots) \
 	DECLARE_SERIALIZER(UOrionSteamScreenshots)
 
 

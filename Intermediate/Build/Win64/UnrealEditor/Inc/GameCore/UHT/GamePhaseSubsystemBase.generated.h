@@ -12,27 +12,15 @@
 #define GAMECORE_GamePhaseSubsystemBase_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
+class UClass;
 class UGamePhaseAbility;
 enum class EPhaseTagMatchType : uint8;
 struct FGameplayTag;
-
-// ********** Begin Delegate FGamePhaseDynamicDelegate *********************************************
-#define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_Phases_GamePhaseSubsystemBase_h_16_DELEGATE \
-GAMECORE_API void FGamePhaseDynamicDelegate_DelegateWrapper(const FScriptDelegate& GamePhaseDynamicDelegate, const UGamePhaseAbility* Phase);
-
-
-// ********** End Delegate FGamePhaseDynamicDelegate ***********************************************
-
-// ********** Begin Delegate FGamePhaseTagDynamicDelegate ******************************************
-#define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_Phases_GamePhaseSubsystemBase_h_19_DELEGATE \
-GAMECORE_API void FGamePhaseTagDynamicDelegate_DelegateWrapper(const FScriptDelegate& GamePhaseTagDynamicDelegate, FGameplayTag const& PhaseTag);
-
-
-// ********** End Delegate FGamePhaseTagDynamicDelegate ********************************************
 
 // ********** Begin Class UGamePhaseSubsystemBase **************************************************
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_Phases_GamePhaseSubsystemBase_h_45_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -42,16 +30,15 @@ GAMECORE_API void FGamePhaseTagDynamicDelegate_DelegateWrapper(const FScriptDele
 	DECLARE_FUNCTION(execK2_StartPhase);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UGamePhaseSubsystemBase_NoRegister();
+struct Z_Construct_UClass_UGamePhaseSubsystemBase_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGamePhaseSubsystemBase(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_Phases_GamePhaseSubsystemBase_h_45_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGamePhaseSubsystemBase(); \
-	friend struct Z_Construct_UClass_UGamePhaseSubsystemBase_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGamePhaseSubsystemBase_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGamePhaseSubsystemBase_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGamePhaseSubsystemBase(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGamePhaseSubsystemBase, UCoreWorldSubsystem, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGamePhaseSubsystemBase_NoRegister) \
+	DECLARE_CLASS2(UGamePhaseSubsystemBase, UCoreWorldSubsystem, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGamePhaseSubsystemBase) \
 	DECLARE_SERIALIZER(UGamePhaseSubsystemBase)
 
 
@@ -90,7 +77,7 @@ class UGamePhaseSubsystemBase;
 
 enum class EPhaseTagMatchType : uint8;
 template<> struct TIsUEnumClass<EPhaseTagMatchType> { enum { Value = true }; };
-template<> GAMECORE_API UEnum* StaticEnum<EPhaseTagMatchType>();
+template<> UE_NODEBUG GAMECORE_NON_ATTRIBUTED_API UEnum* StaticEnum<EPhaseTagMatchType>();
 // ********** End Enum EPhaseTagMatchType **********************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

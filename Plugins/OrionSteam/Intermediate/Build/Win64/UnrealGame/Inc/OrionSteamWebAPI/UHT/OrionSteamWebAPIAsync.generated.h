@@ -12,32 +12,25 @@
 #define ORIONSTEAMWEBAPI_OrionSteamWebAPIAsync_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
-// ********** Begin Delegate FOnOrionSteamWebAPIFailure ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPIAsync_h_18_DELEGATE \
-ORIONSTEAMWEBAPI_API void FOnOrionSteamWebAPIFailure_DelegateWrapper(const FMulticastScriptDelegate& OnOrionSteamWebAPIFailure);
-
-
-// ********** End Delegate FOnOrionSteamWebAPIFailure **********************************************
 
 // ********** Begin Class UOrionSteamWebAPIAsyncAction *********************************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPIAsync_h_110_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncAction(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPIAsync_h_110_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncAction(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncAction(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncAction, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncAction_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncAction, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncAction) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncAction)
 
 

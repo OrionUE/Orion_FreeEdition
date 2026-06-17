@@ -12,21 +12,21 @@
 #define GAMECORE_GameFeatureAction_SplitscreenConfig_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UGameFeatureAction_SplitscreenConfig *************************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_NoRegister();
+struct Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_SplitscreenConfig_h_18_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameFeatureAction_SplitscreenConfig(); \
-	friend struct Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameFeatureAction_SplitscreenConfig, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig_NoRegister) \
+	DECLARE_CLASS2(UGameFeatureAction_SplitscreenConfig, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_SplitscreenConfig) \
 	DECLARE_SERIALIZER(UGameFeatureAction_SplitscreenConfig)
 
 
@@ -39,7 +39,7 @@ public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(GAMECORE_API, UGameFeatureAction_SplitscreenConfig); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGameFeatureAction_SplitscreenConfig); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UGameFeatureAction_SplitscreenConfig) \
-	GAMECORE_API virtual ~UGameFeatureAction_SplitscreenConfig();
+	GAMECORE_API ~UGameFeatureAction_SplitscreenConfig();
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_SplitscreenConfig_h_15_PROLOG

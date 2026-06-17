@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamUtils_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamUtils;
 enum class EOrionSteamIPv6ConnectivityProtocol : uint8;
 enum class EOrionSteamIPv6ConnectivityState : uint8;
@@ -65,16 +65,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamUtils);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtils_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUtils_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtils(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtils_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUtils(); \
-	friend struct Z_Construct_UClass_UOrionSteamUtils_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtils_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUtils_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUtils(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUtils, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUtils_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUtils, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUtils) \
 	DECLARE_SERIALIZER(UOrionSteamUtils)
 
 

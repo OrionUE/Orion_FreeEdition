@@ -23,7 +23,7 @@ UOrionGameWorldSettingRegistry::UOrionGameWorldSettingRegistry()
 
 UOrionGameWorldSettingRegistry* UOrionGameWorldSettingRegistry::Get(UCoreLocalPlayer* InLocalPlayer)
 {
-	UOrionGameWorldSettingRegistry* Registry = FindObject<UOrionGameWorldSettingRegistry>(InLocalPlayer, TEXT("GameWorldSettingRegistry"), true);
+	UOrionGameWorldSettingRegistry* Registry = FindObject<UOrionGameWorldSettingRegistry>(InLocalPlayer, TEXT("GameWorldSettingRegistry"), EFindObjectFlags::ExactClass);
 	if (Registry == nullptr)
 	{
 		Registry = NewObject<UOrionGameWorldSettingRegistry>(InLocalPlayer, TEXT("GameWorldSettingRegistry"));

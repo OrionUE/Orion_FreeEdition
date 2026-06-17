@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamInventory_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamInventory;
 enum class ESteamResult : uint8;
 struct FSteamID;
@@ -65,16 +65,15 @@ struct FSteamItemInstanceID;
 	DECLARE_FUNCTION(execGetSteamInventory);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventory_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInventory_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventory(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventory_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInventory(); \
-	friend struct Z_Construct_UClass_UOrionSteamInventory_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventory_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInventory_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInventory(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInventory, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventory_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInventory, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventory) \
 	DECLARE_SERIALIZER(UOrionSteamInventory)
 
 

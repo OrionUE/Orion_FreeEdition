@@ -12,10 +12,10 @@
 #define ORIONVOICECHAT_OrionAudioCaptureAndroid_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionMicrophoneSpeakComponent;
 
 // ********** Begin Class UOrionAudioCaptureAndroid ************************************************
@@ -26,16 +26,15 @@ class UOrionMicrophoneSpeakComponent;
 	DECLARE_FUNCTION(execStartAndroidMicrophone);
 
 
-ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionAudioCaptureAndroid_NoRegister();
+struct Z_Construct_UClass_UOrionAudioCaptureAndroid_Statics;
+ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionAudioCaptureAndroid(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionAudioCaptureAndroid_h_23_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionAudioCaptureAndroid(); \
-	friend struct Z_Construct_UClass_UOrionAudioCaptureAndroid_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionAudioCaptureAndroid_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionAudioCaptureAndroid_Statics; \
+	friend ORIONVOICECHAT_API UClass* ::Z_Construct_UClass_UOrionAudioCaptureAndroid(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionAudioCaptureAndroid, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionAudioCaptureAndroid_NoRegister) \
+	DECLARE_CLASS2(UOrionAudioCaptureAndroid, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionAudioCaptureAndroid) \
 	DECLARE_SERIALIZER(UOrionAudioCaptureAndroid)
 
 

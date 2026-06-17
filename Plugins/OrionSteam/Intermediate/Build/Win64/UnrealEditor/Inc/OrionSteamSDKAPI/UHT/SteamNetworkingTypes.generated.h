@@ -12,53 +12,49 @@
 #define ORIONSTEAMSDKAPI_SteamNetworkingTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FP2PSessionConnectFail;
 struct FP2PSessionRequest;
 
 // ********** Begin ScriptStruct FSteamP2PSessionState *********************************************
+struct Z_Construct_UScriptStruct_FSteamP2PSessionState_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamP2PSessionState(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h_43_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamP2PSessionState_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamP2PSessionState_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamP2PSessionState(ETypeConstructPhase::Inner); }
 
 
 struct FSteamP2PSessionState;
 // ********** End ScriptStruct FSteamP2PSessionState ***********************************************
 
 // ********** Begin ScriptStruct FP2PSessionRequest ************************************************
+struct Z_Construct_UScriptStruct_FP2PSessionRequest_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FP2PSessionRequest(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h_79_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FP2PSessionRequest_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FP2PSessionRequest_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FP2PSessionRequest(ETypeConstructPhase::Inner); }
 
 
 struct FP2PSessionRequest;
 // ********** End ScriptStruct FP2PSessionRequest **************************************************
 
 // ********** Begin ScriptStruct FP2PSessionConnectFail ********************************************
+struct Z_Construct_UScriptStruct_FP2PSessionConnectFail_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FP2PSessionConnectFail(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h_98_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FP2PSessionConnectFail_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FP2PSessionConnectFail_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FP2PSessionConnectFail(ETypeConstructPhase::Inner); }
 
 
 struct FP2PSessionConnectFail;
 // ********** End ScriptStruct FP2PSessionConnectFail **********************************************
-
-// ********** Begin Delegate FOnP2PSessionRequest **************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h_122_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnP2PSessionRequest_DelegateWrapper(const FMulticastScriptDelegate& OnP2PSessionRequest, FP2PSessionRequest const& Data);
-
-
-// ********** End Delegate FOnP2PSessionRequest ****************************************************
-
-// ********** Begin Delegate FOnP2PSessionConnectFail **********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h_123_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnP2PSessionConnectFail_DelegateWrapper(const FMulticastScriptDelegate& OnP2PSessionConnectFail, FP2PSessionConnectFail const& Data);
-
-
-// ********** End Delegate FOnP2PSessionConnectFail ************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamNetworking_SteamNetworkingTypes_h
@@ -72,7 +68,7 @@ ORIONSTEAMSDKAPI_API void FOnP2PSessionConnectFail_DelegateWrapper(const FMultic
 
 enum class ESteamP2PSend : uint8;
 template<> struct TIsUEnumClass<ESteamP2PSend> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamP2PSend>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamP2PSend>();
 // ********** End Enum ESteamP2PSend ***************************************************************
 
 // ********** Begin Enum ESteamP2PSessionError *****************************************************
@@ -86,7 +82,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamP2PSend>();
 
 enum class ESteamP2PSessionError : uint8;
 template<> struct TIsUEnumClass<ESteamP2PSessionError> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamP2PSessionError>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamP2PSessionError>();
 // ********** End Enum ESteamP2PSessionError *******************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

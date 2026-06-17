@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebPublishedFileService_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -25,16 +26,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execQueryFiles);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedFileService_NoRegister();
+struct Z_Construct_UClass_UWebPublishedFileService_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedFileService(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PublishedFileService_WebPublishedFileService_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebPublishedFileService(); \
-	friend struct Z_Construct_UClass_UWebPublishedFileService_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedFileService_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebPublishedFileService_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebPublishedFileService(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebPublishedFileService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPublishedFileService_NoRegister) \
+	DECLARE_CLASS2(UWebPublishedFileService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPublishedFileService) \
 	DECLARE_SERIALIZER(UWebPublishedFileService)
 
 

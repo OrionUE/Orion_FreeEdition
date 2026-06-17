@@ -1,0 +1,35 @@
+command,value,config_file,line,section,baseline_action,notes
+r.Lumen.TranslucencyVolume.HardwareRayTracing,0,Config/DefaultEngine.ini,54,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.Lumen.RadianceCache.HardwareRayTracing,0,Config/DefaultEngine.ini,55,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.Lumen.ScreenProbeGather.HardwareRayTracing,1,Config/DefaultEngine.ini,58,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.LumenScene.DirectLighting.HardwareRayTracing,0,Config/DefaultEngine.ini,60,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.LumenScene.Radiosity.HardwareRayTracing,0,Config/DefaultEngine.ini,61,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.Lumen.HardwareRayTracing.LightingMode,1,Config/DefaultEngine.ini,64,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.Lumen.HardwareRayTracing.Inline,1,Config/DefaultEngine.ini,66,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing,False,Config/DefaultEngine.ini,81,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.EnableInEditor,1,Config/DefaultEngine.ini,83,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.RequireSM6,1,Config/DefaultEngine.ini,84,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.SampledLighting,0,Config/DefaultEngine.ini,85,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Shadows.EnableTwoSidedGeometry,0,Config/DefaultEngine.ini,86,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Nanite.Mode,1,Config/DefaultEngine.ini,87,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Geometry.InstancedStaticMeshes.AvoidPoping,1,Config/DefaultEngine.ini,88,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.DynamicGeometryLastRenderTimeUpdateDistance,3000,Config/DefaultEngine.ini,89,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.NaniteShadowMode.HybirdMode.DepthThreshold,10000,Config/DefaultEngine.ini,90,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.SkyLight,True,Config/DefaultEngine.ini,91,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.HybridTranslucencySupport,False,Config/DefaultEngine.ini,92,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.EnableRasterRTSceneDepth,0,Config/DefaultEngine.ini,93,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.UseTextureLod,True,Config/DefaultEngine.ini,94,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.ForceAllRayTracingEffects,0,Config/DefaultEngine.ini,97,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.Lumen.HardwareRayTracing,1,Config/DefaultEngine.ini,99,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Shadows,True,Config/DefaultEngine.ini,102,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Shadows.SamplesPerPixel,4,Config/DefaultEngine.ini,106,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.Geometry.StaticMeshes.WPO,1,Config/DefaultEngine.ini,109,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.DistanceFields.SupportEvenIfHardwareRayTracingSupported,1,Config/DefaultEngine.ini,142,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing.RayTracingProxies.ProjectEnabled,True,Config/DefaultEngine.ini,305,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.RayTracing,True,Config/Windows/WindowsEngine.ini,65,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Ray tracing-related override stays unchanged for baseline.
+r.SkinCache.CompileShaders,True,Config/DefaultEngine.ini,210,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.
+r.SkinCache.Allow,1,Config/DefaultEngine.ini,211,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.
+r.SkinCache.Mode,1,Config/DefaultEngine.ini,212,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.
+r.SkinCache.GSEnableCloth,2,Config/DefaultEngine.ini,213,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.
+r.SkinCache.DefaultBehavior,0,Config/DefaultEngine.ini,214,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.
+r.SkinCache.BlendUsingVertexColorForRecomputeTangents,2,Config/DefaultEngine.ini,215,/Script/Engine.RendererSettings,preserve_for_ray_tracing_baseline,Skin Cache is required when ray tracing is preserved for the baseline.

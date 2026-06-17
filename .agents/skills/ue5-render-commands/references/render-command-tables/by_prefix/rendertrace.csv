@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+RenderTrace.Enabled,CVar,string,,RenderTrace,光线追踪,All,true,false,false,false,false,,`RenderTrace.Enabled=<值>` / `RenderTrace.Enabled <值>` 或 INI 中配置,Enable Render Tracing.,ECVF_Default

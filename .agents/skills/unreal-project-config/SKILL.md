@@ -21,12 +21,13 @@ description: "Use when Codex works on Unreal Engine project configuration in thi
 
 - 配置属于框架模块职责、Target、根目录分层或代码落点时，配合 `../unreal-framework-architecture/SKILL.md`。
 - 查配置字段声明、源码读取点、引擎版本差异或 `UCLASS(Config=...)` 细节时，配合 `../unreal-source-code-navigator/SKILL.md`。
+- `.uproject` `EngineAssociation`、Generate Visual Studio project files、UnrealVersionSelector、UBT `-ProjectFiles`、`.sln` stale engine path 或 `.uplugin` / `.uproject` JSON 编码导致工程文件生成失败时，配合 `../unreal-vs-project-generation/SKILL.md`。
 - `ProjectPackagingSettings`、Cook、Pak、IoStore、chunk、压缩、文化、ini denylist、UFS staging 或 Crypto 打包验证，配合 `../unreal-packaging/SKILL.md`。
 - `Config/Localization/*.ini`、Localization Dashboard target、`[Internationalization] LocalizationPaths`、`CulturesToStage`、新增语言、`.locres` staging 或语言设置配置，配合 `../unreal-localization-framework/SKILL.md`。
 - `MoviePlayerSettings`、`StartupMovies`、`BinkMoviePlayerSettings`、`bSkipMovies`、`UFSMovies`、`NonUFSMovies`、`MovieDenyList` 或视频文件 staging，配合 `../unreal-movie-media-framework/SKILL.md`；打包验证再进入 `../unreal-packaging/SKILL.md`。
 - `RendererSettings`、平台 `Engine.ini` 渲染覆盖、`DefaultScalability.ini`、DLSS/Streamline settings、PSO Precaching、bundled PSO、视频设置页或 `UOrionSettingsLocal` 渲染字段，配合 `../unreal-rendering-framework/SKILL.md`。
 - `GameUserSettingsClassName`、EnhancedInput `UserSettingsClass`、平台 `GameUserSettings.ini` 默认值、`UOrionSettingsLocal` / `UOrionSettingsShared` 字段、`GameSettingRegistry_*.cpp` 或设置页保存/应用逻辑，配合 `../unreal-game-settings-framework/SKILL.md`。
-- `DefaultEngine.ini` 中的 `OrionOnlineSubsystemSteam`、`OnlineSubsystem`、`SteamDevAppId`、`SteamAppId`、Steam NetDriver、PacketHandler、Steam Web API settings、Steam target 或发布配置，配合 `../unreal-online-steam-framework/SKILL.md`。
+- `Config/Custom/Steam/DefaultEngine.ini` 中的 Steam OnlineSubsystem、`SteamDevAppId`、`SteamAppId`、Steam NetDriver、PacketHandler、Steam Web API settings、Steam target 或发布配置，配合 `../unreal-online-steam-framework/SKILL.md`。
 - `NetDriverDefinitions`、`IpNetDriver`、SteamSockets NetDriver、PacketHandler、ReplicationDriverClassName、listen/dedicated server 配置或网络复制相关平台覆盖，配合 `../unreal-network-replication-framework/SKILL.md`；启用 RepGraph 再配合 `../unreal-replicationgraph/SKILL.md`。
 - `CoreAssetManager`、`CoreGameDataPath`、`DefaultPawnData`、Experience 或 GameFeatures policy，配合 `../unreal-gamecore-framework/SKILL.md`。
 - `AssetManagerClassName`、`GameInstanceClass`、PrimaryAsset 启动加载、GameData/PawnData fallback 或 System 层配置合同，配合 `../unreal-system-framework/SKILL.md`。

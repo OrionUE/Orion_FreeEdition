@@ -138,7 +138,7 @@
 
 Skill 文件中禁止出现：
 
-- 游戏名、项目名、内部代号、未公开目标名。
+- 私有游戏名、私有项目名、内部代号、未公开目标名。公开品牌名、框架名、插件名可以保留；例如用户明确允许时，`Orion` 和 `OrionSteam` 不需要替换。
 - 本机绝对路径、用户名、盘符路径、私有引擎源码路径、私有仓库路径。
 - 只能在当前机器成立的编辑器、打包、部署命令。
 - 未清理的日志片段、邮箱、账号、Token、机器名。
@@ -150,6 +150,17 @@ Skill 文件中禁止出现：
 - 环境变量和占位符，例如 `<PROJECT_ROOT>`、`<ENGINE_ROOT>`、`<MODULE_NAME>`、`UE_ENGINE_ROOT`。
 
 当本地验证命令必须使用真实路径时，只把它留在聊天或临时记录中；写入 Skill 时改成占位符或自动探测方式。
+占位符必须统一使用：
+
+- `<ProjectName>`：私有项目名或未公开游戏名。
+- `<ProjectRoot>`：项目根目录。
+- `<EngineRoot>`：引擎根目录。
+- `<UserLocalAppData>`：用户本机 AppData 路径。
+- `<BenchmarkMap>`：本机测试地图或内部关卡路径。
+- `<GPU>`：本机显卡型号。
+- `<ModuleName>`、`<Platform>`：模块名和平台变量。
+
+清理范围包括 `SKILL.md`、`references/`、`scripts/`、CSV、示例命令、实验记录、故障记录和 README。不要只清理入口文档。
 
 ## 质量门禁
 
@@ -265,3 +276,4 @@ python -X utf8 <SKILL_CREATOR_ROOT>\scripts\generate_openai_yaml.py .agents\skil
 修复：先调用工作区依赖发现能力，使用返回的 bundled Python 执行 PDF 抽取脚本；如果 `pdfplumber` 不可用，优先尝试 `pypdf`。
 
 验证：脚本能打印 PDF 页数和每页文本摘要，再把抽取内容与用户说明和源码证据交叉整理进目标 Skill。
+

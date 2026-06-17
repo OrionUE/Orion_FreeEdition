@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamRemoteStorage_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamRemoteStorage;
 enum class ESteamRemoteStoragePlatform : uint8;
 enum class ESteamUGCReadAction : uint8;
@@ -63,16 +63,15 @@ struct FUGCFileWriteStreamHandle;
 	DECLARE_FUNCTION(execGetSteamRemoteStorage);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemoteStorage_NoRegister();
+struct Z_Construct_UClass_UOrionSteamRemoteStorage_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemoteStorage(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemoteStorage_SteamRemoteStorage_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamRemoteStorage(); \
-	friend struct Z_Construct_UClass_UOrionSteamRemoteStorage_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemoteStorage_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamRemoteStorage_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamRemoteStorage(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamRemoteStorage, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamRemoteStorage_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamRemoteStorage, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamRemoteStorage) \
 	DECLARE_SERIALIZER(UOrionSteamRemoteStorage)
 
 

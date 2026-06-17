@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+SlateSdfText.GeneratorPoolSize,CVar,int32,1,SlateSdfText,通用,All,true,false,false,false,false,,`SlateSdfText.GeneratorPoolSize=<值>` / `SlateSdfText.GeneratorPoolSize <值>` 或 INI 中配置,Sets the maximum number of concurrent tasks when generating multi-channel distance fields for Slate text glyphs,

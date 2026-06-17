@@ -12,57 +12,69 @@
 #define GAMECORE_CoreAbilitySet_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FCoreAbilitySet_GameplayAbility ***********************************
+struct Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayAbility_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayAbility(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySet_h_26_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayAbility_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayAbility_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayAbility(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilitySet_GameplayAbility;
 // ********** End ScriptStruct FCoreAbilitySet_GameplayAbility *************************************
 
 // ********** Begin ScriptStruct FCoreAbilitySet_GameplayEffect ************************************
+struct Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayEffect_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayEffect(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySet_h_48_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayEffect_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayEffect_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilitySet_GameplayEffect(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilitySet_GameplayEffect;
 // ********** End ScriptStruct FCoreAbilitySet_GameplayEffect **************************************
 
 // ********** Begin ScriptStruct FCoreAbilitySet_AttributeSet **************************************
+struct Z_Construct_UScriptStruct_FCoreAbilitySet_AttributeSet_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilitySet_AttributeSet(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySet_h_66_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilitySet_AttributeSet_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilitySet_AttributeSet_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilitySet_AttributeSet(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilitySet_AttributeSet;
 // ********** End ScriptStruct FCoreAbilitySet_AttributeSet ****************************************
 
 // ********** Begin ScriptStruct FCoreAbilitySet_GrantedHandles ************************************
+struct Z_Construct_UScriptStruct_FCoreAbilitySet_GrantedHandles_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilitySet_GrantedHandles(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySet_h_81_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilitySet_GrantedHandles_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilitySet_GrantedHandles_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilitySet_GrantedHandles(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilitySet_GrantedHandles;
 // ********** End ScriptStruct FCoreAbilitySet_GrantedHandles **************************************
 
 // ********** Begin Class UCoreAbilitySet **********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySet_NoRegister();
+struct Z_Construct_UClass_UCoreAbilitySet_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySet(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySet_h_118_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAbilitySet(); \
-	friend struct Z_Construct_UClass_UCoreAbilitySet_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySet_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAbilitySet_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAbilitySet(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAbilitySet, UPrimaryDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySet_NoRegister) \
+	DECLARE_CLASS2(UCoreAbilitySet, UPrimaryDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySet) \
 	DECLARE_SERIALIZER(UCoreAbilitySet)
 
 

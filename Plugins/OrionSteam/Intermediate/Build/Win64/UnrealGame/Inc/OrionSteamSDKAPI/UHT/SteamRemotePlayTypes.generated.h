@@ -12,98 +12,109 @@
 #define ORIONSTEAMSDKAPI_SteamRemotePlayTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FSteamRemotePlaySessionConnected;
 struct FSteamRemotePlaySessionDisconnected;
 
 // ********** Begin ScriptStruct FRemotePlayInputKey ***********************************************
+struct Z_Construct_UScriptStruct_FRemotePlayInputKey_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlayInputKey(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_193_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlayInputKey_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlayInputKey_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlayInputKey(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlayInputKey;
 // ********** End ScriptStruct FRemotePlayInputKey *************************************************
 
 // ********** Begin ScriptStruct FRemotePlayInputMouseWheel ****************************************
+struct Z_Construct_UScriptStruct_FRemotePlayInputMouseWheel_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlayInputMouseWheel(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_227_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlayInputMouseWheel_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlayInputMouseWheel_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlayInputMouseWheel(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlayInputMouseWheel;
 // ********** End ScriptStruct FRemotePlayInputMouseWheel ******************************************
 
 // ********** Begin ScriptStruct FRemotePlayInputMouseMotion ***************************************
+struct Z_Construct_UScriptStruct_FRemotePlayInputMouseMotion_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlayInputMouseMotion(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_259_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlayInputMouseMotion_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlayInputMouseMotion_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlayInputMouseMotion(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlayInputMouseMotion;
 // ********** End ScriptStruct FRemotePlayInputMouseMotion *****************************************
 
 // ********** Begin ScriptStruct FSteamRemotePlaySessionConnected **********************************
+struct Z_Construct_UScriptStruct_FSteamRemotePlaySessionConnected_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamRemotePlaySessionConnected(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_304_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamRemotePlaySessionConnected_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamRemotePlaySessionConnected_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamRemotePlaySessionConnected(ETypeConstructPhase::Inner); }
 
 
 struct FSteamRemotePlaySessionConnected;
 // ********** End ScriptStruct FSteamRemotePlaySessionConnected ************************************
 
 // ********** Begin ScriptStruct FSteamRemotePlaySessionDisconnected *******************************
+struct Z_Construct_UScriptStruct_FSteamRemotePlaySessionDisconnected_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamRemotePlaySessionDisconnected(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_345_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamRemotePlaySessionDisconnected_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamRemotePlaySessionDisconnected_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamRemotePlaySessionDisconnected(ETypeConstructPhase::Inner); }
 
 
 struct FSteamRemotePlaySessionDisconnected;
 // ********** End ScriptStruct FSteamRemotePlaySessionDisconnected *********************************
 
 // ********** Begin ScriptStruct FRemotePlaySessionID **********************************************
+struct Z_Construct_UScriptStruct_FRemotePlaySessionID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlaySessionID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_387_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlaySessionID_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlaySessionID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlaySessionID(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlaySessionID;
 // ********** End ScriptStruct FRemotePlaySessionID ************************************************
 
 // ********** Begin ScriptStruct FRemotePlayInput **************************************************
+struct Z_Construct_UScriptStruct_FRemotePlayInput_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlayInput(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_412_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlayInput_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlayInput_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlayInput(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlayInput;
 // ********** End ScriptStruct FRemotePlayInput ****************************************************
 
 // ********** Begin ScriptStruct FRemotePlayCursorID ***********************************************
+struct Z_Construct_UScriptStruct_FRemotePlayCursorID_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemotePlayCursorID(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_472_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemotePlayCursorID_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemotePlayCursorID_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemotePlayCursorID(ETypeConstructPhase::Inner); }
 
 
 struct FRemotePlayCursorID;
 // ********** End ScriptStruct FRemotePlayCursorID *************************************************
-
-// ********** Begin Delegate FOnSteamRemotePlaySessionConnected ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_498_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamRemotePlaySessionConnected_DelegateWrapper(const FMulticastScriptDelegate& OnSteamRemotePlaySessionConnected, FSteamRemotePlaySessionConnected const& Data);
-
-
-// ********** End Delegate FOnSteamRemotePlaySessionConnected **************************************
-
-// ********** Begin Delegate FOnSteamRemotePlaySessionDisconnected *********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h_499_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamRemotePlaySessionDisconnected_DelegateWrapper(const FMulticastScriptDelegate& OnSteamRemotePlaySessionDisconnected, FSteamRemotePlaySessionDisconnected const& Data);
-
-
-// ********** End Delegate FOnSteamRemotePlaySessionDisconnected ***********************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlayTypes_h
@@ -125,7 +136,7 @@ ORIONSTEAMSDKAPI_API void FOnSteamRemotePlaySessionDisconnected_DelegateWrapper(
 
 enum class ESteamRemotePlayKeyModifier : uint8;
 template<> struct TIsUEnumClass<ESteamRemotePlayKeyModifier> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayKeyModifier>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemotePlayKeyModifier>();
 // ********** End Enum ESteamRemotePlayKeyModifier *************************************************
 
 // ********** Begin Enum ESteamRemotePlayScancode **************************************************
@@ -217,7 +228,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayKeyModifier>()
 
 enum class ESteamRemotePlayScancode : uint8;
 template<> struct TIsUEnumClass<ESteamRemotePlayScancode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayScancode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemotePlayScancode>();
 // ********** End Enum ESteamRemotePlayScancode ****************************************************
 
 // ********** Begin Enum ESteamRemotePlayMouseWheelDirection ***************************************
@@ -230,7 +241,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayScancode>();
 
 enum class ESteamRemotePlayMouseWheelDirection : uint8;
 template<> struct TIsUEnumClass<ESteamRemotePlayMouseWheelDirection> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayMouseWheelDirection>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemotePlayMouseWheelDirection>();
 // ********** End Enum ESteamRemotePlayMouseWheelDirection *****************************************
 
 // ********** Begin Enum ESteamRemotePlayMouseButton ***********************************************
@@ -244,7 +255,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayMouseWheelDire
 
 enum class ESteamRemotePlayMouseButton : uint8;
 template<> struct TIsUEnumClass<ESteamRemotePlayMouseButton> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayMouseButton>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemotePlayMouseButton>();
 // ********** End Enum ESteamRemotePlayMouseButton *************************************************
 
 // ********** Begin Enum ESteamRemotePlayInputType *************************************************
@@ -259,7 +270,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayMouseButton>()
 
 enum class ESteamRemotePlayInputType : uint8;
 template<> struct TIsUEnumClass<ESteamRemotePlayInputType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayInputType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemotePlayInputType>();
 // ********** End Enum ESteamRemotePlayInputType ***************************************************
 
 // ********** Begin Enum EOrionSteamDeviceFormFactor ***********************************************
@@ -272,7 +283,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemotePlayInputType>();
 
 enum class EOrionSteamDeviceFormFactor : uint8;
 template<> struct TIsUEnumClass<EOrionSteamDeviceFormFactor> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamDeviceFormFactor>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamDeviceFormFactor>();
 // ********** End Enum EOrionSteamDeviceFormFactor *************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebSteamNewsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionGetNewsForApp;
 class UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed;
@@ -25,16 +25,15 @@ class UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed;
 	DECLARE_FUNCTION(execGetNewsForAppAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamNews_WebSteamNewsAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetNewsForApp(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetNewsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetNewsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForApp) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetNewsForApp)
 
 
@@ -70,16 +69,15 @@ class UOrionSteamWebAPIAsyncActionGetNewsForApp;
 	DECLARE_FUNCTION(execGetNewsForAppAuthedAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamNews_WebSteamNewsAsyncActions_h_39_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetNewsForAppAuthed(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetNewsForAppAuthed)
 
 

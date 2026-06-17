@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -13,12 +13,14 @@
 #include "StreamlineShaders.h"
 #include "StreamlineCorePrivate.h"
 #include "StreamlineDLSSG.h"
-#include "StreamlineLatewarp.h"
+#include "StreamlineDLSSGCustomPresent.h"
 #include "StreamlineDeepDVC.h"
 #include "StreamlineRHI.h"
 #include "StreamlineAPI.h"
+#include "StreamlineDXGISwapchainProxy.h"
 
 #include "ClearQuad.h"
+#include "Engine/GameViewportClient.h"
 #include "Runtime/Launch/Resources/Version.h"
 #include "Runtime/Engine/Classes/GameFramework/PlayerController.h"
 #include "Runtime/Engine/Classes/GameFramework/Pawn.h"
@@ -37,16 +39,9 @@
 #define ENGINE_SUPPORTS_CLEARQUADALPHA ((ENGINE_MAJOR_VERSION == 5) && (ENGINE_MINOR_VERSION >= 2))
 #endif
 
-#ifndef XR_WORKAROUND
-#define XR_WORKAROUND 0
-#endif
-
 #ifndef SUPPORT_GUIDE_GBUFFER
 #define SUPPORT_GUIDE_GBUFFER 0
 #endif
-
-TArray<FTrackedView> FStreamlineViewExtension::TrackedViews;
-
 
 static TAutoConsoleVariable<bool> CVarStreamlineTagSceneColorWithoutHUD(
 	TEXT("r.Streamline.TagSceneColorWithoutHUD"),
@@ -60,12 +55,6 @@ static TAutoConsoleVariable<bool> CVarStreamlineTagEditorSceneColorWithoutHUD(
 	TEXT("Pass scene color without HUD into DLSS Frame Generation in the editor (default = true)\n"),
 	ECVF_RenderThreadSafe);
 
-
-static TAutoConsoleVariable<bool> CVarStreamlineTagCustomDepth(
-	TEXT("r.Streamline.TagCustomDepth"),
-	false,
-	TEXT("Pass custom depth into Streamline  (default = false)\n"),
-	ECVF_RenderThreadSafe);
 
 static TAutoConsoleVariable<bool> CVarStreamlineTagVelocities(
 	TEXT("r.Streamline.TagVelocities"),
@@ -122,41 +111,13 @@ static TAutoConsoleVariable<bool> CVarStreamlineClearColorAlpha(
 	TEXT("Clear alpha of scenecolor at the end of the Streamline view extension to allow subsequent UI drawcalls be represented correctly in the alpha channel (default = true)\n"),
 	ECVF_RenderThreadSafe);
 
-#if DEBUG_STREAMLINE_VIEW_TRACKING
-static bool bLogStreamlineLogTrackedViews = false;
-static FAutoConsoleVariableRef CVarStreamlineLogTrackedViews(
-	TEXT("r.Streamline.LogTrackedViews"),
-	bLogStreamlineLogTrackedViews,
-	TEXT("Enable/disable whether to log which views & backbuffers are associated with each other at various parts of rendering. Most useful when developing & debugging multi view port multi window code. Can be overriden with -sl{no}logviewtracking\n"),
-	ECVF_Default);
-#else
-static constexpr bool bLogStreamlineLogTrackedViews = false;
-#endif
-
-
 DEFINE_GPU_STAT(Streamline);
 DECLARE_GPU_STAT(StreamlineDeepDVC);
 
-FDelegateHandle FStreamlineViewExtension::OnPreResizeWindowBackBufferHandle;
-FDelegateHandle FStreamlineViewExtension::OnSlateWindowDestroyedHandle;
-
-
-// TODO base on eventual FStreamlineRHI queries
-bool DoActiveStreamlineFeaturesSupportMultiView()
-{
-	return !IsLatewarpActive();
-}
 
 int GetViewIndexToTag()
 {
-	if (DoActiveStreamlineFeaturesSupportMultiView())
-	{
-		return CVarStreamlineViewIndexToTag->GetInt();
-	}
-	else
-	{
-		return 0;
-	}
+	return CVarStreamlineViewIndexToTag->GetInt();
 }
 
 
@@ -172,6 +133,37 @@ bool NeedStreamlineViewIdOverride()
 	}
 }
 
+static FViewportRHIRef FindGameRHIViewport()
+{
+	// somewhat inspired by UE::DisplayCluster::Projection::EasyBlend::FindRHIViewport
+	FViewportRHIRef ViewportRHI{};
+	if (GEngine && GEngine->GameViewport)
+	{
+#if UE_VERSION_OLDER_THAN(5,8,0)
+		if (GEngine->GameViewport->Viewport)
+		{
+			ViewportRHI = GEngine->GameViewport->Viewport->GetViewportRHI();
+		}
+#endif
+		if (!ViewportRHI)
+		{
+			// since that didn't work, try slate instead
+			FSceneViewport* SceneViewport = GEngine->GameViewport->GetGameViewport();
+			if (SceneViewport)
+			{
+				TSharedPtr<SWindow> Window = SceneViewport->FindWindow();
+				if (Window)
+				{
+					FSlateRenderer* SlateRenderer = FSlateApplication::Get().GetRenderer();
+					void* ViewportResource = SlateRenderer->GetViewportResource(*Window);
+					ViewportRHI = static_cast<FRHIViewport*>(ViewportResource);
+				}
+			}
+		}
+	}
+	return ViewportRHI;
+}
+
 FStreamlineViewExtension::FStreamlineViewExtension(const FAutoRegister& AutoRegister, FStreamlineRHI* InStreamlineRHIExtensions)
 	: FSceneViewExtensionBase(AutoRegister)
 	, StreamlineRHIExtensions(InStreamlineRHIExtensions)
@@ -185,36 +177,41 @@ FStreamlineViewExtension::FStreamlineViewExtension(const FAutoRegister& AutoRegi
 	};
 
 	IsActiveThisFrameFunctions.Add(IsActiveFunctor);
+	if (!FStreamlineDXGISwapChainProxy::IsEnabled())
 	{
-		check(FSlateApplication::IsInitialized());
-		FSlateRenderer* SlateRenderer = FSlateApplication::Get().GetRenderer();
+		checkf(UE_VERSION_OLDER_THAN(5, 8, 0) == true, TEXT("Slate callbacks for viewport tracking/ are not supported for UE 5.8+"));
 
+		// Those Slate callbacks are gone in 5.8+
+#if UE_VERSION_OLDER_THAN(5,8,0)
+		check(FSlateApplication::IsInitialized());
+
+		FSlateRenderer* SlateRenderer = FSlateApplication::Get().GetRenderer();
 		OnPreResizeWindowBackBufferHandle = SlateRenderer->OnPreResizeWindowBackBuffer().AddRaw(this, &FStreamlineViewExtension::UntrackViewsForBackbuffer);
-		
+
 		OnSlateWindowDestroyedHandle = FSlateApplication::Get().GetRenderer()->OnSlateWindowDestroyed().AddLambda(
-			[this] (void* InViewport) {
-			
-				FViewportRHIRef ViewportReference = *(FViewportRHIRef*)InViewport;
-				void* NativeSwapchain = ViewportReference->GetNativeSwapChain();
-				StreamlineRHIExtensions->OnSwapchainDestroyed(NativeSwapchain);
-			}
-		);
+			[this](void* InViewport)
+		{
+			FViewportRHIRef ViewportReference = *(FViewportRHIRef*)InViewport;
+			void* NativeSwapchain = ViewportReference->GetNativeSwapChain();
+			StreamlineRHIExtensions->OnSwapchainDestroyed(NativeSwapchain);
+		});
 
 		// ShutdownModule is too late for this
 		FSlateApplication::Get().OnPreShutdown().AddLambda(
 			[]()
-			{
-				FSlateRenderer* SlateRenderer = FSlateApplication::Get().GetRenderer();
-				check(SlateRenderer);
+		{
+			FSlateRenderer* SlateRenderer = FSlateApplication::Get().GetRenderer();
+			check(SlateRenderer);
 
 
-				UE_LOG(LogStreamline, Log, TEXT("Unregistering of OnPreResizeWindowBackBuffer callback during FSlateApplication::OnPreShutdown"));
-				SlateRenderer->OnPreResizeWindowBackBuffer().Remove(OnPreResizeWindowBackBufferHandle);
+			UE_LOG(LogStreamline, Log, TEXT("Unregistering of OnPreResizeWindowBackBuffer callback during FSlateApplication::OnPreShutdown"));
+			SlateRenderer->OnPreResizeWindowBackBuffer().Remove(OnPreResizeWindowBackBufferHandle);
 
-				UE_LOG(LogStreamline, Log, TEXT("Unregistering of OnSlateWindowDestroyed callback during FSlateApplication::OnPreShutdown"));
-				SlateRenderer->OnSlateWindowDestroyed().Remove(OnSlateWindowDestroyedHandle);
-			}
+			UE_LOG(LogStreamline, Log, TEXT("Unregistering of OnSlateWindowDestroyed callback during FSlateApplication::OnPreShutdown"));
+			SlateRenderer->OnSlateWindowDestroyed().Remove(OnSlateWindowDestroyedHandle);
+		}
 		);
+#endif
 	}
 #if DEBUG_STREAMLINE_VIEW_TRACKING
 	if (FParse::Param(FCommandLine::Get(), TEXT("sllogviewtracking")))
@@ -227,12 +224,30 @@ FStreamlineViewExtension::FStreamlineViewExtension(const FAutoRegister& AutoRegi
 	}
 #endif
 
+	if (IsStreamlineDLSSGSupported() && FStreamlineDXGISwapChainProxy::IsEnabled())
+	{
+		SLCustomPresent = new FStreamlineDLSSGCustomPresent();
+		SLCustomPresent->AddRef();
+	}
+
 	UE_LOG(LogStreamline, Log, TEXT("%s Leave %s"), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName());
 }
 
 FStreamlineViewExtension::~FStreamlineViewExtension()
 {
 	UE_LOG(LogStreamline, Log, TEXT("%s Enter %s"), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName());
+
+	// remove our custom present handler if necessary
+	if (SLCustomPresent)
+	{
+		FViewportRHIRef ViewportRHI = FindGameRHIViewport();
+		if (ViewportRHI && (ViewportRHI->GetCustomPresent() == SLCustomPresent))
+		{
+			ViewportRHI->SetCustomPresent(nullptr);
+		}
+		// FStreamlineDLSSGCustomPresent is an FRHIResource so it will eventually be cleaned up by DeleteResources()
+		SLCustomPresent->Release();
+	}
 
 	if (!TrackedViews.IsEmpty())
 	{
@@ -255,222 +270,33 @@ void FStreamlineViewExtension::SetupViewPoint(APlayerController* Player, FMinima
 {
 }
 
-
 void FStreamlineViewExtension::BeginRenderViewFamily(FSceneViewFamily& InViewFamily)
 {
-	BeginRenderViewFamilyDLSSG(InViewFamily);
-}
-
-
-bool FStreamlineViewExtension::DebugViewTracking()
-{
-#if DEBUG_STREAMLINE_VIEW_TRACKING
-
-
-	return bLogStreamlineLogTrackedViews;
-#else
-	return false;
-#endif
-}
-
-void FStreamlineViewExtension::LogTrackedViews(const TCHAR* CallSite)
-{
-#if DEBUG_STREAMLINE_VIEW_TRACKING
-	if (!DebugViewTracking())
+	if (IsDLSSGActive())
 	{
-		return;
-	}
-	const FString ViewRectString = FString::JoinBy(TrackedViews, TEXT(", "), [](const FTrackedView& State)
-	{ 
-		FString TextureName = TEXT("Call me nobody");
-		FString TextureDimensionAsString = TEXT("HerpxDerp");
-
-		if (FRHITexture* Texture = State.Texture)
+		if (SLCustomPresent)
 		{
-			if (Texture && Texture->IsValid())
+			// Set CustomPresent if it's not already set.
+			FViewportRHIRef ViewportRHI = FindGameRHIViewport();
+			if (ViewportRHI)
 			{
-				TextureName = FString::Printf(TEXT("%s %p"), *Texture->GetName().ToString(), Texture->GetTexture2D());
-#if (ENGINE_MAJOR_VERSION  == 4) || ((ENGINE_MAJOR_VERSION  == 5) && (ENGINE_MINOR_VERSION < 1))
-				TextureDimensionAsString = Texture->GetSizeXYZ().ToString();
-#else
-				TextureDimensionAsString = Texture->GetSizeXY().ToString();
-#endif
+				FRHICustomPresent* CustomPresent = ViewportRHI->GetCustomPresent();
+				if (CustomPresent != SLCustomPresent)
+				{
+					if (CustomPresent != nullptr)
+					{
+						// Other plugins may also set a custom present, for example nDisplay and XR related plugins. FG is incompatible with these.
+						UE_LOG(LogStreamline, Warning, TEXT("Overriding someone else's custom present for DLSS-FG"));
+					}
+					ViewportRHI->SetCustomPresent(SLCustomPresent);
+				}
 			}
 		}
-		return FString::Printf(TEXT("%u %s (%ux%u) %s %s"), State.ViewKey, *State.ViewRect.ToString(), State.ViewRect.Width(), State.ViewRect.Height(), *TextureName, *TextureDimensionAsString);
-	}
-	);
 
-	UE_LOG(LogStreamline, Log, TEXT("%2u# %s %s"), TrackedViews.Num(), CallSite, *ViewRectString);
-#endif
-}
-
-// When editing this, please make sure to also update IsProperGraphicsView
-void LogViewNotTrackedReason(const TCHAR* Callsite, const FSceneView& View)
-{
-	if (View.bIsSceneCapture)
-	{
-		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s return View.bIsSceneCapture Key=%u, %s"), Callsite, View.GetViewKey(), *CurrentThreadName()));
-	}
-
-	if (View.bIsOfflineRender)
-	{
-		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s return View.bIsOfflineRender Key=%u, %s"), Callsite, View.GetViewKey(), *CurrentThreadName()));
-	}
-
-	if (!View.bIsGameView)
-	{
-		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s return !View.bIsGameView Key=%u, %s"), Callsite, View.GetViewKey(), *CurrentThreadName()));
-	}
-#if !XR_WORKAROUND
-	if (View.StereoPass != EStereoscopicPass::eSSP_FULL)
-	{
-		FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s return View.StereoPass != EStereoscopicPass::eSSP_FULL Key=%u, %s"), Callsite, View.GetViewKey(), *CurrentThreadName()));
-	}
-#endif
-
-}
-
-// When editing this, please make sure to also update LogViewNotTrackedReason
-const bool IsProperGraphicsView(const FSceneView& InView)
-{
-	if (InView.bIsSceneCapture)
-	{
-		return false;
-	}
-
-	// MRQ
-	if (InView.bIsOfflineRender)
-	{
-		return false;
-	}
-
-	// TODO this might need work once we render FG in the main editor view
-	if (!InView.bIsGameView)
-	{
-		return false;
-	}
-
-	//For vr rendering we disable FG
-#if !XR_WORKAROUND
-	if (InView.StereoPass != EStereoscopicPass::eSSP_FULL)
-	{
-		return false;
-	}
-#endif
-	return true;
-}
-
-
-void FStreamlineViewExtension::AddTrackedView(const FSceneView& InView)
-{
-	check(InView.bIsViewInfo);
-	const FViewInfo& ViewInfo = static_cast<const FViewInfo&>(InView);
-
-	const uint32 NewViewKey = InView.GetViewKey();
-	if (!IsProperGraphicsView(InView))
-	{
-#if DEBUG_STREAMLINE_VIEW_TRACKING
-		LogViewNotTrackedReason(ANSI_TO_TCHAR(__FUNCTION__), ViewInfo);
-#endif
-		return;
-	}
-
-	FTextureRHIRef TargetTexture = nullptr;
-
-	// in game mode we don't seem to have a rendertarget... 
-	if (const FRenderTarget* Target = InView.Family->RenderTarget; Target && Target->GetRenderTargetTexture().IsValid())
-	{
-		TargetTexture = Target->GetRenderTargetTexture();
-	}
-
-	FTrackedView* FoundTrackedView = TrackedViews.FindByPredicate([NewViewKey](const FTrackedView& State) { return State.ViewKey == NewViewKey; });
-
-	if (!FoundTrackedView)
-	{
-		TrackedViews.Emplace();
-		FoundTrackedView = &TrackedViews.Last();
-		FoundTrackedView->ViewKey = NewViewKey;
-	}
-	
-	if (TargetTexture && TargetTexture->GetName() != TEXT("HitProxyTexture"))
-	{
-		const bool bIsExpectedRenderTarget  = 
-		 (    (TargetTexture->GetName() == TEXT("BufferedRT"))
-			|| (TargetTexture->GetName() == TEXT("BackBuffer0"))
-			|| (TargetTexture->GetName() == TEXT("BackBuffer1"))
-			|| (TargetTexture->GetName() == TEXT("BackBuffer2"))
-			|| (TargetTexture->GetName() == TEXT("BackbufferReference"))
-			|| (TargetTexture->GetName() == TEXT("FD3D11Viewport::GetSwapChainSurface")) // (⊙_⊙)？
-	#if XR_WORKAROUND
-			|| (TargetTexture->GetName().ToString().Contains(TEXT("XRSwapChainBackingTex")))
-	#endif
-			|| (ENGINE_MAJOR_VERSION == 4) 
-			|| ((ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION < 1))
-		);
-
-		if (!bIsExpectedRenderTarget)
-		{
-
-			FString TextureDimensionAsString = TEXT("HerpxDerp");
-
-			const FString TextureName = FString::Printf(TEXT("%s %p"), *TargetTexture->GetName().ToString(), TargetTexture->GetTexture2D());
-#if (ENGINE_MAJOR_VERSION  == 4) || ((ENGINE_MAJOR_VERSION  == 5) && (ENGINE_MINOR_VERSION < 1))
-			TextureDimensionAsString = TargetTexture->GetSizeXYZ().ToString();
-#else
-			TextureDimensionAsString = TargetTexture->GetSizeXY().ToString();
-#endif
-
-			UE_LOG(LogStreamline, Error, TEXT("found unexpected Viewfamily rendertarget %s %s. This might cause instability in other parts of the Streamline plugin."), 
-				*TextureName,
-				*TextureDimensionAsString
-				);
-		}
-		FoundTrackedView->Texture = TargetTexture;
-	}
-
-	check(!ViewInfo.ViewRect.IsEmpty());
-	FoundTrackedView->ViewRect = ViewInfo.ViewRect;
-
-	check(!ViewInfo.UnscaledViewRect.IsEmpty());
-	FoundTrackedView->UnscaledViewRect = ViewInfo.UnscaledViewRect;
-
-	check(!ViewInfo.UnconstrainedViewRect.IsEmpty());
-	FoundTrackedView->UnconstrainedViewRect = ViewInfo.UnconstrainedViewRect;
-
-	FStreamlineViewExtension::LogTrackedViews(*FString::Printf(TEXT("%s Key=%u Target=%p, %s"), ANSI_TO_TCHAR(__FUNCTION__), NewViewKey, TargetTexture.GetReference()->GetTexture2D(), *CurrentThreadName()));
-}	
-
-void FStreamlineViewExtension::UntrackViewsForBackbuffer(void* InBackBuffer)
-{
-	check(IsInGameThread());
-	if (InBackBuffer)
-	{
-		FViewportRHIRef ViewportReference = *(FViewportRHIRef*)InBackBuffer;
-
-		if (ViewportReference)
-		{
-			const void* NativeBackbufferTexture = ViewportReference->GetNativeBackBufferTexture();
-			TrackedViews.RemoveAllSwap([NativeBackbufferTexture](const FTrackedView& TrackedView)
-			{
-					bool bRemove = false;
-					if (TrackedView.Texture && TrackedView.Texture.IsValid())
-					{
-						const void* NativeTracked = TrackedView.Texture->GetNativeResource();
-
-						if (NativeTracked == NativeBackbufferTexture)
-						{
-							bRemove = true;
-#if DEBUG_STREAMLINE_VIEW_TRACKING
-							UE_CLOG( DebugViewTracking(), LogStreamline, Log, TEXT("Untracking backbuffer %s native %p ViewKey = %u"), *TrackedView.Texture->GetName().ToString(), NativeTracked, TrackedView.ViewKey);
-#endif
-						}
-					}
-					return bRemove;
-			});
-		}
+		BeginRenderViewFamilyDLSSG(InViewFamily);
 	}
 }
+
 
 #define FIVE_FOUR_PLUS_RDG_VALIDATION_WORKAROUND (RDG_ENABLE_DEBUG && ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 4)
 
@@ -686,7 +512,6 @@ To avoid those extra transitions we are using the RDG/RHI to put the resources i
 BEGIN_SHADER_PARAMETER_STRUCT(FSLShaderParameters, )
 RDG_TEXTURE_ACCESS(Depth, ERHIAccess::CopySrc | ERHIAccess::DSVRead | ERHIAccess::SRVMask)
 RDG_TEXTURE_ACCESS(Velocity, ERHIAccess::CopySrc)
-RDG_TEXTURE_ACCESS(NoWarpMask, ERHIAccess::CopySrc)
 RDG_TEXTURE_ACCESS(SceneColorWithoutHUD, ERHIAccess::CopySrc)
 
 #if !ENGINE_PROVIDES_UE_5_6_ID3D12DYNAMICRHI_METHODS
@@ -699,11 +524,13 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 	check(IsInRenderingThread());
 	check(View.bIsViewInfo);
 
-	AddTrackedView(View);
+	if (ShouldTrackViews())
+	{
+		AddTrackedView(View);
+	}
 
 	const int ViewIndexToTag = GetViewIndexToTag();
 	const bool bTagAllViews = -1 == GetViewIndexToTag();
-	check(!bTagAllViews || bTagAllViews && DoActiveStreamlineFeaturesSupportMultiView());
 	const bool bTagThisView = bTagAllViews || (ViewIndexToTag == GetViewIndex(&View));
 
 	if (FramesWhereStreamlineConstantsWereSet.Contains( MakeTuple(GFrameCounterRenderThread, View.GetViewKey())) || !bTagThisView || !IsProperGraphicsView(View))
@@ -797,14 +624,6 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 #endif
 		check(SceneDepth);
 
-		//custom depth
-#if ENGINE_MAJOR_VERSION == 4
-		FRDGTextureRef CustomDepth = SceneTextures.CustomDepth ? GraphBuilder.RegisterExternalTexture(SceneTextures.CustomDepth) :
-			nullptr;
-#else
-		FRDGTextureRef CustomDepth = SceneTextures.CustomDepth.Depth;
-#endif
-
 #if SUPPORT_GUIDE_GBUFFER
 		FRDGTextureRef AlternateMotionVector = SceneTextures.AlternateMotionVector;
 #else
@@ -819,7 +638,6 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 		// FRDGTextureRef SLDepth = SceneDepth; 
 
 		// Those hold the outputs from various render passes that convert from engine textures into the SL specific formats
-		FRDGTextureRef SLCustomDepth = nullptr;
 		FRDGTextureRef SLVelocity = nullptr;
 		FRDGTextureRef SLSceneColorWithoutHUD = nullptr;
 
@@ -834,51 +652,6 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 			AddDrawTexturePass(GraphBuilder, ViewInfo, SceneColor.Texture, SLSceneColorWithoutHUD, FIntPoint::ZeroValue, FIntPoint::ZeroValue, FIntPoint::ZeroValue);
 
 			PassParameters->SceneColorWithoutHUD = SLSceneColorWithoutHUD;
-		}
-
-		const bool bTagCustomDepth = CVarStreamlineTagCustomDepth.GetValueOnRenderThread();
-		if (bTagCustomDepth)
-		{
-			NV_RDG_EVENT_SCOPE(GraphBuilder,Streamline, "Streamline CustomDepth %dx%d [%d,%d -> %d,%d]",
-				ViewRect.Width(), ViewRect.Height(),
-				ViewRect.Min.X, ViewRect.Min.Y,
-				ViewRect.Max.X, ViewRect.Max.Y
-			);
-
-#if ENGINE_MAJOR_VERSION == 4
-			const bool bHasCustomDepth = CustomDepth && SceneTextures.bCustomDepthIsValid;
-#else
-			const bool bHasCustomDepth = CustomDepth && SceneTextures.CustomDepth.IsValid() && CustomDepth->HasBeenProduced();
-#endif
-			check(!bHasCustomDepth || bHasCustomDepth && (CustomDepth->Desc.Extent == SceneDepth->Desc.Extent));
-
-			FRDGTextureDesc SLCustomDepthDesc = FRDGTextureDesc::Create2D
-			(
-				(bHasCustomDepth ? CustomDepth : SceneDepth)->Desc.Extent,
-				PF_R8,
-				FClearValueBinding(0.0f,0U),
-				TexCreate_ShaderResource | TexCreate_UAV | TexCreate_RenderTargetable
-			);
-
-			SLCustomDepth = GraphBuilder.CreateTexture(SLCustomDepthDesc, TEXT("Streamline.CustomDepth"));
-
-			if (bHasCustomDepth)
-			{
-				// note we pass in the rect directly since the implicit default of "0  means whole texture" behaves differently in 5.4 than before
-				// and essentially treats the output as 0 sized viewrtect.
-				AddDrawTexturePass(GraphBuilder, ViewInfo, CustomDepth, SLCustomDepth, ViewRect);
-			}
-			else
-			{
-#if ENGINE_MAJOR_VERSION == 4
-				const float kClearValue[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-#else
-				const float kClearValue = 0.0f;
-#endif
-				AddClearUAVPass(GraphBuilder, GraphBuilder.CreateUAV(SLCustomDepth), kClearValue);
-			}
-
-			PassParameters->NoWarpMask = SLCustomDepth;
 		}
 
 		const bool bTagMotionVectors = CVarStreamlineTagVelocities.GetValueOnRenderThread() != 0;
@@ -960,7 +733,7 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 			ERDGPassFlags::Raster | ERDGPassFlags::Compute | ERDGPassFlags::Copy
 			| ERDGPassFlags::NeverCull | ERDGPassFlags::NeverMerge | ERDGPassFlags::SkipRenderPass,
 			[LocalStreamlineRHIExtensions, PassParameters, StreamlineArguments, ViewRect, SecondaryViewRect, SceneColor, 
-			bTagMotionVectors, bTagCustomDepth, bTagSceneColorWithoutHUD](FRHICommandListImmediate& RHICmdList) mutable
+			bTagMotionVectors, bTagSceneColorWithoutHUD](FRHICommandListImmediate& RHICmdList) mutable
 		{
 
 			// first the constants
@@ -982,15 +755,6 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 			{
 				check(PassParameters->Velocity)
 				PassParameters->Velocity->MarkResourceAsUsed();
-			}
-
-			// custom depth are in the same rect as the depth buffer
-			check(!!PassParameters->NoWarpMask == bTagCustomDepth);
-			TexturesToTagOrUntag.Add(FRHIStreamlineResource::FromRDGTextureAccess(PassParameters->NoWarpMask, ViewRect, EStreamlineResource::NoWarpMask));
-			if (bTagCustomDepth)
-			{
-				check(PassParameters->NoWarpMask)
-				PassParameters->NoWarpMask->MarkResourceAsUsed();
 			}
 
 			check(!!PassParameters->SceneColorWithoutHUD == bTagSceneColorWithoutHUD);
@@ -1025,12 +789,6 @@ FScreenPassTexture FStreamlineViewExtension::PostProcessPassAtEnd_RenderThread(F
 	if (IsStreamlineDLSSGSupported())
 	{
 		AddStreamlineDLSSGStateRenderPass(GraphBuilder, ViewID, SecondaryViewRect);
-	}
-
-	// this is always executed if Latewarp is supported so we can turn it off at the SL side (after we skipped the work above)
-	if (IsStreamlineLatewarpSupported())
-	{
-		AddStreamlineLatewarpStateRenderPass(GraphBuilder, ViewID, SecondaryViewRect);
 	}
 
 	// DeepDVC render pass

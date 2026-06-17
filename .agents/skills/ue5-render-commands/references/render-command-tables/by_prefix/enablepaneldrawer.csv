@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+EnablePanelDrawer,CVar,bool,true,EnablePanelDrawer,通用,All,true,false,false,false,false,,`EnablePanelDrawer=<值>` / `EnablePanelDrawer <值>` 或 INI 中配置,Enables or disables the panel drawer. When the drawer is off invocations will just create a normal tab.,

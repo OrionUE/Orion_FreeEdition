@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+NNERuntimeIREE.ShowShaderCompilerWarnings,CVar,string,,NNERuntimeIREE,材质,All,true,false,false,false,false,,`NNERuntimeIREE.ShowShaderCompilerWarnings=<值>` / `NNERuntimeIREE.ShowShaderCompilerWarnings <值>` 或 INI 中配置,"When set to 1, will display all warnings from NNERuntimeIREE shader compiles.",

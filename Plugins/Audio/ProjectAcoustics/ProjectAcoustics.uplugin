@@ -7,7 +7,7 @@
 	"Category": "Audio",
 	"CreatedBy": "Microsoft Corporation",
 	"CreatedByURL": "http://www.microsoft.com",
-	"EngineVersion": "5.6.0",
+	"EngineVersion": "5.8.0",
 	"CanContainContent": true,
 	"Installed": true,
 	"SupportedTargetPlatforms": [

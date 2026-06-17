@@ -12,122 +12,75 @@
 #define ORIONSTEAMSDKAPI_SteamPartiesTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FChangeNumOpenSlotsData;
 struct FCreateBeaconData;
 struct FJoinPartyData;
 struct FReservationNotificationData;
 
 // ********** Begin ScriptStruct FSteamPartyBeaconLocation *****************************************
+struct Z_Construct_UScriptStruct_FSteamPartyBeaconLocation_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamPartyBeaconLocation(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_42_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamPartyBeaconLocation_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamPartyBeaconLocation_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamPartyBeaconLocation(ETypeConstructPhase::Inner); }
 
 
 struct FSteamPartyBeaconLocation;
 // ********** End ScriptStruct FSteamPartyBeaconLocation *******************************************
 
 // ********** Begin ScriptStruct FJoinPartyData ****************************************************
+struct Z_Construct_UScriptStruct_FJoinPartyData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FJoinPartyData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_66_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FJoinPartyData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FJoinPartyData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FJoinPartyData(ETypeConstructPhase::Inner); }
 
 
 struct FJoinPartyData;
 // ********** End ScriptStruct FJoinPartyData ******************************************************
 
 // ********** Begin ScriptStruct FCreateBeaconData *************************************************
+struct Z_Construct_UScriptStruct_FCreateBeaconData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FCreateBeaconData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_94_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCreateBeaconData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCreateBeaconData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCreateBeaconData(ETypeConstructPhase::Inner); }
 
 
 struct FCreateBeaconData;
 // ********** End ScriptStruct FCreateBeaconData ***************************************************
 
 // ********** Begin ScriptStruct FReservationNotificationData **************************************
+struct Z_Construct_UScriptStruct_FReservationNotificationData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FReservationNotificationData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_118_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FReservationNotificationData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FReservationNotificationData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FReservationNotificationData(ETypeConstructPhase::Inner); }
 
 
 struct FReservationNotificationData;
 // ********** End ScriptStruct FReservationNotificationData ****************************************
 
 // ********** Begin ScriptStruct FChangeNumOpenSlotsData *******************************************
+struct Z_Construct_UScriptStruct_FChangeNumOpenSlotsData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FChangeNumOpenSlotsData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_139_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FChangeNumOpenSlotsData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FChangeNumOpenSlotsData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FChangeNumOpenSlotsData(ETypeConstructPhase::Inner); }
 
 
 struct FChangeNumOpenSlotsData;
 // ********** End ScriptStruct FChangeNumOpenSlotsData *********************************************
-
-// ********** Begin Delegate FOnJoinPartyDelegate **************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_162_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinPartyDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnJoinPartyDelegate, FJoinPartyData const& Data);
-
-
-// ********** End Delegate FOnJoinPartyDelegate ****************************************************
-
-// ********** Begin Delegate FOnCreateBeaconDelegate ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_163_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateBeaconDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnCreateBeaconDelegate, FCreateBeaconData const& Data);
-
-
-// ********** End Delegate FOnCreateBeaconDelegate *************************************************
-
-// ********** Begin Delegate FOnReservationNotificationDelegate ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_164_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnReservationNotificationDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnReservationNotificationDelegate, FReservationNotificationData const& Data);
-
-
-// ********** End Delegate FOnReservationNotificationDelegate **************************************
-
-// ********** Begin Delegate FOnChangeNumOpenSlotsDelegate *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_165_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnChangeNumOpenSlotsDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnChangeNumOpenSlotsDelegate, FChangeNumOpenSlotsData const& Data);
-
-
-// ********** End Delegate FOnChangeNumOpenSlotsDelegate *******************************************
-
-// ********** Begin Delegate FOnAvailableBeaconLocationsDelegate ***********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_166_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAvailableBeaconLocationsDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnAvailableBeaconLocationsDelegate);
-
-
-// ********** End Delegate FOnAvailableBeaconLocationsDelegate *************************************
-
-// ********** Begin Delegate FOnActiveBeaconsDelegate **********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_167_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnActiveBeaconsDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnActiveBeaconsDelegate);
-
-
-// ********** End Delegate FOnActiveBeaconsDelegate ************************************************
-
-// ********** Begin Delegate FOnJoinParty **********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_168_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinParty_DelegateWrapper(const FScriptDelegate& OnJoinParty, FJoinPartyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinParty ************************************************************
-
-// ********** Begin Delegate FOnCreateBeacon *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_169_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateBeacon_DelegateWrapper(const FScriptDelegate& OnCreateBeacon, FCreateBeaconData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateBeacon *********************************************************
-
-// ********** Begin Delegate FOnChangeNumOpenSlots *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h_170_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnChangeNumOpenSlots_DelegateWrapper(const FScriptDelegate& OnChangeNumOpenSlots, FChangeNumOpenSlotsData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnChangeNumOpenSlots ***************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesTypes_h
@@ -140,7 +93,7 @@ ORIONSTEAMSDKAPI_API void FOnChangeNumOpenSlots_DelegateWrapper(const FScriptDel
 
 enum class ESteamPartiesBeaconLocationType : uint8;
 template<> struct TIsUEnumClass<ESteamPartiesBeaconLocationType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPartiesBeaconLocationType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamPartiesBeaconLocationType>();
 // ********** End Enum ESteamPartiesBeaconLocationType *********************************************
 
 // ********** Begin Enum ESteamPartiesBeaconLocationData *******************************************
@@ -153,7 +106,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPartiesBeaconLocationTyp
 
 enum class ESteamPartiesBeaconLocationData : uint8;
 template<> struct TIsUEnumClass<ESteamPartiesBeaconLocationData> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamPartiesBeaconLocationData>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamPartiesBeaconLocationData>();
 // ********** End Enum ESteamPartiesBeaconLocationData *********************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

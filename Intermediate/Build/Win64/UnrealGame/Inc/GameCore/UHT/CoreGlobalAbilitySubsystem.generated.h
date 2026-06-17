@@ -12,26 +12,33 @@
 #define GAMECORE_CoreGlobalAbilitySubsystem_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
+class UClass;
 class UGameplayAbility;
 class UGameplayEffect;
 
 // ********** Begin ScriptStruct FGlobalAppliedAbilityList *****************************************
+struct Z_Construct_UScriptStruct_FGlobalAppliedAbilityList_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FGlobalAppliedAbilityList(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreGlobalAbilitySubsystem_h_21_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGlobalAppliedAbilityList_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGlobalAppliedAbilityList_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGlobalAppliedAbilityList(ETypeConstructPhase::Inner); }
 
 
 struct FGlobalAppliedAbilityList;
 // ********** End ScriptStruct FGlobalAppliedAbilityList *******************************************
 
 // ********** Begin ScriptStruct FGlobalAppliedEffectList ******************************************
+struct Z_Construct_UScriptStruct_FGlobalAppliedEffectList_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FGlobalAppliedEffectList(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreGlobalAbilitySubsystem_h_34_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGlobalAppliedEffectList_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGlobalAppliedEffectList_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGlobalAppliedEffectList(ETypeConstructPhase::Inner); }
 
 
 struct FGlobalAppliedEffectList;
@@ -45,16 +52,15 @@ struct FGlobalAppliedEffectList;
 	DECLARE_FUNCTION(execApplyAbilityToAll);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGlobalAbilitySubsystem_NoRegister();
+struct Z_Construct_UClass_UCoreGlobalAbilitySubsystem_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGlobalAbilitySubsystem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreGlobalAbilitySubsystem_h_47_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGlobalAbilitySubsystem(); \
-	friend struct Z_Construct_UClass_UCoreGlobalAbilitySubsystem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGlobalAbilitySubsystem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGlobalAbilitySubsystem_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGlobalAbilitySubsystem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGlobalAbilitySubsystem, UWorldSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGlobalAbilitySubsystem_NoRegister) \
+	DECLARE_CLASS2(UCoreGlobalAbilitySubsystem, UWorldSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGlobalAbilitySubsystem) \
 	DECLARE_SERIALIZER(UCoreGlobalAbilitySubsystem)
 
 

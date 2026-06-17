@@ -12,20 +12,13 @@
 #define ORIONSTEAMSDKAPI_SteamAppsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamAppsAsyncActionGetFileDetails;
 struct FFileDetailsResult;
-
-// ********** Begin Delegate FOnFileDetailsResultAsyncDelegate *************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamApps_SteamAppsAsyncActions_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFileDetailsResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnFileDetailsResultAsyncDelegate, FFileDetailsResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnFileDetailsResultAsyncDelegate ***************************************
 
 // ********** Begin Class UOrionSteamAppsAsyncActionGetFileDetails *********************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamApps_SteamAppsAsyncActions_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -33,16 +26,15 @@ ORIONSTEAMSDKAPI_API void FOnFileDetailsResultAsyncDelegate_DelegateWrapper(cons
 	DECLARE_FUNCTION(execGetFileDetailsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamApps_SteamAppsAsyncActions_h_23_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetFileDetails(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetFileDetails, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetFileDetails, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetFileDetails) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetFileDetails)
 
 

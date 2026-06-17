@@ -12,23 +12,23 @@
 #define ORIONSTEAMWEBAPI_OrionSteamWebAPISettings_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionSteamWebAPISettings ************************************************
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISettings_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPISettings_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISettings(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPISettings_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPISettings(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPISettings_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISettings_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPISettings_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPISettings(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPISettings, UDeveloperSettings, COMPILED_IN_FLAGS(0 | CLASS_DefaultConfig | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPISettings_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPISettings, UDeveloperSettings, COMPILED_IN_FLAGS(0 | CLASS_DefaultConfig | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPISettings) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPISettings) \
-	static const TCHAR* StaticConfigName() {return TEXT("Engine");} \
+	static constexpr const TCHAR* StaticConfigName() {return TEXT("Engine");} \
 
 
 

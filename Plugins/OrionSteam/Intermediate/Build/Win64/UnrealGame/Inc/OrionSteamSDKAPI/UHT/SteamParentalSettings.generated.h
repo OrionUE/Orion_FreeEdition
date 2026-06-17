@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamParentalSettings_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamParentalSettings;
 enum class ESteamParentalFeature : uint8;
 
@@ -30,16 +30,15 @@ enum class ESteamParentalFeature : uint8;
 	DECLARE_FUNCTION(execGetSteamParentalSettings);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParentalSettings_NoRegister();
+struct Z_Construct_UClass_UOrionSteamParentalSettings_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParentalSettings(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParentalSettings_SteamParentalSettings_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamParentalSettings(); \
-	friend struct Z_Construct_UClass_UOrionSteamParentalSettings_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParentalSettings_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamParentalSettings_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamParentalSettings(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamParentalSettings, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamParentalSettings_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamParentalSettings, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamParentalSettings) \
 	DECLARE_SERIALIZER(UOrionSteamParentalSettings)
 
 

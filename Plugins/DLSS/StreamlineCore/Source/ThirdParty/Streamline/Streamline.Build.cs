@@ -69,29 +69,6 @@ public class Streamline : ModuleRules
 			PublicDefinitions.Add("SL_BUILD_DEEPDVC=1");
 			PublicDefinitions.Add("STREAMLINE_PLATFORM_DIR=TEXT(\"" + PlatformDir + "\")");
 
-			// 			bool bWithLatewarp = File.Exists(StreamlineIncludePath+"/sl_latewarp.h") && 
-			// 								 File.Exists(SLProductionBinariesPath+ "/sl.latewarp.dll") &&
-			// 								 File.Exists(SLProductionBinariesPath + "/nvngx_latewarp.dll");
-
-			bool bWithLatewarp = false;
-
-			if (bWithLatewarp)
-			{
-
-				StreamlineDlls.AddRange(new string[]
-				{
-					"sl.latewarp.dll",
-					"nvngx_latewarp.dll",
-				});
-
-				PublicDefinitions.Add("WITH_LATEWARP=1");
-
-			}
-			else
-			{
-				PublicDefinitions.Add("WITH_LATEWARP=0");
-			}
-
 			bool bHasProductionBinaries = Directory.Exists(SLProductionBinariesPath);
 			bool bHasDevelopmentBinaries = Directory.Exists(SLDevelopmentBinariesPath);
 			bool bHasDebugBinaries = Directory.Exists(SLDebugBinariesPath);

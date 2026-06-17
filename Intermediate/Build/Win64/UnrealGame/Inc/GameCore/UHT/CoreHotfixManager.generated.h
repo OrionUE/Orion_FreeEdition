@@ -12,21 +12,21 @@
 #define GAMECORE_CoreHotfixManager_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreHotfixManager *******************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreHotfixManager_NoRegister();
+struct Z_Construct_UClass_UCoreHotfixManager_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreHotfixManager(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Hotfix_CoreHotfixManager_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreHotfixManager(); \
-	friend struct Z_Construct_UClass_UCoreHotfixManager_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreHotfixManager_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreHotfixManager_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreHotfixManager(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreHotfixManager, UOnlineHotfixManager, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreHotfixManager_NoRegister) \
+	DECLARE_CLASS2(UCoreHotfixManager, UOnlineHotfixManager, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreHotfixManager) \
 	DECLARE_SERIALIZER(UCoreHotfixManager)
 
 

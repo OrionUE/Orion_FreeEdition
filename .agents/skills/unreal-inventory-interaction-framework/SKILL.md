@@ -28,6 +28,7 @@ description: "Use when Codex works on Unreal Engine inventory interaction and it
 - 交互 GA、InteractionAbilityToGrant、GameplayEvent、AbilitySet、InputTag、prediction 或 target ability 触发时，配合 `../unreal-gameplayabilities/SKILL.md`。
 - 交互输入、`InputTag.Ability.Interact`、`IA_Interact`、InputConfig、IMC 或改键可见性时，配合 `../unreal-input-framework/SKILL.md` 和 `../unreal-enhancedinput/SKILL.md`。
 - 交互提示 UI、Indicator widget、CommonActionWidget、按键图标或 CommonUI/UMG 布局时，配合 `../unreal-umg/SKILL.md`、`../unreal-commoninput/SKILL.md`。
+- 修改 `Content/UI/Interaction` 的交互提示 Widget、`UUI_InteractionWithKeyBrush` 蓝图或 Indicator UI 表现时，同时读取 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 交互组件、IndicatorManager、输入、AbilitySet 或物品玩法随 Experience/GameFeature 启停时，配合 `../unreal-gamefeatures/SKILL.md` 和 `../unreal-gamemode-experience-framework/SKILL.md`。
 - 世界物品、库存组件、ItemInstance、Container、RPC、replicated subobject、拾取/掉落/装备同步或多人交互 bug 时，配合 `../unreal-network-replication-framework/SKILL.md`。
 - 交互结果需要跨 UI、任务、提示、统计或系统解耦广播时，配合 `../unreal-gameplay-message-router/SKILL.md`。

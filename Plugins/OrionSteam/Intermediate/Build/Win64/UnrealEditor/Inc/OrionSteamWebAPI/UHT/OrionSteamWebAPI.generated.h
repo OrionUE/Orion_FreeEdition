@@ -12,21 +12,21 @@
 #define ORIONSTEAMWEBAPI_OrionSteamWebAPI_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionSteamWebAPI ********************************************************
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPI_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPI_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPI(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPI_h_39_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPI(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPI_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPI_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPI_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPI(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPI, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPI_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPI, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPI) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPI)
 
 
@@ -57,16 +57,15 @@ class UOrionSteamWebAPI;
 // ********** End Class UOrionSteamWebAPI **********************************************************
 
 // ********** Begin Class UOrionSteamWebAPISubsystem ***********************************************
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISubsystem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPISubsystem_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISubsystem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_OrionSteamWebAPI_OrionSteamWebAPI_h_45_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPISubsystem(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPISubsystem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPISubsystem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPISubsystem_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPISubsystem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPISubsystem, UGameInstanceSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPISubsystem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPISubsystem, UGameInstanceSubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPISubsystem) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPISubsystem)
 
 

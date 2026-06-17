@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebSteamUser_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 enum class EVanityUrlType : uint8;
 
 // ********** Begin Class UWebSteamUser ************************************************************
@@ -32,16 +32,15 @@ enum class EVanityUrlType : uint8;
 	DECLARE_FUNCTION(execCheckAppOwnership);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamUser_NoRegister();
+struct Z_Construct_UClass_UWebSteamUser_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamUser(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamUser_WebSteamUser_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebSteamUser(); \
-	friend struct Z_Construct_UClass_UWebSteamUser_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamUser_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebSteamUser_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebSteamUser(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebSteamUser, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamUser_NoRegister) \
+	DECLARE_CLASS2(UWebSteamUser, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamUser) \
 	DECLARE_SERIALIZER(UWebSteamUser)
 
 

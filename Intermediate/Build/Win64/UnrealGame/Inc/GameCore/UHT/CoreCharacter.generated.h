@@ -12,23 +12,23 @@
 #define GAMECORE_CoreCharacter_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ACoreCharacter ***********************************************************
-GAMECORE_API UClass* Z_Construct_UClass_ACoreCharacter_NoRegister();
+struct Z_Construct_UClass_ACoreCharacter_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACoreCharacter(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CoreCharacter_h_30_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACoreCharacter(); \
-	friend struct Z_Construct_UClass_ACoreCharacter_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACoreCharacter_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACoreCharacter_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACoreCharacter(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACoreCharacter, AModularCharacter, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreCharacter_NoRegister) \
+	DECLARE_CLASS2(ACoreCharacter, AModularCharacter, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreCharacter) \
 	DECLARE_SERIALIZER(ACoreCharacter) \
-	virtual UObject* _getUObject() const override { return const_cast<ACoreCharacter*>(this); }
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<ACoreCharacter*>(this); }
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CoreCharacter_h_30_ENHANCED_CONSTRUCTORS \

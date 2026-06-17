@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMusic_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamMusic;
 enum class ESteamAudioPlaybackStatus : uint8;
 
@@ -33,16 +33,15 @@ enum class ESteamAudioPlaybackStatus : uint8;
 	DECLARE_FUNCTION(execGetSteamMusic);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMusic_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMusic_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMusic(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusic_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMusic(); \
-	friend struct Z_Construct_UClass_UOrionSteamMusic_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMusic_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMusic_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMusic(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMusic, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMusic_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMusic, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMusic) \
 	DECLARE_SERIALIZER(UOrionSteamMusic)
 
 

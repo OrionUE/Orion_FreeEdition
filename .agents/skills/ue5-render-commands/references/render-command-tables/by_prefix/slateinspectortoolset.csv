@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+SlateInspectorToolset.Enable,CVar,string,,SlateInspectorToolset,光线追踪,All,true,false,false,false,false,,`SlateInspectorToolset.Enable=<值>` / `SlateInspectorToolset.Enable <值>` 或 INI 中配置,"Enable or disable SlateInspectorToolset registration. When disabled, its tools will not appear in the MCP tool list.",ECVF_Default

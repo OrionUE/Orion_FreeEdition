@@ -18,6 +18,7 @@ description: Use when creating, editing, validating, or debugging Unreal GameUI,
 
 ## 路由
 
+- 处理 `Content/UI` 下 `Art`、`HUD`、`Interaction`、`Menu`、`Online`、`Settings`，或 `BP_UIPolicy`、`W_OverallUILayout`、`BP_CommonInputData`、`DA_GameUIInputActionDomainTable`、`DT_UniversalActions` 这组项目 UI 蓝图框架资产时，先读取 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 创建或编辑 Widget Blueprint 时，先读取 `.agents/skills/unreal-mcp-workflow/SKILL.md` 和 `.agents/skills/unreal-mcp-project-toolsets/SKILL.md`，确认 MCP、保存、`UMGToolSet`、`OrionBlueprintGraphToolset`、`SaveAsset` 的当前可用 schema。
 - 创建或修改 UI toast、击杀提示、错误提示、通知 feed、Widget 监听 gameplay message 或用 GameplayTag channel 驱动 UI 时，读取 `.agents/skills/unreal-gameplay-message-router/SKILL.md`。
 - 创建或修改玩家可见 UI 文案、TextBlock、RichText、CommonUI 按钮文本、设置项显示名/描述或本地化预览时，读取 `.agents/skills/unreal-localization-framework/SKILL.md`，静态文案必须使用可收集 `FText`。

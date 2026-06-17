@@ -12,23 +12,23 @@
 #define GAMECORE_CoreGameFeaturesPolicy_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreGameFeaturesPolicy **************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeaturesPolicy_NoRegister();
+struct Z_Construct_UClass_UCoreGameFeaturesPolicy_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeaturesPolicy(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_CoreGameFeaturesPolicy_h_24_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameFeaturesPolicy(); \
-	friend struct Z_Construct_UClass_UCoreGameFeaturesPolicy_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeaturesPolicy_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameFeaturesPolicy_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameFeaturesPolicy(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameFeaturesPolicy, UDefaultGameFeaturesProjectPolicies, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeaturesPolicy_NoRegister) \
+	DECLARE_CLASS2(UCoreGameFeaturesPolicy, UDefaultGameFeaturesProjectPolicies, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeaturesPolicy) \
 	DECLARE_SERIALIZER(UCoreGameFeaturesPolicy) \
-	static const TCHAR* StaticConfigName() {return TEXT("Game");} \
+	static constexpr const TCHAR* StaticConfigName() {return TEXT("Game");} \
 
 
 
@@ -57,18 +57,17 @@ class UCoreGameFeaturesPolicy;
 // ********** End Class UCoreGameFeaturesPolicy ****************************************************
 
 // ********** Begin Class UCoreGameFeature_HotfixManager *******************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_HotfixManager_NoRegister();
+struct Z_Construct_UClass_UCoreGameFeature_HotfixManager_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_HotfixManager(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_CoreGameFeaturesPolicy_h_48_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameFeature_HotfixManager(); \
-	friend struct Z_Construct_UClass_UCoreGameFeature_HotfixManager_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_HotfixManager_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameFeature_HotfixManager_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameFeature_HotfixManager(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameFeature_HotfixManager, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeature_HotfixManager_NoRegister) \
+	DECLARE_CLASS2(UCoreGameFeature_HotfixManager, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeature_HotfixManager) \
 	DECLARE_SERIALIZER(UCoreGameFeature_HotfixManager) \
-	virtual UObject* _getUObject() const override { return const_cast<UCoreGameFeature_HotfixManager*>(this); }
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<UCoreGameFeature_HotfixManager*>(this); }
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_CoreGameFeaturesPolicy_h_48_ENHANCED_CONSTRUCTORS \
@@ -98,18 +97,17 @@ class UCoreGameFeature_HotfixManager;
 // ********** End Class UCoreGameFeature_HotfixManager *********************************************
 
 // ********** Begin Class UCoreGameFeature_AddGameplayCuePaths *************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_NoRegister();
+struct Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_CoreGameFeaturesPolicy_h_57_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameFeature_AddGameplayCuePaths(); \
-	friend struct Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameFeature_AddGameplayCuePaths, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths_NoRegister) \
+	DECLARE_CLASS2(UCoreGameFeature_AddGameplayCuePaths, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameFeature_AddGameplayCuePaths) \
 	DECLARE_SERIALIZER(UCoreGameFeature_AddGameplayCuePaths) \
-	virtual UObject* _getUObject() const override { return const_cast<UCoreGameFeature_AddGameplayCuePaths*>(this); }
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<UCoreGameFeature_AddGameplayCuePaths*>(this); }
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_CoreGameFeaturesPolicy_h_57_ENHANCED_CONSTRUCTORS \

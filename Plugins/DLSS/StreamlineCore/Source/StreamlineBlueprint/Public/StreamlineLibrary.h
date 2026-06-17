@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -28,12 +28,11 @@
 //}
 
 // That should be updated if new BP libraries are added for new featurew
-#define STREAMLINE_LIBARY_KEYWORDS "DLSS-G, Reflex, DeepDVC, Latewarp, Streamline"
+#define STREAMLINE_LIBARY_KEYWORDS "DLSS-G, Reflex, DeepDVC, Streamline"
 UENUM(BlueprintType)
 enum class EStreamlineFeature : uint8
 {
 	DLSSG UMETA(DisplayName = "DLSS Frame Generation"),
-	Latewarp UMETA(DisplayName = "Latewarp"),
 	Reflex UMETA(DisplayName = "Reflex"),
 	DeepDVC UMETA(DisplayName = "DeepDVC"),
 	Count UMETA(Hidden)
@@ -86,7 +85,7 @@ public:
 
 };
 
-static_assert(uint8(EStreamlineFeature::Count) == 4u, "dear NVIDIA plugin developer, please update the Keywords below handle the new enum values");
+static_assert(uint8(EStreamlineFeature::Count) == 3u, "dear NVIDIA plugin developer, please update the Keywords below handle the new enum values");
 
 USTRUCT(BlueprintType)
 struct FStreamlineFeatureRequirements 
@@ -120,18 +119,18 @@ class  UStreamlineLibrary : public UBlueprintFunctionLibrary
 public:
 
 		/** Checks whether a Streamline feature is supported by the current GPU. Further details can be retrieved via QueryStreamlineFeatureSupport*/
-	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Get NVIDIA Streamline Feature information", Keywords = "Reflex, DLSS-G, Latewarp, DeepDVC"))
+	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Get NVIDIA Streamline Feature information", Keywords = "Reflex, DLSS-G, DeepDVC"))
 	static UE_API FStreamlineFeatureRequirements GetStreamlineFeatureInformation(EStreamlineFeature Feature);
 
-	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (/*DisplayName = "Get Streamline Feature Requirements", */Keywords = "Reflex, DLSS-G, Latewarp, DeepDVC"))
+	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (/*DisplayName = "Get Streamline Feature Requirements", */Keywords = "Reflex, DLSS-G, DeepDVC"))
 	static UE_API void BreakStreamlineFeatureRequirements(EStreamlineFeatureRequirementsFlags Requirements, bool& D3D11Supported, bool& D3D12Supported, bool& VulkanSupported, bool& VSyncOffRequired, bool& HardwareSchedulingRequired);
 
 	/** Checks whether a Streamline feature is supported by the current GPU. Further details can be retrieved via QueryStreamlineFeatureSupport*/
-	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Is NVIDIA Streamline Feature Supported", Keywords = "Reflex, DLSS-G, Latewarp, DeepDVC" ))
+	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Is NVIDIA Streamline Feature Supported", Keywords = "Reflex, DLSS-G, DeepDVC" ))
 	static UE_API bool IsStreamlineFeatureSupported(EStreamlineFeature Feature);
 
 	/** Checks whether Streamline feature  is supported by the current GPU	*/
-	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Query NVIDIA Streamline Feature Support", Keywords = "Reflex, DLSS-G, Latewarp, DeepDVC"))
+	UFUNCTION(BlueprintPure, Category = "Streamline", meta = (DisplayName = "Query NVIDIA Streamline Feature Support", Keywords = "Reflex, DLSS-G, DeepDVC"))
 	static UE_API EStreamlineFeatureSupport QueryStreamlineFeatureSupport(EStreamlineFeature Feature);
 
 

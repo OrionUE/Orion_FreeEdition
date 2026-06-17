@@ -12,12 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmakingAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
- struct FSteamSessionSearchSetting;
- struct FSteamSessionSetting;
 class APlayerController;
 class UObject;
 class UOrionSteamCreateSession;
@@ -38,34 +36,8 @@ struct FJoinLobbyData;
 struct FLobbyMatchList;
 struct FSteamID;
 struct FSteamSessionResult;
-
-// ********** Begin Delegate FOnRequestLobbyListAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_27_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestLobbyListAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestLobbyListAsyncDelegate, FLobbyMatchList const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestLobbyListAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnCreateLobbyAsyncDelegate *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_28_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateLobbyAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnCreateLobbyAsyncDelegate, FCreateLobbyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateLobbyAsyncDelegate *********************************************
-
-// ********** Begin Delegate FOnJoinLobbyAsyncDelegate *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_29_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinLobbyAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnJoinLobbyAsyncDelegate, FJoinLobbyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinLobbyAsyncDelegate ***********************************************
-
-// ********** Begin Delegate FJoinOrionSteamSessionDelegate ****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_30_DELEGATE \
-ORIONSTEAMSDKAPI_API void FJoinOrionSteamSessionDelegate_DelegateWrapper(const FMulticastScriptDelegate& JoinOrionSteamSessionDelegate, const FString& JoinFailReason);
-
-
-// ********** End Delegate FJoinOrionSteamSessionDelegate ******************************************
+struct FSteamSessionSearchSetting;
+struct FSteamSessionSetting;
 
 // ********** Begin Class UOrionSteamMatchmakingAsyncActionCreateLobby *****************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_41_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -73,16 +45,15 @@ ORIONSTEAMSDKAPI_API void FJoinOrionSteamSessionDelegate_DelegateWrapper(const F
 	DECLARE_FUNCTION(execCreateLobbyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_41_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingAsyncActionCreateLobby(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionCreateLobby, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionCreateLobby, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionCreateLobby) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingAsyncActionCreateLobby)
 
 
@@ -119,16 +90,15 @@ class UOrionSteamMatchmakingAsyncActionCreateLobby;
 	DECLARE_FUNCTION(execRequestLobbyListAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_68_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingAsyncActionRequestLobbyList(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionRequestLobbyList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionRequestLobbyList, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionRequestLobbyList) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingAsyncActionRequestLobbyList)
 
 
@@ -165,16 +135,15 @@ class UOrionSteamMatchmakingAsyncActionRequestLobbyList;
 	DECLARE_FUNCTION(execJoinLobbyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_98_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingAsyncActionJoinLobby(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionJoinLobby, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingAsyncActionJoinLobby, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingAsyncActionJoinLobby) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingAsyncActionJoinLobby)
 
 
@@ -210,16 +179,15 @@ class UOrionSteamMatchmakingAsyncActionJoinLobby;
 	DECLARE_FUNCTION(execCreateOrionSteamSessionExtra);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSessionExtra_NoRegister();
+struct Z_Construct_UClass_UOrionSteamCreateSessionExtra_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSessionExtra(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_125_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamCreateSessionExtra(); \
-	friend struct Z_Construct_UClass_UOrionSteamCreateSessionExtra_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSessionExtra_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamCreateSessionExtra_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamCreateSessionExtra(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamCreateSessionExtra, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamCreateSessionExtra_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamCreateSessionExtra, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamCreateSessionExtra) \
 	DECLARE_SERIALIZER(UOrionSteamCreateSessionExtra)
 
 
@@ -253,16 +221,15 @@ class UOrionSteamCreateSessionExtra;
 	DECLARE_FUNCTION(execCreateOrionSteamSession);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamCreateSession_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_170_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamCreateSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamCreateSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamCreateSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamCreateSession_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamCreateSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamCreateSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamCreateSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamCreateSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamCreateSession) \
 	DECLARE_SERIALIZER(UOrionSteamCreateSession)
 
 
@@ -291,29 +258,21 @@ class UOrionSteamCreateSession;
 
 // ********** End Class UOrionSteamCreateSession ***************************************************
 
-// ********** Begin Delegate FFindSteamSessionsResultDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_209_DELEGATE \
-ORIONSTEAMSDKAPI_API void FFindSteamSessionsResultDelegate_DelegateWrapper(const FMulticastScriptDelegate& FindSteamSessionsResultDelegate, TArray<FSteamSessionResult> const& Results);
-
-
-// ********** End Delegate FFindSteamSessionsResultDelegate ****************************************
-
 // ********** Begin Class UOrionSteamFindSession ***************************************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_217_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execOnCompleted); \
 	DECLARE_FUNCTION(execFindOrionSteamSessions);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFindSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFindSession_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFindSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_217_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFindSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamFindSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFindSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFindSession_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFindSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFindSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFindSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFindSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFindSession) \
 	DECLARE_SERIALIZER(UOrionSteamFindSession)
 
 
@@ -347,16 +306,15 @@ class UOrionSteamFindSession;
 	DECLARE_FUNCTION(execJoinOrionSteamSession);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamJoinSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamJoinSession_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamJoinSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_270_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamJoinSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamJoinSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamJoinSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamJoinSession_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamJoinSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamJoinSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamJoinSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamJoinSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamJoinSession) \
 	DECLARE_SERIALIZER(UOrionSteamJoinSession)
 
 
@@ -391,16 +349,15 @@ class UOrionSteamJoinSession;
 	DECLARE_FUNCTION(execDestroyOrionSteamSession);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamDestroySession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamDestroySession_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamDestroySession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_305_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamDestroySession(); \
-	friend struct Z_Construct_UClass_UOrionSteamDestroySession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamDestroySession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamDestroySession_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamDestroySession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamDestroySession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamDestroySession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamDestroySession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamDestroySession) \
 	DECLARE_SERIALIZER(UOrionSteamDestroySession)
 
 
@@ -435,16 +392,15 @@ class UOrionSteamDestroySession;
 	DECLARE_FUNCTION(execUpdateOrionSteamSession);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUpdateSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUpdateSession_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUpdateSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingAsyncActions_h_342_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUpdateSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamUpdateSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUpdateSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUpdateSession_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUpdateSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUpdateSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUpdateSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUpdateSession, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUpdateSession) \
 	DECLARE_SERIALIZER(UOrionSteamUpdateSession)
 
 

@@ -12,10 +12,10 @@
 #define GAMECORE_CorePlayerController_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class ACorePlayerState;
 class UCoreAbilitySystemComponent;
 
@@ -29,16 +29,15 @@ class UCoreAbilitySystemComponent;
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Player_CorePlayerController_h_30_CALLBACK_WRAPPERS
-GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerController_NoRegister();
+struct Z_Construct_UClass_ACorePlayerController_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerController(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Player_CorePlayerController_h_30_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACorePlayerController(); \
-	friend struct Z_Construct_UClass_ACorePlayerController_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerController_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACorePlayerController_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACorePlayerController(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACorePlayerController, ACommonPlayerController, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACorePlayerController_NoRegister) \
+	DECLARE_CLASS2(ACorePlayerController, ACommonPlayerController, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACorePlayerController) \
 	DECLARE_SERIALIZER(ACorePlayerController)
 
 

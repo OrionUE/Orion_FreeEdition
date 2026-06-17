@@ -12,37 +12,29 @@
 #define GAMECORE_AsyncAction_PlayerStateReady_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class APlayerController;
 class APlayerState;
 class UAsyncAction_PlayerStateReady;
 class UObject;
-
-// ********** Begin Delegate FPlayerStateReadyAsyncDelegate ****************************************
-#define FID_Orion_FreeEdition_Source_GameCore_Public_Player_AsyncAction_PlayerStateReady_h_12_DELEGATE \
-GAMECORE_API void FPlayerStateReadyAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& PlayerStateReadyAsyncDelegate, APlayerState* PlayerState);
-
-
-// ********** End Delegate FPlayerStateReadyAsyncDelegate ******************************************
 
 // ********** Begin Class UAsyncAction_PlayerStateReady ********************************************
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Player_AsyncAction_PlayerStateReady_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execWaitForPlayerStateReady);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UAsyncAction_PlayerStateReady_NoRegister();
+struct Z_Construct_UClass_UAsyncAction_PlayerStateReady_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UAsyncAction_PlayerStateReady(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Player_AsyncAction_PlayerStateReady_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUAsyncAction_PlayerStateReady(); \
-	friend struct Z_Construct_UClass_UAsyncAction_PlayerStateReady_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UAsyncAction_PlayerStateReady_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UAsyncAction_PlayerStateReady_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UAsyncAction_PlayerStateReady(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UAsyncAction_PlayerStateReady, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UAsyncAction_PlayerStateReady_NoRegister) \
+	DECLARE_CLASS2(UAsyncAction_PlayerStateReady, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UAsyncAction_PlayerStateReady) \
 	DECLARE_SERIALIZER(UAsyncAction_PlayerStateReady)
 
 

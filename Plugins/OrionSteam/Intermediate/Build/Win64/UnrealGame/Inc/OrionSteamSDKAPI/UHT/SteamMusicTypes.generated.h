@@ -12,44 +12,37 @@
 #define ORIONSTEAMSDKAPI_SteamMusicTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FPlaybackStatusHasChanged;
 struct FVolumeHasChanged;
 
 // ********** Begin ScriptStruct FPlaybackStatusHasChanged *****************************************
+struct Z_Construct_UScriptStruct_FPlaybackStatusHasChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FPlaybackStatusHasChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusicTypes_h_32_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FPlaybackStatusHasChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FPlaybackStatusHasChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FPlaybackStatusHasChanged(ETypeConstructPhase::Inner); }
 
 
 struct FPlaybackStatusHasChanged;
 // ********** End ScriptStruct FPlaybackStatusHasChanged *******************************************
 
 // ********** Begin ScriptStruct FVolumeHasChanged *************************************************
+struct Z_Construct_UScriptStruct_FVolumeHasChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FVolumeHasChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusicTypes_h_46_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FVolumeHasChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FVolumeHasChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FVolumeHasChanged(ETypeConstructPhase::Inner); }
 
 
 struct FVolumeHasChanged;
 // ********** End ScriptStruct FVolumeHasChanged ***************************************************
-
-// ********** Begin Delegate FOnPlaybackStatusHasChanged *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusicTypes_h_68_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnPlaybackStatusHasChanged_DelegateWrapper(const FMulticastScriptDelegate& OnPlaybackStatusHasChanged, FPlaybackStatusHasChanged const& Data);
-
-
-// ********** End Delegate FOnPlaybackStatusHasChanged *********************************************
-
-// ********** Begin Delegate FOnVolumeHasChanged ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusicTypes_h_69_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnVolumeHasChanged_DelegateWrapper(const FMulticastScriptDelegate& OnVolumeHasChanged, FVolumeHasChanged const& Data);
-
-
-// ********** End Delegate FOnVolumeHasChanged *****************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMusic_SteamMusicTypes_h
@@ -63,7 +56,7 @@ ORIONSTEAMSDKAPI_API void FOnVolumeHasChanged_DelegateWrapper(const FMulticastSc
 
 enum class ESteamAudioPlaybackStatus : uint8;
 template<> struct TIsUEnumClass<ESteamAudioPlaybackStatus> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamAudioPlaybackStatus>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamAudioPlaybackStatus>();
 // ********** End Enum ESteamAudioPlaybackStatus ***************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

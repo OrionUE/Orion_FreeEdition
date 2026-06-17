@@ -12,21 +12,21 @@
 #define ORIONSTEAMSOCKETS_OrionSteamSocketsNetConnection_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionSteamSocketsNetConnection ******************************************
-ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetConnection_NoRegister();
+struct Z_Construct_UClass_UOrionSteamSocketsNetConnection_Statics;
+ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetConnection(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSockets_Public_OrionSteamSocketsNetConnection_h_19_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamSocketsNetConnection(); \
-	friend struct Z_Construct_UClass_UOrionSteamSocketsNetConnection_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSOCKETS_API UClass* Z_Construct_UClass_UOrionSteamSocketsNetConnection_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamSocketsNetConnection_Statics; \
+	friend ORIONSTEAMSOCKETS_API UClass* ::Z_Construct_UClass_UOrionSteamSocketsNetConnection(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamSocketsNetConnection, UNetConnection, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSockets"), Z_Construct_UClass_UOrionSteamSocketsNetConnection_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamSocketsNetConnection, UNetConnection, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSockets"), Z_Construct_UClass_UOrionSteamSocketsNetConnection) \
 	DECLARE_SERIALIZER(UOrionSteamSocketsNetConnection)
 
 

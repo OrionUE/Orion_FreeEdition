@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -47,7 +47,6 @@ enum class EStreamlineResource
 {
 	Depth,
 	MotionVectors,
-	NoWarpMask,
 	HUDLessColor,
 	UIColorAndAlpha,
 	Backbuffer,
@@ -225,7 +224,9 @@ public:
 public: 
 	virtual void TagTextures(FRHICommandList& CmdList, uint32 InViewID, const sl::FrameToken& FrameToken, const TArrayView<const FRHIStreamlineResource> InResources) = 0;
 	virtual const sl::AdapterInfo* GetAdapterInfo() = 0;
-	virtual void APIErrorHandler(const sl::APIError& LastError) = 0;
+	virtual void APIErrorHandler(const sl::APIError& LastError) const = 0;
+	
+	virtual bool IsPluginSideSwapchainProxyEnabled() const = 0;
 
 protected:
 
@@ -241,11 +242,6 @@ public:
 	}
 
 	virtual bool IsDeepDVCSupportedByRHI() const
-	{
-		return false;
-	}
-
-	virtual bool IsLatewarpSupportedByRHI() const
 	{
 		return false;
 	}
@@ -270,23 +266,28 @@ public:
 	// that needs to call some virtual methods that we can't call in the ctor. Just C++ things
 	void PostPlatformRHICreateInit();
 
-	UE_API void OnSwapchainDestroyed(void* InNativeSwapchain) const;
-	UE_API void OnSwapchainCreated(void* InNativeSwapchain) const;
+	UE_API void OnSwapchainDestroyed(void* InNativeSwapchain, bool bIsKnownProxy = false) const;
+	UE_API void OnSwapchainCreated(void* InNativeSwapchain, bool bIsKnownProxy = false) const;
 
 #if !ENGINE_PROVIDES_UE_5_6_ID3D12DYNAMICRHI_METHODS
 	UE_API virtual bool NeedExtraPassesForDebugLayerCompatibility();
 #endif
 
+#if WITH_EDITOR
+	bool IsUnsupportedPIEActive() const { return bIsUnsupportedPIEActive; }
+#endif
+
 protected:
 
-	
+
 	UE_API FStreamlineRHI(const FStreamlineRHICreateArguments& Arguments);
 
 #if WITH_EDITOR
 
 	void OnBeginPIE(const bool bIsSimulating);
 	void OnEndPIE(const bool bIsSimulating);
-	bool bIsPIEActive = false;
+	bool bIsSupportedPIEActive = false;
+	bool bIsUnsupportedPIEActive = false;
 	FDelegateHandle BeginPIEHandle;
 	FDelegateHandle EndPIEHandle;
 #endif
@@ -299,7 +300,7 @@ protected:
 	void ValidateNumSwapchainProxies(const char* CallSite) const;
 #if PLATFORM_WINDOWS
 	// whether an HRESULT is a DXGI_STATUS_*
-	UE_API bool IsDXGIStatus(const HRESULT HR);
+	UE_API bool IsDXGIStatus(const HRESULT HR) const ;
 #endif
 
 	
@@ -361,5 +362,6 @@ STREAMLINERHI_API FString CurrentThreadName();
 
 
 STREAMLINERHI_API bool ShouldUseSlSetTag();
+STREAMLINERHI_API bool ShouldUseSlateCallbacksForSwapchainTracking();
 
 #undef UE_API

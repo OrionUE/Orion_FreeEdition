@@ -1,6 +1,6 @@
 ---
 name: unreal-packaging
-description: "Use when packaging or validating a Windows Steam build for an Unreal Engine project with Legacy Project Launcher custom profiles for Shipping, Debug, and Development, including packaged localization staging, CulturesToStage, .locres files, Content/Localization targets, packaged movie staging, Content/Movies files, bSkipMovies, UFSMovies, NonUFSMovies, Bink .bk2 files, and startup/loading movie validation."
+description: "Use when packaging or validating a Windows Steam build for an Unreal Engine project with Legacy Project Launcher custom profiles for Shipping, Debug, and Development, including Steam CustomConfig packaging from Config/Custom/Steam/DefaultEngine.ini, packaged localization staging, CulturesToStage, .locres files, Content/Localization targets, packaged movie staging, Content/Movies files, bSkipMovies, UFSMovies, NonUFSMovies, Bink .bk2 files, and startup/loading movie validation."
 ---
 
 # Unreal Packaging
@@ -26,6 +26,8 @@ description: "Use when packaging or validating a Windows Steam build for an Unre
 - `Development`: `<ProjectName>Steam_Development`
 
 除非用户明确要求覆盖，否则使用模板内的 Cooked Cultures、Cooked Platforms、Pak、压缩、加密、IoStore 等默认设置。
+
+Steam Profile 模板必须把 `{{SteamBuildTargetName}}` 和 `customconfig=Steam` 一起传给 UAT。Steam 专用 Engine 配置以 `Config/Custom/Steam/DefaultEngine.ini` 为准，不再假设 Steam block 写在根 `Config/DefaultEngine.ini`。
 
 可用脚本：
 

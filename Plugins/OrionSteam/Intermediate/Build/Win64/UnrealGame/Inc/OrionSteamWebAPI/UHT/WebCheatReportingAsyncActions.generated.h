@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebCheatReportingAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession;
 class UOrionSteamWebAPIAsyncActionGetCheatingReports;
@@ -31,16 +31,15 @@ class UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession;
 	DECLARE_FUNCTION(execReportPlayerCheatingAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionReportPlayerCheating(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportPlayerCheating, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportPlayerCheating, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportPlayerCheating) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionReportPlayerCheating)
 
 
@@ -76,16 +75,15 @@ class UOrionSteamWebAPIAsyncActionReportPlayerCheating;
 	DECLARE_FUNCTION(execRequestPlayerGameBanAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_47_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionRequestPlayerGameBan(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestPlayerGameBan, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestPlayerGameBan, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestPlayerGameBan) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionRequestPlayerGameBan)
 
 
@@ -121,16 +119,15 @@ class UOrionSteamWebAPIAsyncActionRequestPlayerGameBan;
 	DECLARE_FUNCTION(execRemovePlayerGameBanAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_72_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionRemovePlayerGameBan(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRemovePlayerGameBan, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRemovePlayerGameBan, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRemovePlayerGameBan) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionRemovePlayerGameBan)
 
 
@@ -166,16 +163,15 @@ class UOrionSteamWebAPIAsyncActionRemovePlayerGameBan;
 	DECLARE_FUNCTION(execGetCheatingReportsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_93_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetCheatingReports(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCheatingReports, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCheatingReports, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCheatingReports) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetCheatingReports)
 
 
@@ -211,16 +207,15 @@ class UOrionSteamWebAPIAsyncActionGetCheatingReports;
 	DECLARE_FUNCTION(execReportCheatDataAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_119_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionReportCheatData(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportCheatData, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionReportCheatData, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionReportCheatData) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionReportCheatData)
 
 
@@ -256,16 +251,15 @@ class UOrionSteamWebAPIAsyncActionReportCheatData;
 	DECLARE_FUNCTION(execRequestVacStatusForUserAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_150_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionRequestVacStatusForUser(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestVacStatusForUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestVacStatusForUser, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestVacStatusForUser) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionRequestVacStatusForUser)
 
 
@@ -301,16 +295,15 @@ class UOrionSteamWebAPIAsyncActionRequestVacStatusForUser;
 	DECLARE_FUNCTION(execStartSecureMultiplayerSessionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_176_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession)
 
 
@@ -346,16 +339,15 @@ class UOrionSteamWebAPIAsyncActionStartSecureMultiplayerSession;
 	DECLARE_FUNCTION(execEndSecureMultiplayerSessionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_CheatReporting_WebCheatReportingAsyncActions_h_195_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionEndSecureMultiplayerSession)
 
 

@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+d3d11.ZeroBufferSizeInMB,CVar,int32,4,d3d11,RHI/底层渲染接口,DirectX、Windows,false,true,false,false,false,,`d3d11.ZeroBufferSizeInMB=<值>` / `d3d11.ZeroBufferSizeInMB <值>` 或 INI 中配置,The D3D11 RHI needs a static allocation of zeroes to use when streaming textures asynchronously. It should be large enough to support the largest mipmap you need to stream. The default is 4MB.,ECVF_ReadOnly

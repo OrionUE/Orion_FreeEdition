@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -15,9 +15,6 @@
 #include "sl.h"
 #include "sl_helpers.h"
 #include "sl_dlss_g.h"
-#if WITH_LATEWARP
-#include "sl_latewarp.h"
-#endif
 #include "sl_deepdvc.h"
 
 // Those are the actual Streamline API calls
@@ -132,12 +129,6 @@ struct StringifySLArgument
 	{
 		ArgStrings.Add(FString::Printf(TEXT("%s intensity=%.3f saturationBoost=%.3f"), ANSI_TO_TCHAR(getDeepDVCModeAsStr(In.mode)), In.intensity, In.saturationBoost));
 	}
-#if WITH_LATEWARP
-	void operator()(const sl::LatewarpOptions& In)
-	{
-		ArgStrings.Add(FString::Printf(TEXT("latewarpActive=%u"), In.latewarpActive));
-	}
-#endif
 	void operator()(const sl::ReflexOptions& In)
 	{
 		ArgStrings.Add(FString::Printf(TEXT("mode=%s"), ANSI_TO_TCHAR(getReflexModeAsStr(In.mode))));

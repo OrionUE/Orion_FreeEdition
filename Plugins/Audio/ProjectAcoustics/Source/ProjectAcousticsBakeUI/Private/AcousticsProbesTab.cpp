@@ -105,7 +105,7 @@ CreateStaticMesh(struct FRawMesh& RawMesh, TArray<FStaticMaterial>& Materials, U
     }
 
     // Set the Imported version before calling the build
-    StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
+    StaticMesh->SetImportVersion(EImportStaticMeshVersion::LastVersion);
 
     StaticMesh->Build();
     StaticMesh->MarkPackageDirty();
@@ -146,7 +146,7 @@ CreateStaticMesh(FMeshDescription& RawMesh, TArray<FStaticMaterial>& Materials, 
     }
 
     // Set the Imported version before calling the build
-    StaticMesh->ImportVersion = EImportStaticMeshVersion::LastVersion;
+    StaticMesh->SetImportVersion(EImportStaticMeshVersion::LastVersion);
 
     StaticMesh->Build();
     StaticMesh->MarkPackageDirty();
@@ -926,7 +926,7 @@ TritonMaterialCode SAcousticsProbesTab::GetMaterialCodeForLandscapeFace(
         face < static_cast<uint32>(layers.Num()))
     {
         const ULandscapeLayerInfoObject* layer = layers[face];
-        UPhysicalMaterial* layerPhysMat = layer->PhysMaterial;
+        UPhysicalMaterial* layerPhysMat = layer->GetPhysicalMaterial();
         if (m_AcousticsEditMode->ShouldUsePhysicalMaterial(layerPhysMat))
         {
             if (!AcousticsSharedState::GetMaterialsLibrary()->FindMaterialCode(layerPhysMat->GetName(), &code) &&
@@ -1149,7 +1149,7 @@ bool SAcousticsProbesTab::ExportLandscapeToRawMesh(
         const int32 ComponentSizeQuadsLOD = ((Component->ComponentSizeQuads + 1) >> LandscapeLODToExport) - 1;
         const int32 SubsectionSizeQuadsLOD = ((Component->SubsectionSizeQuads + 1) >> LandscapeLODToExport) - 1;
         const FIntPoint ComponentOffsetQuads =
-            Component->GetSectionBase() - LandscapeActor->LandscapeSectionOffset - LandscapeSectionRect.Min;
+            Component->GetSectionBase() - LandscapeActor->GetSectionBase() - LandscapeSectionRect.Min;
         const FVector2D ComponentUVOffsetLOD =
             FVector2D(ComponentOffsetQuads) * ((float) ComponentSizeQuadsLOD / LandscapeActor->ComponentSizeQuads);
         const FVector2D ComponentUVScaleLOD =

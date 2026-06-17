@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -56,6 +56,10 @@ public:
 	/** Use deprecated slSetTag instead of slSetTagForFrame.  Saved to local user config only **/
 	UPROPERTY(Config, EditAnywhere, Category = "Compatibility (Local)", DisplayName = "Use slSetTag (deprecated)", AdvancedDisplay, meta = (ConfigRestartRequired = true))
 	EStreamlineSettingOverride UseSlSetTagOverride = EStreamlineSettingOverride::UseProjectSettings;
+
+	/** Use Slate callbacks (OnSlateWindowDestroyed, OnPreResizeWindowBackBuffer) for swapchain tracking for DLSS-FG, instead of the DXGI swapchain proxy. Only supported for UE 5.7 and older. Saved to local user config only */
+	UPROPERTY(Config, EditAnywhere, Category = "Compatibility (Local)", DisplayName = "Use Slate callbacks for Swapchain tracking (deprecated)", AdvancedDisplay, meta = (ConfigRestartRequired = true))
+	EStreamlineSettingOverride UseSlateCallbacksForSwapchainTrackingOverride = EStreamlineSettingOverride::UseProjectSettings;
 };
 
 UCLASS(MinimalAPI, Config = Engine, DefaultConfig)
@@ -91,7 +95,7 @@ public:
 	bool bEnableStreamlineD3D11 = PLATFORM_WINDOWS;
 
 	/**
-	 * Enable DLSS Frame Generation in New Editor Window Play In Editor mode.
+	 * Enable DLSS Frame Generation in New Editor Window Play In Editor mode. Not supported for Network PIE with multiple floating PIE windows.
 	 * This project wide setting can be locally overridden in the NVIDIA DLSS Frame Generation (Local) settings.
 	 * Note: DLSS Frame Generation is not supported in editor viewports
 	 */
@@ -102,6 +106,10 @@ public:
 	/** Use deprecated slSetTag instead of slSetTagForFrame.*/
 	UPROPERTY(Config, EditAnywhere, Category = "Compatibility", DisplayName = "Use slSetTag (deprecated)", AdvancedDisplay, meta = (ConfigRestartRequired = true))
 	bool bUseSlSetTag = false;
+
+	/** Use Slate callbacks (OnSlateWindowDestroyed, OnPreResizeWindowBackBuffer) for swapchain tracking for DLSS-FG, instead of the DXGI swapchain proxy. Only supported for UE 5.7 and older. */
+	UPROPERTY(Config,    EditAnywhere, Category = "Compatibility", DisplayName = "Use Slate callbacks for Swapchain tracking (deprecated)", AdvancedDisplay, meta = (ConfigRestartRequired = true))
+	bool bUseSlateCallbacksForSwapchainTracking = false;
 
 
 	// when we need to read some of the settings in FStreamlineRHIModule::InitializeStreamline() we don't have the UOBject system loaded

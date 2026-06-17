@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_OrionSteamApps_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamApps;
 enum class ESteamBetaBranchFlags : uint8;
 struct FSteamID;
@@ -56,16 +56,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamApps);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamApps_NoRegister();
+struct Z_Construct_UClass_UOrionSteamApps_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamApps(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamApps_OrionSteamApps_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamApps(); \
-	friend struct Z_Construct_UClass_UOrionSteamApps_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamApps_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamApps_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamApps(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamApps, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamApps_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamApps, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamApps) \
 	DECLARE_SERIALIZER(UOrionSteamApps)
 
 

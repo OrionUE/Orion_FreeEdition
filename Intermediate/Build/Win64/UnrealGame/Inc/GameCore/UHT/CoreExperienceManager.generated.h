@@ -12,33 +12,33 @@
 #define GAMECORE_CoreExperienceManager_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreExperienceManager ***************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManager_NoRegister();
+struct Z_Construct_UClass_UCoreExperienceManager_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManager(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreExperienceManager_h_22_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreExperienceManager(); \
-	friend struct Z_Construct_UClass_UCoreExperienceManager_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManager_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreExperienceManager_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreExperienceManager(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreExperienceManager, UEngineSubsystem, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceManager_NoRegister) \
+	DECLARE_CLASS2(UCoreExperienceManager, UEngineSubsystem, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceManager) \
 	DECLARE_SERIALIZER(UCoreExperienceManager)
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreExperienceManager_h_22_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UCoreExperienceManager(); \
+	NO_API UCoreExperienceManager(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UCoreExperienceManager(UCoreExperienceManager&&) = delete; \
 	UCoreExperienceManager(const UCoreExperienceManager&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UCoreExperienceManager); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UCoreExperienceManager); \
-	DEFINE_ABSTRACT_DEFAULT_CONSTRUCTOR_CALL(UCoreExperienceManager) \
+	DEFINE_ABSTRACT_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UCoreExperienceManager) \
 	NO_API virtual ~UCoreExperienceManager();
 
 

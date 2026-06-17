@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebEconServiceAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionCancelTradeOffer;
 class UOrionSteamWebAPIAsyncActionDeclineTradeOffer;
@@ -32,16 +32,15 @@ class UOrionSteamWebAPIAsyncActionGetTradeOffersSummary;
 	DECLARE_FUNCTION(execGetTradeHistoryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetTradeHistory(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeHistory) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetTradeHistory)
 
 
@@ -77,16 +76,15 @@ class UOrionSteamWebAPIAsyncActionGetTradeHistory;
 	DECLARE_FUNCTION(execFlushInventoryCacheAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_42_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionFlushInventoryCache(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushInventoryCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushInventoryCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushInventoryCache) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionFlushInventoryCache)
 
 
@@ -122,16 +120,15 @@ class UOrionSteamWebAPIAsyncActionFlushInventoryCache;
 	DECLARE_FUNCTION(execFlushAssetAppearanceCacheAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_62_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache)
 
 
@@ -167,16 +164,15 @@ class UOrionSteamWebAPIAsyncActionFlushAssetAppearanceCache;
 	DECLARE_FUNCTION(execFlushContextCacheAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_80_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionFlushContextCache(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushContextCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionFlushContextCache, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionFlushContextCache) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionFlushContextCache)
 
 
@@ -212,16 +208,15 @@ class UOrionSteamWebAPIAsyncActionFlushContextCache;
 	DECLARE_FUNCTION(execGetTradeOffersAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_98_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetTradeOffers(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffers, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffers, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffers) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetTradeOffers)
 
 
@@ -257,16 +252,15 @@ class UOrionSteamWebAPIAsyncActionGetTradeOffers;
 	DECLARE_FUNCTION(execGetTradeOfferAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_122_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetTradeOffer(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffer) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetTradeOffer)
 
 
@@ -302,16 +296,15 @@ class UOrionSteamWebAPIAsyncActionGetTradeOffer;
 	DECLARE_FUNCTION(execGetTradeOffersSummaryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_140_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetTradeOffersSummary(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffersSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetTradeOffersSummary, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetTradeOffersSummary) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetTradeOffersSummary)
 
 
@@ -347,16 +340,15 @@ class UOrionSteamWebAPIAsyncActionGetTradeOffersSummary;
 	DECLARE_FUNCTION(execDeclineTradeOfferAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_158_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionDeclineTradeOffer(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeclineTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeclineTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeclineTradeOffer) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionDeclineTradeOffer)
 
 
@@ -392,16 +384,15 @@ class UOrionSteamWebAPIAsyncActionDeclineTradeOffer;
 	DECLARE_FUNCTION(execCancelTradeOfferAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_EconService_WebEconServiceAsyncActions_h_176_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionCancelTradeOffer(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCancelTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCancelTradeOffer, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCancelTradeOffer) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionCancelTradeOffer)
 
 

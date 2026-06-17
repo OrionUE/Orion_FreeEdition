@@ -12,10 +12,10 @@
 #define GAMECORE_CorePawnExtensionComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class AActor;
 class UCoreAbilitySystemComponent;
 class UCorePawnExtensionComponent;
@@ -27,18 +27,17 @@ class UCorePawnExtensionComponent;
 	DECLARE_FUNCTION(execFindPawnExtensionComponent);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UCorePawnExtensionComponent_NoRegister();
+struct Z_Construct_UClass_UCorePawnExtensionComponent_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCorePawnExtensionComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CorePawnExtensionComponent_h_28_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCorePawnExtensionComponent(); \
-	friend struct Z_Construct_UClass_UCorePawnExtensionComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCorePawnExtensionComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCorePawnExtensionComponent_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCorePawnExtensionComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCorePawnExtensionComponent, UPawnComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnExtensionComponent_NoRegister) \
+	DECLARE_CLASS2(UCorePawnExtensionComponent, UPawnComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnExtensionComponent) \
 	DECLARE_SERIALIZER(UCorePawnExtensionComponent) \
-	virtual UObject* _getUObject() const override { return const_cast<UCorePawnExtensionComponent*>(this); } \
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<UCorePawnExtensionComponent*>(this); } \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \

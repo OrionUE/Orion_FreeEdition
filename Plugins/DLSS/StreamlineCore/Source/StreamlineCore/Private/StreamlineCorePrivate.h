@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -25,6 +25,7 @@ DECLARE_GPU_STAT_NAMED_EXTERN(Streamline, TEXT("Streamline"));
 
 bool ShouldTagStreamlineBuffers();
 bool ForceTagStreamlineBuffers();
+bool ShouldTrackViews();
 bool NeedStreamlineViewIdOverride();
 
 namespace sl

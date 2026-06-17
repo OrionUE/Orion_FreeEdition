@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -450,6 +450,8 @@ void FNGXVulkanRHI::ExecuteDLSS(FRHICommandList& CmdList, const FRHIDLSSArgument
 		NVSDK_NGX_Resource_VK InExposureTexture = NGXVulkanResourceFromRHITexture(InArguments.InputExposure);
 		DlssEvalParams.pInExposureTexture = InArguments.bUseAutoExposure ? nullptr : &InExposureTexture;
 		DlssEvalParams.InPreExposure = InArguments.PreExposure;
+
+		DlssEvalParams.InExposureScale = InArguments.ExposureScale;
 
 		DlssEvalParams.InJitterOffsetX = InArguments.JitterOffset.X;
 		DlssEvalParams.InJitterOffsetY = InArguments.JitterOffset.Y;

@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebPlayerServiceAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionGetBadges;
 class UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress;
@@ -29,16 +29,15 @@ class UOrionSteamWebAPIAsyncActionIsPlayingSharedGame;
 	DECLARE_FUNCTION(execGetRecentlyPlayedGamesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames)
 
 
@@ -74,16 +73,15 @@ class UOrionSteamWebAPIAsyncActionGetRecentlyPlayedGames;
 	DECLARE_FUNCTION(execGetOwnedGamesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_36_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetOwnedGames(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetOwnedGames, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetOwnedGames, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetOwnedGames) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetOwnedGames)
 
 
@@ -119,16 +117,15 @@ class UOrionSteamWebAPIAsyncActionGetOwnedGames;
 	DECLARE_FUNCTION(execGetSteamLevelAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_57_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetSteamLevel(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetSteamLevel, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetSteamLevel, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSteamLevel) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetSteamLevel)
 
 
@@ -164,16 +161,15 @@ class UOrionSteamWebAPIAsyncActionGetSteamLevel;
 	DECLARE_FUNCTION(execGetBadgesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_75_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetBadges(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetBadges, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetBadges, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetBadges) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetBadges)
 
 
@@ -209,16 +205,15 @@ class UOrionSteamWebAPIAsyncActionGetBadges;
 	DECLARE_FUNCTION(execGetCommunityBadgeProgressAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_93_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress)
 
 
@@ -254,16 +249,15 @@ class UOrionSteamWebAPIAsyncActionGetCommunityBadgeProgress;
 	DECLARE_FUNCTION(execIsPlayingSharedGameAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerServiceAsyncActions_h_112_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionIsPlayingSharedGame(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionIsPlayingSharedGame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionIsPlayingSharedGame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionIsPlayingSharedGame) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionIsPlayingSharedGame)
 
 

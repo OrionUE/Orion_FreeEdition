@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Cook.OnTheFly.AllowIncompleteShadermaps,CVar,string,,Cook,材质,All,true,false,false,false,false,,`Cook.OnTheFly.AllowIncompleteShadermaps=<值>` / `Cook.OnTheFly.AllowIncompleteShadermaps <值>` 或 INI 中配置,Controls whether incomplete shader maps are processed during cook on the fly\n,ECVF_Default
+Cook.OnTheFly.ShaderCompilationDisabled,CVar,string,,Cook,材质,All,true,false,false,false,false,,`Cook.OnTheFly.ShaderCompilationDisabled=<值>` / `Cook.OnTheFly.ShaderCompilationDisabled <值>` 或 INI 中配置,Controls whether shader compilation is disabled during cook on the fly\n,ECVF_Default

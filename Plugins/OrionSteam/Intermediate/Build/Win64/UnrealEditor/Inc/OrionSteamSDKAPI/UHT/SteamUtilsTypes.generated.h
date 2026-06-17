@@ -12,10 +12,11 @@
 #define ORIONSTEAMSDKAPI_SteamUtilsTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FAppResumingFromSuspend;
 struct FCheckFileSignature;
 struct FFloatingGamepadTextInputDismissed;
@@ -25,116 +26,88 @@ struct FLowBatteryPower;
 struct FSteamShutdown;
 
 // ********** Begin ScriptStruct FCheckFileSignature ***********************************************
+struct Z_Construct_UScriptStruct_FCheckFileSignature_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FCheckFileSignature(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_131_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCheckFileSignature_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCheckFileSignature_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCheckFileSignature(ETypeConstructPhase::Inner); }
 
 
 struct FCheckFileSignature;
 // ********** End ScriptStruct FCheckFileSignature *************************************************
 
 // ********** Begin ScriptStruct FGamepadTextInputDismissed ****************************************
+struct Z_Construct_UScriptStruct_FGamepadTextInputDismissed_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGamepadTextInputDismissed(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_153_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGamepadTextInputDismissed_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGamepadTextInputDismissed_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGamepadTextInputDismissed(ETypeConstructPhase::Inner); }
 
 
 struct FGamepadTextInputDismissed;
 // ********** End ScriptStruct FGamepadTextInputDismissed ******************************************
 
 // ********** Begin ScriptStruct FLowBatteryPower **************************************************
+struct Z_Construct_UScriptStruct_FLowBatteryPower_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLowBatteryPower(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_177_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLowBatteryPower_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLowBatteryPower_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLowBatteryPower(ETypeConstructPhase::Inner); }
 
 
 struct FLowBatteryPower;
 // ********** End ScriptStruct FLowBatteryPower ****************************************************
 
 // ********** Begin ScriptStruct FIPCountry ********************************************************
+struct Z_Construct_UScriptStruct_FIPCountry_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FIPCountry(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_199_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FIPCountry_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FIPCountry_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FIPCountry(ETypeConstructPhase::Inner); }
 
 
 struct FIPCountry;
 // ********** End ScriptStruct FIPCountry **********************************************************
 
 // ********** Begin ScriptStruct FSteamShutdown ****************************************************
+struct Z_Construct_UScriptStruct_FSteamShutdown_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamShutdown(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_213_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamShutdown_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamShutdown_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamShutdown(ETypeConstructPhase::Inner); }
 
 
 struct FSteamShutdown;
 // ********** End ScriptStruct FSteamShutdown ******************************************************
 
 // ********** Begin ScriptStruct FAppResumingFromSuspend *******************************************
+struct Z_Construct_UScriptStruct_FAppResumingFromSuspend_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FAppResumingFromSuspend(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_227_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FAppResumingFromSuspend_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FAppResumingFromSuspend_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FAppResumingFromSuspend(ETypeConstructPhase::Inner); }
 
 
 struct FAppResumingFromSuspend;
 // ********** End ScriptStruct FAppResumingFromSuspend *********************************************
 
 // ********** Begin ScriptStruct FFloatingGamepadTextInputDismissed ********************************
+struct Z_Construct_UScriptStruct_FFloatingGamepadTextInputDismissed_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFloatingGamepadTextInputDismissed(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_241_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFloatingGamepadTextInputDismissed_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFloatingGamepadTextInputDismissed_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFloatingGamepadTextInputDismissed(ETypeConstructPhase::Inner); }
 
 
 struct FFloatingGamepadTextInputDismissed;
 // ********** End ScriptStruct FFloatingGamepadTextInputDismissed **********************************
-
-// ********** Begin Delegate FOnCheckFileSignature *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_255_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCheckFileSignature_DelegateWrapper(const FMulticastScriptDelegate& OnCheckFileSignature, FCheckFileSignature const& Data);
-
-
-// ********** End Delegate FOnCheckFileSignature ***************************************************
-
-// ********** Begin Delegate FOnGamepadTextInputDismissed ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_256_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGamepadTextInputDismissed_DelegateWrapper(const FMulticastScriptDelegate& OnGamepadTextInputDismissed, FGamepadTextInputDismissed const& Data);
-
-
-// ********** End Delegate FOnGamepadTextInputDismissed ********************************************
-
-// ********** Begin Delegate FOnIPCountry **********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_257_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnIPCountry_DelegateWrapper(const FMulticastScriptDelegate& OnIPCountry, FIPCountry const& Data);
-
-
-// ********** End Delegate FOnIPCountry ************************************************************
-
-// ********** Begin Delegate FOnLowBatteryPower ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_258_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLowBatteryPower_DelegateWrapper(const FMulticastScriptDelegate& OnLowBatteryPower, FLowBatteryPower const& Data);
-
-
-// ********** End Delegate FOnLowBatteryPower ******************************************************
-
-// ********** Begin Delegate FOnSteamShutdown ******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_259_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamShutdown_DelegateWrapper(const FMulticastScriptDelegate& OnSteamShutdown, FSteamShutdown const& Data);
-
-
-// ********** End Delegate FOnSteamShutdown ********************************************************
-
-// ********** Begin Delegate FOnAppResumingFromSuspend *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_260_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAppResumingFromSuspend_DelegateWrapper(const FMulticastScriptDelegate& OnAppResumingFromSuspend, FAppResumingFromSuspend const& Data);
-
-
-// ********** End Delegate FOnAppResumingFromSuspend ***********************************************
-
-// ********** Begin Delegate FOnFloatingGamepadTextInputDismissed **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h_261_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFloatingGamepadTextInputDismissed_DelegateWrapper(const FMulticastScriptDelegate& OnFloatingGamepadTextInputDismissed, FFloatingGamepadTextInputDismissed const& Data);
-
-
-// ********** End Delegate FOnFloatingGamepadTextInputDismissed ************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUtils_SteamUtilsTypes_h
@@ -148,7 +121,7 @@ ORIONSTEAMSDKAPI_API void FOnFloatingGamepadTextInputDismissed_DelegateWrapper(c
 
 enum class ESteamTextFilteringContext : uint8;
 template<> struct TIsUEnumClass<ESteamTextFilteringContext> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamTextFilteringContext>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamTextFilteringContext>();
 // ********** End Enum ESteamTextFilteringContext **************************************************
 
 // ********** Begin Enum ESteamCheckFileSignature **************************************************
@@ -161,7 +134,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamTextFilteringContext>();
 
 enum class ESteamCheckFileSignature : uint8;
 template<> struct TIsUEnumClass<ESteamCheckFileSignature> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamCheckFileSignature>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamCheckFileSignature>();
 // ********** End Enum ESteamCheckFileSignature ****************************************************
 
 // ********** Begin Enum ESteamGamepadTextInputLineMode ********************************************
@@ -171,7 +144,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamCheckFileSignature>();
 
 enum class ESteamGamepadTextInputLineMode : uint8;
 template<> struct TIsUEnumClass<ESteamGamepadTextInputLineMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamGamepadTextInputLineMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamGamepadTextInputLineMode>();
 // ********** End Enum ESteamGamepadTextInputLineMode **********************************************
 
 // ********** Begin Enum ESteamGamepadTextInputMode ************************************************
@@ -181,7 +154,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamGamepadTextInputLineMode
 
 enum class ESteamGamepadTextInputMode : uint8;
 template<> struct TIsUEnumClass<ESteamGamepadTextInputMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamGamepadTextInputMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamGamepadTextInputMode>();
 // ********** End Enum ESteamGamepadTextInputMode **************************************************
 
 // ********** Begin Enum ESteamNotificationPosition ************************************************
@@ -193,7 +166,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamGamepadTextInputMode>();
 
 enum class ESteamNotificationPosition : uint8;
 template<> struct TIsUEnumClass<ESteamNotificationPosition> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamNotificationPosition>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamNotificationPosition>();
 // ********** End Enum ESteamNotificationPosition **************************************************
 
 // ********** Begin Enum ESteamUniverse ************************************************************
@@ -207,7 +180,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamNotificationPosition>();
 
 enum class ESteamUniverse : uint8;
 template<> struct TIsUEnumClass<ESteamUniverse> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUniverse>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUniverse>();
 // ********** End Enum ESteamUniverse **************************************************************
 
 // ********** Begin Enum EGameSearchErrorCode ******************************************************
@@ -225,7 +198,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUniverse>();
 
 enum class EGameSearchErrorCode : uint8;
 template<> struct TIsUEnumClass<EGameSearchErrorCode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EGameSearchErrorCode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EGameSearchErrorCode>();
 // ********** End Enum EGameSearchErrorCode ********************************************************
 
 // ********** Begin Enum EPlayerResult *************************************************************
@@ -239,7 +212,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EGameSearchErrorCode>();
 
 enum class EPlayerResult : uint8;
 template<> struct TIsUEnumClass<EPlayerResult> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EPlayerResult>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EPlayerResult>();
 // ********** End Enum EPlayerResult ***************************************************************
 
 // ********** Begin Enum EOrionSteamIPv6ConnectivityProtocol ***************************************
@@ -250,7 +223,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EPlayerResult>();
 
 enum class EOrionSteamIPv6ConnectivityProtocol : uint8;
 template<> struct TIsUEnumClass<EOrionSteamIPv6ConnectivityProtocol> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivityProtocol>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivityProtocol>();
 // ********** End Enum EOrionSteamIPv6ConnectivityProtocol *****************************************
 
 // ********** Begin Enum EOrionSteamIPv6ConnectivityState ******************************************
@@ -261,7 +234,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivityPro
 
 enum class EOrionSteamIPv6ConnectivityState : uint8;
 template<> struct TIsUEnumClass<EOrionSteamIPv6ConnectivityState> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivityState>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivityState>();
 // ********** End Enum EOrionSteamIPv6ConnectivityState ********************************************
 
 // ********** Begin Enum ESteamFloatingGamepadTextInputMode ****************************************
@@ -273,7 +246,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamIPv6ConnectivitySta
 
 enum class ESteamFloatingGamepadTextInputMode : uint8;
 template<> struct TIsUEnumClass<ESteamFloatingGamepadTextInputMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFloatingGamepadTextInputMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamFloatingGamepadTextInputMode>();
 // ********** End Enum ESteamFloatingGamepadTextInputMode ******************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

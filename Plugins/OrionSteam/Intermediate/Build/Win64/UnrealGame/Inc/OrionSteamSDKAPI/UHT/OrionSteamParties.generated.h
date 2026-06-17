@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_OrionSteamParties_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamParties;
 enum class ESteamPartiesBeaconLocationData : uint8;
 struct FPartyBeaconID;
@@ -39,16 +39,15 @@ struct FSteamPartyBeaconLocation;
 	DECLARE_FUNCTION(execGetSteamParties);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParties_NoRegister();
+struct Z_Construct_UClass_UOrionSteamParties_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParties(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_OrionSteamParties_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamParties(); \
-	friend struct Z_Construct_UClass_UOrionSteamParties_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamParties_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamParties_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamParties(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamParties, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamParties_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamParties, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamParties) \
 	DECLARE_SERIALIZER(UOrionSteamParties)
 
 

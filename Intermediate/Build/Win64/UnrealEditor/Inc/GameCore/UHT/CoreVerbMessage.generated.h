@@ -12,14 +12,18 @@
 #define GAMECORE_CoreVerbMessage_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FCoreVerbMessage **************************************************
+struct Z_Construct_UScriptStruct_FCoreVerbMessage_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreVerbMessage(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Messages_CoreVerbMessage_h_15_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreVerbMessage_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreVerbMessage_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreVerbMessage(ETypeConstructPhase::Inner); }
 
 
 struct FCoreVerbMessage;

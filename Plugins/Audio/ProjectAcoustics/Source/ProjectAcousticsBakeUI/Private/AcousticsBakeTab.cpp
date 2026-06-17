@@ -308,19 +308,18 @@ FReply SAcousticsBakeTab::OnLocalBakeButton()
 
         // Generate readme.txt file explaining how to perform local bakes
         FString readmeFilePath = FPaths::Combine(localBakePackageDir, TEXT("readme.txt"));
-        FString readmeFileContents = FString::Printf(TEXT("Baking acoustics on a local PC is an option that many customers utilize when "
+        FString readmeFileContents = TEXT("Baking acoustics on a local PC is an option that many customers utilize when "
             "scene sizes are small and getting familiar with the technology is the goal. As scene sizes increase, using a service like "
             "Azure Batch will reduce the time it takes to complete a bake.\n\n"
             "After creating a local bake directory via the Prepare Local Bake button, select the Download Local Bake Tools button to "
             "download the bake tools package and place the tools in the chosen local bake directory.\n\n"
             "Once the tools and the configuration files are co-located in the local bake directory, execute the \"RunLocalBake.bat\" script "
             "to start a bake that will run serially on your local PC producing a new working directory matching the starting timestamp of "
-            "the bake. To import the .ace file into your project, use the Content Browser to navigate to the Content\"Acoustics folder and "
+            "the bake. To import the .ace file into your project, use the Content Browser to navigate to the Content\\Acoustics folder and "
             "either drag and drop your .ace file into the folder -or- select the Import button and find the .ace file you "
             "would like to import into the project. Once the import is complete, you can then set the Acoustics Data property of the "
             "AcousticsSpace actor to new .ace file. Consult the documentation on https://aka.ms/acoustics for more documentation about "
-            "importing ACE files into a project.\n"),
-            *FPaths::GetCleanFilename(configPath));
+            "importing ACE files into a project.\n");
         FFileHelper::SaveStringToFile(readmeFileContents, *readmeFilePath);
 
         // Notify the user in console

@@ -25,6 +25,7 @@ description: "Use when Codex works on the Unreal Engine GameSettings plugin and 
 - 设置项属于渲染、分辨率、画质、DLSS、RTX、帧率、Scalability 或 PSO 启动流程时，配合 `../unreal-rendering-framework/SKILL.md`。
 - 设置项属于输入、按键重映射、CommonInput 手柄类型、glyph、EnhancedInput mappable profile 或 gamepad 参数时，配合 `../unreal-input-framework/SKILL.md`、`../unreal-enhancedinput/SKILL.md` 和 `../unreal-commoninput/SKILL.md`。
 - 设置页、Widget Blueprint、CommonUI 层栈、列表 entry、按钮、返回键或 VisualData 资产相关工作，配合 `../unreal-umg/SKILL.md`。
+- 修改 `Content/UI/Settings` 的设置页 Widget Blueprint、`GameSettingRegistryVisuals`、输入改键 Entry 或世界设置 UI 时，同时读取 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 语言切换、字幕文本、设置项显示名/说明、Localization 收集/编译/打包，配合 `../unreal-localization-framework/SKILL.md`。
 - 世界/房间设置与 `WorldOption`、`LevelMeta`、存档保存、前端 phase 或玩法流程相关时，配合 `../unreal-savegame-framework/SKILL.md`、`../unreal-system-framework/SKILL.md`、`../unreal-gamemode-experience-framework/SKILL.md` 和 `../unreal-online-steam-framework/SKILL.md`。
 - 判断代码落点、GameCore 只读边界、宿主 Game 模块和 GameFeature 插件职责时，配合 `../unreal-framework-architecture/SKILL.md` 和 `../unreal-gamecore-framework/SKILL.md`。

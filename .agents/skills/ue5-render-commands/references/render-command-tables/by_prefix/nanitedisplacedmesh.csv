@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+NaniteDisplacedMesh.UseNewAggregateID,CVar,string,,NaniteDisplacedMesh,Nanite,All,true,false,false,false,false,,`NaniteDisplacedMesh.UseNewAggregateID=<值>` / `NaniteDisplacedMesh.UseNewAggregateID <值>` 或 INI 中配置,Change how the nanite displaced mesh linking chose the name of a asset.,

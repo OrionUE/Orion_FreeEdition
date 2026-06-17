@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -73,7 +73,7 @@ public:
 	// Inherited via IMaxTickRateHandlerModule
 	virtual uint32 GetFlags() override;
 
-	UE_API static FStreamlineMaxTickRateHandler* Get();
+	UE_API static FStreamlineMaxTickRateHandler* Get(bool bCreateIfInvalid = true);
 	UE_API static void Reset();
 
 private:
@@ -155,7 +155,7 @@ public:
 	// Inherited via IWindowsMessageHandler
 	virtual bool ProcessMessage(HWND hwnd, uint32 msg, WPARAM wParam, LPARAM lParam, int32& OutResult) override;
 
-	UE_API static FStreamlineLatencyMarkers* Get();
+	UE_API static FStreamlineLatencyMarkers* Get(bool bCreateIfInvalid = true);
 	UE_API static void Reset();
 
 private:

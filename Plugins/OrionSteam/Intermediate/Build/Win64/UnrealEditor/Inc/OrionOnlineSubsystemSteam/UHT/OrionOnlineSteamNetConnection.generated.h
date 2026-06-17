@@ -12,21 +12,21 @@
 #define ORIONONLINESUBSYSTEMSTEAM_OrionOnlineSteamNetConnection_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionOnlineSteamNetConnection *******************************************
-ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetConnection_NoRegister();
+struct Z_Construct_UClass_UOrionOnlineSteamNetConnection_Statics;
+ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetConnection(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionOnlineSubsystemSteam_Private_Net_OrionOnlineSteamNetConnection_h_15_INCLASS \
 private: \
-	static void StaticRegisterNativesUOrionOnlineSteamNetConnection(); \
-	friend struct Z_Construct_UClass_UOrionOnlineSteamNetConnection_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamNetConnection_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionOnlineSteamNetConnection_Statics; \
+	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* ::Z_Construct_UClass_UOrionOnlineSteamNetConnection(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionOnlineSteamNetConnection, UIpConnection, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamNetConnection_NoRegister) \
+	DECLARE_CLASS2(UOrionOnlineSteamNetConnection, UIpConnection, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamNetConnection) \
 	DECLARE_SERIALIZER(UOrionOnlineSteamNetConnection)
 
 

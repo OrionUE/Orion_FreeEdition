@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebLobbyMatchmakingService_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 enum class EOrionSteamWebAPILobbyType : uint8;
 
 // ********** Begin Class UWebLobbyMatchmakingService **********************************************
@@ -24,16 +24,15 @@ enum class EOrionSteamWebAPILobbyType : uint8;
 	DECLARE_FUNCTION(execCreateLobby);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebLobbyMatchmakingService_NoRegister();
+struct Z_Construct_UClass_UWebLobbyMatchmakingService_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebLobbyMatchmakingService(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_LobbyMatchmakingService_WebLobbyMatchmakingService_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebLobbyMatchmakingService(); \
-	friend struct Z_Construct_UClass_UWebLobbyMatchmakingService_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebLobbyMatchmakingService_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebLobbyMatchmakingService_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebLobbyMatchmakingService(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebLobbyMatchmakingService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebLobbyMatchmakingService_NoRegister) \
+	DECLARE_CLASS2(UWebLobbyMatchmakingService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebLobbyMatchmakingService) \
 	DECLARE_SERIALIZER(UWebLobbyMatchmakingService)
 
 

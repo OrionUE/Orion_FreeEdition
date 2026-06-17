@@ -12,30 +12,33 @@
 #define GAMECORE_CoreAbilityTagRelationshipMapping_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FCoreAbilityTagRelationship ***************************************
+struct Z_Construct_UScriptStruct_FCoreAbilityTagRelationship_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreAbilityTagRelationship(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilityTagRelationshipMapping_h_20_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreAbilityTagRelationship_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreAbilityTagRelationship_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreAbilityTagRelationship(ETypeConstructPhase::Inner); }
 
 
 struct FCoreAbilityTagRelationship;
 // ********** End ScriptStruct FCoreAbilityTagRelationship *****************************************
 
 // ********** Begin Class UCoreAbilityTagRelationshipMapping ***************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_NoRegister();
+struct Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityTagRelationshipMapping(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilityTagRelationshipMapping_h_55_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAbilityTagRelationshipMapping(); \
-	friend struct Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAbilityTagRelationshipMapping(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAbilityTagRelationshipMapping, UDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilityTagRelationshipMapping_NoRegister) \
+	DECLARE_CLASS2(UCoreAbilityTagRelationshipMapping, UDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilityTagRelationshipMapping) \
 	DECLARE_SERIALIZER(UCoreAbilityTagRelationshipMapping)
 
 

@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamInventoryAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs;
 class UOrionSteamInventoryAsyncActionRequestPricesResult;
@@ -26,43 +26,21 @@ struct FSteamInventoryRequestPricesResult;
 struct FSteamInventoryStartPurchaseResult;
 struct FSteamItemDef;
 
-// ********** Begin Delegate FOnRequestEligiblePromoItemDefinitionsIDsAsyncDelegate ****************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestEligiblePromoItemDefinitionsIDsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestEligiblePromoItemDefinitionsIDsAsyncDelegate, FSteamInventoryEligiblePromoItemDefIDs const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestEligiblePromoItemDefinitionsIDsAsyncDelegate ******************
-
-// ********** Begin Delegate FOnSteamInventoryRequestPricesResultAsyncDelegate *********************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamInventoryRequestPricesResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSteamInventoryRequestPricesResultAsyncDelegate, FSteamInventoryRequestPricesResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSteamInventoryRequestPricesResultAsyncDelegate ***********************
-
-// ********** Begin Delegate FOnSteamInventoryStartPurchaseResultAsyncDelegate *********************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_18_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamInventoryStartPurchaseResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSteamInventoryStartPurchaseResultAsyncDelegate, FSteamInventoryStartPurchaseResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSteamInventoryStartPurchaseResultAsyncDelegate ***********************
-
 // ********** Begin Class UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs ****
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
 	DECLARE_FUNCTION(execRequestEligiblePromoItemDefinitionsIDsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs(); \
-	friend struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs) \
 	DECLARE_SERIALIZER(UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs)
 
 
@@ -99,16 +77,15 @@ class UOrionSteamInventoryAsyncActionRequestEligiblePromoItemDefinitionsIDs;
 	DECLARE_FUNCTION(execRequestPricesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_54_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInventoryAsyncActionRequestPricesResult(); \
-	friend struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionRequestPricesResult, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionRequestPricesResult, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionRequestPricesResult) \
 	DECLARE_SERIALIZER(UOrionSteamInventoryAsyncActionRequestPricesResult)
 
 
@@ -145,16 +122,15 @@ class UOrionSteamInventoryAsyncActionRequestPricesResult;
 	DECLARE_FUNCTION(execStartPurchaseAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_NoRegister();
+struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInventory_SteamInventoryAsyncActions_h_81_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamInventoryAsyncActionStartPurchaseResult(); \
-	friend struct Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionStartPurchaseResult, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamInventoryAsyncActionStartPurchaseResult, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamInventoryAsyncActionStartPurchaseResult) \
 	DECLARE_SERIALIZER(UOrionSteamInventoryAsyncActionStartPurchaseResult)
 
 

@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+umg.MaxPostBufferBlurStrength,CVar,int32,-1,umg,后处理,All,true,false,false,false,false,,`umg.MaxPostBufferBlurStrength=<值>` / `umg.MaxPostBufferBlurStrength <值>` 或 INI 中配置,Limits post buffer blur strength. -1 = unlimited\r\n,ECVF_Default

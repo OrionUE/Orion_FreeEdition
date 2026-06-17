@@ -12,21 +12,21 @@
 #define GAMECORE_CoreExperienceDefinition_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreExperienceDefinition ************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceDefinition_NoRegister();
+struct Z_Construct_UClass_UCoreExperienceDefinition_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceDefinition(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreExperienceDefinition_h_22_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreExperienceDefinition(); \
-	friend struct Z_Construct_UClass_UCoreExperienceDefinition_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceDefinition_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreExperienceDefinition_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreExperienceDefinition(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreExperienceDefinition, UPrimaryDataAsset, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceDefinition_NoRegister) \
+	DECLARE_CLASS2(UCoreExperienceDefinition, UPrimaryDataAsset, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceDefinition) \
 	DECLARE_SERIALIZER(UCoreExperienceDefinition)
 
 

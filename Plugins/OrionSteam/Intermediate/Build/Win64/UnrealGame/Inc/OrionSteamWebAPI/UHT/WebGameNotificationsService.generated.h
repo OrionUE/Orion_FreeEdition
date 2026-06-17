@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebGameNotificationsService_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -27,16 +28,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execCreateSession);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameNotificationsService_NoRegister();
+struct Z_Construct_UClass_UWebGameNotificationsService_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameNotificationsService(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsService_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebGameNotificationsService(); \
-	friend struct Z_Construct_UClass_UWebGameNotificationsService_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameNotificationsService_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebGameNotificationsService_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebGameNotificationsService(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebGameNotificationsService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebGameNotificationsService_NoRegister) \
+	DECLARE_CLASS2(UWebGameNotificationsService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebGameNotificationsService) \
 	DECLARE_SERIALIZER(UWebGameNotificationsService)
 
 

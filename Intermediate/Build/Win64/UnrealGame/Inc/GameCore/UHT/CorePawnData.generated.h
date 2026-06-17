@@ -12,21 +12,21 @@
 #define GAMECORE_CorePawnData_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCorePawnData ************************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCorePawnData_NoRegister();
+struct Z_Construct_UClass_UCorePawnData_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCorePawnData(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CorePawnData_h_23_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCorePawnData(); \
-	friend struct Z_Construct_UClass_UCorePawnData_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCorePawnData_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCorePawnData_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCorePawnData(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCorePawnData, UPrimaryDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnData_NoRegister) \
+	DECLARE_CLASS2(UCorePawnData, UPrimaryDataAsset, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnData) \
 	DECLARE_SERIALIZER(UCorePawnData)
 
 

@@ -1,6 +1,6 @@
 ---
 name: unreal-online-steam-framework
-description: Use when Codex works on Unreal Engine online, Steam, OnlineSubsystem, sessions, lobbies, invites, friends, Steam SDK Blueprint APIs, Steam sockets, Steam Web API, UOrionGameSessionComponent, BP_SessionComponent, Content/System/Session, GameUI Online screens, CommonSessionSubsystem, SteamDevAppId, SteamAppId, DefaultEngine.ini Steam blocks, or Steam-specific Client/Server/Game target behavior in this reusable framework.
+description: Use when Codex works on Unreal Engine online, Steam, OnlineSubsystem, sessions, lobbies, invites, friends, Steam SDK Blueprint APIs, Steam sockets, Steam Web API, UOrionGameSessionComponent, BP_SessionComponent, Content/System/Session, GameUI Online screens, CommonSessionSubsystem, SteamDevAppId, SteamAppId, Config/Custom/Steam/DefaultEngine.ini Steam blocks, or Steam-specific Client/Server/Game target behavior in this reusable framework.
 ---
 
 # Unreal Online Steam Framework
@@ -9,7 +9,7 @@ description: Use when Codex works on Unreal Engine online, Steam, OnlineSubsyste
 
 ## 工作流
 
-1. 先读取真实源码和配置：`Plugins/OrionSteam`、`Source/GameCore/**/Session`、`Source/OrionGame/**/Session`、`Source/GameUI/**/Online`、相关 `*.Build.cs`、`*.Target.cs`、`Config/DefaultEngine.ini` 的 Steam block。
+1. 先读取真实源码和配置：`Plugins/OrionSteam`、`Source/GameCore/**/Session`、`Source/OrionGame/**/Session`、`Source/GameUI/**/Online`、相关 `*.Build.cs`、`*.Target.cs`、`Config/Custom/Steam/DefaultEngine.ini` 的 Steam block；只有公共 Engine 配置才回到根 `Config/DefaultEngine.ini`。
 2. 再对照 UE OnlineSubsystem 源码：确认 `FOnlineSubsystemModule`、`IOnlineSession`、Steam subsystem、Steam sockets、async delegate 和 config 读取行为。
 3. Session 逻辑默认不要改 `Source/GameCore`；优先从 `UOrionGameSessionComponent` 派生、修改蓝图子类、或在 `Plugins/GameFeatures/<FeatureName>` 中通过 GameFeature 挂载/调用。
 4. Steam/Online UI 写在 `GameUI` 的 Online 分层；玩法特定在线 UI 放对应 GameFeature 插件的 `Content/UI`，但通用好友、邀请、会话列表控件优先复用 GameUI。
@@ -23,9 +23,10 @@ description: Use when Codex works on Unreal Engine online, Steam, OnlineSubsyste
 - 触碰 `UCoreSessionComponent`、`UOrionGameSessionComponent`、Experience、GameState 组件或 GameCore 只读边界时，配合 `../unreal-gamecore-framework/SKILL.md`。
 - 触碰 `FOrionPlayerID`、玩家 Steam ID、玩家头像/昵称、好友条目、玩家账户或玩家信息组件时，配合 `../unreal-player-framework/SKILL.md`。
 - GameFeature 挂载 Session 组件、创建玩法专属 session UI 或按玩法隔离在线行为时，配合 `../unreal-gamefeatures/SKILL.md`。
-- `DefaultEngine.ini` Steam block、`SteamDevAppId`、`SteamAppId`、NetDriver、Web API settings、平台 config 或发布配置，配合 `../unreal-project-config/SKILL.md`。
+- `Config/Custom/Steam/DefaultEngine.ini` Steam block、`SteamDevAppId`、`SteamAppId`、NetDriver、Web API settings、平台 config 或发布配置，配合 `../unreal-project-config/SKILL.md`。
 - SteamSockets NetDriver、PacketHandler、RPC/属性复制、listen/dedicated server 网络行为或 packaged multiplayer 验证，配合 `../unreal-network-replication-framework/SKILL.md`。
 - 好友列表、邀请按钮、在线面板、CommonUI/UMG Widget 或 `GameUI/Online` 修改，配合 `../unreal-umg/SKILL.md` 和 `../unreal-commoninput/SKILL.md`。
+- 修改 `Content/UI/Online` 的 Friends、Invite、Session Browser Widget Blueprint 或相关 GameUI Online 基类时，同时读取 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 创建 `BP_SessionComponent` 子类、在线 UI 资产或 GameFeature 内容资产时，配合 `../unreal-asset-management/SKILL.md`。
 - Steam 打包、Shipping 目标、Dedicated Server、Steam DLL staging、NetDriver 或 AppID 发布检查，配合 `../unreal-packaging/SKILL.md`。
 

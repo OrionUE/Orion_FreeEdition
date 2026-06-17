@@ -1,0 +1,20 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+vr.AllowMotionBlurInVR,CVar,int32,0,vr,后处理,All,true,false,true,false,false,,`vr.AllowMotionBlurInVR=<值>` / `vr.AllowMotionBlurInVR <值>` 或 INI 中配置,"For projects with motion blur enabled, this allows motion blur to be enabled even while in VR.",
+vr.bEnableHMD,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.bEnableHMD`（可带参数，具体见帮助说明）,,
+vr.bEnableStereo,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.bEnableStereo`（可带参数，具体见帮助说明）,,
+vr.Debug.VisualizeTrackingSensors,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.Debug.VisualizeTrackingSensors`（可带参数，具体见帮助说明）,,
+vr.EnableMotionControllerLateUpdate,CVar,int32,1,vr,VR/XR,All,true,false,false,false,false,,`vr.EnableMotionControllerLateUpdate=<值>` / `vr.EnableMotionControllerLateUpdate <值>` 或 INI 中配置,This command allows you to specify whether the motion controller late update is applied.\n,ECVF_Cheat
+vr.HeadTracking.bEnforced,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HeadTracking.bEnforced`（可带参数，具体见帮助说明）,,
+vr.HeadTracking.Reset,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HeadTracking.Reset`（可带参数，具体见帮助说明）,,
+vr.HeadTracking.ResetOrientation,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HeadTracking.ResetOrientation`（可带参数，具体见帮助说明）,,
+vr.HeadTracking.ResetPosition,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HeadTracking.ResetPosition`（可带参数，具体见帮助说明）,,
+vr.HeadTracking.Status,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HeadTracking.Status`（可带参数，具体见帮助说明）,,
+vr.HiddenAreaMask,CVar,int32,1,vr,VR/XR,All,true,false,false,false,true,,`vr.HiddenAreaMask=<值>` / `vr.HiddenAreaMask <值>` 或 INI 中配置,,ECVF_Scalability | ECVF_RenderThreadSafe
+vr.HMDVersion,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.HMDVersion`（可带参数，具体见帮助说明）,,
+vr.InstancedStereo,CVar,int32,0,vr,VR/XR,All,false,true,true,false,false,,`vr.InstancedStereo=<值>` / `vr.InstancedStereo <值>` 或 INI 中配置,"0 to disable instanced stereo (default), 1 to enable.",ECVF_ReadOnly | ECVF_RenderThreadSafe
+vr.MobileMultiView,CVar,int32,0,vr,VR/XR,All,false,true,true,false,false,,`vr.MobileMultiView=<值>` / `vr.MobileMultiView <值>` 或 INI 中配置,"0 to disable mobile multi-view, 1 to enable.\n",ECVF_ReadOnly | ECVF_RenderThreadSafe
+vr.OpenXRSwapchainRetryCount,CVar,int32,9,vr,VR/XR,All,true,false,false,false,false,,`vr.OpenXRSwapchainRetryCount=<值>` / `vr.OpenXRSwapchainRetryCount <值>` 或 INI 中配置,Number of times the OpenXR plugin will attempt to wait for the next swapchain image.,ECVF_RenderThreadSafe
+vr.RoundRobinOcclusion,CVar,int32,0,vr,VR/XR,All,true,false,false,false,true,,`vr.RoundRobinOcclusion=<值>` / `vr.RoundRobinOcclusion <值>` 或 INI 中配置,"0 to disable round-robin occlusion queries for stereo rendering (default), 1 to enable.",ECVF_Scalability | ECVF_RenderThreadSafe
+vr.SpectatorScreenMode,Command,string,,vr,VR/XR,All,true,false,false,false,false,,`vr.SpectatorScreenMode`（可带参数，具体见帮助说明）,,
+vr.TrackingOrigin,Command,string,,vr,GI,All,true,false,false,false,false,,`vr.TrackingOrigin`（可带参数，具体见帮助说明）,,
+vr.WorldToMetersScale,Command,string,,vr,后处理,All,true,false,false,false,false,,`vr.WorldToMetersScale`（可带参数，具体见帮助说明）,,

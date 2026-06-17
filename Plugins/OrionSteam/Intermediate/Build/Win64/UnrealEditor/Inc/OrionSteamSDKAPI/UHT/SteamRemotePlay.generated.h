@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamRemotePlay_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamRemotePlay;
 enum class EOrionSteamDeviceFormFactor : uint8;
 struct FRemotePlayCursorID;
@@ -42,16 +42,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamRemotePlay);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemotePlay_NoRegister();
+struct Z_Construct_UClass_UOrionSteamRemotePlay_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemotePlay(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamRemotePlay_SteamRemotePlay_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamRemotePlay(); \
-	friend struct Z_Construct_UClass_UOrionSteamRemotePlay_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamRemotePlay_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamRemotePlay_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamRemotePlay(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamRemotePlay, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamRemotePlay_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamRemotePlay, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamRemotePlay) \
 	DECLARE_SERIALIZER(UOrionSteamRemotePlay)
 
 

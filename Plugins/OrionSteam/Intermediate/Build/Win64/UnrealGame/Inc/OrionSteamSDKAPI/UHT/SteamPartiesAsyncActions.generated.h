@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamPartiesAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamPartiesAsyncActionChangeNumOpenSlots;
 class UOrionSteamPartiesAsyncActionCreateBeacon;
@@ -26,43 +26,21 @@ struct FJoinPartyData;
 struct FPartyBeaconID;
 struct FSteamPartyBeaconLocation;
 
-// ********** Begin Delegate FOnJoinPartyCallback **************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinPartyCallback_DelegateWrapper(const FMulticastScriptDelegate& OnJoinPartyCallback, FJoinPartyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinPartyCallback ****************************************************
-
-// ********** Begin Delegate FOnCreateBeaconCallback ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateBeaconCallback_DelegateWrapper(const FMulticastScriptDelegate& OnCreateBeaconCallback, FCreateBeaconData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateBeaconCallback *************************************************
-
-// ********** Begin Delegate FOnChangeNumOpenSlotsCallback *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnChangeNumOpenSlotsCallback_DelegateWrapper(const FMulticastScriptDelegate& OnChangeNumOpenSlotsCallback, FChangeNumOpenSlotsData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnChangeNumOpenSlotsCallback *******************************************
-
 // ********** Begin Class UOrionSteamPartiesAsyncActionJoinParty ***********************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_26_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
 	DECLARE_FUNCTION(execJoinPartyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_NoRegister();
+struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_26_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamPartiesAsyncActionJoinParty(); \
-	friend struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionJoinParty, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionJoinParty, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionJoinParty) \
 	DECLARE_SERIALIZER(UOrionSteamPartiesAsyncActionJoinParty)
 
 
@@ -99,16 +77,15 @@ class UOrionSteamPartiesAsyncActionJoinParty;
 	DECLARE_FUNCTION(execCreateBeaconAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_NoRegister();
+struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_54_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamPartiesAsyncActionCreateBeacon(); \
-	friend struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionCreateBeacon, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionCreateBeacon, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionCreateBeacon) \
 	DECLARE_SERIALIZER(UOrionSteamPartiesAsyncActionCreateBeacon)
 
 
@@ -145,16 +122,15 @@ class UOrionSteamPartiesAsyncActionCreateBeacon;
 	DECLARE_FUNCTION(execChangeNumOpenSlotsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_NoRegister();
+struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParties_SteamPartiesAsyncActions_h_87_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamPartiesAsyncActionChangeNumOpenSlots(); \
-	friend struct Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionChangeNumOpenSlots, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamPartiesAsyncActionChangeNumOpenSlots, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamPartiesAsyncActionChangeNumOpenSlots) \
 	DECLARE_SERIALIZER(UOrionSteamPartiesAsyncActionChangeNumOpenSlots)
 
 

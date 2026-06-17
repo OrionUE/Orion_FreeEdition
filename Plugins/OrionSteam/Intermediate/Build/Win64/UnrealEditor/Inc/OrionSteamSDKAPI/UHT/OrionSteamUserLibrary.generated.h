@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_OrionSteamUserLibrary_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FOrionSteamId;
 
 // ********** Begin Class UOrionSteamUserLibrary ***************************************************
@@ -24,16 +24,15 @@ struct FOrionSteamId;
 	DECLARE_FUNCTION(execGetLocalUserId);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserLibrary_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserLibrary_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserLibrary(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUserLibrary_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserLibrary(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserLibrary_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserLibrary_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserLibrary_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserLibrary(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserLibrary, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserLibrary_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserLibrary, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserLibrary) \
 	DECLARE_SERIALIZER(UOrionSteamUserLibrary)
 
 

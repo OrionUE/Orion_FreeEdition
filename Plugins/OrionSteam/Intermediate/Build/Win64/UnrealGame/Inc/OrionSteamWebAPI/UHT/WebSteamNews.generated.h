@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebSteamNews_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -22,16 +23,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execGetNewsForApp);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamNews_NoRegister();
+struct Z_Construct_UClass_UWebSteamNews_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamNews(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamNews_WebSteamNews_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebSteamNews(); \
-	friend struct Z_Construct_UClass_UWebSteamNews_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamNews_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebSteamNews_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebSteamNews(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebSteamNews, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamNews_NoRegister) \
+	DECLARE_CLASS2(UWebSteamNews, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamNews) \
 	DECLARE_SERIALIZER(UWebSteamNews)
 
 

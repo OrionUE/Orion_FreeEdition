@@ -23,6 +23,24 @@
 
 索引用于缩小搜索范围，不替代源码确认。
 
+### Visual Studio 工程生成 / 引擎升级工程文件
+
+使用顺序：
+
+1. `../../unreal-vs-project-generation/SKILL.md`：处理 Generate Visual Studio project files 无效果、升级 UE 后 `.sln` 仍指向旧引擎、UnrealVersionSelector 绑定、UBT `-ProjectFiles`、`Log_GPF.txt`、`.uplugin` / `.uproject` JSON 编码错误、stale `Intermediate/ProjectFiles`、UE 5.8 Target 升级提示和生成后编辑器启动阻断。
+2. `../../unreal-project-config/SKILL.md`：确认 `.uproject` `EngineAssociation`、插件启用项、Target 和项目配置。
+3. `../../unreal-framework-architecture/SKILL.md`：确认 Target、模块和插件分层是否导致生成工程时读取错误描述文件或规则程序集。
+4. `unreal-source-code-navigator`：需要查 UBT、TargetRules、引擎源码或模块依赖时使用。
+
+### 项目清理 / gitignore 生成物清理
+
+使用顺序：
+
+1. `../../unreal-project-cleanup/SKILL.md`：按 `.gitignore` dry-run 或执行生成物清理，处理 `.vs`、`.idea`、`Binaries`、`Intermediate`、`Saved`、`DerivedDataCache`、`Build`、`__pycache__`、ignored 编译产物和 IDE 缓存，同时保护 `Docs/`、非生成目录中的用户文档/模型/贴图/媒体，以及非空 `Saved/OrionUE`。
+2. `../../unreal-framework-architecture/SKILL.md`：当用户不确定 `Build`、`Config`、`Content`、`Plugins`、`Source` 目录职责，或清理范围可能碰到正式资源时使用。
+3. `../../unreal-packaging/SKILL.md`：如果清理是为了打包、Steam 上传、发布包验证或包体迁移，先确认 package 输出和 staging 目录，不要把正式发布素材误当生成物。
+4. `../../unreal-asset-management/SKILL.md`：当用户要求删除、移动或整理正式资产时使用；不要用清理脚本处理资产归档。
+
 ### 框架模块用法 / 生成 Skill
 
 使用顺序：
@@ -245,12 +263,13 @@
 
 使用顺序：
 
-1. `../../unreal-rendering-framework/SKILL.md`：处理 `OrionGameRenderManager`、`OrionGameRenderSubsystem`、`GameSettingRegistry_Video.cpp`、`UGameDLSSSubsystem`、`UOrionSettingsLocal`、DLSS/NIS/Streamline、RTX、Lumen、Nanite、VSM、`DefaultEngine.ini`、平台 `Engine.ini`、`DefaultScalability.ini`、PSO Precaching、bundled PSO 和启动 shader 编译流程。
-2. `unreal-source-code-navigator`：打开真实项目、DLSS 插件和 UE `ShaderPipelineCache`、`PipelineStateCache`、`PSOPrecache`、`RendererSettings` 源码，确认接口、CVar 和生命周期。
-3. `../../unreal-project-config/SKILL.md`：修改或解释渲染 ini、平台配置、DLSS settings、Scalability、用户可调默认值时使用。
-4. `../../unreal-packaging/SKILL.md`：PSO `.spc` 注入 `Build/<Platform>/PipelineCaches`、重新 cook/package 或验证打包日志时使用。
-5. `../../unreal-framework-architecture/SKILL.md`：判断渲染代码应落在 Game 模块、Editor 模块、GameFeature 插件还是配置层时使用。
-6. `../../unreal-game-settings-framework/SKILL.md`：视频设置页、`GameSettingRegistry_Video.cpp`、`UOrionSettingsLocal` 玩家可调渲染字段或设置保存/应用/取消时使用。
+1. `../../ue5-render-commands/SKILL.md`：查 UE 5.8 渲染 CVar/Console Command 全量表、功能分类表、前缀表、`RendererSettings`、`DefaultScalability`、平台命令、启动前生效和运行时可改标记。
+2. `../../unreal-rendering-framework/SKILL.md`：处理 `OrionGameRenderManager`、`OrionGameRenderSubsystem`、`GameSettingRegistry_Video.cpp`、`UGameDLSSSubsystem`、`UOrionSettingsLocal`、DLSS/NIS/Streamline、RTX、Lumen、Nanite、VSM、`DefaultEngine.ini`、平台 `Engine.ini`、`DefaultScalability.ini`、PSO Precaching、bundled PSO 和启动 shader 编译流程。
+3. `unreal-source-code-navigator`：打开真实项目、DLSS 插件和 UE `ShaderPipelineCache`、`PipelineStateCache`、`PSOPrecache`、`RendererSettings` 源码，确认接口、CVar 和生命周期。
+4. `../../unreal-project-config/SKILL.md`：修改或解释渲染 ini、平台配置、DLSS settings、Scalability、用户可调默认值时使用。
+5. `../../unreal-packaging/SKILL.md`：PSO `.spc` 注入 `Build/<Platform>/PipelineCaches`、重新 cook/package 或验证打包日志时使用。
+6. `../../unreal-framework-architecture/SKILL.md`：判断渲染代码应落在 Game 模块、Editor 模块、GameFeature 插件还是配置层时使用。
+7. `../../unreal-game-settings-framework/SKILL.md`：视频设置页、`GameSettingRegistry_Video.cpp`、`UOrionSettingsLocal` 玩家可调渲染字段或设置保存/应用/取消时使用。
 
 重点区分运行时 PSO Precaching 和打包注入的 bundled PSO cache。DLSS Upscale 启用时，抗锯齿方法由项目封装固定为 TSR。
 
@@ -262,7 +281,7 @@
 2. `unreal-source-code-navigator`：打开真实项目、插件和 UE `OnlineSubsystem`、`OnlineSubsystemSteam`、`SteamSockets` 源码，确认模块注册、异步委托、session interface、NetDriver 和 AppID 读取行为。
 3. `../../unreal-gamecore-framework/SKILL.md`：触碰 GameCore Session 抽象、Experience host request、GameState component 或核心只读边界时使用。
 4. `../../unreal-gamefeatures/SKILL.md`：Session 组件由 GameFeature 挂载、玩法独立在线房间、玩法专属 Lobby UI 或 feature-scoped Session 规则时使用。
-5. `../../unreal-project-config/SKILL.md`：修改或解释 `DefaultEngine.ini` Steam block、`SteamDevAppId`、`SteamAppId`、NetDriver、packet handler、Web API settings 或平台覆盖时使用。
+5. `../../unreal-project-config/SKILL.md`：修改或解释 `Config/Custom/Steam/DefaultEngine.ini` Steam block、`SteamDevAppId`、`SteamAppId`、NetDriver、packet handler、Web API settings 或平台覆盖时使用。
 6. `../../unreal-network-replication-framework/SKILL.md`：SteamSockets NetDriver、PacketHandler、RPC/属性复制、listen/dedicated server 网络行为或 packaged multiplayer 验证时使用。
 7. `../../unreal-umg/SKILL.md`、`../../unreal-commoninput/SKILL.md`、`../../unreal-asset-management/SKILL.md`：创建或修改在线 UI、好友条目、邀请按钮、Widget Blueprint 和 UI 资产路径时使用。
 8. `../../unreal-packaging/SKILL.md`：Steam Shipping/Development 包、Dedicated Server、Steam DLL staging、AppID 发布检查或 Steam target 验证时使用。
@@ -386,6 +405,7 @@
 
 - 用户说“Application.ico、Application.icns、Build/Linux/Application.png、Android launcher icon、平台 Logo、应用图标、package icon、Build 下各平台图标替换”：优先 `../../unreal-build-platform-icons/SKILL.md`。
 - 用户说“项目架构、文件夹职责、模块职责、代码放哪、插件职责、Target、Build 目录、Config 目录、PSO、Source/Plugins 分层”：优先 `../../unreal-framework-architecture/SKILL.md`。
+- 用户说“清理项目、项目清理、clean project、gitignore 清理、清理忽略文件、删除生成物、清掉 Binaries、清掉 Intermediate、清掉 Saved、清掉 DerivedDataCache、清理 IDE 缓存、清理 __pycache__”：优先 `../../unreal-project-cleanup/SKILL.md`。
 - 用户说“System 文件夹、系统层、CoreAssetManager、AssetManagerClassName、CoreGameData、GameDataPath、DefaultPawnData、GameInstance、GameSession、WorldSubsystem、GameplayTagStack、FastArray tag stack、系统蓝图函数库”：优先 `../../unreal-system-framework/SKILL.md`。
 - 用户说“GameCore、CoreExperience、CoreGameMode、CorePlayerState、CorePawnData、PawnExtension、PawnControl、CoreAbilitySystemComponent、CoreGameplayAbility、CoreAbilitySet、不要改核心模块、从 OrionGame 继承、业务写 GameFeatures”：优先 `../../unreal-gamecore-framework/SKILL.md`。
 - 用户说“GameMode、WorldSettings、DefaultGameplayExperience、关卡指定 Experience、创建 Experience、ExperienceDefinition、Experience PrimaryAssetId、PlayerAccountClass、DefaultPawnData、ActionSet、PawnData、AbilitySet 输入闭环、InputAction 和 InputTag 指定关系、玩法配置不写进 Mode”：优先 `../../unreal-gamemode-experience-framework/SKILL.md`。
@@ -395,7 +415,8 @@
 - 用户说“Teams、Team、队伍、阵营、敌友、友军、Friendly、Hostile、Neutral、GenericTeamAgent、IGenericTeamAgentInterface、FGenericTeamId、IOrionTeamAgentInterface、TeamSubsystem、TeamInfo、TeamDisplayAsset、TeamCreationComponent、AI Perception affiliation、GetTeamAttitudeTowards、按队伍出生、队伍出生点、友军伤害”：优先 `../../unreal-teams-framework/SKILL.md`。
 - 用户说“OrionEditor、CommonEditorExtension、编辑器扩展、Editor module、EditorEngine、PIE 委托、ToolMenus、Check Content、Common Maps、DataValidation、DefaultEditor.ini、DefaultEditorKeyBindings.ini、DefaultEditorPerProjectUserSettings.ini”：优先 `../../unreal-editor-extension-framework/SKILL.md`。
 - 用户说“音频、Audio、SoundClass、SoundConcurrency、Submix、ControlBus、ControlBusMix、AudioMixer、AudioModulation、MetaSound、ProjectAcoustics、SteamAudio、OrionVoiceChat、语音聊天、麦克风、音频输入、音频输出、空间音频、混响、遮挡、CoreAudioSettings、GameSettingRegistry_Audio、HDR Audio、LDR Audio”：优先 `../../unreal-audio-framework/SKILL.md`。
-- 用户说“渲染、RendererSettings、DefaultScalability、WindowsEngine.ini、DLSS、NIS、Streamline、DLSS Frame Generation、Reflex、RTX、RayTracing、Lumen、Nanite、Virtual Shadow Map、VSM、TSR、AntiAliasing、ScreenPercentage、GameSettingRegistry_Video、OrionGameRenderManager、OrionGameRenderSubsystem、PSO、ShaderPipelineCache、PSOPrecache、CollectedPSOs、PipelineCaches、-logPSO、-clearPSODriverCache、启动编译着色器、FlowStep_TryCompileShaders”：优先 `../../unreal-rendering-framework/SKILL.md`；如果问题是加载屏生命周期、编译进度 UI 或 CommonLoadingScreen 卡住，再读取 `../../unreal-loading-screen-framework/SKILL.md`。
+- 用户说“渲染命令、render command、CVar、控制台变量、RendererSettings 可配置命令、DefaultScalability 命令、某个 r./sg./rhi./d3d12./vulkan. 前缀、命令是否运行时可改、命令支持平台”：优先 `../../ue5-render-commands/SKILL.md`。
+- 用户说“渲染、RendererSettings、DefaultScalability、WindowsEngine.ini、DLSS、NIS、Streamline、DLSS Frame Generation、Reflex、RTX、RayTracing、Lumen、Nanite、Virtual Shadow Map、VSM、TSR、AntiAliasing、ScreenPercentage、GameSettingRegistry_Video、OrionGameRenderManager、OrionGameRenderSubsystem、PSO、ShaderPipelineCache、PSOPrecache、CollectedPSOs、PipelineCaches、-logPSO、-clearPSODriverCache、启动编译着色器、FlowStep_TryCompileShaders”：优先 `../../unreal-rendering-framework/SKILL.md`；如果问题是命令/参数/表格查询，再读取 `../../ue5-render-commands/SKILL.md`；如果问题是加载屏生命周期、编译进度 UI 或 CommonLoadingScreen 卡住，再读取 `../../unreal-loading-screen-framework/SKILL.md`。
 - 用户说“OnlineSubsystem、Steam、OrionSteam、OrionOnlineSubsystemSteam、Steam SDK、SteamAppId、SteamDevAppId、Session、Lobby、Invite、好友邀请、Friends、Steam Sockets、Steam Web API、UOrionGameSessionComponent、BP_SessionComponent、CommonSession、GameUI/Online、Steam Dedicated Server”：优先 `../../unreal-online-steam-framework/SKILL.md`。
 - 用户说“DefaultGame.ini、WindowsGame.ini、LinuxGame.ini、MacGame.ini、AndroidGame.ini、IOSGame.ini、GameUserSettings.ini、DefaultCrypto.ini、CryptoKeys、ProjectPackagingSettings、AssetManagerSettings、CommonLoadingScreenSettings、CommonInput platform settings、CommonUI PlatformTraits、用户可以配置哪些参数、平台配置、打包配置、ini denylist、CoreGameDataPath、DefaultPawnData”：优先 `../../unreal-project-config/SKILL.md`。
 - 用户说“GameSettings、设置插件、设置系统、设置页、用户设置、玩家设置、选项菜单、UGameSetting、UGameSettingRegistry、UGameSettingScreen、UGameSettingVisualData、UOrionGameSettingRegistry、UOrionGameWorldSettingRegistry、UOrionSettingsLocal、UOrionSettingsShared、GameSettingRegistry_*.cpp、GameUserSettingsClassName、设置保存、设置应用、取消设置、设置 dirty、音频/视频/输入/语言设置怎么添加”：优先 `../../unreal-game-settings-framework/SKILL.md`；具体音频、渲染、输入、本地化底层行为再配合对应领域 Skill。
@@ -408,9 +429,11 @@
 - 用户说“输入系统、CommonInputSystem、UInputSystemConfig、UInputSystemComponent、InputTag、PawnData InputConfig、CorePawnControlComponent、OrionPawnControlComponent、GameFeatureAction_AddInputContextMapping、GameFeatureAction_AddInputBinding、GameSettingRegistry_MouseAndKeyboard、GameSettingRegistry_Gamepad、按键设置、玩家改键、手柄设置、Steam 手柄、IA/IMC/InputData 怎么接入”：优先 `../../unreal-input-framework/SKILL.md`。
 - 用户说“输入移动、角色移动、移动绑定”：优先 EnhancedInput 和角色基类，不优先 CommonInput。
 - 用户说“源码索引、source index、模块在哪、插件在哪、Build.cs、uplugin、source root、module ownership、plugin ownership”：优先 `../../unreal-source-index/SKILL.md`。
+- 用户说“Generate Visual Studio project files、生成 VS 工程、生成 Visual Studio 文件、右键生成没用、升级 UE 后 sln 没更新、EngineAssociation、UnrealVersionSelector、Log_GPF、ProjectFiles、sln 指向旧引擎、Target Upgrade Required、升级后编译编辑器、打开编辑器被插件兼容弹窗挡住”：优先 `../../unreal-vs-project-generation/SKILL.md`。
 - 用户说“FKey、EKeys、InputCore、KeyDetails、FInputKeyManager、UPlayerInput、UInputComponent、legacy input、axis mapping、key category、platform key”：优先 `../../unreal-inputcore/SKILL.md`。
 - 用户说“InputAction、MappingContext、Trigger、Modifier、BindAction、改键、重映射”：优先 `../../unreal-enhancedinput/SKILL.md`。
 - 用户说“UI框架、GameUI、UMG、Widget Blueprint、WBP、CommonUI、UUI_ActivatableWidget、UGameHUDLayout、UIExtension、HUD layout、UI layer、UI.Layer、Add Widgets、Widget Tree、按钮、列表、标签页、弹窗、Splash、EdSplash、启动图、编辑器启动图、游戏启动图、Content/Splash”：优先 `../../unreal-umg/SKILL.md`；设置页逻辑配合 `../../unreal-game-settings-framework/SKILL.md`，加载屏 Widget 外观配合 `../../unreal-loading-screen-framework/SKILL.md`，Splash 图片路径和格式配合 `../../unreal-asset-management/SKILL.md`，源图裁剪/转换/自动覆盖配合 `../../splash-image-conversion/SKILL.md`。
+- 用户说“Content/UI 蓝图框架、Art/HUD/Interaction/Menu/Online/Settings、BP_UIPolicy、W_OverallUILayout、BP_CommonInputData、DA_GameUIInputActionDomainTable、DT_UniversalActions、GameUI UI 蓝图怎么模仿、怎么编辑 UI 蓝图、生成 UI 蓝图 Skill”：优先 `../../unreal-ui-blueprint-framework/SKILL.md`，再按具体子系统配合 UMG、CommonInput、GameSettings、Online、Interaction、LoadingScreen 和 MCP Toolset Skill。
 - 用户说“通用UI输入、CommonUI 输入模式、返回键、点击、按键提示、手柄图标”：优先 `../../unreal-commoninput/SKILL.md`，并在需要创建/修改 Widget Blueprint 时回到 `../../unreal-umg/SKILL.md`。
 - 用户说“GameFeature、GameFeatureAction、模块化玩法、Experience、CoreExperience、ActionSet、GameFeaturesToEnable、玩法插件、业务代码优先 GameFeature、插件激活、激活反激活、feature plugin”：优先 `../../unreal-gamefeatures/SKILL.md`。
 - 用户说“创建蓝图、资产命名、Content 目录、资源放哪、WBP/BP/GA/ABP 前缀、GameFeature 内容目录”：优先 `../../unreal-asset-management/SKILL.md`。

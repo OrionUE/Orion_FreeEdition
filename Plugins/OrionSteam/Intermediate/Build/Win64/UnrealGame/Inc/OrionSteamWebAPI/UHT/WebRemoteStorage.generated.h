@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebRemoteStorage_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -28,16 +29,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execEnumerateUserPublishedFiles);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebRemoteStorage_NoRegister();
+struct Z_Construct_UClass_UWebRemoteStorage_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebRemoteStorage(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorage_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebRemoteStorage(); \
-	friend struct Z_Construct_UClass_UWebRemoteStorage_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebRemoteStorage_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebRemoteStorage_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebRemoteStorage(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebRemoteStorage, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebRemoteStorage_NoRegister) \
+	DECLARE_CLASS2(UWebRemoteStorage, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebRemoteStorage) \
 	DECLARE_SERIALIZER(UWebRemoteStorage)
 
 

@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebPublishedItemSearch_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -24,16 +25,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execRankedByPublicationOrder);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamPublishedItemSearch_NoRegister();
+struct Z_Construct_UClass_UWebSteamPublishedItemSearch_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamPublishedItemSearch(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PublishedItemSearch_WebPublishedItemSearch_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebSteamPublishedItemSearch(); \
-	friend struct Z_Construct_UClass_UWebSteamPublishedItemSearch_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamPublishedItemSearch_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebSteamPublishedItemSearch_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebSteamPublishedItemSearch(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebSteamPublishedItemSearch, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamPublishedItemSearch_NoRegister) \
+	DECLARE_CLASS2(UWebSteamPublishedItemSearch, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamPublishedItemSearch) \
 	DECLARE_SERIALIZER(UWebSteamPublishedItemSearch)
 
 

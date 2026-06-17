@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -31,6 +31,10 @@
 DEFINE_LOG_CATEGORY_STATIC(LogStreamlineDLSSGBlueprint, Log, All);
 
 #if WITH_STREAMLINE
+
+#if WITH_EDITOR
+#include "Editor.h"
+#endif // WITH_EDITOR
 
 #define TRY_INIT_STREAMLINE_DLSSG_LIBRARY_AND_RETURN(ReturnValueOrEmptyOrVoidPreFiveThree) \
 if (!TryInitDLSSGLibrary()) \
@@ -79,11 +83,20 @@ void UStreamlineLibraryDLSSG::GetDLSSOnScreenMessages(TMultiMap<FCoreDelegates::
 		return;
 	}
 
-	// TODO
-	//if(ShowDLSSSDebugOnScreenMessages())
-	//{
-	//
-	//}
+	// Check if PIE is supported
+	#if WITH_EDITOR
+	if(ShowDLSSSDebugOnScreenMessages())
+	{
+		if(GetPlatformStreamlineRHI())
+		{
+			if(GetPlatformStreamlineRHI()->IsUnsupportedPIEActive() && GetDLSSGMode() != EStreamlineDLSSGMode::Off)
+			{
+				const FText Message = FText::FromString("PIE mode is not supported for Streamline DLSS-FG");
+				OutMessages.Add(FCoreDelegates::EOnScreenMessageSeverity::Warning, Message);
+			}
+		}
+	}
+	#endif
 }
 #endif
 
@@ -114,10 +127,14 @@ bool UStreamlineLibraryDLSSG::IsDLSSGModeSupported(EStreamlineDLSSGMode DLSSGMod
 
 		switch (DLSSGMode)
 		{
-			case EStreamlineDLSSGMode::Auto: /* fall through*/
+			case EStreamlineDLSSGMode::OnDynamic: return IsStreamlineDynamicDLSSGAvailable();
+			case EStreamlineDLSSGMode::Auto: return !IsStreamlineDynamicDLSSGAvailable();
 			case EStreamlineDLSSGMode::On2X: return MinNumGeneratedFrames <= 1 && 1 <= MaxNumGeneratedFrames;
 			case EStreamlineDLSSGMode::On3X: return MinNumGeneratedFrames <= 2 && 2 <= MaxNumGeneratedFrames;
 			case EStreamlineDLSSGMode::On4X: return MinNumGeneratedFrames <= 3 && 3 <= MaxNumGeneratedFrames;
+			case EStreamlineDLSSGMode::On5X: return MinNumGeneratedFrames <= 4 && 4 <= MaxNumGeneratedFrames;
+			case EStreamlineDLSSGMode::On6X: return MinNumGeneratedFrames <= 5 && 5 <= MaxNumGeneratedFrames;
+			
 		}
 #endif
 		return false; 
@@ -161,6 +178,8 @@ TArray<EStreamlineDLSSGMode> UStreamlineLibraryDLSSG::GetSupportedDLSSGModes()
 	IfSupportedMoveToIndex(EStreamlineDLSSGMode::On1X, 2);
 	IfSupportedMoveToIndex(EStreamlineDLSSGMode::On2X, 3);
 	IfSupportedMoveToIndex(EStreamlineDLSSGMode::On3X, 4);
+	IfSupportedMoveToIndex(EStreamlineDLSSGMode::OnDynamic, 5);
+
 #endif 
 	return SupportedQualityModes;
 }
@@ -193,9 +212,13 @@ static int32 DLSSGModeIntCvarFromEnum(EStreamlineDLSSGMode DLSSGMode)
 		case EStreamlineDLSSGMode::On2X:
 		case EStreamlineDLSSGMode::On3X:
 		case EStreamlineDLSSGMode::On4X:
+		case EStreamlineDLSSGMode::On5X:
+		case EStreamlineDLSSGMode::On6X:
 			return 1;
 		case EStreamlineDLSSGMode::Auto:
 			return 2;
+		case EStreamlineDLSSGMode::OnDynamic:
+			return 3;
 		default:
 			checkf(false, TEXT("dear DLSS-FG plugin developer, please support new enum type!"));
 			return 0;
@@ -210,6 +233,8 @@ static EStreamlineDLSSGMode DLSSGModeEnumFromIntCvar(int32 DLSSGMode, int Frames
 			return EStreamlineDLSSGMode::Off;
 		case 2:
 			return EStreamlineDLSSGMode::Auto;
+		case 3:
+			return EStreamlineDLSSGMode::OnDynamic;
 		// we intentionally fall through here and catch any weird state later		
 	}
 
@@ -221,6 +246,10 @@ static EStreamlineDLSSGMode DLSSGModeEnumFromIntCvar(int32 DLSSGMode, int Frames
 			return EStreamlineDLSSGMode::On3X;
 		case 3: 
 			return EStreamlineDLSSGMode::On4X;
+		case 4:
+			return EStreamlineDLSSGMode::On5X;
+		case 5:
+			return EStreamlineDLSSGMode::On6X;
 		default:
 			UE_LOG(LogStreamlineDLSSGBlueprint, Error, TEXT("Invalid r.Streamline.DLSSG.Enable value %d and/or r.Streamline.DLSSG.FramesToGenerate %d "), DLSSGMode, FramesToGenerate);
 			return EStreamlineDLSSGMode::Off;
@@ -234,6 +263,7 @@ static int32 DLSSGFramesToGenerateCvarFromEnum(EStreamlineDLSSGMode DLSSGMode)
 	{
 		case EStreamlineDLSSGMode::Off:
 		case EStreamlineDLSSGMode::Auto:
+		case EStreamlineDLSSGMode::OnDynamic: //TODO: Verify with DLSS-FG team that this is the right value to set for dynamic mode
 		case EStreamlineDLSSGMode::On2X:
 			return 1;
 
@@ -241,6 +271,10 @@ static int32 DLSSGFramesToGenerateCvarFromEnum(EStreamlineDLSSGMode DLSSGMode)
 			return 2;
 		case EStreamlineDLSSGMode::On4X:
 			return 3;
+		case EStreamlineDLSSGMode::On5X:
+			return 4;
+		case EStreamlineDLSSGMode::On6X:
+			return 5;
 		default:
 			checkf(false, TEXT("dear DLSS-FG plugin developer, please support new enum type!"));
 			return 1;
@@ -288,6 +322,15 @@ STREAMLINEDLSSGBLUEPRINT_API void UStreamlineLibraryDLSSG::GetDLSSGFrameTiming(f
 
 #if WITH_STREAMLINE
 	GetStreamlineDLSSGFrameTiming(FrameRateInHertz, FramesPresented);
+#endif
+}
+
+bool UStreamlineLibraryDLSSG::GetDLSSGIsVsyncSupportAvailable()
+{
+#if WITH_STREAMLINE
+	return IsStreamlineVsyncSupportAvailable();
+#else
+	return true;
 #endif
 }
 
@@ -382,7 +425,6 @@ bool UStreamlineLibraryDLSSG::TryInitDLSSGLibrary()
 	return true;
 }
 #endif // WITH_STREAMLINE
-
 
 void UStreamlineLibraryDLSSG::Startup()
 {

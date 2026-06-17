@@ -12,50 +12,16 @@
 #define ORIONVOICECHAT_OrionVoiceChatActor_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class AActor;
 class AOrionVoiceChatActor;
 class APlayerState;
 class UObject;
 enum class EOrionOpusFramePerSec : uint8;
-
-// ********** Begin Delegate FOnNewOrionVoiceChatActorDelegate *************************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_34_DELEGATE \
-ORIONVOICECHAT_API void FOnNewOrionVoiceChatActorDelegate_DelegateWrapper(const FScriptDelegate& OnNewOrionVoiceChatActorDelegate, const AOrionVoiceChatActor* VoiceChatActor);
-
-
-// ********** End Delegate FOnNewOrionVoiceChatActorDelegate ***************************************
-
-// ********** Begin Delegate FOnDeleteOrionVoiceChatActorDelegate **********************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_35_DELEGATE \
-ORIONVOICECHAT_API void FOnDeleteOrionVoiceChatActorDelegate_DelegateWrapper(const FScriptDelegate& OnDeleteOrionVoiceChatActorDelegate, const AOrionVoiceChatActor* VoiceChatActor);
-
-
-// ********** End Delegate FOnDeleteOrionVoiceChatActorDelegate ************************************
-
-// ********** Begin Delegate FOnMyOrionVoiceChatActorReadyDelegate *********************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_37_DELEGATE \
-ORIONVOICECHAT_API void FOnMyOrionVoiceChatActorReadyDelegate_DelegateWrapper(const FScriptDelegate& OnMyOrionVoiceChatActorReadyDelegate, const AOrionVoiceChatActor* VoiceChatActor);
-
-
-// ********** End Delegate FOnMyOrionVoiceChatActorReadyDelegate ***********************************
-
-// ********** Begin Delegate FPlayerNameReceived ***************************************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_44_DELEGATE \
-static void FPlayerNameReceived_DelegateWrapper(const FMulticastScriptDelegate& PlayerNameReceived, const FString& Name);
-
-
-// ********** End Delegate FPlayerNameReceived *****************************************************
-
-// ********** Begin Delegate FPlayerMicrophoneOnReceived *******************************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_45_DELEGATE \
-static void FPlayerMicrophoneOnReceived_DelegateWrapper(const FMulticastScriptDelegate& PlayerMicrophoneOnReceived, bool IsMicrophoneOn);
-
-
-// ********** End Delegate FPlayerMicrophoneOnReceived *********************************************
 
 // ********** Begin Class AOrionVoiceChatActor *****************************************************
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_42_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -98,16 +64,15 @@ static void FPlayerMicrophoneOnReceived_DelegateWrapper(const FMulticastScriptDe
 
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_42_CALLBACK_WRAPPERS
-ORIONVOICECHAT_API UClass* Z_Construct_UClass_AOrionVoiceChatActor_NoRegister();
+struct Z_Construct_UClass_AOrionVoiceChatActor_Statics;
+ORIONVOICECHAT_API UClass* Z_Construct_UClass_AOrionVoiceChatActor(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_42_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesAOrionVoiceChatActor(); \
-	friend struct Z_Construct_UClass_AOrionVoiceChatActor_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONVOICECHAT_API UClass* Z_Construct_UClass_AOrionVoiceChatActor_NoRegister(); \
+	friend struct ::Z_Construct_UClass_AOrionVoiceChatActor_Statics; \
+	friend ORIONVOICECHAT_API UClass* ::Z_Construct_UClass_AOrionVoiceChatActor(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(AOrionVoiceChatActor, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_AOrionVoiceChatActor_NoRegister) \
+	DECLARE_CLASS2(AOrionVoiceChatActor, AActor, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_AOrionVoiceChatActor) \
 	DECLARE_SERIALIZER(AOrionVoiceChatActor) \
 	NO_API void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override; \
 	enum class ENetFields_Private : uint16 \
@@ -194,16 +159,15 @@ class AOrionVoiceChatActor;
 	DECLARE_FUNCTION(execGetMyLocalOrionVoiceChatActor);
 
 
-ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionVoiceChat_NoRegister();
+struct Z_Construct_UClass_UOrionVoiceChat_Statics;
+ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionVoiceChat(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionVoiceChatActor_h_215_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionVoiceChat(); \
-	friend struct Z_Construct_UClass_UOrionVoiceChat_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionVoiceChat_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionVoiceChat_Statics; \
+	friend ORIONVOICECHAT_API UClass* ::Z_Construct_UClass_UOrionVoiceChat(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionVoiceChat, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionVoiceChat_NoRegister) \
+	DECLARE_CLASS2(UOrionVoiceChat, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionVoiceChat) \
 	DECLARE_SERIALIZER(UOrionVoiceChat)
 
 
@@ -247,7 +211,7 @@ class UOrionVoiceChat;
 
 enum class EOrionOpusFramePerSec : uint8;
 template<> struct TIsUEnumClass<EOrionOpusFramePerSec> { enum { Value = true }; };
-template<> ORIONVOICECHAT_API UEnum* StaticEnum<EOrionOpusFramePerSec>();
+template<> UE_NODEBUG ORIONVOICECHAT_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionOpusFramePerSec>();
 // ********** End Enum EOrionOpusFramePerSec *******************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

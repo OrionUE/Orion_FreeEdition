@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamFriends_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamFriends;
 class UTexture2D;
 enum class ESteamActivateGameOverlayToWebPageMode : uint8;
@@ -114,16 +114,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamFriends);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriends_NoRegister();
+struct Z_Construct_UClass_UOrionSteamFriends_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriends(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamFriends_SteamFriends_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamFriends(); \
-	friend struct Z_Construct_UClass_UOrionSteamFriends_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamFriends_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamFriends_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamFriends(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamFriends, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriends_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamFriends, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamFriends) \
 	DECLARE_SERIALIZER(UOrionSteamFriends)
 
 

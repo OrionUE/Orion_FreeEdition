@@ -1,36 +1,53 @@
 ---
 name: unreal-mcp-project-toolsets
-description: Use when working with the project-local UE MCP toolsets, especially OrionProjectToolsets Blueprint graph inspection/editing, K2 node creation, Blueprint compile/save, UMG property/style helpers, Experience or ActionSet creation/editing, AbilitySet/InputAction/InputConfig/IMC workflow automation, GameFeatureData creation and PrimaryAssetTypesToScan editing, generic Blueprint asset creation or reparenting, level creation, actor spawning/deletion, WorldSettings Experience or GameMode assignment, PIE multiplayer validation, and MCP validation.
+description: "Use when UE 5.8 official MCP is connected and Codex needs the slimmed project-specific OrionProjectToolsets beyond official AssetTools/ObjectTools/BlueprintTools: Experience and ActionSet editing, PawnData, AbilitySet, InputAction/InputConfig/IMC automation, GameFeature Action entries, themed UMG helpers, and deciding whether project MCP helpers should be kept or replaced."
 ---
 
 # Unreal MCP Project Toolsets
 
-本 Skill 记录项目内 `OrionProjectToolsets`、`GameFeaturesToolset` 和 `EditorToolset` MCP Toolset 的使用和验证流程。正文可以使用中文；toolset 名、函数名、JSON-RPC 字段必须保持英文精确拼写。
+本 Skill 只记录项目特定 MCP Toolset。通用蓝图图表、对象属性、资产保存/删除优先使用 UE 5.8 官方 `BlueprintTools`、`ObjectTools`、`AssetTools`；瘦身后的项目插件不再暴露旧的通用 Graph/Object Toolset。
 
-先读取详细中文说明：
+先读取详细说明：
 
 `references/orion-project-toolsets.zh-CN.md`
 
-## Routing
+## 核心规则
 
-- 默认先读取 `references/orion-project-toolsets.zh-CN.md`。
-- Widget Blueprint 创建、UMG 树编辑或 HUD 样式相关工作，继续读取 `../unreal-umg/SKILL.md`。
-- Experience、ActionSet、PawnData、AbilitySet、InputAction、InputConfig 或 WorldSettings Experience 相关工作，继续读取 `../unreal-gamemode-experience-framework/SKILL.md`。
-- 角色 Pawn Blueprint、PawnData 或角色初始化相关工作，继续读取 `../unreal-character-pawn-framework/SKILL.md`。
-- GameFeature 插件状态、激活、Action 挂载或插件结构相关工作，继续读取 `../unreal-gamefeatures/SKILL.md`。
+- 先使用 `../unreal-mcp-workflow/SKILL.md` 建立 UE 5.8 MCP session。
+- 当前没有顶层 `call_tool` 聚合入口；先 `load_toolset`，再直接调用完整工具名。
+- 通用 Blueprint 创建、读图、写节点、连 pin、编译、保存：优先官方 `toolset_registry.toolsets.core.blueprint.BlueprintTools` + `toolset_registry.toolsets.core.asset.AssetTools`。
+- 通用 Blueprint CDO/UObject 属性读写：优先官方 `toolset_registry.toolsets.core.object.ObjectTools`。
+- `OrionProjectToolsets` 保留给项目语义：Experience、ActionSet、PawnData、AbilitySet、InputConfig、GameFeature Action 和主题 UMG helper。
+- 每次调用前用 `describe_toolset` 确认 schema；旧文档里的参数名可能已经不适用。
 
-核心规则：
+## 项目 Toolset
 
-- 先使用 `.agents/skills/unreal-mcp-workflow/SKILL.md` 建立 MCP session，再调用本 Skill 中的 toolset。
-- Blueprint 图表编辑使用 `OrionProjectToolsets.OrionBlueprintGraphToolset`。
-- UMG 属性化辅助编辑使用 `OrionProjectToolsets.OrionUMGToolset`。
-- 创建、修改或保存 GameUI/CommonUI/Widget Blueprint 时，先读取 `../unreal-umg/SKILL.md`；Widget Blueprint 创建由 `UMGToolSet.UMGToolSet` 负责，类默认变量和保存验证由 `OrionBlueprintGraphToolset` 补齐。
-- Experience/GameFeature 创建和编辑使用 `OrionProjectToolsets.OrionExperienceToolset`；根 `GameFeatureData` 创建和 PrimaryAssetTypesToScan 编辑使用 `GameFeaturesToolset.GameFeaturesToolset`。
-- 通用 Blueprint 资产创建、重设父类、Input Mapping Context 创建和按键映射优先使用 `OrionProjectToolsets.OrionExperienceToolset`。
-- 地图创建、当前地图另存、关卡中摆 Actor、删除临时 Actor、WorldSettings Experience/GameMode 反射设置和 PIE 启停使用 `EditorToolset.EditorAppToolset`。
-- 角色蓝图、PawnData、PawnData 字段、DefaultPawnData、PlayerStart/Spawner 相关配置 recipe 先读取 `../unreal-character-pawn-framework/SKILL.md`。
-- PlayerController/GameState 玩家组件挂载 recipe 先读取 `../unreal-player-framework/SKILL.md`，再用 Experience Toolset 的 `AddComponentActionEntry`。
-- TeamDisplayAsset、TeamInfo、TeamCreationComponent、队伍 Spawner、按队伍出生或 Experience 中队伍组件挂载 recipe 先读取 `../unreal-teams-framework/SKILL.md`。
-- Experience 蓝图资产要按 GeneratedClass CDO 处理：工具函数内部编辑 CDO，保存时保存 Blueprint 资产。
-- 真实资产验证优先使用“新增临时内容 -> 编译/保存 -> 删除临时内容 -> 再编译/保存 -> 重新读取确认无残留”的可逆流程。
-- 不要在 Skill 或项目文档中写死本机引擎路径、项目路径或 target 名；需要构建时从当前 `.uproject`、`Source/*.Target.cs` 或 `UE_ENGINE_ROOT` 推断。
+- `OrionProjectToolsets.OrionExperienceToolset`
+- `OrionProjectToolsets.OrionUMGToolset`
+
+## 何时使用
+
+- Experience/ActionSet/PawnData/AbilitySet/InputConfig/InputAction/IMC 的结构化创建和连接。
+- 向 Experience 或 ActionSet 写入 `UGameFeatureAction_AddComponents`、Add Abilities、Add Input Binding、Add Input Context Mapping、Add Widgets。
+- 需要项目框架 helper 规范化 soft object path、GeneratedClass CDO、AbilitySet 输入 tag 或 GameFeature Action 数组。
+- 官方 UMG/Blueprint/ObjectTools 能力太原子，直接拼属性字符串风险高时，使用项目安全封装。
+
+## 何时不用
+
+- 只是查找资产、保存资产、删除临时资产：用官方 `AssetTools`。
+- 只是读取或设置普通 UObject/Blueprint CDO 属性：用官方 `ObjectTools`。
+- 只是创建普通 Actor Blueprint、添加合法 K2 节点、连接 pin、编译：用官方 `BlueprintTools`。
+- 只是读取 WidgetTree 或添加普通 widget：先用官方 `UMGToolSet.UMGToolSet`。
+
+## 插件结论
+
+当前不能删除 `Plugins/MCP/OrionProjectToolsets`：官方 5.8 已替代通用 Graph/Object/Asset 能力，但尚未替代项目框架语义封装。插件已瘦身为只注册 `OrionExperienceToolset` 和 `OrionUMGToolset`；不要把旧通用 Graph/Object Toolset 加回去。
+
+## 路由
+
+- Experience/GameFeature 相关工作，继续读取 `../unreal-gamemode-experience-framework/SKILL.md` 和 `../unreal-gamefeatures/SKILL.md`。
+- 角色/PawnData 相关工作，继续读取 `../unreal-character-pawn-framework/SKILL.md`。
+- 输入链路相关工作，继续读取 `../unreal-input-framework/SKILL.md`。
+- UMG 相关工作，继续读取 `../unreal-umg/SKILL.md`。
+- 需要研究、创建或修改当前 `Content/UI` 蓝图框架资产，或判断是否为 UI 框架补小型项目语义 Toolset 时，读取 `../unreal-ui-blueprint-framework/SKILL.md`，尤其是 `references/ui-mcp-editing.zh-CN.md`。
+- 创建或删除资产前，继续读取 `../unreal-asset-management/SKILL.md`。

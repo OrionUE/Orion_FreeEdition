@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebAppsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamAppsAsyncActionGetAppBetas;
 class UOrionSteamAppsAsyncActionGetAppBuilds;
@@ -34,16 +34,15 @@ struct FWebAppsGetAppList;
 	DECLARE_FUNCTION(execGetAppBetasAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetAppBetas(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppBetas, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppBetas, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBetas) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetAppBetas)
 
 
@@ -79,16 +78,15 @@ class UOrionSteamAppsAsyncActionGetAppBetas;
 	DECLARE_FUNCTION(execGetAppBuildsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_37_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetAppBuilds(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppBuilds, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppBuilds, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppBuilds) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetAppBuilds)
 
 
@@ -124,16 +122,15 @@ class UOrionSteamAppsAsyncActionGetAppBuilds;
 	DECLARE_FUNCTION(execGetAppDepotVersionsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_58_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetAppDepotVersions(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppDepotVersions, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppDepotVersions, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppDepotVersions) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetAppDepotVersions)
 
 
@@ -170,16 +167,15 @@ class UOrionSteamAppsAsyncActionGetAppDepotVersions;
 	DECLARE_FUNCTION(execHandleCallback);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_78_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetAppList(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppList, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetAppList, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetAppList) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetAppList)
 
 
@@ -212,16 +208,15 @@ class UOrionSteamAppsAsyncActionGetAppList;
 	DECLARE_FUNCTION(execGetCheatingReportsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_116_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetCheatingReports(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetCheatingReports, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetCheatingReports, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetCheatingReports) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetCheatingReports)
 
 
@@ -257,16 +252,15 @@ class UOrionSteamAppsAsyncActionGetCheatingReports;
 	DECLARE_FUNCTION(execGetPlayersBannedAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_142_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetPlayersBanned(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetPlayersBanned, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetPlayersBanned, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetPlayersBanned) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetPlayersBanned)
 
 
@@ -302,16 +296,15 @@ class UOrionSteamAppsAsyncActionGetPlayersBanned;
 	DECLARE_FUNCTION(execGetServerListAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_160_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetServerList(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetServerList, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetServerList, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServerList) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetServerList)
 
 
@@ -347,16 +340,15 @@ class UOrionSteamAppsAsyncActionGetServerList;
 	DECLARE_FUNCTION(execGetServersAtAddressAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_179_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionGetServersAtAddress(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetServersAtAddress, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionGetServersAtAddress, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionGetServersAtAddress) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionGetServersAtAddress)
 
 
@@ -392,16 +384,15 @@ class UOrionSteamAppsAsyncActionGetServersAtAddress;
 	DECLARE_FUNCTION(execSetAppBuildLiveAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_194_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionSetAppBuildLive(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionSetAppBuildLive, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionSetAppBuildLive, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionSetAppBuildLive) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionSetAppBuildLive)
 
 
@@ -437,16 +428,15 @@ class UOrionSteamAppsAsyncActionSetAppBuildLive;
 	DECLARE_FUNCTION(execUpToDateCheckAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_Apps_WebAppsAsyncActions_h_215_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAppsAsyncActionUpToDateCheck(); \
-	friend struct Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAppsAsyncActionUpToDateCheck, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAppsAsyncActionUpToDateCheck, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamAppsAsyncActionUpToDateCheck) \
 	DECLARE_SERIALIZER(UOrionSteamAppsAsyncActionUpToDateCheck)
 
 

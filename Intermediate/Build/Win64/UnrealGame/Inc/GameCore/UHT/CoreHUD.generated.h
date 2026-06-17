@@ -12,21 +12,21 @@
 #define GAMECORE_CoreHUD_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class ACoreHUD *****************************************************************
-GAMECORE_API UClass* Z_Construct_UClass_ACoreHUD_NoRegister();
+struct Z_Construct_UClass_ACoreHUD_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACoreHUD(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_UI_CoreHUD_h_20_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACoreHUD(); \
-	friend struct Z_Construct_UClass_ACoreHUD_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACoreHUD_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACoreHUD_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACoreHUD(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACoreHUD, AHUD, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreHUD_NoRegister) \
+	DECLARE_CLASS2(ACoreHUD, AHUD, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreHUD) \
 	DECLARE_SERIALIZER(ACoreHUD)
 
 

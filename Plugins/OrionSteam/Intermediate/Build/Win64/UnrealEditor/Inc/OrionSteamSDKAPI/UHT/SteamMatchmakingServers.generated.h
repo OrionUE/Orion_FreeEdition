@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmakingServers_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamMatchmakingServers;
 class UServerFilter;
 
@@ -32,16 +32,15 @@ class UServerFilter;
 	DECLARE_FUNCTION(execGetSteamMatchmakingServers);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServers_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmakingServers_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServers(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmakingServers_SteamMatchmakingServers_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmakingServers(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmakingServers_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmakingServers_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmakingServers_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmakingServers(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmakingServers, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServers_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmakingServers, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmakingServers) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmakingServers)
 
 

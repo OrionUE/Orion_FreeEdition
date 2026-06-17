@@ -12,28 +12,21 @@
 #define ORIONSTEAMSDKAPI_OrionSteamAsync_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-// ********** Begin Delegate FOnFailure ************************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamAsync_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFailure_DelegateWrapper(const FMulticastScriptDelegate& OnFailure);
-
-
-// ********** End Delegate FOnFailure **************************************************************
-
 // ********** Begin Class UOrionSteamAsyncAction ***************************************************
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncAction_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAsyncAction_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncAction(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamAsync_h_58_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAsyncAction(); \
-	friend struct Z_Construct_UClass_UOrionSteamAsyncAction_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncAction_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAsyncAction_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAsyncAction(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAsyncAction, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAsyncAction_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAsyncAction, UBlueprintAsyncActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAsyncAction) \
 	DECLARE_SERIALIZER(UOrionSteamAsyncAction)
 
 

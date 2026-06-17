@@ -12,44 +12,37 @@
 #define ORIONSTEAMSDKAPI_SteamVideoTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FGetOPFSettingsResult;
 struct FGetVideoURLResult;
 
 // ********** Begin ScriptStruct FGetOPFSettingsResult *********************************************
+struct Z_Construct_UScriptStruct_FGetOPFSettingsResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGetOPFSettingsResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideoTypes_h_42_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGetOPFSettingsResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGetOPFSettingsResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGetOPFSettingsResult(ETypeConstructPhase::Inner); }
 
 
 struct FGetOPFSettingsResult;
 // ********** End ScriptStruct FGetOPFSettingsResult ***********************************************
 
 // ********** Begin ScriptStruct FGetVideoURLResult ************************************************
+struct Z_Construct_UScriptStruct_FGetVideoURLResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGetVideoURLResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideoTypes_h_66_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGetVideoURLResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGetVideoURLResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGetVideoURLResult(ETypeConstructPhase::Inner); }
 
 
 struct FGetVideoURLResult;
 // ********** End ScriptStruct FGetVideoURLResult **************************************************
-
-// ********** Begin Delegate FOnGetOPFSettingsResult ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideoTypes_h_92_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetOPFSettingsResult_DelegateWrapper(const FMulticastScriptDelegate& OnGetOPFSettingsResult, FGetOPFSettingsResult const& Data);
-
-
-// ********** End Delegate FOnGetOPFSettingsResult *************************************************
-
-// ********** Begin Delegate FOnGetVideoURLResult **************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideoTypes_h_93_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetVideoURLResult_DelegateWrapper(const FMulticastScriptDelegate& OnGetVideoURLResult, FGetVideoURLResult const& Data);
-
-
-// ********** End Delegate FOnGetVideoURLResult ****************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideoTypes_h
@@ -73,7 +66,7 @@ ORIONSTEAMSDKAPI_API void FOnGetVideoURLResult_DelegateWrapper(const FMulticastS
 
 enum class ESteamBroadcastUploadResult : uint8;
 template<> struct TIsUEnumClass<ESteamBroadcastUploadResult> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamBroadcastUploadResult>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamBroadcastUploadResult>();
 // ********** End Enum ESteamBroadcastUploadResult *************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

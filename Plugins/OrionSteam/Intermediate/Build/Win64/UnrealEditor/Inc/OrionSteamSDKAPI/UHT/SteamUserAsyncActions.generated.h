@@ -12,29 +12,15 @@
 #define ORIONSTEAMSDKAPI_SteamUserAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamUserAsyncActionRequestEncryptedAppTicket;
 class UOrionSteamUserAsyncActionRequestStoreAuthURL;
 struct FEncryptedAppTicketResponse;
 struct FStoreAuthURLResponse;
-
-// ********** Begin Delegate FRequestEncryptedAppTicketDelegate ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUser_SteamUserAsyncActions_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FRequestEncryptedAppTicketDelegate_DelegateWrapper(const FMulticastScriptDelegate& RequestEncryptedAppTicketDelegate, FEncryptedAppTicketResponse const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FRequestEncryptedAppTicketDelegate **************************************
-
-// ********** Begin Delegate FRequestStoreAuthURLDelegate ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUser_SteamUserAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FRequestStoreAuthURLDelegate_DelegateWrapper(const FMulticastScriptDelegate& RequestStoreAuthURLDelegate, FStoreAuthURLResponse const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FRequestStoreAuthURLDelegate ********************************************
 
 // ********** Begin Class UOrionSteamUserAsyncActionRequestEncryptedAppTicket **********************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUser_SteamUserAsyncActions_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -42,16 +28,15 @@ ORIONSTEAMSDKAPI_API void FRequestStoreAuthURLDelegate_DelegateWrapper(const FMu
 	DECLARE_FUNCTION(execRequestEncryptedAppTicketAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUser_SteamUserAsyncActions_h_24_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserAsyncActionRequestEncryptedAppTicket(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserAsyncActionRequestEncryptedAppTicket, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserAsyncActionRequestEncryptedAppTicket, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserAsyncActionRequestEncryptedAppTicket) \
 	DECLARE_SERIALIZER(UOrionSteamUserAsyncActionRequestEncryptedAppTicket)
 
 
@@ -88,16 +73,15 @@ class UOrionSteamUserAsyncActionRequestEncryptedAppTicket;
 	DECLARE_FUNCTION(execRequestStoreAuthURLAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUser_SteamUserAsyncActions_h_53_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserAsyncActionRequestStoreAuthURL(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserAsyncActionRequestStoreAuthURL, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserAsyncActionRequestStoreAuthURL, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserAsyncActionRequestStoreAuthURL) \
 	DECLARE_SERIALIZER(UOrionSteamUserAsyncActionRequestStoreAuthURL)
 
 

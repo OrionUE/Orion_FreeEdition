@@ -6,6 +6,8 @@
 
 优先使用本 Skill 自带的 Legacy Project Launcher `.ulp2` Profile 模板。模板保留固定打包方式，但不要在 Skill 中硬编码具体项目名、引擎绝对路径、用户目录或机器专属路径。
 
+Steam 专用 Engine 配置入口是 `Config/Custom/Steam/DefaultEngine.ini`。Steam 打包必须使用 Steam Target，并让 UAT/Stage 看到 `CustomConfig=Steam`；不要再把 Steam block 当成根 `Config/DefaultEngine.ini` 的固定内容。
+
 ## 每次打包前必须确认
 
 当用户要求打包或验证打包时，先给出一个简短确认，包含以下三点：
@@ -85,6 +87,15 @@ Profile 内容来自 Skill 内置模板：
 
 不要要求用户已有这些 Profile；如果项目没有 Profile，就按模板生成或导入。
 
+Steam 模板的 `scripts` 节点必须显式包含：
+
+```json
+"target": "{{SteamBuildTargetName}}",
+"customconfig": "Steam"
+```
+
+这样直接使用 `RunUAT.bat -profile=<Profile.ulp2>` 时会得到 `-target=<SteamBuildTargetName>` 和 `-customconfig=Steam`。如果走 Project Launcher UI，仍要确认日志中的 `Parsing command line:` 或目标 receipt 显示 Steam Target/CustomConfig。
+
 ## 生成 Profile 文件
 
 如果需要为当前项目安装这三份 Profile，使用脚本：
@@ -139,6 +150,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\unreal-packag
 	-noP4 `
 	-clientconfig=<Configuration> `
 	-serverconfig=<Configuration> `
+	-CustomConfig=Steam `
 	-nocompile `
 	-nocompileeditor `
 	-unrealexe="<EngineDir>\Binaries\Win64\UnrealEditor-Cmd.exe" `
@@ -164,6 +176,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\unreal-packag
 - `Debug` Profile 的 UAT 配置通常是 `DebugGame`，不要只按 Profile 名字写成 `Debug`。
 - `Development` 模板默认启用 `-iostore`；`Shipping` 和 `Debug` 模板默认不启用 `-iostore`，除非用户覆盖。
 - `-target` 使用 Steam 版本 Target；默认 `<ProjectName>Steam`，但必须以项目实际 `.Target.cs` 为准。
+- Steam Target 使用 `CustomConfig = "Steam"` 时，UAT 验证命令也要显式带 `-CustomConfig=Steam`，并验证 `Config/Custom/Steam/DefaultEngine.ini` 被 Stage。
 - `-CookCultures`、`-platform`、Pak、压缩、加密等参数来自 Profile 模板，用户未要求覆盖时不要自行改动。
 
 ### 日志落盘和后台执行
@@ -225,6 +238,7 @@ Select-String -Path "<LogPath>" `
 - 日志包含 `BUILD SUCCESSFUL`。
 - 日志包含 `AutomationTool exiting with ExitCode=0 (Success)`。
 - 输出目录存在，并生成游戏可执行文件、Manifest、Pak/IoStore 文件等预期产物。
+- Steam 包的 UFS manifest 包含 `Config/Custom/Steam/DefaultEngine.ini`，日志包含 `Including config file ... Config\Custom\Steam\DefaultEngine.ini`。
 
 失败时优先提取：
 
@@ -271,6 +285,24 @@ $Code = $LASTEXITCODE
 ```
 
 验证：日志里的 `Parsing command line:` 应显示 `BuildCookRun` 是独立命令，后续进入 `Setting up ProjectParams` 和 `BUILD COMMAND STARTED`。
+
+### PowerShell 变量或等号后空格导致 UAT 找不到 project
+
+现象：
+
+- UAT 报 `Could not find a project file $ProjectFile`。
+- 或者 UAT 报 `No project file specified. Use -project=<project>.`，日志里实际参数类似 `-project= "<ProjectFile>"`。
+
+原因：调用 `.bat` 时把 `-project=$ProjectFile` 作为字面量传给 UAT，或拼接参数时把 `-project=` 和带引号路径拆成了两个 token。UAT 需要 `-project=<path>` 是同一个参数，等号后不能有空格。
+
+修复：把每个等号参数拼成一个完整字符串：
+
+```powershell
+$ProjectArg = '-project="{0}"' -f $ProjectFile
+$ArchiveArg = '-archivedirectory="{0}"' -f $ArchiveDir
+```
+
+验证：日志 `Parsing command line:` 中显示真实路径，不包含 `$ProjectFile` 字面量，也没有 `-project= "<path>"` 这种等号后空格。
 
 ### CMD 包装 RunUAT.bat 后 exitcode 文件没有生成
 
@@ -322,6 +354,21 @@ echo %ERRORLEVEL% > "<ExitPath>"
 
 验证：重新 Cook 后日志不再出现 `BinkMediaPlayer`、启动 LoadingScreen Widget 蓝图编译 Error 或 `UnknownCookFailure`；最终仍以 `BUILD SUCCESSFUL` 和 `AutomationTool exiting with ExitCode=0 (Success)` 为准。
 
+### Steam SDK delay-load DLL 在 Cook 进程中缺失
+
+现象：Steam 包 Cook 早期以 `ExitCode=25` 或 `UnknownCookFailure` 失败，日志里有 `Unhandled Exception: 0xc06d007e`，调用栈包含 `UnrealEditor-<SteamSDKModule>.dll!__delayLoadHelper2()`、`_tailMerge_steam_api64_dll()` 或 Steam SDK wrapper 的默认对象构造函数。
+
+原因：`RuntimeDependencies` 能把 `steam_api64.dll` 放进最终包，但 Editor-Cmd Cook 进程的 DLL 搜索路径不一定包含插件 ThirdParty redistributable 目录；有些 CDO 构造或静态调用会在 Steam helper module 添加 DLL 搜索路径前触发 delay-load。
+
+修复：做非侵入式打包验证时，把插件的 Steam redistributable 目录临时加入本次 UAT 进程的 `PATH`，不要写入系统环境变量，也不要在 Skill 中保存机器绝对路径：
+
+```powershell
+$SteamDllDir = Join-Path $ProjectRoot "Plugins\OrionSteam\Source\ThirdParty\SteamLibrary\redistributable_bin\win64"
+$env:PATH = "$SteamDllDir;$env:PATH"
+```
+
+验证：Cook 能越过 Steam SDK wrapper 初始化，后续以最终 `BUILD SUCCESSFUL` 和 `AutomationTool exiting with ExitCode=0 (Success)` 判断结果。
+
 ### 源码引擎 AutomationTool 因 NuGet audit 警告失败
 
 现象：源码引擎首次运行 UAT 时，AutomationTool 在正式日志初始化前失败；`Engine/Programs/AutomationTool/Saved/Logs/ErrorLog.txt` 中出现大量 `NU1901`、`NU1902`、`NU1903`，内容为 NuGet 包漏洞警告被当成错误。
@@ -342,7 +389,7 @@ $env:NUGET_AUDIT = 'false'
 - AutomationTool / UAT 是否返回成功。
 - Cook 日志是否有 Error、Fatal、Unhandled Exception。
 - 输出目录是否生成预期内容。
-- 如果是 Steam 包，确认 Steam 相关目标、插件或 App 配置没有因为当前配置缺失而失败。
+- 如果是 Steam 包，确认 Steam 相关目标、插件或 App 配置没有因为当前配置缺失而失败，并确认 `Config/Custom/Steam/DefaultEngine.ini` 已进入 UFS manifest。
 
 最终回复应包含：
 

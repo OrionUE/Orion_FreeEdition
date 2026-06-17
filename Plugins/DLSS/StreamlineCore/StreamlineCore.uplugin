@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 129,
-	"VersionName": "8.5.0-SL2.10.3",
+	"Version": 133,
+	"VersionName": "8.6.1-SL2.11.1",
 	"FriendlyName": "NVIDIA Streamline Core (hidden, implementation detail)",
 	"Description": "Please use the specific NVIDIA Streamline feature plugins for DLSS-FG etc",
 	"Category": "Rendering",
@@ -10,9 +10,9 @@
 	"DocsURL": "",
 	"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
 	"SupportURL": "mailto:DLSS-Support@nvidia.com",
-	"EngineVersion": "5.6.0",
+	"EngineVersion": "5.8.0",
 	"CanContainContent": false,
-	"Installed": false,
+	"Installed": true,
 	"Modules": [
 		{
 			"Name": "StreamlineShaders",
@@ -20,6 +20,9 @@
 			"LoadingPhase": "PostConfigInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -28,12 +31,18 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
 			"Name": "StreamlineBlueprint",
 			"Type": "Runtime",
-			"LoadingPhase": "PostEngineInit"
+			"LoadingPhase": "PostEngineInit",
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
+			]
 		},
 		{
 			"Name": "StreamlineRHI",
@@ -41,6 +50,20 @@
 			"LoadingPhase": "PostSplashScreen",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
+			]
+		},
+		{
+			"Name": "StreamlineDXGIRHI",
+			"Type": "Runtime",
+			"LoadingPhase": "None",
+			"PlatformAllowList": [
+				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -49,6 +72,9 @@
 			"LoadingPhase": "None",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -57,6 +83,9 @@
 			"LoadingPhase": "None",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		}
 	],

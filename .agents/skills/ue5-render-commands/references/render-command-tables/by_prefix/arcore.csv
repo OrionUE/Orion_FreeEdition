@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+arcore.DebugOverlayMode,CVar,string,,arcore,渲染调试/可视化,All,true,false,false,false,false,,`arcore.DebugOverlayMode=<值>` / `arcore.DebugOverlayMode <值>` 或 INI 中配置,The debug overlay mode for ARCore:\n,

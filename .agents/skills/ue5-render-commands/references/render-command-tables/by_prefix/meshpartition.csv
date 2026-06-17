@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+MeshPartition.Channels.CaptureNextBatch,Command,string,,MeshPartition,光线追踪,All,true,false,false,false,false,,`MeshPartition.Channels.CaptureNextBatch`（可带参数，具体见帮助说明）,Captures the next Job Batch and launches RenderDoc,

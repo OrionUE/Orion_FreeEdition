@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebPlayerService_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -26,16 +27,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execGetRecentlyPlayedGames);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPlayerService_NoRegister();
+struct Z_Construct_UClass_UWebPlayerService_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPlayerService(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PlayerService_WebPlayerService_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebPlayerService(); \
-	friend struct Z_Construct_UClass_UWebPlayerService_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPlayerService_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebPlayerService_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebPlayerService(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebPlayerService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPlayerService_NoRegister) \
+	DECLARE_CLASS2(UWebPlayerService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPlayerService) \
 	DECLARE_SERIALIZER(UWebPlayerService)
 
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -28,7 +28,6 @@
 #include "StreamlineCore.h"
 #include "StreamlineCorePrivate.h"
 #include "StreamlineDLSSG.h"
-#include "StreamlineLatewarp.h"
 #include "StreamlineRHI.h"
 
 static TAutoConsoleVariable<bool> CVarStreamlineUnregisterReflexPlugin(
@@ -203,7 +202,7 @@ void FStreamlineMaxTickRateHandler::SetEnabled(bool bInEnabled)
 // TODO base on eventual FStreamlineRHI queries
 bool DoActiveStreamlineFeaturesRequireReflex()
 {
-	return IsDLSSGActive() || IsLatewarpActive();
+	return IsDLSSGActive();
 }
 
 bool FStreamlineMaxTickRateHandler::GetEnabled()
@@ -291,9 +290,9 @@ uint32 FStreamlineMaxTickRateHandler::GetFlags()
 	}
 }
 
-FStreamlineMaxTickRateHandler* FStreamlineMaxTickRateHandler::Get()
+FStreamlineMaxTickRateHandler* FStreamlineMaxTickRateHandler::Get(bool bCreateIfInvalid)
 {
-	if (!StreamlineMaxTickRateHandler)
+	if (!StreamlineMaxTickRateHandler && bCreateIfInvalid)
 	{
 		StreamlineMaxTickRateHandler = MakeUnique<FStreamlineMaxTickRateHandler>();
 		StreamlineMaxTickRateHandler->Initialize();
@@ -371,11 +370,18 @@ bool FStreamlineMaxTickRateHandler::HandleMaxTickRate(float DesiredMaxTickRate)
 			case ReflexFlags::ReflexInvalidFlags:
 				UE_LOG(LogStreamline, Error, TEXT("invalid FStreamlineMaxTickRateHandler::GetFlags=%u"), GetFlags());
 				/* fall through*/
-			case ReflexFlags::ReflexOff:   ReflexOptions.mode = sl::ReflexMode::eOff; 
+			case ReflexFlags::ReflexOff:
+				ReflexOptions.mode = sl::ReflexMode::eOff;
+				// we call slReflexSleep even when reflex is off, so we leave useMarkerToOptimize at its default because that seems safer
+				ReflexOptions.useMarkersToOptimize = false;
 				break;
-			case ReflexFlags::ReflexOn:    ReflexOptions.mode = sl::ReflexMode::eLowLatency; 
+			case ReflexFlags::ReflexOn:
+				ReflexOptions.mode = sl::ReflexMode::eLowLatency;
+				ReflexOptions.useMarkersToOptimize = true;
 				break;
-			case ReflexFlags::ReflexBoost: ReflexOptions.mode = sl::ReflexMode::eLowLatencyWithBoost; 
+			case ReflexFlags::ReflexBoost:
+				ReflexOptions.mode = sl::ReflexMode::eLowLatencyWithBoost;
+				ReflexOptions.useMarkersToOptimize = true;
 				break;
 		}
 
@@ -401,7 +407,6 @@ bool FStreamlineMaxTickRateHandler::HandleMaxTickRate(float DesiredMaxTickRate)
 #endif
 			bFrameRateHandled = true;
 		}
-		ReflexOptions.useMarkersToOptimize = true;
 
 		UpdateReflexOptionsIfChanged(ReflexOptions);
 
@@ -602,9 +607,9 @@ bool FStreamlineLatencyMarkers::ProcessMessage(HWND hwnd, uint32 msg, WPARAM wPa
 	return false;
 }
 
-FStreamlineLatencyMarkers* FStreamlineLatencyMarkers::Get()
+FStreamlineLatencyMarkers* FStreamlineLatencyMarkers::Get(bool bCreateIfInvalid)
 {
-	if (!StreamlineLatencyMarkers)
+	if (!StreamlineLatencyMarkers && bCreateIfInvalid)
 	{
 		StreamlineLatencyMarkers = MakeUnique<FStreamlineLatencyMarkers>();
 		StreamlineLatencyMarkers->Initialize();

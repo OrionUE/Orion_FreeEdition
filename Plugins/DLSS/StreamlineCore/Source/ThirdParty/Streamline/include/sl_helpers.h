@@ -185,6 +185,9 @@ inline const char* getPCLMarkerAsStr(PCLMarker marker)
         SL_CASE_STR(PCLMarker::eCameraConstructed);
         SL_CASE_STR(PCLMarker::eLateWarpRenderSubmitStart);
         SL_CASE_STR(PCLMarker::eLateWarpRenderSubmitEnd);
+        SL_CASE_STR(PCLMarker::eVendorInternalAsyncPresentStart);
+        SL_CASE_STR(PCLMarker::eVendorInternalAsyncPresentEnd);
+        SL_CASE_STR(PCLMarker::eNumPresentsInBatch);
         case PCLMarker::eMaximum: break;
     };
     return "Unknown";
@@ -213,6 +216,7 @@ inline const char* getDLSSGModeAsStr(DLSSGMode mode)
         SL_CASE_STR(sl::DLSSGMode::eOff);
         SL_CASE_STR(sl::DLSSGMode::eOn);
         SL_CASE_STR(sl::DLSSGMode::eAuto);
+        SL_CASE_STR(sl::DLSSGMode::eDynamic);
         case DLSSGMode::eCount: break;
     };
     return "Unknown";
@@ -246,6 +250,7 @@ inline const char* getBufferTypeAsStr(BufferType buf)
         SL_CASE_STR(kBufferTypeAmbientOcclusionNoisy);
         SL_CASE_STR(kBufferTypeAmbientOcclusionDenoised);
         SL_CASE_STR(kBufferTypeUIColorAndAlpha);
+        SL_CASE_STR(kBufferTypeUIAlpha);
         SL_CASE_STR(kBufferTypeShadowHint);
         SL_CASE_STR(kBufferTypeReflectionHint);
         SL_CASE_STR(kBufferTypeParticleHint);
@@ -385,7 +390,6 @@ inline DLSSPreset resolveDLSSPreset(DLSSPreset preset)
 {
     switch (preset)
     {
-        case DLSSPreset::ePresetF:
         case DLSSPreset::ePresetJ:
         case DLSSPreset::ePresetK:
             return preset;

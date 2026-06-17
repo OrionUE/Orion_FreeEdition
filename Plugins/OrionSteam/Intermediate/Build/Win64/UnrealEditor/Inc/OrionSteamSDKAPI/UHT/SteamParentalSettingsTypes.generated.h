@@ -12,14 +12,19 @@
 #define ORIONSTEAMSDKAPI_SteamParentalSettingsTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FSteamParentalSettingsChanged *************************************
+struct Z_Construct_UScriptStruct_FSteamParentalSettingsChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamParentalSettingsChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamParentalSettings_SteamParentalSettingsTypes_h_46_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamParentalSettingsChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamParentalSettingsChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamParentalSettingsChanged(ETypeConstructPhase::Inner); }
 
 
 struct FSteamParentalSettingsChanged;
@@ -50,7 +55,7 @@ struct FSteamParentalSettingsChanged;
 
 enum class ESteamParentalFeature : uint8;
 template<> struct TIsUEnumClass<ESteamParentalFeature> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamParentalFeature>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamParentalFeature>();
 // ********** End Enum ESteamParentalFeature *******************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

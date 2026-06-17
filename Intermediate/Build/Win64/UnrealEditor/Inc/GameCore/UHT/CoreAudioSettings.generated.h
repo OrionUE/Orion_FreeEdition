@@ -12,32 +12,35 @@
 #define GAMECORE_CoreAudioSettings_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FSubmixEffectChainMap *********************************************
+struct Z_Construct_UScriptStruct_FSubmixEffectChainMap_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FSubmixEffectChainMap(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Audio_CoreAudioSettings_h_15_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSubmixEffectChainMap_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSubmixEffectChainMap_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSubmixEffectChainMap(ETypeConstructPhase::Inner); }
 
 
 struct FSubmixEffectChainMap;
 // ********** End ScriptStruct FSubmixEffectChainMap ***********************************************
 
 // ********** Begin Class UCoreAudioSettings *******************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAudioSettings_NoRegister();
+struct Z_Construct_UClass_UCoreAudioSettings_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAudioSettings(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Audio_CoreAudioSettings_h_35_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAudioSettings(); \
-	friend struct Z_Construct_UClass_UCoreAudioSettings_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAudioSettings_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAudioSettings_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAudioSettings(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAudioSettings, UDeveloperSettings, COMPILED_IN_FLAGS(0 | CLASS_DefaultConfig | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAudioSettings_NoRegister) \
+	DECLARE_CLASS2(UCoreAudioSettings, UDeveloperSettings, COMPILED_IN_FLAGS(0 | CLASS_DefaultConfig | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAudioSettings) \
 	DECLARE_SERIALIZER(UCoreAudioSettings) \
-	static const TCHAR* StaticConfigName() {return TEXT("Game");} \
+	static constexpr const TCHAR* StaticConfigName() {return TEXT("Game");} \
 
 
 

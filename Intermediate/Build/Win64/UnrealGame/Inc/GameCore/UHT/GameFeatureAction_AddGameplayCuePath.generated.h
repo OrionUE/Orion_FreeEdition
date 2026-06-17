@@ -12,21 +12,21 @@
 #define GAMECORE_GameFeatureAction_AddGameplayCuePath_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UGameFeatureAction_AddGameplayCuePath ************************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_NoRegister();
+struct Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddGameplayCuePath_h_19_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameFeatureAction_AddGameplayCuePath(); \
-	friend struct Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameFeatureAction_AddGameplayCuePath, UGameFeatureAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath_NoRegister) \
+	DECLARE_CLASS2(UGameFeatureAction_AddGameplayCuePath, UGameFeatureAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddGameplayCuePath) \
 	DECLARE_SERIALIZER(UGameFeatureAction_AddGameplayCuePath)
 
 
@@ -37,7 +37,7 @@ public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(GAMECORE_API, UGameFeatureAction_AddGameplayCuePath); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGameFeatureAction_AddGameplayCuePath); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UGameFeatureAction_AddGameplayCuePath) \
-	GAMECORE_API virtual ~UGameFeatureAction_AddGameplayCuePath();
+	GAMECORE_API ~UGameFeatureAction_AddGameplayCuePath();
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddGameplayCuePath_h_16_PROLOG

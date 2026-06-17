@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Tex.AsyncDXTBlocksPerBatch,CVar,string,,Tex,渲染管线,All,true,false,false,false,false,,`Tex.AsyncDXTBlocksPerBatch=<值>` / `Tex.AsyncDXTBlocksPerBatch <值>` 或 INI 中配置,The number of blocks to compress in parallel for DXT compression.,

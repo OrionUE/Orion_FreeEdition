@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -38,8 +38,10 @@
 #define LOCTEXT_NAMESPACE "FDLSSModule"
 
 static TAutoConsoleVariable<int32> CVarNGXDLSSEnable(
-	TEXT("r.NGX.DLSS.Enable"), 1,
-	TEXT("Enable/Disable DLSS entirely."),
+	TEXT("r.NGX.DLSS.Enable"), 0,
+	TEXT("Enable/Disable DLSS SR or RR at runtime.\n")
+	TEXT("  0: Disable DLSS-SR and DLSS-RR (default)\n")
+	TEXT("  1: Enable DLSS-SR or DLSS-RR. Use r.NGX.DLSS.DenoiserMode to switch between DLSS-SR and DLSS-RR.\n"),
 	ECVF_RenderThreadSafe);
 
 // corresponds to EDLSSPreset
@@ -93,6 +95,12 @@ static TAutoConsoleVariable<int32> CVarNGXDLSSAutoExposure(
 	TEXT("1: Enable DLSS internal auto-exposure instead of the application provided one (default)\n"),
 	ECVF_RenderThreadSafe);
 
+static TAutoConsoleVariable<float> CVarNGXDLSSExposureScale(
+	TEXT("r.NGX.DLSS.ExposureScale"),
+	1.0f,
+	TEXT("Default: 1.0f. Valid range [0.0f, 1.0f]"),
+	ECVF_RenderThreadSafe);
+
 static TAutoConsoleVariable<int32> CVarNGXDLSSBiasCurrentColorMask(
 	TEXT("r.NGX.DLSS.BiasCurrentColorMask"), 0,
 	TEXT("Enable/Disable support for BiasCurrentColorMask."),
@@ -127,9 +135,9 @@ static TAutoConsoleVariable<int32> CVarNGXDLSSFeatureVisibilityMask(
 static TAutoConsoleVariable<int32> CVarNGXDLSSDenoiserMode(
 	TEXT("r.NGX.DLSS.DenoiserMode"),
 	0,
-	TEXT("Configures how DLSS denoises\n")
-	TEXT("0: off, no denoising (default)\n")
-	TEXT("1: DLSS-RR enabled\n"),
+	TEXT("Configures how DLSS denoises if DLSS-SR/RR are enabled via r.NGX.DLSS.Enable\n")
+	TEXT("0: DLSS-SR enabled, just upscaling, no denoising (default)\n")
+	TEXT("1: DLSS-RR enabled, denoising and upscaling \n"),
 	ECVF_RenderThreadSafe
 );
 
@@ -1021,6 +1029,7 @@ FDLSSOutputs FDLSSSceneViewFamilyUpscaler::AddDLSSPass(
 		static auto PropagateAlphaCVar = IConsoleManager::Get().FindConsoleVariable(TEXT("r.PostProcessing.PropagateAlpha"));
 		
 		const bool bEnableAlphaUpscaling = CVarNGXEnableAlphaUpscaling.GetValueOnRenderThread() >= 0 ? (CVarNGXEnableAlphaUpscaling.GetValueOnRenderThread() > 0) : PropagateAlphaCVar && (PropagateAlphaCVar->GetBool());
+		const float ExposureScale = FMath::Clamp(CVarNGXDLSSExposureScale.GetValueOnRenderThread(), 0.0f, 1.0f);
 
 		NGXRHI* LocalNGXRHIExtensions = Upscaler->NGXRHIExtensions;
 		const int32 NGXDLSSPreset = GetNGXDLSSPresetFromQualityMode(DLSSQualityMode);
@@ -1046,7 +1055,7 @@ FDLSSOutputs FDLSSSceneViewFamilyUpscaler::AddDLSSPass(
 			PassParameters,
 			ERDGPassFlags::Compute | ERDGPassFlags::Raster | ERDGPassFlags::Copy |  ERDGPassFlags::SkipRenderPass,
 			// FRHICommandListImmediate forces it to run on render thread, FRHICommandList doesn't
-			[LocalNGXRHIExtensions, PassParameters, Inputs, AdjustedInputViewRect, bCameraCut, DeltaWorldTimeMS, NGXDLSSPreset, NGXDLSSRRPreset, NGXPerfQuality, DLSSState, bUseAutoExposure, bEnableAlphaUpscaling, bReleaseMemoryOnDelete, bUseBiasCurrentColorMask](FRHICommandListImmediate& RHICmdList)
+			[LocalNGXRHIExtensions, PassParameters, Inputs, AdjustedInputViewRect, bCameraCut, DeltaWorldTimeMS, NGXDLSSPreset, NGXDLSSRRPreset, NGXPerfQuality, DLSSState, bUseAutoExposure, ExposureScale, bEnableAlphaUpscaling, bReleaseMemoryOnDelete, bUseBiasCurrentColorMask](FRHICommandListImmediate& RHICmdList)
 			{
 				FRHIDLSSArguments DLSSArguments;
 				FMemory::Memzero(&DLSSArguments, sizeof(DLSSArguments));
@@ -1098,6 +1107,7 @@ FDLSSOutputs FDLSSSceneViewFamilyUpscaler::AddDLSSPass(
 				DLSSArguments.InputExposure = PassParameters->EyeAdaptation->GetRHI();
 				DLSSArguments.PreExposure = Inputs.PreExposure;
 				DLSSArguments.bUseAutoExposure = bUseAutoExposure;
+				DLSSArguments.ExposureScale = ExposureScale;
 
 				DLSSArguments.bEnableAlphaUpscaling = bEnableAlphaUpscaling;
 

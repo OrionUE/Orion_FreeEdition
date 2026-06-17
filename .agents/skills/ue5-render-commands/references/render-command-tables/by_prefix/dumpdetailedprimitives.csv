@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+DumpDetailedPrimitives,Command,string,,DumpDetailedPrimitives,材质,All,true,false,false,false,false,,`DumpDetailedPrimitives`（可带参数，具体见帮助说明）,Writes the detailed information of all primitives tracked by the PrimitiveDebugger to a CSV file,ECVF_Default

@@ -12,10 +12,10 @@
 #define GAMECORE_CoreGameMode_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class AController;
 class UCommonUserInfo;
 class UCorePawnData;
@@ -29,16 +29,15 @@ enum class ECommonUserPrivilege : uint8;
 	DECLARE_FUNCTION(execGetPawnDataForController);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_ACoreGameMode_NoRegister();
+struct Z_Construct_UClass_ACoreGameMode_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACoreGameMode(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreGameMode_h_35_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACoreGameMode(); \
-	friend struct Z_Construct_UClass_ACoreGameMode_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACoreGameMode_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACoreGameMode_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACoreGameMode(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACoreGameMode, AModularGameModeBase, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreGameMode_NoRegister) \
+	DECLARE_CLASS2(ACoreGameMode, AModularGameModeBase, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreGameMode) \
 	DECLARE_SERIALIZER(ACoreGameMode)
 
 

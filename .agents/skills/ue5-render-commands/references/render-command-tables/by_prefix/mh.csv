@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+mh.TextureSynthesis.ResetModel,Command,string,,mh,材质,All,true,false,false,false,false,,`mh.TextureSynthesis.ResetModel`（可带参数，具体见帮助说明）,Reset Texture Synthesis by re-loading the model data,

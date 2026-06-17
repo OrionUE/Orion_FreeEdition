@@ -89,7 +89,7 @@ public class GameCore : ModuleRules
 		SetupIrisSupport(Target);
 
 		bPrecompile = true;
-		bUsePrecompiled = false;
+		bUsePrecompiled = true;
 		PrecompileForTargets = PrecompileTargetsType.Any;
 	}
 }

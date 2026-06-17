@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamUGCAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamUGCAsyncActionAddAppDependency;
 class UOrionSteamUGCAsyncActionAddItemToFavorites;
@@ -57,155 +57,21 @@ struct FUGCQueryHandle;
 struct FUGCUpdateHandle;
 struct FUserFavoriteItemsListChanged;
 
-// ********** Begin Delegate FOnAddItemToFavoritesAsyncDelegate ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_15_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddItemToFavoritesAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnAddItemToFavoritesAsyncDelegate, FUserFavoriteItemsListChanged const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddItemToFavoritesAsyncDelegate **************************************
-
-// ********** Begin Delegate FOnCreateItemAsyncDelegate ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateItemAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnCreateItemAsyncDelegate, FCreateItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateItemAsyncDelegate **********************************************
-
-// ********** Begin Delegate FOnSetUserItemVoteAsyncDelegate ***************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSetUserItemVoteAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSetUserItemVoteAsyncDelegate, FSetUserItemVoteResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSetUserItemVoteAsyncDelegate *****************************************
-
-// ********** Begin Delegate FOnGetUserItemVoteAsyncDelegate ***************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_18_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetUserItemVoteAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnGetUserItemVoteAsyncDelegate, FGetUserItemVoteResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetUserItemVoteAsyncDelegate *****************************************
-
-// ********** Begin Delegate FOnRemoveItemFromFavoritesAsyncDelegate *******************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_19_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveItemFromFavoritesAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRemoveItemFromFavoritesAsyncDelegate, FUserFavoriteItemsListChanged const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveItemFromFavoritesAsyncDelegate *********************************
-
-// ********** Begin Delegate FOnSubscribeItemAsyncDelegate *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_20_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSubscribeItemAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSubscribeItemAsyncDelegate, FRemoteStorageSubscribePublishedFileResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSubscribeItemAsyncDelegate *******************************************
-
-// ********** Begin Delegate FOnSendQueryUGCRequestAsyncDelegate ***********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_21_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSendQueryUGCRequestAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSendQueryUGCRequestAsyncDelegate, FSteamUGCQueryCompleted const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSendQueryUGCRequestAsyncDelegate *************************************
-
-// ********** Begin Delegate FOnAddAppDependencyResultAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_22_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddAppDependencyResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnAddAppDependencyResultAsyncDelegate, FAddAppDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddAppDependencyResultAsyncDelegate **********************************
-
-// ********** Begin Delegate FOnRemoveAppDependencyResultAsyncDelegate *****************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_23_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveAppDependencyResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRemoveAppDependencyResultAsyncDelegate, FRemoveAppDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveAppDependencyResultAsyncDelegate *******************************
-
-// ********** Begin Delegate FOnAddUGCDependencyResultAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_24_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddUGCDependencyResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnAddUGCDependencyResultAsyncDelegate, FAddUGCDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddUGCDependencyResultAsyncDelegate **********************************
-
-// ********** Begin Delegate FOnRemoveUGCDependencyResultAsyncDelegate *****************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_25_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveUGCDependencyResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRemoveUGCDependencyResultAsyncDelegate, FRemoveUGCDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveUGCDependencyResultAsyncDelegate *******************************
-
-// ********** Begin Delegate FOnDeleteItemResultAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_26_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDeleteItemResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnDeleteItemResultAsyncDelegate, FUGCDeleteItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDeleteItemResultAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnGetAppDependenciesResultAsyncDelegate ******************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_27_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetAppDependenciesResultAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnGetAppDependenciesResultAsyncDelegate, FGetAppDependenciesResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetAppDependenciesResultAsyncDelegate ********************************
-
-// ********** Begin Delegate FOnSubmitItemUpdateAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_28_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSubmitItemUpdateAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnSubmitItemUpdateAsyncDelegate, FSubmitItemUpdateResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSubmitItemUpdateAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnStartPlaytimeTrackingAsyncDelegate *********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_29_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStartPlaytimeTrackingAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnStartPlaytimeTrackingAsyncDelegate, FStartPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStartPlaytimeTrackingAsyncDelegate ***********************************
-
-// ********** Begin Delegate FOnStopPlaytimeTrackingAsyncDelegate **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_30_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStopPlaytimeTrackingAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnStopPlaytimeTrackingAsyncDelegate, FStopPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStopPlaytimeTrackingAsyncDelegate ************************************
-
-// ********** Begin Delegate FOnStopPlaytimeTrackingForAllItemsAsyncDelegate ***********************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_31_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStopPlaytimeTrackingForAllItemsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnStopPlaytimeTrackingForAllItemsAsyncDelegate, FStopPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStopPlaytimeTrackingForAllItemsAsyncDelegate *************************
-
-// ********** Begin Delegate FOnUnsubscribeItemAsyncDelegate ***************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_32_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnUnsubscribeItemAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnUnsubscribeItemAsyncDelegate, FRemoteStorageSubscribePublishedFileResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnUnsubscribeItemAsyncDelegate *****************************************
-
-// ********** Begin Delegate FOnDownloadItemResultDelegate *****************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_33_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadItemResultDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadItemResultDelegate, FDownloadItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadItemResultDelegate *******************************************
-
 // ********** Begin Class UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems *****************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_41_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
 	DECLARE_FUNCTION(execStopPlaytimeTrackingForAllItemsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_41_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems)
 
 
@@ -242,16 +108,15 @@ class UOrionSteamUGCAsyncActionStopPlaytimeTrackingForAllItems;
 	DECLARE_FUNCTION(execStopPlaytimeTrackingAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_67_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionStopPlaytimeTracking(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStopPlaytimeTracking, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStopPlaytimeTracking, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStopPlaytimeTracking) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionStopPlaytimeTracking)
 
 
@@ -288,16 +153,15 @@ class UOrionSteamUGCAsyncActionStopPlaytimeTracking;
 	DECLARE_FUNCTION(execStartPlaytimeTrackingAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_94_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionStartPlaytimeTracking(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStartPlaytimeTracking, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionStartPlaytimeTracking, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionStartPlaytimeTracking) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionStartPlaytimeTracking)
 
 
@@ -334,16 +198,15 @@ class UOrionSteamUGCAsyncActionStartPlaytimeTracking;
 	DECLARE_FUNCTION(execUnsubscribeItemAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_121_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionUnsubscribeItem(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionUnsubscribeItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionUnsubscribeItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionUnsubscribeItem) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionUnsubscribeItem)
 
 
@@ -380,16 +243,15 @@ class UOrionSteamUGCAsyncActionUnsubscribeItem;
 	DECLARE_FUNCTION(execSubscribeItemAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_147_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionSubscribeItem(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSubscribeItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSubscribeItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSubscribeItem) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionSubscribeItem)
 
 
@@ -426,16 +288,15 @@ class UOrionSteamUGCAsyncActionSubscribeItem;
 	DECLARE_FUNCTION(execRemoveItemFromFavoritesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_173_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionRemoveItemFromFavorites(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveItemFromFavorites, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveItemFromFavorites, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveItemFromFavorites) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionRemoveItemFromFavorites)
 
 
@@ -472,16 +333,15 @@ class UOrionSteamUGCAsyncActionRemoveItemFromFavorites;
 	DECLARE_FUNCTION(execAddItemToFavoritesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_200_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionAddItemToFavorites(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddItemToFavorites, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddItemToFavorites, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddItemToFavorites) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionAddItemToFavorites)
 
 
@@ -518,16 +378,15 @@ class UOrionSteamUGCAsyncActionAddItemToFavorites;
 	DECLARE_FUNCTION(execGetUserItemVoteAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_227_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionGetUserItemVote(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionGetUserItemVote, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionGetUserItemVote, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionGetUserItemVote) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionGetUserItemVote)
 
 
@@ -564,16 +423,15 @@ class UOrionSteamUGCAsyncActionGetUserItemVote;
 	DECLARE_FUNCTION(execSetUserItemVoteAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_253_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionSetUserItemVote(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSetUserItemVote, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSetUserItemVote, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSetUserItemVote) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionSetUserItemVote)
 
 
@@ -610,16 +468,15 @@ class UOrionSteamUGCAsyncActionSetUserItemVote;
 	DECLARE_FUNCTION(execSubmitItemUpdateAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_280_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionSubmitItemUpdate(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSubmitItemUpdate, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSubmitItemUpdate, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSubmitItemUpdate) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionSubmitItemUpdate)
 
 
@@ -656,16 +513,15 @@ class UOrionSteamUGCAsyncActionSubmitItemUpdate;
 	DECLARE_FUNCTION(execCreateItemAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_308_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionCreateItem(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionCreateItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionCreateItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionCreateItem) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionCreateItem)
 
 
@@ -702,16 +558,15 @@ class UOrionSteamUGCAsyncActionCreateItem;
 	DECLARE_FUNCTION(execSendQueryUGCRequestAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_335_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionSendQueryUGCRequest(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSendQueryUGCRequest, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionSendQueryUGCRequest, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionSendQueryUGCRequest) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionSendQueryUGCRequest)
 
 
@@ -748,16 +603,15 @@ class UOrionSteamUGCAsyncActionSendQueryUGCRequest;
 	DECLARE_FUNCTION(execAddAppDependencyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_363_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionAddAppDependency(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddAppDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddAppDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddAppDependency) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionAddAppDependency)
 
 
@@ -794,16 +648,15 @@ class UOrionSteamUGCAsyncActionAddAppDependency;
 	DECLARE_FUNCTION(execRemoveAppDependencyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_393_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionRemoveAppDependency(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveAppDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveAppDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveAppDependency) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionRemoveAppDependency)
 
 
@@ -840,16 +693,15 @@ class UOrionSteamUGCAsyncActionRemoveAppDependency;
 	DECLARE_FUNCTION(execAddDependencyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_420_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionAddUGCDependency(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddUGCDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionAddUGCDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionAddUGCDependency) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionAddUGCDependency)
 
 
@@ -886,16 +738,15 @@ class UOrionSteamUGCAsyncActionAddUGCDependency;
 	DECLARE_FUNCTION(execRemoveDependencyAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_450_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionRemoveUGCDependency(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveUGCDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionRemoveUGCDependency, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionRemoveUGCDependency) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionRemoveUGCDependency)
 
 
@@ -932,16 +783,15 @@ class UOrionSteamUGCAsyncActionRemoveUGCDependency;
 	DECLARE_FUNCTION(execDeleteItemAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_477_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionDeleteItem(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionDeleteItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionDeleteItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionDeleteItem) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionDeleteItem)
 
 
@@ -978,16 +828,15 @@ class UOrionSteamUGCAsyncActionDeleteItem;
 	DECLARE_FUNCTION(execGetAppDependenciesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_503_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionGetAppDependencies(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionGetAppDependencies, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionGetAppDependencies, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionGetAppDependencies) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionGetAppDependencies)
 
 
@@ -1024,16 +873,15 @@ class UOrionSteamUGCAsyncActionGetAppDependencies;
 	DECLARE_FUNCTION(execDownloadItemAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCAsyncActions_h_531_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGCAsyncActionDownloadItem(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGCAsyncActionDownloadItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGCAsyncActionDownloadItem, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGCAsyncActionDownloadItem) \
 	DECLARE_SERIALIZER(UOrionSteamUGCAsyncActionDownloadItem)
 
 

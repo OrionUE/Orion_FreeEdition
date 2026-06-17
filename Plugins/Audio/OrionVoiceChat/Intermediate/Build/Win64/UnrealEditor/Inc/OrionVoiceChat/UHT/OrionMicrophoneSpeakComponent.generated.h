@@ -12,25 +12,11 @@
 #define ORIONVOICECHAT_OrionMicrophoneSpeakComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionMicrophoneSpeakComponent;
-
-// ********** Begin Delegate FDataMicrophoneReceived ***********************************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionMicrophoneSpeakComponent_h_32_DELEGATE \
-static void FDataMicrophoneReceived_DelegateWrapper(const FMulticastScriptDelegate& DataMicrophoneReceived, TArray<uint8> const& data);
-
-
-// ********** End Delegate FDataMicrophoneReceived *************************************************
-
-// ********** Begin Delegate FMicrophoneVolumeReceived *********************************************
-#define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionMicrophoneSpeakComponent_h_33_DELEGATE \
-static void FMicrophoneVolumeReceived_DelegateWrapper(const FMulticastScriptDelegate& MicrophoneVolumeReceived, float Volume);
-
-
-// ********** End Delegate FMicrophoneVolumeReceived ***********************************************
 
 // ********** Begin Class UOrionMicrophoneSpeakComponent *******************************************
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionMicrophoneSpeakComponent_h_30_RPC_WRAPPERS_NO_PURE_DECLS \
@@ -56,16 +42,15 @@ static void FMicrophoneVolumeReceived_DelegateWrapper(const FMulticastScriptDele
 
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionMicrophoneSpeakComponent_h_30_CALLBACK_WRAPPERS
-ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionMicrophoneSpeakComponent_NoRegister();
+struct Z_Construct_UClass_UOrionMicrophoneSpeakComponent_Statics;
+ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionMicrophoneSpeakComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_Audio_OrionVoiceChat_Source_OrionVoiceChat_Public_OrionMicrophoneSpeakComponent_h_30_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionMicrophoneSpeakComponent(); \
-	friend struct Z_Construct_UClass_UOrionMicrophoneSpeakComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONVOICECHAT_API UClass* Z_Construct_UClass_UOrionMicrophoneSpeakComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionMicrophoneSpeakComponent_Statics; \
+	friend ORIONVOICECHAT_API UClass* ::Z_Construct_UClass_UOrionMicrophoneSpeakComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionMicrophoneSpeakComponent, UActorComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionMicrophoneSpeakComponent_NoRegister) \
+	DECLARE_CLASS2(UOrionMicrophoneSpeakComponent, UActorComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionVoiceChat"), Z_Construct_UClass_UOrionMicrophoneSpeakComponent) \
 	DECLARE_SERIALIZER(UOrionMicrophoneSpeakComponent)
 
 

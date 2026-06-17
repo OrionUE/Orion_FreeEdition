@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmaking_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamMatchmaking;
 enum class ESteamChatEntryType : uint8;
 enum class ESteamFavoriteFlags : uint8;
@@ -68,16 +68,15 @@ struct FSteamID;
 	DECLARE_FUNCTION(execGetSteamMatchmaking);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmaking_NoRegister();
+struct Z_Construct_UClass_UOrionSteamMatchmaking_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmaking(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmaking_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamMatchmaking(); \
-	friend struct Z_Construct_UClass_UOrionSteamMatchmaking_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamMatchmaking_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamMatchmaking_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamMatchmaking(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamMatchmaking, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmaking_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamMatchmaking, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamMatchmaking) \
 	DECLARE_SERIALIZER(UOrionSteamMatchmaking)
 
 

@@ -12,21 +12,21 @@
 #define GAMECORE_CoreGameplayCueManager_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreGameplayCueManager **************************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayCueManager_NoRegister();
+struct Z_Construct_UClass_UCoreGameplayCueManager_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayCueManager(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreGameplayCueManager_h_25_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreGameplayCueManager(); \
-	friend struct Z_Construct_UClass_UCoreGameplayCueManager_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreGameplayCueManager_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreGameplayCueManager_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreGameplayCueManager(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreGameplayCueManager, UGameplayCueManager, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameplayCueManager_NoRegister) \
+	DECLARE_CLASS2(UCoreGameplayCueManager, UGameplayCueManager, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreGameplayCueManager) \
 	DECLARE_SERIALIZER(UCoreGameplayCueManager)
 
 

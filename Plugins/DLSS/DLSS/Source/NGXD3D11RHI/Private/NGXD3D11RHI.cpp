@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -373,6 +373,7 @@ void FNGXD3D11RHI::ExecuteDLSS(FRHICommandList& CmdList, const FRHIDLSSArguments
 
 		DlssEvalParams.Feature.pInOutput = D3D11RHI->RHIGetResource(InArguments.OutputColor);
 		DlssEvalParams.Feature.pInColor = D3D11RHI->RHIGetResource(InArguments.InputColor);
+		DlssEvalParams.InExposureScale = InArguments.ExposureScale;
 
 		NVSDK_NGX_Result ResultEvaluate = NGX_D3D11_EVALUATE_DLSS_EXT(
 			Direct3DDeviceIMContext,

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -45,6 +45,7 @@ struct FShaderCodePackedResourceCounts;
 
 #include "StreamlineAPI.h"
 #include "StreamlineConversions.h"
+#include "StreamlineDXGISwapchainProxy.h"
 #include "StreamlineRHI.h"
 #include "StreamlineNGXRHI.h"
 #include "sl.h"
@@ -84,7 +85,8 @@ public:
 	HRESULT CreateSwapChainForHwnd(IDXGIFactory2* pFactory, IUnknown* pDevice, HWND hWnd, const DXGI_SWAP_CHAIN_DESC1* pDesc, const DXGI_SWAP_CHAIN_FULLSCREEN_DESC* pFullScreenDesc, IDXGIOutput* pRestrictToOutput, IDXGISwapChain1** ppSwapChain) override final
 	{
 		HRESULT DXGIResult = E_FAIL;
-		if (!StreamlineRHI->IsSwapchainHookingAllowed())
+		const bool bUseStreamlineProxy = StreamlineRHI->IsSwapchainHookingAllowed();
+		if (!bUseStreamlineProxy)
 		{
 			DXGIResult = pFactory->CreateSwapChainForHwnd(pDevice, hWnd, pDesc, pFullScreenDesc, pRestrictToOutput, ppSwapChain);
 		}
@@ -97,14 +99,20 @@ public:
 			DXGIResult = SLFactory->CreateSwapChainForHwnd(pDevice, hWnd, pDesc, pFullScreenDesc, pRestrictToOutput, ppSwapChain);
 		}
 
-		StreamlineRHI->OnSwapchainCreated(*ppSwapChain);
+		if (FStreamlineDXGISwapChainProxy::IsEnabled())
+		{
+			ensure(FStreamlineDXGISwapChainProxy::WrapSwapChain(ppSwapChain, StreamlineRHI, bUseStreamlineProxy));
+		}
+
+		StreamlineRHI->OnSwapchainCreated(*ppSwapChain, bUseStreamlineProxy);
 		return DXGIResult;
 	}
 
 	HRESULT CreateSwapChain(IDXGIFactory* pFactory, IUnknown* pDevice, DXGI_SWAP_CHAIN_DESC* pDesc, IDXGISwapChain** ppSwapChain) override final
 	{
 		HRESULT DXGIResult = E_FAIL;
-		if (!StreamlineRHI->IsSwapchainHookingAllowed())
+		const bool bUseStreamlineProxy = StreamlineRHI->IsSwapchainHookingAllowed();
+		if (!bUseStreamlineProxy)
 		{
 			DXGIResult = pFactory->CreateSwapChain(pDevice, pDesc, ppSwapChain);
 		}
@@ -117,7 +125,13 @@ public:
 			DXGIResult = SLFactory->CreateSwapChain(pDevice, pDesc, ppSwapChain);
 		}
 
-		StreamlineRHI->OnSwapchainCreated(*ppSwapChain);
+
+		if (FStreamlineDXGISwapChainProxy::IsEnabled())
+		{
+			ensure(FStreamlineDXGISwapChainProxy::WrapSwapChain(ppSwapChain, StreamlineRHI, bUseStreamlineProxy));
+		}
+
+		StreamlineRHI->OnSwapchainCreated(*ppSwapChain, bUseStreamlineProxy);
 		return DXGIResult;
 	}
 private:
@@ -502,18 +516,17 @@ public:
 		return true;
 	}
 
-	virtual bool IsLatewarpSupportedByRHI() const override final
-	{
-		return true;
-	}
-
 	virtual bool IsReflexSupportedByRHI() const override final
 	{
 		return true;
 	}
 
+	virtual bool IsPluginSideSwapchainProxyEnabled() const override final
+	{
+		return FStreamlineDXGISwapChainProxy::IsEnabled();
+	}
 
-	virtual void APIErrorHandler(const sl::APIError& LastError) final
+	virtual void APIErrorHandler(const sl::APIError& LastError) const final
 	{
 		// Not all DXGI return codes are errors, e.g. DXGI_STATUS_OCCLUDED
 		if (IsDXGIStatus(LastError.hres))
@@ -570,7 +583,7 @@ public:
 		if (Result == sl::Result::eOk)
 		{
 			const bool bIsProxy = NativeInterface != NativeSwapchain;
-			//UE_LOG(LogStreamlineD3D12RHI, Log, TEXT("%s %s NativeInterface=%p NativeSwapchain=%p isProxy=%u "), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), NativeSwapchain, NativeInterface.GetReference(), bIsProxy);
+			UE_LOG(LogStreamlineD3D12RHI, VeryVerbose, TEXT("%s %s NativeInterface=%p NativeSwapchain=%p isProxy=%u "), ANSI_TO_TCHAR(__FUNCTION__), *CurrentThreadName(), NativeSwapchain, NativeInterface.GetReference(), bIsProxy);
 			return bIsProxy;
 		}
 		else

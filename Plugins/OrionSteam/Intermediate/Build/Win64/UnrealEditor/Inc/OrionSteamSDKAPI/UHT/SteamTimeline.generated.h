@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamTimeline_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamTimeline;
 class UOrionSteamTimelineGamePhases;
 enum class ESteamTimelineEventClipPriority : uint8;
@@ -36,16 +36,15 @@ struct FTimelineEventHandle;
 	DECLARE_FUNCTION(execGetSteamTimeline);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimeline_NoRegister();
+struct Z_Construct_UClass_UOrionSteamTimeline_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimeline(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimeline_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamTimeline(); \
-	friend struct Z_Construct_UClass_UOrionSteamTimeline_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimeline_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamTimeline_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamTimeline(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamTimeline, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamTimeline_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamTimeline, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamTimeline) \
 	DECLARE_SERIALIZER(UOrionSteamTimeline)
 
 
@@ -85,16 +84,15 @@ class UOrionSteamTimeline;
 	DECLARE_FUNCTION(execGetSteamTimelineGamePhase);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimelineGamePhases_NoRegister();
+struct Z_Construct_UClass_UOrionSteamTimelineGamePhases_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimelineGamePhases(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamTimeline_SteamTimeline_h_157_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamTimelineGamePhases(); \
-	friend struct Z_Construct_UClass_UOrionSteamTimelineGamePhases_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamTimelineGamePhases_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamTimelineGamePhases_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamTimelineGamePhases(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamTimelineGamePhases, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamTimelineGamePhases_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamTimelineGamePhases, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamTimelineGamePhases) \
 	DECLARE_SERIALIZER(UOrionSteamTimelineGamePhases)
 
 

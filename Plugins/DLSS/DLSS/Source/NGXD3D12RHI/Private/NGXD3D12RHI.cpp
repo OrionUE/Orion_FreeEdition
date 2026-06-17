@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -418,6 +418,7 @@ void FNGXD3D12RHI::ExecuteDLSS(FRHICommandList& CmdList, const FRHIDLSSArguments
 		//TODO: does RHIGetResource do the right thing with multiple GPUs?
 		DlssEvalParams.Feature.pInOutput = GetResidentD3D12Resource(D3D12RHI, CmdList, InArguments.OutputColor, false);
 		DlssEvalParams.Feature.pInColor = GetResidentD3D12Resource(D3D12RHI, CmdList, InArguments.InputColor, true);
+		DlssEvalParams.InExposureScale = InArguments.ExposureScale;
 
 		FlushResourceBarriers(CmdList);
 

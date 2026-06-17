@@ -12,10 +12,11 @@
 #define ORIONSTEAMSDKAPI_OrionSteamUtilities_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class APlayerController;
 class APlayerState;
 class UObject;
@@ -46,41 +47,6 @@ struct FSteamSessionSetting;
 struct FSteamTicketHandle;
 struct FSteamUGCHandle;
 
-// ********** Begin Delegate FOnSteamMessage *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_61_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSteamMessage_DelegateWrapper(const FScriptDelegate& OnSteamMessage, ESteamMessageType Type, const FString& Message);
-
-
-// ********** End Delegate FOnSteamMessage *********************************************************
-
-// ********** Begin Delegate FOnHTTPResponse *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_62_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnHTTPResponse_DelegateWrapper(const FScriptDelegate& OnHTTPResponse, const FString& Response);
-
-
-// ********** End Delegate FOnHTTPResponse *********************************************************
-
-// ********** Begin Delegate FOnControllerChangedCallback ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_63_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnControllerChangedCallback_DelegateWrapper(const FMulticastScriptDelegate& OnControllerChangedCallback, bool bIsConnected, int32 UserId);
-
-
-// ********** End Delegate FOnControllerChangedCallback ********************************************
-
-// ********** Begin Delegate FOnSessionUserInviteAcceptedCallback **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_64_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSessionUserInviteAcceptedCallback_DelegateWrapper(const FScriptDelegate& OnSessionUserInviteAcceptedCallback, bool bWasSuccessful, int32 LocalPlayerNum, const FString& InvitedBy, FBlueprintSessionResult const& Session);
-
-
-// ********** End Delegate FOnSessionUserInviteAcceptedCallback ************************************
-
-// ********** Begin Delegate FOnSessionUserInviteRecievedCallback **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_65_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSessionUserInviteRecievedCallback_DelegateWrapper(const FScriptDelegate& OnSessionUserInviteRecievedCallback, const FString& InvitedBy, FBlueprintSessionResult const& InviteResult);
-
-
-// ********** End Delegate FOnSessionUserInviteRecievedCallback ************************************
-
 // ********** Begin Class UOrionSteamVoice *********************************************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_70_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execConstructOrionSteamVoice); \
@@ -88,16 +54,15 @@ ORIONSTEAMSDKAPI_API void FOnSessionUserInviteRecievedCallback_DelegateWrapper(c
 	DECLARE_FUNCTION(execAddAudioBuffer);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVoice_NoRegister();
+struct Z_Construct_UClass_UOrionSteamVoice_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVoice(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_70_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamVoice(); \
-	friend struct Z_Construct_UClass_UOrionSteamVoice_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVoice_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamVoice_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamVoice(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamVoice, USoundWaveProcedural, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamVoice_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamVoice, USoundWaveProcedural, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamVoice) \
 	DECLARE_SERIALIZER(UOrionSteamVoice)
 
 
@@ -132,16 +97,15 @@ class UOrionSteamVoice;
 	DECLARE_FUNCTION(execListenForControllerChange);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_NoRegister();
+struct Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_91_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamAsyncActionListenForControllerChange(); \
-	friend struct Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamAsyncActionListenForControllerChange, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamAsyncActionListenForControllerChange, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamAsyncActionListenForControllerChange) \
 	DECLARE_SERIALIZER(UOrionSteamAsyncActionListenForControllerChange)
 
 
@@ -262,16 +226,15 @@ class UOrionSteamAsyncActionListenForControllerChange;
 	DECLARE_FUNCTION(execMakeSteamItemInstanceID);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtilities_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUtilities_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtilities(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamUtilities_h_168_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUtilities(); \
-	friend struct Z_Construct_UClass_UOrionSteamUtilities_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUtilities_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUtilities_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUtilities(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUtilities, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUtilities_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUtilities, UBlueprintFunctionLibrary, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUtilities) \
 	DECLARE_SERIALIZER(UOrionSteamUtilities)
 
 
@@ -320,7 +283,7 @@ class UOrionSteamUtilities;
 
 enum class EOrionSteamValid : uint8;
 template<> struct TIsUEnumClass<EOrionSteamValid> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamValid>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamValid>();
 // ********** End Enum EOrionSteamValid ************************************************************
 
 // ********** Begin Enum EOrionSteamIdentical ******************************************************
@@ -330,7 +293,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamValid>();
 
 enum class EOrionSteamIdentical : uint8;
 template<> struct TIsUEnumClass<EOrionSteamIdentical> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamIdentical>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamIdentical>();
 // ********** End Enum EOrionSteamIdentical ********************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

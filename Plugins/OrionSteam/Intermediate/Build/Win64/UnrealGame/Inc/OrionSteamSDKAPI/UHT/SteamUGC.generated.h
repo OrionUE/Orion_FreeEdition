@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamUGC_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamUGC;
 enum class ESteamItemPreviewType : uint8;
 enum class ESteamItemState : uint8;
@@ -128,16 +128,15 @@ struct FUGCUpdateHandle;
 	DECLARE_FUNCTION(execGetSteamUGC);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGC_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUGC_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGC(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGC_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUGC(); \
-	friend struct Z_Construct_UClass_UOrionSteamUGC_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUGC_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUGC_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUGC(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUGC, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGC_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUGC, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUGC) \
 	DECLARE_SERIALIZER(UOrionSteamUGC)
 
 

@@ -12,10 +12,11 @@
 #define ORIONSTEAMSDKAPI_SteamMatchmakingTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FBlueprintSessionResult;
 struct FCreateLobbyData;
 struct FFavoritesListAccountsUpdated;
@@ -31,203 +32,148 @@ struct FLobbyKickedData;
 struct FLobbyMatchList;
 
 // ********** Begin ScriptStruct FFavoritesListAccountsUpdated *************************************
+struct Z_Construct_UScriptStruct_FFavoritesListAccountsUpdated_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFavoritesListAccountsUpdated(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_102_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFavoritesListAccountsUpdated_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFavoritesListAccountsUpdated_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFavoritesListAccountsUpdated(ETypeConstructPhase::Inner); }
 
 
 struct FFavoritesListAccountsUpdated;
 // ********** End ScriptStruct FFavoritesListAccountsUpdated ***************************************
 
 // ********** Begin ScriptStruct FFavoritesListChanged *********************************************
+struct Z_Construct_UScriptStruct_FFavoritesListChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FFavoritesListChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_124_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FFavoritesListChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FFavoritesListChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FFavoritesListChanged(ETypeConstructPhase::Inner); }
 
 
 struct FFavoritesListChanged;
 // ********** End ScriptStruct FFavoritesListChanged ***********************************************
 
 // ********** Begin ScriptStruct FLobbyChatMsg *****************************************************
+struct Z_Construct_UScriptStruct_FLobbyChatMsg_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyChatMsg(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_170_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyChatMsg_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyChatMsg_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyChatMsg(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyChatMsg;
 // ********** End ScriptStruct FLobbyChatMsg *******************************************************
 
 // ********** Begin ScriptStruct FLobbyChatUpdate **************************************************
+struct Z_Construct_UScriptStruct_FLobbyChatUpdate_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyChatUpdate(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_198_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyChatUpdate_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyChatUpdate_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyChatUpdate(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyChatUpdate;
 // ********** End ScriptStruct FLobbyChatUpdate ****************************************************
 
 // ********** Begin ScriptStruct FLobbyDataUpdate **************************************************
+struct Z_Construct_UScriptStruct_FLobbyDataUpdate_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyDataUpdate(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_230_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyDataUpdate_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyDataUpdate_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyDataUpdate(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyDataUpdate;
 // ********** End ScriptStruct FLobbyDataUpdate ****************************************************
 
 // ********** Begin ScriptStruct FLobbyEnterData ***************************************************
+struct Z_Construct_UScriptStruct_FLobbyEnterData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyEnterData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_256_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyEnterData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyEnterData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyEnterData(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyEnterData;
 // ********** End ScriptStruct FLobbyEnterData *****************************************************
 
 // ********** Begin ScriptStruct FLobbyGameCreated *************************************************
+struct Z_Construct_UScriptStruct_FLobbyGameCreated_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyGameCreated(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_282_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyGameCreated_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyGameCreated_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyGameCreated(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyGameCreated;
 // ********** End ScriptStruct FLobbyGameCreated ***************************************************
 
 // ********** Begin ScriptStruct FLobbyInviteData **************************************************
+struct Z_Construct_UScriptStruct_FLobbyInviteData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyInviteData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_310_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyInviteData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyInviteData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyInviteData(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyInviteData;
 // ********** End ScriptStruct FLobbyInviteData ****************************************************
 
 // ********** Begin ScriptStruct FLobbyKickedData **************************************************
+struct Z_Construct_UScriptStruct_FLobbyKickedData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyKickedData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_333_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyKickedData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyKickedData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyKickedData(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyKickedData;
 // ********** End ScriptStruct FLobbyKickedData ****************************************************
 
 // ********** Begin ScriptStruct FLobbyMatchList ***************************************************
+struct Z_Construct_UScriptStruct_FLobbyMatchList_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FLobbyMatchList(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_359_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FLobbyMatchList_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FLobbyMatchList_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FLobbyMatchList(ETypeConstructPhase::Inner); }
 
 
 struct FLobbyMatchList;
 // ********** End ScriptStruct FLobbyMatchList *****************************************************
 
 // ********** Begin ScriptStruct FCreateLobbyData **************************************************
+struct Z_Construct_UScriptStruct_FCreateLobbyData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FCreateLobbyData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_381_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCreateLobbyData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCreateLobbyData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCreateLobbyData(ETypeConstructPhase::Inner); }
 
 
 struct FCreateLobbyData;
 // ********** End ScriptStruct FCreateLobbyData ****************************************************
 
 // ********** Begin ScriptStruct FJoinLobbyData ****************************************************
+struct Z_Construct_UScriptStruct_FJoinLobbyData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FJoinLobbyData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_405_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FJoinLobbyData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FJoinLobbyData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FJoinLobbyData(ETypeConstructPhase::Inner); }
 
 
 struct FJoinLobbyData;
 // ********** End ScriptStruct FJoinLobbyData ******************************************************
-
-// ********** Begin Delegate FOnFavoritesListAccountsUpdated ***************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_434_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFavoritesListAccountsUpdated_DelegateWrapper(const FMulticastScriptDelegate& OnFavoritesListAccountsUpdated, FFavoritesListAccountsUpdated const& Data);
-
-
-// ********** End Delegate FOnFavoritesListAccountsUpdated *****************************************
-
-// ********** Begin Delegate FOnFavoritesListChanged ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_435_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFavoritesListChanged_DelegateWrapper(const FMulticastScriptDelegate& OnFavoritesListChanged, FFavoritesListChanged const& Data);
-
-
-// ********** End Delegate FOnFavoritesListChanged *************************************************
-
-// ********** Begin Delegate FOnLobbyChatMsg *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_436_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyChatMsg_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyChatMsg, FLobbyChatMsg const& Data);
-
-
-// ********** End Delegate FOnLobbyChatMsg *********************************************************
-
-// ********** Begin Delegate FOnLobbyChatUpdate ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_437_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyChatUpdate_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyChatUpdate, FLobbyChatUpdate const& Data);
-
-
-// ********** End Delegate FOnLobbyChatUpdate ******************************************************
-
-// ********** Begin Delegate FOnLobbyDataUpdate ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_438_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyDataUpdate_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyDataUpdate, FLobbyDataUpdate Data);
-
-
-// ********** End Delegate FOnLobbyDataUpdate ******************************************************
-
-// ********** Begin Delegate FOnLobbyEnter *********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_439_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyEnter_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyEnter, FLobbyEnterData const& Data);
-
-
-// ********** End Delegate FOnLobbyEnter ***********************************************************
-
-// ********** Begin Delegate FOnLobbyGameCreated ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_440_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyGameCreated_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyGameCreated, FLobbyGameCreated const& Data);
-
-
-// ********** End Delegate FOnLobbyGameCreated *****************************************************
-
-// ********** Begin Delegate FOnLobbyInvite ********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_441_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyInvite_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyInvite, FLobbyInviteData const& Data);
-
-
-// ********** End Delegate FOnLobbyInvite **********************************************************
-
-// ********** Begin Delegate FOnLobbyKicked ********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_442_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnLobbyKicked_DelegateWrapper(const FMulticastScriptDelegate& OnLobbyKicked, FLobbyKickedData const& Data);
-
-
-// ********** End Delegate FOnLobbyKicked **********************************************************
-
-// ********** Begin Delegate FOnRequestLobbyList ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_443_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestLobbyList_DelegateWrapper(const FScriptDelegate& OnRequestLobbyList, FLobbyMatchList const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestLobbyList *****************************************************
-
-// ********** Begin Delegate FOnCreateLobby ********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_444_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateLobby_DelegateWrapper(const FScriptDelegate& OnCreateLobby, FCreateLobbyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateLobby **********************************************************
-
-// ********** Begin Delegate FOnJoinLobby **********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_445_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnJoinLobby_DelegateWrapper(const FScriptDelegate& OnJoinLobby, FJoinLobbyData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnJoinLobby ************************************************************
-
-// ********** Begin Delegate FOnFindSessions *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h_446_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFindSessions_DelegateWrapper(const FScriptDelegate& OnFindSessions, TArray<FBlueprintSessionResult> const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnFindSessions *********************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamMatchmaking_SteamMatchmakingTypes_h
@@ -239,7 +185,7 @@ ORIONSTEAMSDKAPI_API void FOnFindSessions_DelegateWrapper(const FScriptDelegate&
 
 enum class ESteamSessionFindType : uint8;
 template<> struct TIsUEnumClass<ESteamSessionFindType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamSessionFindType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamSessionFindType>();
 // ********** End Enum ESteamSessionFindType *******************************************************
 
 // ********** Begin Enum ESteamLobbyType ***********************************************************
@@ -251,7 +197,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamSessionFindType>();
 
 enum class ESteamLobbyType : uint8;
 template<> struct TIsUEnumClass<ESteamLobbyType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamLobbyType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamLobbyType>();
 // ********** End Enum ESteamLobbyType *************************************************************
 
 // ********** Begin Enum ESteamLobbyComparison *****************************************************
@@ -265,7 +211,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamLobbyType>();
 
 enum class ESteamLobbyComparison : uint8;
 template<> struct TIsUEnumClass<ESteamLobbyComparison> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamLobbyComparison>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamLobbyComparison>();
 // ********** End Enum ESteamLobbyComparison *******************************************************
 
 // ********** Begin Enum ESteamChatMemberStateChange ***********************************************
@@ -279,7 +225,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamLobbyComparison>();
 
 enum class ESteamChatMemberStateChange : uint8;
 template<> struct TIsUEnumClass<ESteamChatMemberStateChange> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatMemberStateChange>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamChatMemberStateChange>();
 // ********** End Enum ESteamChatMemberStateChange *************************************************
 
 // ********** Begin Enum ESteamFavoriteFlags *******************************************************
@@ -290,7 +236,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamChatMemberStateChange>()
 
 enum class ESteamFavoriteFlags : uint8;
 template<> struct TIsUEnumClass<ESteamFavoriteFlags> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamFavoriteFlags>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamFavoriteFlags>();
 // ********** End Enum ESteamFavoriteFlags *********************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

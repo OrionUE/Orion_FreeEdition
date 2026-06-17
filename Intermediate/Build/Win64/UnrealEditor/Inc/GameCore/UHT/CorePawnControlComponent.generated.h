@@ -12,10 +12,10 @@
 #define GAMECORE_CorePawnControlComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class AActor;
 class UCorePawnControlComponent;
 
@@ -24,18 +24,17 @@ class UCorePawnControlComponent;
 	DECLARE_FUNCTION(execFindControlComponent);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UCorePawnControlComponent_NoRegister();
+struct Z_Construct_UClass_UCorePawnControlComponent_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCorePawnControlComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CorePawnControlComponent_h_29_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCorePawnControlComponent(); \
-	friend struct Z_Construct_UClass_UCorePawnControlComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCorePawnControlComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCorePawnControlComponent_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCorePawnControlComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCorePawnControlComponent, UPawnComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnControlComponent_NoRegister) \
+	DECLARE_CLASS2(UCorePawnControlComponent, UPawnComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCorePawnControlComponent) \
 	DECLARE_SERIALIZER(UCorePawnControlComponent) \
-	virtual UObject* _getUObject() const override { return const_cast<UCorePawnControlComponent*>(this); }
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<UCorePawnControlComponent*>(this); }
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Character_CorePawnControlComponent_h_29_ENHANCED_CONSTRUCTORS \

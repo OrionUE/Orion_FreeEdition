@@ -12,10 +12,10 @@
 #define GAMECORE_CorePlayerState_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UCoreAbilitySystemComponent;
 
 // ********** Begin Class ACorePlayerState *********************************************************
@@ -24,20 +24,19 @@ class UCoreAbilitySystemComponent;
 	DECLARE_FUNCTION(execGetCoreAbilitySystemComponent);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerState_NoRegister();
+struct Z_Construct_UClass_ACorePlayerState_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerState(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Player_CorePlayerState_h_28_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACorePlayerState(); \
-	friend struct Z_Construct_UClass_ACorePlayerState_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACorePlayerState_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACorePlayerState_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACorePlayerState(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACorePlayerState, AModularPlayerState, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACorePlayerState_NoRegister) \
+	DECLARE_CLASS2(ACorePlayerState, AModularPlayerState, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACorePlayerState) \
 	DECLARE_SERIALIZER(ACorePlayerState) \
-	static const TCHAR* StaticConfigName() {return TEXT("Game");} \
+	static constexpr const TCHAR* StaticConfigName() {return TEXT("Game");} \
  \
-	virtual UObject* _getUObject() const override { return const_cast<ACorePlayerState*>(this); } \
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<ACorePlayerState*>(this); } \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \

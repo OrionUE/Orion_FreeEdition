@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.6",
+	"EngineAssociation": "5.8",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -54,14 +54,6 @@
 			"Name": "Volumetrics",
 			"Description": "一个使用蓝图的卷创建和渲染工具库",
 			"Enabled": true
-		},
-		{
-			"Name": "D3DExternalGPUStatistics",
-			"Enabled": true,
-			"Optional": true,
-			"SupportedTargetPlatforms": [
-				"Win64"
-			]
 		},
 		{
 			"Name": "GameplayAbilities",
@@ -143,7 +135,7 @@
 		{
 			"Name": "BinkMedia",
 			"Description": "Bink格式视频播放插件",
-			"Enabled": false
+			"Enabled": true
 		},
 		{
 			"Name": "WmfMedia",
@@ -409,72 +401,18 @@
 				"Editor"
 			]
 		},
-
-
 		{
-			"Name": "ModelingToolsEditorMode",
-			"Description": "禁止建模模块",
-			"Enabled": false,
+			"Name": "OrionProjectToolsets",
+			"Enabled": true,
 			"TargetAllowList": [
 				"Editor"
 			]
 		},
-		{
-			"Name": "MagicLeap",
-			"Enabled": false
-		},
-		{
-			"Name": "MagicLeapMedia",
-			"Enabled": false
-		},
-		{
-			"Name": "MagicLeapPassableWorld",
-			"Enabled": false
-		},
-		{
-			"Name": "OpenXREyeTracker",
-			"Description": "禁止OpenXR眼动仪",
-			"Enabled": false
-		},
-		{
-			"Name": "OpenXRHandTracking",
-			"Description": "禁止OpenXR手部追踪",
-			"Enabled": false
-		},
-		{
-			"Name": "OpenXRHMD",
-			"Enabled": false
-		},
-		{
-			"Name": "SteamVR",
-			"Enabled": false
-		},
-		{
-			"Name": "SteamAudio",
-			"Enabled": false
-		},
-		{
-			"Name": "GearVR",
-			"Enabled": false
-		},
-		{
-			"Name": "LuminPlatformFeatures",
-			"Enabled": false,
-			"SupportedTargetPlatforms": [
-				"Lumin"
-			]
-		},
-		{
-			"Name": "MLSDK",
-			"Enabled": false
-		},
+
+
 		{
 			"Name": "ResonanceAudio",
 			"Description": "禁止3D音频空间化和室内声学模拟插件",
-			"Enabled": false
-		},
-		{
-			"Name": "RuntimePhysXCooking",
 			"Enabled": false
 		},
 		{

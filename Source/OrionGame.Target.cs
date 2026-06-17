@@ -16,6 +16,7 @@ public class OrionGameTarget : TargetRules
 	public OrionGameTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
+		bOverrideBuildEnvironment = true;
 
 		ExtraModuleNames.AddRange(new string[]
 		{
@@ -33,9 +34,16 @@ public class OrionGameTarget : TargetRules
 	internal static void ApplySharedGameTargetSettings(TargetRules Target)
 	{
 		ILogger Logger = Target.Logger;
-		
-		Target.DefaultBuildSettings = BuildSettingsVersion.V5;
+
+		Target.DefaultBuildSettings = BuildSettingsVersion.V7;
 		Target.IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+
+		if (!Target.Name.EndsWith("Steam", StringComparison.OrdinalIgnoreCase)
+			&& !Target.GlobalDefinitions.Contains("WITH_STEAM=0")
+			&& !Target.GlobalDefinitions.Contains("WITH_STEAM=1"))
+		{
+			Target.GlobalDefinitions.Add("WITH_STEAM=0");
+		}
 
 		bool bIsTest = Target.Configuration == UnrealTargetConfiguration.Test;
 		bool bIsShipping = Target.Configuration == UnrealTargetConfiguration.Shipping;

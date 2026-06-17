@@ -43,6 +43,7 @@ __pycache__/
 *.xcodeproj
 *.xcworkspace
 *.sln
+*.slnx
 *.suo
 *.opensdf
 *.sdf
@@ -156,6 +157,7 @@ Intermediate/Build/Win64/**
 !Intermediate/Build/Win64/UnrealEditor/Inc/GameCore/**
 !Intermediate/Build/Win64/UnrealGame/Inc/GameCore/**
 !Intermediate/Build/Win64/UnrealGame/*/GameCore/*.precompiled
+!Intermediate/Build/Win64/x64/UnrealGame/*/GameCore/*.precompiled
 !Intermediate/Build/Win64/x64/UnrealEditor/*/GameCore/*.obj
 !Intermediate/Build/Win64/x64/UnrealEditor/*/GameCore/*.lib
 !Intermediate/Build/Win64/x64/UnrealEditor/*/GameCore/*.exp
@@ -167,3 +169,9 @@ Intermediate/Build/Win64/**
 !Intermediate/Build/Win64/x64/OrionGame/*/Engine/SharedPCH.Engine.Project*.obj
 Intermediate/Build/Win64/**/Debug/**
 Intermediate/Build/Win64/**/DebugGame/**
+
+# UHT generated source files that expose reflected declarations and local paths.
+*.gen.cpp
+**/UHT/Timestamp
+Intermediate/Build/Win64/**/UHT/Timestamp
+Plugins/**/Intermediate/Build/Win64/**/UHT/Timestamp

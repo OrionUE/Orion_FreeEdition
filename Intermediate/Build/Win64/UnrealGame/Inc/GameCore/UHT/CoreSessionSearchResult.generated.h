@@ -12,14 +12,18 @@
 #define GAMECORE_CoreSessionSearchResult_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FCoreSessionResult ************************************************
+struct Z_Construct_UScriptStruct_FCoreSessionResult_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FCoreSessionResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_CoreSessionSearchResult_h_20_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCoreSessionResult_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCoreSessionResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCoreSessionResult(ETypeConstructPhase::Inner); }
 
 
 struct FCoreSessionResult;

@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebGameInventoryAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails;
 class UOrionSteamWebAPIAsyncActionGetUserHistory;
@@ -27,16 +27,15 @@ class UOrionSteamWebAPIAsyncActionSupportGetAssetHistory;
 	DECLARE_FUNCTION(execGetHistoryCommandDetailsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameInventory_WebGameInventoryAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetHistoryCommandDetails(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails)
 
 
@@ -72,16 +71,15 @@ class UOrionSteamWebAPIAsyncActionGetHistoryCommandDetails;
 	DECLARE_FUNCTION(execGetUserHistoryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameInventory_WebGameInventoryAsyncActions_h_39_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetUserHistory(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetUserHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetUserHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUserHistory) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetUserHistory)
 
 
@@ -117,16 +115,15 @@ class UOrionSteamWebAPIAsyncActionGetUserHistory;
 	DECLARE_FUNCTION(execHistoryExecuteCommandAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameInventory_WebGameInventoryAsyncActions_h_61_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionHistoryExecuteCommand(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionHistoryExecuteCommand, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionHistoryExecuteCommand, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionHistoryExecuteCommand) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionHistoryExecuteCommand)
 
 
@@ -162,16 +159,15 @@ class UOrionSteamWebAPIAsyncActionHistoryExecuteCommand;
 	DECLARE_FUNCTION(execSupportGetAssetHistoryAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameInventory_WebGameInventoryAsyncActions_h_82_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionSupportGetAssetHistory(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSupportGetAssetHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSupportGetAssetHistory, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSupportGetAssetHistory) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionSupportGetAssetHistory)
 
 

@@ -11,9 +11,10 @@
 #endif
 #define ORIONSTEAMWEBAPI_WebSteamUserTypes_generated_h
 
-#include "Templates/IsUEnumClass.h"
 #include "UObject/ObjectMacros.h"
 #include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
+#include "Templates/NoDestroy.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
@@ -28,7 +29,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 enum class EVanityUrlType : uint8;
 template<> struct TIsUEnumClass<EVanityUrlType> { enum { Value = true }; };
-template<> ORIONSTEAMWEBAPI_API UEnum* StaticEnum<EVanityUrlType>();
+template<> UE_NODEBUG ORIONSTEAMWEBAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EVanityUrlType>();
 // ********** End Enum EVanityUrlType **************************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

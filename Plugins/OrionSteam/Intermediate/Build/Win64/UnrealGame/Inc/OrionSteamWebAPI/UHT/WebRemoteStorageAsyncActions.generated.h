@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebRemoteStorageAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles;
 class UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles;
@@ -31,16 +31,15 @@ class UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile;
 	DECLARE_FUNCTION(execEnumerateUserPublishedFilesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles)
 
 
@@ -76,16 +75,15 @@ class UOrionSteamWebAPIAsyncActionEnumerateUserPublishedFiles;
 	DECLARE_FUNCTION(execEnumerateUserSubscribedFilesAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_36_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles)
 
 
@@ -121,16 +119,15 @@ class UOrionSteamWebAPIAsyncActionEnumerateUserSubscribedFiles;
 	DECLARE_FUNCTION(execGetCollectionDetailsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_56_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetCollectionDetails(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCollectionDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetCollectionDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetCollectionDetails) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetCollectionDetails)
 
 
@@ -166,16 +163,15 @@ class UOrionSteamWebAPIAsyncActionGetCollectionDetails;
 	DECLARE_FUNCTION(execGetPublishedFileDetailsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_73_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetPublishedFileDetails(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetPublishedFileDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetPublishedFileDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetPublishedFileDetails) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetPublishedFileDetails)
 
 
@@ -211,16 +207,15 @@ class UOrionSteamWebAPIAsyncActionGetPublishedFileDetails;
 	DECLARE_FUNCTION(execGetUGCFileDetailsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_90_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetUGCFileDetails(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetUGCFileDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetUGCFileDetails, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetUGCFileDetails) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetUGCFileDetails)
 
 
@@ -256,16 +251,15 @@ class UOrionSteamWebAPIAsyncActionGetUGCFileDetails;
 	DECLARE_FUNCTION(execSetUGCUsedByGCAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_110_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionSetUGCUsedByGC(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSetUGCUsedByGC, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSetUGCUsedByGC, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSetUGCUsedByGC) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionSetUGCUsedByGC)
 
 
@@ -301,16 +295,15 @@ class UOrionSteamWebAPIAsyncActionSetUGCUsedByGC;
 	DECLARE_FUNCTION(execSubscribePublishedFileAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_131_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionSubscribePublishedFile(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSubscribePublishedFile, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionSubscribePublishedFile, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionSubscribePublishedFile) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionSubscribePublishedFile)
 
 
@@ -346,16 +339,15 @@ class UOrionSteamWebAPIAsyncActionSubscribePublishedFile;
 	DECLARE_FUNCTION(execUnsubscribePublishedFileAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamRemoteStorage_WebRemoteStorageAsyncActions_h_151_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionUnsubscribePublishedFile(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionUnsubscribePublishedFile)
 
 

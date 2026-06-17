@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+SafeZone.EnableScale,CVar,string,,SafeZone,通用,All,true,false,false,false,false,,`SafeZone.EnableScale=<值>` / `SafeZone.EnableScale <值>` 或 INI 中配置,IS the safe zone scale enabled?,ECVF_Default
+SafeZone.Scale,CVar,string,,SafeZone,通用,All,true,false,false,false,false,,`SafeZone.Scale=<值>` / `SafeZone.Scale <值>` 或 INI 中配置,The safezone scale.,ECVF_Default

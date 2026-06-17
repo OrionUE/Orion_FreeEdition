@@ -12,6 +12,7 @@
 #define GAMECORE_CoreExperienceManagerComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -21,18 +22,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execOnRep_CurrentExperience);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManagerComponent_NoRegister();
+struct Z_Construct_UClass_UCoreExperienceManagerComponent_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManagerComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreExperienceManagerComponent_h_44_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreExperienceManagerComponent(); \
-	friend struct Z_Construct_UClass_UCoreExperienceManagerComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceManagerComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreExperienceManagerComponent_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreExperienceManagerComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreExperienceManagerComponent, UGameStateComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceManagerComponent_NoRegister) \
+	DECLARE_CLASS2(UCoreExperienceManagerComponent, UGameStateComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceManagerComponent) \
 	DECLARE_SERIALIZER(UCoreExperienceManagerComponent) \
-	virtual UObject* _getUObject() const override { return const_cast<UCoreExperienceManagerComponent*>(this); } \
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<UCoreExperienceManagerComponent*>(this); } \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \

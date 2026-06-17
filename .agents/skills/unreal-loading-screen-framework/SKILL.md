@@ -20,6 +20,7 @@ description: "Use when Codex works on Unreal Engine CommonLoadingScreen in this 
 ## 路由
 
 - 加载屏 Widget Blueprint、CommonUI/UMG 布局、进度条、动画结束回调、内部内容切换，配合 `../unreal-umg/SKILL.md`。
+- 加载屏 Widget 需要接入当前 `Content/UI` root layout、主题、输入或菜单框架约定时，配合 `../unreal-ui-blueprint-framework/SKILL.md`。
 - 修改 `[/Script/CommonLoadingScreen.CommonLoadingScreenSettings]`、加载屏 Widget 路径、ZOrder、hold/heartbeat/progress 参数、`CoreAudioSettings.LoadingScreenControlBusMix`，配合 `../unreal-project-config/SKILL.md`。
 - 加载屏视频、Bink、Media Texture、`Content/Movies` 或 MoviePlayer 启动视频，配合 `../unreal-movie-media-framework/SKILL.md`。
 - 启动 shader 预编译、PSO、`FShaderPipelineCache`、`FlowStep_TryCompileShaders` 或渲染 benchmark 前端流程，配合 `../unreal-rendering-framework/SKILL.md`。

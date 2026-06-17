@@ -12,10 +12,10 @@
 #define GAMECORE_SessionSearchResultSteam_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FBlueprintSessionResult;
 struct FCoreSessionResult;
 struct FSteamSessionResult;
@@ -28,16 +28,15 @@ struct FSteamSessionResult;
 	DECLARE_FUNCTION(execGetCurrentPlayers);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_USessionSearchResultSteam_NoRegister();
+struct Z_Construct_UClass_USessionSearchResultSteam_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_USessionSearchResultSteam(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_SessionSearchResultSteam_h_19_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUSessionSearchResultSteam(); \
-	friend struct Z_Construct_UClass_USessionSearchResultSteam_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_USessionSearchResultSteam_NoRegister(); \
+	friend struct ::Z_Construct_UClass_USessionSearchResultSteam_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_USessionSearchResultSteam(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(USessionSearchResultSteam, UCommonSession_SearchResult, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_USessionSearchResultSteam_NoRegister) \
+	DECLARE_CLASS2(USessionSearchResultSteam, UCommonSession_SearchResult, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_USessionSearchResultSteam) \
 	DECLARE_SERIALIZER(USessionSearchResultSteam)
 
 
@@ -50,7 +49,7 @@ public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, USessionSearchResultSteam); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USessionSearchResultSteam); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(USessionSearchResultSteam) \
-	NO_API virtual ~USessionSearchResultSteam();
+	NO_API ~USessionSearchResultSteam();
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_SessionSearchResultSteam_h_16_PROLOG

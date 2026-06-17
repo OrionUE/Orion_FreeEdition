@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 57,
-	"VersionName": "8.5.0-NGX310.5.0",
+	"Version": 61,
+	"VersionName": "8.6.1-NGX310.6.0",
 	"FriendlyName": "NVIDIA DLSS Super Resolution/Ray Reconstruction/DLAA",
 	"Description": "DLSS Super Resolution boosts frame rates by rendering fewer pixels and using AI to output high resolution frames. DLSS Ray Reconstruction enhances image quality by generating high-quality pixels between sampled rays for intensive ray traced content. DLAA is an AI-based anti-aliasing mode to improve image quality.",
 	"Category": "Rendering",
@@ -10,9 +10,9 @@
 	"DocsURL": "",
 	"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
 	"SupportURL": "mailto:DLSS-Support@nvidia.com",
-	"EngineVersion": "5.6.0",
+	"EngineVersion": "5.8.0",
 	"CanContainContent": true,
-	"Installed": false,
+	"Installed": true,
 	"Modules": [
 		{
 			"Name": "DLSSUtility",
@@ -20,6 +20,9 @@
 			"LoadingPhase": "PostConfigInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -28,12 +31,18 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
 			"Name": "DLSSBlueprint",
 			"Type": "Runtime",
-			"LoadingPhase": "PostConfigInit"
+			"LoadingPhase": "PostConfigInit",
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
+			]
 		},
 		{
 			"Name": "NGXRHI",
@@ -41,6 +50,9 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -49,6 +61,9 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -57,6 +72,9 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -65,6 +83,9 @@
 			"LoadingPhase": "PostConfigInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -73,6 +94,9 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		},
 		{
@@ -81,6 +105,9 @@
 			"LoadingPhase": "PostEngineInit",
 			"PlatformAllowList": [
 				"Win64"
+			],
+			"PlatformArchitectureDenyList": [
+				"Win64:arm64"
 			]
 		}
 	],

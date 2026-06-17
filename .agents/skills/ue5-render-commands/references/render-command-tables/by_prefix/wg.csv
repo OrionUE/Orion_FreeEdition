@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+wg.ShaderBundle.SkipDispatch,CVar,string,,wg,材质,DirectX,true,false,false,false,false,,`wg.ShaderBundle.SkipDispatch=<值>` / `wg.ShaderBundle.SkipDispatch <值>` 或 INI 中配置,Whether to dispatch the built shader bundle pipeline (for debugging),ECVF_RenderThreadSafe

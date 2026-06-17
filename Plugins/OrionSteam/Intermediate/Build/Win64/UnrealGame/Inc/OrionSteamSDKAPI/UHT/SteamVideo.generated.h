@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamVideo_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UOrionSteamVideo;
 
 // ********** Begin Class UOrionSteamVideo *********************************************************
@@ -27,16 +27,15 @@ class UOrionSteamVideo;
 	DECLARE_FUNCTION(execGetSteamVideo);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVideo_NoRegister();
+struct Z_Construct_UClass_UOrionSteamVideo_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVideo(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamVideo_SteamVideo_h_16_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamVideo(); \
-	friend struct Z_Construct_UClass_UOrionSteamVideo_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamVideo_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamVideo_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamVideo(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamVideo, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamVideo_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamVideo, UOrionSteamInterface, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamVideo) \
 	DECLARE_SERIALIZER(UOrionSteamVideo)
 
 

@@ -12,6 +12,7 @@
 #define ORIONONLINESUBSYSTEMSTEAM_OrionOnlineSessionInterfaceSteam_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -22,16 +23,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execGetLastJoinedLobbyId);
 
 
-ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_NoRegister();
+struct Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_Statics;
+ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionOnlineSubsystemSteam_Public_Sessions_OrionOnlineSessionInterfaceSteam_h_31_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionOnlineSessionInterfaceSteamUtils(); \
-	friend struct Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_Statics; \
+	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* ::Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionOnlineSessionInterfaceSteamUtils, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils_NoRegister) \
+	DECLARE_CLASS2(UOrionOnlineSessionInterfaceSteamUtils, UObject, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSessionInterfaceSteamUtils) \
 	DECLARE_SERIALIZER(UOrionOnlineSessionInterfaceSteamUtils)
 
 

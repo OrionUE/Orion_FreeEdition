@@ -12,10 +12,10 @@
 #define GAMECORE_CoreExperienceUserFacingDefinition_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UCommonSession_HostSessionRequest;
 class UObject;
 
@@ -24,16 +24,15 @@ class UObject;
 	DECLARE_FUNCTION(execCreateHostingRequest);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceUserFacingDefinition_NoRegister();
+struct Z_Construct_UClass_UCoreExperienceUserFacingDefinition_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceUserFacingDefinition(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreExperienceUserFacingDefinition_h_21_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreExperienceUserFacingDefinition(); \
-	friend struct Z_Construct_UClass_UCoreExperienceUserFacingDefinition_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreExperienceUserFacingDefinition_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreExperienceUserFacingDefinition_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreExperienceUserFacingDefinition(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreExperienceUserFacingDefinition, UPrimaryDataAsset, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceUserFacingDefinition_NoRegister) \
+	DECLARE_CLASS2(UCoreExperienceUserFacingDefinition, UPrimaryDataAsset, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreExperienceUserFacingDefinition) \
 	DECLARE_SERIALIZER(UCoreExperienceUserFacingDefinition)
 
 

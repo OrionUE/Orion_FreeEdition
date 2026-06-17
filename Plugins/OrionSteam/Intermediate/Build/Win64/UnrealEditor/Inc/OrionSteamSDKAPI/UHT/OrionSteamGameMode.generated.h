@@ -12,21 +12,21 @@
 #define ORIONSTEAMSDKAPI_OrionSteamGameMode_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class AOrionSteamGameMode ******************************************************
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_AOrionSteamGameMode_NoRegister();
+struct Z_Construct_UClass_AOrionSteamGameMode_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_AOrionSteamGameMode(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_OrionSteamSDKAPI_OrionSteamGameMode_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesAOrionSteamGameMode(); \
-	friend struct Z_Construct_UClass_AOrionSteamGameMode_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_AOrionSteamGameMode_NoRegister(); \
+	friend struct ::Z_Construct_UClass_AOrionSteamGameMode_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_AOrionSteamGameMode(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(AOrionSteamGameMode, AGameMode, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_AOrionSteamGameMode_NoRegister) \
+	DECLARE_CLASS2(AOrionSteamGameMode, AGameMode, COMPILED_IN_FLAGS(0 | CLASS_Transient | CLASS_Config), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_AOrionSteamGameMode) \
 	DECLARE_SERIALIZER(AOrionSteamGameMode)
 
 

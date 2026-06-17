@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+rhi.Metal.InsertCounterSampleBarrier,CVar,bool,true,rhi,光线追踪,Metal,false,true,false,false,false,,`rhi.Metal.InsertCounterSampleBarrier=<值>` / `rhi.Metal.InsertCounterSampleBarrier <值>` 或 INI 中配置,Whether to insert a counter sampler barrier to provide the most accurate timings. (default: true)\n,ECVF_ReadOnly

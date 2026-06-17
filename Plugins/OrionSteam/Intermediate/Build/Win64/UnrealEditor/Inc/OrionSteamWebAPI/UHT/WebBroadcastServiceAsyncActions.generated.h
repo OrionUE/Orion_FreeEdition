@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebBroadcastServiceAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionPostGameDataFrame;
 
@@ -24,16 +24,15 @@ class UOrionSteamWebAPIAsyncActionPostGameDataFrame;
 	DECLARE_FUNCTION(execPostGameDataFrameAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_BroadcastService_WebBroadcastServiceAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionPostGameDataFrame(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionPostGameDataFrame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionPostGameDataFrame, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionPostGameDataFrame) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionPostGameDataFrame)
 
 

@@ -49,6 +49,8 @@ bool UAudioMixEffectsSubsystem::ShouldCreateSubsystem(UObject* Outer) const
 
 void UAudioMixEffectsSubsystem::PostInitialize()
 {
+	Super::PostInitialize();
+
 	if (const UCoreAudioSettings* AudioSettings = GetDefault<UCoreAudioSettings>())
 	{
 		if (UObject* ObjPath = AudioSettings->DefaultControlBusMix.TryLoad())
@@ -218,6 +220,8 @@ void UAudioMixEffectsSubsystem::PostInitialize()
 
 void UAudioMixEffectsSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 {
+	Super::OnWorldBeginPlay(InWorld);
+
 	if (const UWorld* World = InWorld.GetWorld())
 	{
 		// Activate the default base mix

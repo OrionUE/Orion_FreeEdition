@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebGameInventory_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -25,16 +26,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execGetHistoryCommandDetails);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameInventory_NoRegister();
+struct Z_Construct_UClass_UWebGameInventory_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameInventory(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameInventory_WebGameInventory_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebGameInventory(); \
-	friend struct Z_Construct_UClass_UWebGameInventory_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebGameInventory_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebGameInventory_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebGameInventory(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebGameInventory, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebGameInventory_NoRegister) \
+	DECLARE_CLASS2(UWebGameInventory, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebGameInventory) \
 	DECLARE_SERIALIZER(UWebGameInventory)
 
 

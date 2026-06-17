@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2020 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2020 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -163,7 +163,14 @@ void NVSDK_CONV NGXLogSink(const char* InNGXMessage, NVSDK_NGX_Logging_Level InL
 	}
 	else
 	{
-		UE_LOG(LogDLSSNGX, Log, TEXT("[%s]: %s"), *NGXComponent, *Message);
+		// NGX feature teardown order is hard to predict, specifically in the case of SL features that use NGX.
+		// In rare cases it's possible to receive an NGX log message after the NGXRHI module has been destroyed.
+		// So make sure this module is still loaded before trying to use its log category.
+		FModuleStatus Status;
+		if (FModuleManager::Get().QueryModule(UE_MODULE_NAME, Status) && Status.bIsLoaded)
+		{
+			UE_LOG(LogDLSSNGX, Log, TEXT("[%s]: %s"), *NGXComponent, *Message);
+		}
 	}
 #endif
 }

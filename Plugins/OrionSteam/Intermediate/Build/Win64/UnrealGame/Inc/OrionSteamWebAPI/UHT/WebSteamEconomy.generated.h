@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebSteamEconomy_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -28,16 +29,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execCanTrade);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamEconomy_NoRegister();
+struct Z_Construct_UClass_UWebSteamEconomy_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamEconomy(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_SteamEconomy_WebSteamEconomy_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebSteamEconomy(); \
-	friend struct Z_Construct_UClass_UWebSteamEconomy_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebSteamEconomy_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebSteamEconomy_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebSteamEconomy(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebSteamEconomy, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamEconomy_NoRegister) \
+	DECLARE_CLASS2(UWebSteamEconomy, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebSteamEconomy) \
 	DECLARE_SERIALIZER(UWebSteamEconomy)
 
 

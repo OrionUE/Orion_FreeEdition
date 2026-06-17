@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -66,12 +66,11 @@ namespace
 
 	uint32 FromUStreamlineFeature(EStreamlineFeature InFeature)
 	{
-		static_assert(int32(EStreamlineFeature::Count) == 4, "dear NVIDIA plugin developer, please update this code to handle the new enum values ");
+		static_assert(int32(EStreamlineFeature::Count) == 3, "dear NVIDIA plugin developer, please update this code to handle the new enum values ");
 
 		switch (InFeature)
 		{
 		case EStreamlineFeature::DLSSG: return sl::kFeatureDLSS_G;
-		case EStreamlineFeature::Latewarp: return sl::kFeatureLatewarp;
 		case EStreamlineFeature::Reflex: return sl::kFeatureReflex;
 		case EStreamlineFeature::DeepDVC: return sl::kFeatureDeepDVC;
 		default:

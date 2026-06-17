@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebInventoryService_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FModifyItemsItem;
 
 // ********** Begin Class UWebInventoryService *****************************************************
@@ -32,16 +32,15 @@ struct FModifyItemsItem;
 	DECLARE_FUNCTION(execAddItem);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebInventoryService_NoRegister();
+struct Z_Construct_UClass_UWebInventoryService_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebInventoryService(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_InventoryService_WebInventoryService_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebInventoryService(); \
-	friend struct Z_Construct_UClass_UWebInventoryService_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebInventoryService_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebInventoryService_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebInventoryService(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebInventoryService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebInventoryService_NoRegister) \
+	DECLARE_CLASS2(UWebInventoryService, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebInventoryService) \
 	DECLARE_SERIALIZER(UWebInventoryService)
 
 

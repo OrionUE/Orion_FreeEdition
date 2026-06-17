@@ -12,10 +12,10 @@
 #define ORIONSTEAMSDKAPI_SteamUserStatsAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC;
 class UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries;
@@ -47,99 +47,21 @@ struct FSteamID;
 struct FSteamLeaderboard;
 struct FSteamUGCHandle;
 
-// ********** Begin Delegate FOnFindLeaderboardAsyncDelegate ***************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_16_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFindLeaderboardAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnFindLeaderboardAsyncDelegate, FLeaderboardFindResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnFindLeaderboardAsyncDelegate *****************************************
-
-// ********** Begin Delegate FOnDownloadLeaderboardEntriesAsyncDelegate ****************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_17_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadLeaderboardEntriesAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadLeaderboardEntriesAsyncDelegate, FLeaderboardScoresDownloaded const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadLeaderboardEntriesAsyncDelegate ******************************
-
-// ********** Begin Delegate FOnRequestGlobalStatsAsyncDelegate ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_18_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestGlobalStatsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestGlobalStatsAsyncDelegate, FGlobalStatsReceived const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestGlobalStatsAsyncDelegate **************************************
-
-// ********** Begin Delegate FOnRequestGlobalAchievementPercentagesAsyncDelegate *******************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_19_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestGlobalAchievementPercentagesAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestGlobalAchievementPercentagesAsyncDelegate, FGlobalAchievementPercentagesReady const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestGlobalAchievementPercentagesAsyncDelegate *********************
-
-// ********** Begin Delegate FOnGetNumberOfCurrentPlayersAsyncDelegate *****************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_20_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetNumberOfCurrentPlayersAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnGetNumberOfCurrentPlayersAsyncDelegate, FNumberOfCurrentPlayers const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetNumberOfCurrentPlayersAsyncDelegate *******************************
-
-// ********** Begin Delegate FOnUploadLeaderboardScoreAsyncDelegate ********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_21_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnUploadLeaderboardScoreAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnUploadLeaderboardScoreAsyncDelegate, FLeaderboardScoreUploaded const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnUploadLeaderboardScoreAsyncDelegate **********************************
-
-// ********** Begin Delegate FOnFindOrCreateLeaderboardAsyncDelegate *******************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_22_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnFindOrCreateLeaderboardAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnFindOrCreateLeaderboardAsyncDelegate, FFindOrCreateLeaderboardData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnFindOrCreateLeaderboardAsyncDelegate *********************************
-
-// ********** Begin Delegate FOnRequestUserStatsAsyncDelegate **************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_23_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestUserStatsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestUserStatsAsyncDelegate, FRequestUserStatsData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestUserStatsAsyncDelegate ****************************************
-
-// ********** Begin Delegate FOnRequestCurrentStatsAsyncDelegate ***********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_24_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRequestCurrentStatsAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnRequestCurrentStatsAsyncDelegate, FRequestCurrentStatsData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRequestCurrentStatsAsyncDelegate *************************************
-
-// ********** Begin Delegate FOnDownloadLeaderboardEntriesForUsersAsyncDelegate ********************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_25_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadLeaderboardEntriesForUsersAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadLeaderboardEntriesForUsersAsyncDelegate, FLeaderboardScoresDownloadedForUsers const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadLeaderboardEntriesForUsersAsyncDelegate **********************
-
-// ********** Begin Delegate FOnAttachLeaderboardUGCAsyncDelegate **********************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_26_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAttachLeaderboardUGCAsyncDelegate_DelegateWrapper(const FMulticastScriptDelegate& OnAttachLeaderboardUGCAsyncDelegate, FAttachLeaderboardUGCData const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAttachLeaderboardUGCAsyncDelegate ************************************
-
 // ********** Begin Class UOrionSteamUserStatsAsyncActionFindLeaderboard ***************************
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_34_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleCallback); \
 	DECLARE_FUNCTION(execFindLeaderboardAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_34_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionFindLeaderboard(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionFindLeaderboard, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionFindLeaderboard, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindLeaderboard) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionFindLeaderboard)
 
 
@@ -176,16 +98,15 @@ class UOrionSteamUserStatsAsyncActionFindLeaderboard;
 	DECLARE_FUNCTION(execDownloadLeaderboardEntriesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_62_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries)
 
 
@@ -222,16 +143,15 @@ class UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntries;
 	DECLARE_FUNCTION(execRequestGlobalStatsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_94_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats)
 
 
@@ -268,16 +188,15 @@ class UOrionSteamUserStatsAsyncActionDownloadRequestGlobalStats;
 	DECLARE_FUNCTION(execRequestGlobalAchievementPercentagesAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_121_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages)
 
 
@@ -314,16 +233,15 @@ class UOrionSteamUserStatsAsyncActionRequestGlobalAchievementPercentages;
 	DECLARE_FUNCTION(execGetNumberOfCurrentPlayersAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_147_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers)
 
 
@@ -360,16 +278,15 @@ class UOrionSteamUserStatsAsyncActionGetNumberOfCurrentPlayers;
 	DECLARE_FUNCTION(execUploadLeaderboardScoreAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_172_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionUploadLeaderboardScore(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionUploadLeaderboardScore, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionUploadLeaderboardScore, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionUploadLeaderboardScore) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionUploadLeaderboardScore)
 
 
@@ -406,16 +323,15 @@ class UOrionSteamUserStatsAsyncActionUploadLeaderboardScore;
 	DECLARE_FUNCTION(execFindOrCreateLeaderboardAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_204_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard)
 
 
@@ -452,16 +368,15 @@ class UOrionSteamUserStatsAsyncActionFindOrCreateLeaderboard;
 	DECLARE_FUNCTION(execRequestUserStatsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_240_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionRequestUserStats(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestUserStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestUserStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestUserStats) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionRequestUserStats)
 
 
@@ -498,16 +413,15 @@ class UOrionSteamUserStatsAsyncActionRequestUserStats;
 	DECLARE_FUNCTION(execRequestCurrentStatsAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_270_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionRequestCurrentStats(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestCurrentStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionRequestCurrentStats, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionRequestCurrentStats) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionRequestCurrentStats)
 
 
@@ -544,16 +458,15 @@ class UOrionSteamUserStatsAsyncActionRequestCurrentStats;
 	DECLARE_FUNCTION(execDownloadLeaderboardEntriesForUsersAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_300_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers)
 
 
@@ -590,16 +503,15 @@ class UOrionSteamUserStatsAsyncActionDownloadLeaderboardEntriesForUsers;
 	DECLARE_FUNCTION(execAttachLeaderboardUGCAsync);
 
 
-ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_NoRegister();
+struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_Statics;
+ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUserStats_SteamUserStatsAsyncActions_h_330_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamUserStatsAsyncActionAttachLeaderboardUGC(); \
-	friend struct Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMSDKAPI_API UClass* Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_Statics; \
+	friend ORIONSTEAMSDKAPI_API UClass* ::Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC, UOrionSteamAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamSDKAPI"), Z_Construct_UClass_UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC) \
 	DECLARE_SERIALIZER(UOrionSteamUserStatsAsyncActionAttachLeaderboardUGC)
 
 

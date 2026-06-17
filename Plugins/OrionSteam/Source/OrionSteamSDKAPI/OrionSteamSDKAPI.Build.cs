@@ -40,6 +40,7 @@ public class OrionSteamSDKAPI : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new[]
 		{
+			"ApplicationCore",
 			"HTTP",
 			"OrionOnlineSubsystemSteam",
 			"AudioExtensions",

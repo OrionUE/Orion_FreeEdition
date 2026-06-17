@@ -12,21 +12,21 @@
 #define GAMECORE_CoreAbilitySystemComponent_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UCoreAbilitySystemComponent **********************************************
-GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySystemComponent_NoRegister();
+struct Z_Construct_UClass_UCoreAbilitySystemComponent_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySystemComponent(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_AbilitySystem_CoreAbilitySystemComponent_h_23_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUCoreAbilitySystemComponent(); \
-	friend struct Z_Construct_UClass_UCoreAbilitySystemComponent_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UCoreAbilitySystemComponent_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UCoreAbilitySystemComponent_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UCoreAbilitySystemComponent(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UCoreAbilitySystemComponent, UAbilitySystemComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySystemComponent_NoRegister) \
+	DECLARE_CLASS2(UCoreAbilitySystemComponent, UAbilitySystemComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UCoreAbilitySystemComponent) \
 	DECLARE_SERIALIZER(UCoreAbilitySystemComponent)
 
 

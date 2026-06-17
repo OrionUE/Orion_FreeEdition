@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+CriticalPathStall.AfterInitViews,CVar,float,0.0f,CriticalPathStall,通用,All,true,false,false,false,false,,`CriticalPathStall.AfterInitViews=<值>` / `CriticalPathStall.AfterInitViews <值>` 或 INI 中配置,Sleep for the given time after InitViews. Time is given in ms. This is a debug option used for critical path analysis and forcing a change in the critical path.,

@@ -12,21 +12,21 @@
 #define GAMECORE_GameFeatureAction_WorldActionBase_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UGameFeatureAction_WorldActionBase ***************************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_WorldActionBase_NoRegister();
+struct Z_Construct_UClass_UGameFeatureAction_WorldActionBase_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_WorldActionBase(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_WorldActionBase_h_27_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameFeatureAction_WorldActionBase(); \
-	friend struct Z_Construct_UClass_UGameFeatureAction_WorldActionBase_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_WorldActionBase_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameFeatureAction_WorldActionBase_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameFeatureAction_WorldActionBase(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameFeatureAction_WorldActionBase, UGameFeatureAction, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_WorldActionBase_NoRegister) \
+	DECLARE_CLASS2(UGameFeatureAction_WorldActionBase, UGameFeatureAction, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_WorldActionBase) \
 	DECLARE_SERIALIZER(UGameFeatureAction_WorldActionBase)
 
 

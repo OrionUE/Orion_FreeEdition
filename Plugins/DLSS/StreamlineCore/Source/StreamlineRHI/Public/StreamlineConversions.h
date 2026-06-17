@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -69,7 +69,6 @@ inline sl::BufferType ToSL(EStreamlineResource InResourceTag)
 		checkf(false, TEXT("unexpected EStreamlineResource enum value %u. This is a UE Streamline plugin developer bug"), InResourceTag);
 	case EStreamlineResource::Depth: return sl::kBufferTypeDepth;
 	case EStreamlineResource::MotionVectors: return sl::kBufferTypeMotionVectors;
-	case EStreamlineResource::NoWarpMask: return sl::kBufferTypeNoWarpMask;
 	case EStreamlineResource::HUDLessColor: return sl::kBufferTypeHUDLessColor;
 	case EStreamlineResource::UIColorAndAlpha: return sl::kBufferTypeUIColorAndAlpha;
 	case EStreamlineResource::Backbuffer: return sl::kBufferTypeBackbuffer;

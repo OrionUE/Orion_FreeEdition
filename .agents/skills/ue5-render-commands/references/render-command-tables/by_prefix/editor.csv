@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Editor.AsyncTextureCompilationCancelable,CVar,string,,Editor,材质,All,true,false,false,false,false,,`Editor.AsyncTextureCompilationCancelable=<值>` / `Editor.AsyncTextureCompilationCancelable <值>` 或 INI 中配置,Whether or not to allow early cancelation of textures during async compilation.,ECVF_Default
+Editor.EnableMaterialAssetValidator,CVar,bool,false,Editor,后处理,All,true,false,false,false,false,,`Editor.EnableMaterialAssetValidator=<值>` / `Editor.EnableMaterialAssetValidator <值>` 或 INI 中配置,Enables material asset validator in validation contexts where it's normally disabled (on save and from commandlet).,

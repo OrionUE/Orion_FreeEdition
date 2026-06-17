@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal VS Project Generation"
+  short_description: "Diagnose Unreal VS generation and post-upgrade editor startup failures."
+  default_prompt: "Use $unreal-vs-project-generation to diagnose and repair Unreal Visual Studio project generation, target upgrade, and editor startup failures."

@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+NaniteDisplacedMeshes.PermissionListSettings,CVar,int32,EnforcePermissionListSetting,NaniteDisplacedMeshes,后处理,All,true,false,false,false,false,,`NaniteDisplacedMeshes.PermissionListSettings=<值>` / `NaniteDisplacedMeshes.PermissionListSettings <值>` 或 INI 中配置,Enables the enforcing of the permission list for the displaced meshes.\n,

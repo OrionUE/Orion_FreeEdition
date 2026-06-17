@@ -12,149 +12,199 @@
 #define ORIONSTEAMSDKAPI_SteamInputTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FScePadTriggerEffectOffParam **************************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectOffParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectOffParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_175_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectOffParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectOffParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectOffParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectOffParam;
 // ********** End ScriptStruct FScePadTriggerEffectOffParam ****************************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectFeedbackParam *********************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectFeedbackParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectFeedbackParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_187_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectFeedbackParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectFeedbackParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectFeedbackParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectFeedbackParam;
 // ********** End ScriptStruct FScePadTriggerEffectFeedbackParam ***********************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectWeaponParam ***********************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectWeaponParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectWeaponParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_211_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectWeaponParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectWeaponParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectWeaponParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectWeaponParam;
 // ********** End ScriptStruct FScePadTriggerEffectWeaponParam *************************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectVibrationParam ********************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectVibrationParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectVibrationParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_238_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectVibrationParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectVibrationParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectVibrationParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectVibrationParam;
 // ********** End ScriptStruct FScePadTriggerEffectVibrationParam **********************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectMultiplePositionFeedbackParam *****************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionFeedbackParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionFeedbackParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_266_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionFeedbackParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionFeedbackParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionFeedbackParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectMultiplePositionFeedbackParam;
 // ********** End ScriptStruct FScePadTriggerEffectMultiplePositionFeedbackParam *******************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectSlopeFeedbackParam ****************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectSlopeFeedbackParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectSlopeFeedbackParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_291_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectSlopeFeedbackParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectSlopeFeedbackParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectSlopeFeedbackParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectSlopeFeedbackParam;
 // ********** End ScriptStruct FScePadTriggerEffectSlopeFeedbackParam ******************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectMultiplePositionVibrationParam ****************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionVibrationParam_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionVibrationParam(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_322_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionVibrationParam_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionVibrationParam_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectMultiplePositionVibrationParam(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectMultiplePositionVibrationParam;
 // ********** End ScriptStruct FScePadTriggerEffectMultiplePositionVibrationParam ******************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectCommandData ***********************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectCommandData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectCommandData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_346_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectCommandData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectCommandData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectCommandData(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectCommandData;
 // ********** End ScriptStruct FScePadTriggerEffectCommandData *************************************
 
 // ********** Begin ScriptStruct FScePadTriggerEffectCommand ***************************************
+struct Z_Construct_UScriptStruct_FScePadTriggerEffectCommand_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FScePadTriggerEffectCommand(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_367_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FScePadTriggerEffectCommand_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FScePadTriggerEffectCommand_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FScePadTriggerEffectCommand(ETypeConstructPhase::Inner); }
 
 
 struct FScePadTriggerEffectCommand;
 // ********** End ScriptStruct FScePadTriggerEffectCommand *****************************************
 
 // ********** Begin ScriptStruct FInputAnalogActionData ********************************************
+struct Z_Construct_UScriptStruct_FInputAnalogActionData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputAnalogActionData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_384_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputAnalogActionData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputAnalogActionData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputAnalogActionData(ETypeConstructPhase::Inner); }
 
 
 struct FInputAnalogActionData;
 // ********** End ScriptStruct FInputAnalogActionData **********************************************
 
 // ********** Begin ScriptStruct FInputDigitalActionData *******************************************
+struct Z_Construct_UScriptStruct_FInputDigitalActionData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputDigitalActionData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_412_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputDigitalActionData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputDigitalActionData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputDigitalActionData(ETypeConstructPhase::Inner); }
 
 
 struct FInputDigitalActionData;
 // ********** End ScriptStruct FInputDigitalActionData *********************************************
 
 // ********** Begin ScriptStruct FInputMotionData **************************************************
+struct Z_Construct_UScriptStruct_FInputMotionData_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputMotionData(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_436_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputMotionData_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputMotionData_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputMotionData(ETypeConstructPhase::Inner); }
 
 
 struct FInputMotionData;
 // ********** End ScriptStruct FInputMotionData ****************************************************
 
 // ********** Begin ScriptStruct FInputHandle ******************************************************
+struct Z_Construct_UScriptStruct_FInputHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_476_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputHandle(ETypeConstructPhase::Inner); }
 
 
 struct FInputHandle;
 // ********** End ScriptStruct FInputHandle ********************************************************
 
 // ********** Begin ScriptStruct FInputActionSetHandle *********************************************
+struct Z_Construct_UScriptStruct_FInputActionSetHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputActionSetHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_509_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputActionSetHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputActionSetHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputActionSetHandle(ETypeConstructPhase::Inner); }
 
 
 struct FInputActionSetHandle;
 // ********** End ScriptStruct FInputActionSetHandle ***********************************************
 
 // ********** Begin ScriptStruct FInputDigitalActionHandle *****************************************
+struct Z_Construct_UScriptStruct_FInputDigitalActionHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputDigitalActionHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_542_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputDigitalActionHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputDigitalActionHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputDigitalActionHandle(ETypeConstructPhase::Inner); }
 
 
 struct FInputDigitalActionHandle;
 // ********** End ScriptStruct FInputDigitalActionHandle *******************************************
 
 // ********** Begin ScriptStruct FInputAnalogActionHandle ******************************************
+struct Z_Construct_UScriptStruct_FInputAnalogActionHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FInputAnalogActionHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamInput_SteamInputTypes_h_575_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputAnalogActionHandle_Statics; \
-	static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputAnalogActionHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputAnalogActionHandle(ETypeConstructPhase::Inner); }
 
 
 struct FInputAnalogActionHandle;
@@ -172,7 +222,7 @@ struct FInputAnalogActionHandle;
 
 enum class EOrionSteamInputGlyphSize : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputGlyphSize> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputGlyphSize>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputGlyphSize>();
 // ********** End Enum EOrionSteamInputGlyphSize ***************************************************
 
 // ********** Begin Enum EOrionSteamInputSource ****************************************************
@@ -198,7 +248,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputGlyphSize>();
 
 enum class EOrionSteamInputSource : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputSource> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputSource>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputSource>();
 // ********** End Enum EOrionSteamInputSource ******************************************************
 
 // ********** Begin Enum EOrionSteamInputSourceMode ************************************************
@@ -223,7 +273,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputSource>();
 
 enum class EOrionSteamInputSourceMode : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputSourceMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputSourceMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputSourceMode>();
 // ********** End Enum EOrionSteamInputSourceMode **************************************************
 
 // ********** Begin Enum EOrionSteamXboxOrigin *****************************************************
@@ -260,7 +310,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputSourceMode>();
 
 enum class EOrionSteamXboxOrigin : uint8;
 template<> struct TIsUEnumClass<EOrionSteamXboxOrigin> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamXboxOrigin>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamXboxOrigin>();
 // ********** End Enum EOrionSteamXboxOrigin *******************************************************
 
 // ********** Begin Enum EOrionSteamControllerPad **************************************************
@@ -270,7 +320,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamXboxOrigin>();
 
 enum class EOrionSteamControllerPad : uint8;
 template<> struct TIsUEnumClass<EOrionSteamControllerPad> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamControllerPad>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamControllerPad>();
 // ********** End Enum EOrionSteamControllerPad ****************************************************
 
 // ********** Begin Enum EOrionSteamInputType ******************************************************
@@ -295,7 +345,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamControllerPad>();
 
 enum class EOrionSteamInputType : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputType>();
 // ********** End Enum EOrionSteamInputType ********************************************************
 
 // ********** Begin Enum EOrionSteamInputLEDFlag ***************************************************
@@ -305,7 +355,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputType>();
 
 enum class EOrionSteamInputLEDFlag : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputLEDFlag> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputLEDFlag>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputLEDFlag>();
 // ********** End Enum EOrionSteamInputLEDFlag *****************************************************
 
 // ********** Begin Enum EOrionSteamInputConfigurationEnableType ***********************************
@@ -318,7 +368,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputLEDFlag>();
 
 enum class EOrionSteamInputConfigurationEnableType : uint8;
 template<> struct TIsUEnumClass<EOrionSteamInputConfigurationEnableType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputConfigurationEnableType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamInputConfigurationEnableType>();
 // ********** End Enum EOrionSteamInputConfigurationEnableType *************************************
 
 // ********** Begin Enum EScePadTriggerEffectMode **************************************************
@@ -333,7 +383,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EOrionSteamInputConfigurationE
 
 enum class EScePadTriggerEffectMode : uint8;
 template<> struct TIsUEnumClass<EScePadTriggerEffectMode> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<EScePadTriggerEffectMode>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EScePadTriggerEffectMode>();
 // ********** End Enum EScePadTriggerEffectMode ****************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -1,0 +1,4 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+TG.Node.Opacity,CVar,int32,1,TG,通用,All,true,false,false,false,false,,`TG.Node.Opacity=<值>` / `TG.Node.Opacity <值>` 或 INI 中配置,Defines the Opacity of texture graph node.\n,
+TG.VirtualTexture.FeedbackFactor,CVar,string,,TG,光线追踪,All,true,false,false,false,false,,`TG.VirtualTexture.FeedbackFactor=<值>` / `TG.VirtualTexture.FeedbackFactor <值>` 或 INI 中配置,Texel size of tile used to generate one item of virtual texture feedback.,ECVF_RenderThreadSafe
+TG.VirtualTexture.NumWarmupFrames,CVar,string,,TG,光线追踪,All,true,false,false,false,false,,`TG.VirtualTexture.NumWarmupFrames=<值>` / `TG.VirtualTexture.NumWarmupFrames <值>` 或 INI 中配置,Number of warmup render frames when sampling from virtual textures.,ECVF_RenderThreadSafe

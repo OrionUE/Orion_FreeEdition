@@ -12,10 +12,10 @@
 #define ORIONSTEAMWEBAPI_WebGameNotificationsServiceAsyncActions_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UObject;
 class UOrionSteamWebAPIAsyncActionCreateSession;
 class UOrionSteamWebAPIAsyncActionDeleteSession;
@@ -30,16 +30,15 @@ class UOrionSteamWebAPIAsyncActionUpdateSession;
 	DECLARE_FUNCTION(execCreateSessionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_17_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionCreateSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCreateSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionCreateSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionCreateSession) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionCreateSession)
 
 
@@ -75,16 +74,15 @@ class UOrionSteamWebAPIAsyncActionCreateSession;
 	DECLARE_FUNCTION(execUpdateSessionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_41_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionUpdateSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUpdateSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionUpdateSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionUpdateSession) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionUpdateSession)
 
 
@@ -120,16 +118,15 @@ class UOrionSteamWebAPIAsyncActionUpdateSession;
 	DECLARE_FUNCTION(execEnumerateSessionsForAppAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_67_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionEnumerateSessionsForApp(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp)
 
 
@@ -165,16 +162,15 @@ class UOrionSteamWebAPIAsyncActionEnumerateSessionsForApp;
 	DECLARE_FUNCTION(execGetSessionDetailsForAppAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_91_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionGetSessionDetailsForApp(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp)
 
 
@@ -210,16 +206,15 @@ class UOrionSteamWebAPIAsyncActionGetSessionDetailsForApp;
 	DECLARE_FUNCTION(execRequestNotificationsAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_111_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionRequestNotifications(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestNotifications, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionRequestNotifications, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionRequestNotifications) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionRequestNotifications)
 
 
@@ -255,16 +250,15 @@ class UOrionSteamWebAPIAsyncActionRequestNotifications;
 	DECLARE_FUNCTION(execDeleteSessionAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_134_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionDeleteSession(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteSession, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSession) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionDeleteSession)
 
 
@@ -300,16 +294,15 @@ class UOrionSteamWebAPIAsyncActionDeleteSession;
 	DECLARE_FUNCTION(execDeleteSessionBatchAsync);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_NoRegister();
+struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_GameNotificationsService_WebGameNotificationsServiceAsyncActions_h_154_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUOrionSteamWebAPIAsyncActionDeleteSessionBatch(); \
-	friend struct Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteSessionBatch, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch_NoRegister) \
+	DECLARE_CLASS2(UOrionSteamWebAPIAsyncActionDeleteSessionBatch, UOrionSteamWebAPIAsyncAction, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UOrionSteamWebAPIAsyncActionDeleteSessionBatch) \
 	DECLARE_SERIALIZER(UOrionSteamWebAPIAsyncActionDeleteSessionBatch)
 
 

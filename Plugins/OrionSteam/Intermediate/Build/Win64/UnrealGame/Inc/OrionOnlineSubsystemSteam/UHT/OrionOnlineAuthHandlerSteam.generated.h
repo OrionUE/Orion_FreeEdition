@@ -12,21 +12,21 @@
 #define ORIONONLINESUBSYSTEMSTEAM_OrionOnlineAuthHandlerSteam_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UOrionOnlineSteamAuthComponentModuleInterface ****************************
-ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_NoRegister();
+struct Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_Statics;
+ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionOnlineSubsystemSteam_Public_Auth_OrionOnlineAuthHandlerSteam_h_60_INCLASS \
 private: \
-	static void StaticRegisterNativesUOrionOnlineSteamAuthComponentModuleInterface(); \
-	friend struct Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_Statics; \
+	friend ORIONONLINESUBSYSTEMSTEAM_API UClass* ::Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UOrionOnlineSteamAuthComponentModuleInterface, UHandlerComponentFactory, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface_NoRegister) \
+	DECLARE_CLASS2(UOrionOnlineSteamAuthComponentModuleInterface, UHandlerComponentFactory, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionOnlineSubsystemSteam"), Z_Construct_UClass_UOrionOnlineSteamAuthComponentModuleInterface) \
 	DECLARE_SERIALIZER(UOrionOnlineSteamAuthComponentModuleInterface)
 
 

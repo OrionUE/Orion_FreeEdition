@@ -1,0 +1,5 @@
+metric,count
+baseline_written_overrides,796
+baseline_skipped_unknown_or_unsupported,496
+baseline_preserved_ray_tracing,34
+baseline_config_files,3

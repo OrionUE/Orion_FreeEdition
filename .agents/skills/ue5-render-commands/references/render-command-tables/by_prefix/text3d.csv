@@ -1,0 +1,2 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+Text3D.RegisterStaticMeshesMode,CVar,string,,Text3D,GI,All,true,false,false,false,false,,`Text3D.RegisterStaticMeshesMode=<值>` / `Text3D.RegisterStaticMeshesMode <值>` 或 INI 中配置,Determines how static mesh component primitives should be batch added to the scene.\n,ECVF_Default

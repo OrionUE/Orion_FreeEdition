@@ -11,9 +11,10 @@
 #endif
 #define ORIONSTEAMWEBAPI_WebLobbyMatchmakingServiceTypes_generated_h
 
-#include "Templates/IsUEnumClass.h"
 #include "UObject/ObjectMacros.h"
 #include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
+#include "Templates/NoDestroy.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
@@ -29,7 +30,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 enum class EOrionSteamWebAPILobbyType : uint8;
 template<> struct TIsUEnumClass<EOrionSteamWebAPILobbyType> { enum { Value = true }; };
-template<> ORIONSTEAMWEBAPI_API UEnum* StaticEnum<EOrionSteamWebAPILobbyType>();
+template<> UE_NODEBUG ORIONSTEAMWEBAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<EOrionSteamWebAPILobbyType>();
 // ********** End Enum EOrionSteamWebAPILobbyType **************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

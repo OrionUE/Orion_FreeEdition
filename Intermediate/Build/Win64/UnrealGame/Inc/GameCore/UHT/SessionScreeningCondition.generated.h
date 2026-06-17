@@ -12,10 +12,10 @@
 #define GAMECORE_SessionScreeningCondition_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UCommonSession_SearchResult;
 
 // ********** Begin Class USessionScreeningCondition ***********************************************
@@ -26,16 +26,15 @@ class UCommonSession_SearchResult;
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_SessionScreeningCondition_h_15_CALLBACK_WRAPPERS
-GAMECORE_API UClass* Z_Construct_UClass_USessionScreeningCondition_NoRegister();
+struct Z_Construct_UClass_USessionScreeningCondition_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_USessionScreeningCondition(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_SessionScreeningCondition_h_15_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUSessionScreeningCondition(); \
-	friend struct Z_Construct_UClass_USessionScreeningCondition_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_USessionScreeningCondition_NoRegister(); \
+	friend struct ::Z_Construct_UClass_USessionScreeningCondition_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_USessionScreeningCondition(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(USessionScreeningCondition, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_USessionScreeningCondition_NoRegister) \
+	DECLARE_CLASS2(USessionScreeningCondition, UObject, COMPILED_IN_FLAGS(CLASS_Abstract), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_USessionScreeningCondition) \
 	DECLARE_SERIALIZER(USessionScreeningCondition)
 
 
@@ -68,16 +67,15 @@ class USessionScreeningCondition;
 // ********** End Class USessionScreeningCondition *************************************************
 
 // ********** Begin Class UScreeningConditionComposite *********************************************
-GAMECORE_API UClass* Z_Construct_UClass_UScreeningConditionComposite_NoRegister();
+struct Z_Construct_UClass_UScreeningConditionComposite_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UScreeningConditionComposite(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_Session_SessionScreeningCondition_h_30_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUScreeningConditionComposite(); \
-	friend struct Z_Construct_UClass_UScreeningConditionComposite_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UScreeningConditionComposite_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UScreeningConditionComposite_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UScreeningConditionComposite(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UScreeningConditionComposite, USessionScreeningCondition, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UScreeningConditionComposite_NoRegister) \
+	DECLARE_CLASS2(UScreeningConditionComposite, USessionScreeningCondition, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UScreeningConditionComposite) \
 	DECLARE_SERIALIZER(UScreeningConditionComposite)
 
 

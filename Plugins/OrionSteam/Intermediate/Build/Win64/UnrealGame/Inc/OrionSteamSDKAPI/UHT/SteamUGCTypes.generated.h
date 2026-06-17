@@ -12,10 +12,11 @@
 #define ORIONSTEAMSDKAPI_SteamUGCTypes_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
+#include "Templates/IsUEnumClass.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 struct FAddAppDependencyResult;
 struct FAddUGCDependencyResult;
 struct FCreateItemResult;
@@ -37,361 +38,256 @@ struct FUserSubscribedItemsListChanged;
 struct FWorkshopEULAStatus;
 
 // ********** Begin ScriptStruct FSteamUGCDetails **************************************************
+struct Z_Construct_UScriptStruct_FSteamUGCDetails_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamUGCDetails(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_208_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamUGCDetails_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamUGCDetails_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamUGCDetails(ETypeConstructPhase::Inner); }
 
 
 struct FSteamUGCDetails;
 // ********** End ScriptStruct FSteamUGCDetails ****************************************************
 
 // ********** Begin ScriptStruct FCreateItemResult *************************************************
+struct Z_Construct_UScriptStruct_FCreateItemResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FCreateItemResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_310_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FCreateItemResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FCreateItemResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FCreateItemResult(ETypeConstructPhase::Inner); }
 
 
 struct FCreateItemResult;
 // ********** End ScriptStruct FCreateItemResult ***************************************************
 
 // ********** Begin ScriptStruct FUserFavoriteItemsListChanged *************************************
+struct Z_Construct_UScriptStruct_FUserFavoriteItemsListChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FUserFavoriteItemsListChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_340_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUserFavoriteItemsListChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FUserFavoriteItemsListChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FUserFavoriteItemsListChanged(ETypeConstructPhase::Inner); }
 
 
 struct FUserFavoriteItemsListChanged;
 // ********** End ScriptStruct FUserFavoriteItemsListChanged ***************************************
 
 // ********** Begin ScriptStruct FStartPlaytimeTrackingResult **************************************
+struct Z_Construct_UScriptStruct_FStartPlaytimeTrackingResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FStartPlaytimeTrackingResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_370_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FStartPlaytimeTrackingResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FStartPlaytimeTrackingResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FStartPlaytimeTrackingResult(ETypeConstructPhase::Inner); }
 
 
 struct FStartPlaytimeTrackingResult;
 // ********** End ScriptStruct FStartPlaytimeTrackingResult ****************************************
 
 // ********** Begin ScriptStruct FStopPlaytimeTrackingResult ***************************************
+struct Z_Construct_UScriptStruct_FStopPlaytimeTrackingResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FStopPlaytimeTrackingResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_393_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FStopPlaytimeTrackingResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FStopPlaytimeTrackingResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FStopPlaytimeTrackingResult(ETypeConstructPhase::Inner); }
 
 
 struct FStopPlaytimeTrackingResult;
 // ********** End ScriptStruct FStopPlaytimeTrackingResult *****************************************
 
 // ********** Begin ScriptStruct FGetUserItemVoteResult ********************************************
+struct Z_Construct_UScriptStruct_FGetUserItemVoteResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGetUserItemVoteResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_416_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGetUserItemVoteResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGetUserItemVoteResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGetUserItemVoteResult(ETypeConstructPhase::Inner); }
 
 
 struct FGetUserItemVoteResult;
 // ********** End ScriptStruct FGetUserItemVoteResult **********************************************
 
 // ********** Begin ScriptStruct FSetUserItemVoteResult ********************************************
+struct Z_Construct_UScriptStruct_FSetUserItemVoteResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSetUserItemVoteResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_454_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSetUserItemVoteResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSetUserItemVoteResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSetUserItemVoteResult(ETypeConstructPhase::Inner); }
 
 
 struct FSetUserItemVoteResult;
 // ********** End ScriptStruct FSetUserItemVoteResult **********************************************
 
 // ********** Begin ScriptStruct FUGCUpdateHandle **************************************************
+struct Z_Construct_UScriptStruct_FUGCUpdateHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FUGCUpdateHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_484_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUGCUpdateHandle_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FUGCUpdateHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FUGCUpdateHandle(ETypeConstructPhase::Inner); }
 
 
 struct FUGCUpdateHandle;
 // ********** End ScriptStruct FUGCUpdateHandle ****************************************************
 
 // ********** Begin ScriptStruct FUGCQueryHandle ***************************************************
+struct Z_Construct_UScriptStruct_FUGCQueryHandle_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FUGCQueryHandle(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_510_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUGCQueryHandle_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FUGCQueryHandle_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FUGCQueryHandle(ETypeConstructPhase::Inner); }
 
 
 struct FUGCQueryHandle;
 // ********** End ScriptStruct FUGCQueryHandle *****************************************************
 
 // ********** Begin ScriptStruct FSubmitItemUpdateResult *******************************************
+struct Z_Construct_UScriptStruct_FSubmitItemUpdateResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSubmitItemUpdateResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_536_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSubmitItemUpdateResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSubmitItemUpdateResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSubmitItemUpdateResult(ETypeConstructPhase::Inner); }
 
 
 struct FSubmitItemUpdateResult;
 // ********** End ScriptStruct FSubmitItemUpdateResult *********************************************
 
 // ********** Begin ScriptStruct FItemInstalled ****************************************************
+struct Z_Construct_UScriptStruct_FItemInstalled_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FItemInstalled(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_566_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FItemInstalled_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FItemInstalled_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FItemInstalled(ETypeConstructPhase::Inner); }
 
 
 struct FItemInstalled;
 // ********** End ScriptStruct FItemInstalled ******************************************************
 
 // ********** Begin ScriptStruct FUserSubscribedItemsListChanged ***********************************
+struct Z_Construct_UScriptStruct_FUserSubscribedItemsListChanged_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FUserSubscribedItemsListChanged(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_594_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUserSubscribedItemsListChanged_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FUserSubscribedItemsListChanged_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FUserSubscribedItemsListChanged(ETypeConstructPhase::Inner); }
 
 
 struct FUserSubscribedItemsListChanged;
 // ********** End ScriptStruct FUserSubscribedItemsListChanged *************************************
 
 // ********** Begin ScriptStruct FWorkshopEULAStatus ***********************************************
+struct Z_Construct_UScriptStruct_FWorkshopEULAStatus_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FWorkshopEULAStatus(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_617_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FWorkshopEULAStatus_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FWorkshopEULAStatus_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FWorkshopEULAStatus(ETypeConstructPhase::Inner); }
 
 
 struct FWorkshopEULAStatus;
 // ********** End ScriptStruct FWorkshopEULAStatus *************************************************
 
 // ********** Begin ScriptStruct FDownloadItemResult ***********************************************
+struct Z_Construct_UScriptStruct_FDownloadItemResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FDownloadItemResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_660_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FDownloadItemResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FDownloadItemResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FDownloadItemResult(ETypeConstructPhase::Inner); }
 
 
 struct FDownloadItemResult;
 // ********** End ScriptStruct FDownloadItemResult *************************************************
 
 // ********** Begin ScriptStruct FSteamUGCQueryCompleted *******************************************
+struct Z_Construct_UScriptStruct_FSteamUGCQueryCompleted_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FSteamUGCQueryCompleted(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_690_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FSteamUGCQueryCompleted_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FSteamUGCQueryCompleted_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FSteamUGCQueryCompleted(ETypeConstructPhase::Inner); }
 
 
 struct FSteamUGCQueryCompleted;
 // ********** End ScriptStruct FSteamUGCQueryCompleted *********************************************
 
 // ********** Begin ScriptStruct FAddAppDependencyResult *******************************************
+struct Z_Construct_UScriptStruct_FAddAppDependencyResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FAddAppDependencyResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_728_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FAddAppDependencyResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FAddAppDependencyResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FAddAppDependencyResult(ETypeConstructPhase::Inner); }
 
 
 struct FAddAppDependencyResult;
 // ********** End ScriptStruct FAddAppDependencyResult *********************************************
 
 // ********** Begin ScriptStruct FRemoveAppDependencyResult ****************************************
+struct Z_Construct_UScriptStruct_FRemoveAppDependencyResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemoveAppDependencyResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_758_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemoveAppDependencyResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemoveAppDependencyResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemoveAppDependencyResult(ETypeConstructPhase::Inner); }
 
 
 struct FRemoveAppDependencyResult;
 // ********** End ScriptStruct FRemoveAppDependencyResult ******************************************
 
 // ********** Begin ScriptStruct FAddUGCDependencyResult *******************************************
+struct Z_Construct_UScriptStruct_FAddUGCDependencyResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FAddUGCDependencyResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_788_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FAddUGCDependencyResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FAddUGCDependencyResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FAddUGCDependencyResult(ETypeConstructPhase::Inner); }
 
 
 struct FAddUGCDependencyResult;
 // ********** End ScriptStruct FAddUGCDependencyResult *********************************************
 
 // ********** Begin ScriptStruct FRemoveUGCDependencyResult ****************************************
+struct Z_Construct_UScriptStruct_FRemoveUGCDependencyResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FRemoveUGCDependencyResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_817_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FRemoveUGCDependencyResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FRemoveUGCDependencyResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FRemoveUGCDependencyResult(ETypeConstructPhase::Inner); }
 
 
 struct FRemoveUGCDependencyResult;
 // ********** End ScriptStruct FRemoveUGCDependencyResult ******************************************
 
 // ********** Begin ScriptStruct FUGCDeleteItemResult **********************************************
+struct Z_Construct_UScriptStruct_FUGCDeleteItemResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FUGCDeleteItemResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_846_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FUGCDeleteItemResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FUGCDeleteItemResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FUGCDeleteItemResult(ETypeConstructPhase::Inner); }
 
 
 struct FUGCDeleteItemResult;
 // ********** End ScriptStruct FUGCDeleteItemResult ************************************************
 
 // ********** Begin ScriptStruct FGetAppDependenciesResult *****************************************
+struct Z_Construct_UScriptStruct_FGetAppDependenciesResult_Statics;
+ORIONSTEAMSDKAPI_API UScriptStruct* Z_Construct_UScriptStruct_FGetAppDependenciesResult(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_872_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FGetAppDependenciesResult_Statics; \
-	ORIONSTEAMSDKAPI_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FGetAppDependenciesResult_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FGetAppDependenciesResult(ETypeConstructPhase::Inner); }
 
 
 struct FGetAppDependenciesResult;
 // ********** End ScriptStruct FGetAppDependenciesResult *******************************************
-
-// ********** Begin Delegate FOnAddItemToFavorites *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_913_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddItemToFavorites_DelegateWrapper(const FScriptDelegate& OnAddItemToFavorites, FUserFavoriteItemsListChanged const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddItemToFavorites ***************************************************
-
-// ********** Begin Delegate FOnCreateItem *********************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_914_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnCreateItem_DelegateWrapper(const FScriptDelegate& OnCreateItem, FCreateItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnCreateItem ***********************************************************
-
-// ********** Begin Delegate FOnSetUserItemVote ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_915_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSetUserItemVote_DelegateWrapper(const FScriptDelegate& OnSetUserItemVote, FSetUserItemVoteResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSetUserItemVote ******************************************************
-
-// ********** Begin Delegate FOnGetUserItemVote ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_916_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetUserItemVote_DelegateWrapper(const FScriptDelegate& OnGetUserItemVote, FGetUserItemVoteResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetUserItemVote ******************************************************
-
-// ********** Begin Delegate FOnRemoveItemFromFavorites ********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_917_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveItemFromFavorites_DelegateWrapper(const FScriptDelegate& OnRemoveItemFromFavorites, FUserFavoriteItemsListChanged const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveItemFromFavorites **********************************************
-
-// ********** Begin Delegate FOnSubscribeItem ******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_918_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSubscribeItem_DelegateWrapper(const FScriptDelegate& OnSubscribeItem, FRemoteStorageSubscribePublishedFileResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSubscribeItem ********************************************************
-
-// ********** Begin Delegate FOnSendQueryUGCRequest ************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_919_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSendQueryUGCRequest_DelegateWrapper(const FScriptDelegate& OnSendQueryUGCRequest, FSteamUGCQueryCompleted const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSendQueryUGCRequest **************************************************
-
-// ********** Begin Delegate FOnAddAppDependencyResult *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_920_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddAppDependencyResult_DelegateWrapper(const FScriptDelegate& OnAddAppDependencyResult, FAddAppDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddAppDependencyResult ***********************************************
-
-// ********** Begin Delegate FOnRemoveAppDependencyResult ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_921_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveAppDependencyResult_DelegateWrapper(const FScriptDelegate& OnRemoveAppDependencyResult, FRemoveAppDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveAppDependencyResult ********************************************
-
-// ********** Begin Delegate FOnAddUGCDependencyResult *********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_922_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnAddUGCDependencyResult_DelegateWrapper(const FScriptDelegate& OnAddUGCDependencyResult, FAddUGCDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnAddUGCDependencyResult ***********************************************
-
-// ********** Begin Delegate FOnRemoveUGCDependencyResult ******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_923_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnRemoveUGCDependencyResult_DelegateWrapper(const FScriptDelegate& OnRemoveUGCDependencyResult, FRemoveUGCDependencyResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnRemoveUGCDependencyResult ********************************************
-
-// ********** Begin Delegate FOnDeleteItemResult ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_924_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDeleteItemResult_DelegateWrapper(const FScriptDelegate& OnDeleteItemResult, FUGCDeleteItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDeleteItemResult *****************************************************
-
-// ********** Begin Delegate FOnGetAppDependenciesResult *******************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_925_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetAppDependenciesResult_DelegateWrapper(const FScriptDelegate& OnGetAppDependenciesResult, FGetAppDependenciesResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetAppDependenciesResult *********************************************
-
-// ********** Begin Delegate FOnSubmitItemUpdate ***************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_926_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnSubmitItemUpdate_DelegateWrapper(const FScriptDelegate& OnSubmitItemUpdate, FSubmitItemUpdateResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnSubmitItemUpdate *****************************************************
-
-// ********** Begin Delegate FOnStartPlaytimeTracking **********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_927_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStartPlaytimeTracking_DelegateWrapper(const FScriptDelegate& OnStartPlaytimeTracking, FStartPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStartPlaytimeTracking ************************************************
-
-// ********** Begin Delegate FOnStopPlaytimeTracking ***********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_928_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStopPlaytimeTracking_DelegateWrapper(const FScriptDelegate& OnStopPlaytimeTracking, FStopPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStopPlaytimeTracking *************************************************
-
-// ********** Begin Delegate FOnStopPlaytimeTrackingForAllItems ************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_929_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnStopPlaytimeTrackingForAllItems_DelegateWrapper(const FScriptDelegate& OnStopPlaytimeTrackingForAllItems, FStopPlaytimeTrackingResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnStopPlaytimeTrackingForAllItems **************************************
-
-// ********** Begin Delegate FOnUnsubscribeItem ****************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_930_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnUnsubscribeItem_DelegateWrapper(const FScriptDelegate& OnUnsubscribeItem, FRemoteStorageSubscribePublishedFileResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnUnsubscribeItem ******************************************************
-
-// ********** Begin Delegate FOnGetWorkshopEULAStatus **********************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_931_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnGetWorkshopEULAStatus_DelegateWrapper(const FScriptDelegate& OnGetWorkshopEULAStatus, FWorkshopEULAStatus const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnGetWorkshopEULAStatus ************************************************
-
-// ********** Begin Delegate FOnDownloadItem *******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_933_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadItem_DelegateWrapper(const FScriptDelegate& OnDownloadItem, FDownloadItemResult const& Data, bool bWasSuccessful);
-
-
-// ********** End Delegate FOnDownloadItem *********************************************************
-
-// ********** Begin Delegate FOnDownloadItemResult *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_934_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnDownloadItemResult_DelegateWrapper(const FMulticastScriptDelegate& OnDownloadItemResult, FDownloadItemResult const& Data);
-
-
-// ********** End Delegate FOnDownloadItemResult ***************************************************
-
-// ********** Begin Delegate FOnItemInstalled ******************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_935_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnItemInstalled_DelegateWrapper(const FMulticastScriptDelegate& OnItemInstalled, FItemInstalled const& Data);
-
-
-// ********** End Delegate FOnItemInstalled ********************************************************
-
-// ********** Begin Delegate FOnUserSubscribedItemsListChanged *************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_936_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnUserSubscribedItemsListChanged_DelegateWrapper(const FMulticastScriptDelegate& OnUserSubscribedItemsListChanged, FUserSubscribedItemsListChanged const& Data);
-
-
-// ********** End Delegate FOnUserSubscribedItemsListChanged ***************************************
-
-// ********** Begin Delegate FOnWorkshopEULAStatus *************************************************
-#define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h_937_DELEGATE \
-ORIONSTEAMSDKAPI_API void FOnWorkshopEULAStatus_DelegateWrapper(const FMulticastScriptDelegate& OnWorkshopEULAStatus, FWorkshopEULAStatus const& Data);
-
-
-// ********** End Delegate FOnWorkshopEULAStatus ***************************************************
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamSDKAPI_Public_SteamUGC_SteamUGCTypes_h
@@ -406,7 +302,7 @@ ORIONSTEAMSDKAPI_API void FOnWorkshopEULAStatus_DelegateWrapper(const FMulticast
 
 enum class ESteamUGCContentDescriptorID : uint8;
 template<> struct TIsUEnumClass<ESteamUGCContentDescriptorID> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCContentDescriptorID>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUGCContentDescriptorID>();
 // ********** End Enum ESteamUGCContentDescriptorID ************************************************
 
 // ********** Begin Enum ESteamUGCMatchingUGCType **************************************************
@@ -428,7 +324,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCContentDescriptorID>(
 
 enum class ESteamUGCMatchingUGCType : uint8;
 template<> struct TIsUEnumClass<ESteamUGCMatchingUGCType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCMatchingUGCType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUGCMatchingUGCType>();
 // ********** End Enum ESteamUGCMatchingUGCType ****************************************************
 
 // ********** Begin Enum ESteamUserUGCList *********************************************************
@@ -445,7 +341,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCMatchingUGCType>();
 
 enum class ESteamUserUGCList : uint8;
 template<> struct TIsUEnumClass<ESteamUserUGCList> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserUGCList>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUserUGCList>();
 // ********** End Enum ESteamUserUGCList ***********************************************************
 
 // ********** Begin Enum ESteamUserUGCListSortOrder ************************************************
@@ -460,7 +356,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserUGCList>();
 
 enum class ESteamUserUGCListSortOrder : uint8;
 template<> struct TIsUEnumClass<ESteamUserUGCListSortOrder> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserUGCListSortOrder>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUserUGCListSortOrder>();
 // ********** End Enum ESteamUserUGCListSortOrder **************************************************
 
 // ********** Begin Enum ESteamUGCQuery ************************************************************
@@ -488,7 +384,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUserUGCListSortOrder>();
 
 enum class ESteamUGCQuery : uint8;
 template<> struct TIsUEnumClass<ESteamUGCQuery> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCQuery>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamUGCQuery>();
 // ********** End Enum ESteamUGCQuery **************************************************************
 
 // ********** Begin Enum ESteamItemUpdateStatus ****************************************************
@@ -502,7 +398,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamUGCQuery>();
 
 enum class ESteamItemUpdateStatus : uint8;
 template<> struct TIsUEnumClass<ESteamItemUpdateStatus> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemUpdateStatus>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamItemUpdateStatus>();
 // ********** End Enum ESteamItemUpdateStatus ******************************************************
 
 // ********** Begin Enum ESteamItemState ***********************************************************
@@ -518,7 +414,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemUpdateStatus>();
 
 enum class ESteamItemState : uint8;
 template<> struct TIsUEnumClass<ESteamItemState> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemState>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamItemState>();
 // ********** End Enum ESteamItemState *************************************************************
 
 // ********** Begin Enum ESteamItemStatistic *******************************************************
@@ -539,7 +435,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemState>();
 
 enum class ESteamItemStatistic : uint8;
 template<> struct TIsUEnumClass<ESteamItemStatistic> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemStatistic>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamItemStatistic>();
 // ********** End Enum ESteamItemStatistic *********************************************************
 
 // ********** Begin Enum ESteamItemPreviewType *****************************************************
@@ -553,7 +449,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemStatistic>();
 
 enum class ESteamItemPreviewType : uint8;
 template<> struct TIsUEnumClass<ESteamItemPreviewType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemPreviewType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamItemPreviewType>();
 // ********** End Enum ESteamItemPreviewType *******************************************************
 
 // ********** Begin Enum ESteamWorkshopFileType ****************************************************
@@ -580,7 +476,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamItemPreviewType>();
 
 enum class ESteamWorkshopFileType : uint8;
 template<> struct TIsUEnumClass<ESteamWorkshopFileType> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamWorkshopFileType>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamWorkshopFileType>();
 // ********** End Enum ESteamWorkshopFileType ******************************************************
 
 // ********** Begin Enum ESteamRemoteStoragePublishedFileVisibility ********************************
@@ -591,7 +487,7 @@ template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamWorkshopFileType>();
 
 enum class ESteamRemoteStoragePublishedFileVisibility : uint8;
 template<> struct TIsUEnumClass<ESteamRemoteStoragePublishedFileVisibility> { enum { Value = true }; };
-template<> ORIONSTEAMSDKAPI_API UEnum* StaticEnum<ESteamRemoteStoragePublishedFileVisibility>();
+template<> UE_NODEBUG ORIONSTEAMSDKAPI_NON_ATTRIBUTED_API UEnum* StaticEnum<ESteamRemoteStoragePublishedFileVisibility>();
 // ********** End Enum ESteamRemoteStoragePublishedFileVisibility **********************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

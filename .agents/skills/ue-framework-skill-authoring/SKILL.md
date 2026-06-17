@@ -36,3 +36,11 @@ description: Use when a user describes how a reusable Unreal Engine game framewo
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\ue-framework-skill-authoring\scripts\check-skill-portability.ps1 -Path .agents\skills\<portable-skill-name> -BannedLiteral "<GAME_OR_PROJECT_NAME>" -CheckCRLF -RequireRouting
 ```
+## 可发布命名和占位符规则
+
+- 公开品牌名、框架名、插件名可保留，例如用户明确允许的 `Orion`、`OrionSteam`。
+- 私有项目名、未公开游戏名、本机项目名、用户名、本机引擎安装路径、项目绝对路径、日志路径、Benchmark 地图名、本机 GPU 型号必须替换成占位符。
+- 固定占位符：`<ProjectName>`、`<ProjectRoot>`、`<EngineRoot>`、`<UserLocalAppData>`、`<BenchmarkMap>`、`<GPU>`、`<ModuleName>`、`<Platform>`。
+- 写 Skill、README、CSV、脚本、示例命令、事故记录和实验备注时都必须执行这条规则；不要只清理 `SKILL.md`。
+- 验证时至少搜索：私有项目名、盘符路径、用户主目录、用户名、引擎安装目录、具体地图名和本机 GPU 型号。
+

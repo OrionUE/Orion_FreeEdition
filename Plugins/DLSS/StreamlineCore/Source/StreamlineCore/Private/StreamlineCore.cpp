@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 - 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+* Copyright (c) 2022 - 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 *
 * NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
 * property and proprietary rights in and to this material, related
@@ -17,7 +17,6 @@
 #include "StreamlineViewExtension.h"
 #include "StreamlineReflex.h"
 #include "StreamlineDLSSG.h"
-#include "StreamlineLatewarp.h"
 #include "StreamlineDeepDVC.h"
 
 #include "StreamlineRHI.h"
@@ -71,7 +70,7 @@ void FStreamlineCoreModule::StartupModule()
 	if (GetPlatformStreamlineSupport() == EStreamlineSupport::Supported)
 	{
 		// set the view family extension that's gonna call into SL in the postprocessing pass
-		bool bShouldCreateViewExtension = IsStreamlineDLSSGSupported() || IsStreamlineLatewarpSupported() || IsStreamlineDeepDVCSupported();
+		bool bShouldCreateViewExtension = IsStreamlineDLSSGSupported() || IsStreamlineDeepDVCSupported();
 		if (FParse::Param(FCommandLine::Get(), TEXT("slviewextension")))
 		{
 			bShouldCreateViewExtension = true;
@@ -94,10 +93,6 @@ void FStreamlineCoreModule::StartupModule()
 		if (ForceTagStreamlineBuffers() || IsStreamlineDLSSGSupported())
 		{
 			RegisterStreamlineDLSSGHooks(GetStreamlineRHI());
-		}
-		if (ForceTagStreamlineBuffers() || IsStreamlineLatewarpSupported())
-		{
-			RegisterStreamlineLatewarpHooks(GetStreamlineRHI());
 		}
 
 		LogStreamlineFeatureSupport(sl::kFeatureImGUI, *GetStreamlineRHI()->GetAdapterInfo());
@@ -142,11 +137,6 @@ void FStreamlineCoreModule::ShutdownModule()
 
 	if (GetPlatformStreamlineSupport() == EStreamlineSupport::Supported)
 	{
-		if (IsStreamlineLatewarpSupported())
-		{
-			UnregisterStreamlineLatewarpHooks();
-		}
-
 		if (IsStreamlineDLSSGSupported())
 		{
 			UnregisterStreamlineDLSSGHooks();
@@ -175,11 +165,6 @@ EStreamlineSupport FStreamlineCoreModule::QueryStreamlineSupport() const
 Streamline::EStreamlineFeatureSupport FStreamlineCoreModule::QueryDLSSGSupport() const
 {
 	return QueryStreamlineDLSSGSupport();
-}
-
-Streamline::EStreamlineFeatureSupport FStreamlineCoreModule::QueryLatewarpSupport() const
-{
-	return QueryStreamlineLatewarpSupport();
 }
 
 Streamline::EStreamlineFeatureSupport FStreamlineCoreModule::QueryDeepDVCSupport() const

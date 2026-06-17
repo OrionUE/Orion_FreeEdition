@@ -92,6 +92,8 @@
 			"nocompileeditor": false,
 			"unrealexe": "{{UnrealEditorCmdPath}}",
 			"utf8output": true,
+			"target": "{{SteamBuildTargetName}}",
+			"customconfig": "Steam",
 			"clientconfig": [
 				"Shipping"
 			],

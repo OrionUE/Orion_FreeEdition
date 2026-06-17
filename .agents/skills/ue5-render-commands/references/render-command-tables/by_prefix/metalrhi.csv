@@ -1,0 +1,3 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+MetalRHI.UseInterruptThread,CVar,int32,1,MetalRHI,RHI/底层渲染接口,All,false,true,false,false,false,,`MetalRHI.UseInterruptThread=<值>` / `MetalRHI.UseInterruptThread <值>` 或 INI 中配置,Whether to enable the Metal RHI's interrupt thread.\n,ECVF_ReadOnly
+MetalRHI.UseSubmissionThread,CVar,int32,1,MetalRHI,后处理,All,false,true,false,false,false,,`MetalRHI.UseSubmissionThread=<值>` / `MetalRHI.UseSubmissionThread <值>` 或 INI 中配置,Whether to enable the Metal RHI's submission thread.\n,ECVF_ReadOnly

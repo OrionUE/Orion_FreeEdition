@@ -12,10 +12,10 @@
 #define GAMECORE_CoreGameState_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-
 class UCoreAbilitySystemComponent;
 
 // ********** Begin Class ACoreGameState ***********************************************************
@@ -24,18 +24,17 @@ class UCoreAbilitySystemComponent;
 	DECLARE_FUNCTION(execGetCoreAbilitySystemComponent);
 
 
-GAMECORE_API UClass* Z_Construct_UClass_ACoreGameState_NoRegister();
+struct Z_Construct_UClass_ACoreGameState_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_ACoreGameState(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameModes_CoreGameState_h_28_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesACoreGameState(); \
-	friend struct Z_Construct_UClass_ACoreGameState_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_ACoreGameState_NoRegister(); \
+	friend struct ::Z_Construct_UClass_ACoreGameState_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_ACoreGameState(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(ACoreGameState, AModularGameStateBase, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreGameState_NoRegister) \
+	DECLARE_CLASS2(ACoreGameState, AModularGameStateBase, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_ACoreGameState) \
 	DECLARE_SERIALIZER(ACoreGameState) \
-	virtual UObject* _getUObject() const override { return const_cast<ACoreGameState*>(this); } \
+	[[deprecated("Do not call _getUObject(), use Cast.")]] virtual UObject* _getUObject() const override { return const_cast<ACoreGameState*>(this); } \
 	enum class ENetFields_Private : uint16 \
 	{ \
 		NETFIELD_REP_START=(uint16)((int32)Super::ENetFields_Private::NETFIELD_REP_END + (int32)1), \

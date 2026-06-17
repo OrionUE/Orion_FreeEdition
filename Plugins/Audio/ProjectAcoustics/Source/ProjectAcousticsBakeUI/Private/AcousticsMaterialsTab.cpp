@@ -295,7 +295,7 @@ void SAcousticsMaterialsTab::UpdateUEMaterials()
                         ULandscapeLayerInfoObject* LayerInfo = LayerSettings.LayerInfoObj;
                         if (LayerInfo != nullptr)
                         {
-                            const UPhysicalMaterial* layerPhysMaterial = LayerInfo->PhysMaterial;
+                            const UPhysicalMaterial* layerPhysMaterial = LayerInfo->GetPhysicalMaterial();
                             if (m_AcousticsEditMode->ShouldUsePhysicalMaterial(layerPhysMaterial))
                             {
                                 AddNewUEMaterial(layerPhysMaterial->GetName());
@@ -567,8 +567,9 @@ void SAcousticsMaterialsTab::OnRowSelectionChanged(TSharedPtr<MaterialItem> InIt
                     // Select landscape based on physical material on lanscape material layers.
                     for (const auto& [LayerName, LayerSettings] : landscape->GetTargetLayers())
                     {
-                        if ((m_AcousticsEditMode->ShouldUsePhysicalMaterial(LayerSettings.LayerInfoObj->PhysMaterial) &&
-                             LayerSettings.LayerInfoObj->PhysMaterial->GetName() == InItem->UEMaterialName) ||
+                        UPhysicalMaterial* layerPhysMaterial = LayerSettings.LayerInfoObj->GetPhysicalMaterial();
+                        if ((m_AcousticsEditMode->ShouldUsePhysicalMaterial(layerPhysMaterial) &&
+                             layerPhysMaterial->GetName() == InItem->UEMaterialName) ||
                             LayerSettings.LayerInfoObj->GetName() == InItem->UEMaterialName)
                         {
                             GEditor->SelectActor(curActor, true, false, true, false);

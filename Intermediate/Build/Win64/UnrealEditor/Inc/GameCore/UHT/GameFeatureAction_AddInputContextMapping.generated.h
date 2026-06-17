@@ -12,30 +12,33 @@
 #define GAMECORE_GameFeatureAction_AddInputContextMapping_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin ScriptStruct FInputMappingContextAndPriority ***********************************
+struct Z_Construct_UScriptStruct_FInputMappingContextAndPriority_Statics;
+GAMECORE_API UScriptStruct* Z_Construct_UScriptStruct_FInputMappingContextAndPriority(ETypeConstructPhase);
+
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddInputContextMapping_h_22_GENERATED_BODY \
-	friend struct Z_Construct_UScriptStruct_FInputMappingContextAndPriority_Statics; \
-	GAMECORE_API static class UScriptStruct* StaticStruct();
+	friend struct ::Z_Construct_UScriptStruct_FInputMappingContextAndPriority_Statics; \
+	UE_NODEBUG static UScriptStruct* StaticStruct() { return Z_Construct_UScriptStruct_FInputMappingContextAndPriority(ETypeConstructPhase::Inner); }
 
 
 struct FInputMappingContextAndPriority;
 // ********** End ScriptStruct FInputMappingContextAndPriority *************************************
 
 // ********** Begin Class UGameFeatureAction_AddInputContextMapping ********************************
-GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_NoRegister();
+struct Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_Statics;
+GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddInputContextMapping_h_44_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUGameFeatureAction_AddInputContextMapping(); \
-	friend struct Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend GAMECORE_API UClass* Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_Statics; \
+	friend GAMECORE_API UClass* ::Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UGameFeatureAction_AddInputContextMapping, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping_NoRegister) \
+	DECLARE_CLASS2(UGameFeatureAction_AddInputContextMapping, UGameFeatureAction_WorldActionBase, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/GameCore"), Z_Construct_UClass_UGameFeatureAction_AddInputContextMapping) \
 	DECLARE_SERIALIZER(UGameFeatureAction_AddInputContextMapping)
 
 
@@ -48,7 +51,7 @@ public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(GAMECORE_API, UGameFeatureAction_AddInputContextMapping); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGameFeatureAction_AddInputContextMapping); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UGameFeatureAction_AddInputContextMapping) \
-	GAMECORE_API virtual ~UGameFeatureAction_AddInputContextMapping();
+	GAMECORE_API ~UGameFeatureAction_AddInputContextMapping();
 
 
 #define FID_Orion_FreeEdition_Source_GameCore_Public_GameFeatures_GameFeatureAction_AddInputContextMapping_h_41_PROLOG

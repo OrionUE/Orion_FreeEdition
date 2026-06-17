@@ -12,6 +12,7 @@
 #define ORIONSTEAMWEBAPI_WebPublishedItemVoting_generated_h
 
 #include "UObject/ObjectMacros.h"
+#include "UObject/ReflectedTypeAccessors.h"
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
@@ -22,16 +23,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execItemVoteSummary);
 
 
-ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedItemVoting_NoRegister();
+struct Z_Construct_UClass_UWebPublishedItemVoting_Statics;
+ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedItemVoting(ETypeConstructPhase);
 
 #define FID_Orion_FreeEdition_Plugins_OrionSteam_Source_OrionSteamWebAPI_Public_PublishedItemVoting_WebPublishedItemVoting_h_14_INCLASS_NO_PURE_DECLS \
 private: \
-	static void StaticRegisterNativesUWebPublishedItemVoting(); \
-	friend struct Z_Construct_UClass_UWebPublishedItemVoting_Statics; \
-	static UClass* GetPrivateStaticClass(); \
-	friend ORIONSTEAMWEBAPI_API UClass* Z_Construct_UClass_UWebPublishedItemVoting_NoRegister(); \
+	friend struct ::Z_Construct_UClass_UWebPublishedItemVoting_Statics; \
+	friend ORIONSTEAMWEBAPI_API UClass* ::Z_Construct_UClass_UWebPublishedItemVoting(ETypeConstructPhase); \
 public: \
-	DECLARE_CLASS2(UWebPublishedItemVoting, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPublishedItemVoting_NoRegister) \
+	DECLARE_CLASS2(UWebPublishedItemVoting, UOrionSteamWebAPISubsystem, COMPILED_IN_FLAGS(0), CASTCLASS_None, TEXT("/Script/OrionSteamWebAPI"), Z_Construct_UClass_UWebPublishedItemVoting) \
 	DECLARE_SERIALIZER(UWebPublishedItemVoting)
 
 

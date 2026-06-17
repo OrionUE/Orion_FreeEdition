@@ -1,0 +1,4 @@
+command,kind,type,default,prefix,module,platform_text,runtime_editable,startup_only,in_default_engine,in_scalability,scalability_group,scalability_sections,usage,help,flags
+TextureShare.Enable.nDisplay,CVar,string,,TextureShare,材质,All,true,false,false,false,false,,`TextureShare.Enable.nDisplay=<值>` / `TextureShare.Enable.nDisplay <值>` 或 INI 中配置,Enable nDisplay support for TextureShare (0 = disabled)\n,ECVF_RenderThreadSafe
+TextureShare.Enable.WorldSubsystem,CVar,int32,1,TextureShare,材质,All,true,false,false,false,false,,`TextureShare.Enable.WorldSubsystem=<值>` / `TextureShare.Enable.WorldSubsystem <值>` 或 INI 中配置,Enable world subsystems objects (0 = disabled)\n,ECVF_RenderThreadSafe
+TextureShare.MultithreadDataLock,CVar,string,,TextureShare,材质,All,true,false,false,false,false,,`TextureShare.MultithreadDataLock=<值>` / `TextureShare.MultithreadDataLock <值>` 或 INI 中配置,Lock multithread data by the mutex. (Default = 1),ECVF_Default
