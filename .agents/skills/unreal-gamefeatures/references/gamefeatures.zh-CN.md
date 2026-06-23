@@ -133,6 +133,15 @@ Experience 驱动的玩法插件通常应保持显式加载：
 - `Content/System`
 - `Content/UI`
 
+## TargetRules 中的 GameFeature 插件选择
+
+宿主 target 可以在 `*.Target.cs` 中通过 `ConfigureGameFeaturePlugins(Target)` 扫描 GameFeature plugin descriptor，并按当前 target 决定启用或禁用插件。维护这段逻辑时注意：
+
+- plugin descriptor JSON cache 如果是 static dictionary，读写必须加锁。UBT 可能并发构建或并发解析 target rules，不加锁会造成重复 Add、读取脏数据或偶发构建失败。
+- `EnablePlugins` / `DisablePlugins` 属于 target-specific 插件启用策略，安装版引擎的普通 shared build environment 不支持随意切换；相关 Steam / 专用 target 约束继续读取 online/packaging Skill。
+- 这段 target 逻辑只负责“本 target 是否编进某 feature plugin”，不等于 Experience 运行时会激活该 feature。运行时激活仍由 `GameFeaturesToEnable`、project policy 和 GameFeatures subsystem 决定。
+- 新增 per-target 规则后要验证 Editor、Game、Client、Server 至少相关目标能解析 TargetRules，并确认 `.uplugin` 默认状态仍符合显式加载策略。
+
 ## 核心框架自定义 Feature Actions
 
 项目已有的自定义 Feature Action 是优先复用对象。新增业务前先确认能否用这些 actions 组合出来。

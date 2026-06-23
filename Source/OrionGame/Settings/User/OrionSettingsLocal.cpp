@@ -8,7 +8,9 @@
 #include "AudioModulationStatics.h"
 #include "CommonInputSubsystem.h"
 #include "CommonUISettings.h"
+#include "EnhancedInputSubsystems.h"
 #include "ICommonUIModule.h"
+#include "InputSystemUserSettings.h"
 #include "SoundControlBus.h"
 #include "SoundControlBusMix.h"
 #include "Audio/CoreAudioSettings.h"
@@ -21,6 +23,7 @@
 #include "Performance/GameDLSSSubsystem.h"
 #include "Performance/GamePerformanceSettings.h"
 #include "System/OrionGameRenderSubsystem.h"
+#include "Widgets/Layout/SSafeZone.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(OrionSettingsLocal)
 
@@ -71,7 +74,7 @@ static TAutoConsoleVariable<int32> CVarDeviceProfileDrivenMobileDefaultFrameRate
 
 static TAutoConsoleVariable<int32> CVarDeviceProfileDrivenMobileMaxFrameRate(
 	TEXT("Game.DeviceProfile.Mobile.MaxFrameRate"),
-	30,
+	120,
 	TEXT("Max FPS when being driven by device profile"),
 	ECVF_Default | ECVF_Preview);
 
@@ -87,6 +90,12 @@ static TAutoConsoleVariable<FString> CVarMobileResolutionQualityLimits(
 	TEXT("Game.DeviceProfile.Mobile.ResolutionQualityLimits"),
 	TEXT(""),
 	TEXT("List of limits on resolution quality of the form \"FPS:MaxResQuality,FPS2:MaxResQuality2,...\", kicking in when FPS is at or above the threshold"),
+	ECVF_Default | ECVF_Preview);
+
+static TAutoConsoleVariable<FString> CVarMobileResolutionQualityRecommendation(
+	TEXT("Game.DeviceProfile.Mobile.ResolutionQualityRecommendation"),
+	TEXT("0:75"),
+	TEXT("List of limits on resolution quality of the form \"FPS:Recommendation,FPS2:Recommendation2,...\", kicking in when FPS is at or above the threshold"),
 	ECVF_Default | ECVF_Preview);
 
 //////////////////////////////////////////////////////////////////////
@@ -207,8 +216,21 @@ private:
 
 namespace OrionSettingsHelpers
 {
-	TMobileQualityWrapper<int32> OverallQualityLimits(-1, CVarMobileQualityLimits);
-	TMobileQualityWrapper<float> ResolutionQualityLimits(100.0f, CVarMobileResolutionQualityLimits);
+	UInputSystemUserSettings* GetInputSystemUserSettings(ULocalPlayer* LocalPlayer)
+	{
+		if (!LocalPlayer)
+		{
+			return nullptr;
+		}
+
+		const UEnhancedInputLocalPlayerSubsystem* EISubsystem = LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
+		if (!EISubsystem)
+		{
+			return nullptr;
+		}
+
+		return Cast<UInputSystemUserSettings>(EISubsystem->GetUserSettings());
+	}
 
 	bool HasPlatformTrait(FGameplayTag Tag)
 	{
@@ -254,6 +276,10 @@ namespace OrionSettingsHelpers
 		Mode.bHasOverrides |= UDeviceProfileManager::GetScalabilityCVar(FString::Printf(TEXT("sg.ShadingQuality%s"), *Suffix), Mode.Qualities.ShadingQuality);
 	}
 
+	TMobileQualityWrapper<int32> OverallQualityLimits(-1, CVarMobileQualityLimits);
+	TMobileQualityWrapper<float> ResolutionQualityLimits(100.0f, CVarMobileResolutionQualityLimits);
+	TMobileQualityWrapper<float> ResolutionQualityRecommendations(75.0f, CVarMobileResolutionQualityRecommendation);
+
 	float GetApplicableResolutionQualityLimit(int32 FrameRate)
 	{
 		return ResolutionQualityLimits.Query(FrameRate);
@@ -262,6 +288,32 @@ namespace OrionSettingsHelpers
 	int32 GetApplicableOverallQualityLimit(int32 FrameRate)
 	{
 		return OverallQualityLimits.Query(FrameRate);
+	}
+	
+	float GetApplicableResolutionQualityRecommendation(int32 FrameRate)
+	{
+		return ResolutionQualityRecommendations.Query(FrameRate);
+	}
+	
+	int32 ConstrainFrameRateToBeCompatibleWithOverallQuality(int32 FrameRate, int32 OverallQuality)
+	{
+		const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+		const TArray<int32>& PossibleRates = PlatformSettings->MobileFrameRateLimits;
+
+		// Choose the closest frame rate (without going over) to the user preferred one that is supported and compatible with the desired overall quality
+		int32 LimitIndex = PossibleRates.FindLastByPredicate([=](const int32& TestRate)
+		{
+			const bool bAtOrBelowDesiredRate = (TestRate <= FrameRate);
+
+			const int32 LimitQuality = GetApplicableResolutionQualityLimit(TestRate);
+			const bool bQualityDoesntExceedLimit = (LimitQuality < 0) || (OverallQuality <= LimitQuality);
+			
+			const bool bIsSupported = UOrionSettingsLocal::IsSupportedMobileFramePace(TestRate);
+
+			return bAtOrBelowDesiredRate && bQualityDoesntExceedLimit && bIsSupported;
+		});
+
+		return PossibleRates.IsValidIndex(LimitIndex) ? PossibleRates[LimitIndex] : UOrionSettingsLocal::GetDefaultMobileFrameRate();
 	}
 	
 	/** Returns the first frame rate at which overall quality is restricted/limited by the current device profile */
@@ -307,14 +359,281 @@ UOrionSettingsLocal* UOrionSettingsLocal::Get()
 	return GEngine ? CastChecked<UOrionSettingsLocal>(GEngine->GetGameUserSettings()) : nullptr;
 }
 
-void UOrionSettingsLocal::OnExperienceLoaded()
+void UOrionSettingsLocal::BeginDestroy()
 {
-	ReapplyThingsDueToPossibleDeviceProfileChange();
+	if (FSlateApplication::IsInitialized())
+	{
+		FSlateApplication::Get().OnApplicationActivationStateChanged().Remove(OnApplicationActivationStateChangedHandle);
+	}
+
+	Super::BeginDestroy();
+}
+
+void UOrionSettingsLocal::SetToDefaults()
+{
+	Super::SetToDefaults();
+
+	bUseHeadphoneMode = false;
+	bUseHDRAudioMode = false;
+	bSoundControlBusMixLoaded = false;
+
+	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
+	{
+		InputSystemUserSettings->SetToDefaults();
+	}
+
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+	UserChosenDeviceProfileSuffix = PlatformSettings->DefaultDeviceProfileSuffix;
+	DesiredUserChosenDeviceProfileSuffix = UserChosenDeviceProfileSuffix;
+
+	FrameRateLimit_InMenu = 144.0f;
+	FrameRateLimit_WhenBackground = 30.0f;
+	FrameRateLimit_OnBattery = 60.0f;
+
+	MobileFrameRateLimit = GetDefaultMobileFrameRate();
+	DesiredMobileFrameRateLimit = MobileFrameRateLimit;
+}
+
+void UOrionSettingsLocal::LoadSettings(bool bForceReload)
+{
+	Super::LoadSettings(bForceReload);
+
+	// Console platforms use rhi.SyncInterval to limit framerate
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::ConsoleStyle)
+	{
+		FrameRateLimit = 0.0f;
+	}
+
+	// Enable HRTF if needed
+	bDesiredHeadphoneMode = bUseHeadphoneMode;
+	SetHeadphoneModeEnabled(bUseHeadphoneMode);
+	
+	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
+	{
+		InputSystemUserSettings->ApplyLatencyTrackingStatSetting();
+	}
+
+	DesiredUserChosenDeviceProfileSuffix = UserChosenDeviceProfileSuffix;
+
+	OrionSettingsHelpers::FillScalabilitySettingsFromDeviceProfile(DeviceDefaultScalabilitySettings);
+
+	DesiredMobileFrameRateLimit = MobileFrameRateLimit;
+	ClampMobileQuality();
+
+	PerfStatSettingsChangedEvent.Broadcast();
+}
+
+void UOrionSettingsLocal::ConfirmVideoMode()
+{
+	Super::ConfirmVideoMode();
+
+	SetMobileFPSMode(DesiredMobileFrameRateLimit);
+}
+
+// Combines two limits, always taking the minimum of the two (with special handling for values of <= 0 meaning unlimited)
+float CombineFrameRateLimits(float Limit1, float Limit2)
+{
+	if (Limit1 <= 0.0f)
+	{
+		return Limit2;
+	}
+	else if (Limit2 <= 0.0f)
+	{
+		return Limit1;
+	}
+	else
+	{
+		return FMath::Min(Limit1, Limit2);
+	}
+}
+
+float UOrionSettingsLocal::GetEffectiveFrameRateLimit()
+{
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+
+#if WITH_EDITOR
+	if (GIsEditor && !CVarApplyFrameRateSettingsInPIE.GetValueOnGameThread())
+	{
+		return Super::GetEffectiveFrameRateLimit();
+	}
+#endif
+
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::ConsoleStyle)
+	{
+		return 0.0f;
+	}
+
+	float EffectiveFrameRateLimit = Super::GetEffectiveFrameRateLimit();
+
+	if (ShouldUseFrontendPerformanceSettings())
+	{
+		EffectiveFrameRateLimit = CombineFrameRateLimits(EffectiveFrameRateLimit, FrameRateLimit_InMenu);
+	}
+
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::DesktopStyle)
+	{
+		if (FPlatformMisc::IsRunningOnBattery())
+		{
+			EffectiveFrameRateLimit = CombineFrameRateLimits(EffectiveFrameRateLimit, FrameRateLimit_OnBattery);
+		}
+
+		if (FSlateApplication::IsInitialized() && !FSlateApplication::Get().IsActive())
+		{
+			EffectiveFrameRateLimit = CombineFrameRateLimits(EffectiveFrameRateLimit, FrameRateLimit_WhenBackground);
+		}
+
+		if (GetDynamicResolutionFrameRateTarget() != 0.0f)
+		{
+			EffectiveFrameRateLimit = CombineFrameRateLimits(EffectiveFrameRateLimit, GetDynamicResolutionFrameRateTarget());
+		}
+	}
+
+	return EffectiveFrameRateLimit;
+}
+
+void UOrionSettingsLocal::ResetToCurrentSettings()
+{
+	Super::ResetToCurrentSettings();
+
+	bDesiredHeadphoneMode = bUseHeadphoneMode;
+
+	UserChosenDeviceProfileSuffix = DesiredUserChosenDeviceProfileSuffix;
+
+	MobileFrameRateLimit = DesiredMobileFrameRateLimit;
+}
+
+void UOrionSettingsLocal::ApplyNonResolutionSettings()
+{
+	Super::ApplyNonResolutionSettings();
+
+	// Check if Control Bus Mix references have been loaded,
+	// Might be false if applying non resolution settings without touching any of the setters from UI
+	if (!bSoundControlBusMixLoaded)
+	{
+		LoadUserControlBusMix();
+	}
+
+	// In this section, update each Control Bus to the currently cached UI settings
+	{
+		if (TObjectPtr<USoundControlBus>* ControlBusDblPtr = ControlBusMap.Find(TEXT("Overall")))
+		{
+			if (USoundControlBus* ControlBusPtr = *ControlBusDblPtr)
+			{
+				SetVolumeForControlBus(ControlBusPtr, OverallVolume);
+			}
+		}
+
+		if (TObjectPtr<USoundControlBus>* ControlBusDblPtr = ControlBusMap.Find(TEXT("Music")))
+		{
+			if (USoundControlBus* ControlBusPtr = *ControlBusDblPtr)
+			{
+				SetVolumeForControlBus(ControlBusPtr, MusicVolume);
+			}
+		}
+
+		if (TObjectPtr<USoundControlBus>* ControlBusDblPtr = ControlBusMap.Find(TEXT("SoundFX")))
+		{
+			if (USoundControlBus* ControlBusPtr = *ControlBusDblPtr)
+			{
+				SetVolumeForControlBus(ControlBusPtr, SoundFXVolume);
+			}
+		}
+
+		if (TObjectPtr<USoundControlBus>* ControlBusDblPtr = ControlBusMap.Find(TEXT("Dialogue")))
+		{
+			if (USoundControlBus* ControlBusPtr = *ControlBusDblPtr)
+			{
+				SetVolumeForControlBus(ControlBusPtr, DialogueVolume);
+			}
+		}
+
+		if (TObjectPtr<USoundControlBus>* ControlBusDblPtr = ControlBusMap.Find(TEXT("VoiceChat")))
+		{
+			if (USoundControlBus* ControlBusPtr = *ControlBusDblPtr)
+			{
+				SetVolumeForControlBus(ControlBusPtr, VoiceChatVolume);
+			}
+		}
+	}
+
+	if (UCommonInputSubsystem* InputSubsystem = UCommonInputSubsystem::Get(GetTypedOuter<ULocalPlayer>()))
+	{
+		InputSubsystem->SetGamepadInputType(ControllerPlatform);
+	}
+
+	if (bUseHeadphoneMode != bDesiredHeadphoneMode)
+	{
+		SetHeadphoneModeEnabled(bDesiredHeadphoneMode);
+	}
+	
+	if (DesiredUserChosenDeviceProfileSuffix != UserChosenDeviceProfileSuffix)
+	{
+		UserChosenDeviceProfileSuffix = DesiredUserChosenDeviceProfileSuffix;
+	}
+
+	if (FApp::CanEverRender())
+	{
+		ApplyDisplayGamma();
+		ApplySafeZoneScale();
+		SetMobileFPSMode(DesiredMobileFrameRateLimit);
+		UpdateGameModeDeviceProfileAndFps();
+	}
+
+	PerfStatSettingsChangedEvent.Broadcast();
+}
+
+int32 UOrionSettingsLocal::GetOverallScalabilityLevel() const
+{
+	int32 Result = Super::GetOverallScalabilityLevel();
+
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::MobileStyle)
+	{
+		Result = GetHighestLevelOfAnyScalabilityChannel();
+	}
+
+	return Result;
+}
+
+void UOrionSettingsLocal::SetOverallScalabilityLevel(int32 Value)
+{
+	TGuardValue Guard(bSettingOverallQualityGuard, true);
+
+	Value = FMath::Clamp(Value, 0, 3);
+
+	float CurrentMobileResolutionQuality = ScalabilityQuality.ResolutionQuality;
+
+	Super::SetOverallScalabilityLevel(Value);
+
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::MobileStyle)
+	{
+		// Restore the resolution quality, mobile decouples this from overall quality
+		ScalabilityQuality.ResolutionQuality = CurrentMobileResolutionQuality;
+
+		// Changing the overall quality can end up adjusting the frame rate on mobile since there are limits
+		const int32 ConstrainedFrameRateLimit = OrionSettingsHelpers::ConstrainFrameRateToBeCompatibleWithOverallQuality(DesiredMobileFrameRateLimit, Value);
+		if (ConstrainedFrameRateLimit != DesiredMobileFrameRateLimit)
+		{
+			SetDesiredMobileFrameRateLimit(ConstrainedFrameRateLimit);
+		}
+	}
 }
 
 void UOrionSettingsLocal::Initialize(ULocalPlayer* LP)
 {
 	OwningLocalPlayer = LP;
+
+	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
+	{
+		InputSystemUserSettings->ApplyLatencyTrackingStatSetting();
+	}
+}
+
+void UOrionSettingsLocal::OnExperienceLoaded()
+{
+	ReapplyThingsDueToPossibleDeviceProfileChange();
 }
 
 float UOrionSettingsLocal::GetFrameRateLimit_OnBattery() const
@@ -359,6 +678,15 @@ void UOrionSettingsLocal::SetFrameRateLimit_Always(float NewLimitFPS)
 {
 	SetFrameRateLimit(NewLimitFPS);
 	UpdateEffectiveFrameRateLimit();
+}
+
+float UOrionSettingsLocal::GetDynamicResolutionFrameRateTarget() const
+{
+	return DynamicResolutionFrameTarget;
+}
+
+void UOrionSettingsLocal::SetDynamicResolutionFrameRateTarget(float NewDynamicResolutionFPS)
+{
 }
 
 void UOrionSettingsLocal::UpdateEffectiveFrameRateLimit()
@@ -955,6 +1283,21 @@ void UOrionSettingsLocal::SetDesiredDLSSFGMode(EStreamlineDLSSGMode InDLSSFGMode
 	DesiredDLSSFGMode = InDLSSFGMode;
 }
 
+void UOrionSettingsLocal::SetMobileFPSMode(int32 NewLimitFPS)
+{
+	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
+	if (PlatformSettings->FramePacingMode == EGameFramePacingMode::MobileStyle)
+	{
+		if (MobileFrameRateLimit != NewLimitFPS)
+		{
+			MobileFrameRateLimit = NewLimitFPS;
+			UpdateGameModeDeviceProfileAndFps();
+		}
+
+		DesiredMobileFrameRateLimit = MobileFrameRateLimit;
+	}
+}
+
 float UOrionSettingsLocal::GetOverallVolume() const
 {
 	return OverallVolume;
@@ -1154,6 +1497,11 @@ void UOrionSettingsLocal::LoadUserControlBusMix()
 			}
 		}
 	}
+}
+
+void UOrionSettingsLocal::ApplySafeZoneScale()
+{
+	SSafeZone::SetGlobalSafeZoneScale(GetSafeZone());
 }
 
 void UOrionSettingsLocal::SetVolumeForControlBus(USoundControlBus* InSoundControlBus, float InVolume)

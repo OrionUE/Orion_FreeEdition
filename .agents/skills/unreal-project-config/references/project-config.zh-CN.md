@@ -11,6 +11,7 @@
 | `Config/DefaultGame.ini` | `Game` 配置域的项目默认值。常见 owner 是 `UDeveloperSettings`、`UObject config=Game`、`UGameUserSettings` 子类、GameFeature/AssetManager/Packaging 设置。 |
 | `Config/<Platform>/<Platform>Game.ini` | 某平台的 `Game` 配置覆盖。适合放 CommonInput platform settings、CommonUI platform traits、平台特定 `UPlatformSettings`。 |
 | `Config/<Platform>/<Platform>GameUserSettings.ini` | 某平台的用户设置默认值。当前框架用它给 `UOrionSettingsLocal` 写默认 fullscreen/window mode 等初始值，运行后用户保存值可能写到 Saved/config 或平台用户目录。 |
+| `Config/DefaultDeviceProfiles.ini` | DeviceProfile 默认树。当前框架用它维护移动端 iOS/Android profile、`Game.DeviceProfile.Mobile.*` 帧率/画质/分辨率限制、安全区和移动渲染 CVar。 |
 | `Config/DefaultCrypto.ini` | `Crypto` 配置域。由 CryptoKeys、UnrealPak/UAT 等读取，用于 Pak/IoStore 加密、Pak index/ini 加密和 Pak 签名。 |
 | `Config/DefaultEngine.ini` 与平台 `Engine.ini` | 引擎、音频插件、渲染、PSO、平台 CVar 等。只有任务涉及这些系统时再进入。 |
 | `Config/Custom/Steam/DefaultEngine.ini` | Steam Target 通过 `CustomConfig=Steam` 选择的 Engine 配置层。Steam OnlineSubsystem、NetDriver、PacketHandler、AppID 等 Steam 专用配置放这里。 |
@@ -26,6 +27,7 @@
 6. Steam 专用 `OnlineSubsystem`、Steam NetDriver、Steam Web API settings 和 AppID 发布配置默认读取 `Config/Custom/Steam/DefaultEngine.ini` 并继续读取 `unreal-online-steam-framework`，不要把真实 AppID 或 Web API key 写进可发布文档。
 7. `MoviePlayerSettings`、`StartupMovies`、`BinkMoviePlayerSettings`、`bSkipMovies`、`UFSMovies`、`NonUFSMovies` 和 movie staging 继续读取 `unreal-movie-media-framework`，不要把视频路径写成本机绝对路径。
 8. `CommonLoadingScreenSettings`、加载屏 Widget、进度条参数、加载屏 hold/heartbeat 或 `LoadingScreenControlBusMix` 继续读取 `unreal-loading-screen-framework`。
+9. Blueprint nativization 已不是当前框架默认路径；不要新增旧的 `BlueprintNativizationMethod` 配置来解决普通 cook 或编译问题。
 
 ## `DefaultGame.ini` Section 地图
 
@@ -39,12 +41,43 @@
 | `[/Script/GameplayAbilities.AbilitySystemGlobals]` | GameplayAbilities developer settings | AbilitySystemGlobals 子类、Global GameplayCueManager 类 | 影响 GAS 全局单例和 GameplayCue 管理器。改动前读取 GAS Skill。 |
 | `[/Script/OrionGame.OrionAssetManager]` | `UOrionAssetManager` / `UCoreAssetManager` | `CoreGameDataPath`、`DefaultPawnData` | 默认 GameData 和 PawnData fallback；Experience 没指定 PawnData 时会用默认值。 |
 | `[/Script/CommonLoadingScreen.CommonLoadingScreenSettings]` | `UCommonLoadingScreenSettings` | loading widget、ZOrder、编辑器 ticking、hold/heartbeat/progress bar 等 | 当前配置只用核心字段，但类支持更多 loading screen 行为。 |
-| `[/Script/UnrealEd.ProjectPackagingSettings]` | `UProjectPackagingSettings` | build configuration、target、Pak/IoStore、chunk、压缩、prereq、crash reporter、culture、cook、movies、ini denylist、always cook/stage | 打包任务继续读 packaging Skill；Crypto 密钥字段必须保留在 denylist 中。 |
+| `[/Script/UnrealEd.ProjectPackagingSettings]` | `UProjectPackagingSettings` | build configuration、target、Pak/IoStore、chunk、压缩、prereq、crash reporter、culture、cook、movies、ini denylist、always cook/stage | 打包任务继续读 packaging Skill；Crypto 密钥字段必须保留在 denylist 中；不要把旧 Blueprint nativization 配置当成当前默认项。 |
 | `[/Script/MoviePlayer.MoviePlayerSettings]` | `UMoviePlayerSettings` | `bWaitForMoviesToComplete`、`bMoviesAreSkippable`、`StartupMovies` | `StartupMovies` 相对 `Content/Movies`；Bink startup movie 通常不写 `.bk2` 扩展名。 |
 | `[/Script/BinkMediaPlayer.BinkMoviePlayerSettings]` | `UBinkMoviePlayerSettings` | Bink buffering、sound track、画面输出区域、像素格式等 | section 名以当前引擎生成结果为准；具体 `.bk2` 和 Bink 行为继续读 movie Skill。 |
 | `[/Script/CommonInput.CommonInputSettings]` | `UCommonInputSettings` | CommonInputData、ActionDomainTable、后台输入、EnhancedInput support、thrashing/auto detect 等 | 具体 controller data 在平台 `Game.ini`。 |
 | `[/Script/GameCore.CoreAudioSettings]` | `UCoreAudioSettings` | ControlBusMix、volume ControlBus、HDR/LDR Submix effect chain | 音频任务继续读 audio Skill。 |
 | `[/Script/GameFeatures.GameFeaturesSubsystemSettings]` | `UGameFeaturesSubsystemSettings` | `GameFeaturesManagerClassName` / project policy | 当前框架通过 Core GameFeatures policy 管理 GameFeature 行为。 |
+
+## `DefaultInput.ini` 与 GameInput
+
+输入配置由 EnhancedInput、CommonInputSystem、CommonInput 和平台输入 API 共同决定。当前框架重点 section：
+
+- `[/Script/Engine.InputSettings]`
+  - `DefaultPlayerInputClass=/Script/CommonInputSystem.InputSystemPlayerInput`
+  - `DefaultInputComponentClass=/Script/CommonInputSystem.InputSystemComponent`
+  - `bEnablePreferredInputAPIPreferences=True`
+  - `DefaultPreferredInputAPIList=XInput,WinDualShock`
+- `[/Script/EnhancedInput.EnhancedInputDeveloperSettings]`
+  - `bEnableUserSettings=True`
+  - `UserSettingsClass=/Script/CommonInputSystem.InputSystemUserSettings`
+  - `DefaultPlayerMappableKeyProfileClass=/Script/CommonInputSystem.InputSystemPlayerMappableKeyProfile`
+- `[/Script/GameInputBase.GameInputDeveloperSettings]`
+  - `bDoNotProcessDuplicateCapabilitiesForSingleUser=True`
+- `[GameInputPlatformSettings_<Platform> GameInputPlatformSettings]`
+  - Windows/WinGDK 常见配置只处理 gamepad/sensors，避免 raw/controller 与 gamepad 重复产生输入。
+
+`.uproject` 中的 `XInputDevice`、`GameInputWindows`、`PlayerInputDebugger` 等插件状态会影响这些配置是否有效。Gamepad Input API 玩家设置只改变 preferred input device list；底层 API 切换通常需要重启进程验证。
+
+## `DefaultEngine.ini` 与平台 `Engine.ini`
+
+公共 Engine 配置用于运行时系统能力，不要把 Steam 专用 OnlineSubsystem block 写回根配置。当前 5.8 相关配置重点包括：
+
+- `[GameInput] IncludeRedistFiles=True`：Windows 包带 GameInput redist；只有 UAT 使用 prereqs/bootstrapper 时才会执行安装。
+- 流送/加载 CVar：`s.AsyncLoadingThreadEnabled`、`s.AllowMultithreadedLoading`、`s.NoCommandletAsyncLoading`、`s.NoCommandletMultithreadedLoading`。
+- Replay / tick CVar：`demo.RecordHz`、`demo.RecordHzWhenNotRelevant`、`tick.CreateTaskSyncManager`。
+- `[/Script/Engine.TaskSyncManagerSettings]`：注册 TaskSync sync point，新增时要确认 tick group 和依赖关系。
+- `[/Script/Engine.UserInterfaceSettings] bAllowHighDPIInGameMode=True` 和平台 target settings 的 HighDPI 开关要保持一致。
+- Windows `Engine.ini` 可放 `r.DynamicRes.OperationMode=1` 和平台渲染/PSO CVar；动态分辨率设置页还需要 `Platform.Trait.SupportsCustomDynamicResolution`。
 
 ## `Config/Custom/Steam/DefaultEngine.ini` Steam 配置
 
@@ -70,6 +103,7 @@ Steam OnlineSubsystem 配置属于 Engine 配置域，但 Steam Target 使用 `C
   - `+ControllerData` 注册键鼠、Xbox、PlayStation 等 controller data asset。
 - `[/Script/CommonUI.CommonUISettings]`
   - `PlatformTraits` 声明平台能力，例如 windowed mode、退出应用、音频输入/输出设备切换、后台音频、键鼠、单用户、亮度调整、回放支持。
+  - Windows 还应声明延迟统计、延迟 marker 和自定义动态分辨率能力，例如 `Platform.Trait.SupportsLatencyStats`、`Platform.Trait.SupportsLatencyMarkers`、`Platform.Trait.SupportsCustomDynamicResolution`。
 
 移动平台通常使用：
 
@@ -92,22 +126,37 @@ Steam OnlineSubsystem 配置属于 Engine 配置域，但 Steam Target 使用 `C
 
 它们是初始默认值，不是运行后唯一真相。运行时玩家设置会通过 `UGameUserSettings`、`UOrionSettingsLocal`、本地 Saved config 或 save game 保存。
 
+## `DefaultDeviceProfiles.ini`
+
+DeviceProfile 是设备和平台渲染/性能默认值，不等同于玩家保存的设置。当前框架用它维护：
+
+- `Mobile`、`IOS`、`IOS_Low/Mid/High/Epic`、具体 iPhone/iPad profile。
+- `Android`、`Android_Low/Mid/High/Epic` 以及后续可扩展设备 profile。
+- `Game.DeviceProfile.Mobile.DefaultFrameRate`、`Game.DeviceProfile.Mobile.MaxFrameRate`、`Game.DeviceProfile.Mobile.OverallQualityLimits`。
+- `Game.DeviceProfile.Mobile.ResolutionQualityLimits`、`Game.DeviceProfile.Mobile.ResolutionQualityRecommendation`。
+- `r.MobileContentScaleFactor`、`sg.*`、`r.Streaming.PoolSize`、`r.Mobile.AntiAliasing`、safe zone 等移动平台 CVar。
+
+修改移动端帧率、默认画质或分辨率比例时，必须同时查 `UOrionSettingsLocal` 的移动帧率/质量 clamp 逻辑和 `GameSettingRegistry_Video.cpp` 的移动帧率 setting。不要只改设置页选项，否则 UI 可能允许设备 profile 禁止的组合。
+
 ## 玩家可调参数清单
 
 玩家设置入口主要来自 `Source/<GameModule>/Settings/User/GameSettingRegistry_*.cpp`，底层值来自 `UOrionSettingsLocal`、`UOrionSettingsShared`、`UGameUserSettings` 和相关子系统。
 
 ### 视频 / 图形 / 性能
 
-- 窗口模式、分辨率、垂直同步、整体帧率限制。
+- 窗口模式、显示器、分辨率、垂直同步、整体帧率限制。
 - 亮度 / gamma。
+- HDR 输出、HDR 校准、HDR paper white。
 - 字幕开关、字幕文字大小、颜色、描边、背景透明度。
 - 移动帧率限制、设备档质量后缀、自动画质 benchmark。
 - 画质预设、分辨率比例。
+- 动态分辨率目标帧率。
 - Global Illumination、阴影、抗锯齿、视距、纹理、特效、反射、后处理。
 - 抗锯齿方法。
 - RTX 开关。
 - DLSS Upscale、DLSS 模式、DLSS Frame Generation 和 FG 模式。
 - 电池、菜单、后台和常规帧率限制。
+- 安全区缩放。
 
 视频设置、渲染 CVar、DLSS、RTX、Scalability 和 PSO 的具体运行时接线由 `unreal-rendering-framework` 负责；本手册只负责配置层归属和 `Game`/`GameUserSettings` 默认值。
 
@@ -127,6 +176,7 @@ Steam OnlineSubsystem 配置属于 Engine 配置域，但 Steam Target 使用 `C
 - 手柄和鼠标的水平/垂直反转。
 - 手柄 Look sensitivity、ADS sensitivity。
 - 手柄 move/look stick dead zone。
+- Gamepad Input API 偏好，Legacy 使用 XInput/WinDualShock，Modern 使用 GameInput。
 - 鼠标 X/Y 灵敏度、瞄准灵敏度倍率。
 - 键鼠重绑定集合来自 EnhancedInput/CommonInputSystem 的 mappable config，不要手写贴图路径或按键显示。
 

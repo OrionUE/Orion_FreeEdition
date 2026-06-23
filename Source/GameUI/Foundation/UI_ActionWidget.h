@@ -10,7 +10,6 @@
 #include "UI_ActionWidget.generated.h"
 
 class UInputAction;
-class UEnhancedInputLocalPlayerSubsystem;
 
 /**
  * An action widget that will get the icon of key that is currently assigned to the common input action on this widget
@@ -24,9 +23,6 @@ public:
 	//~ Begin UCommonActionWidget interface
 	virtual FSlateBrush GetIcon() const override;
 	//~ End of UCommonActionWidget interface
-
-private:
-	UEnhancedInputLocalPlayerSubsystem* GetEnhancedInputSubsystem() const;
 
 public:
 	// The Enhanced Input Action that is associated with this Common Input action

@@ -15,32 +15,36 @@
 - `.uplugin`、`.uproject` 文件末尾不强制加换行；保持原文件约定。
 - 代码文件缩进全部使用 Tab，不使用空格缩进；包括 C++、`.Build.cs`、`.Target.cs`。
 - 对齐优先通过换行后的 Tab 层级表达，不使用连续空格做视觉对齐。
+- `namespace` 内部内容也必须进入一层 Tab 缩进；不要把 anonymous namespace 里的函数、变量或类型顶格写。
+- 代码文件末尾只保留一个文件结束换行；不要留下多行空白行。
 
 ## 文件头版权
 
-代码文件顶部版权优先从 `.agents/skills/orion-code-style/config/copyright-header.json` 读取。该配置用于保存用户自定义版权头模板和字段，例如作者、日期、官网或其他需要固定写入代码头部的信息。
+只有本次任务新创建的代码文件需要添加指定版权头。代码文件顶部版权优先从 `.agents/skills/orion-code-style/config/copyright-header.json` 读取。该配置用于保存用户自定义版权头模板和字段，例如作者、日期、官网或其他需要固定写入代码头部的信息。
 
 如果配置文件缺失，或配置里没有提供非空 `fields.CopyrightNotice`，则回退读取 `Config/DefaultGame.ini` 的 `CopyrightNotice=`。
 
 默认规则：
 
-- 新建代码文件必须使用配置渲染后的版权头。
+- 本次任务新建的代码文件必须使用配置渲染后的版权头。
+- 已存在的代码文件如果已经有任何版权头，必须保留原版权头；即使它和当前配置模板不一致，也不要为了匹配当前配置而替换或规范化。
+- 已存在的代码文件不要因为本次修改而补加或重写版权头；只有用户明确要求补版权头时才处理。
 - 只有配置模板显式包含 `Author`、`Date`、`Website` 等字段时，才添加这些行。
 - 不要在代码生成时临时手写 `Author` 行、日期行或网站行；先改配置，再按配置生成。
 - 如果用户要改版权文案、作者、日期或官网，修改 `copyright-header.json`，不要改检查脚本。
-- 已有文件如果使用旧版权头，除非本次任务要求格式化或重写文件头，不要为了规范单独改动。
+- 校验脚本只对 git 新增代码文件强制检查指定版权头；已有文件只检查 CRLF、Tab 缩进、空 TODO、文件末尾换行等通用格式。
 
 配置示例：
 
 ```json
 {
-  "template": "/*\n * {CopyrightNotice}\n * Author: {Author}\n * Date: {Date}\n * {Website}\n */",
-  "fields": {
-    "CopyrightNotice": "Copyright (c) 2026 Example Studio. All Rights Reserved.",
-    "Author": "Example Author",
-    "Date": "2026-06-12",
-    "Website": "https://example.com"
-  }
+	"template": "/*\n * {CopyrightNotice}\n * Author: {Author}\n * Date: {Date}\n * {Website}\n */",
+	"fields": {
+	"CopyrightNotice": "Copyright (c) 2026 Example Studio. All Rights Reserved.",
+	"Author": "Example Author",
+	"Date": "2026-06-12",
+	"Website": "https://example.com"
+	}
 }
 ```
 
@@ -102,7 +106,6 @@ case ECoreAbilityActivationGroup::Exclusive_Blocking:
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 
 #include "MyActor.generated.h"
@@ -135,9 +138,13 @@ class MODULE_API AMyActor : public AActor
 
 - `.cpp` 首个 include 是自身头文件。
 - include 分组之间空一行。
+- 不要把 `#include "CoreMinimal.h"` 当作模板默认项新增；优先包含实际使用类型所需的最小 UE 头或项目头。已有文件如果已经使用该头，不要仅因为本规则做无关批量删除；只有本次触及区域确实需要整理 include 时再按编译结果处理。
+- 版权头、`#pragma once`、普通 include 区、`.generated.h`、前向声明、类/结构体定义等顶层代码模块之间都要用空行隔开。
+- `.h` 中的 `.generated.h` 必须放在所有普通 `#include` 之后，并与普通 include 区之间空一行；`.generated.h` 后面不能再出现任何 `#include`。
+- `.generated.h` 和后续前向声明或反射声明之间也保留空行。
 - 项目头、UE 头、条件编译 include 参考同文件上下文排序。
 - `.cpp` 文件 include 后尽量包含 `#include UE_INLINE_GENERATED_CPP_BY_NAME(CPPNAME)`，名称使用当前 `.cpp` 文件基名。
-- 前向声明放在 include 之后、反射生成头之前或之后时，跟随周围文件现有风格；不要破坏 UHT 要求。
+- 前向声明放在 `.generated.h` 之后，且与后续 `UCLASS`、`USTRUCT`、`UENUM` 或普通类型定义之间保留空行；不要破坏 UHT 要求。
 
 ## 注释规范
 
@@ -264,6 +271,8 @@ StartupJob.SubstepProgressDelegate.BindLambda([This = this, AccumulatedJobValue,
 
 - `.Build.cs`、`.Target.cs` 也使用 Tab 缩进。
 - 依赖按功能分组，组间空一行；注释使用英文或中文均可，但注释符号后保留一个空格。
+- 项目模块的 `PublicDependencyModuleNames` 默认只能包含 `"Core"`、`"CoreUObject"`、`"Engine"`。不要为了 include 方便把其他模块加到 Public；除非用户本次明确授权，其他依赖一律放入 `PrivateDependencyModuleNames`。
+- 不要为了满足上述依赖位置规则删除、隐藏或重构已有 Public API、Blueprint API、Steam 类型接口或业务逻辑；只调整 `Build.cs` 依赖位置并以能编译通过为准，除非用户明确要求重构 API。
 - 每个依赖字符串独占一行，逗号保留：
 
 ```csharp
@@ -279,13 +288,14 @@ PrivateDependencyModuleNames.AddRange(new string[]
 ## 修改流程
 
 1. 修改代码前读取本规范。
-2. 如果要新建代码文件，先从 `orion-code-style` 的 `config/copyright-header.json` 渲染版权头；缺少版权字段时再读取 `Config/DefaultGame.ini`。
+2. 如果本次任务要新建代码文件，先从 `orion-code-style` 的 `config/copyright-header.json` 渲染版权头；缺少版权字段时再读取 `Config/DefaultGame.ini`。如果是修改已有代码文件，保留已有版权头。
 3. 生成或修改代码时使用 CRLF 和 Tab 缩进。
 4. 只格式化本次触及区域；避免无关重排。
 5. 修改后至少检查：
 	- 新增或触及代码文件不是 LF-only。
 	- 新增代码缩进没有以空格开头。
-	- 文件头版权符合当前 header config 或 `CopyrightNotice`。
+	- 新增代码文件版权头符合当前 header config 或 `CopyrightNotice`；已有代码文件版权头未被无关改动。
+	- Unreal 头文件中的 `.generated.h` 位于所有普通 include 之后，前后都有空行，后面没有其他 include。
 	- 没有空 TODO 或模板占位。
 
 批量校验当前 shell 中已收集的文件数组时，直接用 call operator 调用脚本：

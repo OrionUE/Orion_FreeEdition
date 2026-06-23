@@ -1,10 +1,10 @@
 {
 	"OutputFiles": [
-		"../../../../../../../../../Intermediate/Build/Win64/x64/OrionGame/Development/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"../../../../../../../../../Intermediate/Build/Win64/x64/OrionGameSteam/Development/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
 		"Module.OrionSteamShared.cpp.obj",
 		"OrionSteamSharedAudioSubsystem.cpp.obj",
 		"OrionSteamSharedModule.cpp.obj",
 		"OrionSteamSharedTypes.cpp.obj"
 	],
-	"ToolChainVersion": "14.44.35228"
+	"ToolChainVersion": "14.50.35734"
 }

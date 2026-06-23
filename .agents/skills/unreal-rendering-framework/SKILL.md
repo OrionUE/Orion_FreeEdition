@@ -1,6 +1,6 @@
 ---
 name: unreal-rendering-framework
-description: "Use when Codex works on Unreal Engine rendering in this framework: RendererSettings, DefaultScalability, platform Engine.ini rendering overrides, DLSS, NIS, Streamline, DLSS Frame Generation, Reflex, ray tracing, RTX, Lumen, Nanite, virtual shadow maps, anti-aliasing, screen percentage, device profiles, video settings registry, PSO precaching, bundled PSO caches, ShaderPipelineCache, CollectedPSOs, PipelineCaches, startup shader compilation UI, or render benchmark flow."
+description: "Use when Codex works on Unreal Engine rendering in this framework: RendererSettings, DefaultScalability, platform Engine.ini rendering overrides, DLSS, NIS, Streamline, DLSS Frame Generation, Reflex, ray tracing, RTX, Lumen, Nanite, virtual shadow maps, distance fields, FrontLayerTranslucency, RenderGraph ensures, anti-aliasing, screen percentage, device profiles, video settings registry, PSO precaching, bundled PSO caches, ShaderPipelineCache, CollectedPSOs, PipelineCaches, startup shader compilation UI, or render benchmark flow."
 ---
 
 # Unreal Rendering Framework

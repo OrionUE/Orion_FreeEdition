@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Blueprint Migration Repair"
+  short_description: "Repair migrated Unreal Blueprint breakage"
+  default_prompt: "Use $unreal-blueprint-migration-repair to triage migrated Blueprint and UMG compile failures."

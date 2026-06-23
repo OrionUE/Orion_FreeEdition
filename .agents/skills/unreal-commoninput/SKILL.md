@@ -1,6 +1,6 @@
 ---
 name: unreal-commoninput
-description: "Use when Codex works on Unreal Engine CommonInput or CommonUI input behavior, 通用UI输入, UI输入模式, 返回键, 点击动作, 输入设备切换, 手柄图标, 按键提示, key brush, gamepad glyphs: UCommonInputSubsystem, UCommonInputSettings, UCommonInputBaseControllerData, UCommonInputPlatformSettings, ECommonInputType, ECommonInputMode, action domains, input preprocessors, input method detection, gamepad type detection, EnhancedInput click/back actions, and UI input mode behavior."
+description: "Use when Codex works on Unreal Engine CommonInput or CommonUI input behavior, 通用UI输入, UI输入模式, 返回键, 点击动作, 输入设备切换, 手柄图标, 按键提示, keyboard/mouse action glyphs, CommonUI action icon fallback, dot/period default glyph regressions, key brush, gamepad glyphs: UCommonInputSubsystem, UCommonInputSettings, UCommonInputBaseControllerData, UCommonInputPlatformSettings, UCommonButtonBase, UCommonActionWidget, ECommonInputType, ECommonInputMode, action domains, input preprocessors, input method detection, gamepad type detection, EnhancedInput click/back actions, and UI input mode behavior."
 ---
 
 # Unreal CommonInput
@@ -18,11 +18,13 @@ description: "Use when Codex works on Unreal Engine CommonInput or CommonUI inpu
 3. 涉及默认点击/返回、EnhancedInput 支持、Action Domain 或输入防抖时，优先查 `UCommonInputSettings`。
 4. 涉及按键图标、手柄类型、平台差异时，优先查 `UCommonInputBaseControllerData` 和 `UCommonInputPlatformSettings`。
 5. 涉及 UI 输入优先级、输入模式、鼠标捕获时，优先查 `UCommonInputActionDomain` 和 `UCommonInputActionDomainTable`。
-6. 实现前确认模块依赖；实现后用构建、UHT 和 UI 输入实测验证。
+6. 涉及 CommonUI 按钮在键鼠模式下显示默认点状/句点图标时，先按 reference 的“CommonUI Action 图标回退”流程区分默认 click fallback 和显式 action，不要用 `bHideInputActionWithKeyboard` 一刀切。
+7. 实现前确认模块依赖；实现后用构建、UHT 和 UI 输入实测验证。
 
 ## 路由
 
 - 处理 `Content/UI/BP_CommonInputData`、`Content/UI/DT_UniversalActions`、`Content/UI/DA_GameUIInputActionDomainTable`、`W_OverallUILayout` 的 UI root/input 蓝图资产时，配合 `../unreal-ui-blueprint-framework/SKILL.md`。
+- 处理 CommonUI 按钮在键鼠模式下错误显示默认 Action 图标、点状/句点 glyph、默认 click fallback 或 `UCommonButtonBase`/`UCommonActionWidget` 图标回退策略时，读取 `references/commoninput.zh-CN.md` 的“CommonUI Action 图标回退”小节。
 - 查源码位置、模块依赖和符号声明时，优先配合 `../unreal-source-code-navigator/SKILL.md`。
 - 涉及 `FKey`、`EKeys`、key metadata、key category、paired axis、platform key conversion 或 key 分类时，配合 `../unreal-inputcore/SKILL.md`。
 - 只涉及 EnhancedInput action、mapping、trigger、modifier 时，使用 `../unreal-enhancedinput/SKILL.md`。

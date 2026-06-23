@@ -28,7 +28,7 @@ struct FCoreAbilitySet_GameplayAbility
 public:
 	// 授予的GA
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<UCoreGameplayAbility> Ability = nullptr;
+	TSubclassOf<UCoreGameplayAbility> Ability;
 
 	// 能力等级
 	UPROPERTY(EditDefaultsOnly)
@@ -50,7 +50,7 @@ struct FCoreAbilitySet_GameplayEffect
 public:
 	// 授予的GE
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<UGameplayEffect> GameplayEffect = nullptr;
+	TSubclassOf<UGameplayEffect> GameplayEffect;
 
 	// GE等级
 	UPROPERTY(EditDefaultsOnly)

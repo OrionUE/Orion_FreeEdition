@@ -10,15 +10,9 @@
 
 template <typename InterfaceType> class TScriptInterface;
 
-class FSubsystemCollectionBase;
 class IInputProcessor;
 class ILoadingProcessInterface;
 class ILoadingPercentInterface;
-class SWidget;
-class UObject;
-class UWorld;
-struct FFrame;
-struct FWorldContext;
 
 DECLARE_DELEGATE(FOnCompilingShadersFinished);
 DECLARE_DELEGATE(FOnLoadingScreenFinished);
@@ -129,6 +123,7 @@ private:
 
 	/** A reference to the loading screen widget we are displaying (if any) */
 	TSharedPtr<SWidget> LoadingScreenWidget;
+	TMap<TWeakObjectPtr<ULocalPlayer>, TSharedPtr<SWidget>> PlayersLoadingScreenWidgets;
 
 	TWeakInterfacePtr<ILoadingPercentInterface> LoadingPercentInterface;
 

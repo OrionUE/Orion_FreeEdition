@@ -1,6 +1,6 @@
 {
 	"OutputFiles": [
-		"../../../../../../../../../Intermediate/Build/Win64/x64/OrionGame/Development/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"../../../../../../../../../Intermediate/Build/Win64/x64/OrionGameSteam/Development/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
 		"Module.OrionSteamWebAPI.cpp.obj",
 		"WebApps.cpp.obj",
 		"WebAppsAsyncActions.cpp.obj",
@@ -52,5 +52,5 @@
 		"WebUserStats.cpp.obj",
 		"WebUserStatsAsyncActions.cpp.obj"
 	],
-	"ToolChainVersion": "14.44.35228"
+	"ToolChainVersion": "14.50.35734"
 }

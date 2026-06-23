@@ -13,11 +13,10 @@ description: "Use when working with Unreal Engine 5.8 official MCP in this proje
 
 ## 核心规则
 
-- 使用可见 Unreal Editor 窗口验证 MCP，不要隐藏窗口启动。
+- 涉及截图、Slate 点击、Viewport 视觉确认时使用可见 Unreal Editor 窗口；只做日志/PIE 启停验证时可以隐藏启动，但结束后必须关闭验证进程。
 - Endpoint 是 `http://127.0.0.1:18765/mcp`，请求头带 `Mcp-Protocol-Version: 2025-11-25`。
-- 当前 5.8 默认是 deferred 模式：初始 `tools/list` 只有 `list_toolsets`、`describe_toolset`、`load_toolset`。
-- 调用具体工具前必须先 `load_toolset`，然后直接调用完整工具名，例如 `ToolsetRegistry.EditorAppToolset.GetContentBrowserPath`。
-- 不要使用旧文档里的顶层 `call_tool` 聚合入口；当前实测没有这个顶层工具。
+- 从 `initialize` 响应头读取 `Mcp-Session-Id`；PowerShell 中必须取第一个元素并转成字符串，不要把 header 数组原样发回去。
+- 当前 5.8 MCP 有两种入口形态，先以实时 `tools/list` 为准：有 `load_toolset` 时先加载 toolset 再直接调用完整工具名；有 `call_tool` 时通过顶层聚合入口传 `toolset_name`、`tool_name`、`arguments`。
 - `list_toolsets` 返回 Markdown/text 列表，不是 JSON；`describe_toolset` 返回的 text 内容是 JSON schema 字符串。
 - `tools/call` 返回 SSE/event-stream；PowerShell 解析时逐条解析 `data:` 行，取最后一个带 `result` 的 JSON 对象。
 - `AssetTools.find_assets` 返回 package path，例如 `/Game/UI/Menu/W_FrontEnd`；传给 `BlueprintTools` 时要转成 object path，例如 `/Game/UI/Menu/W_FrontEnd.W_FrontEnd`。

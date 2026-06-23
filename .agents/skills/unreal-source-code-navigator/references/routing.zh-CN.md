@@ -45,7 +45,7 @@
 
 使用顺序：
 
-1. `../../ue-framework-skill-authoring/SKILL.md`：把框架作者口述的模块用法整理成可发布 Skill，并强制检查通用化、CRLF 和路由接入。
+1. `../../orion-framework-skill-authoring/SKILL.md`：把框架作者口述的模块用法整理成可发布 Skill，并强制检查通用化、CRLF 和路由接入。
 2. `../../unreal-framework-architecture/SKILL.md`：先确认该模块属于核心框架、UI、动画、Blueprint bridge、宿主 Game/Editor 模块、核心插件还是 GameFeature 插件。
 3. `../../unreal-gamecore-framework/SKILL.md`：如果模块以 GameCore 为底层、从 OrionGame 派生或需要说明 GameCore protected base layer 规则，先读取它。
 4. `unreal-source-code-navigator`：读取真实项目、插件和引擎源码，确认 API、模块依赖、生命周期和调用样例。
@@ -263,7 +263,7 @@
 
 使用顺序：
 
-1. `../../ue5-render-commands/SKILL.md`：查 UE 5.8 渲染 CVar/Console Command 全量表、功能分类表、前缀表、`RendererSettings`、`DefaultScalability`、平台命令、启动前生效和运行时可改标记。
+1. `../../unreal-render-commands/SKILL.md`：查 UE 5.8 渲染 CVar/Console Command 全量表、功能分类表、前缀表、`RendererSettings`、`DefaultScalability`、平台命令、启动前生效和运行时可改标记。
 2. `../../unreal-rendering-framework/SKILL.md`：处理 `OrionGameRenderManager`、`OrionGameRenderSubsystem`、`GameSettingRegistry_Video.cpp`、`UGameDLSSSubsystem`、`UOrionSettingsLocal`、DLSS/NIS/Streamline、RTX、Lumen、Nanite、VSM、`DefaultEngine.ini`、平台 `Engine.ini`、`DefaultScalability.ini`、PSO Precaching、bundled PSO 和启动 shader 编译流程。
 3. `unreal-source-code-navigator`：打开真实项目、DLSS 插件和 UE `ShaderPipelineCache`、`PipelineStateCache`、`PSOPrecache`、`RendererSettings` 源码，确认接口、CVar 和生命周期。
 4. `../../unreal-project-config/SKILL.md`：修改或解释渲染 ini、平台配置、DLSS settings、Scalability、用户可调默认值时使用。
@@ -415,8 +415,8 @@
 - 用户说“Teams、Team、队伍、阵营、敌友、友军、Friendly、Hostile、Neutral、GenericTeamAgent、IGenericTeamAgentInterface、FGenericTeamId、IOrionTeamAgentInterface、TeamSubsystem、TeamInfo、TeamDisplayAsset、TeamCreationComponent、AI Perception affiliation、GetTeamAttitudeTowards、按队伍出生、队伍出生点、友军伤害”：优先 `../../unreal-teams-framework/SKILL.md`。
 - 用户说“OrionEditor、CommonEditorExtension、编辑器扩展、Editor module、EditorEngine、PIE 委托、ToolMenus、Check Content、Common Maps、DataValidation、DefaultEditor.ini、DefaultEditorKeyBindings.ini、DefaultEditorPerProjectUserSettings.ini”：优先 `../../unreal-editor-extension-framework/SKILL.md`。
 - 用户说“音频、Audio、SoundClass、SoundConcurrency、Submix、ControlBus、ControlBusMix、AudioMixer、AudioModulation、MetaSound、ProjectAcoustics、SteamAudio、OrionVoiceChat、语音聊天、麦克风、音频输入、音频输出、空间音频、混响、遮挡、CoreAudioSettings、GameSettingRegistry_Audio、HDR Audio、LDR Audio”：优先 `../../unreal-audio-framework/SKILL.md`。
-- 用户说“渲染命令、render command、CVar、控制台变量、RendererSettings 可配置命令、DefaultScalability 命令、某个 r./sg./rhi./d3d12./vulkan. 前缀、命令是否运行时可改、命令支持平台”：优先 `../../ue5-render-commands/SKILL.md`。
-- 用户说“渲染、RendererSettings、DefaultScalability、WindowsEngine.ini、DLSS、NIS、Streamline、DLSS Frame Generation、Reflex、RTX、RayTracing、Lumen、Nanite、Virtual Shadow Map、VSM、TSR、AntiAliasing、ScreenPercentage、GameSettingRegistry_Video、OrionGameRenderManager、OrionGameRenderSubsystem、PSO、ShaderPipelineCache、PSOPrecache、CollectedPSOs、PipelineCaches、-logPSO、-clearPSODriverCache、启动编译着色器、FlowStep_TryCompileShaders”：优先 `../../unreal-rendering-framework/SKILL.md`；如果问题是命令/参数/表格查询，再读取 `../../ue5-render-commands/SKILL.md`；如果问题是加载屏生命周期、编译进度 UI 或 CommonLoadingScreen 卡住，再读取 `../../unreal-loading-screen-framework/SKILL.md`。
+- 用户说“渲染命令、render command、CVar、控制台变量、RendererSettings 可配置命令、DefaultScalability 命令、某个 r./sg./rhi./d3d12./vulkan. 前缀、命令是否运行时可改、命令支持平台”：优先 `../../unreal-render-commands/SKILL.md`。
+- 用户说“渲染、RendererSettings、DefaultScalability、WindowsEngine.ini、DLSS、NIS、Streamline、DLSS Frame Generation、Reflex、RTX、RayTracing、Lumen、Nanite、Virtual Shadow Map、VSM、TSR、AntiAliasing、ScreenPercentage、GameSettingRegistry_Video、OrionGameRenderManager、OrionGameRenderSubsystem、PSO、ShaderPipelineCache、PSOPrecache、CollectedPSOs、PipelineCaches、-logPSO、-clearPSODriverCache、启动编译着色器、FlowStep_TryCompileShaders”：优先 `../../unreal-rendering-framework/SKILL.md`；如果问题是命令/参数/表格查询，再读取 `../../unreal-render-commands/SKILL.md`；如果问题是加载屏生命周期、编译进度 UI 或 CommonLoadingScreen 卡住，再读取 `../../unreal-loading-screen-framework/SKILL.md`。
 - 用户说“OnlineSubsystem、Steam、OrionSteam、OrionOnlineSubsystemSteam、Steam SDK、SteamAppId、SteamDevAppId、Session、Lobby、Invite、好友邀请、Friends、Steam Sockets、Steam Web API、UOrionGameSessionComponent、BP_SessionComponent、CommonSession、GameUI/Online、Steam Dedicated Server”：优先 `../../unreal-online-steam-framework/SKILL.md`。
 - 用户说“DefaultGame.ini、WindowsGame.ini、LinuxGame.ini、MacGame.ini、AndroidGame.ini、IOSGame.ini、GameUserSettings.ini、DefaultCrypto.ini、CryptoKeys、ProjectPackagingSettings、AssetManagerSettings、CommonLoadingScreenSettings、CommonInput platform settings、CommonUI PlatformTraits、用户可以配置哪些参数、平台配置、打包配置、ini denylist、CoreGameDataPath、DefaultPawnData”：优先 `../../unreal-project-config/SKILL.md`。
 - 用户说“GameSettings、设置插件、设置系统、设置页、用户设置、玩家设置、选项菜单、UGameSetting、UGameSettingRegistry、UGameSettingScreen、UGameSettingVisualData、UOrionGameSettingRegistry、UOrionGameWorldSettingRegistry、UOrionSettingsLocal、UOrionSettingsShared、GameSettingRegistry_*.cpp、GameUserSettingsClassName、设置保存、设置应用、取消设置、设置 dirty、音频/视频/输入/语言设置怎么添加”：优先 `../../unreal-game-settings-framework/SKILL.md`；具体音频、渲染、输入、本地化底层行为再配合对应领域 Skill。
@@ -441,4 +441,4 @@
 - 用户说“ReplicationGraph、RepGraph、UReplicationGraph、ReplicationDriverClassName、NetDriver 复制驱动、Actor relevancy、tear-off、grid spatialization、cull distance、大量 actor 复制优化、graph node、connection node”：优先 `../../unreal-replicationgraph/SKILL.md`。
 - 用户说“UI 打开后角色不能动、鼠标捕获、UI/game 输入切换”：同时使用 CommonInput 和 EnhancedInput。
 - 用户说“写 UE 代码但没说具体领域”：先用源码导航 Skill，查到涉及领域后再路由。
-- 用户说“这个模块怎么用、根据我的说明生成 Skill、把框架能力沉淀成 Skill、发布给别人用”：优先 `../../ue-framework-skill-authoring/SKILL.md`，然后按源码证据接入相关领域路由。
+- 用户说“这个模块怎么用、根据我的说明生成 Skill、把框架能力沉淀成 Skill、发布给别人用”：优先 `../../orion-framework-skill-authoring/SKILL.md`，然后按源码证据接入相关领域路由。

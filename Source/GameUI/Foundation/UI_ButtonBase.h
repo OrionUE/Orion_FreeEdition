@@ -21,6 +21,7 @@ protected:
 
 	// UCommonButtonBase interface
 	virtual void UpdateInputActionWidget() override;
+	virtual void UpdateInputActionWidgetVisibility() override;
 	virtual void OnInputMethodChanged(ECommonInputType CurrentInputType) override;
 	// End of UCommonButtonBase interface
 
@@ -41,6 +42,8 @@ protected:
 	void UpdateButtonStyle();
 
 private:
+	bool ShouldHideInputActionWidgetForCurrentInput() const;
+
 	UPROPERTY(EditAnywhere, Category="Button", meta=(InlineEditConditionToggle))
 	bool bOverrideButtonText = true;
 

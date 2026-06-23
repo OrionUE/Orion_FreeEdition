@@ -26,6 +26,7 @@ description: "Use when Codex works on the reusable Unreal Engine player framewor
 - 查类声明、调用点、模块依赖和引擎生命周期时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 触碰 `ACorePlayerController`、`ACorePlayerState`、ASC、PawnData、PawnExtension、PawnControl 或核心只读边界时，配合 `../unreal-gamecore-framework/SKILL.md`。
 - 角色蓝图、PawnData、PawnClass、PawnExtension、PawnControl、HeroComponent、PlayerStart、PlayerSpawningManagerComponent 或 CharacterSpawnerManager 时，配合 `../unreal-character-pawn-framework/SKILL.md`。
+- PlayerController、PlayerCameraManager、LocalPlayer、view target、`BlueprintUpdateCamera`、`CalcCamera` 或玩家视角/FOV 排查时，配合 `../unreal-camera-fov-diagnostics/SKILL.md`。
 - 玩家存档、ArchivePlayer、PlayerAccount 加载/创建存档、世界存档中的玩家数据、自动保存或持久化字段归属时，配合 `../unreal-savegame-framework/SKILL.md`。
 - 玩家所属队伍、玩家账户决定分队、PlayerController/PlayerState 团队身份、队伍变更广播、按队伍选择出生点或 AI 敌友态度时，配合 `../unreal-teams-framework/SKILL.md`。
 - Experience 选择玩家账户类、等待 Experience Loaded、把玩家组件组合进玩法时，配合 `../unreal-gamemode-experience-framework/SKILL.md`。

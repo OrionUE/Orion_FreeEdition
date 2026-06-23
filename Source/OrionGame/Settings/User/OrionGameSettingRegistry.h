@@ -14,13 +14,13 @@ class UCoreLocalPlayer;
 #define GET_SHARED_SETTINGS_FUNCTION_PATH(FunctionOrPropertyName)							\
 	MakeShared<FGameSettingDataSourceDynamic>(TArray<FString>({								\
 		GET_FUNCTION_NAME_STRING_CHECKED(UOrionLocalPlayer, GetSharedSettings),				\
-		GET_FUNCTION_NAME_STRING_CHECKED(UOrionSettingsShared, FunctionOrPropertyName)			\
+		GET_FUNCTION_NAME_STRING_CHECKED(UOrionSettingsShared, FunctionOrPropertyName)		\
 	}))
 
 #define GET_LOCAL_SETTINGS_FUNCTION_PATH(FunctionOrPropertyName)							\
 	MakeShared<FGameSettingDataSourceDynamic>(TArray<FString>({								\
-		GET_FUNCTION_NAME_STRING_CHECKED(UOrionLocalPlayer, GetLocalSettings),					\
-		GET_FUNCTION_NAME_STRING_CHECKED(UOrionSettingsLocal, FunctionOrPropertyName)			\
+		GET_FUNCTION_NAME_STRING_CHECKED(UOrionLocalPlayer, GetLocalSettings),				\
+		GET_FUNCTION_NAME_STRING_CHECKED(UOrionSettingsLocal, FunctionOrPropertyName)		\
 	}))
 
 UCLASS()
@@ -52,6 +52,8 @@ protected:
 	
 	UGameSettingCollection* InitializeGamepadSettings(UCoreLocalPlayer* InLocalPlayer);
 
+	void AddDLCPage(UGameSettingCollection* Screen, UCoreLocalPlayer* InLocalPlayer);
+
 protected:
 	UPROPERTY()
 	TObjectPtr<UGameSettingCollection> GameSetting;
@@ -67,4 +69,6 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UGameSettingCollection> GamepadSettings;
+
+	FTSTicker::FDelegateHandle DLCTickHandle;
 };

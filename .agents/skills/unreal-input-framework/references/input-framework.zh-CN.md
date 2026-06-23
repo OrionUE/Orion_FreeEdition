@@ -16,6 +16,8 @@
 源码入口：
 
 - `Plugins/Common/CommonInputSystem/Source/CommonInputSystem`
+- `Plugins/Common/CommonInputSystem/Source/CommonInputSystem/Public/InputSystemPlayerInput.h`
+- `Plugins/Common/CommonInputSystem/Source/CommonInputSystem/Private/InputSystemPlayerInput.cpp`
 - `Source/GameCore/Public/Character/CorePawnData.h`
 - `Source/GameCore/Public/Character/CorePawnControlComponent.h`
 - `Source/GameCore/Public/GameFeatures/GameFeatureAction_AddInputContextMapping.h`
@@ -48,12 +50,15 @@
 
 默认配置要求：
 
-- `DefaultPlayerInputClass=/Script/EnhancedInput.EnhancedPlayerInput`
+- `DefaultPlayerInputClass=/Script/CommonInputSystem.InputSystemPlayerInput`
 - `DefaultInputComponentClass=/Script/CommonInputSystem.InputSystemComponent`
 - `bEnableUserSettings=True`
 - `UserSettingsClass=/Script/CommonInputSystem.InputSystemUserSettings`
 - `DefaultPlayerMappableKeyProfileClass=/Script/CommonInputSystem.InputSystemPlayerMappableKeyProfile`
+- `bEnablePreferredInputAPIPreferences=True`
+- `DefaultPreferredInputAPIList=XInput,WinDualShock`
 - `[/Script/CommonInput.CommonInputSettings]` 中启用 `bEnableEnhancedInputSupport=True`
+- Windows/WinGDK 的 `[GameInputPlatformSettings_<Platform> GameInputPlatformSettings]` 中按需启用 `bProcessGamepad=True`，并避免 raw/controller 重复处理。
 
 初始化链路：
 
@@ -83,11 +88,22 @@
 - `AddInputMappings` / `RemoveInputMappings` 当前是预留扩展点；本框架中 IMC 的实际添加主要来自 `DefaultInputMappings` 和 `GameFeatureAction_AddInputContextMapping`。
 - `RemoveBinds` 用 binding handle 清理绑定；新增动态绑定时必须保存 handle。
 
+`UInputSystemPlayerInput` 继承 `UEnhancedPlayerInput`：
+
+- 作为 `DefaultPlayerInputClass` 使用，负责在输入事件进入 EnhancedInput 后额外处理项目级延迟 marker。
+- 覆盖 `InputKey`，调用父类后再处理 `ProcessInputEventForLatencyMarker`。
+- 当延迟 flash indicator 开启且输入 key 是 `EKeys::LeftMouseButton` 时，会通过 `ILatencyMarkerModule` 发送 custom marker 7。
+- 监听 `UInputSystemUserSettings::OnLatencyFlashInidicatorSettingsChangedEvent`，根据设置启用或关闭各 latency marker module 的 flash indicator。
+- 该类会从 owning local player 取 `UEnhancedInputLocalPlayerSubsystem` 和 `UInputSystemUserSettings`；新增或修改构造/析构路径时必须保护 CDO、archetype、空 LocalPlayer 和空 subsystem。
+- PIE 停止或编辑器关闭 Play 时，LocalPlayer / EnhancedInput subsystem 可能已经先于 `UInputSystemPlayerInput` 析构失效；绑定设置委托时优先缓存 `TWeakObjectPtr<UInputSystemUserSettings>`，解绑和回调先使用弱引用，弱引用失效时安全返回，不要在析构路径无保护地重新 `GetOwningLocalPlayer()->GetSubsystem()`。
+
 `UInputSystemUserSettings` 继承 `UEnhancedInputUserSettings`：
 
 - 覆盖 `RegisterKeyMappingsToProfile`，读取每个 mappable mapping 的 `UInputSystemMappableKeySettings`。
 - 将 `GamepadKeyName`、`bEnabledInKeySetting` 和 metadata 保存到 `KeyMappingExtensions`。
 - 设置页用这些扩展数据把键鼠 mapping row 与对应手柄 mapping row 关联。
+- 管理延迟统计和延迟 flash indicator 设置。平台 trait `Platform.Trait.SupportsLatencyStats` 控制统计开关，`Platform.Trait.SupportsLatencyMarkers` 控制 flash marker。
+- `SetEnableLatencyTrackingStats` 应同步 `ILatencyMarkerModule::SetEnabled`，并在 `FSlateApplication` 未初始化或平台不支持时安全返回。
 
 `UInputSystemPlayerMappableKeyProfile` 继承 `UEnhancedPlayerMappableKeyProfile`：
 
@@ -255,14 +271,24 @@ Feature 激活时要验证：
 - 只把 `InputType == ECommonInputType::Gamepad` 的 controller data 加入硬件选项。
 - 当平台允许切换手柄类型时，显示 controller hardware 设置。
 - 绑定震动、反转、灵敏度和死区到 `UOrionSettingsShared` / `UOrionSettingsLocal`。
+- 绑定 `GamepadInputAPI_Option` 到 `UOrionSettingsShared`，让玩家在 Legacy `XInput,WinDualShock` 和 Modern `GameInput` 之间选择。
 
 `UOrionSettingsLocal::SetControllerPlatform` 会调用 `UCommonInputSubsystem::SetGamepadInputType`。因此手柄 UI 名称、glyph 和当前手柄类型必须与平台 `ControllerData` 的 `GamepadName` 对齐。
+
+`UOrionSettingsShared::SetGamepadInputAPIOption` 会调用 `FGenericPlatformMisc::SetPreferredInputDevices`。新增或排查该设置时：
+
+1. `.uproject` 需要启用 `XInputDevice` 和 `GameInputWindows` 等目标平台插件。
+2. `Config/DefaultInput.ini` 需要 `bEnablePreferredInputAPIPreferences=True`。
+3. Legacy 值使用 `XInput,WinDualShock`，Modern 值使用 `GameInput`。
+4. 设置项只在 Windows 且 preferred input API preferences 开启时显示；修改后通常需要重启才能完全切换底层输入 API。
+5. GameInput 平台 section 应避免 raw/controller/gamepad 重复处理同一设备，常见配置是只处理 gamepad 和 sensors。
 
 平台配置要点：
 
 - `[CommonInputPlatformSettings_<Platform> CommonInputPlatformSettings]` 设置默认输入类型、是否支持键鼠/触摸/手柄、默认手柄名、是否允许切换手柄类型和 `+ControllerData`。
 - `[/Script/CommonUI.CommonUISettings]` 的 `PlatformTraits` 可用于设置页 gating，例如是否支持键鼠。
 - `[/Script/CommonInput.CommonInputSettings]` 的 `InputData`、`ActionDomainTable`、`bAllowOutOfFocusDeviceInput`、`bEnableEnhancedInputSupport` 影响 CommonInput 行为。
+- `Platform.Trait.SupportsLatencyStats`、`Platform.Trait.SupportsLatencyMarkers` 和 `Platform.Trait.SupportsCustomDynamicResolution` 会影响输入延迟设置和视频设置页显示。
 
 ## Modifiers 与用户输入设置
 
@@ -361,10 +387,12 @@ UI 输入需求优先查 CommonInput：
 
 配置验证：
 
-- `DefaultInput.ini` 使用 EnhancedInput player input 和 `UInputSystemComponent`。
+- `DefaultInput.ini` 使用 `CommonInputSystem.InputSystemPlayerInput` 和 `UInputSystemComponent`。
 - EnhancedInput user settings class 和 player mappable profile class 指向 `CommonInputSystem` 扩展类。
+- preferred input API 开启时，`DefaultPreferredInputAPIList`、`.uproject` 的 XInput/GameInput 插件和 `GameInputPlatformSettings_*` 一致。
 - `DefaultGame.ini` CommonInput settings 启用 EnhancedInput 支持并设置 InputData/ActionDomainTable。
 - 目标平台 `Game.ini` 声明支持的输入类型、默认手柄名和 controller data。
+- 目标平台 traits 包含实际支持的 latency stats / latency markers；不支持的平台不显示对应设置。
 
 ## 常见失败
 
@@ -396,6 +424,27 @@ Ability 不响应输入：
 - 检查平台 `ControllerData` 是否包含该 `GamepadName`。
 - 检查 controller data 是否有目标 `FKey` brush。
 - 检查设置页使用的是 key brush，不是 `FKey::GetDisplayName`。
+
+延迟 marker 或 flash indicator 不生效：
+
+- 检查 `DefaultPlayerInputClass` 是否仍是 `UInputSystemPlayerInput`。
+- 检查平台是否声明 `Platform.Trait.SupportsLatencyMarkers`。
+- 检查 `UInputSystemUserSettings` 是否已经加载，并且 flash indicator 设置已广播。
+- 检查 `ILatencyMarkerModule` modular feature 是否存在；没有模块实现时设置开关只会保存状态。
+
+打包版 travel 或 GC 时 `UInputSystemPlayerInput` 析构崩溃：
+
+- 典型栈：`UPlayerInput::GetOwningLocalPlayer()` -> `UInputSystemPlayerInput::GetInputSystemUserSettings()` -> `UInputSystemPlayerInput` 析构或 `FObjectPurge::DestroyObjects()`。
+- 原因：地图切换、退出 Play 或打包版 `LoadMap` 触发 GC 时，`LocalPlayer`、`EnhancedInputLocalPlayerSubsystem` 或 outer 链可能已经处于销毁/不可访问状态；析构和解绑路径不能再重新调用 `GetOwningLocalPlayer()->GetSubsystem()`。
+- 修复：绑定时缓存 `TWeakObjectPtr<UInputSystemUserSettings>`；`BeginDestroy` 中只通过缓存弱引用解绑并清空状态；析构函数只做本地成员 reset，不调用依赖 UObject outer/subsystem 的函数；回调中弱引用失效时直接关闭 flash flag 并返回。
+- 验证：打包版从前台或房间流程 travel 到玩法/lobby 地图，日志不再出现 `GetInputSystemUserSettings`、`GetOwningLocalPlayer`、`FObjectPurge::DestroyObjects` 相关 Fatal。
+
+GameInput 切换无效或手柄重复输入：
+
+- 检查 `bEnablePreferredInputAPIPreferences=True` 和 `DefaultPreferredInputAPIList`。
+- 检查 `UOrionSettingsShared::SetGamepadInputAPIOption` 是否调用了 `FGenericPlatformMisc::SetPreferredInputDevices`。
+- 检查 `GameInputPlatformSettings_Windows` / `WinGDK` 是否同时处理 raw input、controller 和 gamepad，重复处理会导致一台设备产生多路输入。
+- 修改底层 API 后重启进程验证，不要只靠热切设置页。
 
 GameFeature 反激活后输入仍存在：
 

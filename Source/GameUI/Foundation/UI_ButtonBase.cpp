@@ -6,6 +6,9 @@
 #include "UI_ButtonBase.h"
 
 #include "CommonActionWidget.h"
+#include "CommonInputSubsystem.h"
+#include "CommonUITypes.h"
+#include "Common/UI_ActionIconVisibility.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(UI_ButtonBase)
 
@@ -19,10 +22,38 @@ void UUI_ButtonBase::NativePreConstruct()
 
 void UUI_ButtonBase::UpdateInputActionWidget()
 {
+	const UCommonInputSubsystem* CommonInputSubsystem = GetInputSubsystem();
+	const bool bHasExplicitInputAction = TriggeringEnhancedInputAction || !TriggeringInputAction.IsNull() || !TriggeredInputAction.IsNull();
+	const bool bShouldSuppressKeyboardFallback = CommonInputSubsystem
+		&& CommonInputSubsystem->GetCurrentInputType() == ECommonInputType::MouseAndKeyboard
+		&& !bHasExplicitInputAction
+		&& bShouldUseFallbackDefaultInputAction;
+	const bool bOriginalShouldUseFallbackDefaultInputAction = bShouldUseFallbackDefaultInputAction;
+
+	if (bShouldSuppressKeyboardFallback)
+	{
+		bShouldUseFallbackDefaultInputAction = false;
+	}
+
 	Super::UpdateInputActionWidget();
+
+	if (bShouldSuppressKeyboardFallback)
+	{
+		bShouldUseFallbackDefaultInputAction = bOriginalShouldUseFallbackDefaultInputAction;
+	}
 
 	UpdateButtonStyle();
 	RefreshButtonText();
+}
+
+void UUI_ButtonBase::UpdateInputActionWidgetVisibility()
+{
+	Super::UpdateInputActionWidgetVisibility();
+
+	if (InputActionWidget && ShouldHideInputActionWidgetForCurrentInput())
+	{
+		InputActionWidget->SetHidden(true);
+	}
 }
 
 void UUI_ButtonBase::OnInputMethodChanged(ECommonInputType CurrentInputType)
@@ -62,4 +93,30 @@ void UUI_ButtonBase::RefreshButtonText()
 	}
 	
 	UpdateButtonText(ButtonText);
+}
+
+bool UUI_ButtonBase::ShouldHideInputActionWidgetForCurrentInput() const
+{
+	const UCommonInputSubsystem* CommonInputSubsystem = GetInputSubsystem();
+	if (!CommonInputSubsystem || CommonInputSubsystem->GetCurrentInputType() != ECommonInputType::MouseAndKeyboard)
+	{
+		return false;
+	}
+
+	if (CommonUI::IsEnhancedInputSupportEnabled() && TriggeringEnhancedInputAction)
+	{
+		return GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, TriggeringEnhancedInputAction, GetOwningLocalPlayer());
+	}
+
+	if (!TriggeringInputAction.IsNull())
+	{
+		return GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, TriggeringInputAction);
+	}
+
+	if (!TriggeredInputAction.IsNull())
+	{
+		return GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, TriggeredInputAction);
+	}
+
+	return false;
 }

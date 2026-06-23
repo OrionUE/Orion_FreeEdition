@@ -59,14 +59,16 @@
 ```ini
 SpatializationPlugin=Steam Audio Spatialization
 SourceDataOverridePlugin=Project Acoustics
-ReverbPlugin=Project Acoustics
+ReverbPlugin=Steam Audio Reverb
 ```
 
 含义：
 
 - SteamAudio 负责声源空间化和 HRTF。
 - ProjectAcoustics 通过 SourceDataOverride 修改源数据、遮挡、湿声参数和 MetaSound 参数。
-- ProjectAcoustics Reverb 负责当前平台混响路径。
+- SteamAudio Reverb 负责当前平台混响路径。
+
+如果要启用 `ReverbPlugin=Project Acoustics`，必须同时确认同平台 `SpatializationPlugin` 也是 `Project Acoustics`，否则 ProjectAcousticsSpatializer 会在运行时报告 `Project Acoustics requires both Reverb and Spatialization plugins`。在保留 SteamAudio Spatialization 的组合下，ProjectAcoustics 应优先只承担 `SourceDataOverridePlugin`。
 
 其他平台可能使用 `Steam Audio Reverb` 和 `Steam Audio Occlusion`。改配置前必须确认插件 factory 的 `SupportsPlatform`、`.uplugin` 的 `PlatformAllowList`、第三方库是否随平台打包。
 
@@ -291,7 +293,17 @@ MetaSound 通过 `IAudioParameterInterfaceRegistry` 注册参数接口，`USound
 
 现象：混响过重、遮挡重复、平台行为不一致。
 
-修复：先读目标平台 section。Windows 默认让 SteamAudio 负责 Spatialization，让 ProjectAcoustics 负责 SourceDataOverride/Reverb；只有明确需要时才调整组合。
+修复：先读目标平台 section。保留 SteamAudio Spatialization 时，优先让 ProjectAcoustics 只负责 SourceDataOverride，让 SteamAudio 负责 Reverb；只有明确改成 ProjectAcoustics Spatialization 时，才把 ProjectAcoustics Reverb 一起启用。
+
+### ProjectAcoustics 要求 Reverb 和 Spatialization 同时启用
+
+现象：Play 或运行时日志出现 `LogProjectAcousticsSpatializer: Error: Project Acoustics requires both Reverb and Spatialization plugins`。
+
+原因：同一个平台 section 配置了 `ReverbPlugin=Project Acoustics`，但 `SpatializationPlugin` 仍是其他插件。ProjectAcousticsSpatializer 的 Reverb 路径要求 ProjectAcoustics Spatialization 同时启用。
+
+修复：二选一处理。若要保持 SteamAudio HRTF / Spatialization，就改为 `ReverbPlugin=Steam Audio Reverb`，并保留 `SourceDataOverridePlugin=Project Acoustics`。若要使用 ProjectAcoustics Reverb，就把 `SpatializationPlugin` 也改为 `Project Acoustics`，并验证平台插件和第三方库都能加载。
+
+验证：重新 Play 或运行目标构建，统计日志中 `Project Acoustics requires both Reverb and Spatialization plugins` 必须为 0，同时确认音频插件加载和声源空间化行为符合预期。
 
 ### 在 GameCore 写项目特定音频逻辑
 

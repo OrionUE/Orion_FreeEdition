@@ -29,7 +29,7 @@ namespace FrontendTags
 
 namespace FrontendLoadingFlow
 {
-	constexpr float StartupLoadingFlowFallbackDelaySeconds = 5.0f;
+	constexpr float StartupLoadingFlowLogoWarningDelaySeconds = 5.0f;
 	constexpr float LobbyBackgroundFlowFallbackDelaySeconds = 10.0f;
 }
 
@@ -170,25 +170,16 @@ void UOrionFrontendStateComponent::FlowStep_WaitForUserInitialization(FControlFl
 	const FControlFlowNodePtr PendingSubFlow = SubFlow;
 	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateWeakLambda(this, [this, PendingSubFlow](float DeltaTime)
 	{
-		QUICK_SCOPE_CYCLE_COUNTER(STAT_UOrionFrontendStateComponent_WaitForUserInitializationFallback);
+		QUICK_SCOPE_CYCLE_COUNTER(STAT_UOrionFrontendStateComponent_WaitForUserInitializationLogoWarning);
 
 		if ((CurrentSubFlow == PendingSubFlow) && bWaitingForLoadingScreenLogoFinished)
 		{
-			bWaitingForLoadingScreenLogoFinished = false;
-
-			if (LoadingScreenManager.IsValid())
-			{
-				LoadingScreenManager->SetIsLoadingWidgetCompleted(true);
-			}
-
-			UE_LOG(LogOrion, Warning, TEXT("Startup loading screen did not report logo completion within %.1f seconds. Continuing frontend flow."),
-				FrontendLoadingFlow::StartupLoadingFlowFallbackDelaySeconds);
-
-			ContinueFlow();
+			UE_LOG(LogOrion, Warning, TEXT("Startup loading screen did not report logo completion within %.1f seconds. Keeping frontend flow blocked until OnLoadingScreenLogoFinished is called."),
+				FrontendLoadingFlow::StartupLoadingFlowLogoWarningDelaySeconds);
 		}
 
 		return false;
-	}), FrontendLoadingFlow::StartupLoadingFlowFallbackDelaySeconds);
+	}), FrontendLoadingFlow::StartupLoadingFlowLogoWarningDelaySeconds);
 }
 
 void UOrionFrontendStateComponent::FlowStep_TryCompileShaders(FControlFlowNodeRef SubFlow)
@@ -298,10 +289,19 @@ void UOrionFrontendStateComponent::FlowStep_TryShowPressStartScreen(FControlFlow
 	// Add the Press Start screen, move to the next flow when it deactivates.
 	if (UPrimaryGameLayout* RootLayout = UPrimaryGameLayout::GetPrimaryGameLayoutForPrimaryPlayer(this))
 	{
-		RootLayout->PushWidgetToLayerStack<UCommonActivatableWidget>(FrontendTags::TAG_UI_LAYER_MENU, PressStartScreenClass);
+		if (UCommonActivatableWidget* PressStartScreen = RootLayout->PushWidgetToLayerStack<UCommonActivatableWidget>(FrontendTags::TAG_UI_LAYER_MENU, PressStartScreenClass))
+		{
+			CompleteStartupLoadingScreen();
+		}
+		else
+		{
+			UE_LOG(LogOrion, Warning, TEXT("Failed to push Press Start screen. Keeping startup loading screen visible."));
+		}
 	}
-
-	LoadingScreenManager->SetIsStartUpLoadingScreen(false);
+	else
+	{
+		UE_LOG(LogOrion, Warning, TEXT("Primary game layout is unavailable. Keeping startup loading screen visible."));
+	}
 }
 
 void UOrionFrontendStateComponent::FlowStep_TryJoinRequestedSession(FControlFlowNodeRef SubFlow)
@@ -364,6 +364,7 @@ void UOrionFrontendStateComponent::FlowStep_TryShowMainScreen(FControlFlowNodeRe
 			switch (State)
 			{
 			case EAsyncWidgetLayerState::AfterPush:
+				CompleteStartupLoadingScreen();
 				SubFlow->ContinueFlow();
 				return;
 			case EAsyncWidgetLayerState::Canceled:
@@ -389,13 +390,33 @@ void UOrionFrontendStateComponent::ContinueFlow()
 	}
 }
 
-void UOrionFrontendStateComponent::OnLoadingScreenLogoFinished()
+void UOrionFrontendStateComponent::CompleteStartupLoadingScreen()
 {
-	if (LoadingScreenManager.IsValid())
+	if (!LoadingScreenManager.IsValid() || !LoadingScreenManager->GetIsStartUpLoadingScreen() || bStartupLoadingScreenCompletionQueued)
 	{
-		LoadingScreenManager->SetIsLoadingWidgetCompleted(true);
+		return;
 	}
 
+	bStartupLoadingScreenCompletionQueued = true;
+
+	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateWeakLambda(this, [this](float DeltaTime)
+	{
+		QUICK_SCOPE_CYCLE_COUNTER(STAT_UOrionFrontendStateComponent_CompleteStartupLoadingScreen);
+
+		bStartupLoadingScreenCompletionQueued = false;
+
+		if (LoadingScreenManager.IsValid() && LoadingScreenManager->GetIsStartUpLoadingScreen())
+		{
+			LoadingScreenManager->SetIsLoadingWidgetCompleted(true);
+			LoadingScreenManager->SetIsStartUpLoadingScreen(false);
+		}
+
+		return false;
+	}));
+}
+
+void UOrionFrontendStateComponent::OnLoadingScreenLogoFinished()
+{
 	if (!bWaitingForLoadingScreenLogoFinished)
 	{
 		return;

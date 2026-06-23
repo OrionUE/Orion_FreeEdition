@@ -1,4 +1,0 @@
-interface:
-  display_name: "UE5 Render Commands"
-  short_description: "UE 5.8 render command tables"
-  default_prompt: "Use $ue5-render-commands to find Unreal Engine rendering console commands and the right CSV table."

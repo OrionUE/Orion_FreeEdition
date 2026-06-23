@@ -76,6 +76,29 @@
 			"Enabled": true
 		},
 		{
+			"Name": "XInputDevice",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"WinGDK"
+			]
+		},
+		{
+			"Name": "GameInputWindows",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"WinGDK"
+			]
+		},
+		{
+			"Name": "PlayerInputDebugger",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
 			"Name": "WinDualShock",
 			"Description": "Windows平台下PS4 DualShock控制器的输入设备插件",
 			"Enabled": true,
@@ -240,6 +263,10 @@
 			"Description": "在线服务交互和在线子系统实现",
 			"Enabled": true
 		},
+		{
+			"Name": "PlatformDLC",
+			"Enabled": true
+		},
 
 
 		{
@@ -366,6 +393,10 @@
 		},
 
 
+		{
+			"Name": "AIAssistant",
+			"Enabled": true
+		},
 		{
 			"Name": "FileSandbox",
 			"Enabled": true,

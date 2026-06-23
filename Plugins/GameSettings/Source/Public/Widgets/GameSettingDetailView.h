@@ -11,13 +11,12 @@ class UCommonTextBlock;
 class UGameSetting;
 class UGameSettingDetailExtension;
 class UGameSettingVisualData;
-class UObject;
 class UVerticalBox;
+
 struct FStreamableHandle;
 
-/**
- * 
- */
+enum class EGameSettingChangeReason : uint8;
+
 UCLASS(Abstract)
 class GAMESETTINGS_API UGameSettingDetailView : public UUserWidget
 {
@@ -49,7 +48,10 @@ protected:
 
 	TSharedPtr<FStreamableHandle> StreamingHandle;
 
-private:	// Bound Widgets
+private:
+	void HandleCurrentSettingChanged(UGameSetting* InSetting, EGameSettingChangeReason Reason);
+
+private:
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidgetOptional, BlueprintProtected = true, AllowPrivateAccess = true))
 	TObjectPtr<UCommonTextBlock> Text_SettingName;
 

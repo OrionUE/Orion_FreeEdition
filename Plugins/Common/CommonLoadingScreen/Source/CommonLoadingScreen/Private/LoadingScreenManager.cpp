@@ -390,20 +390,46 @@ void ULoadingScreenManager::ShowLoadingScreen()
 
 		// Create the loading screen widget
 		TSubclassOf<UUserWidget> LoadingScreenWidgetClass = Settings->LoadingScreenWidget.TryLoadClass<UUserWidget>();
-		if (UUserWidget* UserWidget = UUserWidget::CreateWidgetInstance(*LocalGameInstance, LoadingScreenWidgetClass, NAME_None))
+		UGameViewportClient* GameViewportClient = LocalGameInstance->GetGameViewportClient();
+
+		if (GameViewportClient->bEnablePlayersSplitRT)
 		{
-			LoadingScreenWidget = UserWidget->TakeWidget();
-			LoadingPercentInterface = Cast<ILoadingPercentInterface>(UserWidget);
+			for (ULocalPlayer* Player : LocalGameInstance->GetLocalPlayers())
+			{
+				if (Player)
+				{
+					TSharedPtr<SWidget> PlayerWidget;
+
+					if (UUserWidget* UserWidget = UUserWidget::CreateWidgetInstance(*LocalGameInstance, LoadingScreenWidgetClass, NAME_None))
+					{
+						PlayerWidget = UserWidget->TakeWidget();
+					}
+					else
+					{
+						UE_LOG(LogLoadingScreen, Error, TEXT("Failed to load the loading screen widget %s, falling back to placeholder."), *Settings->LoadingScreenWidget.ToString());
+						PlayerWidget = SNew(SThrobber);
+					}
+
+					PlayersLoadingScreenWidgets.Add(Player, PlayerWidget);
+					GameViewportClient->AddViewportWidgetForPlayer(Player, PlayerWidget.ToSharedRef(), Settings->LoadingScreenZOrder);
+				}
+			}
 		}
 		else
 		{
-			UE_LOG(LogLoadingScreen, Error, TEXT("Failed to load the loading screen widget %s, falling back to placeholder."), *Settings->LoadingScreenWidget.ToString());
-			LoadingScreenWidget = SNew(SThrobber);
-		}
+			if (UUserWidget* UserWidget = UUserWidget::CreateWidgetInstance(*LocalGameInstance, LoadingScreenWidgetClass, NAME_None))
+			{
+				LoadingScreenWidget = UserWidget->TakeWidget();
+			}
+			else
+			{
+				UE_LOG(LogLoadingScreen, Error, TEXT("Failed to load the loading screen widget %s, falling back to placeholder."), *Settings->LoadingScreenWidget.ToString());
+				LoadingScreenWidget = SNew(SThrobber);
+			}
 
-		// Add to the viewport at a high ZOrder to make sure it is on top of most things
-		UGameViewportClient* GameViewportClient = LocalGameInstance->GetGameViewportClient();
-		GameViewportClient->AddViewportWidgetContent(LoadingScreenWidget.ToSharedRef(), Settings->LoadingScreenZOrder);
+			// Add to the viewport at a high ZOrder to make sure it is on top of most things
+			GameViewportClient->AddViewportWidgetContent(LoadingScreenWidget.ToSharedRef(), Settings->LoadingScreenZOrder);
+		}
 
 		ChangePerformanceSettings(/*bEnableLoadingScreen=*/ true);
 

@@ -5,8 +5,10 @@
 
 #include "GameSettingValueDiscrete_Resolution.h"
 
+#include "Framework/Application/SlateApplication.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Settings/User/Performance/GameDLSSSubsystem.h"
+#include "SteamScreenshots/SteamScreenshots.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(GameSettingValueDiscrete_Resolution)
 
@@ -16,18 +18,60 @@ UGameSettingValueDiscrete_Resolution::UGameSettingValueDiscrete_Resolution()
 {
 }
 
+void UGameSettingValueDiscrete_Resolution::BeginDestroy()
+{
+	Super::BeginDestroy();
+
+	if (FSlateApplication::IsInitialized())
+	{
+		TSharedPtr<class GenericApplication> PlatformApplication = FSlateApplication::Get().GetPlatformApplication();
+		if (PlatformApplication.IsValid())
+		{
+			GenericApplication::FOnDisplayMetricsChanged& DisplayMetricsChangedEvent = PlatformApplication->OnDisplayMetricsChanged();
+			DisplayMetricsChangedEvent.Remove(DisplayMetricsChangedHandle);
+		}
+	}
+}
+
 void UGameSettingValueDiscrete_Resolution::OnInitialized()
 {
 	Super::OnInitialized();
+
+	TSharedPtr<class GenericApplication> PlatformApplication = FSlateApplication::Get().GetPlatformApplication();
+	if (ensure(PlatformApplication.IsValid()))
+	{
+		FDisplayMetrics::RebuildDisplayMetrics(CurrentDisplayMetrics);
+
+		GenericApplication::FOnDisplayMetricsChanged& DisplayMetricsChangedEvent = PlatformApplication->OnDisplayMetricsChanged();
+		if (!DisplayMetricsChangedEvent.IsBoundToObject(this))
+		{
+			DisplayMetricsChangedHandle = DisplayMetricsChangedEvent.AddUObject(this, &UGameSettingValueDiscrete_Resolution::OnDisplayMetricsChanged);
+		}
+	}
 
 	InitializeResolutions();
 }
 
 void UGameSettingValueDiscrete_Resolution::OnDependencyChanged()
 {
+	InitializeResolutions();
 	const FIntPoint CurrentResolution = GEngine->GetGameUserSettings()->GetScreenResolution();
-	SelectAppropriateResolutions();
 	SetDiscreteOptionByIndex(FindClosestResolutionIndex(CurrentResolution));
+}
+
+void UGameSettingValueDiscrete_Resolution::OnDisplayMetricsChanged(const FDisplayMetrics& NewDisplayMetrics)
+{
+	CurrentDisplayMetrics = NewDisplayMetrics;
+	InitializeResolutions();
+}
+
+const FMonitorInfo* UGameSettingValueDiscrete_Resolution::GetCurrentMonitor() const
+{
+	const UGameUserSettings* const UserSettings = GEngine->GetGameUserSettings();
+	const FString DisplayID = UserSettings->GetDisplayID();
+	const int32 DisplayIndex = UserSettings->GetDisplayIndex();
+	const int32 MonitorIndex = CurrentDisplayMetrics.GetClosestMonitorFromIDAndIndex(DisplayID, DisplayIndex);
+	return CurrentDisplayMetrics.MonitorInfo.IsValidIndex(MonitorIndex) ? &CurrentDisplayMetrics.MonitorInfo[MonitorIndex] : nullptr;
 }
 
 void UGameSettingValueDiscrete_Resolution::StoreInitial()
@@ -48,29 +92,26 @@ void UGameSettingValueDiscrete_Resolution::RestoreToInitial()
 
 void UGameSettingValueDiscrete_Resolution::SetDiscreteOptionByIndex(int32 Index)
 {
+	TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> Resolutions = GetSelectedResolutionList();
 	if (Resolutions.IsValidIndex(Index) && Resolutions[Index].IsValid())
 	{
 		GEngine->GetGameUserSettings()->SetScreenResolution(Resolutions[Index]->GetResolution());
 		NotifySettingChanged(EGameSettingChangeReason::Change);
-
-		if (UGameDLSSSubsystem* DLSSSubsystem = GetOwningLocalPlayer()->GetGameInstance()->GetSubsystem<UGameDLSSSubsystem>())
-		{
-			DLSSSubsystem->RefreshDLSSUpscaleState();
-		}
 	}
 }
 
 int32 UGameSettingValueDiscrete_Resolution::GetDiscreteOptionIndex() const
 {
-	const UGameUserSettings* UserSettings = CastChecked<const UGameUserSettings>(GEngine->GetGameUserSettings());
+	const UGameUserSettings* const UserSettings = GEngine->GetGameUserSettings();
 
-	return FindIndexOfDisplayResolutionForceValid(UserSettings->GetScreenResolution());
+	return FindIndexOfDisplayResolution(UserSettings->GetScreenResolution());
 }
 
 TArray<FText> UGameSettingValueDiscrete_Resolution::GetDiscreteOptions() const
 {
 	TArray<FText> ReturnResolutionTexts;
 
+	TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> Resolutions = GetSelectedResolutionList();
 	for (int32 i = 0; i < Resolutions.Num(); ++i)
 	{
 		ReturnResolutionTexts.Add(Resolutions[i]->GetDisplayText());
@@ -81,24 +122,35 @@ TArray<FText> UGameSettingValueDiscrete_Resolution::GetDiscreteOptions() const
 
 void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 {
-	Resolutions.Empty();
 	ResolutionsFullscreen.Empty();
 	ResolutionsWindowed.Empty();
 	ResolutionsWindowedFullscreen.Empty();
 
-	FDisplayMetrics InitialDisplayMetrics;
-	FSlateApplication::Get().GetInitialDisplayMetrics(InitialDisplayMetrics);
-
+	const FMonitorInfo* const Monitor = GetCurrentMonitor();
 	FScreenResolutionArray ResArray;
-	RHIGetAvailableResolutions(ResArray, true);
+	if (Monitor)
+	{
+		RHIGetAvailableResolutionsForDisplay(ResArray, true, Monitor->NativeHandle);
+	}
+	else
+	{
+		RHIGetAvailableResolutions(ResArray, true);
+	}
 
 	// Determine available windowed modes
 	{
 		TArray<FIntPoint> WindowedResolutions;
 		const FIntPoint MinResolution(1280, 720);
-		// Use the primary display resolution minus 1 to exclude the primary display resolution from the list.
-		// This is so you don't make a window so large that part of the game is off-screen, and you are unable to change resolutions back.
-		const FIntPoint MaxResolution(InitialDisplayMetrics.PrimaryDisplayWidth - 1, InitialDisplayMetrics.PrimaryDisplayHeight - 1);
+		FIntPoint MaxResolution;
+		if (Monitor)
+		{
+			MaxResolution = FIntPoint(Monitor->WorkArea.Right - Monitor->WorkArea.Left, Monitor->WorkArea.Bottom - Monitor->WorkArea.Top);
+		}
+		else
+		{
+			MaxResolution = FIntPoint(CurrentDisplayMetrics.PrimaryDisplayWorkAreaRect.Right - CurrentDisplayMetrics.PrimaryDisplayWorkAreaRect.Left,
+				CurrentDisplayMetrics.PrimaryDisplayWorkAreaRect.Bottom - CurrentDisplayMetrics.PrimaryDisplayWorkAreaRect.Top);
+		}
 		// Excluding 4:3 and below
 		const float MinAspectRatio = 16 / 10.f;
 
@@ -109,7 +161,10 @@ void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 
 		if (GSystemResolution.WindowMode == EWindowMode::Windowed)
 		{
-			WindowedResolutions.AddUnique(FIntPoint(GSystemResolution.ResX, GSystemResolution.ResY));
+			if (GSystemResolution.ResX <= MaxResolution.X && GSystemResolution.ResY <= MaxResolution.Y)
+			{
+				WindowedResolutions.AddUnique(FIntPoint(GSystemResolution.ResX, GSystemResolution.ResY));
+			}
 			WindowedResolutions.Sort([](const FIntPoint& A, const FIntPoint& B) { return A.X != B.X ? A.X < B.X : A.Y < B.Y; });
 		}
 
@@ -117,7 +172,7 @@ void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 		// This might happen if we are running on a non-standard device.
 		if (WindowedResolutions.Num() == 0)
 		{
-			WindowedResolutions.Add(FIntPoint(InitialDisplayMetrics.PrimaryDisplayWidth, InitialDisplayMetrics.PrimaryDisplayHeight));
+			WindowedResolutions.Add(FIntPoint(CurrentDisplayMetrics.PrimaryDisplayWidth, CurrentDisplayMetrics.PrimaryDisplayHeight));
 		}
 
 		ResolutionsWindowed.Empty(WindowedResolutions.Num());
@@ -133,42 +188,33 @@ void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 
 	// Determine available windowed full-screen modes
 	{
-		FScreenResolutionRHI* RHIInitialResolution = ResArray.FindByPredicate([InitialDisplayMetrics](const FScreenResolutionRHI& ScreenRes) {
-			return ScreenRes.Width == InitialDisplayMetrics.PrimaryDisplayWidth && ScreenRes.Height == InitialDisplayMetrics.PrimaryDisplayHeight;
-		});
-
 		TSharedRef<FScreenResolutionEntry> Entry = MakeShared<FScreenResolutionEntry>();
-		if (RHIInitialResolution)
+		if (Monitor)
 		{
-			// If this is in the official list use that
-			Entry->Width = RHIInitialResolution->Width;
-			Entry->Height = RHIInitialResolution->Height;
-			Entry->RefreshRate = RHIInitialResolution->RefreshRate;
+			const FPlatformRect& DisplayRect = Monitor->DisplayRect;
+			Entry->Width = DisplayRect.Right - DisplayRect.Left;
+			Entry->Height = DisplayRect.Bottom - DisplayRect.Top;
 		}
 		else
 		{
-			// Custom resolution the RHI doesn't expect
-			Entry->Width = InitialDisplayMetrics.PrimaryDisplayWidth;
-			Entry->Height = InitialDisplayMetrics.PrimaryDisplayHeight;
-
-			// TODO: Unsure how to calculate refresh rate
-			Entry->RefreshRate = FPlatformMisc::GetMaxRefreshRate();
+			Entry->Width = CurrentDisplayMetrics.PrimaryDisplayWidth;
+			Entry->Height = CurrentDisplayMetrics.PrimaryDisplayHeight;
 		}
 
 		ResolutionsWindowedFullscreen.Add(Entry);
 	}
 
 	// Determine available full-screen modes
-	if (ResArray.Num() > 0)
+	if (!ResArray.IsEmpty())
 	{
-		// try more strict first than more relaxed, we want at least one resolution to remain
+		// try more strict first then more relaxed, we want at least one resolution to remain
 		for (int32 FilterThreshold = 0; FilterThreshold < 3; ++FilterThreshold)
 		{
 			for (int32 ModeIndex = 0; ModeIndex < ResArray.Num(); ModeIndex++)
 			{
 				const FScreenResolutionRHI& ScreenRes = ResArray[ModeIndex];
 
-				// first try with struct test, then relaxed test
+				// first try with struct test, than relaxed test
 				if (ShouldAllowFullScreenResolution(ScreenRes, FilterThreshold))
 				{
 					TSharedRef<FScreenResolutionEntry> Entry = MakeShared<FScreenResolutionEntry>();
@@ -180,7 +226,7 @@ void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 				}
 			}
 
-			if (ResolutionsFullscreen.Num())
+			if (!ResolutionsFullscreen.IsEmpty())
 			{
 				// we found some resolutions, otherwise we try with more relaxed tests
 				break;
@@ -188,7 +234,10 @@ void UGameSettingValueDiscrete_Resolution::InitializeResolutions()
 		}
 	}
 
-	SelectAppropriateResolutions();
+	if (ResolutionsFullscreen.IsEmpty())
+	{
+		ResolutionsFullscreen.Emplace(ResolutionsWindowedFullscreen[0]);
+	}
 }
 
 bool UGameSettingValueDiscrete_Resolution::ShouldAllowFullScreenResolution(const FScreenResolutionRHI& SrcScreenRes, int32 FilterThreshold) const
@@ -207,28 +256,33 @@ bool UGameSettingValueDiscrete_Resolution::ShouldAllowFullScreenResolution(const
 		ScreenRes.Height = SrcScreenRes.Width;
 	}
 
-	// Filter out resolutions that don't match the native aspect ratio of the primary monitor
+	// Filter out resolutions that don't match the native aspect ratio of the current monitor
 	// TODO: Other games allow the user to choose which monitor the games goes fullscreen on. This would allow
 	// this filtering to be correct when the users monitors are of different types! ATM, the game can change
 	// which monitor it uses based on other factors (max window overlap etc.) so we could end up choosing a
 	// resolution which the target monitor doesn't support.
 	if (FilterThreshold < 1)
 	{
-		FDisplayMetrics DisplayMetrics;
-		FSlateApplication::Get().GetInitialDisplayMetrics(DisplayMetrics);
-
 		// Default display aspect to required aspect in case this platform can't provide the information. Forces acceptance of this resolution.
 		float DisplayAspect = AspectRatio;
 
 		// Some platforms might not be able to detect the native resolution of the display device, so don't filter in that case
-		for (int32 MonitorIndex = 0; MonitorIndex < DisplayMetrics.MonitorInfo.Num(); ++MonitorIndex)
+		const FMonitorInfo* const Monitor = GetCurrentMonitor();
+		if (Monitor)
 		{
-			FMonitorInfo& MonitorInfo = DisplayMetrics.MonitorInfo[MonitorIndex];
-
-			if (MonitorInfo.bIsPrimary)
+			DisplayAspect = (float)Monitor->NativeWidth / (float)Monitor->NativeHeight;
+		}
+		else
+		{
+			for (int32 MonitorIndex = 0; MonitorIndex < CurrentDisplayMetrics.MonitorInfo.Num(); ++MonitorIndex)
 			{
-				DisplayAspect = (float)MonitorInfo.NativeWidth / (float)MonitorInfo.NativeHeight;
-				break;
+				const FMonitorInfo& MonitorInfo = CurrentDisplayMetrics.MonitorInfo[MonitorIndex];
+
+				if (MonitorInfo.bIsPrimary)
+				{
+					DisplayAspect = (float)MonitorInfo.NativeWidth / (float)MonitorInfo.NativeHeight;
+					break;
+				}
 			}
 		}
 
@@ -331,35 +385,9 @@ void UGameSettingValueDiscrete_Resolution::GetStandardWindowResolutions(const FI
 	}
 }
 
-void UGameSettingValueDiscrete_Resolution::SelectAppropriateResolutions()
-{
-	EWindowMode::Type const WindowMode = GEngine->GetGameUserSettings()->GetFullscreenMode();
-	if (LastWindowMode != WindowMode)
-	{
-		LastWindowMode = WindowMode;
-
-		Resolutions.Empty();
-		switch (WindowMode)
-		{
-		case EWindowMode::Windowed:
-			Resolutions.Append(ResolutionsWindowed);
-			break;
-		case EWindowMode::WindowedFullscreen:
-			Resolutions.Append(ResolutionsWindowedFullscreen);
-			break;
-		case EWindowMode::Fullscreen:
-			Resolutions.Append(ResolutionsFullscreen);
-			break;
-		default:
-			break;
-		}
-
-		NotifyEditConditionsChanged();
-	}
-}
-
 int32 UGameSettingValueDiscrete_Resolution::FindIndexOfDisplayResolution(const FIntPoint& InPoint) const
 {
+	TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> Resolutions = GetSelectedResolutionList();
 	for (int32 i = 0, Num = Resolutions.Num(); i < Num; ++i)
 	{
 		if (Resolutions[i]->GetResolution() == InPoint)
@@ -368,22 +396,17 @@ int32 UGameSettingValueDiscrete_Resolution::FindIndexOfDisplayResolution(const F
 		}
 	}
 
-	return INDEX_NONE;
-}
-
-int32 UGameSettingValueDiscrete_Resolution::FindIndexOfDisplayResolutionForceValid(const FIntPoint& InPoint) const
-{
-	int32 Result = FindIndexOfDisplayResolution(InPoint);
-	if (Result == INDEX_NONE && Resolutions.Num() > 0)
+	if (!Resolutions.IsEmpty())
 	{
-		Result = Resolutions.Num() - 1;
+		return Resolutions.Num() - 1;
 	}
 
-	return Result;
+	return INDEX_NONE;
 }
 
 int32 UGameSettingValueDiscrete_Resolution::FindClosestResolutionIndex(const FIntPoint& Resolution) const
 {
+	TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> Resolutions = GetSelectedResolutionList();
 	int32 Index = 0;
 	int32 LastDiff = Resolution.SizeSquared();
 
@@ -448,6 +471,29 @@ FText UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry::GetDisplayTe
 	Args.Add(TEXT("RefreshRate"), RefreshRate);
 
 	return FText::Format(LOCTEXT("AspectRatio", "{X} x {Y}"), Args);
+}
+
+TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> UGameSettingValueDiscrete_Resolution::GetSelectedResolutionList() const
+{
+	TArrayView<const TSharedPtr<UGameSettingValueDiscrete_Resolution::FScreenResolutionEntry>> Result;
+
+	EWindowMode::Type const WindowMode = GEngine->GetGameUserSettings()->GetFullscreenMode();
+	switch (WindowMode)
+	{
+	case EWindowMode::Windowed:
+		Result = MakeArrayView(ResolutionsWindowed);
+		break;
+	case EWindowMode::WindowedFullscreen:
+		Result = MakeArrayView(ResolutionsWindowedFullscreen);
+		break;
+	case EWindowMode::Fullscreen:
+		Result = MakeArrayView(ResolutionsFullscreen);
+		break;
+	default: 
+		break;
+	}
+
+	return Result;
 }
 
 #undef LOCTEXT_NAMESPACE

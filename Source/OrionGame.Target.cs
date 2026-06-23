@@ -16,7 +16,6 @@ public class OrionGameTarget : TargetRules
 	public OrionGameTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		bOverrideBuildEnvironment = true;
 
 		ExtraModuleNames.AddRange(new string[]
 		{
@@ -26,10 +25,30 @@ public class OrionGameTarget : TargetRules
 			"OrionGame"
 		});
 
-		OrionGameTarget.ApplySharedGameTargetSettings(this);
+		ApplySharedGameTargetSettings(this);
 	}
 
 	private static bool bHasWarnedAboutShared = false;
+
+	internal static bool IsSteamTarget(TargetRules Target)
+	{
+		return Target.Name.EndsWith("Steam", StringComparison.OrdinalIgnoreCase);
+	}
+
+	internal static void ApplyTargetSettings(TargetRules Target)
+	{
+		Target.bOverrideBuildEnvironment = true;
+
+		if (IsSteamTarget(Target))
+		{
+			Target.CustomConfig = "Steam";
+			Target.GlobalDefinitions.Add("WITH_STEAM=1");
+		}
+		else
+		{
+			Target.GlobalDefinitions.Add("WITH_STEAM=0");
+		}
+	}
 
 	internal static void ApplySharedGameTargetSettings(TargetRules Target)
 	{
@@ -38,12 +57,7 @@ public class OrionGameTarget : TargetRules
 		Target.DefaultBuildSettings = BuildSettingsVersion.V7;
 		Target.IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 
-		if (!Target.Name.EndsWith("Steam", StringComparison.OrdinalIgnoreCase)
-			&& !Target.GlobalDefinitions.Contains("WITH_STEAM=0")
-			&& !Target.GlobalDefinitions.Contains("WITH_STEAM=1"))
-		{
-			Target.GlobalDefinitions.Add("WITH_STEAM=0");
-		}
+		ApplyTargetSettings(Target);
 
 		bool bIsTest = Target.Configuration == UnrealTargetConfiguration.Test;
 		bool bIsShipping = Target.Configuration == UnrealTargetConfiguration.Shipping;
@@ -167,10 +181,13 @@ public class OrionGameTarget : TargetRules
 					try
 					{
 						JsonObject RawObject;
-						if (!AllPluginRootJsonObjectsByName.TryGetValue(PluginFile.GetFileNameWithoutExtension(), out RawObject))
+						lock (AllPluginRootJsonObjectsByName)
 						{
-							RawObject = JsonObject.Read(PluginFile);
-							AllPluginRootJsonObjectsByName.Add(PluginFile.GetFileNameWithoutExtension(), RawObject);
+							if (!AllPluginRootJsonObjectsByName.TryGetValue(PluginFile.GetFileNameWithoutExtension(), out RawObject))
+							{
+								RawObject = JsonObject.Read(PluginFile);
+								AllPluginRootJsonObjectsByName.Add(PluginFile.GetFileNameWithoutExtension(), RawObject);
+							}
 						}
 
 						// Validate that all GameFeaturePlugins are disabled by default

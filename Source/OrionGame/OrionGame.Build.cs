@@ -69,6 +69,7 @@ public class OrionGame : ModuleRules
 			// UI
 			"UMG",
 			"Slate",
+			"SlateCore",
 			"CommonUI",
 			"GameSubtitles",
 			
@@ -87,10 +88,21 @@ public class OrionGame : ModuleRules
 			"OnlineSubsystem",
 			"OnlineSubsystemUtils",
 			"OrionSteamSDKAPI",
+			"OrionSteamShared",
 			
 			// Utils
 			"ControlFlows",
 		});
+
+		if (Target.Type == TargetType.Editor)
+		{
+			PublicDefinitions.Add("ORION_WITH_PLATFORM_DLC=0");
+		}
+		else
+		{
+			PrivateDependencyModuleNames.Add("PlatformDLC");
+			PublicDefinitions.Add("ORION_WITH_PLATFORM_DLC=1");
+		}
 
 		// Generate compile errors if using DrawDebug functions in test/shipping builds.
 		PublicDefinitions.Add("SHIPPING_DRAW_DEBUG_ERROR=1");

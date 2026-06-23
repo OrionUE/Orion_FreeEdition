@@ -5,12 +5,14 @@
 
 #pragma once
 
+#include "SceneUtils.h"
 #include "StreamlineLibraryDLSSG.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Performance/GameDLSSSettings.h"
 
 #include "OrionSettingsLocal.generated.h"
 
+class ULocalPlayer;
 class USoundControlBusMix;
 class USoundControlBus;
 
@@ -46,9 +48,33 @@ public:
 
 	static UOrionSettingsLocal* Get();
 
-	void OnExperienceLoaded();
+	virtual void BeginDestroy() override;
 
+	//~UGameUserSettings interface
+	virtual void SetToDefaults() override;
+	virtual void LoadSettings(bool bForceReload) override;
+	virtual void ConfirmVideoMode() override;
+	virtual float GetEffectiveFrameRateLimit() override;
+	virtual void ResetToCurrentSettings() override;
+	virtual void ApplyNonResolutionSettings() override;
+	virtual int32 GetOverallScalabilityLevel() const override;
+	virtual void SetOverallScalabilityLevel(int32 Value) override;
+	//~End of UGameUserSettings interface
+	
 	virtual void Initialize(ULocalPlayer* LP);
+
+	void OnExperienceLoaded();
+	
+	////////////////////////////////////////////////////////
+	// Performance stats
+public:
+	/** Fired when the display state for a performance stat has changed, or the settings are applied */
+	DECLARE_EVENT(ULyraSettingsLocal, FPerfStatSettingsChanged);
+	FPerfStatSettingsChanged& OnPerfStatDisplayStateChanged() { return PerfStatSettingsChangedEvent; }
+
+private:
+	// Event for display stat widget containers to bind to
+	FPerfStatSettingsChanged PerfStatSettingsChangedEvent;
 
 	////////////////////////////////////////////////////////
 	// Graphics
@@ -72,7 +98,12 @@ public:
 	float GetFrameRateLimit_Always() const;
 	UFUNCTION()
 	void SetFrameRateLimit_Always(float NewLimitFPS);
-	
+
+	UFUNCTION()
+	float GetDynamicResolutionFrameRateTarget() const;
+	UFUNCTION()
+	void SetDynamicResolutionFrameRateTarget(float NewDynamicResolutionFPS);
+
 protected:
 	void UpdateEffectiveFrameRateLimit();
 
@@ -186,7 +217,7 @@ private:
 	void ApplyDisplayGamma();
 	
 	UPROPERTY(Config)
-	float DisplayGamma = 2.2;
+	float DisplayGamma = 2.2f;
 
 	////////////////////////////////////////////////////////
 	// Graphics - ResolutionScale
@@ -271,6 +302,13 @@ protected:
 
 	UPROPERTY(Transient)
 	EStreamlineDLSSGMode DesiredDLSSFGMode;
+	
+	//////////////////////////////////////////////////////////////////
+	// Display - Mobile quality settings
+private:
+	void SetMobileFPSMode(int32 NewLimitFPS);
+
+	bool bSettingOverallQualityGuard = false;
 
 	////////////////////////////////////////////////////////
 	// Audio - Volume
@@ -421,6 +459,22 @@ private:
 	bool bShouldAutoRecordReplays = false;
 
 	////////////////////////////////////////////////////////
+	// Safezone
+public:
+	UFUNCTION()
+	bool IsSafeZoneSet() const { return SafeZoneScale != -1; }
+	UFUNCTION()
+	float GetSafeZone() const { return SafeZoneScale >= 0 ? SafeZoneScale : 0; }
+	UFUNCTION()
+	void SetSafeZone(float Value) { SafeZoneScale = Value; ApplySafeZoneScale(); }
+
+	void ApplySafeZoneScale();
+
+private:
+	UPROPERTY(Config)
+	float SafeZoneScale = -1;
+
+	////////////////////////////////////////////////////////
 	// Keybindings
 public:
 	UFUNCTION()
@@ -443,4 +497,7 @@ private:
 
 protected:
 	TWeakObjectPtr<ULocalPlayer> OwningLocalPlayer;
+	
+private:
+	FDelegateHandle OnApplicationActivationStateChangedHandle;
 };

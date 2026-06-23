@@ -310,7 +310,8 @@ GA 内部一对一状态可以用 AbilityTask、ASC delegate 或直接调用；�
 3. 实现 `GetScriptStruct`。
 4. 实现 `NetSerialize`。
 5. 设置 `TStructOpsTypeTraits` 的 net serializer。
-6. 确认 cue parameters 和 GE spec 能拿到自定义字段。
+6. UE 5.8 相关源码中 Iris forwarding serializer 注册可能不再需要外层 `UE_WITH_IRIS` 宏保护；改动 `CoreGameplayEffectContext` 时以当前引擎头文件和注册宏为准，不要复制旧版本条件编译。
+7. 确认 cue parameters 和 GE spec 能拿到自定义字段。
 
 ## TargetData
 

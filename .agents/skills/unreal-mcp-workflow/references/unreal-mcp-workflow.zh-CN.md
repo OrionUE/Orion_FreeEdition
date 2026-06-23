@@ -6,7 +6,7 @@
 
 - 验证 Editor 内置 HTTP MCP server。
 - 连接 `http://127.0.0.1:18765/mcp` 并处理 session/SSE。
-- 使用 deferred tool loading：`list_toolsets`、`describe_toolset`、`load_toolset`。
+- 使用 deferred/聚合调用入口：`list_toolsets`、`describe_toolset`、`load_toolset` 或顶层 `call_tool`。
 - 调用官方 `AssetTools`、`ObjectTools`、`BlueprintTools`、`UMGToolSet`、`SlateInspectorToolset`、`ToolsetRegistry.EditorAppToolset`。
 - 判断 `AICallable`、Python `@tool_call`、MCP Tool Library 和项目自定义 Toolset 的边界。
 
@@ -15,13 +15,11 @@
 - `.uproject` 的 `EngineAssociation` 是 `5.8`。
 - `.codex/config.toml` 指向 `http://127.0.0.1:18765/mcp`。
 - 当前实测端口由 UnrealEditor 监听，JSON-RPC session 成功。
-- 当前初始 `tools/list` 只返回：
-  - `list_toolsets`
-  - `describe_toolset`
-  - `load_toolset`
-- 这说明当前配置启用了 `ModelContextProtocol.DeferredToolLoading=true`。
-
-不要再使用旧 backport Skill 里的顶层 `call_tool` 聚合入口。5.8 当前流程是先 `load_toolset`，再直接 `tools/call` 完整工具名。
+- 当前 5.8 MCP 存在两种实测入口形态，先以实时 `tools/list` 为准，不要固定假设：
+  - `list_toolsets` / `describe_toolset` / `load_toolset`：先加载 toolset，再直接 `tools/call` 完整工具名。
+  - `list_toolsets` / `describe_toolset` / `call_tool`：不需要 `load_toolset`，通过顶层 `call_tool` 传 `toolset_name`、`tool_name`、`arguments` 调用工具。
+- 2026-06-20 在当前已打开的 Editor 中，初始 `tools/list` 返回 `list_toolsets`、`describe_toolset`、`call_tool`；直接调用 `load_toolset` 会报 `Unknown tool: load_toolset`。
+- 同次实测中，`describe_toolset` 参数名是 `toolset_name`，不是 `toolset`。
 
 ## 官方调用链
 
@@ -84,10 +82,10 @@ Mcp-Session-Id: <initialize 返回值>
 3. `notifications/initialized`
 4. `tools/list`
 5. `tools/call` -> `list_toolsets`
-6. `tools/call` -> `describe_toolset`
-7. `tools/call` -> `load_toolset`
-8. 再次 `tools/list` 确认工具已经注册。
-9. `tools/call` 直接调用完整工具名。
+6. `tools/call` -> `describe_toolset`，参数使用 `toolset_name`
+7. 按 `tools/list` 选择调用入口：
+   - 有 `load_toolset`：先 `load_toolset`，再次 `tools/list` 确认工具已经注册，再 `tools/call` 直接调用完整工具名。
+   - 有 `call_tool`：直接调用顶层 `call_tool`，传入 `toolset_name`、`tool_name`、`arguments`。
 
 示例：
 
@@ -103,6 +101,28 @@ Mcp-Session-Id: <initialize 返回值>
 }
 ```
 
+聚合入口示例：
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 10,
+  "method": "tools/call",
+  "params": {
+    "name": "call_tool",
+    "arguments": {
+      "toolset_name": "editor_toolset.toolsets.asset.AssetTools",
+      "tool_name": "find_assets",
+      "arguments": {
+        "folder_path": "/Game/UI/Menu",
+        "name": "W_FrontEnd",
+        "recursive": false
+      }
+    }
+  }
+}
+```
+
 ## PowerShell 注意事项
 
 SSE 响应可能包含多条 `data:`，不要把所有 `data:` payload 拼成一个 JSON。逐条解析，取最后一个带 `result` 的对象。
@@ -114,15 +134,19 @@ SSE 响应可能包含多条 `data:`，不要把所有 `data:` payload 拼成一
 - toolset_registry.toolsets.core.blueprint.BlueprintTools: Provides tools...
 ```
 
-`describe_toolset` 的 text 是 JSON schema 字符串，需要二次 `ConvertFrom-Json`。
+`describe_toolset` 的 text 是 JSON schema 字符串，需要二次 `ConvertFrom-Json`。聚合入口下工具名通常仍显示为完整名，例如 `editor_toolset.toolsets.asset.AssetTools.find_assets`，但传给 `call_tool.tool_name` 时使用短名 `find_assets`。
 
 不要把参数变量命名为 `$Args`，这是 PowerShell 自动变量。推荐 `$ArgObject` 或 `$ToolArgs`。
 
 在 PowerShell 函数中同时传 hashtable 和 timeout 时使用命名参数，避免哈希表和后续位置参数被绑定成 `System.Object[]`。
 
+`editor_toolset.toolsets.programmatic.ProgrammaticToolset.execute_tool_script` 适合把多次 MCP 工具调用压到 Editor 内执行，减少 HTTP 往返。注意该脚本环境返回的是 `_StrictDict` 风格对象，`value.get("key", default)` 会失败；用直接索引加 `try/except` 回退。
+
+`ObjectTools.list_properties` 可能返回很大的 JSON schema 字符串，尤其是 `CameraComponent.postProcessSettings`。不要为了筛选少量字段直接 dump 全量输出；已知字段可在确认属性存在后用 `ObjectTools.get_properties` 精确读取。
+
 ## 常用官方 Toolset
 
-当前实测可用的核心 toolset：
+当前实测可用的核心 toolset。不同 5.8 构建可能使用 `toolset_registry.toolsets.core.*` 或 `editor_toolset.toolsets.*` 命名，先以 `list_toolsets` 为准：
 
 - `ToolsetRegistry.EditorAppToolset`：Content Browser、选择、相机、截图、资产编辑器窗口。
 - `ToolsetRegistry.LogsToolset`：日志分类、日志行、verbosity。
@@ -134,6 +158,16 @@ SSE 响应可能包含多条 `data:`，不要把所有 `data:` payload 拼成一
 - `GameFeaturesToolset.GameFeaturesToolset`：GameFeature 查询和根 GameFeatureData。
 - `GameplayTagsToolset.GameplayTagsToolset`：Gameplay Tag 增删改查。
 - `GASToolsets.*`：GameplayCue、AttributeSet、ASC 运行时检查。
+
+2026-06-20 当前 Editor 实测核心名称：
+
+- `editor_toolset.toolsets.asset.AssetTools`
+- `editor_toolset.toolsets.object.ObjectTools`
+- `editor_toolset.toolsets.blueprint.BlueprintTools`
+- `editor_toolset.toolsets.actor.ActorTools`
+- `editor_toolset.toolsets.programmatic.ProgrammaticToolset`
+- `EditorToolset.EditorAppToolset`
+- `EditorToolset.LogsToolset`
 
 如果不确定 toolset 或 schema，先 `list_toolsets` 和 `describe_toolset`。不要凭旧 Skill 猜名称。
 

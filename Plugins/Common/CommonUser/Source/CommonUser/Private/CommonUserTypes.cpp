@@ -7,6 +7,8 @@
 #include "Online/OnlineErrorDefinitions.h"
 #endif
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(CommonUserTypes)
+
 void FOnlineResultInformation::FromOnlineError(const FOnlineErrorType& InOnlineError)
 {
 #if COMMONUSER_OSSV1

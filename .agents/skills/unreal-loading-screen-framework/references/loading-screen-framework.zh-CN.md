@@ -6,24 +6,24 @@
 
 ### 启动期 PreLoadScreen
 
-`Plugins/Common/CommonLoadingScreen` 有两个模块：
+`Plugins/Common/CommonLoadingScreen` 当前只有一个运行时模块：
 
-- `CommonStartupLoadingScreen`：`LoadingPhase=PreLoadingScreen`，在引擎初始化阶段注册 `FCommonPreLoadScreen`。
-- `CommonLoadingScreen`：运行期模块，提供 `ULoadingScreenManager`、接口、settings 和过渡关卡 helper。
+- `CommonLoadingScreen`：`Type=RuntimeNoCommandlet`，`LoadingPhase=PreEarlyLoadingScreen`，提供 `ULoadingScreenManager`、接口、settings 和过渡关卡 helper。
+
+旧的 `CommonStartupLoadingScreen` 模块、`FCommonPreLoadScreen` 和 `SCommonPreLoadingScreenWidget` 已删除；不要再按双模块结构新增或排查启动屏代码。
 
 启动期链路：
 
-1. `FCommonStartupLoadingScreenModule::StartupModule` 在非 dedicated server 下创建 `FCommonPreLoadScreen`。
-2. 非 Editor 且可渲染时，把它注册到 `FPreLoadScreenManager`。
-3. `FCommonPreLoadScreen` 返回 `EPreLoadScreenTypes::EngineLoadingScreen`。
-4. `SCommonPreLoadingScreenWidget` 当前只是 Slate 黑底，覆盖引擎初始化阶段。
-5. 引擎 `LaunchEngineLoop` 会优先播放已注册的 `EngineLoadingScreen`，没有注册时才回退到旧 MoviePlayer loading movie 流程。
+1. `CommonLoadingScreen` 在 `PreEarlyLoadingScreen` 阶段加载，早于普通游戏模块。
+2. 需要判断启动期 loading 行为时，先查引擎 `FPreLoadScreenManager` 是否可用，以及当前模块是否只做运行期 manager 初始化。
+3. 项目主 loading UI 仍由 `UCommonLoadingScreenSettings.LoadingScreenWidget` 和运行期 `ULoadingScreenManager` 管理。
+4. 如果确实要恢复纯 Slate 启动屏，应作为明确的新需求设计模块加载阶段和依赖，不能引用已删除的 `CommonStartupLoadingScreen` 源文件。
 
 限制：
 
 - 早期 PreLoadScreen 不能依赖 UObject、蓝图、UMG 或完整游戏世界。
 - 它不是运行期地图切换加载屏；运行期要走 `ULoadingScreenManager`。
-- 不要把项目主 loading UI 做在 `CommonStartupLoadingScreen`，除非明确只需要引擎启动黑屏或纯 Slate 资源。
+- 不要把项目主 loading UI 做成启动期纯 Slate 资源，除非明确只需要引擎启动黑屏或纯 Slate 资源。
 
 ### 运行期 LoadingScreenManager
 
@@ -33,9 +33,11 @@
 - 每 tick 判断是否有系统要求显示加载屏。
 - 从 `UCommonLoadingScreenSettings.LoadingScreenWidget` 加载 UMG widget class。
 - 用 `UGameViewportClient::AddViewportWidgetContent` 以高 ZOrder 添加 Slate widget。
+- 当 `UGameViewportClient::bEnablePlayersSplitRT` 为 true 时，为每个 `ULocalPlayer` 创建一份 widget，并用 `AddViewportWidgetForPlayer` 添加到对应玩家 viewport。
 - 显示期间阻断输入、提高关卡 streaming 优先级、调整 `FShaderPipelineCache` batch mode、暂停 hitch heartbeat。
 - 广播 `OnLoadingScreenVisibilityChangedDelegate`，供音频等系统响应。
 - 通过 `ILoadingPercentInterface::OnLoadingPercentChanged` 给 Widget 推送百分比。
+- 使用 per-player loading widget 时，要确认隐藏流程会移除 `PlayersLoadingScreenWidgets` 中所有 widget；如果每个玩家都需要进度显示，还要明确进度接口如何分发到每个实例。
 
 项目侧的派生关系：
 
@@ -58,6 +60,7 @@
 - 全局加载屏外壳用 `DefaultGame.ini` 的 `LoadingScreenWidget` 配置。
 - 不同模式需要换内容时，让外壳 widget 监听 `ULoadingScreenSubsystem`，切换内部 content widget，而不是改 manager 的主 widget class。
 - 进度条、logo 动画、视频播放完成后，必须在合适时机通知 manager `SetIsLoadingWidgetCompleted(true)`。
+- 启动前端还要显示 Press Start 或 Main Menu 时，Logo 完成只应推进前端 Flow；等首个 CommonUI 前端页面已经 push 到层栈后，再延后一 tick 调用 `SetIsLoadingWidgetCompleted(true)`，避免加载屏先隐藏导致场景露出一两帧。
 
 ## 显示判定顺序
 
@@ -290,6 +293,7 @@ LoadingScreenControlBusMix=/Game/Audio/Modulation/ControlBusMixes/<CBM_LoadingSc
 5. 如果逻辑 reason 已经消失但画面不隐藏，查 Widget 是否调用 `SetIsLoadingWidgetCompleted(true)`。
 6. 如果进度不动，查 `StageWeight`、`LevelPackageWeight`、LevelScriptActor 的接口返回和 `OnLoadingPercentChanged` 是否绑定。
 7. 如果打包中不显示或资源丢失，查 LoadingScreenWidget 资产是否 cook、视频是否 stage、GameFeature 内容是否被启用。
+8. 如果分屏或 split RT 下有残留遮罩，查 `PlayersLoadingScreenWidgets` 是否在隐藏流程逐个 `RemoveViewportWidgetForPlayer` 并清空。
 
 ### 前端地图启动后卡在 LoadingScreen
 
@@ -299,6 +303,7 @@ LoadingScreenControlBusMix=/Game/Audio/Modulation/ControlBusMixes/<CBM_LoadingSc
 - `StartPIE` 或日志里出现 `Accessed None trying to read property CallFunc_GetComponentByClass_ReturnValue`，常见触发点是加载 Lobby 背景的 Blueprint 在前端状态组件挂到 GameState 之前调用流程继续。
 - 日志出现 `Invalid Primary Asset Id GameLobbyBackground:<Name>` 时，优先怀疑 `PrimaryAssetTypesToScan` 的 `SpecificAssets` 路径和真实资产路径不一致。
 - C++ 前端流程日志停在 `Wait For User Initialization`、`Try Show Lobby Background Level` 或类似 ControlFlow step，说明蓝图、动画、媒体播放或 PrimaryAsset 回调没有继续流程。
+- LoadingScreen 消失后先露出一两帧 3D 场景，再显示 Press Start 或 Main Menu，通常是 `SetIsLoadingWidgetCompleted(true)` 早于首个 CommonUI 前端页面入栈。
 
 排查顺序：
 
@@ -306,13 +311,14 @@ LoadingScreenControlBusMix=/Game/Audio/Modulation/ControlBusMixes/<CBM_LoadingSc
 2. 查 `Config/DefaultGame.ini` 中 `GameLobbyBackground` 的 `PrimaryAssetTypesToScan`，确认 `SpecificAssets` 精确指向真实 `UPrimaryDataAsset` 包路径，迁移后常见问题是多一层或少一层目录。
 3. 查加载 Lobby 背景的 Blueprint：`Get Game State -> Get Component by Class -> ContinueFlow` 必须有 `IsValid` 保护；组件为空时不要调用 `ContinueFlow`。
 4. 查启动 LoadingScreen Widget 的动画或视频结束事件，结束路径必须调用 `OnLoadingScreenLogoFinished()`，并最终让 manager `SetIsLoadingWidgetCompleted(true)`。
-5. C++ 前端状态组件可以保留短超时兜底：只在当前 `FControlFlowNode` 仍是等待中的同一步时继续流程，避免迟到的 Blueprint 回调推进后续步骤。
+5. C++ 前端状态组件若有超时检测，先确认产品需求：严格要求 Logo 完成后才能显示大厅背景时，只能记录 warning 并保持当前 flow 等待，不能调用 `SetIsLoadingWidgetCompleted(true)` 或 `ContinueFlow()`；只有明确允许跳过启动 Logo 时，才可以把超时当作兜底继续流程。
+6. 若首个前端页面显示前露出场景，把 `SetIsLoadingWidgetCompleted(true)` 从 Logo 完成回调后移到 Press Start 或 Main Menu push 成功之后；为兼容 CommonUI/Slate 首帧刷新，建议再延后一 tick 执行隐藏。
 
 验证：
 
 - 重启编辑器让 AssetManager 重新读取配置后再 PIE；只热重载配置不足以验证 PrimaryAsset 修复。
 - `StartPIE` 返回 `{"returnValue":null}`，不是 Blueprint Runtime Error 文本。
-- 最新日志中不再出现 `Accessed None`、`Invalid Primary Asset Id GameLobbyBackground` 或兜底 Warning。
+- 最新日志中不再出现 `Accessed None`、`Invalid Primary Asset Id GameLobbyBackground`，严格 Logo 顺序下也不应出现超时后继续前端流程的日志；如果出现“继续等待 Logo 完成”的 warning，继续修复 LoadingScreen Widget 的完成回调。
 - `StopPIE` 后 `IsPIERunning=false`，证明编辑器主循环没有被加载屏或 Message Log 阻塞。
 
 ## 验证清单
@@ -324,6 +330,8 @@ LoadingScreenControlBusMix=/Game/Audio/Modulation/ControlBusMixes/<CBM_LoadingSc
 - 临时 `ULoadingProcessTask` 有强引用，并在完成、取消、失败路径 unregister。
 - `ILevelLoadingProcessInterface` 的 `IsLevelShown` 最终会返回 true。
 - 显示期间输入被阻断，隐藏后输入恢复。
+- split RT / 分屏场景下，每个本地玩家的 loading widget 都正确添加和移除。
+- per-player loading widget 需要进度条时，进度 `0..1` 能分发到每个实例或有明确的单实例策略。
 - `OnLoadingScreenVisibilityChangedDelegate` 的订阅在销毁时移除。
 - LoadingScreen ControlBusMix 在显示/隐藏时正确激活/反激活。
 - Dedicated Server 不创建或依赖加载屏 UI。

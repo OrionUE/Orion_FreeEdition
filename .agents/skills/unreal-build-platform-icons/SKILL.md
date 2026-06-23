@@ -15,7 +15,7 @@ description: "Use when replacing, generating, validating, or routing Unreal Engi
 4. 运行 `scripts/update-build-platform-icons.ps1 -SourceLogo <SOURCE_LOGO>` 生成 Windows、Mac、Linux、Android 图标。
 5. 生成后重新读取输出，确认 ICO/ICNS 多尺寸条目和 PNG 尺寸都符合 reference 表格。
 6. 如果修改了本 Skill 的脚本，按当前仓库的代码格式要求运行对应脚本校验 touched script files。
-7. 如果更新了本 Skill 或路由，运行 skill-creator 的 `quick_validate.py`，再运行 `../ue-framework-skill-authoring/scripts/check-skill-portability.ps1 -CheckCRLF -RequireRouting`。
+7. 如果更新了本 Skill 或路由，运行 skill-creator 的 `quick_validate.py`，再运行 `../orion-framework-skill-authoring/scripts/check-skill-portability.ps1 -CheckCRLF -RequireRouting`。
 
 ## 脚本
 

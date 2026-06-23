@@ -61,6 +61,8 @@ private:
 	void FlowStep_TryListenSessionInvite(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryShowMainScreen(FControlFlowNodeRef SubFlow);
 
+	void CompleteStartupLoadingScreen();
+
 public:
 	UFUNCTION(BlueprintCallable)
 	void ContinueFlow();
@@ -120,6 +122,9 @@ private:
 
 	// 启动 LoadingScreen Logo 是否仍在等待回调
 	bool bWaitingForLoadingScreenLogoFinished = false;
+
+	// 启动 LoadingScreen 是否已经排队完成，避免重复注册下一帧隐藏
+	bool bStartupLoadingScreenCompletionQueued = false;
 
 	int32 TotalShadersPrecompiles;
 

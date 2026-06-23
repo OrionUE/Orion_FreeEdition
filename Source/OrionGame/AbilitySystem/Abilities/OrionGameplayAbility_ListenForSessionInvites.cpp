@@ -9,19 +9,11 @@
 #include "Session/SessionSearchResultSteam.h"
 #include "Session/CoreSessionComponent.h"
 
-#if WITH_STEAM
-#include "OrionSteamSDKAPI/SteamTypes.h"
-#endif
-
 #include UE_INLINE_GENERATED_CPP_BY_NAME(OrionGameplayAbility_ListenForSessionInvites)
 
 void UOrionGameplayAbility_ListenForSessionInvites::JoinSession(FBlueprintSessionResult InSessionResult)
 {
-	FCoreSessionResult CoreSessionResult;
-
-#if WITH_STEAM
-	CoreSessionResult.SteamSessionResult.Result = InSessionResult;
-#endif
+	FCoreSessionResult CoreSessionResult(InSessionResult);
 
 	if (USessionSearchResultSteam* SessionResultObj = NewObject<USessionSearchResultSteam>(this))
 	{

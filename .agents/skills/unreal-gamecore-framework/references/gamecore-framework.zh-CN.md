@@ -97,6 +97,8 @@ GameFeature 激活不是立即执行。Experience 会先等待 `CallOrRegister_O
 
 ASC 存在于 `ACorePlayerState`，Pawn 通过 `UCorePawnExtensionComponent::InitializeAbilitySystem` 成为 Avatar。切换 Pawn 时，旧 Avatar 会被 Uninitialize，取消不带 `Ability.Behavior.SurvivesDeath` 的 Ability，清空输入和 GameplayCue。
 
+PlayerController / Pawn possession 清理时不要假设 `PlayerState` 一定有效。`OnUnPossess` 里访问 ASC 前应先检查当前 `PlayerState`，并且只在 ASC 当前 avatar actor 正好是将要 unpossess 的 Pawn 时才清空 avatar，避免重生、切 Pawn 或网络时序下清掉新的 avatar。
+
 `UCorePawnControlComponent::InitializePlayerInput` 会：
 
 - 清空 EnhancedInput LocalPlayer mapping。

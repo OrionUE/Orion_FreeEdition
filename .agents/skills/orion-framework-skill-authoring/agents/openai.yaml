@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orion Framework Skill Authoring"
+  short_description: "Portable Orion framework Skill authoring"
+  default_prompt: "Use $orion-framework-skill-authoring to consolidate or create portable Orion and Unreal framework Skills."

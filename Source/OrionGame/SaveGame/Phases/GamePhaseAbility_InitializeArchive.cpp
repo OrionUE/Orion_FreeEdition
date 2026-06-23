@@ -8,6 +8,7 @@
 #include "GamePhaseAbility_StartAutoSave.h"
 #include "GameModes/Phases/OrionGamePhaseSubsystem_Init.h"
 #include "Kismet/GameplayStatics.h"
+#include "OrionLogChannels.h"
 #include "SaveGame/OrionArchiveContext.h"
 #include "SaveGame/OrionArchiveManagerSubsystem.h"
 
@@ -18,20 +19,34 @@ void UGamePhaseAbility_InitializeArchive::ActivateAbility(const FGameplayAbility
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 	
 	const UGameInstance* GameInstance = UGameplayStatics::GetGameInstance(this);
+	if (!ensure(GameInstance))
+	{
+		EndAbility(Handle, ActorInfo, ActivationInfo, false, true);
+		return;
+	}
+
 	ArchiveManager = GameInstance->GetSubsystem<UOrionArchiveManagerSubsystem>();
-	check(ArchiveManager.Get());
+	if (!ensure(ArchiveManager.Get()))
+	{
+		EndAbility(Handle, ActorInfo, ActivationInfo, false, true);
+		return;
+	}
 
 	CurrentArchive = ArchiveManager->CurrentOperationArchive;
 
-#if WITH_EDITOR
 	if (CurrentArchive == nullptr)
 	{
+		UE_LOG(LogOrion, Warning, TEXT("Archive initialization started without a current archive. Creating a runtime archive for world '%s'."),
+			*GetPathNameSafe(GetWorld()));
 		ArchiveManager->NewGame(nullptr);
 		CurrentArchive = ArchiveManager->CurrentOperationArchive;
 	}
-#endif
 
-	check(CurrentArchive.Get());
+	if (!ensure(CurrentArchive.Get()))
+	{
+		EndAbility(Handle, ActorInfo, ActivationInfo, false, true);
+		return;
+	}
 
 	// 初始化存档
 	ArchiveManager->InitArchive();

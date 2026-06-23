@@ -1,5 +1,7 @@
-// Copyright (c) Ideality Century, Inc. All Rights Reserved.
-// Author: LiuZe
+/*
+ * Copyright (c) 2026 Orion. All Rights Reserved.
+ * https://orionue.com
+ */
 
 #pragma once
 
@@ -50,12 +52,58 @@ class COMMONINPUTSYSTEM_API UInputSystemUserSettings : public UEnhancedInputUser
 
 public:
 	virtual void ApplySettings() override;
+	virtual void SetToDefaults();
 
 protected:
 	virtual bool RegisterKeyMappingsToProfile(UEnhancedPlayerMappableKeyProfile& Profile, const UInputMappingContext* IMC) override;
 
 public:
 	const TMap<FName, FPlayerKeyMappingExtension>& GetKeyMappingExtensions() const;
+
+// UInputSystemUserSettings
+////////////////////////////////////////////////////////////////////////////////////
+public:
+	// Latency flash indicators
+	static bool DoesPlatformSupportLatencyMarkers();
+
+	DECLARE_EVENT(UInputSystemUserSettings, FLatencyFlashInidicatorSettingChanged);
+	UFUNCTION()
+	void SetEnableLatencyFlashIndicators(const bool bNewVal);
+	UFUNCTION()
+	bool GetEnableLatencyFlashIndicators() const { return bEnableLatencyFlashIndicators; }
+	FLatencyFlashInidicatorSettingChanged& OnLatencyFlashInidicatorSettingsChangedEvent() { return LatencyFlashInidicatorSettingsChangedEvent; }
+
+	// Latency tracking stats
+	static bool DoesPlatformSupportLatencyTrackingStats();
+
+	DECLARE_EVENT(UInputSystemUserSettings, FLatencyStatEnabledSettingChanged);
+	FLatencyStatEnabledSettingChanged& OnLatencyStatIndicatorSettingsChangedEvent() { return LatencyStatIndicatorSettingsChangedEvent; }
+
+	UFUNCTION()
+	void SetEnableLatencyTrackingStats(const bool bNewVal);
+	UFUNCTION()
+	bool GetEnableLatencyTrackingStats() const { return bEnableLatencyTrackingStats; }
+
+	void ApplyLatencyTrackingStatSetting();
+
+private:
+	// If true, enable latency flash markers which can be used to measure input latency.
+	UPROPERTY(Config)
+	bool bEnableLatencyFlashIndicators = false;
+
+	// Event for when the latency flash indicator setting had changed for player input to bind to.
+	FLatencyFlashInidicatorSettingChanged LatencyFlashInidicatorSettingsChangedEvent;
+
+	// Event for when the latency stats being toggled on or off has changed
+	FLatencyStatEnabledSettingChanged LatencyStatIndicatorSettingsChangedEvent;
+
+	// If true, then the game will track latency stats via ILatencyMarkerModule modules.
+	// This enables you to view some more latency oriented performance stats.
+	// The default value is set to true if the platform supports it, false otherwise.
+	UPROPERTY(Config)
+	bool bEnableLatencyTrackingStats;
+
+////////////////////////////////////////////////////////////////////////////////////
 
 protected:
 	UPROPERTY(Transient)

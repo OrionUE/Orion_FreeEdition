@@ -1,4 +1,6 @@
-// Copyright (c) Ideality Century, Inc. All Rights Reserved.
-// Author: LiuZe
+/*
+ * Copyright (c) 2026 Orion. All Rights Reserved.
+ * https://orionue.com
+ */
 
 #include "InputSystemMappableKeySettings.h"

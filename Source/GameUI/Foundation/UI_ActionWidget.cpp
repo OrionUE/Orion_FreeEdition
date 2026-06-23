@@ -7,7 +7,8 @@
 
 #include "CommonInputSubsystem.h"
 #include "CommonUITypes.h"
-#include "EnhancedInputSubsystems.h"
+#include "Common/UI_ActionIconVisibility.h"
+#include "Styling/StyleDefaults.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(UI_ActionWidget)
 
@@ -18,38 +19,23 @@ FSlateBrush UUI_ActionWidget::GetIcon() const
 	// This covers the case of when a player has rebound a key to something else
 	if (AssociatedInputAction)
 	{
-		if (const UEnhancedInputLocalPlayerSubsystem* EnhancedInputSubsystem = GetEnhancedInputSubsystem())
+		const UCommonInputSubsystem* CommonInputSubsystem = GetInputSubsystem();
+		if (CommonInputSubsystem && !GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, AssociatedInputAction, CommonInputSubsystem->GetLocalPlayer()))
 		{
-			TArray<FKey> BoundKeys = EnhancedInputSubsystem->QueryKeysMappedToAction(AssociatedInputAction);
-			FKey CurrentKey;
-			for (const FKey& BoundKey : BoundKeys)
-			{
-				if (CommonUI::IsKeyValidForInputType(BoundKey, GetInputSubsystem()->GetCurrentInputType()))
-				{
-					CurrentKey = BoundKey;
-				}
-			}
+			return CommonUI::GetIconForEnhancedInputAction(CommonInputSubsystem, AssociatedInputAction);
+		}
 
-			FSlateBrush SlateBrush;
+		return *FStyleDefaults::GetNoBrush();
+	}
 
-			const UCommonInputSubsystem* CommonInputSubsystem = GetInputSubsystem();
-			if (!BoundKeys.IsEmpty() && CommonInputSubsystem && UCommonInputPlatformSettings::Get()->TryGetInputBrush(SlateBrush, CurrentKey, CommonInputSubsystem->GetCurrentInputType(), CommonInputSubsystem->GetCurrentGamepadName()))
-			{
-				return SlateBrush;
-			}
+	if (const UCommonInputSubsystem* CommonInputSubsystem = GetInputSubsystem())
+	{
+		if (GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, EnhancedInputAction, CommonInputSubsystem->GetLocalPlayer()) ||
+			GameUI::ActionIcon::ShouldHideKeyboardMouseIcon(CommonInputSubsystem, InputActions))
+		{
+			return *FStyleDefaults::GetNoBrush();
 		}
 	}
 	
 	return Super::GetIcon();
-}
-
-UEnhancedInputLocalPlayerSubsystem* UUI_ActionWidget::GetEnhancedInputSubsystem() const
-{
-	const UWidget* BoundWidget = DisplayedBindingHandle.GetBoundWidget();
-	if (const ULocalPlayer* BindingOwner = BoundWidget ? BoundWidget->GetOwningLocalPlayer() : GetOwningLocalPlayer())
-	{
-		return BindingOwner->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
-	}
-
-	return nullptr;
 }

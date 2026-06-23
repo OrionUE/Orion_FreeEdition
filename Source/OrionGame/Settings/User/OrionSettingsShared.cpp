@@ -211,3 +211,32 @@ void UOrionSettingsShared::ApplyBackgroundAudioSettings()
 		FApp::SetUnfocusedVolumeMultiplier((AllowAudioInBackground != EOrionAllowBackgroundAudioSetting::Off) ? 1.0f : 0.0f);
 	}
 }
+
+void UOrionSettingsShared::SetGamepadInputAPIOption(const EOrionGamepadInputAPIOption NewValue)
+{
+	const bool bWasValueChanged = ChangeValueAndDirty(GamepadInputAPIOptions, NewValue);
+
+	// We don't have any other additional work to do if the value wasn't changed.
+	if (!bWasValueChanged)
+	{
+		return;
+	}
+
+	// A comma-separated list of preferred gamepad APIs
+	FString GamepadAPIOptions = TEXT("");
+
+	switch (NewValue)
+	{
+	case EOrionGamepadInputAPIOption::Legacy:
+		GamepadAPIOptions = TEXT("XInput,WinDualShock");
+		break;
+	case EOrionGamepadInputAPIOption::Modern:
+		GamepadAPIOptions = TEXT("GameInput");
+		break;
+	default:
+		checkNoEntry();
+		break;
+	}
+
+	FGenericPlatformMisc::SetPreferredInputDevices(*GamepadAPIOptions);
+}

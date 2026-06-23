@@ -43,4 +43,4 @@ description: "Use when Codex works on the reusable Unreal Content/UI Blueprint f
 - Online/Friends/Session UI，配合 `../unreal-online-steam-framework/SKILL.md`。
 - Interaction/Indicator/key prompt UI，配合 `../unreal-inventory-interaction-framework/SKILL.md`。
 - Feature 或 Experience 激活时添加 UI，配合 `../unreal-gamefeatures/SKILL.md`、`../unreal-gamemode-experience-framework/SKILL.md` 和 `../unreal-mcp-project-toolsets/SKILL.md`。
-- 修改本 Skill 或沉淀新 UI 框架规则时，配合 `../ue-framework-skill-authoring/SKILL.md` 和系统 `skill-creator`。
+- 修改本 Skill 或沉淀新 UI 框架规则时，配合 `../orion-framework-skill-authoring/SKILL.md` 和系统 `skill-creator`。

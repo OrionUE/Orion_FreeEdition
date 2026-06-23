@@ -11,7 +11,6 @@ public class OrionEditorTarget : TargetRules
 	public OrionEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-		bOverrideBuildEnvironment = true;
 
 		ExtraModuleNames.AddRange(new string[]
 		{

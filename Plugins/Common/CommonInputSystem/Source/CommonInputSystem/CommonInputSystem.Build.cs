@@ -1,5 +1,7 @@
-﻿// Copyright (c) Ideality Century, Inc. All Rights Reserved.
-// Author: LiuZe
+/*
+ * Copyright (c) 2026 Orion. All Rights Reserved.
+ * https://orionue.com
+ */
 
 using UnrealBuildTool;
 
@@ -20,6 +22,8 @@ public class CommonInputSystem : ModuleRules
 		{
 			"GameplayAbilities",
 			"GameplayTags",
+			"Slate",
+			"InputCore",
 			"EnhancedInput",
 			"CommonUI",
 			"CommonInput",

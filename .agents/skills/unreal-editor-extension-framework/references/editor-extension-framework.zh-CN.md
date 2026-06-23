@@ -225,6 +225,8 @@ public:
 | `UEditorValidator_MaterialFunctions` | 验证 Material Function。full validation 时加载引用它的 `UMaterial`，发现材质编译/加载问题。 |
 | `UEditorValidator_SourceControl` | 对 source-controlled 资产检查依赖是否也已加入 source control，忽略 `/Script/` 依赖和 unknown 状态。 |
 
+UE 5.8 中 `GetObjectsWithPackage` 使用 flags 版本。维护 `UEditorValidator_Load` 这类包内对象枚举逻辑时，优先使用当前引擎签名，例如 `EGetObjectsFlags::None` 和 `IncludeNestedObjects`；不要复制旧版本 bool 参数写法。
+
 ### 新增验证器模式
 
 新增验证器优先继承 `UEditorValidator`：

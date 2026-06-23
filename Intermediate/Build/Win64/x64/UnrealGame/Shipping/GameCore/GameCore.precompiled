@@ -1,6 +1,6 @@
 {
 	"OutputFiles": [
-		"../../../OrionGame/Shipping/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
+		"../../../OrionGameSteam/Shipping/Engine/SharedPCH.Engine.Project.ValApi.ValExpApi.Cpp20.h.obj",
 		"Module.GameCore.cpp.obj",
 		"GameCoreModule.cpp.obj",
 		"CoreAbilitySet.cpp.obj",
@@ -43,9 +43,7 @@
 		"CorePlayerController.cpp.obj",
 		"CorePlayerState.cpp.obj",
 		"CoreSessionComponent.cpp.obj",
-		"CoreSessionSearchResult.cpp.obj",
 		"SessionScreeningCondition.cpp.obj",
-		"SessionSearchResultSteam.cpp.obj",
 		"GameSettingInput.cpp.obj",
 		"CoreAssetManager.cpp.obj",
 		"CoreAssetManagerStartupJob.cpp.obj",
@@ -56,5 +54,5 @@
 		"GameplayTagStack.cpp.obj",
 		"CoreHUD.cpp.obj"
 	],
-	"ToolChainVersion": "14.44.35228"
+	"ToolChainVersion": "14.50.35734"
 }

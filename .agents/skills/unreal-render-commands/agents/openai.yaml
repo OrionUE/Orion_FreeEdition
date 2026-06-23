@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Render Commands"
+  short_description: "Unreal render CVar lookup tables"
+  default_prompt: "Use $unreal-render-commands to find Unreal Engine rendering console commands and the right CSV table."

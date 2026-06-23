@@ -130,7 +130,9 @@ Start-Process -FilePath '<ENGINE_ROOT>\Engine\Binaries\Win64\UnrealEditor.exe' -
 	- 反射类型不要放进普通 `#if`。如果原插件 `UENUM` 出现在 `UFUNCTION` / `UPROPERTY` 里，改用项目自有的始终可见 `UENUM`，只在 `.cpp` 的启用路径中转换为插件枚举。
 	- 重新构建 Editor Target 后，检查 `Binaries/Win64/<EditorTarget>.target` 不再列出已禁用插件的 DLL，并读取最新日志确认不再出现 `Missing import`。
 5. UE 5.8 JSON API、OnlineSubsystem、InputDevice 或 Core 宏迁移错误：以当前引擎源码为准修最小调用点。常见例子包括用 `TryGetField(TEXT("Key"))` 代替直接访问 `FJsonObject::Values["Key"]`，移除旧 `SEARCH_PRESENCE` 并使用 lobby 查询键，使用 `IPlatformInputDeviceMapper` 替代旧控制器连接委托，使用 `FindFirstObject` 代替 `ANY_PACKAGE`。
-6. 编译成功后不只看 ExitCode。验证编辑器进程存在、窗口标题进入项目主窗口，并读取最新 `Saved/Logs/<ProjectName>.log` 确认没有停在插件兼容、Target 升级弹窗或模块 DLL 导入失败。
+6. Editor target 编译时某个引擎插件模块 Public 头找不到，但该头在 `<ENGINE_ROOT>` 里确实存在：检查插件 `.uplugin` 模块 host type。`RuntimeNoCommandlet` 这类模块可能不进入 Editor target 编译环境，导致 `Build.cs` 里写了依赖但 `.cpp.obj.rsp` 仍没有 include path。修复应在项目 `Build.cs` 按 target 定义 `PROJECT_WITH_<FEATURE>=0/1`，不可用 target 下用宏隔离插件 include/API 并提供 no-op；不要复制引擎插件头文件。
+7. 链接阶段报 `LNK2019`，而 `*.Build.cs` 看起来已有依赖：打开失败模块 `UnrealEditor-<Module>.dll.rsp`，确认 import lib 是否真的进入 link response。若 Public 头暴露 `FKey`、`FSlateBrush`、`UEnhancedPlayerInput` 等外部类型，只把依赖放 Private 可能不足；把外部类型所属模块放入 `PublicDependencyModuleNames`，再复查 `.dll.rsp`。
+8. 编译成功后不只看 ExitCode。验证编辑器进程存在、窗口标题进入项目主窗口，并读取最新 `Saved/Logs/<ProjectName>.log` 确认没有停在插件兼容、Target 升级弹窗或模块 DLL 导入失败。
 
 ## 成功验证
 

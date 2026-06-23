@@ -19,10 +19,16 @@ class UGameSettingValueDiscrete_Resolution : public UGameSettingValueDiscrete
 
 public:
 	UGameSettingValueDiscrete_Resolution();
+	
+	virtual void BeginDestroy() override;
 
 protected:
 	virtual void OnInitialized() override;
 	virtual void OnDependencyChanged() override;
+	
+	void OnDisplayMetricsChanged(const FDisplayMetrics& NewDisplayMetrics);
+
+	const FMonitorInfo* GetCurrentMonitor() const;
 
 public:
 	/** UGameSettingValue */
@@ -39,9 +45,7 @@ protected:
 	void InitializeResolutions();
 	bool ShouldAllowFullScreenResolution(const FScreenResolutionRHI& SrcScreenRes, int32 FilterThreshold) const;
 	static void GetStandardWindowResolutions(const FIntPoint& MinResolution, const FIntPoint& MaxResolution, float MinAspectRatio, TArray<FIntPoint>& OutResolutions);
-	void SelectAppropriateResolutions();
 	int32 FindIndexOfDisplayResolution(const FIntPoint& InPoint) const;
-	int32 FindIndexOfDisplayResolutionForceValid(const FIntPoint& InPoint) const;
 	int32 FindClosestResolutionIndex(const FIntPoint& Resolution) const;
 
 protected:
@@ -56,10 +60,7 @@ protected:
 		FText GetDisplayText() const;
 	};
 
-	TOptional<EWindowMode::Type> LastWindowMode;
-	
-	/** An array of strings the map to resolutions, populated based on the window mode */
-	TArray<TSharedPtr<FScreenResolutionEntry>> Resolutions;
+	TArrayView<const TSharedPtr<FScreenResolutionEntry>> GetSelectedResolutionList() const;
 
 	/** An array of strings the map to fullscreen resolutions */
 	TArray<TSharedPtr<FScreenResolutionEntry>> ResolutionsFullscreen;
@@ -71,4 +72,7 @@ protected:
 	TArray<TSharedPtr<FScreenResolutionEntry>> ResolutionsWindowed;
 
 	FIntPoint InitialResolution;
+
+	FDisplayMetrics CurrentDisplayMetrics;
+	FDelegateHandle DisplayMetricsChangedHandle;
 };

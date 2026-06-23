@@ -21,6 +21,15 @@ enum class EOrionAllowBackgroundAudioSetting : uint8
 	Num UMETA(Hidden),
 };
 
+UENUM()
+enum class EOrionGamepadInputAPIOption : uint8
+{
+	Legacy,	// XInput + WinDualShock
+	Modern,	// GameInput API
+
+	Num UMETA(Hidden),
+};
+
 UENUM(BlueprintType)
 enum class EOrionGamepadSensitivity : uint8
 {
@@ -254,6 +263,18 @@ private:
 	/** Holds the gamepad look stick dead zone value. */
 	UPROPERTY()
 	float GamepadLookStickDeadZone;
+
+	/////////////////////////////////////////////////
+	// Gamepad Input API (only available on PC)
+
+	UPROPERTY()
+	EOrionGamepadInputAPIOption GamepadInputAPIOptions;
+
+public:
+	UFUNCTION()
+	EOrionGamepadInputAPIOption GetGamepadInputAPIOption() const { return GamepadInputAPIOptions; }
+	UFUNCTION()
+	void SetGamepadInputAPIOption(const EOrionGamepadInputAPIOption NewValue);
 
 	////////////////////////////////////////////////////////
 	// Gamepad Sensitivity

@@ -8,9 +8,5 @@ public class OrionGameSteamTarget : OrionGameTarget
 {
 	public OrionGameSteamTarget(TargetInfo Target) : base(Target)
 	{
-		bOverrideBuildEnvironment = true;
-
-		CustomConfig = "Steam";
-		GlobalDefinitions.Add("WITH_STEAM=1");
 	}
 }

@@ -8,6 +8,7 @@
 - 修改反射声明后必须触发 UHT。
 - 修改 Build.cs 后必须重新构建目标模块。
 - Editor 代码和 Runtime 代码要分别验证模块边界。
+- Editor target 链接阶段如果报 `LNK1104` 无法打开 `UnrealEditor-<Module>.dll`，先检查是否有正在运行的 Editor 或调试进程占用；如果没有明显占用，可用同一 Build 命令追加 `-NoXGE` 重试，确认是否是并行构建/链接调度导致的临时锁或竞态。
 
 ## 命令提示
 

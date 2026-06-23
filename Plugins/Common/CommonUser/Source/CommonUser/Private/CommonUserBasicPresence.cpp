@@ -14,12 +14,13 @@
 #include "Online/Presence.h"
 #endif
 
+#include UE_INLINE_GENERATED_CPP_BY_NAME(CommonUserBasicPresence)
+
 DECLARE_LOG_CATEGORY_EXTERN(LogUserBasicPresence, Log, All);
 DEFINE_LOG_CATEGORY(LogUserBasicPresence);
 
 UCommonUserBasicPresence::UCommonUserBasicPresence()
 {
-
 }
 
 void UCommonUserBasicPresence::Initialize(FSubsystemCollectionBase& Collection)
@@ -94,7 +95,6 @@ void UCommonUserBasicPresence::OnNotifySessionInformationChanged(ECommonSessionI
 		}
 
 #else
-
 		UE::Online::IOnlineServicesPtr OnlineServices = UE::Online::GetServices(GetWorld());
 		check(OnlineServices);
 		UE::Online::IPresencePtr Presence = OnlineServices->GetPresenceInterface();
@@ -107,13 +107,12 @@ void UCommonUserBasicPresence::OnNotifySessionInformationChanged(ECommonSessionI
 					UE::Online::FPartialUpdatePresence::Params UpdateParams;
 					UpdateParams.LocalAccountId = LocalPlayer->GetPreferredUniqueNetId().GetV2();
 					UpdateParams.Mutations.StatusString.Emplace(*SessionStateToBackendKey(SessionStatus));
-					UpdateParams.Mutations.UpdatedProperties.Emplace(PresenceKeyGameMode, GameMode);
-					UpdateParams.Mutations.UpdatedProperties.Emplace(PresenceKeyMapName, MapNameTruncated);
+					UpdateParams.Mutations.UpdatedProperties.AddVariant(PresenceKeyGameMode, GameMode);
+					UpdateParams.Mutations.UpdatedProperties.AddVariant(PresenceKeyMapName, MapNameTruncated);
 
 					Presence->PartialUpdatePresence(MoveTemp(UpdateParams));
 				}
 			}
-
 		}
 #endif
 	}

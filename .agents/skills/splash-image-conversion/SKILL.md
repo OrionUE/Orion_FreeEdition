@@ -22,7 +22,7 @@ description: Use when converting, cropping, resizing, replacing, or exporting so
 
 - 替换或整理正式启动图时，先读取 `../unreal-asset-management/SKILL.md`，确认 `Content/Splash` 固定目录和固定文件名。
 - Splash 属于启动阶段图片，不属于普通 UMG Widget；涉及 UI 路由时配合 `../unreal-umg/SKILL.md`。
-- 修改本 Skill 或脚本时，配合 `../orion-code-style/SKILL.md`、`../ue-framework-skill-authoring/SKILL.md` 和系统 `skill-creator`。
+- 修改本 Skill 或脚本时，配合 `../orion-code-style/SKILL.md`、`../orion-framework-skill-authoring/SKILL.md` 和系统 `skill-creator`。
 
 ## 脚本
 

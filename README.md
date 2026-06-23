@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/Version-1.0.1-0E1128?style=flat-square">
+  <img alt="Version" src="https://img.shields.io/badge/Version-1.0.2-0E1128?style=flat-square">
   <img alt="Unreal Engine" src="https://img.shields.io/badge/Unreal%20Engine-5.8-0E1128?style=flat-square&logo=unrealengine&logoColor=white">
   <img alt="Platform" src="https://img.shields.io/badge/Primary%20Platform-Windows%20%2F%20Steam-1b2838?style=flat-square&logo=steam&logoColor=white">
   <img alt="Localization" src="https://img.shields.io/badge/Localization-zh--Hans%20%7C%20en-2E7D32?style=flat-square">
@@ -17,9 +17,9 @@
 
 > **开发状态 / Development Status**
 >
-> 当前版本：1.0.1。Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
+> 当前版本：1.0.2。Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
 >
-> Current version: 1.0.1. Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
+> Current version: 1.0.2. Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
 
 ## 简体中文
 
@@ -27,7 +27,7 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 目标是让创作者能从“描述玩法”快速进入“可运行原型”，同时保留 C++ 工程的可维护性、扩展性和发布能力。
 
-当前版本：1.0.1
+当前版本：1.0.2
 
 官网：[https://orionue.com](https://orionue.com)
 
@@ -56,6 +56,14 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 ### 更新内容
 
+#### 1.0.2
+
+- **UE 5.8 代码与配置稳定化**：整理 UE 5.8 迁移后的 Target、插件、配置和运行时兼容问题；Steam Target 的 `CustomConfig=Steam` 与 `WITH_STEAM=1` 逻辑集中到共享 Target 设置中。
+- **输入与 UI 体验增强**：启用 `XInputDevice`、`GameInputWindows`、`PlayerInputDebugger`，默认玩家输入切换到 `InputSystemPlayerInput`；按钮、Action Widget 和 Tab List 会根据当前输入方式隐藏不可解析的键鼠图标，并补充延迟标记/Flash Indicator 支撑。
+- **设置系统扩展**：新增 HDR 校准、显示器选择、动态分辨率、窗口/分辨率、帧率、Gamepad、Game、Video 和 DLC 管理相关设置入口，让用户设置页覆盖更多运行时选项。
+- **加载屏与前端流程修正**：`CommonLoadingScreen` 提前到 `PreEarlyLoadingScreen`，支持 split viewport/player loading widgets；启动流程改为在 Press Start 或 Main Screen 真正入栈后再完成启动加载屏，避免超时后强行继续。
+- **平台配置与项目 Skill 整理**：新增 `DefaultDeviceProfiles.ini`，完善 Windows dynamic resolution、High DPI、PSO 和移动端 Device Profile；项目 Skill 迁移为 `orion-framework-skill-authoring`、`unreal-render-commands`，并新增蓝图迁移修复、相机 FOV 诊断等入口。
+
 #### 1.0.1
 
 - **引擎基线升级至 Unreal Engine 5.8**：`Orion.uproject` 的 `EngineAssociation` 已更新为 `5.8`，Target 规则切换到 UE 5.8 对应的 `BuildSettingsVersion.V7`，并补充构建环境覆盖以适配升级后的编译要求。
@@ -70,16 +78,17 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 | --- | --- |
 | 游戏框架 | GameMode、GameState、PlayerController、PlayerState、PawnData、Experience、GamePhase、GameFeature 生命周期 |
 | Ability 系统 | GameplayAbilities、AbilitySet、GameplayCue、GameplayEffect、Ability 输入激活与网络语义 |
-| UI | CommonUI、GameUI、HUD Layout、菜单、设置页、消息/确认框、UIExtension 插槽、开发 HUD |
-| 输入 | EnhancedInput、CommonInput、输入标签、手柄/键鼠切换、玩家改键、UI 输入域 |
-| 在线与 Steam | `OrionSteam`、OnlineSubsystem、Session、Lobby、好友邀请、Steam Sockets、Steam Web API |
+| UI | CommonUI、GameUI、HUD Layout、菜单、设置页、消息/确认框、UIExtension 插槽、开发 HUD、Action 图标可见性、Tab/List 输入提示 |
+| 输入 | EnhancedInput、CommonInput、`InputSystemPlayerInput`、输入标签、GameInput/XInput/WinDualShock、手柄/键鼠切换、玩家改键、延迟标记 |
+| 设置 | Video/Game/Gamepad/DLC 设置注册表、HDR 校准、显示器选择、动态分辨率、窗口/分辨率、帧率与用户配置 |
+| 在线与 Steam | `OrionSteam`、`OrionOnlineSubsystemSteam`、OnlineSubsystem、Session、Lobby、好友邀请、`OrionSteamSockets`、Steam Web API |
 | 音频与语音 | AudioMixer、AudioModulation、ProjectAcoustics、SteamAudio、`OrionVoiceChat`、输入/输出设备切换 |
 | 存档 | Archive 管理、世界存档、玩家存档、自动保存、前端存档入口 |
 | 队伍 | TeamSubsystem、TeamInfo、队伍显示数据、AI 敌友态度、友军伤害判断 |
 | 背包与交互 | GameInventorySystem、InteractionSystem、交互检测、拾取/装备/丢弃、交互 UI |
-| 渲染 | Lumen、Nanite、Ray Tracing、DLSS、NIS、Streamline Reflex/DLSSG、平台画质配置 |
+| 渲染 | Lumen、Nanite、Ray Tracing、DLSS、NIS、Streamline Reflex/DLSSG、Device Profiles、动态分辨率、平台画质配置 |
 | 本地化 | `zh-Hans` 与 `en`，含 Game 与 EngineOverrides 本地化目标 |
-| MCP/自动化 | 项目内 MCP 插件与 Toolsets，用于资产、蓝图、UMG、Niagara、PCG、GameplayTags 等自动化 |
+| MCP/自动化 | 项目内 MCP、AIAssistant 与 Toolsets，用于资产、蓝图迁移修复、UMG、Niagara、PCG、GameplayTags、渲染命令和编辑器自动化 |
 
 ### 工程结构
 
@@ -120,6 +129,7 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 | `Plugins/UIExtension` | 插槽式 UI 扩展系统。 |
 | `Plugins/MCP/*` | 项目 MCP 服务与 Toolsets，用于编辑器自动化和 AI 工具调用。 |
 | `Plugins/DLSS/*` | DLSS、NIS、Streamline、Reflex、Frame Generation 等图形增强插件。 |
+| 引擎/平台插件 | `XInputDevice`、`GameInputWindows`、`PlayerInputDebugger`、`PlatformDLC`、`AIAssistant` 等 UE 5.8 运行与工具链插件。 |
 
 ### AI Skill 系统
 
@@ -129,14 +139,14 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 | 分类 | 代表 Skill | 用途 |
 | --- | --- | --- |
-| 工程总览 | `unreal-framework-architecture`、`unreal-source-code-navigator`、`unreal-source-index` | 判断模块边界、插件归属、Target、Build.cs 依赖和源码导航。 |
+| 工程总览 | `unreal-framework-architecture`、`unreal-source-code-navigator`、`unreal-source-index`、`orion-framework-skill-authoring` | 判断模块边界、插件归属、Target、Build.cs 依赖、源码导航和项目 Skill 编写规则。 |
 | 代码规范 | `orion-code-style` | Orion C++/Build.cs/Target.cs 风格、版权头、Tab 缩进、CRLF、检查脚本。 |
-| 资产与编辑器 | `unreal-asset-management`、`unreal-editor-extension-framework`、`unreal-mcp-workflow`、`unreal-mcp-project-toolsets` | 资产命名、蓝图/UMG/关卡/Toolset 自动化、编辑器扩展。 |
+| 资产与编辑器 | `unreal-asset-management`、`unreal-editor-extension-framework`、`unreal-mcp-workflow`、`unreal-mcp-project-toolsets`、`unreal-blueprint-migration-repair` | 资产命名、蓝图迁移修复、UMG/关卡/Toolset 自动化、编辑器扩展。 |
 | 玩法框架 | `unreal-gamecore-framework`、`unreal-gamemode-experience-framework`、`unreal-gamefeatures`、`unreal-gameplayabilities` | GameCore、Experience、GameFeature、GAS、GamePhase、AbilitySet。 |
 | UI 与输入 | `unreal-umg`、`unreal-commoninput`、`unreal-input-framework`、`unreal-enhancedinput`、`unreal-inputcore` | CommonUI/UMG、输入标签、EnhancedInput、手柄/键鼠、UI 输入。 |
 | 网络与在线 | `unreal-network-replication-framework`、`unreal-replicationgraph`、`unreal-online-steam-framework` | 复制、RPC、RepGraph、Steam、Session、好友邀请、Steam Sockets。 |
 | 系统能力 | `unreal-system-framework`、`unreal-savegame-framework`、`unreal-teams-framework`、`unreal-inventory-interaction-framework` | AssetManager、存档、队伍、背包、交互、世界/玩家系统。 |
-| 内容与发布 | `unreal-audio-framework`、`unreal-rendering-framework`、`unreal-localization-framework`、`unreal-movie-media-framework`、`unreal-packaging` | 音频、语音、渲染、本地化、视频、Windows/Steam 打包。 |
+| 内容与发布 | `unreal-audio-framework`、`unreal-rendering-framework`、`unreal-render-commands`、`unreal-localization-framework`、`unreal-movie-media-framework`、`unreal-packaging` | 音频、语音、渲染命令、Device Profile、本地化、视频、Windows/Steam 打包。 |
 
 #### 使用方式
 
@@ -227,7 +237,9 @@ README 顶部提供 `简体中文 | English` 锚点切换。
 - Always Cook：`/NNEDenoiser`
 - Always Stage as UFS：`Acoustics`
 
-Steam 发布路径请使用 Steam Target，并验证 `Config/Custom/Steam` 或相关 Steam 配置被实际读取。历史上 Steam OnlineSubsystem 的关键点是：服务名、真实模块名和默认 OnlineSubsystem 加载顺序必须一致；排查时优先查看日志中是否出现 `Created online subsystem instance for: OrionSteam`。
+Steam 发布路径请使用 Steam Target，并验证 `Config/Custom/Steam` 或相关 Steam 配置被实际读取。当前 Steam 配置以 `DefaultPlatformService=OrionSteam`、`NativePlatformService=OrionSteam`、`AdditionalModulesToLoad=OrionOnlineSubsystemSteam`、`OrionSteamSocketsNetDriver` 和 `OrionOnlineSteamAuthComponentModuleInterface` 为核心；排查时优先查看日志中是否出现 `Created online subsystem instance for: OrionSteam`。
+
+使用安装版引擎打包 Steam Windows 版本时，若 packaged bootstrap 没有携带 `-CustomConfig=Steam`，可使用 `.agents/skills/unreal-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` 修补启动参数。验证不要只停在 UAT 成功，还应运行 packaged executable smoke test，确认 Steam CustomConfig、地图加载、加载屏和运行时初始化都进入预期路径。
 
 ### 开发文档
 
@@ -251,7 +263,7 @@ Orion is a modular game-development framework built on Unreal Engine 5.8. It org
 
 The goal is to move from a gameplay idea to a runnable prototype quickly, while keeping the maintainability, extensibility, and release discipline of a C++ Unreal project.
 
-Current version: 1.0.1
+Current version: 1.0.2
 
 Website: [https://orionue.com](https://orionue.com)
 
@@ -280,6 +292,14 @@ Website: [https://orionue.com](https://orionue.com)
 
 ### What's New
 
+#### 1.0.2
+
+- **UE 5.8 code and configuration stabilization**: consolidates the post-upgrade target, plugin, config, and runtime compatibility work; Steam targets now inherit shared `CustomConfig=Steam` and `WITH_STEAM=1` handling from the common target settings path.
+- **Input and UI polish**: `XInputDevice`, `GameInputWindows`, and `PlayerInputDebugger` are enabled, and the default player input class now uses `InputSystemPlayerInput`; buttons, action widgets, and tab lists hide unresolved mouse/keyboard icons based on the active input method, with latency marker / flash indicator support added.
+- **Expanded settings surface**: the user settings flow now covers HDR calibration, display selection, dynamic resolution, window/resolution, frame pacing, gamepad, game, video, and DLC management entries.
+- **Loading screen and frontend flow fixes**: `CommonLoadingScreen` now loads at `PreEarlyLoadingScreen`, supports split viewport/player loading widgets, and completes startup loading only after the Press Start or Main Screen widget is actually pushed.
+- **Platform config and Skill cleanup**: `DefaultDeviceProfiles.ini` was added, Windows dynamic resolution / High DPI / PSO settings were refined, and project Skills were reorganized around `orion-framework-skill-authoring` and `unreal-render-commands` with new Blueprint migration repair and camera FOV diagnostics entries.
+
 #### 1.0.1
 
 - **Engine baseline upgraded to Unreal Engine 5.8**: `Orion.uproject` now uses `EngineAssociation` `5.8`, targets use the UE 5.8-facing `BuildSettingsVersion.V7`, and build-environment overrides were added for the upgraded compilation path.
@@ -294,16 +314,17 @@ Website: [https://orionue.com](https://orionue.com)
 | --- | --- |
 | Gameplay framework | GameMode, GameState, PlayerController, PlayerState, PawnData, Experience, GamePhase, GameFeature lifecycle |
 | Ability system | GameplayAbilities, AbilitySet, GameplayCue, GameplayEffect, ability input activation, network behavior |
-| UI | CommonUI, GameUI, HUD Layout, menus, settings screens, dialogs, UIExtension slots, development HUD |
-| Input | EnhancedInput, CommonInput, input tags, gamepad/mouse-keyboard switching, key remapping, UI input domains |
-| Online and Steam | `OrionSteam`, OnlineSubsystem, sessions, lobbies, friend invites, Steam Sockets, Steam Web API |
+| UI | CommonUI, GameUI, HUD Layout, menus, settings screens, dialogs, UIExtension slots, development HUD, action icon visibility, tab/list input prompts |
+| Input | EnhancedInput, CommonInput, `InputSystemPlayerInput`, input tags, GameInput/XInput/WinDualShock, gamepad/mouse-keyboard switching, key remapping, latency markers |
+| Settings | Video/Game/Gamepad/DLC registries, HDR calibration, display selection, dynamic resolution, window/resolution, frame pacing, user configuration |
+| Online and Steam | `OrionSteam`, `OrionOnlineSubsystemSteam`, OnlineSubsystem, sessions, lobbies, friend invites, `OrionSteamSockets`, Steam Web API |
 | Audio and voice | AudioMixer, AudioModulation, ProjectAcoustics, SteamAudio, `OrionVoiceChat`, input/output device switching |
 | Save/archive | Archive manager, world saves, player saves, autosave, frontend archive entries |
 | Teams | TeamSubsystem, TeamInfo, team display assets, AI attitude, friendly-fire checks |
 | Inventory and interaction | GameInventorySystem, InteractionSystem, interaction traces, pickup/equip/drop, interaction UI |
-| Rendering | Lumen, Nanite, Ray Tracing, DLSS, NIS, Streamline Reflex/DLSSG, platform scalability settings |
+| Rendering | Lumen, Nanite, Ray Tracing, DLSS, NIS, Streamline Reflex/DLSSG, Device Profiles, dynamic resolution, platform scalability settings |
 | Localization | `zh-Hans` and `en`, with Game and EngineOverrides localization targets |
-| MCP/automation | Project MCP plugins and Toolsets for assets, Blueprints, UMG, Niagara, PCG, GameplayTags, and editor automation |
+| MCP/automation | Project MCP, AIAssistant, and Toolsets for assets, Blueprint migration repair, UMG, Niagara, PCG, GameplayTags, render commands, and editor automation |
 
 ### Project Structure
 
@@ -344,6 +365,7 @@ Website: [https://orionue.com](https://orionue.com)
 | `Plugins/UIExtension` | Slot-based UI extension system. |
 | `Plugins/MCP/*` | Project MCP services and Toolsets for editor automation and AI tool calls. |
 | `Plugins/DLSS/*` | DLSS, NIS, Streamline, Reflex, and Frame Generation integrations. |
+| Engine/platform plugins | UE 5.8 runtime and tooling plugins such as `XInputDevice`, `GameInputWindows`, `PlayerInputDebugger`, `PlatformDLC`, and `AIAssistant`. |
 
 ### AI Skill System
 
@@ -353,14 +375,14 @@ Orion includes project-local `.agents/skills` that guide AI agents before they m
 
 | Category | Representative Skills | Purpose |
 | --- | --- | --- |
-| Project orientation | `unreal-framework-architecture`, `unreal-source-code-navigator`, `unreal-source-index` | Module boundaries, plugin ownership, targets, Build.cs dependencies, source navigation. |
+| Project orientation | `unreal-framework-architecture`, `unreal-source-code-navigator`, `unreal-source-index`, `orion-framework-skill-authoring` | Module boundaries, plugin ownership, targets, Build.cs dependencies, source navigation, and project Skill authoring rules. |
 | Code style | `orion-code-style` | Orion C++/Build.cs/Target.cs style, copyright headers, Tab indentation, CRLF, validation script. |
-| Assets and editor | `unreal-asset-management`, `unreal-editor-extension-framework`, `unreal-mcp-workflow`, `unreal-mcp-project-toolsets` | Asset naming, Blueprint/UMG/level/Toolset automation, editor extensions. |
+| Assets and editor | `unreal-asset-management`, `unreal-editor-extension-framework`, `unreal-mcp-workflow`, `unreal-mcp-project-toolsets`, `unreal-blueprint-migration-repair` | Asset naming, Blueprint migration repair, UMG/level/Toolset automation, editor extensions. |
 | Gameplay framework | `unreal-gamecore-framework`, `unreal-gamemode-experience-framework`, `unreal-gamefeatures`, `unreal-gameplayabilities` | GameCore, Experience, GameFeature, GAS, GamePhase, AbilitySet. |
 | UI and input | `unreal-umg`, `unreal-commoninput`, `unreal-input-framework`, `unreal-enhancedinput`, `unreal-inputcore` | CommonUI/UMG, input tags, EnhancedInput, gamepad/mouse-keyboard support, UI input. |
 | Networking and online | `unreal-network-replication-framework`, `unreal-replicationgraph`, `unreal-online-steam-framework` | Replication, RPCs, RepGraph, Steam, sessions, friend invites, Steam Sockets. |
 | Systems | `unreal-system-framework`, `unreal-savegame-framework`, `unreal-teams-framework`, `unreal-inventory-interaction-framework` | AssetManager, archives, teams, inventory, interaction, world/player systems. |
-| Content and release | `unreal-audio-framework`, `unreal-rendering-framework`, `unreal-localization-framework`, `unreal-movie-media-framework`, `unreal-packaging` | Audio, voice, rendering, localization, movies, Windows/Steam packaging. |
+| Content and release | `unreal-audio-framework`, `unreal-rendering-framework`, `unreal-render-commands`, `unreal-localization-framework`, `unreal-movie-media-framework`, `unreal-packaging` | Audio, voice, render commands, Device Profiles, localization, movies, Windows/Steam packaging. |
 
 #### How to Use Skills
 
@@ -451,7 +473,9 @@ Current packaging settings in `Config/DefaultGame.ini` include:
 - Always Cook: `/NNEDenoiser`
 - Always Stage as UFS: `Acoustics`
 
-For Steam releases, use the Steam targets and verify that `Config/Custom/Steam` or the relevant Steam config layer is actually loaded. For Steam OnlineSubsystem issues, the key log line to verify is `Created online subsystem instance for: OrionSteam`.
+For Steam releases, use the Steam targets and verify that `Config/Custom/Steam` or the relevant Steam config layer is actually loaded. The current Steam path is centered on `DefaultPlatformService=OrionSteam`, `NativePlatformService=OrionSteam`, `AdditionalModulesToLoad=OrionOnlineSubsystemSteam`, `OrionSteamSocketsNetDriver`, and `OrionOnlineSteamAuthComponentModuleInterface`. For Steam OnlineSubsystem issues, the key log line to verify is `Created online subsystem instance for: OrionSteam`.
+
+When packaging the Steam Windows build with an installed engine, use `.agents/skills/unreal-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` if the packaged bootstrap executable does not pass `-CustomConfig=Steam`. Validation should not stop at UAT success; run a packaged executable smoke test and confirm that Steam CustomConfig, map loading, loading screens, and runtime initialization all follow the expected path.
 
 ### Documentation
 

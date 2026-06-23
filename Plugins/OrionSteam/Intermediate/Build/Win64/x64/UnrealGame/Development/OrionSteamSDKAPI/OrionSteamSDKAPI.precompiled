@@ -55,5 +55,5 @@
 		"SteamUtils.cpp.obj",
 		"SteamVideo.cpp.obj"
 	],
-	"ToolChainVersion": "14.44.35228"
+	"ToolChainVersion": "14.50.35734"
 }

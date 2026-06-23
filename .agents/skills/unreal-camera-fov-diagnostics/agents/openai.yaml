@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Camera FOV Diagnostics"
+  short_description: "Diagnose Unreal camera and FOV regressions"
+  default_prompt: "Use $unreal-camera-fov-diagnostics to inspect player camera, CameraComponent, view target, and FOV behavior."

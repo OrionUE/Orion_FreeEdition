@@ -630,7 +630,7 @@ void UCommonSessionSubsystem::OnCreateSessionComplete(FName SessionName, bool bW
 
 #if COMMONUSER_OSSV1 // OSSv2 joins splitscreen players as part of the create call
 	// Add the splitscreen player if one exists
-#if 0 //@TODO:
+#if 0 //@TODO: Add splitscreen player session registration for OSSv1 if local multiplayer is supported.
 	if (bWasSuccessful && LocalPlayers.Num() > 1)
 	{
 		IOnlineSessionPtr Sessions = Online::GetSessionInterface(GetWorld());
@@ -1204,7 +1204,7 @@ void UCommonSessionSubsystem::JoinSessionInternalOSSv1(ULocalPlayer* LocalPlayer
 void UCommonSessionSubsystem::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
 {
 	// Add any splitscreen players if they exist
-	//@TODO:
+	//@TODO: Add splitscreen players after a successful OSSv1 join if local multiplayer is supported.
 // 	if (Result == EOnJoinSessionCompleteResult::Success && LocalPlayers.Num() > 1)
 // 	{
 // 		IOnlineSessionPtr Sessions = Online::GetSessionInterface(GetWorld());
@@ -1270,7 +1270,7 @@ void UCommonSessionSubsystem::ConnectToHostReservationBeacon()
 
 	ReservationBeaconClient->OnReservationRequestComplete().BindWeakLambda(this, [this](EPartyReservationResult::Type ReservationResponse)
 		{
-			if (ReservationResponse == EPartyReservationResult::ReservationAccepted)
+			if (ReservationResponse == EPartyReservationResult::ReservationAccepted || ReservationResponse == EPartyReservationResult::ReservationDuplicate)
 			{
 				FOnlineResultInformation JoinSessionResult;
 				JoinSessionResult.bWasSuccessful = true;
@@ -1614,8 +1614,16 @@ void UCommonSessionSubsystem::SetCreateSessionError(const FText& ErrorText)
 
 void UCommonSessionSubsystem::CreateHostReservationBeacon()
 {
-	check(!BeaconHostListener.IsValid());
-	check(!ReservationBeaconHost.IsValid());
+	if (BeaconHostListener.IsValid() && ReservationBeaconHost.IsValid())
+	{
+		UE_LOG(LogCommonSession, Warning, TEXT("CreateHostReservationBeacon was called while a host reservation beacon is already active."));
+		return;
+	}
+	if (BeaconHostListener.IsValid() || ReservationBeaconHost.IsValid())
+	{
+		UE_LOG(LogCommonSession, Warning, TEXT("CreateHostReservationBeacon found a partial beacon state. Recreating the host reservation beacon."));
+		DestroyHostReservationBeacon();
+	}
 
 	UWorld* const World = GetWorld();
 	BeaconHostListener = World->SpawnActor<AOnlineBeaconHost>(AOnlineBeaconHost::StaticClass());

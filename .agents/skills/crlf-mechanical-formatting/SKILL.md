@@ -20,7 +20,7 @@ description: "Use when bulk-formatting or mechanically rewriting Windows text/co
 
 - 格式化 Unreal C++、Build.cs、Target.cs 或插件源码时，先配合 `../orion-code-style/SKILL.md`。
 - 批量处理 Steam、语音、音频、输入、UMG、GameFeature 等领域代码时，继续读取对应领域 Skill，只用本 Skill 处理文本重写和 CRLF 可靠性。
-- 创建或更新本 Skill、脚本或参考文档时，配合系统 `skill-creator` 和 `../ue-framework-skill-authoring/SKILL.md`。
+- 创建或更新本 Skill、脚本或参考文档时，配合系统 `skill-creator` 和 `../orion-framework-skill-authoring/SKILL.md`。
 
 ## Reference
 

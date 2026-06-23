@@ -1,4 +1,4 @@
 interface:
   display_name: "Unreal CommonInput"
   short_description: "CommonInput and CommonUI input source guide"
-  default_prompt: "Use $unreal-commoninput to inspect CommonInput, CommonUI input modes, input method state, and key brush lookup before changing UI input code."
+  default_prompt: "Use $unreal-commoninput to inspect CommonInput, CommonUI input modes, action icon fallback, and key brush lookup before changing UI input code."

@@ -65,8 +65,6 @@ public class GameCore : ModuleRules
 			"NetCore",
 			"OnlineSubsystem",
 			"OnlineSubsystemUtils",
-			"OrionSteamSDKAPI",
-			"OrionSteamShared",
 
 			// Hotfix
 			"Hotfix",

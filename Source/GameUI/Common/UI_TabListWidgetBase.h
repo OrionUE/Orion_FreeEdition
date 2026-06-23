@@ -9,6 +9,8 @@
 
 #include "UI_TabListWidgetBase.generated.h"
 
+enum class ECommonInputType : uint8;
+
 USTRUCT(BlueprintType)
 struct FTabDescriptor
 {
@@ -104,6 +106,9 @@ public:
 
 private:
 	void SetupTabs();
+	void HandleInputMethodChanged(ECommonInputType NewInputMethod);
+	void RefreshChildActionWidgetVisibility();
+	void RefreshChildActionWidgetVisibility(ECommonInputType CurrentInputType);
 
 protected:
 	// Delegate broadcast when a new tab is created. Allows hook-ups after creation
@@ -117,6 +122,8 @@ protected:
 private:
 	UPROPERTY(EditAnywhere, meta=(TitleProperty="TabId"))
 	TArray<FTabDescriptor> PreregisteredTabInfoArray;
+
+	FDelegateHandle InputMethodChangedDelegateHandle;
 	
 	// Stores label info for tabs that have been registered at runtime but not yet created. Elements are removed once they are created
 	UPROPERTY()

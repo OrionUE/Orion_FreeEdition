@@ -5,14 +5,22 @@
 
 #include "UI_TabListWidgetBase.h"
 
+#include "Blueprint/WidgetTree.h"
 #include "CommonAnimatedSwitcher.h"
+#include "CommonActionWidget.h"
 #include "CommonButtonBase.h"
+#include "CommonInputSubsystem.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(UI_TabListWidgetBase)
 
 void UUI_TabListWidgetBase::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
+
+	if (UCommonInputSubsystem* InputSubsystem = GetInputSubsystem())
+	{
+		InputMethodChangedDelegateHandle = InputSubsystem->OnInputMethodChangedNative.AddUObject(this, &ThisClass::HandleInputMethodChanged);
+	}
 }
 
 void UUI_TabListWidgetBase::NativeConstruct()
@@ -20,10 +28,17 @@ void UUI_TabListWidgetBase::NativeConstruct()
 	Super::NativeConstruct();
 
 	SetupTabs();
+	RefreshChildActionWidgetVisibility();
 }
 
 void UUI_TabListWidgetBase::NativeDestruct()
 {
+	if (UCommonInputSubsystem* InputSubsystem = GetInputSubsystem())
+	{
+		InputSubsystem->OnInputMethodChangedNative.Remove(InputMethodChangedDelegateHandle);
+		InputMethodChangedDelegateHandle.Reset();
+	}
+
 	for (FTabDescriptor& TabInfo : PreregisteredTabInfoArray)
 	{
 		if (TabInfo.CreatedTabContentWidget)
@@ -112,6 +127,34 @@ void UUI_TabListWidgetBase::SetTabHiddenState(FName TabNameId, bool bHidden)
 			break;
 		}
 	}
+}
+
+void UUI_TabListWidgetBase::HandleInputMethodChanged(ECommonInputType NewInputMethod)
+{
+	RefreshChildActionWidgetVisibility(NewInputMethod);
+}
+
+void UUI_TabListWidgetBase::RefreshChildActionWidgetVisibility()
+{
+	const UCommonInputSubsystem* InputSubsystem = GetInputSubsystem();
+	RefreshChildActionWidgetVisibility(InputSubsystem ? InputSubsystem->GetCurrentInputType() : ECommonInputType::Count);
+}
+
+void UUI_TabListWidgetBase::RefreshChildActionWidgetVisibility(ECommonInputType CurrentInputType)
+{
+	if (!WidgetTree)
+	{
+		return;
+	}
+
+	const bool bHideKeyboardMouseActionWidgets = CurrentInputType == ECommonInputType::MouseAndKeyboard;
+	WidgetTree->ForEachWidget([bHideKeyboardMouseActionWidgets](UWidget* Widget)
+	{
+		if (UCommonActionWidget* ActionWidget = Cast<UCommonActionWidget>(Widget))
+		{
+			ActionWidget->SetHidden(bHideKeyboardMouseActionWidgets);
+		}
+	});
 }
 
 bool UUI_TabListWidgetBase::RegisterDynamicTab(const FTabDescriptor& TabDescriptor)

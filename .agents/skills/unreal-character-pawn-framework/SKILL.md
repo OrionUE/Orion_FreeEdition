@@ -23,6 +23,7 @@ description: "Use when Codex works on Unreal Engine characters, pawns, PawnData,
 
 - 查源码、类声明、调用点、模块依赖和引擎生命周期时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 判断 GameCore 只读边界、PawnExtension、PawnControl、CorePlayerState、ASC 或 Experience 加载链时，配合 `../unreal-gamecore-framework/SKILL.md`。
+- 排查角色相机、第一人称视角、FOV、viewmodel、CameraComponent、`CalcCamera` 或 UE 升级后视角变化时，配合 `../unreal-camera-fov-diagnostics/SKILL.md`。
 - Experience 设置 `DefaultPawnData`、创建 PawnData、关卡指定 Experience、AbilitySet/InputAction/InputTag 闭环时，配合 `../unreal-gamemode-experience-framework/SKILL.md`。
 - 玩家身份、PlayerController 信息组件、玩家 gameplay component、玩家账户或 PlayerController/GameState 组件挂载时，配合 `../unreal-player-framework/SKILL.md`。
 - 角色、Pawn、Controller 或 CharacterSpawner 需要队伍身份、按队伍出生、AI 敌友态度、`FGenericTeamId` 或 `IOrionTeamAgentInterface` 时，配合 `../unreal-teams-framework/SKILL.md`。

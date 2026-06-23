@@ -29,9 +29,12 @@ GameSettings 插件只提供通用模型和 UI 支撑；项目侧实际设置由
 
 - `Source/<GameModule>/Settings/User/OrionGameSettingRegistry.*`
 - `Source/<GameModule>/Settings/User/GameSettingRegistry_*.cpp`
+- `Source/<GameModule>/Settings/User/GameSettingRegistry_DLC.cpp`
 - `Source/<GameModule>/Settings/User/OrionSettingsLocal.*`
 - `Source/<GameModule>/Settings/User/OrionSettingsShared.*`
 - `Source/<GameModule>/Settings/User/CustomSettings/*`
+- `Source/<GameModule>/Settings/User/CustomSettings/GameSettingValueDiscrete_Display.*`
+- `Source/<GameModule>/Settings/User/CustomSettings/GameSettingAction_HDRCalibrationEditor.*`
 - `Source/<GameModule>/Settings/Game/OrionGameWorldSettingRegistry.*`
 - `Source/<GameModule>/Settings/Game/OrionSettingsWorldOption.*`
 - `Source/<UIModule>/Settings/UI_UserSettingScreen.*`
@@ -42,8 +45,10 @@ GameSettings 插件只提供通用模型和 UI 支撑；项目侧实际设置由
 
 - `Config/DefaultEngine.ini` 的 `[/Script/Engine.Engine] GameUserSettingsClassName`
 - `Config/DefaultInput.ini` 的 `[/Script/EnhancedInput.EnhancedInputDeveloperSettings]`
+- `Config/DefaultDeviceProfiles.ini` 的移动端帧率、画质和分辨率限制 CVar
 - `Config/<Platform>/<Platform>GameUserSettings.ini`
 - `Config/DefaultGame.ini` 中性能、音频、平台设置相关 section
+- `Config/<Platform>/<Platform>Game.ini` 中 CommonUI platform traits，例如延迟统计、动态分辨率、窗口模式等 setting gating
 
 引擎源码参考：
 
@@ -180,7 +185,8 @@ Registry 持有 top-level settings 和所有递归注册的 settings：
 
 - 分辨率、窗口模式、VSync、画质、Scalability。
 - 帧率上限、移动/主机设备 profile、自动 benchmark。
-- 显示 gamma、DLSS、DLSS-FG、RTX、抗锯齿方法。
+- 显示 gamma、显示器选择、动态分辨率目标、DLSS、DLSS-FG、RTX、抗锯齿方法。
+- HDR 输出、HDR 校准值、HDR paper white、安全区缩放、移动端帧率和 DeviceProfile 质量限制。
 - 音量、音频输出/输入设备、麦克风采样率/声道。
 - 耳机 HRTF、HDR/LDR 音频、手柄硬件类型。
 - 只和当前机器/平台有关的开关。
@@ -198,6 +204,7 @@ Registry 持有 top-level settings 和所有递归注册的 settings：
 - 后台音频偏好。
 - 鼠标灵敏度、ADS multiplier、轴反转。
 - 手柄震动、摇杆死区、手柄灵敏度 preset。
+- Gamepad Input API 偏好，例如 Legacy XInput/WinDualShock 和 Modern GameInput。
 - 能随账号或云存档迁移的偏好。
 
 SharedSettings 保存时会：
@@ -232,6 +239,8 @@ SharedSettings 保存时会：
 
 - `LanguageCollection`
 - `Language`：自定义 `UGameSettingValueDiscrete_Language`，绑定 `UOrionSettingsShared` 的 pending culture 流程。
+- `DownloadableContentCollection`
+- `DLCPage`：开发用 DLC 管理页，受 `Orion.DLCMenu.Show` 和 `PlatformDLC` 可用性控制。
 
 ### Video
 
@@ -240,12 +249,19 @@ SharedSettings 保存时会：
 Display：
 
 - `WindowMode`
+- `Display`：Windows 上使用 `UGameSettingValueDiscrete_Display` 枚举当前显示器。
 - `Resolution`
-- `PerformanceStat` 页面入口目前为空实现。
+- `PerformanceStat` 页面入口挂在 Display 分区。
+
+`Resolution` 依赖 `WindowMode` 和 `Display`；窗口无边框模式下分辨率应跟随桌面原生分辨率并禁用手动选择。
 
 Graphics：
 
 - `Brightness`
+- `AllowHDR`
+- `HDRUseCalibration`
+- `HDRCalibrationEditor`
+- `HDRPaperWhite`
 - `SubtitlePage`
 - `Subtitles`
 - `SubtitleTextSize`
@@ -288,6 +304,7 @@ Frame rate settings 追加到 Video 顶层：
 - `FrameRateLimit_InMenu`
 - `FrameRateLimit_WhenBackground`
 - `FrameRateLimit_Always`
+- `DynamicResolution`：目标帧率离散选项，受桌面 frame pacing、RHI 动态分辨率能力和 `Platform.Trait.SupportsCustomDynamicResolution` 共同 gating。
 
 ### Audio
 
@@ -349,6 +366,41 @@ DeadZone：
 
 - `MoveStickDeadZone`
 - `LookStickDeadZone`
+
+Gamepad Input API：
+
+- `GamepadInputAPI_Option`：绑定 `UOrionSettingsShared` 的 Gamepad Input API 偏好；Windows 且 `bEnablePreferredInputAPIPreferences=True` 时显示，修改后需要重启。
+
+## 显示器、HDR 和动态分辨率
+
+显示相关设置跨 `UGameUserSettings`、RHI、Slate/Viewport 和平台 trait，不要只在 registry 里加一行 UI：
+
+1. 多显示器选择用自定义 `UGameSettingValueDiscrete_Display`，读取 `FDisplayMetrics.MonitorInfo`，保存显示器 ID / index，并通过 `UGameUserSettings::SetDisplayProperties` 影响后续分辨率列表。
+2. 分辨率设置要监听 display metrics、窗口模式和显示器变化。Windows 上应优先用当前显示器调用 `RHIGetAvailableResolutionsForDisplay`；无边框窗口禁用手动分辨率选择。
+3. `GameSettingRegistry_Video.cpp` 需要监听 viewport 的 `OnWindowDisplayChanged`、`OnToggleFullscreen` 以及本地设置的 video revert 事件，刷新 `WindowMode`、`Display` 和 `Resolution` 的 editable state。
+4. HDR 设置分为开关、是否使用校准、校准 action 和 paper white。校准 action 使用 `UGameSettingAction_HDRCalibrationEditor`，内部子 scalar 绑定最大 HDR nits；HDR 未实际启用时应禁用校准入口。
+5. 动态分辨率不是普通帧率限制。`DynamicResolution` 需要检查桌面 frame pacing、`GRHISupportsDynamicResolution`、`r.DynamicRes.OperationMode` 和 `Platform.Trait.SupportsCustomDynamicResolution`。
+
+## DLC 设置页和动态详情
+
+开发用 DLC 页走 `GameSettingRegistry_DLC.cpp`，不要塞进 GameCore 或普通 UI Widget Graph：
+
+1. 页面由 CVar `Orion.DLCMenu.Show` 控制，并且只有 `PlatformDLC` 模块返回有效 `IPlatformDLC` 时才注册。
+2. `DLCPage` 使用 initialization edit condition；`IPlatformDLC::RegisterInitializationCallback` 触发后再枚举 DLC 名称并填充动作。
+3. 每个 DLC 通常有 Download、Mount、Launch、Unmount、Uninstall 动作。Launch 默认按 `/<DLCName>/<DLCName>` 地图约定打开。
+4. 动态状态文本用 `SetDynamicDetails` 返回当前状态和下载百分比；如果要持续刷新，ticker 应调用 setting changed 广播，并在对象销毁或重建时清掉旧 ticker。
+5. 在当前 DLC 地图中 Unmount 可能触发 GC 崩溃风险，必须先弹确认或阻止操作。
+
+`GameSettingDetailView` 必须监听当前 setting 的 `OnSettingChangedEvent` 并刷新 `Description` / `DynamicDetails` 可见性。新增依赖动态状态的 action 时，先确认 detail view 有这条绑定，否则状态文本不会随下载进度变化。
+
+## 移动设备画质和帧率
+
+移动端质量限制由 `DefaultDeviceProfiles.ini`、`UOrionSettingsLocal` 和 Video setting 共同决定：
+
+- DeviceProfile CVar 使用 `Game.DeviceProfile.Mobile.DefaultFrameRate`、`Game.DeviceProfile.Mobile.MaxFrameRate`、`Game.DeviceProfile.Mobile.OverallQualityLimits`、`Game.DeviceProfile.Mobile.ResolutionQualityLimits` 和 `Game.DeviceProfile.Mobile.ResolutionQualityRecommendation`。
+- `UOrionSettingsLocal` 负责读取默认/最大移动帧率，约束不被设备支持的帧率，并在切换 FPS 时 remap 或 clamp resolution quality。
+- 设置 overall quality 时要保留移动端 resolution quality 约束，不能只调用 `Scalability::SetQualityLevels` 后丢掉设备 profile 限制。
+- iOS/Android 的具体设备 profile 可以覆盖 `r.MobileContentScaleFactor`、`sg.*`、safe zone、streaming pool 和移动抗锯齿；设置页只暴露玩家可调入口，不应复制 profile 表。
 
 ## 新增普通设置流程
 
@@ -478,6 +530,7 @@ Action 如果会改变设置状态并希望 Apply/Cancel 链路感知，才设�
 
 - 分辨率、窗口模式、VSync、画质走 `UGameUserSettings` / `UOrionSettingsLocal`。
 - DLSS、RTX、抗锯齿依赖项目的 render subsystem 和 DLSS subsystem。
+- 显示器、HDR、动态分辨率和移动帧率还依赖平台 trait、RHI 能力和 `DefaultDeviceProfiles.ini`。
 - `DefaultScalability.ini` 定义档位 CVar，设置页只改用户选择和应用。
 
 本地化设置：
@@ -504,10 +557,16 @@ UI 设置：
 - 默认值来自运行对象而不是 CDO：ResetToDefault 行为不稳定。
 - 只添加字段不添加 registry setting：设置页不会出现。
 - 只添加 registry setting 不更新 Save/Apply：Apply 后运行时不生效或重启丢失。
+- 依赖动态状态的 action 没有广播 setting changed：详情面板不会刷新下载进度、状态文本或禁用原因。
+- DLC 设置页无条件显示：没有 `PlatformDLC` 或 DLC 初始化未完成时会出现空页或不可用动作。
+- 显示器/分辨率设置没有监听 viewport 和 display metrics：切换显示器、全屏或撤销后 UI 状态会和真实窗口不一致。
+- HDR 校准入口没有按当前 HDR 输出状态禁用：玩家会看到可点但无效的校准动作。
+- 移动帧率/画质没有读取 DeviceProfile CVar：设置页可能允许设备不支持的 FPS 或画质组合。
 - 在 Widget Blueprint Graph 写业务保存：绕过 ChangeTracker，Cancel/Apply 不可靠。
 - 平台 trait 用错 `Kill`/`Disable`：平台不支持的设置可能显示成空白或误导用户。
 - 输入改键只改 IMC 不注册 EnhancedInput user settings：设置页扫描不到。
 - SharedSettings 尚未加载：Registry 的 `IsFinishedInitializing` 应等待，UI 不要绕过该检查。
+- `UGameUserSettings` 启动早于 `LocalPlayer`：编辑器或音频系统可能在第一个 `ULocalPlayer` 创建前调用 `GEngine->GetGameUserSettings()`，进而触发 `SetToDefaults()` / `LoadSettings()`。这些函数里访问 `OwningLocalPlayer->GetSubsystem<...>()` 前必须先检查 `OwningLocalPlayer.Get()`、目标 subsystem 和 user settings 是否有效；需要保留的子系统应用逻辑可在 `Initialize(ULocalPlayer*)` 后补做一次。验证时用 Editor 目标编译，再做一次无人值守编辑器启动，并检查最新日志没有 `Unhandled Exception`、`EXCEPTION_ACCESS_VIOLATION`、`Fatal error`。
 
 ## 验证清单
 
@@ -539,6 +598,9 @@ UI：
 
 - 音频：ControlBusMix、设备切换、HDR/LDR、后台音频。
 - 渲染：窗口模式、分辨率、Scalability、DLSS/RTX、帧率。
+- 渲染：显示器切换、HDR、动态分辨率、移动帧率和 DeviceProfile 质量限制。
 - 输入：EnhancedInput user settings、改键、重复绑定、glyph、手柄类型。
+- 输入：Gamepad Input API 选项保存后，`FGenericPlatformMisc::SetPreferredInputDevices` 的目标列表与配置一致，重启后仍生效。
+- DLC：`Orion.DLCMenu.Show` 开关、PlatformDLC 初始化、下载状态动态详情、挂载/卸载/启动/卸载确认流程。
 - 本地化：culture 切换、locres、UI 文案收集。
 - 世界设置：archive 保存和 Session 创建流程。

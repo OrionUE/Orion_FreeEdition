@@ -102,6 +102,8 @@
 5. 邀请进入监听 Ability 或系统事件后，包装成 `USessionSearchResultSteam`，再交给 `UCoreSessionComponent::JoinInvitedSession`。
 6. `UOrionGameSessionComponent` 负责先退出当前世界，后续蓝图或 CommonSession 流程继续加入目标 session。
 
+CommonSession 使用 PartyBeacon 预留连接时，`EPartyReservationResult::ReservationDuplicate` 应按 `ReservationAccepted` 一样视为加入成功，并继续 `NotifyJoinSessionComplete` / travel 流程。它通常表示客户端已经有相同 reservation，不应被 UI 当成普通 join 失败。
+
 实现 Session 时优先改这些层：
 
 - 玩法差异：GameFeature 插件中的 Experience、GameMode glue、Feature Action 或 BP Session 组件子类。
@@ -188,13 +190,16 @@ Steam 目标常见特征：
 - 派生 Game/Client/Server target。
 - 设置 Steam 专用 `CustomConfig`。
 - 添加 `WITH_STEAM=1` 或等价全局定义。
+- 如果 Steam target 里使用 `EnablePlugins` / `DisablePlugins` 做 target-specific 插件启用，必须按 unique build environment 编译；安装版引擎的普通 shared Visual Studio `Development Game` 入口不能编译这种 target。
 - Dedicated Server target 要确认 Steam game server init、query port、server product name、server description 和 auth 行为。
 
 模块依赖常见规则：
 
+- 项目模块的 `PublicDependencyModuleNames` 默认只允许 `"Core"`、`"CoreUObject"`、`"Engine"`。Steam、CommonSession、OnlineSubsystem、UI、GAS、GameFeature 等其他依赖一律放 `PrivateDependencyModuleNames`，除非用户本次明确授权改变 Public API 边界。
+- 如果 Steam wrapper 的 Public 头暴露 Steam 类型或需要 Steam include，也不要为了依赖位置规则删除 `FSteamSessionResult`、Blueprint API、wrapper overload 或业务逻辑；依赖仍放 `PrivateDependencyModuleNames`，然后以编译验证为准。
 - `GameCore` 只保留框架抽象和必要 Online/CommonSession 类型；默认不要新增业务逻辑。
 - `OrionGame` 放游戏层 session component、邀请 ability、退出当前世界、FriendManager 等 glue。
-- `GameUI` 放在线 UI；若直接用 Steam wrapper，需要依赖 `OrionSteamSDKAPI` 或在线 subsystem 模块。
+- `GameUI` 放在线 UI；若直接用 Steam wrapper，需要在对应模块的 `PrivateDependencyModuleNames` 中声明 `OrionSteamSDKAPI` 或在线 subsystem 模块。
 - `BBL` 只做蓝图桥接；不要把 session 搜索/加入业务写厚。
 - GameFeature runtime module 可以依赖需要的框架模块和 Steam SDK wrapper，但不要依赖 Editor 模块。
 
@@ -268,11 +273,41 @@ Steam 目标常见特征：
 
 验证：重新编译或打包该 GameFeature，相关模块不再报缺少 `OrionSteamSDKAPI` 头文件。
 
+### Steam Target 中启用插件但用安装版引擎编译
+
+现象：Steam Game/Server target 在 `*.Target.cs` 中调用 `EnablePlugins.Add(...)` 或 `DisablePlugins.Add(...)`，从安装版引擎的 Visual Studio `Development Game` 入口编译时报：
+
+```text
+Explicitly enabling and disabling plugins for a target is only supported when using a unique build environment
+```
+
+给 UBT 追加 `-UniqueBuildEnvironment` 后，如果仍使用安装版引擎，会继续报：
+
+```text
+Targets with a unique build environment cannot be built with an installed engine.
+```
+
+原因：安装版引擎的普通 Game target 默认走 shared build environment，不能通过 target receipt 动态启用/禁用插件；而 `EnablePlugins` / `DisablePlugins` 需要 unique build environment。`bOverrideBuildEnvironment = true` 可以覆盖部分 target property 校验，但不能让安装版引擎支持 unique target build。
+
+修复：
+
+- 若必须保留 target-specific `EnablePlugins` / `DisablePlugins` 写法，用同版本源码版引擎编译，并给 UBT 传 `-UniqueBuildEnvironment`。
+- 若必须使用安装版引擎直接从 Visual Studio 编译，把插件启用放回 `.uproject` 或平台/配置描述里，不要在非 Editor Game/Server target 中动态启用插件。
+- 打包验证时，如果 BuildCookRun 需要构建这种 Steam target，也要确保底层 UBT 使用同版本源码版引擎并带 `-UniqueBuildEnvironment`；只追加 `-AdditionalBuildOptions="-UniqueBuildEnvironment"` 到安装版引擎不足以解决。
+
+验证：日志不再出现上述两个 Target rules 错误，并进入 UHT、C++ 编译或链接阶段；最终以 UBT `Result: Succeeded` 或 UAT `BUILD SUCCESSFUL` 为准。
+
 ### UI 直接 travel
 
 现象：加入邀请或房间时当前世界未清理，loading/front-end state 卡住或 session 残留。
 
 修复：UI 调用 Session component/CommonSession，让 `UOrionGameSessionComponent` 和系统 flow 先退出当前世界，再加入目标 session。
+
+### 把 ReservationDuplicate 当成加入失败
+
+现象：客户端已经有 party reservation 时，PartyBeacon 返回 `ReservationDuplicate`，UI 或流程却按失败处理，导致不会 travel 到目标 session。
+
+修复：在 CommonSession / beacon completion 中把 `ReservationDuplicate` 和 `ReservationAccepted` 一样视为成功，再触发 join complete。只有真正拒绝、超时或满员等结果才走失败提示。
 
 ### 把 Web API key 放到公开配置
 

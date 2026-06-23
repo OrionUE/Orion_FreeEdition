@@ -146,6 +146,182 @@ function Get-TargetFiles
 	}
 }
 
+function Test-CodeFileEnding
+{
+	param(
+		[System.IO.FileInfo]$File,
+		[string]$RelativePath,
+		[byte[]]$Bytes,
+		[string]$Text
+	)
+
+	if ($Bytes.Length -eq 0)
+	{
+		return
+	}
+
+	$EndsWithCrLf = $Bytes.Length -ge 2 -and $Bytes[$Bytes.Length - 2] -eq 13 -and $Bytes[$Bytes.Length - 1] -eq 10
+	if (-not $EndsWithCrLf)
+	{
+		Add-Failure -File $RelativePath -Message "must end with a single CRLF newline"
+		return
+	}
+
+	$NormalizedText = $Text -replace "`r?`n", "`n"
+	if ($NormalizedText -match "`n`n$")
+	{
+		Add-Failure -File $RelativePath -Message "has extra blank lines at end of file; keep only one final newline"
+	}
+}
+
+function Test-NamespaceIndentation
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	$NamespaceDepths = New-Object System.Collections.Generic.List[int]
+	$BraceDepth = 0
+	$PendingNamespace = $false
+
+	for ($LineIndex = 0; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		$Line = $Lines[$LineIndex]
+		$Trimmed = $Line.Trim()
+		$LineNumber = $LineIndex + 1
+		$StartedPendingNamespace = $false
+
+		if ($NamespaceDepths.Count -gt 0 -and -not [string]::IsNullOrWhiteSpace($Line))
+		{
+			$IsNamespaceBoundary = $Trimmed -match '^}\s*(//.*)?$'
+			$IsPreprocessor = $Trimmed.StartsWith("#")
+			if (-not $Line.StartsWith("`t") -and -not $IsNamespaceBoundary -and -not $IsPreprocessor)
+			{
+				Add-Failure -File $RelativePath -Message "line $LineNumber is inside a namespace but is not Tab-indented"
+				return
+			}
+		}
+
+		$StartsNamespaceWithBrace = $false
+		if ($Trimmed -match '^namespace(\s+[A-Za-z_][A-Za-z0-9_:]*)?\s*\{')
+		{
+			$StartsNamespaceWithBrace = $true
+			$PendingNamespace = $false
+		}
+		elseif ($Trimmed -match '^namespace(\s+[A-Za-z_][A-Za-z0-9_:]*)?\s*(//.*)?$')
+		{
+			$PendingNamespace = $true
+			$StartedPendingNamespace = $true
+		}
+
+		$OpenCount = ([regex]::Matches($Line, '\{')).Count
+		$CloseCount = ([regex]::Matches($Line, '\}')).Count
+
+		if ($PendingNamespace -and $Trimmed -eq "{")
+		{
+			$NamespaceDepths.Add($BraceDepth + 1)
+			$PendingNamespace = $false
+		}
+		elseif ($StartsNamespaceWithBrace -and $OpenCount -gt 0)
+		{
+			$NamespaceDepths.Add($BraceDepth + 1)
+		}
+		elseif ($PendingNamespace -and -not $StartedPendingNamespace -and -not [string]::IsNullOrWhiteSpace($Trimmed))
+		{
+			$PendingNamespace = $false
+		}
+
+		$BraceDepth += $OpenCount - $CloseCount
+		while ($NamespaceDepths.Count -gt 0 -and $BraceDepth -lt $NamespaceDepths[$NamespaceDepths.Count - 1])
+		{
+			$NamespaceDepths.RemoveAt($NamespaceDepths.Count - 1)
+		}
+	}
+}
+
+function Test-GeneratedHeaderLayout
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	$GeneratedIncludeIndexes = New-Object System.Collections.Generic.List[int]
+
+	for ($LineIndex = 0; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		if ($Lines[$LineIndex] -match '^\s*#\s*include\s+"[^"]+\.generated\.h"')
+		{
+			$GeneratedIncludeIndexes.Add($LineIndex)
+		}
+	}
+
+	if ($GeneratedIncludeIndexes.Count -eq 0)
+	{
+		return
+	}
+
+	if ($GeneratedIncludeIndexes.Count -gt 1)
+	{
+		Add-Failure -File $RelativePath -Message "contains multiple .generated.h includes"
+		return
+	}
+
+	$GeneratedIndex = $GeneratedIncludeIndexes[0]
+	for ($LineIndex = $GeneratedIndex + 1; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		if ($Lines[$LineIndex] -match '^\s*#\s*include\s+')
+		{
+			$LineNumber = $LineIndex + 1
+			Add-Failure -File $RelativePath -Message "line $LineNumber includes a header after .generated.h; keep .generated.h as the final include"
+			return
+		}
+	}
+
+	if ($GeneratedIndex -gt 0 -and -not [string]::IsNullOrWhiteSpace($Lines[$GeneratedIndex - 1]))
+	{
+		$LineNumber = $GeneratedIndex + 1
+		Add-Failure -File $RelativePath -Message "line $LineNumber must be separated from regular includes by a blank line before .generated.h"
+		return
+	}
+
+	if ($GeneratedIndex + 1 -lt $Lines.Count -and -not [string]::IsNullOrWhiteSpace($Lines[$GeneratedIndex + 1]))
+	{
+		$LineNumber = $GeneratedIndex + 1
+		Add-Failure -File $RelativePath -Message "line $LineNumber must be followed by a blank line before declarations"
+		return
+	}
+}
+
+function Test-IsGitNewFile
+{
+	param([string]$RelativePath)
+
+	$GitStatus = & git -C $ProjectRoot status --porcelain -- $RelativePath 2>$null
+	if ($LASTEXITCODE -ne 0 -or -not $GitStatus)
+	{
+		return $false
+	}
+
+	foreach ($Line in $GitStatus)
+	{
+		if ($Line.StartsWith("??"))
+		{
+			return $true
+		}
+
+		if ($Line.Length -ge 2 -and ($Line[0] -eq 'A' -or $Line[1] -eq 'A'))
+		{
+			return $true
+		}
+	}
+
+	return $false
+}
+
 $Files = @()
 foreach ($InputPath in $Path)
 {
@@ -183,6 +359,11 @@ foreach ($File in $Files)
 		Add-Failure -File $RelativePath -Message "contains LF-only line endings"
 	}
 
+	if ($CodeExtensions -contains $File.Extension)
+	{
+		Test-CodeFileEnding -File $File -RelativePath $RelativePath -Bytes $Bytes -Text $Text
+	}
+
 	$Lines = $Text -split "`r?`n"
 	for ($LineIndex = 0; $LineIndex -lt $Lines.Count; ++$LineIndex)
 	{
@@ -195,19 +376,29 @@ foreach ($File in $Files)
 		}
 	}
 
+	if ($File.Extension -in @(".h", ".cpp"))
+	{
+		Test-NamespaceIndentation -RelativePath $RelativePath -Text $Text
+	}
+
+	if ($File.Extension -eq ".h")
+	{
+		Test-GeneratedHeaderLayout -RelativePath $RelativePath -Text $Text
+	}
+
 	if ($Text -match '(?m)TODO:\s*$')
 	{
 		Add-Failure -File $RelativePath -Message "contains empty TODO placeholder"
 	}
 
-	if (($HeaderExtensions -contains $File.Extension) -and $ExpectedHeader -and $ExpectedHeader.Text -and $Text.Length -gt 0)
+	if (($HeaderExtensions -contains $File.Extension) -and $ExpectedHeader -and $ExpectedHeader.Text -and $Text.Length -gt 0 -and (Test-IsGitNewFile -RelativePath $RelativePath))
 	{
 		$NormalizedHeader = $ExpectedHeader.Text -replace "`r?`n", "`n"
 		$HeaderLineCount = ($NormalizedHeader -split "`n").Count + 2
 		$FirstLines = (($Text -replace "`r?`n", "`n") -split "`n" | Select-Object -First $HeaderLineCount) -join "`n"
 		if (-not $FirstLines.Contains($NormalizedHeader))
 		{
-			Add-Failure -File $RelativePath -Message "header does not include expected copyright header from config/default"
+			Add-Failure -File $RelativePath -Message "new code file header does not include expected copyright header from config/default"
 		}
 	}
 }
