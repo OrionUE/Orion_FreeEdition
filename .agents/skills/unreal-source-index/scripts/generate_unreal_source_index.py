@@ -13,7 +13,9 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_OUT_DIR = Path(__file__).resolve().parents[1] / "references" / "generated"
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+DEFAULT_OUT_DIR = PROJECT_ROOT / "Saved" / "OrionUE" / "UnrealEngine" / "SourceIndex"
+PROJECT_ENGINE_ROOT_CACHE = PROJECT_ROOT / "Saved" / "OrionUE" / "UnrealEngine" / "InstallDirectory.txt"
 
 
 def bool_text(value: Any) -> str:
@@ -285,6 +287,12 @@ rg -n "EnhancedInput|CommonInput|InputCore" engine-modules.csv engine-plugins.cs
 
 def resolve_engine_root(value: str | None) -> Path | None:
     root_value = value
+    if not root_value and PROJECT_ENGINE_ROOT_CACHE.is_file():
+        for line in PROJECT_ENGINE_ROOT_CACHE.read_text(encoding="utf-8-sig").splitlines():
+            candidate = line.strip().strip('"')
+            if candidate and not candidate.startswith("#"):
+                root_value = candidate
+                break
     if not root_value:
         for env_name in ("UE_ENGINE_ROOT", "UNREAL_ENGINE_ROOT", "UE_ROOT"):
             root_value = os.environ.get(env_name)

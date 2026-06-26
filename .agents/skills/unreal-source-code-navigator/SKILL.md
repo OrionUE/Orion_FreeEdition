@@ -9,7 +9,7 @@ description: "Use when Codex must write, modify, review, or explain Unreal Engin
 
 ## 工作流
 
-1. 先识别上下文：定位 `<ProjectRoot>`、`<EngineRoot>`、`<PluginRoot>`、`.uproject`、`.uplugin`、`*.Build.cs` 和 `*.Target.cs`。
+1. 先识别上下文：定位 `<ProjectRoot>`、`<EngineRoot>`、`<PluginRoot>`、`.uproject`、`.uplugin`、`*.Build.cs` 和 `*.Target.cs`。如果没有显式传入 `<EngineRoot>`，先读取 `<ProjectRoot>/Saved/OrionUE/UnrealEngine/InstallDirectory.txt` 中记录的本机 UE 安装目录。
 2. 先查源码再写代码：确认类声明、父类、生命周期函数、`UFUNCTION`、`UPROPERTY`、委托声明、接口和调用样例。
 3. 先确认模块再添加 include：用 `*.Build.cs` 判断 Public/Private 依赖，避免把 include 问题误当成 API 问题。
 4. 遇到版本差异时，以本机源码为准；不要把通用 UE 知识当成当前版本事实。
@@ -60,6 +60,7 @@ scripts/run.sh search UActorComponent --root <ProjectRoot>
 ## 约束
 
 - 安装版 Unreal Engine 代码永远只读。可以读取 `<EngineRoot>` 下的源码、头文件、配置和日志来确认 API，但不要编辑、打补丁、加临时诊断、格式化、修改只读属性或生成任何引擎目录内文件。
+- 本机重复性缓存、日志、搜索结果、扫描结果和索引优先放在 `<ProjectRoot>/Saved/OrionUE` 下。UE 安装目录缓存文件固定为 `<ProjectRoot>/Saved/OrionUE/UnrealEngine/InstallDirectory.txt`，内容是一行绝对路径；搜索/扫描缓存可按领域放到 `<ProjectRoot>/Saved/OrionUE/<Domain>`，Skill 文件只写相对缓存位置，不硬编码本机路径。
 - 如果必须做引擎级断点或插桩，先停止并要求用户提供明确的源码版引擎工作区许可；默认改法必须落在项目、插件、配置或资产层。
 - 不把项目名、项目绝对路径或引擎绝对路径写入 Skill 内容。
 - 不复制 Unreal Engine 源码、头文件摘录或完整 API 文档。

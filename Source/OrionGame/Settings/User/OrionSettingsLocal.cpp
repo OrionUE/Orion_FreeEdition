@@ -17,7 +17,9 @@
 #include "Development/OrionPlatformEmulationSettings.h"
 #include "DeviceProfiles/DeviceProfile.h"
 #include "DeviceProfiles/DeviceProfileManager.h"
+#include "HAL/IConsoleManager.h"
 #include "HAL/PlatformFramePacer.h"
+#include "HAL/PlatformProcess.h"
 #include "NativeGameplayTags.h"
 #include "Audio/AudioMixEffectsSubsystem.h"
 #include "Performance/GameDLSSSubsystem.h"
@@ -237,6 +239,20 @@ namespace OrionSettingsHelpers
 		return ICommonUIModule::GetSettings().GetPlatformTraits().HasTag(Tag);
 	}
 
+	bool IsOpenCLRuntimeAvailable()
+	{
+#if PLATFORM_WINDOWS
+		void* OpenCLHandle = FPlatformProcess::GetDllHandle(TEXT("OpenCL.dll"));
+		if (OpenCLHandle)
+		{
+			FPlatformProcess::FreeDllHandle(OpenCLHandle);
+			return true;
+		}
+#endif
+
+		return false;
+	}
+
 	int32 GetHighestLevelOfAnyScalabilityChannel(const Scalability::FQualityLevels& ScalabilityQuality)
 	{
 		static_assert(sizeof(Scalability::FQualityLevels) == 88, "This function may need to be updated to account for new members");
@@ -375,6 +391,7 @@ void UOrionSettingsLocal::SetToDefaults()
 
 	bUseHeadphoneMode = false;
 	bUseHDRAudioMode = false;
+	bUseGPUAudioAcceleration = CanEnableGPUAudioAcceleration();
 	bSoundControlBusMixLoaded = false;
 
 	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
@@ -408,6 +425,7 @@ void UOrionSettingsLocal::LoadSettings(bool bForceReload)
 	// Enable HRTF if needed
 	bDesiredHeadphoneMode = bUseHeadphoneMode;
 	SetHeadphoneModeEnabled(bUseHeadphoneMode);
+	ApplyGPUAudioAccelerationSetting();
 	
 	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
 	{
@@ -566,6 +584,7 @@ void UOrionSettingsLocal::ApplyNonResolutionSettings()
 	{
 		SetHeadphoneModeEnabled(bDesiredHeadphoneMode);
 	}
+	ApplyGPUAudioAccelerationSetting();
 	
 	if (DesiredUserChosenDeviceProfileSuffix != UserChosenDeviceProfileSuffix)
 	{
@@ -1605,6 +1624,30 @@ void UOrionSettingsLocal::SetHDRAudioModeEnabled(bool bEnabled)
 				AudioMixEffectsSubsystem->ApplyDynamicRangeEffectsChains(bEnabled);
 			}
 		}
+	}
+}
+
+bool UOrionSettingsLocal::IsGPUAudioAccelerationEnabled() const
+{
+	return bUseGPUAudioAcceleration && CanEnableGPUAudioAcceleration();
+}
+
+void UOrionSettingsLocal::SetGPUAudioAccelerationEnabled(bool bEnabled)
+{
+	bUseGPUAudioAcceleration = bEnabled && CanEnableGPUAudioAcceleration();
+	ApplyGPUAudioAccelerationSetting();
+}
+
+bool UOrionSettingsLocal::CanEnableGPUAudioAcceleration() const
+{
+	return OrionSettingsHelpers::IsOpenCLRuntimeAvailable();
+}
+
+void UOrionSettingsLocal::ApplyGPUAudioAccelerationSetting()
+{
+	if (IConsoleVariable* GPUAudioAccelerationCVar = IConsoleManager::Get().FindConsoleVariable(TEXT("SteamAudio.GPUAudioAcceleration")))
+	{
+		GPUAudioAccelerationCVar->Set(IsGPUAudioAccelerationEnabled() ? 1 : 0, ECVF_SetByGameSetting);
 	}
 }
 

@@ -6,8 +6,8 @@
 
 ## 推荐流程
 
-1. 读取 `.agents/skills/unreal-mcp-workflow/SKILL.md`，建立可见编辑器 MCP 连接。
-2. 读取 `.agents/skills/unreal-asset-management/SKILL.md`，确认正式资产目录、命名前缀和覆盖策略。
+1. 读取 `.agents/skills/orion-mcp-workflow/SKILL.md`，建立可见编辑器 MCP 连接。
+2. 读取 `.agents/skills/orion-asset-management/SKILL.md`，确认正式资产目录、命名前缀和覆盖策略。
 3. 用 `list_toolsets` 确认是否存在：
    - `NiagaraToolsets.NiagaraToolset_Info`
    - `NiagaraToolsets.NiagaraToolset_Component`

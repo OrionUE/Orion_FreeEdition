@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unreal GameCore Framework"
-  short_description: "Use GameCore safely through OrionGame and GameFeatures"
-  default_prompt: "Use $unreal-gamecore-framework before adding gameplay code that touches GameCore-derived systems."

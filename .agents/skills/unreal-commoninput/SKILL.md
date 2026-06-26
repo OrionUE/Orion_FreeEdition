@@ -23,14 +23,14 @@ description: "Use when Codex works on Unreal Engine CommonInput or CommonUI inpu
 
 ## 路由
 
-- 处理 `Content/UI/BP_CommonInputData`、`Content/UI/DT_UniversalActions`、`Content/UI/DA_GameUIInputActionDomainTable`、`W_OverallUILayout` 的 UI root/input 蓝图资产时，配合 `../unreal-ui-blueprint-framework/SKILL.md`。
+- 处理 `Content/UI/BP_CommonInputData`、`Content/UI/DT_UniversalActions`、`Content/UI/DA_GameUIInputActionDomainTable`、`W_OverallUILayout` 的 UI root/input 蓝图资产时，配合 `../orion-ui-blueprint-framework/SKILL.md`。
 - 处理 CommonUI 按钮在键鼠模式下错误显示默认 Action 图标、点状/句点 glyph、默认 click fallback 或 `UCommonButtonBase`/`UCommonActionWidget` 图标回退策略时，读取 `references/commoninput.zh-CN.md` 的“CommonUI Action 图标回退”小节。
 - 查源码位置、模块依赖和符号声明时，优先配合 `../unreal-source-code-navigator/SKILL.md`。
 - 涉及 `FKey`、`EKeys`、key metadata、key category、paired axis、platform key conversion 或 key 分类时，配合 `../unreal-inputcore/SKILL.md`。
 - 只涉及 EnhancedInput action、mapping、trigger、modifier 时，使用 `../unreal-enhancedinput/SKILL.md`。
-- 涉及 GameFeature 激活时添加/移除 UI、CommonUI action domain、input mode 或按键提示资源时，使用 `../unreal-gamefeatures/SKILL.md`。
+- 涉及 GameFeature 激活时添加/移除 UI、CommonUI action domain、input mode 或按键提示资源时，使用 `../orion-gamefeatures/SKILL.md`。
 - 涉及技能 UI、GameplayAbility 输入提示、ability cooldown/cost 显示或 GAS 状态驱动 UI 时，使用 `../unreal-gameplayabilities/SKILL.md`。
-- 涉及 `CommonInputSystem`、`UInputSystemConfig`、玩家改键设置页、GameFeature 输入注入、`InputTag` 或项目手柄/键鼠设置时，配合 `../unreal-input-framework/SKILL.md`，不要把 CommonInput 原生能力和项目扩展混为一谈。
+- 涉及 `CommonInputSystem`、`UInputSystemConfig`、玩家改键设置页、GameFeature 输入注入、`InputTag` 或项目手柄/键鼠设置时，配合 `../orion-input-framework/SKILL.md`，不要把 CommonInput 原生能力和项目扩展混为一谈。
 
 ## 约束
 

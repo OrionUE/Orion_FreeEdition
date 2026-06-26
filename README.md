@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/Version-1.0.2-0E1128?style=flat-square">
+  <img alt="Version" src="https://img.shields.io/badge/Version-1.0.3-0E1128?style=flat-square">
   <img alt="Unreal Engine" src="https://img.shields.io/badge/Unreal%20Engine-5.8-0E1128?style=flat-square&logo=unrealengine&logoColor=white">
   <img alt="Platform" src="https://img.shields.io/badge/Primary%20Platform-Windows%20%2F%20Steam-1b2838?style=flat-square&logo=steam&logoColor=white">
   <img alt="Localization" src="https://img.shields.io/badge/Localization-zh--Hans%20%7C%20en-2E7D32?style=flat-square">
@@ -17,9 +17,9 @@
 
 > **开发状态 / Development Status**
 >
-> 当前版本：1.0.2。Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
+> 当前版本：1.0.3。Orion 目前仍处于初代版本阶段，许多工程细节、工具链体验和内容示例还在持续完善中。当前仓库代表正在开发中的框架基线，接口、文档和工作流可能会随着后续版本继续调整。
 >
-> Current version: 1.0.2. Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
+> Current version: 1.0.3. Orion is currently a first-generation version. Many engineering details, toolchain workflows, and content examples are still being refined. This repository represents an actively developed framework baseline, and APIs, documentation, and workflows may continue to change in future releases.
 
 ## 简体中文
 
@@ -27,7 +27,7 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 目标是让创作者能从“描述玩法”快速进入“可运行原型”，同时保留 C++ 工程的可维护性、扩展性和发布能力。
 
-当前版本：1.0.2
+当前版本：1.0.3
 
 官网：[https://orionue.com](https://orionue.com)
 
@@ -56,6 +56,15 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 ### 更新内容
 
+#### 1.0.3
+
+- **PSO 收集与稳定缓存工作流落地**：新增 `UOrionPSOCaptureSubsystem`，可通过 packaged game 参数启用第三视角巡航相机自动收集 PSO；新增 `OrionPSOFilter` Commandlet 和 `orion-pso-caching` Skill，覆盖 `.shk`、`.rec.upipelinecache`、`.spc`、direct stable `.stable.upipelinecache`、全量/增量/指定地图收集、转换、注入和打包验证。
+- **PSO 打包配置补强**：`WindowsEngine.ini` 更新 PSO CVar，使用 `r.PSOPrecache.ProxyCreationStrategy=1`，并通过 `r.ShaderPipelineCacheTools.IncludeComputePSODuringCook=0` 支撑 direct stable fallback；`DefaultGame.ini` 重新启用 shared material native libraries，并把 `PipelineCaches` 作为 UFS 目录随包发布。
+- **ProjectAcoustics 打包混响修复**：调整 SteamAudio 反射/场景设置，新增 `orion-project-acoustics` Skill，修复 ProjectAcoustics listener、SourceDataOverride、空间混响虚拟扬声器和 UE 5.8 audio thread 生命周期相关问题；同时把 `/SteamAudio/Materials` 纳入 Always Cook，避免打包版混响材质缺失。
+- **音频设置扩展**：用户音频设置新增 Steam Audio GPU Acceleration 开关，并在运行时检测 OpenCL runtime；ProjectAcoustics、SteamAudio、HDR Audio 和用户设置的组合更清晰。
+- **项目 Skill 命名收敛**：大量项目本地 Skill 从通用 `unreal-*` 迁移为 `orion-*`，新增 `orion-asset-management`、`orion-packaging`、`orion-project-cleanup`、`orion-release-publishing`、`orion-engine-upgrade-regression-todos` 等项目专用入口。
+- **MCP 与发布文档补充**：新增 `.agents/MCP/README.md` 和 HTTP MCP 配置模板，补充本地 Unreal MCP 连接说明；新增发布与 PSO 相关脚本说明，让打包、收集、转换、验证可按项目流程复用。
+
 #### 1.0.2
 
 - **UE 5.8 代码与配置稳定化**：整理 UE 5.8 迁移后的 Target、插件、配置和运行时兼容问题；Steam Target 的 `CustomConfig=Steam` 与 `WITH_STEAM=1` 逻辑集中到共享 Target 设置中。
@@ -82,13 +91,14 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 | 输入 | EnhancedInput、CommonInput、`InputSystemPlayerInput`、输入标签、GameInput/XInput/WinDualShock、手柄/键鼠切换、玩家改键、延迟标记 |
 | 设置 | Video/Game/Gamepad/DLC 设置注册表、HDR 校准、显示器选择、动态分辨率、窗口/分辨率、帧率与用户配置 |
 | 在线与 Steam | `OrionSteam`、`OrionOnlineSubsystemSteam`、OnlineSubsystem、Session、Lobby、好友邀请、`OrionSteamSockets`、Steam Web API |
-| 音频与语音 | AudioMixer、AudioModulation、ProjectAcoustics、SteamAudio、`OrionVoiceChat`、输入/输出设备切换 |
+| 音频与语音 | AudioMixer、AudioModulation、ProjectAcoustics 空间混响、SteamAudio、Steam Audio GPU Acceleration、`OrionVoiceChat`、输入/输出设备切换 |
 | 存档 | Archive 管理、世界存档、玩家存档、自动保存、前端存档入口 |
 | 队伍 | TeamSubsystem、TeamInfo、队伍显示数据、AI 敌友态度、友军伤害判断 |
 | 背包与交互 | GameInventorySystem、InteractionSystem、交互检测、拾取/装备/丢弃、交互 UI |
-| 渲染 | Lumen、Nanite、Ray Tracing、DLSS、NIS、Streamline Reflex/DLSSG、Device Profiles、动态分辨率、平台画质配置 |
+| 渲染 | Lumen、Nanite、Ray Tracing、DLSS、NIS、Streamline Reflex/DLSSG、Device Profiles、动态分辨率、PSO 采集、stable PipelineCaches、平台画质配置 |
+| 发布与打包 | Windows/Steam 打包、Steam CustomConfig、PSO 收集与注入、ProjectAcoustics/SteamAudio 资源 staging、打包版 smoke test |
 | 本地化 | `zh-Hans` 与 `en`，含 Game 与 EngineOverrides 本地化目标 |
-| MCP/自动化 | 项目内 MCP、AIAssistant 与 Toolsets，用于资产、蓝图迁移修复、UMG、Niagara、PCG、GameplayTags、渲染命令和编辑器自动化 |
+| MCP/自动化 | 项目内 MCP、HTTP MCP 配置、AIAssistant 与 Toolsets，用于资产、蓝图迁移修复、UMG、Niagara、PCG、GameplayTags、渲染命令、PSO 和编辑器自动化 |
 
 ### 工程结构
 
@@ -96,7 +106,7 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 .
 ├── .agents/skills/          # 项目本地 AI Skills
 ├── Build/                   # 平台构建资源、图标、PipelineCaches
-├── CollectedPSOs/           # PSO 收集输出
+├── CollectedPSOs/           # PSO 录制与转换输入输出
 ├── Config/                  # 默认配置、平台配置、本地化配置、打包配置
 ├── Content/                 # 项目正式资产
 ├── Plugins/                 # 框架插件、MCP Toolsets、GameFeature、Steam、Audio、DLSS 等
@@ -113,7 +123,6 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 | `BBL` | Runtime | Blueprint Bridge Layer，用于提供蓝图友好的 facade、派生类和桥接入口。 |
 | `OrionGame` | Runtime | 宿主游戏逻辑，包括角色、玩家、队伍、存档、设置、在线、输入、前端流程和渲染集成。 |
 | `OrionEditor` | Editor | 编辑器扩展、PIE 钩子、项目编辑器工具和编辑器配置入口。 |
-| `AnimFramework` | Runtime target dependency | Target 与配置中仍引用的动画/Ability 框架层；发布前请确认该模块随分发包一起提供。 |
 
 #### 主要插件组
 
@@ -139,14 +148,14 @@ Orion 是一个基于 Unreal Engine 5.8 的模块化游戏制作框架。它把�
 
 | 分类 | 代表 Skill | 用途 |
 | --- | --- | --- |
-| 工程总览 | `unreal-framework-architecture`、`unreal-source-code-navigator`、`unreal-source-index`、`orion-framework-skill-authoring` | 判断模块边界、插件归属、Target、Build.cs 依赖、源码导航和项目 Skill 编写规则。 |
+| 工程总览 | `orion-framework-architecture`、`unreal-source-code-navigator`、`unreal-source-index`、`orion-framework-skill-authoring`、`orion-engine-upgrade-regression-todos` | 判断模块边界、插件归属、Target、Build.cs 依赖、源码导航、项目 Skill 编写规则和 UE 升级回归事项。 |
 | 代码规范 | `orion-code-style` | Orion C++/Build.cs/Target.cs 风格、版权头、Tab 缩进、CRLF、检查脚本。 |
-| 资产与编辑器 | `unreal-asset-management`、`unreal-editor-extension-framework`、`unreal-mcp-workflow`、`unreal-mcp-project-toolsets`、`unreal-blueprint-migration-repair` | 资产命名、蓝图迁移修复、UMG/关卡/Toolset 自动化、编辑器扩展。 |
-| 玩法框架 | `unreal-gamecore-framework`、`unreal-gamemode-experience-framework`、`unreal-gamefeatures`、`unreal-gameplayabilities` | GameCore、Experience、GameFeature、GAS、GamePhase、AbilitySet。 |
-| UI 与输入 | `unreal-umg`、`unreal-commoninput`、`unreal-input-framework`、`unreal-enhancedinput`、`unreal-inputcore` | CommonUI/UMG、输入标签、EnhancedInput、手柄/键鼠、UI 输入。 |
-| 网络与在线 | `unreal-network-replication-framework`、`unreal-replicationgraph`、`unreal-online-steam-framework` | 复制、RPC、RepGraph、Steam、Session、好友邀请、Steam Sockets。 |
-| 系统能力 | `unreal-system-framework`、`unreal-savegame-framework`、`unreal-teams-framework`、`unreal-inventory-interaction-framework` | AssetManager、存档、队伍、背包、交互、世界/玩家系统。 |
-| 内容与发布 | `unreal-audio-framework`、`unreal-rendering-framework`、`unreal-render-commands`、`unreal-localization-framework`、`unreal-movie-media-framework`、`unreal-packaging` | 音频、语音、渲染命令、Device Profile、本地化、视频、Windows/Steam 打包。 |
+| 资产与编辑器 | `orion-asset-management`、`orion-editor-extension-framework`、`orion-mcp-workflow`、`orion-mcp-project-toolsets`、`unreal-blueprint-migration-repair` | 资产命名、蓝图迁移修复、UMG/关卡/Toolset 自动化、编辑器扩展和 MCP 连接。 |
+| 玩法框架 | `orion-gamecore-framework`、`orion-gamemode-experience-framework`、`orion-gamefeatures`、`unreal-gameplayabilities` | GameCore、Experience、GameFeature、GAS、GamePhase、AbilitySet。 |
+| UI 与输入 | `orion-umg`、`orion-ui-blueprint-framework`、`unreal-commoninput`、`orion-input-framework`、`unreal-enhancedinput`、`unreal-inputcore` | CommonUI/UMG、输入标签、EnhancedInput、手柄/键鼠、UI 输入。 |
+| 网络与在线 | `orion-network-replication-framework`、`unreal-replicationgraph`、`orion-online-steam-framework` | 复制、RPC、RepGraph、Steam、Session、好友邀请、Steam Sockets。 |
+| 系统能力 | `orion-system-framework`、`orion-savegame-framework`、`orion-teams-framework`、`orion-inventory-interaction-framework` | AssetManager、存档、队伍、背包、交互、世界/玩家系统。 |
+| 内容与发布 | `orion-audio-framework`、`orion-project-acoustics`、`orion-rendering-framework`、`unreal-render-commands`、`orion-pso-caching`、`orion-localization-framework`、`orion-movie-media-framework`、`orion-packaging`、`orion-release-publishing` | 音频、语音、ProjectAcoustics、渲染命令、PSO、Device Profile、本地化、视频、Windows/Steam 打包和发布。 |
 
 #### 使用方式
 
@@ -239,7 +248,9 @@ README 顶部提供 `简体中文 | English` 锚点切换。
 
 Steam 发布路径请使用 Steam Target，并验证 `Config/Custom/Steam` 或相关 Steam 配置被实际读取。当前 Steam 配置以 `DefaultPlatformService=OrionSteam`、`NativePlatformService=OrionSteam`、`AdditionalModulesToLoad=OrionOnlineSubsystemSteam`、`OrionSteamSocketsNetDriver` 和 `OrionOnlineSteamAuthComponentModuleInterface` 为核心；排查时优先查看日志中是否出现 `Created online subsystem instance for: OrionSteam`。
 
-使用安装版引擎打包 Steam Windows 版本时，若 packaged bootstrap 没有携带 `-CustomConfig=Steam`，可使用 `.agents/skills/unreal-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` 修补启动参数。验证不要只停在 UAT 成功，还应运行 packaged executable smoke test，确认 Steam CustomConfig、地图加载、加载屏和运行时初始化都进入预期路径。
+使用安装版引擎打包 Steam Windows 版本时，若 packaged bootstrap 没有携带 `-CustomConfig=Steam`，可使用 `.agents/skills/orion-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` 修补启动参数。验证不要只停在 UAT 成功，还应运行 packaged executable smoke test，确认 Steam CustomConfig、地图加载、加载屏和运行时初始化都进入预期路径。
+
+需要收集 PSO 时使用 `orion-pso-caching` Skill：先打包并复制 `.shk`，再用 packaged game 的 `-OrionPSOCapture` 自动巡航记录 `.rec.upipelinecache`，转换为 `.spc` 或 direct stable `.stable.upipelinecache`，最后确认 `Build/<Platform>/PipelineCaches` 或 `Content/PipelineCaches/<Platform>` 的结果进入包内。
 
 ### 开发文档
 
@@ -263,7 +274,7 @@ Orion is a modular game-development framework built on Unreal Engine 5.8. It org
 
 The goal is to move from a gameplay idea to a runnable prototype quickly, while keeping the maintainability, extensibility, and release discipline of a C++ Unreal project.
 
-Current version: 1.0.2
+Current version: 1.0.3
 
 Website: [https://orionue.com](https://orionue.com)
 
@@ -292,6 +303,15 @@ Website: [https://orionue.com](https://orionue.com)
 
 ### What's New
 
+#### 1.0.3
+
+- **PSO collection and stable-cache workflow**: `UOrionPSOCaptureSubsystem` now drives packaged-game PSO collection with an automated third-person roaming camera; the new `OrionPSOFilter` commandlet and `orion-pso-caching` Skill cover `.shk`, `.rec.upipelinecache`, `.spc`, direct stable `.stable.upipelinecache`, full/incremental/map-specific collection, conversion, injection, and packaging validation.
+- **PSO packaging configuration**: Windows PSO CVars now use `r.PSOPrecache.ProxyCreationStrategy=1`, and `r.ShaderPipelineCacheTools.IncludeComputePSODuringCook=0` supports the direct stable fallback; packaging settings re-enable shared material native libraries and stage `PipelineCaches` as UFS content.
+- **ProjectAcoustics packaged reverb fixes**: SteamAudio reflection/scene settings were adjusted, the new `orion-project-acoustics` Skill captures listener, SourceDataOverride, spatial reverb, virtual speaker, and UE 5.8 audio-thread lifecycle rules, and `/SteamAudio/Materials` is now always cooked so packaged reverb assets are present.
+- **Audio settings extension**: user audio settings now expose Steam Audio GPU Acceleration with OpenCL runtime detection, clarifying how ProjectAcoustics, SteamAudio, HDR Audio, and local user settings work together.
+- **Project Skill naming consolidation**: many project-local Skills moved from generic `unreal-*` names to Orion-specific `orion-*` names, with new entries such as `orion-asset-management`, `orion-packaging`, `orion-project-cleanup`, `orion-release-publishing`, and `orion-engine-upgrade-regression-todos`.
+- **MCP and release documentation**: `.agents/MCP/README.md` and an HTTP MCP config template now document local Unreal MCP access; the release and PSO scripts make packaging, collection, conversion, and validation reusable through project-local workflows.
+
 #### 1.0.2
 
 - **UE 5.8 code and configuration stabilization**: consolidates the post-upgrade target, plugin, config, and runtime compatibility work; Steam targets now inherit shared `CustomConfig=Steam` and `WITH_STEAM=1` handling from the common target settings path.
@@ -318,13 +338,14 @@ Website: [https://orionue.com](https://orionue.com)
 | Input | EnhancedInput, CommonInput, `InputSystemPlayerInput`, input tags, GameInput/XInput/WinDualShock, gamepad/mouse-keyboard switching, key remapping, latency markers |
 | Settings | Video/Game/Gamepad/DLC registries, HDR calibration, display selection, dynamic resolution, window/resolution, frame pacing, user configuration |
 | Online and Steam | `OrionSteam`, `OrionOnlineSubsystemSteam`, OnlineSubsystem, sessions, lobbies, friend invites, `OrionSteamSockets`, Steam Web API |
-| Audio and voice | AudioMixer, AudioModulation, ProjectAcoustics, SteamAudio, `OrionVoiceChat`, input/output device switching |
+| Audio and voice | AudioMixer, AudioModulation, ProjectAcoustics spatial reverb, SteamAudio, Steam Audio GPU Acceleration, `OrionVoiceChat`, input/output device switching |
 | Save/archive | Archive manager, world saves, player saves, autosave, frontend archive entries |
 | Teams | TeamSubsystem, TeamInfo, team display assets, AI attitude, friendly-fire checks |
 | Inventory and interaction | GameInventorySystem, InteractionSystem, interaction traces, pickup/equip/drop, interaction UI |
-| Rendering | Lumen, Nanite, Ray Tracing, DLSS, NIS, Streamline Reflex/DLSSG, Device Profiles, dynamic resolution, platform scalability settings |
+| Rendering | Lumen, Nanite, Ray Tracing, DLSS, NIS, Streamline Reflex/DLSSG, Device Profiles, dynamic resolution, PSO collection, stable PipelineCaches, platform scalability settings |
+| Release and packaging | Windows/Steam packaging, Steam CustomConfig, PSO collection/injection, ProjectAcoustics/SteamAudio resource staging, packaged smoke tests |
 | Localization | `zh-Hans` and `en`, with Game and EngineOverrides localization targets |
-| MCP/automation | Project MCP, AIAssistant, and Toolsets for assets, Blueprint migration repair, UMG, Niagara, PCG, GameplayTags, render commands, and editor automation |
+| MCP/automation | Project MCP, HTTP MCP config, AIAssistant, and Toolsets for assets, Blueprint migration repair, UMG, Niagara, PCG, GameplayTags, render commands, PSO, and editor automation |
 
 ### Project Structure
 
@@ -332,7 +353,7 @@ Website: [https://orionue.com](https://orionue.com)
 .
 ├── .agents/skills/          # Project-local AI Skills
 ├── Build/                   # Platform build resources, icon, PipelineCaches
-├── CollectedPSOs/           # PSO collection outputs
+├── CollectedPSOs/           # PSO recordings and conversion inputs/outputs
 ├── Config/                  # Default config, platform config, localization config, packaging config
 ├── Content/                 # Production assets
 ├── Plugins/                 # Framework plugins, MCP Toolsets, GameFeature, Steam, Audio, DLSS
@@ -349,7 +370,6 @@ Website: [https://orionue.com](https://orionue.com)
 | `BBL` | Runtime | Blueprint Bridge Layer for Blueprint-friendly facades, subclasses, and entry points. |
 | `OrionGame` | Runtime | Host-game logic: characters, player systems, teams, archives, settings, online features, input, frontend flow, and rendering integration. |
 | `OrionEditor` | Editor | Editor extensions, PIE hooks, project editor tools, and editor configuration entry points. |
-| `AnimFramework` | Runtime target dependency | Animation/Ability framework referenced by targets and config. Make sure this module is included in the distribution package before release. |
 
 #### Major Plugin Groups
 
@@ -375,14 +395,14 @@ Orion includes project-local `.agents/skills` that guide AI agents before they m
 
 | Category | Representative Skills | Purpose |
 | --- | --- | --- |
-| Project orientation | `unreal-framework-architecture`, `unreal-source-code-navigator`, `unreal-source-index`, `orion-framework-skill-authoring` | Module boundaries, plugin ownership, targets, Build.cs dependencies, source navigation, and project Skill authoring rules. |
+| Project orientation | `orion-framework-architecture`, `unreal-source-code-navigator`, `unreal-source-index`, `orion-framework-skill-authoring`, `orion-engine-upgrade-regression-todos` | Module boundaries, plugin ownership, targets, Build.cs dependencies, source navigation, project Skill authoring rules, and UE upgrade regression tracking. |
 | Code style | `orion-code-style` | Orion C++/Build.cs/Target.cs style, copyright headers, Tab indentation, CRLF, validation script. |
-| Assets and editor | `unreal-asset-management`, `unreal-editor-extension-framework`, `unreal-mcp-workflow`, `unreal-mcp-project-toolsets`, `unreal-blueprint-migration-repair` | Asset naming, Blueprint migration repair, UMG/level/Toolset automation, editor extensions. |
-| Gameplay framework | `unreal-gamecore-framework`, `unreal-gamemode-experience-framework`, `unreal-gamefeatures`, `unreal-gameplayabilities` | GameCore, Experience, GameFeature, GAS, GamePhase, AbilitySet. |
-| UI and input | `unreal-umg`, `unreal-commoninput`, `unreal-input-framework`, `unreal-enhancedinput`, `unreal-inputcore` | CommonUI/UMG, input tags, EnhancedInput, gamepad/mouse-keyboard support, UI input. |
-| Networking and online | `unreal-network-replication-framework`, `unreal-replicationgraph`, `unreal-online-steam-framework` | Replication, RPCs, RepGraph, Steam, sessions, friend invites, Steam Sockets. |
-| Systems | `unreal-system-framework`, `unreal-savegame-framework`, `unreal-teams-framework`, `unreal-inventory-interaction-framework` | AssetManager, archives, teams, inventory, interaction, world/player systems. |
-| Content and release | `unreal-audio-framework`, `unreal-rendering-framework`, `unreal-render-commands`, `unreal-localization-framework`, `unreal-movie-media-framework`, `unreal-packaging` | Audio, voice, render commands, Device Profiles, localization, movies, Windows/Steam packaging. |
+| Assets and editor | `orion-asset-management`, `orion-editor-extension-framework`, `orion-mcp-workflow`, `orion-mcp-project-toolsets`, `unreal-blueprint-migration-repair` | Asset naming, Blueprint migration repair, UMG/level/Toolset automation, editor extensions, and MCP access. |
+| Gameplay framework | `orion-gamecore-framework`, `orion-gamemode-experience-framework`, `orion-gamefeatures`, `unreal-gameplayabilities` | GameCore, Experience, GameFeature, GAS, GamePhase, AbilitySet. |
+| UI and input | `orion-umg`, `orion-ui-blueprint-framework`, `unreal-commoninput`, `orion-input-framework`, `unreal-enhancedinput`, `unreal-inputcore` | CommonUI/UMG, input tags, EnhancedInput, gamepad/mouse-keyboard support, UI input. |
+| Networking and online | `orion-network-replication-framework`, `unreal-replicationgraph`, `orion-online-steam-framework` | Replication, RPCs, RepGraph, Steam, sessions, friend invites, Steam Sockets. |
+| Systems | `orion-system-framework`, `orion-savegame-framework`, `orion-teams-framework`, `orion-inventory-interaction-framework` | AssetManager, archives, teams, inventory, interaction, world/player systems. |
+| Content and release | `orion-audio-framework`, `orion-project-acoustics`, `orion-rendering-framework`, `unreal-render-commands`, `orion-pso-caching`, `orion-localization-framework`, `orion-movie-media-framework`, `orion-packaging`, `orion-release-publishing` | Audio, voice, ProjectAcoustics, render commands, PSO, Device Profiles, localization, movies, Windows/Steam packaging, and release publishing. |
 
 #### How to Use Skills
 
@@ -475,7 +495,9 @@ Current packaging settings in `Config/DefaultGame.ini` include:
 
 For Steam releases, use the Steam targets and verify that `Config/Custom/Steam` or the relevant Steam config layer is actually loaded. The current Steam path is centered on `DefaultPlatformService=OrionSteam`, `NativePlatformService=OrionSteam`, `AdditionalModulesToLoad=OrionOnlineSubsystemSteam`, `OrionSteamSocketsNetDriver`, and `OrionOnlineSteamAuthComponentModuleInterface`. For Steam OnlineSubsystem issues, the key log line to verify is `Created online subsystem instance for: OrionSteam`.
 
-When packaging the Steam Windows build with an installed engine, use `.agents/skills/unreal-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` if the packaged bootstrap executable does not pass `-CustomConfig=Steam`. Validation should not stop at UAT success; run a packaged executable smoke test and confirm that Steam CustomConfig, map loading, loading screens, and runtime initialization all follow the expected path.
+When packaging the Steam Windows build with an installed engine, use `.agents/skills/orion-packaging/scripts/patch-windows-bootstrap-customconfig.ps1` if the packaged bootstrap executable does not pass `-CustomConfig=Steam`. Validation should not stop at UAT success; run a packaged executable smoke test and confirm that Steam CustomConfig, map loading, loading screens, and runtime initialization all follow the expected path.
+
+For PSO collection, use the `orion-pso-caching` Skill: package and copy `.shk` files, launch the packaged game with `-OrionPSOCapture` to roam maps and record `.rec.upipelinecache`, convert to `.spc` or direct stable `.stable.upipelinecache`, then verify that `Build/<Platform>/PipelineCaches` or `Content/PipelineCaches/<Platform>` output is staged into the package.
 
 ### Documentation
 

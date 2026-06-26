@@ -212,7 +212,7 @@ Chord 和 Combo 对 mapping priority、trigger order、blocker 行为很敏感�
 
 当 UI 改键需要看到尚未激活或来自 GameFeature/插件内容的 mapping context 时，通常需要注册 mapping context 到 user settings，而不只是 add mapping context 到 local player subsystem。
 
-如果 mapping context 来自 GameFeature 或模块化玩法插件，同时读取 `../../unreal-gamefeatures/SKILL.md`，确认激活时添加、反激活时移除、user settings 注册/注销和 completion delegate 时机。
+如果 mapping context 来自 GameFeature 或模块化玩法插件，同时读取 `../../orion-gamefeatures/SKILL.md`，确认激活时添加、反激活时移除、user settings 注册/注销和 completion delegate 时机。
 
 如果输入动作用于触发 GameplayAbility，同时读取 `../../unreal-gameplayabilities/SKILL.md`，确认 ability grant、activation policy、prediction、commit/end 和 authority 行为。
 

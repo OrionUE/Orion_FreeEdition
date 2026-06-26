@@ -25,11 +25,11 @@ description: "Use when Codex works on Unreal Engine EnhancedInput or gameplay in
 - 查源码位置、模块依赖和符号声明时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 涉及 `FKey`、`EKeys`、key metadata、platform key conversion、`UPlayerInput`、`UInputComponent`、legacy input stack 或 key 分类时，配合 `../unreal-inputcore/SKILL.md`。
 - 涉及 CommonUI input mode、UI back/click action、按键图标、手柄 glyph 时，配合 `../unreal-commoninput/SKILL.md`。
-- 涉及 `CommonInputSystem`、`UInputSystemConfig`、`InputTag`、PawnData InputConfig、GameFeature 输入 Action、玩家改键设置页或手柄/键鼠设置时，配合 `../unreal-input-framework/SKILL.md`。
-- 涉及 GameFeature 激活时添加/移除 input mapping context、input config 或用户改键可见性时，配合 `../unreal-gamefeatures/SKILL.md`。
+- 涉及 `CommonInputSystem`、`UInputSystemConfig`、`InputTag`、PawnData InputConfig、GameFeature 输入 Action、玩家改键设置页或手柄/键鼠设置时，配合 `../orion-input-framework/SKILL.md`。
+- 涉及 GameFeature 激活时添加/移除 input mapping context、input config 或用户改键可见性时，配合 `../orion-gamefeatures/SKILL.md`。
 - 涉及输入触发 GameplayAbility、ability input binding、技能按键或 ability activation 时，配合 `../unreal-gameplayabilities/SKILL.md`。
 - 只涉及角色移动、Pawn/Character/Controller、Gameplay Ability 输入绑定时，优先本 Skill，不要默认使用 CommonInput。
-- 项目自定义输入组件、输入配置、GameplayTag 绑定、GameFeature 输入注入，以 `../unreal-input-framework/SKILL.md` 和当前项目源码为准。
+- 项目自定义输入组件、输入配置、GameplayTag 绑定、GameFeature 输入注入，以 `../orion-input-framework/SKILL.md` 和当前项目源码为准。
 
 ## 约束
 

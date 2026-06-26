@@ -18,13 +18,13 @@ Source Index 的目标是把“我要找某个 UE 模块或插件在哪”从全
 
 ## 生成索引
 
-推荐输出到当前任务的临时目录或 Skill 默认 `references/generated/`：
+推荐输出到 `<ProjectRoot>/Saved/OrionUE/UnrealEngine/SourceIndex`，也可以为当前任务指定临时目录：
 
 ```bash
 python scripts/generate_unreal_source_index.py --engine-root <EngineRoot> --out <IndexDir>
 ```
 
-也可以使用环境变量：
+如果不传 `--engine-root`，脚本会先读取 `<ProjectRoot>/Saved/OrionUE/UnrealEngine/InstallDirectory.txt`；也可以使用环境变量：
 
 ```bash
 UE_ENGINE_ROOT=<EngineRoot> python scripts/generate_unreal_source_index.py --out <IndexDir>
@@ -35,6 +35,13 @@ UE_ENGINE_ROOT=<EngineRoot> python scripts/generate_unreal_source_index.py --out
 - `UE_ENGINE_ROOT`
 - `UNREAL_ENGINE_ROOT`
 - `UE_ROOT`
+
+## 缓存位置
+
+- 搜索、扫描和索引类缓存统一写入 `<ProjectRoot>/Saved/OrionUE`。
+- Source Index 默认输出目录是 `<ProjectRoot>/Saved/OrionUE/UnrealEngine/SourceIndex`。
+- 不要把生成的 CSV、扫描日志或本机路径缓存写进 `.agents/skills`；Skill 目录只保存规则、脚本和可发布文档。
+- 缓存中可以保存本机绝对路径；Skill 文档中只写 `<ProjectRoot>`、`<EngineRoot>` 这类占位符。
 
 生成文件：
 
@@ -139,7 +146,7 @@ rg -n ",Runtime,|,Editor," <IndexDir>/engine-plugin-modules.csv
 
 ## 约束
 
-- 索引文件必须保持机器无关：只保存相对路径。
+- 索引文件必须保持机器无关：只保存相对路径；本机缓存目录可以位于 `Saved/OrionUE`。
 - 不在 Skill 中发布某个具体 UE 小版本的完整 CSV 快照。
 - 不把索引结果当成最终 API 事实；写代码前必须打开源码。
 - 查询结果如果指向 Editor 模块，runtime 代码不能直接依赖它。

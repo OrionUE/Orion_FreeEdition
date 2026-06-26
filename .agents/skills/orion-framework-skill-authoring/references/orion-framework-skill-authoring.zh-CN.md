@@ -39,8 +39,10 @@
 
 命名规则：
 
-- UE 引擎源码、UE 原生 API、UE 插件行为、跨项目通用 Unreal 子系统和版本差异 Skill，命名为 `unreal-<domain>`。
-- Orion 框架、Orion 项目约定、Orion 模块使用方式、Orion 代码规范和可发布框架能力 Skill，命名为 `orion-<domain>`。
+- UE 引擎源码、UE 原生 API、UE 官方插件行为、跨项目通用 Unreal 子系统和版本差异 Skill，才命名为 `unreal-<domain>`。
+- 当前项目、Orion 框架、Orion 项目约定、项目内插件、项目配置、项目打包、Steam/发布流程、Content/Config/Source/Plugins 目录约定、项目清理脚本或可发布框架能力 Skill，必须命名为 `orion-<domain>`；即使底层使用 Unreal API，也不要命名为 `unreal-*`。
+- 项目域命名示例：`orion-project-config`、`orion-packaging`、`orion-release-publishing`、`orion-online-steam-framework`、`orion-project-cleanup`、`orion-project-acoustics`。
+- 引擎域命名示例：`unreal-enhancedinput`、`unreal-inputcore`、`unreal-gameplayabilities`、`unreal-source-code-navigator`、`unreal-source-index`、`unreal-render-commands`。
 - 非 UE 源码也非 Orion 框架的通用工具 Skill 可以使用无前缀领域名，例如纯图片转换或纯格式化工具。
 - 不要用 `ue5-`、`5-8-` 这类小版本前缀命名长期 Skill；版本基线写入 `description`、reference 或表格名。
 - 如果把一个独立 Skill 合并进已有 Skill，必须同步删除旧路由、旧目录和旧 `agents/openai.yaml`，并用 `rg` 确认没有残留引用。
@@ -151,7 +153,7 @@
 - 新 Skill 涉及通过 MCP 创建、编译、保存资产，就补 MCP 工作流或资产管理 Skill 的查阅顺序。
 - 新 Skill 只是某个已有领域的细分参考，不一定新增总路由大节，但目标 Skill 自身仍必须写清楚从哪个上游 Skill 进入。
 
-路由条目要使用相对路径，例如 `../unreal-source-code-navigator/SKILL.md` 或 `../../unreal-gamefeatures/SKILL.md`。不要写本机绝对路径。
+路由条目要使用相对路径，例如 `../unreal-source-code-navigator/SKILL.md` 或 `../../orion-gamefeatures/SKILL.md`。不要写本机绝对路径。
 
 路由完成后，用搜索确认新 Skill 名至少出现在：
 
@@ -317,4 +319,3 @@ python -X utf8 $QuickValidate .agents\skills\<skill-name>
 修复：先调用工作区依赖发现能力，使用返回的 bundled Python 执行 PDF 抽取脚本；如果 `pdfplumber` 不可用，优先尝试 `pypdf`。
 
 验证：脚本能打印 PDF 页数和每页文本摘要，再把抽取内容与用户说明和源码证据交叉整理进目标 Skill。
-

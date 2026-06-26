@@ -20,7 +20,7 @@ description: "Use when Unreal Engine Visual Studio project file generation fails
 
 ## 路由
 
-- 读取或修改 `.uproject`、`.uplugin`、Target、Build.cs 或 EngineAssociation 时，配合 `../unreal-project-config/SKILL.md` 和 `../unreal-framework-architecture/SKILL.md`。
+- 读取或修改 `.uproject`、`.uplugin`、Target、Build.cs 或 EngineAssociation 时，配合 `../orion-project-config/SKILL.md` 和 `../orion-framework-architecture/SKILL.md`。
 - 需要查 TargetRules、UBT、引擎版本差异或项目源码依赖时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 需要转换 `.uplugin` / `.uproject` 编码、CRLF 或机械重写文本时，先读取 `../orion-code-style/SKILL.md`，再配合 `../crlf-mechanical-formatting/SKILL.md`。
 - 如果排查过程产出新的可复用失败模式，配合系统 `skill-creator` 和 `../orion-framework-skill-authoring/SKILL.md` 更新本 Skill 或相邻路由。

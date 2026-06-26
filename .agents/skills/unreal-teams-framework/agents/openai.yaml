@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unreal Teams"
-  short_description: "Guide team agents and AI attitudes."
-  default_prompt: "Use $unreal-teams-framework for team identity, attitude rules, and team metadata."

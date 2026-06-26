@@ -229,6 +229,44 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeAudioSettings(UCore
 		}
 		//----------------------------------------------------------------------------------
 	}
+
+	// Advanced
+	////////////////////////////////////////////////////////////////////////////////////
+	{
+		UGameSettingCollection* Advanced = NewObject<UGameSettingCollection>();
+		Advanced->SetDevName(TEXT("AdvancedAudioCollection"));
+		Advanced->SetDisplayName(LOCTEXT("AdvancedAudioCollection_Name", "Advanced"));
+		Screen->AddSetting(Advanced);
+
+		//----------------------------------------------------------------------------------
+		{
+			UGameSettingValueDiscreteDynamic_Bool* Setting = NewObject<UGameSettingValueDiscreteDynamic_Bool>();
+			Setting->SetDevName(TEXT("GPUAudioAcceleration"));
+			Setting->SetDisplayName(LOCTEXT("GPUAudioAcceleration_Name", "GPU Audio Acceleration"));
+			Setting->SetDescriptionRichText(LOCTEXT("GPUAudioAcceleration_Description", "Uses Steam Audio GPU acceleration when this machine has a compatible OpenCL runtime. The change takes effect the next time Steam Audio initializes."));
+			Setting->SetWarningRichText(LOCTEXT("GPUAudioAcceleration_Warning", "Changing this option may require restarting the game."));
+
+			Setting->SetDynamicGetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(IsGPUAudioAccelerationEnabled));
+			Setting->SetDynamicSetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(SetGPUAudioAccelerationEnabled));
+			Setting->SetDefaultValue(GetDefault<UOrionSettingsLocal>()->CanEnableGPUAudioAcceleration());
+			Setting->SetFalseText(LOCTEXT("GPUAudioAcceleration_Disabled", "Off"));
+			Setting->SetTrueText(LOCTEXT("GPUAudioAcceleration_Enabled", "On"));
+
+			Setting->AddEditCondition(MakeShared<FWhenCondition>(
+				[](const ULocalPlayer*, FGameSettingEditableState& InOutEditState)
+				{
+					if (!GetDefault<UOrionSettingsLocal>()->CanEnableGPUAudioAcceleration())
+					{
+						InOutEditState.Disable(LOCTEXT("GPUAudioAcceleration_Unavailable", "Steam Audio GPU acceleration requires a compatible OpenCL runtime on this machine."));
+					}
+				}));
+
+			Setting->AddEditCondition(FWhenPlayingAsPrimaryPlayer::Get());
+
+			Advanced->AddSetting(Setting);
+		}
+		//----------------------------------------------------------------------------------
+	}
 	
 	return Screen;
 }

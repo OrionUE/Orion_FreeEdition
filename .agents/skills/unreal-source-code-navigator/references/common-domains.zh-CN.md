@@ -16,7 +16,7 @@
 - InputCore/legacy input：使用 `../../unreal-inputcore/SKILL.md`，从 `FKey`、`EKeys`、`FKeyDetails`、`FInputKeyManager`、platform key conversion、`UPlayerInput`、`UInputComponent` 和 input component stack 查起。
 - EnhancedInput：使用 `../../unreal-enhancedinput/SKILL.md`，从 MappingContext、InputAction、LocalPlayerSubsystem、trigger、modifier、binding 和项目输入封装查起。
 - GameplayTags：从 tag 定义、NativeGameplayTags、tag query 和模块依赖查起。
-- GameFeatures：使用 `../../unreal-gamefeatures/SKILL.md`，从 GameFeatureData、Feature Action、plugin state machine、project policy、observer、Experience/加载链路查起。
+- GameFeatures：使用 `../../orion-gamefeatures/SKILL.md`，从 GameFeatureData、Feature Action、plugin state machine、project policy、observer、Experience/加载链路查起。
 
 ## Editor
 
@@ -32,7 +32,7 @@
 
 ## Multiplayer / Networking
 
-- 普通 Actor/Component 复制、RPC、FastArray、push model、GAS 网络语义、NetDriver 或 MessageRouter 跨端桥接：使用 `../../unreal-network-replication-framework/SKILL.md`，先查 `bReplicates`、`GetLifetimeReplicatedProps`、OnRep、RPC ownership、relevancy、NetCullDistance、NetUpdateFrequency、owner、dormancy 和 active NetDriver。
+- 普通 Actor/Component 复制、RPC、FastArray、push model、GAS 网络语义、NetDriver 或 MessageRouter 跨端桥接：使用 `../../orion-network-replication-framework/SKILL.md`，先查 `bReplicates`、`GetLifetimeReplicatedProps`、OnRep、RPC ownership、relevancy、NetCullDistance、NetUpdateFrequency、owner、dormancy 和 active NetDriver。
 - ReplicationGraph：使用 `../../unreal-replicationgraph/SKILL.md`，从 active NetDriver、`ReplicationDriverClassName`、`UReplicationGraph` 子类、graph nodes、connection nodes、actor lists、dormancy、owner-only、tear-off、grid spatialization 和 RepGraph debug commands 查起。
 - 大量 replicated actors 或多人性能问题：先确认是否是 RepGraph、Iris、默认 NetDriver 复制路径或项目封装层，不要只改单个 Actor。
 

@@ -221,7 +221,7 @@ CommonInput 负责 UI 输入状态、设备类型、按键提示和 UI action ro
 
 涉及 EnhancedInput action、mapping context、trigger、modifier、binding、user settings 或 remapping 时，读取 `../../unreal-enhancedinput/SKILL.md`。
 
-如果 UI、input mode、按键提示或 back/click 资源由 GameFeature 激活和反激活，读取 `../../unreal-gamefeatures/SKILL.md`，确认资源添加/移除对称，并验证现有 world 和未来 world。
+如果 UI、input mode、按键提示或 back/click 资源由 GameFeature 激活和反激活，读取 `../../orion-gamefeatures/SKILL.md`，确认资源添加/移除对称，并验证现有 world 和未来 world。
 
 如果 UI 显示 GameplayAbility 技能按键、cooldown、cost、激活状态或 GAS tag 状态，读取 `../../unreal-gameplayabilities/SKILL.md`，确认 ASC、AbilitySpec、GameplayEffect、Attribute 和 tag 查询语义。
 

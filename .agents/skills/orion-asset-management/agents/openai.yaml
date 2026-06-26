@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Asset Management"
+  short_description: "UE asset naming, folders, batch edits, and save checks"
+  default_prompt: "Use $orion-asset-management before creating, naming, moving, or batch-editing Unreal assets."

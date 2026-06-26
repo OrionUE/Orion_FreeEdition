@@ -441,6 +441,28 @@ public:
 	UPROPERTY(config)
 	bool bUseHDRAudioMode;
 
+	//////////////////////////////////////////////////////////////////
+	// Audio - Steam Audio GPU Acceleration
+public:
+	/** Returns if Steam Audio GPU acceleration should be used when supported */
+	UFUNCTION()
+	bool IsGPUAudioAccelerationEnabled() const;
+
+	/** Enables or disables Steam Audio GPU acceleration. Changes apply next time Steam Audio initializes. */
+	UFUNCTION()
+	void SetGPUAudioAccelerationEnabled(bool bEnabled);
+
+	/** Returns if the current machine has the runtime required for Steam Audio GPU acceleration */
+	UFUNCTION()
+	bool CanEnableGPUAudioAcceleration() const;
+
+private:
+	void ApplyGPUAudioAccelerationSetting();
+
+	/** Whether to use Steam Audio GPU acceleration when the runtime supports it */
+	UPROPERTY(Config)
+	bool bUseGPUAudioAcceleration = false;
+
 	////////////////////////////////////////////////////////
 	// Frontend state
 public:

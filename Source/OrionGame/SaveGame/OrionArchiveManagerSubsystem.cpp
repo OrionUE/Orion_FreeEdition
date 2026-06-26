@@ -171,6 +171,11 @@ bool UOrionArchiveManagerSubsystem::IsFinishedRefresh() const
 	return true;
 }
 
+bool UOrionArchiveManagerSubsystem::IsOperationArchiveExist() const
+{
+	return CurrentOperationArchive ? true : false;
+}
+
 void UOrionArchiveManagerSubsystem::GetAllArchiveWorldID(TArray<FString>& OutWorldIDArray)
 {
 	FString UserPlayerID = UOrionUserSubsystem::Get().GetPlayerID().ToString();

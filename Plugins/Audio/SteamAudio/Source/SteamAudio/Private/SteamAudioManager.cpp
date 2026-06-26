@@ -17,8 +17,11 @@
 #include "SteamAudioManager.h"
 #include "AudioDevice.h"
 #include "Async/Async.h"
+#include "HAL/IConsoleManager.h"
+#include "HAL/PlatformProcess.h"
 #include "HAL/UnrealMemory.h"
 #include "Engine/StaticMeshActor.h"
+#include "Misc/ConfigCacheIni.h"
 #include "SteamAudioAudioEngineInterface.h"
 #include "SteamAudioCommon.h"
 #include "SteamAudioDynamicObjectComponent.h"
@@ -30,6 +33,70 @@
 #include "SOFAFile.h"
 
 namespace SteamAudio {
+
+// ---------------------------------------------------------------------------------------------------------------------
+// ------ Orion 添加内容 ------
+static TAutoConsoleVariable<int32> CVarSteamAudioGPUAudioAcceleration(
+	TEXT("SteamAudio.GPUAudioAcceleration"),
+	-1,
+	TEXT("Controls Steam Audio GPU acceleration. -1: auto, 0: disabled, 1: enabled when supported."),
+	ECVF_Default);
+
+static int32 GetSavedGPUAudioAccelerationPreference()
+{
+	bool bSavedGPUAudioAcceleration = false;
+	if (GConfig && GConfig->GetBool(TEXT("/Script/OrionGame.OrionSettingsLocal"), TEXT("bUseGPUAudioAcceleration"), bSavedGPUAudioAcceleration, GGameUserSettingsIni))
+	{
+		return bSavedGPUAudioAcceleration ? 1 : 0;
+	}
+
+	return -1;
+}
+
+static bool IsOpenCLRuntimeAvailable()
+{
+#if PLATFORM_WINDOWS
+	void* OpenCLHandle = FPlatformProcess::GetDllHandle(TEXT("OpenCL.dll"));
+	if (OpenCLHandle)
+	{
+		FPlatformProcess::FreeDllHandle(OpenCLHandle);
+		return true;
+	}
+#endif
+
+	return false;
+}
+
+static bool ShouldEnableGPUAudioAcceleration()
+{
+	int32 Preference = CVarSteamAudioGPUAudioAcceleration.GetValueOnAnyThread();
+	if (Preference < 0)
+	{
+		Preference = GetSavedGPUAudioAccelerationPreference();
+	}
+
+	if (Preference == 0)
+	{
+		return false;
+	}
+
+	if (!IsOpenCLRuntimeAvailable())
+	{
+		if (Preference > 0)
+		{
+			UE_LOG(LogSteamAudio, Warning, TEXT("Steam Audio GPU acceleration was requested, but OpenCL.dll is not available. Falling back to default scene and convolution reflections."));
+		}
+		else
+		{
+			UE_LOG(LogSteamAudio, Log, TEXT("Steam Audio GPU acceleration is disabled because OpenCL.dll is not available."));
+		}
+
+		return false;
+	}
+
+	return true;
+}
+// ---------------------------------------------------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------------------------------------------------
 // FSteamAudioPluginListener
@@ -248,6 +315,20 @@ bool FSteamAudioManager::InitializeSteamAudio(EManagerInitReason Reason)
     IPLSceneType ConfiguredSceneType = SteamAudioSettings.SceneType;
     IPLReflectionEffectType ConfiguredReflectionEffectType = SteamAudioSettings.ReflectionEffectType;
 
+	if (Reason == EManagerInitReason::PLAYING)
+	{
+		if (ShouldEnableGPUAudioAcceleration())
+		{
+			ConfiguredSceneType = IPL_SCENETYPE_RADEONRAYS;
+			ConfiguredReflectionEffectType = IPL_REFLECTIONEFFECTTYPE_TAN;
+		}
+		else
+		{
+			ConfiguredSceneType = IPL_SCENETYPE_DEFAULT;
+			ConfiguredReflectionEffectType = IPL_REFLECTIONEFFECTTYPE_CONVOLUTION;
+		}
+	}
+
     ActualSceneType = ConfiguredSceneType;
     ActualReflectionEffectType = ConfiguredReflectionEffectType;
 
@@ -327,6 +408,16 @@ bool FSteamAudioManager::InitializeSteamAudio(EManagerInitReason Reason)
             UE_LOG(LogSteamAudio, Warning, TEXT("Unable to create OpenCL device list. [%d]"), Status);
         }
     }
+
+	if (bShouldInitOpenCL && !OpenCLDevice)
+	{
+		bShouldInitOpenCL = false;
+		bShouldInitRadeonRays = false;
+		bShouldInitTrueAudioNext = false;
+		ActualSceneType = IPL_SCENETYPE_DEFAULT;
+		ActualReflectionEffectType = IPL_REFLECTIONEFFECTTYPE_CONVOLUTION;
+		UE_LOG(LogSteamAudio, Warning, TEXT("Steam Audio GPU acceleration is unavailable because no OpenCL device was initialized. Falling back to default scene and convolution reflections."));
+	}
 
     if (bShouldInitRadeonRays)
     {

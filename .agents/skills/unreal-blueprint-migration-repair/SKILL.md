@@ -20,9 +20,9 @@ description: "Use when repairing Unreal Engine Blueprint or UMG assets after mig
 ## 路由
 
 - 查源码、模块依赖、CoreRedirect 和引擎版本差异时，配合 `../unreal-source-code-navigator/SKILL.md`。
-- 处理 UMG/Widget Blueprint、UI 层级、Widget Tree 或 CommonUI 资产时，配合 `../unreal-umg/SKILL.md` 和 `../unreal-ui-blueprint-framework/SKILL.md`。
-- 处理资产保存、重定向器、引用扫描或批量修复时，配合 `../unreal-asset-management/SKILL.md`。
-- 涉及 MCP 自动化读取/编译/保存 Blueprint 时，配合 `../unreal-mcp-workflow/SKILL.md`。
+- 处理 UMG/Widget Blueprint、UI 层级、Widget Tree 或 CommonUI 资产时，配合 `../orion-umg/SKILL.md` 和 `../orion-ui-blueprint-framework/SKILL.md`。
+- 处理资产保存、重定向器、引用扫描或批量修复时，配合 `../orion-asset-management/SKILL.md`。
+- 涉及 MCP 自动化读取/编译/保存 Blueprint 时，配合 `../orion-mcp-workflow/SKILL.md`。
 
 ## 验证
 

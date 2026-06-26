@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Project Cleanup"
+  short_description: "Clean ignored generated files safely"
+  default_prompt: "Use $orion-project-cleanup to dry-run or apply a safe Unreal project cleanup from .gitignore while preserving user-authored assets."

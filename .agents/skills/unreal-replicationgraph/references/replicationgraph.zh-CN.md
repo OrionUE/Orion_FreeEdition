@@ -274,7 +274,7 @@ GameFeature 可能动态引入 replicated actors、组件、ability、cue 或 wo
 - feature 加载前 graph class 可能已经初始化；动态 class settings 和 routing 要能处理后加入的类型。
 - 多人端要验证 server/client flags、existing world 和 future world。
 
-如果任务主要是 feature lifecycle，读取 `../../unreal-gamefeatures/SKILL.md`；如果问题是 actor relevancy、node placement、cull/dormancy，使用本 Skill。
+如果任务主要是 feature lifecycle，读取 `../../orion-gamefeatures/SKILL.md`；如果问题是 actor relevancy、node placement、cull/dormancy，使用本 Skill。
 
 ## 与 GameplayAbilities 的关系
 
@@ -288,7 +288,7 @@ GAS 有自己的 ability spec、attribute、target data、GameplayCue、predicti
 
 ## 与 GameplayMessageRouter 的关系
 
-GameplayMessageRouter 本身不是复制驱动。server-to-client、server-to-all-clients、owner-only client 通知或 replicated fast array rebroadcast 先读取 `../../unreal-gameplay-message-router/SKILL.md`；只有消息承载在 replicated actor、owner relevancy、dormancy、cull distance 或 graph node placement 上出问题时，才回到本 Skill 深查 RepGraph。
+GameplayMessageRouter 本身不是复制驱动。server-to-client、server-to-all-clients、owner-only client 通知或 replicated fast array rebroadcast 先读取 `../../orion-gameplay-message-router/SKILL.md`；只有消息承载在 replicated actor、owner relevancy、dormancy、cull distance 或 graph node placement 上出问题时，才回到本 Skill 深查 RepGraph。
 
 ## 修改前检查清单
 

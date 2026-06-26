@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE 5.8 MCP Workflow"
+  short_description: "UE 5.8 MCP connection and official toolsets"
+  default_prompt: "Use $orion-mcp-workflow to connect to UE 5.8 MCP, load the correct toolset, and call direct tool names."

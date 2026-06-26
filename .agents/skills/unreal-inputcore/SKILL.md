@@ -23,10 +23,10 @@ description: "Use when Codex works on Unreal Engine InputCore or low-level input
 ## 路由
 
 - 查源码位置、模块依赖和符号声明：配合 `../unreal-source-code-navigator/SKILL.md`。
-- 项目输入框架、`CommonInputSystem`、玩家改键设置、`InputTag`、GameFeature 输入和手柄/键鼠设置：配合 `../unreal-input-framework/SKILL.md`。
+- 项目输入框架、`CommonInputSystem`、玩家改键设置、`InputTag`、GameFeature 输入和手柄/键鼠设置：配合 `../orion-input-framework/SKILL.md`。
 - EnhancedInput action、mapping、trigger、modifier、user remapping：配合 `../unreal-enhancedinput/SKILL.md`。
 - CommonInput current input type、controller data、key brush、UI input mode：配合 `../unreal-commoninput/SKILL.md`。
-- GameFeature 激活时添加或移除输入配置：配合 `../unreal-gamefeatures/SKILL.md`。
+- GameFeature 激活时添加或移除输入配置：配合 `../orion-gamefeatures/SKILL.md`。
 - 输入触发 GameplayAbility：配合 `../unreal-gameplayabilities/SKILL.md`。
 
 ## 约束

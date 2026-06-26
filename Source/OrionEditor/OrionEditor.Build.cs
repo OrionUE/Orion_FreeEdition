@@ -27,6 +27,8 @@ public class OrionEditor : ModuleRules
 		{
 			"UnrealEd",
 			"GameCore",
+			"RHI",
+			"RenderCore",
 		});
 
 		// Generate compile errors if using DrawDebug functions in test/shipping builds.

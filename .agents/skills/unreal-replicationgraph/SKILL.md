@@ -7,7 +7,7 @@ description: "Use when Codex works on Unreal Engine ReplicationGraph or multipla
 
 本 Skill 用于处理 Unreal Engine ReplicationGraph 和多人复制扩展性。先从当前机器的引擎、项目和插件源码确认真实类型、模块依赖、NetDriver 配置、graph subclass、node routing、dormancy 和调试命令，再修改网络复制代码。
 
-如果任务只是普通 `UPROPERTY` 复制、OnRep、RPC ownership、replicated component、FastArray、GAS 网络语义或 MessageRouter 跨端桥接，先读取 `../unreal-network-replication-framework/SKILL.md`。本 Skill 专注 NetDriver 级 actor relevancy 和扩展性。
+如果任务只是普通 `UPROPERTY` 复制、OnRep、RPC ownership、replicated component、FastArray、GAS 网络语义或 MessageRouter 跨端桥接，先读取 `../orion-network-replication-framework/SKILL.md`。本 Skill 专注 NetDriver 级 actor relevancy 和扩展性。
 
 详细说明：
 
@@ -24,12 +24,12 @@ description: "Use when Codex works on Unreal Engine ReplicationGraph or multipla
 
 ## 路由
 
-- 普通 replicated property、RPC、FastArray、push model、GAS 网络语义或 NetDriver 基础复制排查：先配合 `../unreal-network-replication-framework/SKILL.md`。
+- 普通 replicated property、RPC、FastArray、push model、GAS 网络语义或 NetDriver 基础复制排查：先配合 `../orion-network-replication-framework/SKILL.md`。
 - 查源码位置、模块依赖和符号声明：配合 `../unreal-source-code-navigator/SKILL.md`。
-- Replicated actor 属于 GameFeature 插件或随 feature 激活/反激活出现：配合 `../unreal-gamefeatures/SKILL.md`。
-- TeamInfo、TeamDisplayAsset、团队私有/公开信息、按队伍可见性、队伍 owner-only 数据或 AI 敌友相关 Actor 复制策略：配合 `../unreal-teams-framework/SKILL.md`。
+- Replicated actor 属于 GameFeature 插件或随 feature 激活/反激活出现：配合 `../orion-gamefeatures/SKILL.md`。
+- TeamInfo、TeamDisplayAsset、团队私有/公开信息、按队伍可见性、队伍 owner-only 数据或 AI 敌友相关 Actor 复制策略：配合 `../orion-teams-framework/SKILL.md`。
 - Ability、Attribute、GameplayCue、TargetData 的复制语义：配合 `../unreal-gameplayabilities/SKILL.md`；如果问题是 actor relevancy、cull distance 或 graph placement，再回到本 Skill。
-- GameplayMessageRouter 消息跨 server/client、owner-only client 通知、GameState multicast、PlayerState client RPC 或 replicated fast array rebroadcast 时，配合 `../unreal-gameplay-message-router/SKILL.md`；消息系统本身不是复制驱动。
+- GameplayMessageRouter 消息跨 server/client、owner-only client 通知、GameState multicast、PlayerState client RPC 或 replicated fast array rebroadcast 时，配合 `../orion-gameplay-message-router/SKILL.md`；消息系统本身不是复制驱动。
 - 输入、UI、CommonInput 不直接由 RepGraph 负责；只有它们产生 replicated actors 或 replicated state placement 时才需要本 Skill。
 - OnlineSubsystem、Steam、EOS 或平台网络驱动只决定 active NetDriver；RepGraph 配置仍需查对应 NetDriver section。
 

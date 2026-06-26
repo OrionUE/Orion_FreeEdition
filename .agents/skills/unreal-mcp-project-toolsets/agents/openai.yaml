@@ -1,4 +1,0 @@
-interface:
-  display_name: "Project MCP Toolsets"
-  short_description: "Slim project MCP helpers for UE 5.8"
-  default_prompt: "Use $unreal-mcp-project-toolsets after UE 5.8 MCP is connected when Experience or UMG project helpers are needed."

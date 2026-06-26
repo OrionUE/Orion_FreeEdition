@@ -174,6 +174,45 @@ function Test-CodeFileEnding
 	}
 }
 
+function Test-CopyrightHeaderSpacing
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	if ($Lines.Count -lt 2)
+	{
+		return
+	}
+
+	$FirstContentIndex = 0
+	while ($FirstContentIndex -lt $Lines.Count -and [string]::IsNullOrWhiteSpace($Lines[$FirstContentIndex]))
+	{
+		++$FirstContentIndex
+	}
+
+	if ($FirstContentIndex -ge $Lines.Count -or $Lines[$FirstContentIndex].Trim() -ne "/*")
+	{
+		return
+	}
+
+	for ($LineIndex = $FirstContentIndex; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		if ($Lines[$LineIndex].Trim() -eq "*/")
+		{
+			$NextIndex = $LineIndex + 1
+			if ($NextIndex -ge $Lines.Count -or -not [string]::IsNullOrWhiteSpace($Lines[$NextIndex]))
+			{
+				Add-Failure -File $RelativePath -Message "copyright block comment must be followed by one blank line"
+			}
+
+			return
+		}
+	}
+}
+
 function Test-NamespaceIndentation
 {
 	param(
@@ -362,6 +401,11 @@ foreach ($File in $Files)
 	if ($CodeExtensions -contains $File.Extension)
 	{
 		Test-CodeFileEnding -File $File -RelativePath $RelativePath -Bytes $Bytes -Text $Text
+	}
+
+	if ($HeaderExtensions -contains $File.Extension)
+	{
+		Test-CopyrightHeaderSpacing -RelativePath $RelativePath -Text $Text
 	}
 
 	$Lines = $Text -split "`r?`n"

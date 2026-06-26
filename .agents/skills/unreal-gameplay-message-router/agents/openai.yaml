@@ -1,4 +1,0 @@
-interface:
-  display_name: "Gameplay Message Router"
-  short_description: "Tag-based gameplay message routing guide."
-  default_prompt: "Use $unreal-gameplay-message-router to implement or review tag-based gameplay messages."

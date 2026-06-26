@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engine Upgrade Regression Todos"
+  short_description: "Track engine upgrade regression checks."
+  default_prompt: "Use $orion-engine-upgrade-regression-todos to review known engine upgrade regression checks."

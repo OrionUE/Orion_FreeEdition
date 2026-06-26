@@ -115,7 +115,7 @@ ActivationGroup：
 
 AbilitySet 是推荐的能力组合单位。
 
-如果任务要求自动创建玩法 Experience、设置 DefaultPawnData、把 AbilitySet 加入 PawnData、创建 InputAction/InputConfig，或保证 GA/InputTag/InputAction 三者关系一致，先读取 `../../unreal-gamemode-experience-framework/SKILL.md`。
+如果任务要求自动创建玩法 Experience、设置 DefaultPawnData、把 AbilitySet 加入 PawnData、创建 InputAction/InputConfig，或保证 GA/InputTag/InputAction 三者关系一致，先读取 `../../orion-gamemode-experience-framework/SKILL.md`。
 
 常用链路：
 
@@ -411,8 +411,8 @@ Editor 类型不能从 runtime 模块直接 include。
 ## 与 EnhancedInput / GameFeatures / CommonInput 的关系
 
 - 输入触发 ability：读取 `../../unreal-enhancedinput/SKILL.md`，确认 action、mapping context、trigger event 和 ability input binding。
-- GameFeature 激活授予 ability、添加 Attribute、GameplayCue path 或 ability set：读取 `../../unreal-gamefeatures/SKILL.md`，确认激活/反激活对称。
-- Ability 激活失败、AttributeSet 伤害、GameplayCue 参数转通知、UI 错误提示或战斗消息广播：读取 `../../unreal-gameplay-message-router/SKILL.md`，确认 message channel、payload 类型和网络边界。
+- GameFeature 激活授予 ability、添加 Attribute、GameplayCue path 或 ability set：读取 `../../orion-gamefeatures/SKILL.md`，确认激活/反激活对称。
+- Ability 激活失败、AttributeSet 伤害、GameplayCue 参数转通知、UI 错误提示或战斗消息广播：读取 `../../orion-gameplay-message-router/SKILL.md`，确认 message channel、payload 类型和网络边界。
 - UI 显示技能按键、手柄图标或 CommonUI action：读取 `../../unreal-commoninput/SKILL.md`。
 
 ## 与 ReplicationGraph 的关系

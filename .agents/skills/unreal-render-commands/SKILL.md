@@ -92,11 +92,10 @@ Experiment tables:
 
 ## 路由
 
-- For rendering source-code implementation details, use `../unreal-rendering-framework/SKILL.md` and `../unreal-source-code-navigator/SKILL.md`.
-- For project config placement, use `../unreal-project-config/SKILL.md` after finding the command in this Skill.
-- For game settings UI that exposes rendering options, use `../unreal-game-settings-framework/SKILL.md` after finding the command in this Skill.
-- For loading screen shader compilation behavior, use `../unreal-loading-screen-framework/SKILL.md` together with this Skill.
+- For rendering source-code implementation details, use `../orion-rendering-framework/SKILL.md` and `../unreal-source-code-navigator/SKILL.md`.
+- For project config placement, use `../orion-project-config/SKILL.md` after finding the command in this Skill.
+- For game settings UI that exposes rendering options, use `../orion-game-settings-framework/SKILL.md` after finding the command in this Skill.
+- For loading screen shader compilation behavior, use `../orion-loading-screen-framework/SKILL.md` together with this Skill.
 ### RendererSettings migration audit
 - `references/render-command-experiments/renderer_settings_migration_audit.csv`: Full `DefaultEngine.ini` section-placement audit generated from UE 5.8 `URendererSettings` / `RendererSettings.h`. Use it to decide which commands belong in `[/Script/Engine.RendererSettings]` and which render CVars must live in `[ConsoleVariables]`.
 - Current Orion result: 66 active keys kept in `[/Script/Engine.RendererSettings]`, 161 unsupported render/graphics CVars moved to `[ConsoleVariables]`, 4 non-CVar legacy project settings left in place.
-

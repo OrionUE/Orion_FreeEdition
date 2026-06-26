@@ -27,6 +27,7 @@
 默认规则：
 
 - 本次任务新建的代码文件必须使用配置渲染后的版权头。
+- 版权块注释结束后必须空一行，再写 `#pragma once`、`#include` 或其他代码。
 - 已存在的代码文件如果已经有任何版权头，必须保留原版权头；即使它和当前配置模板不一致，也不要为了匹配当前配置而替换或规范化。
 - 已存在的代码文件不要因为本次修改而补加或重写版权头；只有用户明确要求补版权头时才处理。
 - 只有配置模板显式包含 `Author`、`Date`、`Website` 等字段时，才添加这些行。
@@ -138,7 +139,7 @@ class MODULE_API AMyActor : public AActor
 
 - `.cpp` 首个 include 是自身头文件。
 - include 分组之间空一行。
-- 不要把 `#include "CoreMinimal.h"` 当作模板默认项新增；优先包含实际使用类型所需的最小 UE 头或项目头。已有文件如果已经使用该头，不要仅因为本规则做无关批量删除；只有本次触及区域确实需要整理 include 时再按编译结果处理。
+- 新生成代码一律不要添加 `#include "CoreMinimal.h"`；优先包含实际使用类型所需的最小 UE 头或项目头。已有文件如果已经使用该头，不要仅因为本规则做无关批量删除；只有本次触及区域确实需要整理 include 时再按编译结果处理。
 - 版权头、`#pragma once`、普通 include 区、`.generated.h`、前向声明、类/结构体定义等顶层代码模块之间都要用空行隔开。
 - `.h` 中的 `.generated.h` 必须放在所有普通 `#include` 之后，并与普通 include 区之间空一行；`.generated.h` 后面不能再出现任何 `#include`。
 - `.generated.h` 和后续前向声明或反射声明之间也保留空行。
@@ -264,6 +265,7 @@ StartupJob.SubstepProgressDelegate.BindLambda([This = this, AccumulatedJobValue,
 - `UCLASS`、`USTRUCT`、`UENUM`、`UFUNCTION`、`UPROPERTY` 紧贴声明。
 - 宏参数逗号后空一格。
 - Blueprint 分类字符串沿用模块命名，例如 `Category = "GameCore|Ability"`。
+- `USTRUCT` 一律使用 `GENERATED_BODY()`，不要生成 `GENERATED_USTRUCT_BODY()`。
 - `GENERATED_BODY()` 后按访问控制分区组织成员。
 - `public:`、`protected:`、`private:` 与类体缩进同级，成员再缩进一层 Tab。
 
@@ -294,7 +296,11 @@ PrivateDependencyModuleNames.AddRange(new string[]
 5. 修改后至少检查：
 	- 新增或触及代码文件不是 LF-only。
 	- 新增代码缩进没有以空格开头。
+	- 新生成代码没有添加 `#include "CoreMinimal.h"`。
+	- 新增 `USTRUCT` 使用 `GENERATED_BODY()`，没有使用 `GENERATED_USTRUCT_BODY()`。
+	- 新增类注释使用 `/** ... */` Doxygen 块注释，不使用 `//` 行注释。
 	- 新增代码文件版权头符合当前 header config 或 `CopyrightNotice`；已有代码文件版权头未被无关改动。
+	- 版权块注释后必须有一个空行。
 	- Unreal 头文件中的 `.generated.h` 位于所有普通 include 之后，前后都有空行，后面没有其他 include。
 	- 没有空 TODO 或模板占位。
 

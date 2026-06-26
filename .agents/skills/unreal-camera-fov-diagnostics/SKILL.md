@@ -19,10 +19,10 @@ description: "Use when diagnosing Unreal Engine player camera, CameraComponent, 
 
 ## 路由
 
-- 角色、Pawn、CharacterMovement、viewmodel mesh 或角色组件问题，配合 `../unreal-character-pawn-framework/SKILL.md`。
-- PlayerController、LocalPlayer、view target、PlayerCameraManager 问题，配合 `../unreal-player-framework/SKILL.md`。
+- 角色、Pawn、CharacterMovement、viewmodel mesh 或角色组件问题，配合 `../orion-character-pawn-framework/SKILL.md`。
+- PlayerController、LocalPlayer、view target、PlayerCameraManager 问题，配合 `../orion-player-framework/SKILL.md`。
 - 查引擎源码、模块依赖或版本差异时，配合 `../unreal-source-code-navigator/SKILL.md`。
-- 如果需要通过 MCP 读取 Blueprint CameraComponent 属性或截图验证，配合 `../unreal-mcp-workflow/SKILL.md`。
+- 如果需要通过 MCP 读取 Blueprint CameraComponent 属性或截图验证，配合 `../orion-mcp-workflow/SKILL.md`。
 
 ## 验证
 

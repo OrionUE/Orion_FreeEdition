@@ -9,7 +9,8 @@ import sys
 from pathlib import Path
 
 
-DEFAULT_INDEX_DIR = Path(__file__).resolve().parents[1] / "references" / "generated"
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+DEFAULT_INDEX_DIR = PROJECT_ROOT / "Saved" / "OrionUE" / "UnrealEngine" / "SourceIndex"
 INDEX_FILES = {
     "modules": "engine-modules.csv",
     "plugins": "engine-plugins.csv",

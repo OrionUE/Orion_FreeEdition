@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orion PSO Caching"
+  short_description: "Collect, convert, package, and validate Unreal PSO caches."
+  default_prompt: "Use $orion-pso-caching to collect and package PSO shader caches for a Windows build."

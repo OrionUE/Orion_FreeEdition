@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unreal Asset Management"
-  short_description: "UE Blueprint assets naming and folder guide"
-  default_prompt: "Use $unreal-asset-management before creating or naming Unreal Blueprint assets."

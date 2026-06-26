@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unreal Network Replication"
-  short_description: "UE multiplayer replication guide"
-  default_prompt: "Use $unreal-network-replication-framework to inspect replicated properties, RPC ownership, NetDriver configuration, FastArray, push model, GAS networking, and GameplayMessageRouter network bridges before changing multiplayer code."

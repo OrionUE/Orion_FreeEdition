@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Project Acoustics"
+  short_description: "Project Acoustics crash triage"
+  default_prompt: "Use $orion-project-acoustics to triage ProjectAcoustics listener crashes."

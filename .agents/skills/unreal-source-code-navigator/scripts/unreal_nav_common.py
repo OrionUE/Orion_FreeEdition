@@ -42,6 +42,7 @@ SOURCE_EXTENSIONS = {
 }
 
 HEADER_EXTENSIONS = {".h", ".hpp", ".hh", ".hxx"}
+PROJECT_ENGINE_ROOT_CACHE = Path("Saved") / "OrionUE" / "UnrealEngine" / "InstallDirectory.txt"
 
 
 @dataclass
@@ -125,6 +126,46 @@ def find_upwards(start: Path, suffixes: Sequence[str]) -> list[Path]:
 	return []
 
 
+def normalize_engine_root(candidate: Path) -> Path | None:
+	candidate = resolve_path(candidate) or candidate
+	if (candidate / "Engine" / "Build" / "Build.version").exists():
+		return candidate
+	if candidate.name == "Engine" and (candidate / "Build" / "Build.version").exists():
+		return candidate.parent
+	return None
+
+
+def read_project_engine_root_cache(start: Path | None) -> Path | None:
+	if start is None:
+		return None
+
+	start_path = resolve_path(start)
+	if start_path is None:
+		return None
+
+	current = start_path if start_path.is_dir() else start_path.parent
+	for directory in [current, *current.parents]:
+		cache_path = directory / PROJECT_ENGINE_ROOT_CACHE
+		if not cache_path.exists():
+			continue
+
+		try:
+			lines = read_text(cache_path).splitlines()
+		except OSError:
+			return None
+
+		for line in lines:
+			value = line.strip().strip('"')
+			if not value or value.startswith("#"):
+				continue
+
+			normalized = normalize_engine_root(Path(value))
+			if normalized:
+				return normalized
+		return None
+	return None
+
+
 def load_json_file(path: Path) -> dict:
 	try:
 		return json.loads(read_text(path))
@@ -204,6 +245,9 @@ def detect_engine_root(start: Path | None = None, explicit: str | Path | None = 
 	candidates: list[Path] = []
 	if explicit:
 		candidates.append(Path(explicit))
+	cached_engine_root = read_project_engine_root_cache(start)
+	if cached_engine_root:
+		candidates.append(cached_engine_root)
 	for env_name in ("UE_ROOT", "UNREAL_ENGINE_ROOT", "UNREAL_ENGINE", "UE_ENGINE_DIR"):
 		env_value = os.environ.get(env_name)
 		if env_value:
@@ -213,11 +257,9 @@ def detect_engine_root(start: Path | None = None, explicit: str | Path | None = 
 		if start_path:
 			candidates.extend([start_path, *start_path.parents])
 	for candidate in candidates:
-		candidate = resolve_path(candidate) or candidate
-		if (candidate / "Engine" / "Build" / "Build.version").exists():
-			return candidate
-		if candidate.name == "Engine" and (candidate / "Build" / "Build.version").exists():
-			return candidate.parent
+		normalized = normalize_engine_root(candidate)
+		if normalized:
+			return normalized
 	return None
 
 

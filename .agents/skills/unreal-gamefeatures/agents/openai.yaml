@@ -1,4 +1,0 @@
-interface:
-  display_name: "Unreal GameFeatures"
-  short_description: "GameFeatures source and feature lifecycle guide"
-  default_prompt: "Use $unreal-gamefeatures to inspect GameFeature plugins, feature actions, state machines, project policies, observers, and activation lifecycle before changing modular gameplay features."

@@ -1,7 +1,0 @@
-interface:
-  display_name: "UE Editor Extensions"
-  short_description: "UE 编辑器模块、工具栏、验证和 ini 配置指南"
-  default_prompt: "Use $unreal-editor-extension-framework to add or review an Unreal editor extension."
-
-policy:
-  allow_implicit_invocation: true

@@ -136,6 +136,12 @@ public:
 	 */
 	bool IsFinishedRefresh() const;
 
+	/**
+	 * 当前操作的存档是否存在
+	 * @return 当前存档是否存在
+	 */
+	bool IsOperationArchiveExist() const;
+
 protected:
 	void GetAllArchiveWorldID(TArray<FString>& OutWorldIDArray);
 

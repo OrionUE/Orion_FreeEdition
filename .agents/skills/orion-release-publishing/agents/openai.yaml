@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Release Publishing"
+  short_description: "Steam release dependency checklist"
+  default_prompt: "Use $orion-release-publishing to prepare a Steam release dependency checklist."

@@ -29,7 +29,7 @@ description: Use when a user describes how an Orion or Unreal Engine game framew
 - 创建、更新或验证 Skill 元数据、目录结构、`agents/openai.yaml` 时，配合系统 `skill-creator`。
 - 生成 UE 框架模块 Skill 前，先用 `../unreal-source-code-navigator/SKILL.md` 查真实项目、插件和引擎源码。
 - 生成的 Skill 涉及具体 UE 领域时，必须接入 `../unreal-source-code-navigator/references/routing.zh-CN.md`，并与相邻领域 Skill 互相指向。
-- 生成的 Skill 涉及 MCP 创建资产、保存资产或编辑器自动化时，配合 `../unreal-mcp-workflow/SKILL.md`。
+- 生成的 Skill 涉及 MCP 创建资产、保存资产或编辑器自动化时，配合 `../orion-mcp-workflow/SKILL.md`。
 
 ## References
 
@@ -45,8 +45,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-framewo
 
 ## 可发布命名和占位符规则
 
-- UE 引擎源码、UE 原生 API、UE 插件行为、跨项目通用 Unreal 子系统和版本差异 Skill，命名为 `unreal-<domain>`。
-- Orion 框架、Orion 项目约定、Orion 模块使用方式、Orion 代码规范和可发布框架能力 Skill，命名为 `orion-<domain>`。
+- UE 引擎源码、UE 原生 API、UE 官方插件行为、跨项目通用 Unreal 子系统和版本差异 Skill，才命名为 `unreal-<domain>`。
+- 当前项目、Orion 框架、Orion 项目约定、项目内插件、项目配置、项目打包、Steam/发布流程、Content/Config/Source/Plugins 目录约定、项目清理脚本或可发布框架能力 Skill，必须命名为 `orion-<domain>`；即使底层使用 Unreal API，也不要命名为 `unreal-*`。
+- 项目域命名示例：`orion-project-config`、`orion-packaging`、`orion-release-publishing`、`orion-online-steam-framework`、`orion-project-cleanup`、`orion-project-acoustics`。
+- 引擎域命名示例：`unreal-enhancedinput`、`unreal-inputcore`、`unreal-gameplayabilities`、`unreal-source-code-navigator`、`unreal-source-index`、`unreal-render-commands`。
 - 非 UE 源码也非 Orion 框架的通用工具 Skill 可以使用无前缀的领域名，但不要用 `ue5-` 这类小版本前缀承载长期能力；版本差异写入 description 或 reference。
 - 能合并进现有 Skill 的窄问题优先合并；只有当触发词、工作流、验证命令或资源文件明显独立时才新建 Skill。
 
@@ -55,4 +57,3 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-framewo
 - 固定占位符：`<ProjectName>`、`<ProjectRoot>`、`<EngineRoot>`、`<UserLocalAppData>`、`<BenchmarkMap>`、`<GPU>`、`<ModuleName>`、`<Platform>`。
 - 写 Skill、README、CSV、脚本、示例命令、事故记录和实验备注时都必须执行这条规则；不要只清理 `SKILL.md`。
 - 验证时至少搜索：私有项目名、盘符路径、用户主目录、用户名、引擎安装目录、具体地图名和本机 GPU 型号。
-
