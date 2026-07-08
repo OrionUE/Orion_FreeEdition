@@ -5,6 +5,7 @@
 #include "Kismet/BlueprintAsyncActionBase.h"
 
 #include "UObject/ObjectPtr.h"
+
 #include "AsyncAction_ShowConfirmation.generated.h"
 
 enum class ECommonMessagingResult : uint8;
@@ -22,9 +23,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCommonMessagingResultMCDelegate, EC
 UCLASS()
 class UAsyncAction_ShowConfirmation : public UBlueprintAsyncActionBase
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
+	UAsyncAction_ShowConfirmation(const FObjectInitializer& ObjectInitializer);
+
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta = (BlueprintInternalUseOnly = "true", WorldContext = "InWorldContextObject"))
 	static UAsyncAction_ShowConfirmation* ShowConfirmationOk(
 		UObject* InWorldContextObject, FText Title, FText Message

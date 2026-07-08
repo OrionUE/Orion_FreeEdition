@@ -545,17 +545,17 @@ void UGameDLSSSubsystem::SetUpscaleBuiltIn()
 	switch (SupportedDLSSUpscaleMode)
 	{
 	case EGameDLSSUpscaleMode::BuiltIn:
-		SetScreenPercentage(100.f);
+		SetScreenPercentageToUserSetting();
 		break;
 
 	case EGameDLSSUpscaleMode::DLSS:
 		UDLSSLibrary::EnableDLSS(false);
-		SetScreenPercentage(100.f);
+		SetScreenPercentageToUserSetting();
 		break;
 
 	case EGameDLSSUpscaleMode::NIS:
 		UNISLibrary::SetNISMode(UNISMode::Off);
-		SetScreenPercentage(100.f);
+		SetScreenPercentageToUserSetting();
 		break;
 	}
 
@@ -642,17 +642,18 @@ void UGameDLSSSubsystem::SetDLSSSRMode(UDLSSMode DLSSMode, FVector2D ScreenResol
 	SetAntiAliasingMethodTSR();
 }
 
-void UGameDLSSSubsystem::ExecuteCommand(const FString& InCommand)
-{
-	if (UWorld* World = GetGameInstance()->GetWorld())
-	{
-		GEngine->Exec(World, *InCommand);
-	}
-}
+void UGameDLSSSubsystem::SetScreenPercentage(float Percentage) { UOrionSettingsLocal::SetScreenPercentageCVar(Percentage); }
 
-void UGameDLSSSubsystem::SetScreenPercentage(float Percentage)
+void UGameDLSSSubsystem::SetScreenPercentageToUserSetting()
 {
-	ExecuteCommand(FString::Printf(TEXT("r.ScreenPercentage %f"), Percentage));
+	if (UOrionSettingsLocal* SettingsLocal = UOrionSettingsLocal::Get())
+	{
+		SettingsLocal->ApplyScalabilitySettings();
+	}
+	else
+	{
+		SetScreenPercentage(100.0f);
+	}
 }
 
 void UGameDLSSSubsystem::SetAntiAliasingMethodUserSetting()

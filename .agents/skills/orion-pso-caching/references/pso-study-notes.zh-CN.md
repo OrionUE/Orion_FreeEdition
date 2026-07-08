@@ -66,6 +66,9 @@
 	- `NumPrecompilesRemaining()`：返回剩余预编译数量，适合驱动加载屏或前端编译 shader UI。
 	- `SavePipelineFileCache()`：保存记录。
 	- `GetGameVersionForPSOFileCache()`：从 `[ShaderPipelineCache.CacheFile] GameVersion` 读取版本；没有配置时回退引擎/构建 changelist。
+- `NumPrecompilesRemaining()` 每个进程启动都会基于当前打开的 bundled/user pipeline cache 重新统计待预编译 PSO；它不能证明驱动机器码缓存是否已经持久化。驱动缓存存在时这一步通常很快，异常退出导致驱动缓存未落盘时则可能看起来像“全部重新编译”。
+- UE 5.8 的 Windows D3D12 源码里 `D3D12.PSO.DiskCache` 和 `D3D12.PSO.DriverOptimizedDiskCache` 默认是 `0` 且 ReadOnly，源码注释说明旧 D3D12 RHI PSO file cache 已不再作为推荐路径，应使用 `FPipelineFileCacheManager` / `FShaderPipelineCache`。不要为了这个问题直接把这两个 CVar 改成 `1`。
+- UE 5.8 只在 iOS 的 `FPipelineFileCacheManager::PreCompileComplete()` 中写本地 `usecache.txt` 完成标记；Windows 没有同等完成标记。项目侧若用启动 UI 阻塞等待 `NumPrecompilesRemaining()==0`，应自行记录“当前 bundled cache 已完成一次”的标记，并用 stable cache 指纹让新包或新 PSO 文件自动失效。
 - 启动模式：
 	- `0`: Paused，需要代码调用 `ResumeBatching()`。
 	- `1`: Fast，适合加载屏、非交互阶段。
@@ -128,6 +131,12 @@
 	3. `CheckIfCompileShaders()` 在启动加载屏期间检查 `FShaderPipelineCache::NumPrecompilesRemaining()`。
 	4. `StartCompileShaders()` 绑定完成回调、调用 `ULoadingScreenManager::StartCompileShaders()`，后者切到 `Fast` 并 `ResumeBatching()`。
 	5. `ULoadingScreenManager::Tick()` 在剩余数量为 0 时广播完成，前端继续流程。
+- Windows 启动 PSO UI 需要项目侧完成标记：
+	- 完成标记写入用户配置，键值应包含 `FShaderPipelineCache::GetGameVersionForPSOFileCache()`、当前平台、当前 shader format、`Content/PipelineCaches/<Platform>/<ProjectName>_<ShaderFormat>.stable.upipelinecache` 的文件大小和时间戳。
+	- Windows `FPlatformProperties::RequiresCookedData()` 在非编辑器 game-only/client 构建中为 `true`，在 Editor 中为 `false`；适合用来避免 PIE/Editor 写入或读取启动 PSO 完成标记。
+	- 标记匹配时，不再阻塞前端流程弹出“编译着色器”UI；让 `StartupMode=2` / `Background` 继续处理剩余 PSO，避免异常退出后下一次启动又强制等待全量 bundled PSO。
+	- 标记不匹配、stable cache 文件变化、新包、新 GameVersion 或第一次运行时，仍然阻塞等待一次完整启动 PSO 预编译。
+	- 带 `-clearPSODriverCache`、`-deleteuserpsocache` 或 `-logPSO` 启动时必须忽略该标记，确保 PSO 验证、清缓存首跑和收集流程能真实执行。
 - 这说明“每次启动游戏都会查询 PSO 着色器是否编译完成”已经有项目侧实现，后续要验证 packaged build 而不是只看 Editor。
 
 ## 实践要点

@@ -18,6 +18,7 @@
 
 #include "CoreMinimal.h"
 #include "Factories/Factory.h"
+
 #include "SOFAFileFactory.generated.h"
 
 
@@ -31,7 +32,10 @@
 UCLASS()
 class USOFAFileFactory : public UFactory
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
+
+public:
+	USOFAFileFactory(const FObjectInitializer& ObjectInitializer);
 
 	// Called when importing a .sofa file.
 	virtual UObject* FactoryCreateBinary(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags,

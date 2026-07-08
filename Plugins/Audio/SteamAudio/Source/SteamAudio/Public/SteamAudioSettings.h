@@ -88,7 +88,7 @@ class USOFAFile;
 USTRUCT(BlueprintType, meta = (DisplayName = "Physics Material To Steam Audio Material Mapping Value"))
 struct FPhysMatToSteamAudioMatTable_Value
 {
-    GENERATED_USTRUCT_BODY()
+    GENERATED_BODY()
 
 public:
     UPROPERTY(EditAnywhere, Category = SceneExportSettings, meta = (AllowedClasses = "/Script/SteamAudio.SteamAudioMaterial"))

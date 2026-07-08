@@ -263,6 +263,31 @@ Steam 目标常见特征：
 
 修复：确认 `DefaultPlatformService=OrionSteam`、`NativePlatformService=OrionSteam`、`AdditionalModulesToLoad=OrionOnlineSubsystemSteam`，并读插件模块注册代码。
 
+### ListenSessionInvite 偶发失效
+
+现象：启动或切换到前端/大厅后，`ListenSessionInvite` 看似已触发，但玩家收不到邀请消息，或点击 Steam 邀请后没有进入项目的 session join 流程。
+
+原因：
+
+1. 前端流程里的监听入口通常只是调用 `UOrionSystemStatics::ActivateListenSessionInvite`，该函数只在本地 `PlayerState` 和 `AbilitySystemComponent` 都存在时发送 `GameplayEvent.Online.ListenSessionInvite`。如果 AbilitySet 尚未授予、ASC 尚未准备好或事件没有激活 Ability，这条路径会静默返回；不要把调用过该函数等同于已绑定 Steam delegate。
+2. `UOrionSteamUtilities::ListenForSessionInviteAccepted` 和 `ListenForSessionInviteRecieved` 是 Blueprint 监听封装，内部使用静态 delegate handle。重复激活监听时会添加新 delegate 并覆盖静态 handle，后续停止监听只会清理最后一个 handle；旧 delegate 可能残留，造成 pending invite 被空监听提前消费或回调落到已经失效的对象。
+3. Steam subsystem 的 `+connect_lobby` / `+connect` pending invite 只有在 `OnSessionUserInviteAcceptedDelegates.IsBound()` 后才会派发；正常 Steam callback 会把当时的 delegate 传入异步查找任务。监听必须在 invite 到达前稳定绑定，不能依赖晚一帧补绑。
+4. 发送方如果还没有有效的 `NAME_GameSession`，`SendGameSessionInviteToFriend` 会失败，接收方自然不会收到消息。日志关键字通常是 `Missing or invalid session GameSession for invite request`。
+
+排查顺序：
+
+1. 启动日志先确认 OnlineSubsystem 是 `OrionSteam`，不是 `NULL` 或引擎默认 Steam；关键日志是 `Created online subsystem instance for: OrionSteam`。
+2. 确认监听 Ability 的激活点真的执行到 `ListenForSessionInviteAccepted` / `ListenForSessionInviteRecieved`，并且不是同一生命周期里重复绑定多次。
+3. 查 `LogOrionSteam` 是否出现 `FOrionOnlineAsyncEventSteamLobbyInviteReceived`、`FOnlineAsyncEventSteamLobbyInviteAccepted`、`Invalid session or search already in progress when accepting invite`、`Missing or invalid session GameSession for invite request`。
+4. 用两客户端 Steam Development 包验证前端和大厅两个场景，分别测试收到邀请消息、接受邀请和加入 session。测试时保持 `CustomConfig=Steam`，并确认双方使用同一个 AppID。
+
+修复方向：
+
+- 把 invite 监听做成稳定生命周期能力，例如本地玩家、GameInstance subsystem 或持久的在线 flow action 统一绑定；不要只在前端某个一次性流程节点里 fire-and-forget。
+- 监听入口要有 ready 检查、失败日志和重试机制；至少记录 PlayerState、ASC、Ability 激活返回结果和 OnlineSubsystem 名称。
+- 封装层应避免静态单 handle 覆盖旧 handle。当前推荐做法是 `ListenForSessionInviteAccepted` / `ListenForSessionInviteRecieved` 重复调用前先用旧 handle 清理旧绑定，再保存新 handle；如果未来要支持多个监听 owner，再改成每个 owner 保存自己的 handle，并在 owner 销毁时成对解绑。
+- `ActivateListenSessionInvite` 可以做短时间有限重试，用来覆盖前端启动时 PlayerState、ASC 或 AbilitySet 授予晚于流程节点的竞态；最后一次仍失败时必须打出具体缺失对象或未处理 GameplayEvent 的日志。
+
 ### GameFeature 使用 Steam 类型但未声明依赖
 
 现象：打包或编译某个 GameFeature Runtime 模块时，间接包含到 Steam ID、Steam 邀请或 Session 相关头后报 `fatal error C1083`，提示找不到 `OrionSteamSDKAPI` 头文件。

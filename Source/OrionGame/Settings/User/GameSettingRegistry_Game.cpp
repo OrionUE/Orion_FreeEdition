@@ -10,7 +10,7 @@
 #include "EditCondition/WhenPlayingAsPrimaryPlayer.h"
 #include "Player/OrionLocalPlayer.h"
 
-#define LOCTEXT_NAMESPACE "Orion"
+#define LOCTEXT_NAMESPACE "OrionGameUserSetting"
 
 UGameSettingCollection* UOrionGameSettingRegistry::InitializeGameSettings(UCoreLocalPlayer* InLocalPlayer)
 {

@@ -33,6 +33,7 @@ $NewText = [string]::Join($CrLf, $Lines)
 
 - 用 `[char]13` 和 `[char]10` 构造 CRLF，避免字符串转义或宿主差异。
 - 用 `WriteAllBytes` 写入 UTF-8 bytes，避免 PowerShell 版本或默认编码改变换行。
+- 不要写成 `$Text = $Normalized -split $Lf, -1 -join $CrLf` 这类依赖运算符优先级的形式；用 `.Split(..., None)` 加 `[string]::Join($CrLf, $Lines)`，或给 split 结果显式加括号。
 - 写回后扫描字节：任何 `0A` 前一字节不是 `0D`，都说明存在 LF-only。
 
 ## 缩进归一规则
@@ -66,6 +67,15 @@ $Paths = @(
 & .agents\skills\crlf-mechanical-formatting\scripts\normalize-windows-text-format.ps1 `
 	-Path $Paths `
 	-ExcludeRegex '^Plugins/SomePlugin/Source/ThirdParty/'
+```
+
+多路径、空排除或临时覆盖默认排除目录时，优先在当前 PowerShell 里用 call operator 传数组；不要用 `powershell -File` 后面直接写逗号分隔路径或 `@()` 空数组，否则容易被解析成普通位置参数：
+
+```powershell
+& .agents\skills\crlf-mechanical-formatting\scripts\normalize-windows-text-format.ps1 `
+	-Path @("PathA", "PathB", "Saved\OrionUE\SomeScript.py") `
+	-IncludeExtension @(".ps1", ".md", ".py") `
+	-ExcludeRegex @("a^")
 ```
 
 预检不写文件：

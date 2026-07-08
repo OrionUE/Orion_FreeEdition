@@ -354,6 +354,16 @@
 			"Enabled": true
 		},
 		{
+			"Name": "OrionAudioSystem",
+			"Description": "音频生成与多人播放功能插件",
+			"Enabled": true
+		},
+		{
+			"Name": "OrionBrowser",
+			"Description": "Orion浏览器插件，提供项目本地CEF浏览器内核",
+			"Enabled": true
+		},
+		{
 			"Name": "OrionSteam",
 			"Description": "接入Steam插件",
 			"Enabled": true
@@ -472,6 +482,11 @@
 		},
 		{
 			"Name": "WindowsMoviePlayer",
+			"Enabled": false
+		},
+		{
+			"Name": "WebBrowserWidget",
+			"Description": "已替换为OrionBrowser插件",
 			"Enabled": false
 		},
 		{

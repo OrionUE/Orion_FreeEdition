@@ -23,6 +23,18 @@
 
 索引用于缩小搜索范围，不替代源码确认。
 
+### 第三方库插件 / External SDK 接入
+
+使用顺序：
+
+1. `../../unreal-thirdparty-plugin/SKILL.md`：处理 UE 第三方库插件、`ModuleType.External`、`Source/ThirdParty` 声明层、插件根 `ThirdParty` 实体库、include/lib/bin/runtime 目录、`RuntimeDependencies`、DLL/so/dylib staging、许可证、符号和第三方库打包缺失。
+2. `../../orion-framework-architecture/SKILL.md`：判断第三方能力应该是独立插件、项目模块、Runtime/Editor/Program 模块，还是只作为已有插件的 External 依赖。
+3. `../../orion-code-style/SKILL.md`：修改 `.Build.cs`、`.Target.cs`、`.uplugin`、脚本或 C++ 桥接代码前读取。
+4. `unreal-source-code-navigator`：查当前引擎 `ModuleRules`、插件描述符、平台加载和真实模块依赖。
+5. `../../orion-packaging/SKILL.md`：第三方运行库需要 cook/stage/package 验证时使用。
+
+重点：`Source/ThirdParty/<SDKName>` 只放 External 模块声明层；第三方头、lib、dll、pak、dat、模型、license 和 runtime 资源默认放插件根 `ThirdParty/<SDKName>`，不要把库实体放进 `Binaries` 当源码源头。
+
 ### Visual Studio 工程生成 / 引擎升级工程文件
 
 使用顺序：
@@ -251,12 +263,13 @@
 使用顺序：
 
 1. `../../orion-audio-framework/SKILL.md`：处理 `Content/Audio`、`Content/Acoustics`、SoundClass、Concurrency、Submix、AudioModulation、AudioMixer、MetaSound、CoreAudioSettings、OrionVoiceChat、ProjectAcoustics、SteamAudio、空间音频、混响、遮挡和输入/输出设备。
-2. `../../orion-project-acoustics/SKILL.md`：处理 ProjectAcoustics 插件源码、SourceDataOverride、虚拟扬声器、`AcousticsAudioPluginListener`、`OnListenerUpdated`、audio thread/Actor 生命周期或 `AActor::SetActorLocation` 崩溃。
-3. `unreal-source-code-navigator`：打开真实项目插件、GameCore/OrionGame 音频源码和 UE `AudioExtensions`、`AudioMixer`、`AudioModulation`、`Metasound` 源码，确认接口和生命周期。
-4. `../../orion-asset-management/SKILL.md`：创建、移动或命名音频、MetaSound、ProjectAcoustics、SteamAudio、Submix、ControlBus 等资产。
-5. `../../orion-gamecore-framework/SKILL.md`：触碰 `UCoreAudioSettings`、GameCore 音频配置或核心只读边界时使用。
-5. `../../orion-game-settings-framework/SKILL.md`：音量、音频设备、后台音频、HRTF、HDR/LDR 音频设置页或保存/应用逻辑时使用。
-6. 如果语音聊天由 Ability、输入或 GameFeature 激活，继续读取 `../../unreal-gameplayabilities/SKILL.md`、`../../unreal-enhancedinput/SKILL.md`、`../../orion-gamefeatures/SKILL.md`。
+2. `../../orion-steam-audio/SKILL.md`：处理 SteamAudio / Steam Audio 插件源码、HRTF、Spatialization、Reverb、Occlusion、ProbeVolume、动态几何、烘焙、Radeon Rays、TrueAudio Next、OpenCL 或 `SteamAudio.GPUAudioAcceleration`。
+3. `../../orion-project-acoustics/SKILL.md`：处理 ProjectAcoustics 插件源码、SourceDataOverride、虚拟扬声器、`AcousticsAudioPluginListener`、`OnListenerUpdated`、audio thread/Actor 生命周期或 `AActor::SetActorLocation` 崩溃。
+4. `unreal-source-code-navigator`：打开真实项目插件、GameCore/OrionGame 音频源码和 UE `AudioExtensions`、`AudioMixer`、`AudioModulation`、`Metasound` 源码，确认接口和生命周期。
+5. `../../orion-asset-management/SKILL.md`：创建、移动或命名音频、MetaSound、ProjectAcoustics、SteamAudio、Submix、ControlBus 等资产。
+6. `../../orion-gamecore-framework/SKILL.md`：触碰 `UCoreAudioSettings`、GameCore 音频配置或核心只读边界时使用。
+7. `../../orion-game-settings-framework/SKILL.md`：音量、音频设备、后台音频、HRTF、HDR/LDR 音频设置页或保存/应用逻辑时使用。
+8. 如果语音聊天由 Ability、输入或 GameFeature 激活，继续读取 `../../unreal-gameplayabilities/SKILL.md`、`../../unreal-enhancedinput/SKILL.md`、`../../orion-gamefeatures/SKILL.md`。
 
 重点先确认平台音频插件组合，不要把 SteamAudio Spatialization、SteamAudio Reverb/Occlusion、ProjectAcoustics SourceDataOverride/Reverb 混为一谈。
 
@@ -332,12 +345,13 @@
 
 使用顺序：
 
-1. `../../orion-umg/SKILL.md`：处理 GameUI 模块、CommonUI 层栈、UMG、Widget Blueprint、`UUI_ActivatableWidget`、`UGameHUDLayout`、UI C++ 基类、UIExtension 插槽、GameFeature Add Widgets、按钮、列表、标签页、主题、弹窗和 Widget Blueprint 自动化。
-2. `unreal-source-code-navigator`：定位 UMG、CommonUI、CommonGame、UIExtension、模块依赖和 Widget 基类源码。
-3. 修改编辑器启动图、游戏启动图、Splash、EdSplash 或 `Content/Splash` 图片时，读取 `../../orion-asset-management/SKILL.md`；如果用户提供源图并要求裁剪、转换、覆盖或删除旧 `.uasset`，读取 `../../splash-image-conversion/SKILL.md` 生成 `Splash` / `EdSplash` 的 PNG/BMP 四件套。
-4. `../../unreal-commoninput/SKILL.md`：处理输入模式、输入设备状态、click/back action、按键图标、Action Domain。
-5. `../../unreal-enhancedinput/SKILL.md`：只有 UI click/back action 绑定到 EnhancedInput action，或 UI 与 gameplay action 共用输入资产时使用。
-6. `../../orion-mcp-project-toolsets/SKILL.md`：通过 MCP 创建 WBP、修改蓝图默认变量、保存、验证，或把 UI 写入 Experience / ActionSet 时使用。
+1. `../../orion-gameui/SKILL.md`：处理 GameUI 运行时框架、`Source/GameUI`、CommonUI 层栈、GameUI Subsystem、`UUI_ActivatableWidget`、`UGameHUDLayout`、UIExtension、GameFeature Add Widgets、主题、通用弹窗队列、奖励/公告/广告/HTML 弹窗和 OrionBrowser HTML/CSS 嵌入。
+2. `../../orion-umg/SKILL.md`：处理 UMG、Widget Blueprint、WidgetTree、BindWidget、UI C++ 基类、按钮、列表、标签页、主题、弹窗页面外观和 Widget Blueprint 自动化。
+3. `unreal-source-code-navigator`：定位 UMG、CommonUI、CommonGame、UIExtension、模块依赖和 Widget 基类源码。
+4. 修改编辑器启动图、游戏启动图、Splash、EdSplash 或 `Content/Splash` 图片时，读取 `../../orion-asset-management/SKILL.md`；如果用户提供源图并要求裁剪、转换、覆盖或删除旧 `.uasset`，读取 `../../splash-image-conversion/SKILL.md` 生成 `Splash` / `EdSplash` 的 PNG/BMP 四件套。
+5. `../../unreal-commoninput/SKILL.md`：处理输入模式、输入设备状态、click/back action、按键图标、Action Domain。
+6. `../../unreal-enhancedinput/SKILL.md`：只有 UI click/back action 绑定到 EnhancedInput action，或 UI 与 gameplay action 共用输入资产时使用。
+7. `../../orion-mcp-project-toolsets/SKILL.md`：通过 MCP 创建 WBP、修改蓝图默认变量、保存、验证，或把 UI 写入 Experience / ActionSet 时使用。
 
 ### 角色移动 + 通用 UI 同时出现
 
@@ -407,6 +421,7 @@
 
 - 用户说“Application.ico、Application.icns、Build/Linux/Application.png、Android launcher icon、平台 Logo、应用图标、package icon、Build 下各平台图标替换”：优先 `../../orion-build-platform-icons/SKILL.md`。
 - 用户说“项目架构、文件夹职责、模块职责、代码放哪、插件职责、Target、Build 目录、Config 目录、PSO、Source/Plugins 分层”：优先 `../../orion-framework-architecture/SKILL.md`。
+- 用户说“第三方库插件、ThirdParty 插件、External 模块、ModuleType.External、Source/ThirdParty、插件根 ThirdParty、RuntimeDependencies、DLL staging、SDK 接入、第三方 lib/dll/so/dylib 打包缺失”：优先 `../../unreal-thirdparty-plugin/SKILL.md`。
 - 用户说“清理项目、项目清理、clean project、gitignore 清理、清理忽略文件、删除生成物、清掉 Binaries、清掉 Intermediate、清掉 Saved、清掉 DerivedDataCache、清理 IDE 缓存、清理 __pycache__”：优先 `../../orion-project-cleanup/SKILL.md`。
 - 用户说“System 文件夹、系统层、CoreAssetManager、AssetManagerClassName、CoreGameData、GameDataPath、DefaultPawnData、GameInstance、GameSession、WorldSubsystem、GameplayTagStack、FastArray tag stack、系统蓝图函数库”：优先 `../../orion-system-framework/SKILL.md`。
 - 用户说“GameCore、CoreExperience、CoreGameMode、CorePlayerState、CorePawnData、PawnExtension、PawnControl、CoreAbilitySystemComponent、CoreGameplayAbility、CoreAbilitySet、不要改核心模块、从 OrionGame 继承、业务写 GameFeatures”：优先 `../../orion-gamecore-framework/SKILL.md`。
@@ -417,9 +432,12 @@
 - 用户说“Teams、Team、队伍、阵营、敌友、友军、Friendly、Hostile、Neutral、GenericTeamAgent、IGenericTeamAgentInterface、FGenericTeamId、IOrionTeamAgentInterface、TeamSubsystem、TeamInfo、TeamDisplayAsset、TeamCreationComponent、AI Perception affiliation、GetTeamAttitudeTowards、按队伍出生、队伍出生点、友军伤害”：优先 `../../orion-teams-framework/SKILL.md`。
 - 用户说“OrionEditor、CommonEditorExtension、编辑器扩展、Editor module、EditorEngine、PIE 委托、ToolMenus、Check Content、Common Maps、DataValidation、DefaultEditor.ini、DefaultEditorKeyBindings.ini、DefaultEditorPerProjectUserSettings.ini”：优先 `../../orion-editor-extension-framework/SKILL.md`。
 - 用户说“ProjectAcoustics、Project Acoustics、ProjectAcousticsNative、AcousticsAudioPluginListener、SourceDataOverride、虚拟扬声器、virtual speaker、OnListenerUpdated、AActor::SetActorLocation 音频崩溃”：优先 `../../orion-project-acoustics/SKILL.md`，并配合 `../../orion-audio-framework/SKILL.md`。
+- 用户说“SteamAudio、Steam Audio、phonon、HRTF、Steam Audio Spatialization、Steam Audio Reverb、Steam Audio Occlusion、SteamAudioSourceComponent、SteamAudioListenerComponent、SteamAudioGeometryComponent、SteamAudioDynamicObjectComponent、SteamAudioProbeVolume、baked reflections、pathing、Radeon Rays、TrueAudio Next、OpenCL、SteamAudio.GPUAudioAcceleration”：优先 `../../orion-steam-audio/SKILL.md`，并配合 `../../orion-audio-framework/SKILL.md`。
+- 用户说“MetaSound、MetaSounds、metasound、MetaSound Source、MetaSound Patch、MetaSound 节点、MetaSound Builder、UMetaSoundBuilderSubsystem、UMetaSoundEditorSubsystem、FMetasoundFrontendClassName、ProjectAcoustics MetaSound 参数、MCP 创建 MetaSound”：优先 `../../unreal-metasound/SKILL.md`，并配合 `../../orion-audio-framework/SKILL.md` 和 `../../orion-mcp-workflow/SKILL.md`。
 - 用户说“音频、Audio、SoundClass、SoundConcurrency、Submix、ControlBus、ControlBusMix、AudioMixer、AudioModulation、MetaSound、ProjectAcoustics、SteamAudio、OrionVoiceChat、语音聊天、麦克风、音频输入、音频输出、空间音频、混响、遮挡、CoreAudioSettings、GameSettingRegistry_Audio、HDR Audio、LDR Audio”：优先 `../../orion-audio-framework/SKILL.md`。
 - 用户说“渲染命令、render command、CVar、控制台变量、RendererSettings 可配置命令、DefaultScalability 命令、某个 r./sg./rhi./d3d12./vulkan. 前缀、命令是否运行时可改、命令支持平台”：优先 `../../unreal-render-commands/SKILL.md`。
 - 用户说“渲染、RendererSettings、DefaultScalability、WindowsEngine.ini、DLSS、NIS、Streamline、DLSS Frame Generation、Reflex、RTX、RayTracing、Lumen、Nanite、Virtual Shadow Map、VSM、TSR、AntiAliasing、ScreenPercentage、GameSettingRegistry_Video、OrionGameRenderManager、OrionGameRenderSubsystem、启动编译着色器、FlowStep_TryCompileShaders”：优先 `../../orion-rendering-framework/SKILL.md`；如果问题是命令/参数/表格查询，再读取 `../../unreal-render-commands/SKILL.md`；如果问题是加载屏生命周期、编译进度 UI 或 CommonLoadingScreen 卡住，再读取 `../../orion-loading-screen-framework/SKILL.md`。
+- 用户说“贴图、纹理、Texture2D、TextureCube、UDIM、Virtual Texture、Runtime Virtual Texture、Streaming Virtual Texture、Texture Streaming Pool、贴图太大、纹理太大、打包体积大、包体积大、贴图卡顿、贴图糊、LODGroup、MaxTextureSize、LODBias、TextureLODGroups、TextureQuality、r.Streaming.PoolSize、r.Streaming.MipBias、r.VT、Size Map、Asset Audit、Reference Viewer”：优先 `../../unreal-texture-management/SKILL.md`；涉及资产移动/命名时配合 `../../orion-asset-management/SKILL.md`，涉及渲染配置时配合 `../../orion-rendering-framework/SKILL.md`。
 - 用户说“PSO、ShaderPipelineCache、PSOPrecache、CollectedPSOs、PipelineCaches、-logPSO、-clearPSODriverCache、.rec.upipelinecache、.shk、.spc、打包并收集着色器、收集着色器、收集PSO、PSO打包”：优先 `../../orion-pso-caching/SKILL.md`，并按需要配合 `../../orion-packaging/SKILL.md` 与 `../../orion-rendering-framework/SKILL.md`。
 - 用户说“OnlineSubsystem、Steam、OrionSteam、OrionOnlineSubsystemSteam、Steam SDK、SteamAppId、SteamDevAppId、Session、Lobby、Invite、好友邀请、Friends、Steam Sockets、Steam Web API、UOrionGameSessionComponent、BP_SessionComponent、CommonSession、GameUI/Online、Steam Dedicated Server”：优先 `../../orion-online-steam-framework/SKILL.md`。
 - 用户说“DefaultGame.ini、WindowsGame.ini、LinuxGame.ini、MacGame.ini、AndroidGame.ini、IOSGame.ini、GameUserSettings.ini、DefaultCrypto.ini、CryptoKeys、ProjectPackagingSettings、AssetManagerSettings、CommonLoadingScreenSettings、CommonInput platform settings、CommonUI PlatformTraits、用户可以配置哪些参数、平台配置、打包配置、ini denylist、CoreGameDataPath、DefaultPawnData”：优先 `../../orion-project-config/SKILL.md`。
@@ -436,7 +454,8 @@
 - 用户说“Generate Visual Studio project files、生成 VS 工程、生成 Visual Studio 文件、右键生成没用、升级 UE 后 sln 没更新、EngineAssociation、UnrealVersionSelector、Log_GPF、ProjectFiles、sln 指向旧引擎、Target Upgrade Required、升级后编译编辑器、打开编辑器被插件兼容弹窗挡住”：优先 `../../unreal-vs-project-generation/SKILL.md`。
 - 用户说“FKey、EKeys、InputCore、KeyDetails、FInputKeyManager、UPlayerInput、UInputComponent、legacy input、axis mapping、key category、platform key”：优先 `../../unreal-inputcore/SKILL.md`。
 - 用户说“InputAction、MappingContext、Trigger、Modifier、BindAction、改键、重映射”：优先 `../../unreal-enhancedinput/SKILL.md`。
-- 用户说“UI框架、GameUI、UMG、Widget Blueprint、WBP、CommonUI、UUI_ActivatableWidget、UGameHUDLayout、UIExtension、HUD layout、UI layer、UI.Layer、Add Widgets、Widget Tree、按钮、列表、标签页、弹窗、Splash、EdSplash、启动图、编辑器启动图、游戏启动图、Content/Splash”：优先 `../../orion-umg/SKILL.md`；设置页逻辑配合 `../../orion-game-settings-framework/SKILL.md`，加载屏 Widget 外观配合 `../../orion-loading-screen-framework/SKILL.md`，Splash 图片路径和格式配合 `../../orion-asset-management/SKILL.md`，源图裁剪/转换/自动覆盖配合 `../../splash-image-conversion/SKILL.md`。
+- 用户说“UI框架、GameUI、Source/GameUI、CommonUI、UUI_ActivatableWidget、UGameHUDLayout、UIExtension、HUD layout、UI layer、UI.Layer、Add Widgets、弹窗系统、Popup、奖励弹窗、公告弹窗、HTML UI、OrionBrowser、浏览器控件”：优先 `../../orion-gameui/SKILL.md`；具体 Widget Blueprint / WidgetTree / BindWidget / WBP 编辑再配合 `../../orion-umg/SKILL.md`。
+- 用户说“UMG、Widget Blueprint、WBP、Widget Tree、按钮、列表、标签页、弹窗外观、Splash、EdSplash、启动图、编辑器启动图、游戏启动图、Content/Splash”：优先 `../../orion-umg/SKILL.md`；设置页逻辑配合 `../../orion-game-settings-framework/SKILL.md`，加载屏 Widget 外观配合 `../../orion-loading-screen-framework/SKILL.md`，Splash 图片路径和格式配合 `../../orion-asset-management/SKILL.md`，源图裁剪/转换/自动覆盖配合 `../../splash-image-conversion/SKILL.md`。
 - 用户说“Content/UI 蓝图框架、Art/HUD/Interaction/Menu/Online/Settings、BP_UIPolicy、W_OverallUILayout、BP_CommonInputData、DA_GameUIInputActionDomainTable、DT_UniversalActions、GameUI UI 蓝图怎么模仿、怎么编辑 UI 蓝图、生成 UI 蓝图 Skill”：优先 `../../orion-ui-blueprint-framework/SKILL.md`，再按具体子系统配合 UMG、CommonInput、GameSettings、Online、Interaction、LoadingScreen 和 MCP Toolset Skill。
 - 用户说“通用UI输入、CommonUI 输入模式、返回键、点击、按键提示、手柄图标”：优先 `../../unreal-commoninput/SKILL.md`，并在需要创建/修改 Widget Blueprint 时回到 `../../orion-umg/SKILL.md`。
 - 用户说“GameFeature、GameFeatureAction、模块化玩法、Experience、CoreExperience、ActionSet、GameFeaturesToEnable、玩法插件、业务代码优先 GameFeature、插件激活、激活反激活、feature plugin”：优先 `../../orion-gamefeatures/SKILL.md`。

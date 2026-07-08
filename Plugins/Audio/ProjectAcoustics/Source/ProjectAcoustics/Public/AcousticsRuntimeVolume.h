@@ -5,6 +5,7 @@
 
 #include "GameFramework/Volume.h"
 #include "AcousticsDesignParams.h"
+
 #include "AcousticsRuntimeVolume.generated.h"
 
 /**
@@ -18,12 +19,14 @@
 UCLASS(ClassGroup = ProjectAcoustics, hidecategories = (Advanced, Attachment), BlueprintType)
 class PROJECTACOUSTICS_API AAcousticsRuntimeVolume : public AVolume
 {
-    GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
-    /**
-     *	The design params to override the acoustics audio components found inside this volume.
-     */
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Acoustics")
-    FAcousticsDesignParams OverrideDesignParams;
+	AAcousticsRuntimeVolume(const FObjectInitializer& ObjectInitializer);
+
+	/**
+	 *	The design params to override the acoustics audio components found inside this volume.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Acoustics")
+	FAcousticsDesignParams OverrideDesignParams;
 };

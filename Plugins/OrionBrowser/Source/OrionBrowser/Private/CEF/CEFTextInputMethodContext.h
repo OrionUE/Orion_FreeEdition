@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) 2026 Orion. All Rights Reserved.
+ * https://orionue.com
+ */
+
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+#pragma once
+
+#include "CoreMinimal.h"
+
+#if ORION_WITH_CEF3 && !PLATFORM_LINUX
+
+#include "Layout/Geometry.h"
+#include "Widgets/SWindow.h"
+
+#if PLATFORM_WINDOWS
+#include "Windows/AllowWindowsPlatformTypes.h"
+#include "Windows/AllowWindowsPlatformAtomics.h"
+#endif
+
+#pragma push_macro("OVERRIDE")
+#undef OVERRIDE // cef headers provide their own OVERRIDE macro
+THIRD_PARTY_INCLUDES_START
+#if PLATFORM_APPLE
+PRAGMA_DISABLE_DEPRECATION_WARNINGS
+#endif
+#include "include/cef_client.h"
+#if PLATFORM_APPLE
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+#endif
+THIRD_PARTY_INCLUDES_END
+#pragma pop_macro("OVERRIDE")
+
+#if PLATFORM_WINDOWS
+#include "Windows/HideWindowsPlatformAtomics.h"
+#include "Windows/HideWindowsPlatformTypes.h"
+#endif
+
+#include "GenericPlatform/ITextInputMethodSystem.h"
+#include "Layout/Geometry.h"
+
+class FOrionCEFWebBrowserWindow;
+class FOrionCEFImeHandler;
+class SWindow;
+
+class FOrionCEFTextInputMethodContext : public ITextInputMethodContext
+{
+public:
+
+	virtual ~FOrionCEFTextInputMethodContext() = default;
+
+	static TSharedRef<FOrionCEFTextInputMethodContext> Create(const TSharedRef<FOrionCEFImeHandler>& InOwner);
+
+	void AbortComposition();
+
+	bool UpdateCachedGeometry(const FGeometry& AllottedGeometry);
+
+	bool CEFCompositionRangeChanged(const CefRange& SelectionRange, const CefRenderHandler::RectList& CharacterBounds);
+	bool CEFTextSelectionChanged(const CefString& SelectedText, const CefRange& SelectionRange);
+
+private:
+	void ResetComposition();
+
+public:
+	
+	// ITextInputMethodContext Interface
+	virtual bool IsComposing() override;
+
+private:
+	virtual bool IsReadOnly() override;
+	virtual uint32 GetTextLength() override;
+	virtual void GetSelectionRange(uint32& BeginIndex, uint32& Length, ECaretPosition& CaretPosition) override;
+	virtual void SetSelectionRange(const uint32 BeginIndex, const uint32 Length, const ECaretPosition CaretPosition) override;
+	virtual void GetTextInRange(const uint32 BeginIndex, const uint32 Length, FString& OutString) override;
+	virtual void SetTextInRange(const uint32 BeginIndex, const uint32 Length, const FString& InString) override;
+	virtual int32 GetCharacterIndexFromPoint(const FVector2D& Point) override;
+	virtual bool GetTextBounds(const uint32 BeginIndex, const uint32 Length, FVector2D& Position, FVector2D& Size) override;
+	virtual void GetScreenBounds(FVector2D& Position, FVector2D& Size) override;
+	virtual TSharedPtr<FGenericWindow> GetWindow() override;
+	virtual void BeginComposition() override;
+	virtual void UpdateCompositionRange(const int32 InBeginIndex, const uint32 InLength) override;
+	virtual void EndComposition() override;
+
+private:
+	FOrionCEFTextInputMethodContext(const TSharedRef<FOrionCEFImeHandler>& InOwner);
+	TSharedRef<FOrionCEFImeHandler> Owner;
+	TWeakPtr<SWindow> CachedSlateWindow;
+
+	FGeometry CachedGeometry;
+	bool bIsComposing;
+	int32 CompositionBeginIndex;
+
+	uint32 SelectionRangeBeginIndex;
+	uint32 SelectionRangeLength;
+	ECaretPosition SelectionCaretPosition;
+
+	std::vector<CefRect> CefCompositionBounds;
+
+	FString CompositionSequence;
+	FString CompositionString;
+};
+
+#endif

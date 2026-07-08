@@ -11,8 +11,7 @@
 	"CookMode": 1,
 	"CookUnversioned": true,
 	"CookedCultures": [
-		"en",
-		"zh-Hans"
+{{CookedCulturesJson}}
 	],
 	"CookedPlatforms": [
 		"Windows"
@@ -77,7 +76,7 @@
 		"AssignedDevice": "",
 		"CommandLine": "",
 		"DeviceId": "",
-		"InitialCulture": "en",
+		"InitialCulture": "{{InitialCulture}}",
 		"InitialMapName": "",
 		"Name": "DefaultRole",
 		"InstanceType": 2,

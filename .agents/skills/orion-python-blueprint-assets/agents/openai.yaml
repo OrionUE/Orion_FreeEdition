@@ -1,0 +1,7 @@
+interface:
+  display_name: "UE Python Blueprint Assets"
+  short_description: "Use UE command-line Python to save Blueprint assets"
+  default_prompt: "Use $orion-python-blueprint-assets to create or verify a Blueprint asset through UnrealEditor-Cmd Python when MCP is unavailable."
+
+policy:
+  allow_implicit_invocation: true

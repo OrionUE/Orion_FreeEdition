@@ -1,0 +1,10 @@
+Usage: Triton.LocalProcessor.exe --<opt0> <val0> <val1>... --<opt1> <val0> <val1>... ...
+------------------------------------------------
+ConfigFile           : (Required) {Name} of XML triton job config file.
+NodeSize             : (Optional) Size of the PC/VM being used for the simulation. Default is 'Local'
+NumThreads           : (Optional) {int} Defaults to max logical processors. Number of threads to run the bake on.
+OutputName           : (Optional) {Name} of the output ACE file.
+Resume               : (Optional) {bool} Defaults to false. If specified, and if there are existing .enc files in the working directory, will resume bake starting from the last .enc index.
+SharedInputDataDir   : (Optional) {Path} to the vox and config file, relative to the working dir.If not specified, Vox and config files will be assumed located in the WorkingDir.
+WorkingDir           : (Optional) {Directory} Process working directory. Task output will also be written to this path.Config and Vox files should be here unless specified by SharedInputDataDir
+------------------------------------------------

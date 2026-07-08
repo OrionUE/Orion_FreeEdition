@@ -171,6 +171,8 @@ ProjectAcoustics 的 MetaSound 参数接口名为 `ProjectAcoustics`，输入包
 
 ### SteamAudio
 
+SteamAudio 的详细源码研究、使用流程、探针/烘焙、GPU 加速和排查步骤已沉淀到 `../orion-steam-audio/SKILL.md` 与 `../orion-steam-audio/references/steam-audio-code-study.zh-CN.md`；需要改插件配置或分析源码时先读取该 Skill。
+
 SteamAudio 插件注册 Spatialization、Occlusion、Reverb factory，并维护 `FSteamAudioManager`：
 
 - `FSteamAudioModule` 加载平台第三方库，注册 modular features，并在 PIE/游戏开始和结束时初始化或关闭 SteamAudio。
@@ -230,6 +232,8 @@ SteamAudio 的发布默认值应保持启动安全：`SceneType=DEFAULT`，`Refl
 MetaSound 通过 `IAudioParameterInterfaceRegistry` 注册参数接口，`USoundBase::ImplementsParameterInterface` 可判断声音是否实现接口。ProjectAcoustics SourceDataOverride 会检测当前声音是否实现 `ProjectAcoustics` 接口，然后用 `FAudioParameter` 更新干声/湿声参数。
 
 新增 MetaSound 音频资产时，如果需要空间声学数据，先确认是否要实现 ProjectAcoustics 参数接口；如果只是普通 procedural 音频，则按 MetaSound 本身的输入和输出处理。
+
+MetaSound Source/Patch 创建、节点 ClassName、Builder API、图连接和 MCP 自动化流程见 `../unreal-metasound/SKILL.md`。
 
 ## 常用实现流程
 

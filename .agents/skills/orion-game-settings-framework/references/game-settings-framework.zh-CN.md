@@ -405,35 +405,35 @@ Gamepad Input API：
 ## 新增普通设置流程
 
 1. 判断 owner：
-   - 本机/硬件/平台/画质：`UOrionSettingsLocal`。
-   - 账号偏好/输入偏好/语言字幕：`UOrionSettingsShared`。
-   - 房间/世界参数：`UOrionGameWorldSettingRegistry` 和对应 SaveGame。
-   - 单个玩法专属配置：优先 GameFeature 内的 DataAsset/SaveGame，再用宿主 registry 暴露入口。
+	- 本机/硬件/平台/画质：`UOrionSettingsLocal`。
+	- 账号偏好/输入偏好/语言字幕：`UOrionSettingsShared`。
+	- 房间/世界参数：`UOrionGameWorldSettingRegistry` 和对应 SaveGame。
+	- 单个玩法专属配置：优先 GameFeature 内的 DataAsset/SaveGame，再用宿主 registry 暴露入口。
 2. 增加存储字段：
-   - LocalSettings 使用 `UPROPERTY(Config)` 并提供 `UFUNCTION` getter/setter。
-   - SharedSettings 使用 `UPROPERTY()`，setter 用 `ChangeValueAndDirty` 或等效逻辑广播 dirty。
-   - World 设置要保证 SaveGame handler 会保存对应字段。
+	- LocalSettings 使用 `UPROPERTY(Config)` 并提供 `UFUNCTION` getter/setter。
+	- SharedSettings 使用 `UPROPERTY()`，setter 用 `ChangeValueAndDirty` 或等效逻辑广播 dirty。
+	- World 设置要保证 SaveGame handler 会保存对应字段。
 3. 决定应用时机：
-   - 可以立即预览的值可在 setter 中应用运行时系统。
-   - 需要点击应用的值让 ChangeTracker 先 dirty，最终由 registry `SaveChanges` 调 `ApplySettings`。
-   - 需要重启或重新加载的值设置 warning/description，必要时只保存 desired 状态。
+	- 可以立即预览的值可在 setter 中应用运行时系统。
+	- 需要点击应用的值让 ChangeTracker 先 dirty，最终由 registry `SaveChanges` 调 `ApplySettings`。
+	- 需要重启或重新加载的值设置 warning/description，必要时只保存 desired 状态。
 4. 在正确的 `GameSettingRegistry_*.cpp` 中创建 setting：
-   - 设置 `DevName`、`DisplayName`、`DescriptionRichText`。
-   - 设置 dynamic getter/setter。
-   - 设置默认值、选项、范围、显示格式。
-   - 添加 edit condition 和 dependency。
-   - 加入合适 collection。
+	- 设置 `DevName`、`DisplayName`、`DescriptionRichText`。
+	- 设置 dynamic getter/setter。
+	- 设置默认值、选项、范围、显示格式。
+	- 添加 edit condition 和 dependency。
+	- 加入合适 collection。
 5. 如果新增顶层页：
-   - 在 `UOrionGameSettingRegistry::OnInitialize` 中创建并 `RegisterSetting`。
-   - 确认设置屏 tab 或导航 UI 能显示新 collection。
+	- 在 `UOrionGameSettingRegistry::OnInitialize` 中创建并 `RegisterSetting`。
+	- 确认设置屏 tab 或导航 UI 能显示新 collection。
 6. 如果使用新 setting class 或特殊交互：
-   - 新增 C++ 类放宿主 Game 模块或 GameFeature，不放 GameCore。
-   - 检查 GameUI 的 `UGameSettingVisualData` 资产是否需要映射 entry/extension。
+	- 新增 C++ 类放宿主 Game 模块或 GameFeature，不放 GameCore。
+	- 检查 GameUI 的 `UGameSettingVisualData` 资产是否需要映射 entry/extension。
 7. 验证：
-   - 设置页打开无空列表、无重复 DevName。
-   - Apply 后值保存，Cancel 后恢复。
-   - 重启后 Local/Shared/World 值仍正确。
-   - 多 LocalPlayer、非 primary player、平台 trait 的显示/禁用符合预期。
+	- 设置页打开无空列表、无重复 DevName。
+	- Apply 后值保存，Cancel 后恢复。
+	- 重启后 Local/Shared/World 值仍正确。
+	- 多 LocalPlayer、非 primary player、平台 trait 的显示/禁用符合预期。
 
 ## 新增 scalar 设置模板
 
@@ -511,10 +511,10 @@ Action 如果会改变设置状态并希望 Apply/Cancel 链路感知，才设�
 2. 在对应 `UInputMappingContext` 中配置键鼠和手柄默认键。
 3. 确认该 IMC 会通过 GameFeature action 或输入系统注册到 EnhancedInput 用户设置。
 4. 在项目的 `UInputSystemUserSettings` / mapping extension 中补充：
-   - 键鼠 mapping 名。
-   - 对应 gamepad mapping 名。
-   - 是否允许在 key setting 中显示和编辑。
-   - 显示分类与本地化文本。
+	- 键鼠 mapping 名。
+	- 对应 gamepad mapping 名。
+	- 是否允许在 key setting 中显示和编辑。
+	- 显示分类与本地化文本。
 5. 打开设置页，`GameSettingRegistry_MouseAndKeyboard.cpp` 会扫描 key profile 并自动创建 `UGameSettingInput`。
 6. 验证 PressAnyKey、重复绑定弹窗、重置默认、保存重启、键鼠/手柄 glyph。
 
@@ -532,12 +532,18 @@ Action 如果会改变设置状态并希望 Apply/Cancel 链路感知，才设�
 - DLSS、RTX、抗锯齿依赖项目的 render subsystem 和 DLSS subsystem。
 - 显示器、HDR、动态分辨率和移动帧率还依赖平台 trait、RHI 能力和 `DefaultDeviceProfiles.ini`。
 - `DefaultScalability.ini` 定义档位 CVar，设置页只改用户选择和应用。
+- `ResolutionScale` 使用 `UGameSettingValueScalarDynamic` 默认 `0..1` source range 时，getter/setter 必须暴露 normalized 0..1 语义。底层 `ResolutionQuality=0` 代表项目默认 screen percentage 时，UI 可显示为 `1.0`，不要返回 `100.0`。
+- `ResolutionScale` 和 `DLSSUpscale` 都会控制 `r.ScreenPercentage`。启用 DLSS/NIS 时，设置页应让 `ResolutionScale` 依赖 `DLSSUpscale` 并禁用普通 3D Resolution；关闭 DLSS/NIS 时，由 DLSS subsystem 恢复 `UOrionSettingsLocal` 保存的 3D Resolution，而不是固定回 100。
+- `r.ScreenPercentage` 不要通过 `GEngine->Exec` 写入。控制台命令会留下 `ECVF_SetByConsole` 优先级，后续 `Scalability::SetQualityLevels()` 的 `ECVF_SetByScalability` 写入会被挡住，表现为 3D Resolution 调整后点击 Apply 仍没有画面变化。项目应集中在 `UOrionSettingsLocal` 或渲染封装 helper 中写 CVar，并在普通 `ResolutionScale` 与 DLSS/NIS fallback 使用同一条路径。
+- 普通手动 `ResolutionScale` 不能把 slider 暴露到 UE/项目有效预设以下。若出现低百分比拖动后 D3D12 present 崩溃，优先用 `UOrionSettingsLocal` 提供统一的最小手动 3D Resolution helper，让 `SetMinimumLimit`、setter clamp、`ApplyScalabilitySettings()` 修正旧存档值三处一致；`ResolutionQuality=0` 仍只作为项目默认 screen percentage 哨兵值。
+- 质量预设的 `Cinematic` 是第 4 档。`UGameSettingValueDiscrete_OverallQuality` 会按 `GetMaxSupportedOverallQualityLevel()` 决定是否显示该选项，`UOrionSettingsLocal::SetOverallScalabilityLevel` 也必须按同一个上限 clamp；不要写死 `0..3`，否则 UI 即使显示 `Cinematic` 也会被 setter 回退到 `Epic`。桌面默认允许 4，移动端仍由 DeviceProfile 上限限制。
 
 本地化设置：
 
 - 语言 setting 使用自定义 `UGameSettingValueDiscrete_Language`。
 - 切换语言走 `UOrionSettingsShared` 的 pending culture、`ApplyCultureSettings` 和 `GGameUserSettingsIni` 的 `Internationalization/Culture`。
 - UI 文案必须可被 GatherText 收集。
+- 语言 setting 的可选 culture 不能只来自 `FTextLocalizationManager::Get().GetLocalizedCultureNames(ELocalizationLoadFlags::Game)`。这个列表取决于当前已加载的 `.locres`，在本地化未完整加载、刚新增语言或打包配置变更后，可能只显示中英文。应优先读取项目显式支持列表，例如 `ProjectPackagingSettings.CulturesToStage`，用 `FInternationalization::IsCultureAllowed` / `GetCulture` 过滤并去重，再追加 `GetLocalizedCultureNames(Game)` 的结果作为补充。新增语言时必须同时检查 `Config/Localization/*`、`Content/Localization/<Target>/<Culture>`、`.locres`、`CulturesToStage` 和语言 setting 枚举结果。
 
 UI 设置：
 
@@ -561,6 +567,8 @@ UI 设置：
 - DLC 设置页无条件显示：没有 `PlatformDLC` 或 DLC 初始化未完成时会出现空页或不可用动作。
 - 显示器/分辨率设置没有监听 viewport 和 display metrics：切换显示器、全屏或撤销后 UI 状态会和真实窗口不一致。
 - HDR 校准入口没有按当前 HDR 输出状态禁用：玩家会看到可点但无效的校准动作。
+- `ResolutionScale` getter 返回 `100.0`，或 DLSS/NIS fallback 固定写 `r.ScreenPercentage 100`，或 DLSS/NIS 通过 `GEngine->Exec` 写 `r.ScreenPercentage`：3D Resolution slider 会显示或实际运行不一致。确认 scalar source range 是 `0..1`、`SetResolutionScaleNormalized()` 会同步 `DesiredScreenWidth/Height`，并在 `ApplyScalabilitySettings()` 中显式写入当前 `ResolutionQuality`；`ResolutionQuality=0` 时恢复 `r.ScreenPercentage 0` 默认模式。
+- `ResolutionScale` slider 允许拖到过低百分比：打包版可能在 D3D12 present 阶段崩溃，日志常见 `D3D12Viewport.cpp` / `PresentChecked` / `error 80004004`。不要只改 UI 文案；必须同时限制 `UGameSettingValueScalarDynamic::SetMinimumLimit`、setter 写入和旧配置 apply 修正。
 - 移动帧率/画质没有读取 DeviceProfile CVar：设置页可能允许设备不支持的 FPS 或画质组合。
 - 在 Widget Blueprint Graph 写业务保存：绕过 ChangeTracker，Cancel/Apply 不可靠。
 - 平台 trait 用错 `Kill`/`Disable`：平台不支持的设置可能显示成空白或误导用户。

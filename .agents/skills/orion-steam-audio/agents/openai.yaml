@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orion Steam Audio"
+  short_description: "Use Steam Audio in Orion Unreal projects."
+  default_prompt: "Use $orion-steam-audio to inspect Steam Audio configuration and usage."

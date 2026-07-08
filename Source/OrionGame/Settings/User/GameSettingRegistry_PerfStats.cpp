@@ -5,7 +5,7 @@
 
 #include "OrionGameSettingRegistry.h"
 
-#define LOCTEXT_NAMESPACE "Orion"
+#define LOCTEXT_NAMESPACE "OrionGameUserSetting"
 
 void UOrionGameSettingRegistry::AddPerformanceStatPage(UGameSettingCollection* PerfStatsOuterCategory, UCoreLocalPlayer* InLocalPlayer)
 {

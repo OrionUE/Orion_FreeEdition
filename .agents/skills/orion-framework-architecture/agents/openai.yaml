@@ -1,4 +1,4 @@
 interface:
   display_name: "Unreal Framework Architecture"
-  short_description: "Choose Unreal modules, plugins, targets, and folders"
-  default_prompt: "Use $orion-framework-architecture to choose the right Unreal framework module, plugin, asset folder, and validation path."
+  short_description: "Analyze architecture before code changes"
+  default_prompt: "Use $orion-framework-architecture to translate the request into senior architecture analysis, abstractions, modules, patterns, extension points, and validation before writing or changing code."

@@ -15,7 +15,7 @@ UCLASS(Abstract, meta=(DisableNativeTick, DisplayName="Start Up Screen Base"))
 class UUI_StartUpScreen : public UUI_ActivatableWidget
 {
 	GENERATED_BODY()
-	
+
 protected:
 	virtual void NativeOnActivated() override;
 	virtual void NativeOnDeactivated() override;

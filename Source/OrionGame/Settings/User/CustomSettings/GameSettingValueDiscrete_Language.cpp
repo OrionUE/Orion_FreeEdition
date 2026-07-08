@@ -7,6 +7,7 @@
 
 #include "Internationalization/Culture.h"
 #include "Messaging/CommonGameDialog.h"
+#include "Misc/ConfigCacheIni.h"
 #include "Player/OrionLocalPlayer.h"
 #include "Settings/User/OrionSettingsShared.h"
 
@@ -15,6 +16,29 @@
 #define LOCTEXT_NAMESPACE "GameSettings"
 
 static constexpr int32 SettingSystemDefaultLanguageIndex = 0;
+
+namespace
+{
+	static void AddSupportedCultureName(const FString& CultureName, TArray<FString>& OutCultureNames)
+	{
+		if (CultureName.IsEmpty() || OutCultureNames.Contains(CultureName))
+		{
+			return;
+		}
+
+		if (!FInternationalization::Get().IsCultureAllowed(CultureName))
+		{
+			return;
+		}
+
+		if (!FInternationalization::Get().GetCulture(CultureName).IsValid())
+		{
+			return;
+		}
+
+		OutCultureNames.Add(CultureName);
+	}
+}
 
 UGameSettingValueDiscrete_Language::UGameSettingValueDiscrete_Language()
 {
@@ -139,13 +163,22 @@ void UGameSettingValueDiscrete_Language::OnInitialized()
 {
 	Super::OnInitialized();
 
+	TArray<FString> ConfiguredCultureNames;
+	GConfig->GetArray(
+		TEXT("/Script/UnrealEd.ProjectPackagingSettings"),
+		TEXT("CulturesToStage"),
+		ConfiguredCultureNames,
+		GGameIni);
+
+	for (const FString& CultureName : ConfiguredCultureNames)
+	{
+		AddSupportedCultureName(CultureName, AvailableCultureNames);
+	}
+
 	const TArray<FString> AllCultureNames = FTextLocalizationManager::Get().GetLocalizedCultureNames(ELocalizationLoadFlags::Game);
 	for (const FString& CultureName : AllCultureNames)
 	{
-		if (FInternationalization::Get().IsCultureAllowed(CultureName))
-		{
-			AvailableCultureNames.Add(CultureName);
-		}
+		AddSupportedCultureName(CultureName, AvailableCultureNames);
 	}
 
 	AvailableCultureNames.Insert(TEXT(""), SettingSystemDefaultLanguageIndex);

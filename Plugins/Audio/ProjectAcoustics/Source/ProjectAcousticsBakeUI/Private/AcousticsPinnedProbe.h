@@ -3,7 +3,9 @@
 
 #pragma once
 
-#include "GameFramework/Volume.h"
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+
 #include "AcousticsPinnedProbe.generated.h"
 
 // Pinned probes allow for manual placement of individual probes at any point in a scene that was baked with Project Acoustics.
@@ -13,15 +15,30 @@
 UCLASS(ClassGroup = ProjectAcoustics, hidecategories = (Advanced, Attachment), BlueprintType)
 class AAcousticsPinnedProbe : public AActor
 {
-    GENERATED_UCLASS_BODY()
-
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AcousticsPinnedProbe")
-    TObjectPtr<UStaticMeshComponent> ProbeMesh;
+	GENERATED_BODY()
 
 public:
-    // This class only helps with Acoustics pre-bake design, and is not meant for use in-game.
-    virtual bool IsEditorOnly() const override
-    {
-        return true;
-    }
+	AAcousticsPinnedProbe(const class FObjectInitializer& ObjectInitializer);
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AcousticsPinnedProbe")
+	TObjectPtr<UStaticMeshComponent> ProbeMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AcousticsPinnedProbe")
+	bool bIncludeInManualProbeList = true;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AcousticsPinnedProbe")
+	bool bManagedByProbeEditor = false;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AcousticsPinnedProbe")
+	bool bGeneratedFromSimulationConfiguration = false;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AcousticsPinnedProbe")
+	int32 SourceProbeIndex = INDEX_NONE;
+
+public:
+	// This class only helps with Acoustics pre-bake design, and is not meant for use in-game.
+	virtual bool IsEditorOnly() const override
+	{
+		return true;
+	}
 };

@@ -6,6 +6,7 @@
 
 #include "UObject/ObjectPtr.h"
 #include "UObject/WeakObjectPtr.h"
+
 #include "MediaSubtitlesPlayer.generated.h"
 
 class UMediaPlayer;
@@ -22,9 +23,10 @@ class GAMESUBTITLES_API UMediaSubtitlesPlayer
 	: public UObject
 	, public FTickableGameObject
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
+	UMediaSubtitlesPlayer(const FObjectInitializer& ObjectInitializer);
 
 	/** The subtitles to use for this player. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Subtitles Source")

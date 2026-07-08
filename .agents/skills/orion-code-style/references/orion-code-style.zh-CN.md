@@ -14,6 +14,7 @@
 - `.ini` 文件末尾保留两个换行。
 - `.uplugin`、`.uproject` 文件末尾不强制加换行；保持原文件约定。
 - 代码文件缩进全部使用 Tab，不使用空格缩进；包括 C++、`.Build.cs`、`.Target.cs`。
+- Doxygen 块注释行是唯一允许在当前 Tab 缩进后使用一个前导空格的情况，格式为顶层 ` *`、嵌套层级 `\t *`；不要写成 `\t*`。
 - 对齐优先通过换行后的 Tab 层级表达，不使用连续空格做视觉对齐。
 - `namespace` 内部内容也必须进入一层 Tab 缩进；不要把 anonymous namespace 里的函数、变量或类型顶格写。
 - 代码文件末尾只保留一个文件结束换行；不要留下多行空白行。
@@ -71,6 +72,7 @@
 - 运算符、赋值、判断符号左右各空一格：`int32 Count = 0;`、`if (A == B)`。
 - 控制语句关键字和左括号之间空一格：`if (...)`、`for (...)`、`switch (...)`。
 - 花括号使用项目现有 Allman 风格：函数、类、if、for、lambda 多行体的 `{` 独占一行。
+- `.h` 文件中的简单 inline 函数、getter、setter 如果函数体只有一个简单表达式或一条 `return`，应写成单行；`.cpp` 文件不要求简单函数写成单行。namespace 定义仍然使用 Allman 风格。
 - 指针和引用符号靠类型侧，右侧空格后接变量名：`const FString& Name`、`UObject* Asset`。
 - 模板声明使用 `template<typename T>` 或匹配周围文件风格；不要在同一文件里混用多种风格。
 - 宏参数、反射宏参数按 UE 风格保留紧凑写法，例如 `UCLASS(Config=Game)`，除非周围文件已使用带空格写法。
@@ -150,6 +152,7 @@ class MODULE_API AMyActor : public AActor
 ## 注释规范
 
 - 注释符号后必须有一个空格：`// Comment`、`/** Comment */`。
+- 多行 Doxygen 块注释的 `*` 前必须有一个空格，而不是 Tab 直接接 `*`。顶层注释写成 ` * Text` / ` */`；类体内注释写成 `\t * Text` / `\t */`。
 - 逻辑注释只解释复杂意图、约束或非显然原因，不重复代码字面含义。
 - 变量注释可使用单行 `//` 或 `/** ... */`，紧贴被说明的声明。
 - 函数和类注释使用 Doxygen 风格：
@@ -184,6 +187,23 @@ bool IsExperienceLoaded() const;
 void UCoreExample::DoWork(const FName& Name)
 {
 	Super::DoWork(Name);
+}
+```
+
+- `.h` 文件里的简单 getter/setter、`FORCEINLINE` 访问器等函数体只有一个简单表达式或一条 `return` 时，应写成单行；`.cpp` 文件不套用这条一行规则：
+
+```cpp
+bool IsPassthrough() const { return m_bIsPassthrough; }
+
+FORCEINLINE const TArray<UDLSSMode>& GetSupportedDLSSSRModes() const { return SupportedDLSSSRModes; }
+```
+
+- namespace 的 `{` 也必须另起一行，不要写成 `namespace SteamAudio {}` 或 `namespace SteamAudio{}`：
+
+```cpp
+namespace SteamAudio
+{
+
 }
 ```
 
@@ -266,6 +286,7 @@ StartupJob.SubstepProgressDelegate.BindLambda([This = this, AccumulatedJobValue,
 - 宏参数逗号后空一格。
 - Blueprint 分类字符串沿用模块命名，例如 `Category = "GameCore|Ability"`。
 - `USTRUCT` 一律使用 `GENERATED_BODY()`，不要生成 `GENERATED_USTRUCT_BODY()`。
+- `UCLASS` 一律使用 `GENERATED_BODY()`，不要生成 `GENERATED_UCLASS_BODY()`。
 - `GENERATED_BODY()` 后按访问控制分区组织成员。
 - `public:`、`protected:`、`private:` 与类体缩进同级，成员再缩进一层 Tab。
 
@@ -297,8 +318,12 @@ PrivateDependencyModuleNames.AddRange(new string[]
 	- 新增或触及代码文件不是 LF-only。
 	- 新增代码缩进没有以空格开头。
 	- 新生成代码没有添加 `#include "CoreMinimal.h"`。
+	- `.h` 中新增或触及的简单 inline 函数、getter、setter、`FORCEINLINE` 访问器若只有一条简单表达式或 `return`，应写成单行；`.cpp` 不检查这条。
+	- 新增或触及的 namespace 定义使用 Allman 风格，`{` 另起一行。
 	- 新增 `USTRUCT` 使用 `GENERATED_BODY()`，没有使用 `GENERATED_USTRUCT_BODY()`。
+	- 新增 `UCLASS` 使用 `GENERATED_BODY()`，没有使用 `GENERATED_UCLASS_BODY()`。
 	- 新增类注释使用 `/** ... */` Doxygen 块注释，不使用 `//` 行注释。
+	- 多行 Doxygen 块注释行使用当前 Tab 缩进后加一个空格再写 `*`，没有写成 `\t*`。
 	- 新增代码文件版权头符合当前 header config 或 `CopyrightNotice`；已有代码文件版权头未被无关改动。
 	- 版权块注释后必须有一个空行。
 	- Unreal 头文件中的 `.generated.h` 位于所有普通 include 之后，前后都有空行，后面没有其他 include。
@@ -310,5 +335,7 @@ PrivateDependencyModuleNames.AddRange(new string[]
 $CodeFiles = git ls-files -m -o --exclude-standard | Where-Object { $_ -match '\.(h|cpp|cs|ps1)$' }
 & .agents\skills\orion-code-style\scripts\check-code-style.ps1 -Path $CodeFiles
 ```
+
+`check-code-style.ps1` 的参数名是 `-Path`，也可以作为位置参数传入；不要使用 `-Files`。如果传入 `-Files` 会直接报 `A parameter cannot be found that matches parameter name 'Files'`。
 
 不要把数组再传给嵌套的 `powershell -File ... -Path $CodeFiles`；Windows PowerShell 可能把后续文件拆成额外位置参数，报 `A positional parameter cannot be found that accepts argument ...`。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal MetaSound"
+  short_description: "MetaSound 源码、Builder API 与 MCP 自动化"
+  default_prompt: "Use $unreal-metasound to create, inspect, or automate MetaSound assets and nodes in Unreal Engine."

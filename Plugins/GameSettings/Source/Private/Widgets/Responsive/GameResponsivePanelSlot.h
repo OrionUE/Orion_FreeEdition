@@ -12,10 +12,10 @@ class UObject;
 UCLASS()
 class UGameResponsivePanelSlot : public UPanelSlot
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
-	
+	UGameResponsivePanelSlot(const FObjectInitializer& ObjectInitializer);
 
 public:
 

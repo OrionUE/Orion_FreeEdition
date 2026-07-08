@@ -1,6 +1,6 @@
 ---
 name: splash-image-conversion
-description: Use when converting, cropping, resizing, replacing, or exporting source images into Unreal project Splash startup PNG/BMP files, especially JPG/JPEG/WebP/TGA source images, fixed 720x370 outputs, Content/Splash Splash.png/Splash.bmp/EdSplash.png/EdSplash.bmp files, stale Splash uasset deletion, or repeated image format conversion workflows that should avoid stretching and accidental asset overwrites.
+description: Use when converting, cropping, resizing, replacing, importing, or exporting source images into Unreal project Splash startup PNG/BMP/UAsset files, especially JPG/JPEG/WebP/TGA source images, fixed 720x370 outputs, Content/Splash Splash.png/Splash.bmp/EdSplash.png/EdSplash.bmp files, stale Splash uasset deletion, UE import/save of Splash and EdSplash Texture2D assets with Texture Group UI, or repeated image format conversion workflows that should avoid stretching and accidental asset overwrites.
 ---
 
 # Splash 图片转换
@@ -16,12 +16,14 @@ description: Use when converting, cropping, resizing, replacing, or exporting so
 5. 默认使用居中裁剪到目标比例，再缩放到目标尺寸；不要直接拉伸图片。
 6. 优先执行 `scripts/crop_splash_image.py`。如果需要了解本项目环境注意事项，读取 `references/splash-image-conversion.zh-CN.md`。
 7. 输出后重新打开生成文件，确认格式、尺寸和颜色模式符合要求。
-8. 替换正式 Splash 后，最终回复必须提示用户打开 Unreal Editor，并重新导入/保存 `Splash` 与 `EdSplash`，让 `.uasset` 重新生成并替换。
+8. 替换正式 Splash 后，优先用 UE Python 命令行执行 `scripts/import_splash_to_ue.py`，把 `Splash.png` 和 `EdSplash.png` 导入为 `/Game/Splash/Splash` 与 `/Game/Splash/EdSplash`，并把 Texture 的 `LODGroup` 设置为 `TEXTUREGROUP_UI` 后保存 `.uasset`。
+9. 如果当前环境不能启动 Unreal Editor/Cmd 或导入失败，最终回复必须明确说明 `.uasset` 未重新生成，并提示用户打开 Unreal Editor 后导入/保存 `Splash` 与 `EdSplash`，Texture Group 设为 `UI`。
 
 ## 路由
 
 - 替换或整理正式启动图时，先读取 `../orion-asset-management/SKILL.md`，确认 `Content/Splash` 固定目录和固定文件名。
 - Splash 属于启动阶段图片，不属于普通 UMG Widget；涉及 UI 路由时配合 `../orion-umg/SKILL.md`。
+- 需要给导入后的 Splash Texture 设置 `LODGroup`、排查 UI 贴图属性或批量贴图设置时，配合 `../unreal-texture-management/SKILL.md`。
 - 修改本 Skill 或脚本时，配合 `../orion-code-style/SKILL.md`、`../orion-framework-skill-authoring/SKILL.md` 和系统 `skill-creator`。
 
 ## 脚本
@@ -36,6 +38,12 @@ python .agents\skills\splash-image-conversion\scripts\crop_splash_image.py <SOUR
 
 ```powershell
 python .agents\skills\splash-image-conversion\scripts\crop_splash_image.py <SOURCE_IMAGE> --width 720 --height 370 --output-dir .\Content\Splash --replace-unreal-splash --force
+```
+
+把替换后的 PNG 导入 UE、设置 Texture Group 为 UI，并保存 `Splash.uasset` / `EdSplash.uasset`：
+
+```powershell
+& <UnrealEditor-Cmd.exe> <Project.uproject> -run=PythonScript -Script=".\.agents\skills\splash-image-conversion\scripts\import_splash_to_ue.py" -unattended -nop4 -nosplash -NullRHI
 ```
 
 默认不覆盖已有输出；需要替换时显式传入 `--force`。

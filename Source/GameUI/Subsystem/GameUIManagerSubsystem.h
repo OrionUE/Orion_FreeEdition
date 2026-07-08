@@ -30,8 +30,15 @@ public:
 public:
 #if !UE_BUILD_SHIPPING
 	void CreateHUDLayout(APlayerController* OwingPlayer);
-	void AddDevelopmentHUDToViewport(APlayerController* OwingPlayer) const;
-	void RemoveDevelopmentHUDToViewport() const;
+	void AddDevelopmentHUDToViewport(APlayerController* OwingPlayer);
+	void RemoveDevelopmentHUDToViewport();
+	void SetDevelopmentHUDRequestedVisible(APlayerController* OwningPlayer, bool bVisible);
+#endif
+
+private:
+#if !UE_BUILD_SHIPPING
+	UDevelopmentHUDLayout* GetOrCreateDevelopmentHUD(APlayerController* OwningPlayer);
+	bool ShouldRecreateDevelopmentHUD(APlayerController* OwningPlayer) const;
 #endif
 
 protected:
@@ -49,4 +56,7 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UDevelopmentHUDLayout> DevelopmentHUD;
+
+	bool bHasDevelopmentHUDVisibilityRequest = false;
+	bool bDevelopmentHUDRequestedVisible = true;
 };

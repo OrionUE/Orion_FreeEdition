@@ -1,6 +1,6 @@
 ---
 name: unreal-vs-project-generation
-description: "Use when Unreal Engine Visual Studio project file generation fails or appears ineffective after engine upgrade, EngineAssociation changes, Generate Visual Studio project files, UnrealVersionSelector, UnrealBuildTool -ProjectFiles, .sln/.slnx stale engine paths, .uproject/.uplugin JSON encoding errors, UBT Log_GPF.txt diagnostics, UE 5.8 target upgrade prompts, or editor launch is blocked after generated project files."
+description: "Use when Unreal Engine Visual Studio project file generation fails or appears ineffective after engine upgrade, EngineAssociation changes, Generate Visual Studio project files, UnrealVersionSelector, UnrealBuildTool -ProjectFiles, .sln/.slnx stale engine paths, Rider or MSBuild reports MSB4019 for Microsoft.Cpp.Default.props / VCTargetsPath, VS/UBT unexpectedly compiles thousands of engine actions after no code changes, .uproject/.uplugin JSON encoding errors, UBT Log_GPF.txt diagnostics, UE 5.8 target upgrade prompts, or editor launch is blocked after generated project files."
 ---
 
 # Unreal VS Project Generation
@@ -17,6 +17,10 @@ description: "Use when Unreal Engine Visual Studio project file generation fails
 6. 如果 UBT 报 Target 修改 shared build products 的属性，检查对应 `.Target.cs` 是否需要移除差异设置、设置 `BuildEnvironment = TargetBuildEnvironment.Unique;`，或显式 `bOverrideBuildEnvironment = true`。
 7. 生成成功后搜索 `.sln`、`.slnx`、`Intermediate/ProjectFiles`，确认它们已经指向目标 `<ENGINE_ROOT>`；不要只凭命令 ExitCode 判断。
 8. 升级 UE 后继续跑目标 Editor 编译和编辑器启动；如果出现 `Target Upgrade Required`、旧插件 `EngineVersion` 弹窗或 V7 严格宏错误，读取 reference 里的 UE 5.8 阻断清单处理。
+9. 如果用户说“没改代码却重新编译几千个”，先判别日志类型：UBT C++ action 会有 `[1/4000] Compile [x64] ...`、`Creating/Invalidating makefile`；Shader/DDC/PSO 则会有 `LogShaderCompilers`、`FShaderJobCacheShaders`、`LogTexture: Building texture`、`LogPSOHitching`、`Niagara Compiling`。确认是 UBT action 后，优先看 `Invalidating makefile ... (<Reason>)`；`DefaultEngine.ini modified` 会让 Editor target、`ShaderCompileWorker` 等 makefile 失效，Rider/VS Build 会重新跑 UBT。再检查 `.uproject` 是否从版本号 `5.x` 变成注册表 GUID，或 `.sln` / `Intermediate/ProjectFiles/UECommon.props` 是否从安装版引擎切到源码引擎；这种引擎身份变化会让 UBT/VS 走另一套构建产物。还要检查 `.sln`、`UECommon.props` 和 UBT log 是否从 VS2022/MSVC 14.4x 自动切到 VS2026/MSVC 14.50+；工具链族切换会让旧 obj 不能复用，表现为没改项目源码却全量重编。
+10. `-SkipBuild` 只用于“临时打开已有 Editor 做资产、不需要编译 C++”的救急路径；日常改项目 C++ 时不要启用它，否则项目代码也不会编译。用户要求“项目代码要编译，但不准再次编译源码 Editor/Engine 产物”时，优先给 Editor NMake 命令加 `-NoEngineChanges`，需要检查、临时启用或撤销时运行 `scripts/set-editor-no-engine-changes.ps1 -Mode Check|Apply|Remove`。
+11. 如果用户需要“源码版引擎只完整编译一次，之后 IDE 只编项目改动”，不要混用手写 `Build.bat` 参数、`-Module`、`-NoLiveCoding` 和 IDE 生成的 NMake 命令。以 `Intermediate/ProjectFiles/<Project>.vcxproj` 里的 `NMakeBuildCommandLine` 为准，二次验证必须使用同一条命令。
+12. 如果 XGE/UBA 或中断构建导致源码引擎基线不稳定，使用 `scripts/set-local-ubt-build-stability.ps1 -Mode Check|Apply|Remove` 管理项目本地 `Saved/UnrealBuildTool/BuildConfiguration.xml`，优先禁用 XGE、禁用 UBA detour 并限制并发；构建成功后立刻用同一条 IDE 命令验证 `0 action(s)`。
 
 ## 路由
 

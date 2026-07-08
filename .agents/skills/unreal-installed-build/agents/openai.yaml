@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Installed Build"
+  short_description: "Build and connect Unreal source Installed Builds"
+  default_prompt: "Help me build, validate, or connect an Unreal source Installed Build without repeatedly rebuilding Editor modules."

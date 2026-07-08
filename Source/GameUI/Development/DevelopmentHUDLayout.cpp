@@ -7,15 +7,6 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(DevelopmentHUDLayout)
 
-#if !UE_BUILD_SHIPPING
-static int32 ShowDevelopmentHUD = 1;
-static FAutoConsoleVariableRef CVarShowDevelopmentHUD(
-	TEXT("Orion.ShowDevelopmentHUD"),
-	ShowDevelopmentHUD,
-	TEXT("Show Development HUD Panel (0 = Hidden, 1 = Visible)"),
-	ECVF_Default);
-#endif
-
 UDevelopmentHUDLayout::UDevelopmentHUDLayout(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
@@ -42,41 +33,61 @@ void UDevelopmentHUDLayout::NativeDestruct()
 	DevelopmentActionHandle.Unregister();
 }
 
-void UDevelopmentHUDLayout::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+void UDevelopmentHUDLayout::SetDevelopmentHUDVisible(bool bVisible, bool bOpenPanel)
 {
-	Super::NativeTick(MyGeometry, InDeltaTime);
+	SetVisibility(bVisible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+	SetRenderOpacity(bVisible ? 1.f : 0.f);
+	SetIsEnabled(bVisible);
 
-#if !UE_BUILD_SHIPPING
-	if (ShowDevelopmentHUD == 0)
+	if (bVisible)
 	{
-		SetRenderOpacity(0.f);
+		if (bOpenPanel)
+		{
+			SetDevelopmentHUDActivated(true, true);
+		}
 	}
 	else
 	{
-		SetRenderOpacity(1.f);
+		SetDevelopmentHUDActivated(false, true);
 	}
-#endif
 }
 
 void UDevelopmentHUDLayout::HandleDevelopmentAction()
 {
-	if (bDevelopmentHUDActivated)
-	{
-		GetOwningPlayer()->SetInputMode(FInputModeGameOnly());
-		GetOwningPlayer()->bShowMouseCursor = false;
+	const bool bShouldOpen = !bDevelopmentHUDActivated ||
+		GetVisibility() != ESlateVisibility::Visible ||
+		GetRenderOpacity() <= 0.f ||
+		!GetIsEnabled();
 
-		bDevelopmentHUDActivated = false;
+	SetDevelopmentHUDVisible(true, false);
+	SetDevelopmentHUDActivated(bShouldOpen, true);
+}
+
+void UDevelopmentHUDLayout::SetDevelopmentHUDActivated(bool bActivated, bool bForceRefresh)
+{
+	if (bDevelopmentHUDActivated == bActivated && !bForceRefresh)
+	{
+		return;
 	}
-	else
-	{
-		FInputModeGameAndUI InputModeGameAndUI;
-		InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-		InputModeGameAndUI.SetHideCursorDuringCapture(true);
-		InputModeGameAndUI.SetWidgetToFocus(this->TakeWidget());
-		GetOwningPlayer()->SetInputMode(InputModeGameAndUI);
-		GetOwningPlayer()->bShowMouseCursor = true;
 
-		bDevelopmentHUDActivated = true;
+	bDevelopmentHUDActivated = bActivated;
+
+	if (APlayerController* OwningPlayer = GetOwningPlayer())
+	{
+		if (bDevelopmentHUDActivated)
+		{
+			FInputModeGameAndUI InputModeGameAndUI;
+			InputModeGameAndUI.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+			InputModeGameAndUI.SetHideCursorDuringCapture(true);
+			InputModeGameAndUI.SetWidgetToFocus(TakeWidget());
+			OwningPlayer->SetInputMode(InputModeGameAndUI);
+			OwningPlayer->bShowMouseCursor = true;
+		}
+		else
+		{
+			OwningPlayer->SetInputMode(FInputModeGameOnly());
+			OwningPlayer->bShowMouseCursor = false;
+		}
 	}
 
 	K2_HandleDevelopmentAction();

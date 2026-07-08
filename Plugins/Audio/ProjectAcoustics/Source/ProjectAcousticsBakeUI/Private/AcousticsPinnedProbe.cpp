@@ -10,25 +10,30 @@
 #include <AcousticsShared.h>
 
 AAcousticsPinnedProbe::AAcousticsPinnedProbe(const class FObjectInitializer& ObjectInitializer)
-    : Super(ObjectInitializer)
+	: Super(ObjectInitializer)
 {
-    bIsEditorOnlyActor = true;
+	bIsEditorOnlyActor = true;
+	bIncludeInManualProbeList = true;
+	bManagedByProbeEditor = false;
+	bGeneratedFromSimulationConfiguration = false;
+	SourceProbeIndex = INDEX_NONE;
 
-    Tags.Add(c_AcousticsNavigationTag);
+	Tags.Add(c_AcousticsNavigationTag);
 
-    // Mesh sphere
-    ProbeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProbeMesh"));
-    SetRootComponent(ProbeMesh);
+	// Mesh sphere
+	ProbeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProbeMesh"));
+	SetRootComponent(ProbeMesh);
+	ProbeMesh->SetMobility(EComponentMobility::Movable);
 
-    ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
-    ProbeMesh->SetStaticMesh(MeshAsset.Object);
-    ProbeMesh->SetRelativeScale3D(FVector(0.5f, 0.5f, 0.5f));
+	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("StaticMesh'/Engine/BasicShapes/Cube.Cube'"));
+	ProbeMesh->SetStaticMesh(MeshAsset.Object);
+	ProbeMesh->SetRelativeScale3D(FVector(0.5f, 0.5f, 0.5f));
 
-    ConstructorHelpers::FObjectFinder<UMaterialInterface> MaterialAsset(
-        TEXT("Material'/Engine/EngineMaterials/CubeMaterial.CubeMaterial'"));
-    UMaterialInterface* material = MaterialAsset.Object;
-    if (material)
-    {
-        ProbeMesh->SetMaterial(0, material);
-    }
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> MaterialAsset(
+		TEXT("Material'/Engine/EngineMaterials/CubeMaterial.CubeMaterial'"));
+	UMaterialInterface* material = MaterialAsset.Object;
+	if (material)
+	{
+		ProbeMesh->SetMaterial(0, material);
+	}
 }

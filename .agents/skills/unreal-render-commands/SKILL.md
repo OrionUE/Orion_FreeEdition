@@ -93,6 +93,7 @@ Experiment tables:
 ## 路由
 
 - For rendering source-code implementation details, use `../orion-rendering-framework/SKILL.md` and `../unreal-source-code-navigator/SKILL.md`.
+- For texture package size, texture asset settings, LODGroup policy, texture streaming pool triage, or virtual texture management, use `../unreal-texture-management/SKILL.md`.
 - For project config placement, use `../orion-project-config/SKILL.md` after finding the command in this Skill.
 - For game settings UI that exposes rendering options, use `../orion-game-settings-framework/SKILL.md` after finding the command in this Skill.
 - For loading screen shader compilation behavior, use `../orion-loading-screen-framework/SKILL.md` together with this Skill.

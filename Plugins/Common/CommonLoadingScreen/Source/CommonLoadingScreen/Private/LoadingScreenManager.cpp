@@ -7,6 +7,8 @@
 #include "Engine/GameInstance.h"
 #include "Engine/GameViewportClient.h"
 #include "Engine/Engine.h"
+#include "Engine/LocalPlayer.h"
+#include "GameFramework/PlayerController.h"
 #include "GameFramework/GameStateBase.h"
 #include "GameFramework/WorldSettings.h"
 #include "Misc/CommandLine.h"
@@ -16,6 +18,7 @@
 
 #include "Framework/Application/IInputProcessor.h"
 #include "Framework/Application/SlateApplication.h"
+#include "Framework/Application/SlateUser.h"
 
 #include "PreLoadScreen.h"
 #include "PreLoadScreenManager.h"
@@ -161,7 +164,7 @@ bool ULoadingScreenManager::ShouldCreateSubsystem(UObject* Outer) const
 
 void ULoadingScreenManager::Tick(float DeltaTime)
 {
-	UpdateLoadingScreen();
+	UpdateLoadingScreen(DeltaTime);
 
 	if (bCompilingShaders && FShaderPipelineCache::NumPrecompilesRemaining() == 0)
 	{
@@ -240,11 +243,11 @@ void ULoadingScreenManager::HandlePostLoadMap(UWorld* World)
 	}
 }
 
-void ULoadingScreenManager::UpdateLoadingScreen()
+void ULoadingScreenManager::UpdateLoadingScreen(float DeltaTime)
 {
 	bool bLogLoadingScreenStatus = LoadingScreenCVars::LogLoadingScreenReasonEveryFrame;
 
-	if (ShouldShowLoadingScreen())
+	if (ShouldShowLoadingScreen(DeltaTime))
 	{
 		const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
 		
@@ -262,6 +265,12 @@ void ULoadingScreenManager::UpdateLoadingScreen()
 	}
 	else
 	{
+		const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+		if (bCurrentlyShowingLoadingScreen && !bLoadingWidgetCompleted)
+		{
+			UpdateLoadingProgress(1.0f, DeltaTime, Settings->CompletionInterpSpeed);
+		}
+
 		if (!bNotifyLoadingFinished)
 		{
 			bNotifyLoadingFinished = true;
@@ -270,7 +279,7 @@ void ULoadingScreenManager::UpdateLoadingScreen()
 				OnLoadingScreenFinished.Execute();
 		}
 
-		if (bLoadingWidgetCompleted)	// 当LoadingWidget播放完成才隐藏UI
+		if (bLoadingWidgetCompleted && IsLoadingProgressReadyToDismiss(DeltaTime))	// 当LoadingWidget播放完成才隐藏UI
 		{
 			HideLoadingScreen();
  
@@ -284,7 +293,7 @@ void ULoadingScreenManager::UpdateLoadingScreen()
 	}
 }
 
-bool ULoadingScreenManager::ShouldShowLoadingScreen()
+bool ULoadingScreenManager::ShouldShowLoadingScreen(float DeltaTime)
 {
 	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
 
@@ -306,7 +315,7 @@ bool ULoadingScreenManager::ShouldShowLoadingScreen()
 	}
 
 	// Check for a need to show the loading screen
-	const bool bNeedToShowLoadingScreen = CheckForAnyNeedToShowLoadingScreen();
+	const bool bNeedToShowLoadingScreen = CheckForAnyNeedToShowLoadingScreen(DeltaTime);
 
 	// Keep the loading screen up a bit longer if desired
 	bool bWantToForceShowLoadingScreen = false;
@@ -331,6 +340,8 @@ bool ULoadingScreenManager::ShouldShowLoadingScreen()
 		// hold for an extra X seconds, to cover up streaming
 		if ((HoldLoadingScreenAdditionalSecs > 0.0) && (TimeSinceScreenDismissed < HoldLoadingScreenAdditionalSecs))
 		{
+			UpdateLoadingProgress(1.0f, DeltaTime, Settings->CompletionInterpSpeed);
+
 			// Make sure we're rendering the world at this point, so that textures will actually stream in
 			//@TODO: If bNeedToShowLoadingScreen bounces back true during this window, we won't turn this off again...
 			UGameViewportClient* GameViewportClient = GetGameInstance()->GetGameViewportClient();
@@ -364,12 +375,16 @@ void ULoadingScreenManager::ShowLoadingScreen()
 	}
 
 	TimeLoadingScreenShown = FPlatformTime::Seconds();
+	ResetLoadingProgress();
 
 	bCurrentlyShowingLoadingScreen = true;
+	LoadingPercentInterfaces.Reset();
 
 	CSV_EVENT(LoadingScreen, TEXT("Show"));
 
 	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+	FLoadingScreenCursorPositionSnapshot CursorPositionBeforeShow;
+	const bool bShouldRestoreCursorPosition = CaptureCursorPositionForRestore(CursorPositionBeforeShow);
 
 	if (IsShowingInitialLoadingScreen())
 	{
@@ -403,6 +418,7 @@ void ULoadingScreenManager::ShowLoadingScreen()
 					if (UUserWidget* UserWidget = UUserWidget::CreateWidgetInstance(*LocalGameInstance, LoadingScreenWidgetClass, NAME_None))
 					{
 						PlayerWidget = UserWidget->TakeWidget();
+						RegisterLoadingPercentInterface(UserWidget);
 					}
 					else
 					{
@@ -420,6 +436,7 @@ void ULoadingScreenManager::ShowLoadingScreen()
 			if (UUserWidget* UserWidget = UUserWidget::CreateWidgetInstance(*LocalGameInstance, LoadingScreenWidgetClass, NAME_None))
 			{
 				LoadingScreenWidget = UserWidget->TakeWidget();
+				RegisterLoadingPercentInterface(UserWidget);
 			}
 			else
 			{
@@ -438,6 +455,12 @@ void ULoadingScreenManager::ShowLoadingScreen()
 			// Tick Slate to make sure the loading screen is displayed immediately
 			FSlateApplication::Get().Tick();
 		}
+
+		if (bShouldRestoreCursorPosition)
+		{
+			RestoreCursorPosition(CursorPositionBeforeShow);
+			RestoreCursorPositionNextTick(CursorPositionBeforeShow);
+		}
 	}
 }
 
@@ -447,6 +470,9 @@ void ULoadingScreenManager::HideLoadingScreen()
 	{
 		return;
 	}
+
+	FLoadingScreenCursorPositionSnapshot CursorPositionBeforeHide;
+	const bool bShouldRestoreCursorPosition = CaptureCursorPositionForRestore(CursorPositionBeforeHide);
 
 	StopBlockingInput();
 
@@ -477,6 +503,13 @@ void ULoadingScreenManager::HideLoadingScreen()
 	UE_LOG(LogLoadingScreen, Log, TEXT("LoadingScreen was visible for %.2fs"), LoadingScreenDuration);
 
 	bCurrentlyShowingLoadingScreen = false;
+	ResetLoadingProgress();
+
+	if (bShouldRestoreCursorPosition)
+	{
+		RestoreCursorPosition(CursorPositionBeforeHide);
+		RestoreCursorPositionNextTick(CursorPositionBeforeHide);
+	}
 }
 
 void ULoadingScreenManager::RemoveWidgetFromViewport()
@@ -490,6 +523,27 @@ void ULoadingScreenManager::RemoveWidgetFromViewport()
 		}
 		LoadingScreenWidget.Reset();
 	}
+
+	if (!PlayersLoadingScreenWidgets.IsEmpty())
+	{
+		if (UGameViewportClient* GameViewportClient = LocalGameInstance->GetGameViewportClient())
+		{
+			for (const TPair<TWeakObjectPtr<ULocalPlayer>, TSharedPtr<SWidget>>& PlayerLoadingScreenWidget : PlayersLoadingScreenWidgets)
+			{
+				if (ULocalPlayer* Player = PlayerLoadingScreenWidget.Key.Get())
+				{
+					if (PlayerLoadingScreenWidget.Value.IsValid())
+					{
+						GameViewportClient->RemoveViewportWidgetForPlayer(Player, PlayerLoadingScreenWidget.Value.ToSharedRef());
+					}
+				}
+			}
+		}
+
+		PlayersLoadingScreenWidgets.Reset();
+	}
+
+	LoadingPercentInterfaces.Reset();
 }
 
 void ULoadingScreenManager::StartBlockingInput()
@@ -556,7 +610,221 @@ void ULoadingScreenManager::ChangePerformanceSettings(bool bEnabingLoadingScreen
 	}
 }
 
-bool ULoadingScreenManager::CheckForAnyNeedToShowLoadingScreen()
+bool ULoadingScreenManager::CaptureCursorPositionForRestore(FLoadingScreenCursorPositionSnapshot& OutCursorPosition) const
+{
+	UGameInstance* LocalGameInstance = GetGameInstance();
+
+	if (FSlateApplication::IsInitialized())
+	{
+		if (ULocalPlayer* LocalPlayer = LocalGameInstance ? LocalGameInstance->GetFirstGamePlayer() : nullptr)
+		{
+			if (TSharedPtr<FSlateUser> SlateUser = LocalPlayer->GetSlateUser())
+			{
+				OutCursorPosition.AbsolutePosition = SlateUser->GetCursorPosition();
+				OutCursorPosition.bHasAbsolutePosition = true;
+			}
+		}
+
+		if (!OutCursorPosition.bHasAbsolutePosition)
+		{
+			OutCursorPosition.AbsolutePosition = FSlateApplication::Get().GetCursorPos();
+			OutCursorPosition.bHasAbsolutePosition = true;
+		}
+	}
+
+	if (APlayerController* PlayerController = LocalGameInstance ? LocalGameInstance->GetFirstLocalPlayerController() : nullptr)
+	{
+		if (PlayerController->ShouldShowMouseCursor())
+		{
+			float CursorX = 0.0f;
+			float CursorY = 0.0f;
+			if (PlayerController->GetMousePosition(CursorX, CursorY))
+			{
+				OutCursorPosition.ViewportPosition = FIntPoint(FMath::RoundToInt(CursorX), FMath::RoundToInt(CursorY));
+				OutCursorPosition.bHasViewportPosition = true;
+			}
+		}
+	}
+
+	return OutCursorPosition.bHasAbsolutePosition || OutCursorPosition.bHasViewportPosition;
+}
+
+void ULoadingScreenManager::RestoreCursorPosition(const FLoadingScreenCursorPositionSnapshot& CursorPosition)
+{
+	UGameInstance* LocalGameInstance = GetGameInstance();
+
+	bool bRestoredViewportPosition = false;
+	if (CursorPosition.bHasViewportPosition)
+	{
+		if (APlayerController* PlayerController = LocalGameInstance ? LocalGameInstance->GetFirstLocalPlayerController() : nullptr)
+		{
+			if (PlayerController->ShouldShowMouseCursor())
+			{
+				PlayerController->SetMouseLocation(CursorPosition.ViewportPosition.X, CursorPosition.ViewportPosition.Y);
+				bRestoredViewportPosition = true;
+			}
+		}
+	}
+
+	if (!bRestoredViewportPosition && CursorPosition.bHasAbsolutePosition && FSlateApplication::IsInitialized())
+	{
+		if (ULocalPlayer* LocalPlayer = LocalGameInstance ? LocalGameInstance->GetFirstGamePlayer() : nullptr)
+		{
+			if (TSharedPtr<FSlateUser> SlateUser = LocalPlayer->GetSlateUser())
+			{
+				SlateUser->SetCursorPosition(CursorPosition.AbsolutePosition);
+				return;
+			}
+		}
+
+		FSlateApplication::Get().SetCursorPos(CursorPosition.AbsolutePosition);
+	}
+}
+
+void ULoadingScreenManager::RestoreCursorPositionNextTick(const FLoadingScreenCursorPositionSnapshot& CursorPosition)
+{
+	if (!FSlateApplication::IsInitialized())
+	{
+		return;
+	}
+
+	constexpr int32 NumCursorRestorePostSlateTicks = 3;
+	TSharedRef<int32> RemainingRestoreTicks = MakeShared<int32>(NumCursorRestorePostSlateTicks);
+	TSharedRef<FDelegateHandle> DelegateHandle = MakeShared<FDelegateHandle>();
+	TWeakObjectPtr<ULoadingScreenManager> WeakThis(this);
+
+	*DelegateHandle = FSlateApplication::Get().OnPostTick().AddLambda([WeakThis, CursorPosition, RemainingRestoreTicks, DelegateHandle](float DeltaTime)
+	{
+		if (ULoadingScreenManager* LoadingScreenManager = WeakThis.Get())
+		{
+			LoadingScreenManager->RestoreCursorPosition(CursorPosition);
+		}
+
+		--(*RemainingRestoreTicks);
+		if (*RemainingRestoreTicks <= 0 || !WeakThis.IsValid())
+		{
+			if (FSlateApplication::IsInitialized())
+			{
+				FSlateApplication::Get().OnPostTick().Remove(*DelegateHandle);
+			}
+		}
+	});
+}
+
+void ULoadingScreenManager::RegisterLoadingPercentInterface(UUserWidget* UserWidget)
+{
+	if (UserWidget && UserWidget->GetClass()->ImplementsInterface(ULoadingPercentInterface::StaticClass()))
+	{
+		LoadingPercentInterfaces.Add(UserWidget);
+		ILoadingPercentInterface::Execute_OnLoadingPercentChanged(UserWidget, DisplayPercent);
+	}
+}
+
+void ULoadingScreenManager::BroadcastLoadingPercent()
+{
+	for (int32 Index = LoadingPercentInterfaces.Num() - 1; Index >= 0; --Index)
+	{
+		UObject* LoadingPercentObject = LoadingPercentInterfaces[Index].GetObject();
+		if (!LoadingPercentObject)
+		{
+			LoadingPercentInterfaces.RemoveAtSwap(Index);
+			continue;
+		}
+
+		ILoadingPercentInterface::Execute_OnLoadingPercentChanged(LoadingPercentObject, DisplayPercent);
+	}
+}
+
+void ULoadingScreenManager::ResetLoadingProgress()
+{
+	bLoadingWidgetCompleted = false;
+	DisplayPercent = 0.0f;
+	LastStageProgress = 0.0f;
+	LastLevelPackageProgress = 0.0f;
+	TimeLoadingProgressCompleted = -1.0;
+}
+
+void ULoadingScreenManager::UpdateLoadingProgress(float TargetProgress, float DeltaTime, float InterpSpeed)
+{
+	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+	const float EffectiveDeltaTime = GetEffectiveProgressDeltaTime(DeltaTime);
+
+	TargetProgress = FMath::Clamp(TargetProgress, 0.0f, 1.0f);
+	if (TargetProgress < 1.0f)
+	{
+		TargetProgress = FMath::Max(TargetProgress, Settings->MinVisiblePercent);
+	}
+
+	if (Settings->bMonotonicIncrease)
+	{
+		TargetProgress = FMath::Max(TargetProgress, DisplayPercent);
+	}
+
+	if (InterpSpeed <= 0.0f)
+	{
+		DisplayPercent = TargetProgress;
+	}
+	else
+	{
+		DisplayPercent = FMath::FInterpTo(DisplayPercent, TargetProgress, EffectiveDeltaTime, InterpSpeed);
+	}
+
+	DisplayPercent = FMath::Clamp(DisplayPercent, 0.0f, 1.0f);
+	if (FMath::IsNearlyEqual(DisplayPercent, TargetProgress, KINDA_SMALL_NUMBER))
+	{
+		DisplayPercent = TargetProgress;
+	}
+
+	BroadcastLoadingPercent();
+}
+
+float ULoadingScreenManager::ComputeVisualProgressTarget(float DeterminateProgress, bool bHasReliableProgress) const
+{
+	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+	DeterminateProgress = FMath::Clamp(DeterminateProgress, 0.0f, 1.0f);
+
+	if (!Settings->bUseIndeterminateProgress || bHasReliableProgress)
+	{
+		return DeterminateProgress;
+	}
+
+	const float StartPercent = FMath::Clamp(Settings->IndeterminateProgressStartPercent, 0.0f, 1.0f);
+	const float TargetPercent = FMath::Clamp(FMath::Max(Settings->IndeterminateProgressTargetPercent, StartPercent), 0.0f, 1.0f);
+	const float SecondsToTarget = FMath::Max(Settings->IndeterminateProgressSecondsToTarget, 0.1f);
+	const double ProgressStartTime = (TimeLoadingScreenShown > 0.0) ? TimeLoadingScreenShown : FPlatformTime::Seconds();
+	const float ElapsedTime = FMath::Max(static_cast<float>(FPlatformTime::Seconds() - ProgressStartTime), 0.0f);
+	const float ProgressAlpha = 1.0f - FMath::Exp(-ElapsedTime / SecondsToTarget);
+	const float IndeterminateProgress = FMath::Lerp(StartPercent, TargetPercent, ProgressAlpha);
+
+	return FMath::Max(DeterminateProgress, IndeterminateProgress);
+}
+
+bool ULoadingScreenManager::IsLoadingProgressReadyToDismiss(float DeltaTime)
+{
+	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+	UpdateLoadingProgress(1.0f, DeltaTime, Settings->CompletionInterpSpeed);
+
+	if (DisplayPercent < Settings->CompletionVisibleThreshold)
+	{
+		TimeLoadingProgressCompleted = -1.0;
+		return false;
+	}
+
+	if (TimeLoadingProgressCompleted < 0.0)
+	{
+		TimeLoadingProgressCompleted = FPlatformTime::Seconds();
+	}
+
+	return (FPlatformTime::Seconds() - TimeLoadingProgressCompleted) >= Settings->CompletionHoldSeconds;
+}
+
+float ULoadingScreenManager::GetEffectiveProgressDeltaTime(float DeltaTime) const
+{
+	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
+	return (DeltaTime > 0.0f) ? DeltaTime : FMath::Max(Settings->TimerInterval, 0.0f);
+}
+
+bool ULoadingScreenManager::CheckForAnyNeedToShowLoadingScreen(float DeltaTime)
 {
 	const UCommonLoadingScreenSettings* Settings = GetDefault<UCommonLoadingScreenSettings>();
 
@@ -574,36 +842,28 @@ bool ULoadingScreenManager::CheckForAnyNeedToShowLoadingScreen()
 
 	// 计算关卡加载进度
 	bool bLevelNeedLoading = false;
-	const float LevelPackageProgress = ComputeLevelPackageProgress(LocalGameInstance, World, bLevelNeedLoading);
+	bool bLevelHasReliableProgress = false;
+	const float LevelPackageProgress = ComputeLevelPackageProgress(LocalGameInstance, World, bLevelNeedLoading, bLevelHasReliableProgress);
 
 	if (!(bStageNeedLoading || bLevelNeedLoading))
 	{
-		DisplayPercent = 0.f;
 		return false;
 	}
 
 	LastStageProgress = StageProgress;
 	LastLevelPackageProgress = LevelPackageProgress;
 
-	// 计算加权后的进度
-	const float WeightedProgress = FMath::Clamp(StageProgress * Settings->StageWeight + LevelPackageProgress * Settings->LevelPackageWeight, 0.f, 1.f);
+	// StageProgress is a state checkpoint for diagnostics; it is not a real percent.
+	const bool bUseLevelPackageProgress = bLevelNeedLoading && bLevelHasReliableProgress && (Settings->LevelPackageWeight > 0.0f);
+	const float DeterminateProgress = bUseLevelPackageProgress ? LevelPackageProgress : 0.0f;
+	const float VisualProgressTarget = ComputeVisualProgressTarget(DeterminateProgress, bUseLevelPackageProgress);
 
-	// 计算最终进度
-	float FinalProgress = WeightedProgress;
-	if (Settings->bMonotonicIncrease)
+	// 进度平滑插值过渡
+	UpdateLoadingProgress(VisualProgressTarget, DeltaTime, Settings->InterpSpeed);
+
+	if (DebugReason.IsEmpty() && bLevelNeedLoading)
 	{
-		FinalProgress = FMath::Max(FinalProgress, DisplayPercent);
-	}
-
-	FinalProgress = FMath::Max(FinalProgress, Settings->MinVisiblePercent);
-
-	// 进度平滑插值过度
-	DisplayPercent = FMath::FInterpTo(DisplayPercent, FinalProgress, Settings->TimerInterval, Settings->InterpSpeed);
-	DisplayPercent = FMath::Clamp(DisplayPercent, 0.f, 1.f);
-
-	if (LoadingPercentInterface.IsValid())
-	{
-		LoadingPercentInterface->Execute_OnLoadingPercentChanged(LoadingPercentInterface.GetObject(), DisplayPercent);
+		DebugReason = TEXT("Waiting for level package loading");
 	}
 
 	DebugReasonForShowingOrHidingLoadingScreen = DebugReason;
@@ -619,12 +879,9 @@ float ULoadingScreenManager::ComputeStageProgress(const UGameInstance* GameInsta
 
 	auto SetNewStageProgress = [&bOutNeedLoading, &OutLoadingMessage, &CurrentProgress](float InNewProgress, const TCHAR* LoadingMessage)
 	{
-		if (InNewProgress > CurrentProgress)
-		{
-			bOutNeedLoading = true;
-			OutLoadingMessage = LoadingMessage;
-			CurrentProgress = FMath::Clamp(InNewProgress, 0.f, 1.f);;
-		}
+		bOutNeedLoading = true;
+		OutLoadingMessage = LoadingMessage;
+		CurrentProgress = FMath::Clamp(FMath::Max(InNewProgress, CurrentProgress), 0.f, 1.f);
 	};
 
 	if (LoadingScreenCVars::ForceLoadingScreenVisible)
@@ -811,9 +1068,10 @@ float ULoadingScreenManager::ComputeStageProgress(const UGameInstance* GameInsta
 	return CurrentProgress;
 }
 
-float ULoadingScreenManager::ComputeLevelPackageProgress(const UGameInstance* GameInstance, const UWorld* World, bool& bOutNeedLoading) const
+float ULoadingScreenManager::ComputeLevelPackageProgress(const UGameInstance* GameInstance, const UWorld* World, bool& bOutNeedLoading, bool& bOutHasReliableProgress) const
 {
 	bOutNeedLoading = false;
+	bOutHasReliableProgress = false;
 	float CurrentProgress = 0.f;
 
 	if (World)
@@ -833,6 +1091,7 @@ float ULoadingScreenManager::ComputeLevelPackageProgress(const UGameInstance* Ga
 
 				if (LevelLoadingProcess->IsLoadingLevelPackageFinished())
 				{
+					bOutHasReliableProgress = true;
 					CurrentProgress = 1.f;
 					return CurrentProgress;
 				}
@@ -840,6 +1099,7 @@ float ULoadingScreenManager::ComputeLevelPackageProgress(const UGameInstance* Ga
 				const float NewProgress = LevelLoadingProcess->GetLoadingProgress();
 				if (NewProgress >= 0.f)
 				{
+					bOutHasReliableProgress = true;
 					CurrentProgress = FMath::Max(CurrentProgress, NewProgress);
 				}
 			}

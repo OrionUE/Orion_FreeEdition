@@ -313,6 +313,16 @@ UShaderPipelineCacheToolsCommandlet failed 1
 
 处理：看 `NumPrecompilesRemaining()`、`LogRHI`、Insights bookmarks 和 CPU/GPU 轨迹；不要只凭加载时间判定失败。
 
+### 异常退出或返回桌面后下次启动像全量重编
+
+现象：游戏已经进入关卡，之后返回桌面、异常退出或崩溃；小概率下一次启动又出现“编译全部着色器”的启动 UI。
+
+原因：启动 UI 通常由 `FShaderPipelineCache::NumPrecompilesRemaining()` 驱动，它统计的是本进程还没预编译完的 bundled PSO，不等于真正的 shader compiler 全量重编。Windows UE 5.8 没有像 iOS `usecache.txt` 那样的“bundled PSO 已完成一次”标记；如果异常退出时驱动缓存没及时落盘，下次启动会被项目 UI 再次强制等待整包 PSO。
+
+处理：不要直接开启 `D3D12.PSO.DiskCache` 或 `D3D12.PSO.DriverOptimizedDiskCache`；UE 5.8 源码里这两个 D3D12 RHI disk cache 默认关闭且 ReadOnly，旧 RHI cache 不是当前推荐路径。项目侧应在启动 PSO 预编译完成时记录当前 stable cache 指纹：`GameVersion + <Platform> + <ShaderFormat> + stable.upipelinecache 文件大小 + 时间戳`。后续启动如果指纹匹配，跳过阻塞式启动 shader UI，让 PSO 继续后台处理；如果指纹不匹配或首次运行，再阻塞编译一次。
+
+例外：带 `-clearPSODriverCache`、`-deleteuserpsocache` 或 `-logPSO` 时必须忽略完成标记，因为这些参数通常用于清缓存验证或收集 PSO。
+
 ### 自动漫游覆盖不足
 
 原因：游戏内 `UOrionPSOCaptureSubsystem` 会用第三视角相机穿越场景并触发可见渲染 PSO，但它仍然无法自动触发所有玩法状态、武器、VFX、UI 弹窗、换装或剧情逻辑。

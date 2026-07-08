@@ -12,47 +12,52 @@
 
 enum class SimulationConfigurationState
 {
-    Unavailable = 0,
-    InProcess,
-    Ready,
-    Failed
+	Unavailable = 0,
+	InProcess,
+	Ready,
+	Failed
 };
 
 // C++ wrappers for Triton Preprocessor types
 class AcousticsSimulationConfiguration final
 {
 public:
-    ~AcousticsSimulationConfiguration();
+	~AcousticsSimulationConfiguration();
 
-    static TUniquePtr<AcousticsSimulationConfiguration> Create(const FString workingDir, const FString& configFile);
-    static TUniquePtr<AcousticsSimulationConfiguration> Create(
-        TSharedPtr<AcousticMesh> mesh, const TritonSimulationParameters& simulationParams,
-        const TritonOperationalParameters& opParams, const AcousticsMaterialLibrary* library,
-        TritonPreprocessorCallback callback);
+	static TUniquePtr<AcousticsSimulationConfiguration> Create(const FString workingDir, const FString& configFile);
+	static TUniquePtr<AcousticsSimulationConfiguration> Create(
+		TSharedPtr<AcousticMesh> mesh, const TritonSimulationParameters& simulationParams,
+		const TritonOperationalParameters& opParams, const AcousticsMaterialLibrary* library,
+		TritonPreprocessorCallback callback);
 
-    SimulationConfigurationState GetState() const;
+	SimulationConfigurationState GetState() const;
 
-    bool IsReady() const;
+	bool IsReady() const;
 
-    int GetProbeCount() const;
-    bool GetProbeList(TArray<FVector>& locations) const;
+	int GetProbeCount() const;
+	bool GetProbeList(TArray<FVector>& locations) const;
 
-    bool GetVoxelMapInfo(FBox& box, FBox& boxTriton, FIntVector& voxelCounts, float& cellSize) const;
-    bool IsVoxelOccupied(int x, int y, int z) const;
-
-private:
-    AcousticsSimulationConfiguration() : m_Handle(nullptr)
-    {
-    }
-
-    bool Initialize(
-        TSharedPtr<AcousticMesh> mesh, const TritonSimulationParameters& simulationParams,
-        const TritonOperationalParameters& opParams, const AcousticsMaterialLibrary* library,
-        TritonPreprocessorCallback& callback);
-
-    bool Initialize(const FString& workingDir, const FString& configFilename);
+	bool GetVoxelMapInfo(FBox& box, FBox& boxTriton, FIntVector& voxelCounts, float& cellSize) const;
+	bool IsVoxelOccupied(int x, int y, int z) const;
 
 private:
-    TritonObject m_Handle;
-    TFuture<bool> m_CreateProbesFuture;
+	AcousticsSimulationConfiguration() : m_Handle(nullptr)
+	{
+	}
+
+	bool TryReadProbeListFromConfigFile(TArray<FVector>& locations) const;
+
+	bool Initialize(
+		TSharedPtr<AcousticMesh> mesh, const TritonSimulationParameters& simulationParams,
+		const TritonOperationalParameters& opParams, const AcousticsMaterialLibrary* library,
+		TritonPreprocessorCallback& callback);
+
+	bool Initialize(const FString& workingDir, const FString& configFilename);
+
+private:
+	TritonObject m_Handle;
+	TFuture<bool> m_CreateProbesFuture;
+	FString m_WorkingDir;
+	FString m_ConfigFilename;
+	bool m_LoadedFromConfigFile = false;
 };

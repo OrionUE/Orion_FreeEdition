@@ -265,7 +265,7 @@ private:
 USTRUCT(BlueprintType)
 struct FSteamAudioReverbSubmixPluginSettings
 {
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 
 	/** If true, listener-centric reverb will be applied to the audio received as input to this submix. */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = SubmixSettings)

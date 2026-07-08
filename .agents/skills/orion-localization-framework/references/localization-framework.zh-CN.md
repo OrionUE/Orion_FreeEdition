@@ -107,6 +107,27 @@ const FText Trimmed = FText::TrimPrecedingAndTrailing(InputText);
 
 多个 config 可以用 `-config=A.ini;B.ini`，也可以用 `-ConfigList=<ListFile>`。发布前不要只 gather；必须 compile 出 `.locres`。
 
+PowerShell 中循环运行多个 config 时，把 `-config=<Path>` 作为完整字符串放入参数数组：
+
+```powershell
+$ArgsList = @($ProjectFile, "-run=GatherText", "-config=$Config", "-unattended", "-nop4")
+& $UnrealEditorCmd @ArgsList
+```
+
+不要写成原生命令参数里的 `-config=$Config` 裸表达式；它可能被传成字面量 `$Config`，导致 UE 报 `Loading Config File '<Project>/$Config' failed`。
+
+## MCP 自动化
+
+当前项目 MCP 可用 `OrionProjectToolsets.OrionLocalizationToolset` 复用 Localization Dashboard 后端：
+
+- `OpenLocalizationDashboard`：打开真实 Dashboard tab，供人工检查 target/culture/按钮状态。
+- `ListLocalizationTargets`：读取 game/engine target、native culture、word count、配置路径和输出路径。
+- `RunLocalizationOperation`：运行 `GatherText`、`ImportText`、`ExportText`、`ImportDialogueScript`、`ExportDialogueScript`、`ImportDialogue`、`GenerateReports`、`CompileText`、`PreviewTranslations`、`GenerateConfigFiles`。
+
+默认只操作 `targetSet="Game"`。需要 Engine target 时必须显式传 `targetSet="Engine"` 或 `All`。单 culture 操作要传已配置的 `cultureName`，否则生成 config 时可能命中 UE 原生断言或无效 culture。
+
+详细源码依据、操作映射和 MCP JSON 示例见 `localization-source-and-mcp.zh-CN.md`。
+
 ## 文件含义
 
 - `.manifest`：收集到的源文本、namespace/key、source path 等元数据，是翻译条目的主索引。
@@ -115,6 +136,14 @@ const FText Trimmed = FText::TrimPrecedingAndTrailing(InputText);
 - `.locres`：运行时加载的二进制文本资源。游戏中能否显示翻译主要看它是否存在且被加载。
 - `.locmeta`：target 元信息，包含 native culture 和 native locres 信息；运行时会用它判断 native culture。
 - `_Conflicts.txt` / `.csv`：检查 key/source 冲突、词数和翻译覆盖率。
+
+## AI 译审规则
+
+- 用户要求“全部文本本地化”时，验证口径至少包含：所有目标 culture 的 `.archive` 递归空译文数为 0、关键 target 的 `.csv` 词数覆盖到目标语言、`GenerateReports`/`Compile`/`Export` 退出码为 0、每个目标 culture 的 `.locres` 更新。
+- 不把 source fallback 当成翻译完成。只有品牌名、武器型号、平台名、代码、URL、纯数字、格式占位符、`DLSS`、`RTX`、`XInput + DualShock` 这类本应保留的文本可以与 source 相同；其他英文 UI source fallback 必须改成自然译文。
+- 设置页描述如果 source 是 `Brightness Tips`、`Resolution Tips`、`FrameRateLimit Tips` 这类占位文案，不能逐词翻成“亮度提示/Resolution Tips”。必须按设置功能改写成玩家能读懂的说明，例如“调整整体画面亮度”“设置游戏窗口或渲染分辨率”。
+- 短词必须结合 namespace/key/source path 翻译：CommonUI 的 `Back` 是返回，View Distance 的 `Far` 是远距离，手柄灵敏度的 `Fast` 是快，画质等级的 `Epic` 是极高/エピック/Очень высокое，DLC 的 `Unmount` 是卸载/取消挂载。
+- 写回 archive 前后都要检查 `{Name}`、`{0}`、RichText 标签、转义换行和输入键位是否保留；任何 token 不一致都要先修 CSV，不要直接编译。
 
 ## 运行时语言切换
 
@@ -143,7 +172,7 @@ const FText Trimmed = FText::TrimPrecedingAndTrailing(InputText);
 
 1. 在 Localization Dashboard 或 `Config/Localization/<TargetName>_*.ini` 中给相关 target 增加 culture。
 2. 运行 gather 更新 manifest/archive。
-3. Export PO，交给翻译或机器翻译流程处理。
+3. Export PO，交给 Codex/AI 译审或人工翻译处理；不得把机器翻译程序输出直接当作最终译文。
 4. Import PO，把翻译写回 archive。
 5. Compile 生成 `<Culture>/<TargetName>.locres` 和 `.locmeta`。
 6. 在 `ProjectPackagingSettings.CulturesToStage` 中加入 culture。
@@ -157,6 +186,7 @@ const FText Trimmed = FText::TrimPrecedingAndTrailing(InputText);
 - 硬编码 UI 文案使用 `FText::FromString`：运行时能显示但不可翻译。改为 `LOCTEXT` 或资产 `FText`。
 - 只改 archive/PO 没 compile：编辑器资源看似有翻译，运行时 `.locres` 仍是旧的。
 - 只加了 culture 没 staging：编辑器可选，打包后不可选或回退 native。
+- PO 导出断言 `!MsgId.IsEmpty()`：检查 native culture archive 是否还有空译文；导出 PO 的 `msgid` 来自 native 文本，native 空译文会造成空 `msgid`。脚本检查 archive 时必须递归 `Subnamespaces`，不能只扫顶层 `Children`。
 - 改了 source text 复用旧 key：可能造成 translation stale 或 conflict。确认 key/source 语义一致，必要时换 key。
 - 格式化占位符翻译丢失：`FText::Format` 编译验证会失败或运行时显示错误。翻译必须保留 `{Name}`、`{0}` 等占位符。
 - GameFeature UI 文本没进 manifest：检查 gather 的 package include 路径是否覆盖该插件内容，资产是否保存。

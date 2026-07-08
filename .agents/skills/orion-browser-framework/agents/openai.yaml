@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orion Browser"
+  short_description: "Build and validate the Orion browser plugin."
+  default_prompt: "Use $orion-browser-framework to work on OrionBrowser CEF integration."

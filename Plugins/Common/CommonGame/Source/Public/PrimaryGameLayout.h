@@ -7,6 +7,8 @@
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
 #include "GameplayTagContainer.h"
+#include "Math/IntPoint.h"
+#include "Math/Vector2D.h"
 #include "Widgets/CommonActivatableWidgetContainer.h" // IWYU pragma: keep
 
 #include "PrimaryGameLayout.generated.h"
@@ -17,6 +19,14 @@ class UCommonActivatableWidgetContainerBase;
 class ULocalPlayer;
 class UObject;
 struct FFrame;
+
+struct FPrimaryGameLayoutCursorPositionSnapshot
+{
+	FVector2D AbsolutePosition = FVector2D::ZeroVector;
+	FIntPoint ViewportPosition = FIntPoint::ZeroValue;
+	bool bHasAbsolutePosition = false;
+	bool bHasViewportPosition = false;
+};
 
 /**
  * The state of an async load operation for the UI.
@@ -103,7 +113,17 @@ public:
 
 		if (UCommonActivatableWidgetContainerBase* Layer = GetLayerWidget(LayerName))
 		{
-			return Layer->AddWidget<ActivatableWidgetT>(ActivatableWidgetClass, InitInstanceFunc);
+			FPrimaryGameLayoutCursorPositionSnapshot CursorPositionBeforePush;
+			const bool bShouldRestoreCursorPosition = ShouldRestoreCursorPositionAfterLayerPush(Layer, CursorPositionBeforePush);
+
+			ActivatableWidgetT* AddedWidget = Layer->AddWidget<ActivatableWidgetT>(ActivatableWidgetClass, InitInstanceFunc);
+			if (bShouldRestoreCursorPosition)
+			{
+				RestoreCursorPositionAfterLayerPush(CursorPositionBeforePush);
+				RestoreCursorPositionAfterLayerPushNextTick(CursorPositionBeforePush);
+			}
+
+			return AddedWidget;
 		}
 
 		return nullptr;
@@ -127,6 +147,10 @@ protected:
 	void OnWidgetStackTransitioning(UCommonActivatableWidgetContainerBase* Widget, bool bIsTransitioning);
 	
 private:
+	bool ShouldRestoreCursorPositionAfterLayerPush(const UCommonActivatableWidgetContainerBase* LayerWidget, FPrimaryGameLayoutCursorPositionSnapshot& OutCursorPosition) const;
+	void RestoreCursorPositionAfterLayerPush(const FPrimaryGameLayoutCursorPositionSnapshot& CursorPosition);
+	void RestoreCursorPositionAfterLayerPushNextTick(const FPrimaryGameLayoutCursorPositionSnapshot& CursorPosition);
+
 	bool bIsDormant = false;
 
 	// Lets us keep track of all suspended input tokens so that multiple async UIs can be loading and we correctly suspend

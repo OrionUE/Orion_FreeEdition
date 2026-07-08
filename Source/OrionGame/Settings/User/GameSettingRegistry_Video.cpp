@@ -39,7 +39,7 @@
 #define SUPPORTS_DISPLAY_SETTING 0
 #endif
 
-#define LOCTEXT_NAMESPACE "Orion"
+#define LOCTEXT_NAMESPACE "OrionGameUserSetting"
 
 UE_DEFINE_GAMEPLAY_TAG_STATIC(GameSettings_Action_CalibrateHDR, "GameSettings.Action.CalibrateHDR");
 UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG_Platform_Trait_SupportsWindowedMode, "Platform.Trait.SupportsWindowedMode");
@@ -165,6 +165,7 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeVideoSettings(UCore
 
 	UGameSetting* MobileFPSType = nullptr;
 	UGameSettingValueDiscreteDynamic_AntiAliasingMethod* AntiAliasingMethod = nullptr;
+	UGameSettingValueScalarDynamic* ResolutionScale = nullptr;
 
 	////////////////////////////////////////////////////////////////////////////////////
 
@@ -640,6 +641,7 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeVideoSettings(UCore
 			Setting->SetDynamicGetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(GetResolutionScaleNormalized_Lerp));
 			Setting->SetDynamicSetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(SetResolutionScaleNormalized_Lerp));
 			Setting->SetDisplayFormat(UGameSettingValueScalarDynamic::ZeroToOnePercent);
+			Setting->SetMinimumLimit(UOrionSettingsLocal::GetMinimumManualResolutionScaleNormalized());
 
 			Setting->AddEditDependency(AutoSetQuality);
 			Setting->AddEditDependency(GraphicsQualityPresets);
@@ -649,6 +651,7 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeVideoSettings(UCore
 			// When this setting changes, it can GraphicsQualityPresets to be set to custom, or a particular preset.
 			GraphicsQualityPresets->AddEditDependency(Setting);
 			GraphicsQuality->AddSetting(Setting);
+			ResolutionScale = Setting;
 		}
 		//----------------------------------------------------------------------------------
 		{
@@ -933,6 +936,18 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeVideoSettings(UCore
 			DLSSUpscale = Setting;
 
 			AntiAliasingMethod->AddEditDependency(DLSSUpscale);
+			if (ResolutionScale)
+			{
+				ResolutionScale->AddEditDependency(DLSSUpscale);
+				ResolutionScale->AddEditCondition(MakeShared<FWhenCondition>([DLSSUpscale](const ULocalPlayer*, FGameSettingEditableState& InOutEditState)
+				{
+					if (DLSSUpscale->GetEditState().IsEnabled() && DLSSUpscale->GetValue())
+					{
+						InOutEditState.Disable(LOCTEXT("ResolutionScale_DLSSUpscale_Disabled", "When DLSS is enabled, 3D Resolution is controlled by DLSS Mode."));
+					}
+				}));
+				ResolutionScale->RefreshEditableState();
+			}
 		}
 		//----------------------------------------------------------------------------------
 		{
@@ -984,7 +999,7 @@ UGameSettingCollection* UOrionGameSettingRegistry::InitializeVideoSettings(UCore
 			UGameSettingValueDiscreteDynamic_DLSSFGMode* Setting = NewObject<UGameSettingValueDiscreteDynamic_DLSSFGMode>();
 			Setting->SetDevName(TEXT("DLSS Frame Generation Mode"));
 			Setting->SetDisplayName(LOCTEXT("DLSSFGMode_Name", "DLSS Frame Generation Mode"));
-			Setting->SetDescriptionRichText(LOCTEXT("DLSSFG_Description", "DLSS Frame Generation Mode"));
+			Setting->SetDescriptionRichText(LOCTEXT("DLSSFGMode_Description", "DLSS Frame Generation Mode"));
 
 			Setting->SetDynamicGetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(GetDesiredDLSSFGMode));
 			Setting->SetDynamicSetter(GET_LOCAL_SETTINGS_FUNCTION_PATH(SetDLSSFGMode));

@@ -19,14 +19,16 @@ class GAMEUI_API UDevelopmentHUDLayout : public UUserWidget
 public:
 	UDevelopmentHUDLayout(const FObjectInitializer& ObjectInitializer);
 
+	void SetDevelopmentHUDVisible(bool bVisible, bool bOpenPanel);
+
 protected:
 	virtual void NativeOnInitialized() override;
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
-	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
 protected:
 	void HandleDevelopmentAction();
+	void SetDevelopmentHUDActivated(bool bActivated, bool bForceRefresh);
 
 	UFUNCTION(BlueprintImplementableEvent, DisplayName="HandleDevelopmentAction")
 	void K2_HandleDevelopmentAction();

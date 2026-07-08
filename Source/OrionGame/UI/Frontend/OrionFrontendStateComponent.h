@@ -8,6 +8,7 @@
 #include "ControlFlowNode.h"
 #include "LoadingProcessInterface.h"
 #include "Components/GameStateComponent.h"
+#include "UObject/SoftObjectPtr.h"
 
 #include "OrionFrontendStateComponent.generated.h"
 
@@ -19,6 +20,8 @@ class UCommonUserInfo;
 class UCoreExperienceDefinition;
 class UCommonActivatableWidget;
 class UUI_CompileShadersScreen;
+class UOrionFlowAction;
+struct FStreamableHandle;
 
 DECLARE_DYNAMIC_DELEGATE(FOnCompileShaders);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FOnCompileShadersPercentChanged, float, Percent);
@@ -56,12 +59,19 @@ private:
 	void FlowStep_TryRunBenchmarkAtStartup(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryShowLobbyBackgroundLevel(FControlFlowNodeRef SubFlow);
 	void FlowStep_WaitForLoadingFinish(FControlFlowNodeRef SubFlow);
+	void FlowStep_TryPreloadStartupPopups(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryShowPressStartScreen(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryJoinRequestedSession(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryListenSessionInvite(FControlFlowNodeRef SubFlow);
 	void FlowStep_TryShowMainScreen(FControlFlowNodeRef SubFlow);
+	void FlowStep_TryEvaluateStartupPopups(FControlFlowNodeRef SubFlow);
+	void HandleStartupPopupFlowActionClassesLoaded();
+	void BuildStartupPopupFlowActions();
+	void PreloadNextStartupPopupFlowAction();
+	void ExecuteNextStartupPopupFlowAction();
 
 	void CompleteStartupLoadingScreen();
+	bool ShouldRunInitialGameStartupFlowSteps() const;
 
 public:
 	UFUNCTION(BlueprintCallable)
@@ -103,11 +113,23 @@ private:
 	UPROPERTY(EditAnywhere, Category="UI")
 	TSoftClassPtr<UCommonActivatableWidget> MainScreenClass;
 
+	UPROPERTY(EditAnywhere, Category="UI|Startup|Popup")
+	TArray<TSoftClassPtr<UOrionFlowAction>> StartupPopupFlowActionClasses;
+
 	TSharedPtr<FControlFlow> FrontendFlow;
 
 	FControlFlowNodePtr InProgressPressStartScreen;
 
 	FControlFlowNodePtr CurrentSubFlow;
+
+	FControlFlowNodePtr StartupPopupPreloadSubFlow;
+
+	FControlFlowNodePtr StartupPopupSubFlow;
+
+	TSharedPtr<FStreamableHandle> StartupPopupFlowActionClassesLoadHandle;
+
+	UPROPERTY(Transient)
+	TArray<TObjectPtr<UOrionFlowAction>> ActiveStartupPopupFlowActions;
 
 	FDelegateHandle OnJoinSessionCompleteEventHandle;
 
@@ -126,7 +148,17 @@ private:
 	// 启动 LoadingScreen 是否已经排队完成，避免重复注册下一帧隐藏
 	bool bStartupLoadingScreenCompletionQueued = false;
 
+	// 本轮前端流程是否来自进程首次启动
+	bool bRunInitialGameStartupFlowSteps = false;
+
+	// 启动弹窗 Flow Action 是否已在 LoadingScreen 阶段完成预热
+	bool bStartupPopupFlowActionsPreloaded = false;
+
 	int32 TotalShadersPrecompiles;
+
+	int32 ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+
+	int32 ActiveStartupPopupFlowActionIndex = INDEX_NONE;
 
 	TWeakObjectPtr<ULoadingScreenManager> LoadingScreenManager;
 

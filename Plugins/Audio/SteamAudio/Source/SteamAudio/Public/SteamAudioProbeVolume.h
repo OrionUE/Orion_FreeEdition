@@ -48,7 +48,7 @@ enum class EProbeGenerationType : uint8
 USTRUCT()
 struct FSteamAudioBakedDataInfo
 {
-    GENERATED_USTRUCT_BODY()
+    GENERATED_BODY()
 
     /** Name of the actor associated with this layer (or "Reverb" if this layer is reverb). */
     UPROPERTY()

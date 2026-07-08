@@ -4,10 +4,16 @@
 
 #include "CommonLocalPlayer.h"
 #include "Engine/GameInstance.h"
+#include "Engine/LocalPlayer.h"
+#include "Framework/Application/SlateApplication.h"
+#include "Framework/Application/SlateUser.h"
+#include "GameFramework/PlayerController.h"
 #include "GameUIManagerSubsystemBase.h"
 #include "GameUIPolicy.h"
 #include "Kismet/GameplayStatics.h"
 #include "LogCommonGame.h"
+#include "Math/UnrealMathUtility.h"
+#include "TimerManager.h"
 #include "Widgets/CommonActivatableWidgetContainer.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(PrimaryGameLayout)
@@ -150,4 +156,110 @@ void UPrimaryGameLayout::RemoveAllWidgetFromLayer(FGameplayTag LayerName)
 UCommonActivatableWidgetContainerBase* UPrimaryGameLayout::GetLayerWidget(FGameplayTag LayerName)
 {
 	return Layers.FindRef(LayerName);
+}
+
+bool UPrimaryGameLayout::ShouldRestoreCursorPositionAfterLayerPush(const UCommonActivatableWidgetContainerBase* LayerWidget, FPrimaryGameLayoutCursorPositionSnapshot& OutCursorPosition) const
+{
+	if (!LayerWidget || !LayerWidget->GetActiveWidget())
+	{
+		return false;
+	}
+
+	if (FSlateApplication::IsInitialized())
+	{
+		if (ULocalPlayer* LocalPlayer = GetOwningLocalPlayer())
+		{
+			if (TSharedPtr<FSlateUser> SlateUser = LocalPlayer->GetSlateUser())
+			{
+				OutCursorPosition.AbsolutePosition = SlateUser->GetCursorPosition();
+				OutCursorPosition.bHasAbsolutePosition = true;
+			}
+		}
+
+		if (!OutCursorPosition.bHasAbsolutePosition)
+		{
+			OutCursorPosition.AbsolutePosition = FSlateApplication::Get().GetCursorPos();
+			OutCursorPosition.bHasAbsolutePosition = true;
+		}
+	}
+
+	APlayerController* PlayerController = GetOwningPlayer();
+	if (PlayerController && PlayerController->ShouldShowMouseCursor())
+	{
+		float CursorX = 0.0f;
+		float CursorY = 0.0f;
+		if (PlayerController->GetMousePosition(CursorX, CursorY))
+		{
+			OutCursorPosition.ViewportPosition = FIntPoint(FMath::RoundToInt(CursorX), FMath::RoundToInt(CursorY));
+			OutCursorPosition.bHasViewportPosition = true;
+		}
+	}
+
+	return OutCursorPosition.bHasAbsolutePosition || OutCursorPosition.bHasViewportPosition;
+}
+
+void UPrimaryGameLayout::RestoreCursorPositionAfterLayerPush(const FPrimaryGameLayoutCursorPositionSnapshot& CursorPosition)
+{
+	bool bRestoredViewportPosition = false;
+	if (CursorPosition.bHasViewportPosition)
+	{
+		APlayerController* PlayerController = GetOwningPlayer();
+		if (PlayerController && PlayerController->ShouldShowMouseCursor())
+		{
+			PlayerController->SetMouseLocation(CursorPosition.ViewportPosition.X, CursorPosition.ViewportPosition.Y);
+			bRestoredViewportPosition = true;
+		}
+	}
+
+	if (!bRestoredViewportPosition && CursorPosition.bHasAbsolutePosition && FSlateApplication::IsInitialized())
+	{
+		if (ULocalPlayer* LocalPlayer = GetOwningLocalPlayer())
+		{
+			if (TSharedPtr<FSlateUser> SlateUser = LocalPlayer->GetSlateUser())
+			{
+				SlateUser->SetCursorPosition(CursorPosition.AbsolutePosition);
+				return;
+			}
+		}
+
+		FSlateApplication::Get().SetCursorPos(CursorPosition.AbsolutePosition);
+	}
+}
+
+void UPrimaryGameLayout::RestoreCursorPositionAfterLayerPushNextTick(const FPrimaryGameLayoutCursorPositionSnapshot& CursorPosition)
+{
+	if (FSlateApplication::IsInitialized())
+	{
+		constexpr int32 NumCursorRestorePostSlateTicks = 3;
+		TSharedRef<int32> RemainingRestoreTicks = MakeShared<int32>(NumCursorRestorePostSlateTicks);
+		TSharedRef<FDelegateHandle> DelegateHandle = MakeShared<FDelegateHandle>();
+		TWeakObjectPtr<UPrimaryGameLayout> WeakThis(this);
+
+		*DelegateHandle = FSlateApplication::Get().OnPostTick().AddLambda([WeakThis, CursorPosition, RemainingRestoreTicks, DelegateHandle](float DeltaTime)
+		{
+			if (UPrimaryGameLayout* Layout = WeakThis.Get())
+			{
+				Layout->RestoreCursorPositionAfterLayerPush(CursorPosition);
+			}
+
+			--(*RemainingRestoreTicks);
+			if (*RemainingRestoreTicks <= 0 || !WeakThis.IsValid())
+			{
+				if (FSlateApplication::IsInitialized())
+				{
+					FSlateApplication::Get().OnPostTick().Remove(*DelegateHandle);
+				}
+			}
+		});
+
+		return;
+	}
+
+	if (UWorld* World = GetWorld())
+	{
+		World->GetTimerManager().SetTimerForNextTick(FTimerDelegate::CreateWeakLambda(this, [this, CursorPosition]()
+		{
+			RestoreCursorPositionAfterLayerPush(CursorPosition);
+		}));
+	}
 }

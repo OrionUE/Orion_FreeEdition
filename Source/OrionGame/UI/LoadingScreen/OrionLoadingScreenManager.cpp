@@ -11,21 +11,23 @@
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(OrionLoadingScreenManager)
 
-bool UOrionLoadingScreenManager::CheckForAnyNeedToShowLoadingScreen()
+bool UOrionLoadingScreenManager::CheckForAnyNeedToShowLoadingScreen(float DeltaTime)
 {
+	const bool bBaseNeedToShowLoadingScreen = Super::CheckForAnyNeedToShowLoadingScreen(DeltaTime);
+
 	if (bStartUpLoadingScreen)
 	{
 		SetOrionFrontendStateComponent();
 
 		if (FrontendStateComponent.IsValid())
 		{
-			return Super::CheckForAnyNeedToShowLoadingScreen() || !FrontendStateComponent->GetIsUserInitializationFinished();
+			return bBaseNeedToShowLoadingScreen || !FrontendStateComponent->GetIsUserInitializationFinished();
 		}
 
 		return true;
 	}
 
-	return Super::CheckForAnyNeedToShowLoadingScreen();
+	return bBaseNeedToShowLoadingScreen;
 }
 
 void UOrionLoadingScreenManager::SetIsStartUpLoadingScreen()

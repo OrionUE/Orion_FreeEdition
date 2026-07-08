@@ -1,4 +1,4 @@
 interface:
   display_name: "Unreal Localization Framework"
-  short_description: "Guide Unreal Engine localization workflows."
-  default_prompt: "Use $orion-localization-framework to work on Unreal localization."
+  short_description: "Automate Unreal localization workflows."
+  default_prompt: "Use $orion-localization-framework to automate Unreal localization targets and MCP operations."

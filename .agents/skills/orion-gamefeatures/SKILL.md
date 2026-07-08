@@ -39,7 +39,7 @@ description: "Use when Codex works on Unreal Engine GameFeatures, Experience-dri
 - Feature 需要创建队伍、挂载 TeamCreationComponent、分配玩家队伍、按队伍出生、配置 TeamDisplayAsset 或处理 AI 敌友态度时，配合 `../orion-teams-framework/SKILL.md`。
 - Feature 通过 Core Experience、Core GameFeatureAction、PawnData、AbilitySet、InputConfig、HUD/UIExtension 或 GamePhase 接入时，配合 `../orion-gamecore-framework/SKILL.md`，并避免直接修改 GameCore。
 - Feature 激活时添加输入 mapping context、input config、InputTag 绑定或用户改键可见性，配合 `../orion-input-framework/SKILL.md` 和 `../unreal-enhancedinput/SKILL.md`。
-- Feature 激活时添加 GameUI/CommonUI/UMG widget、HUD layout、UIExtension slot widget 或 GameFeature `Add Widgets` action，配合 `../orion-umg/SKILL.md`。
+- Feature 激活时添加 GameUI/CommonUI/UMG widget、HUD layout、UIExtension slot widget 或 GameFeature `Add Widgets` action，先配合 `../orion-gameui/SKILL.md`，具体 Widget Blueprint 编辑再配合 `../orion-umg/SKILL.md`。
 - Feature 提供可交互物品、拾取/开箱/搜索玩法、交互提示 UI、`UIndicatorManagerComponent`、交互输入、交互 AbilitySet 或多人库存交互时，配合 `../orion-inventory-interaction-framework/SKILL.md`。
 - Feature 激活/Experience 加载期间需要通过 `ILoadingProcessInterface`、`ULoadingProcessTask` 或加载屏 widget 阻塞流程时，配合 `../orion-loading-screen-framework/SKILL.md`。
 - Feature 激活时涉及 input mode、按键提示、back/click 行为或 Action Domain，配合 `../unreal-commoninput/SKILL.md`。

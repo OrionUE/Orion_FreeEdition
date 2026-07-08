@@ -1,6 +1,6 @@
 interface:
   display_name: "Splash Image Conversion"
-  short_description: "按固定尺寸裁剪并导出启动图 PNG/BMP 文件"
-  default_prompt: "Use $splash-image-conversion to crop a source image and export Splash PNG/BMP files."
+  short_description: "裁剪启动图并导入 UE UI 贴图资产"
+  default_prompt: "Use $splash-image-conversion to crop a source image, replace Splash files, import UE texture assets, and set Texture Group UI."
 policy:
   allow_implicit_invocation: true

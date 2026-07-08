@@ -10,7 +10,7 @@ Steam 专用 Engine 配置入口是 `Config/Custom/Steam/DefaultEngine.ini`。St
 
 ## 每次打包前必须确认
 
-当用户要求打包或验证打包时，先给出一个简短确认，包含以下三点：
+当用户要求打包或验证打包时，先给出一个简短确认，包含以下六点：
 
 1. **配置版本**
 	- 可选：`Shipping`、`Debug`、`Development`
@@ -28,10 +28,14 @@ Steam 专用 Engine 配置入口是 `Config/Custom/Steam/DefaultEngine.ini`。St
 		- `Debug` -> `Packages/Debug`
 	- 如果用户提供自定义路径，使用用户路径，并在执行前复述一次。
 
-3. **更多自定义选项**
+3. **打包语言**
+	- 先检测当前项目已配置/已本地化的 cultures。
+	- 默认：把检测到的全部 cultures 加入 `CookedCultures`。
+	- 如果用户指定语言，按用户指定语言打包，并在执行前复述最终 `Cooked Cultures`。
+
+4. **更多自定义选项**
 	- 询问用户是否需要覆盖 Profile 默认值。
 	- 常见可覆盖项：
-		- `Cooked Cultures`
 		- `Cooked Platforms`
 		- Cook 额外参数
 		- Additional Command Line Parameters
@@ -43,13 +47,29 @@ Steam 专用 Engine 配置入口是 `Config/Custom/Steam/DefaultEngine.ini`。St
 		- 是否 Archive
 	- 如果用户不自定义，使用所选 Profile 内的默认设置。
 
+5. **贴图策略**
+	- 打包前先搜索项目设置，至少检查 `Config/DefaultDeviceProfiles.ini` 的 `TextureLODGroups`、`MaxLODSize`、`LODBias`，以及 `Config/DefaultScalability.ini` 的 `TextureQuality` / `r.Streaming.*`。
+	- 提示用户默认按照项目设置的贴图策略打包，并说明项目配置把贴图压缩或封顶到什么程度；如果没有项目级贴图配置，明确说明将继承引擎默认。
+	- 默认不改 `.uasset`，也不新增额外压缩、封顶或批量资产修改。
+	- 如果用户只想减少打包体积、但不想让 `.uasset` 进入 Git 变更，优先走 `Config/DefaultDeviceProfiles.ini` 里的 `TextureLODGroups` cook 封顶。
+	- 如果用户同意收集，读取 `../unreal-texture-management/SKILL.md`，优先运行 `scripts/collect-texture-groups.ps1` 和 `scripts/collect-texture-group-sources.ps1`，先汇总项目组和引擎组，再决定 Windows / Android / iOS 等平台的 `MaxLODSize` 或 `LODBias`。
+	- 如果用户同意调整上限，先列出拟修改的 TextureGroup、平台和最大尺寸，例如 4K 以上封到 2K；获得确认后再改 `DefaultDeviceProfiles.ini`。
+
+6. **PSO/着色器收集**
+	- 默认按照项目中现已有收集的 PSO 打包，不进行新的 PSO 收集。
+	- 如果用户要收集 PSO，必须先读取 `../orion-pso-caching/SKILL.md`，从该 Skill 当前定义的工作流和脚本参数中提取可用收集策略，再把这些策略作为选项询问用户；不要在本参考流程中硬编码策略名称或直接复述固定话术。
+	- 如果用户只要求检查 PSO 是否入包，先说明默认只验证现有 PSO 是否进入本次包，不自动开始新收集。
+
 推荐确认话术：
 
 ```text
 我先按默认 Steam Windows 打包规则确认一下：
 1. 版本：Development（可改 Shipping / Debug / Development）
-2. 输出路径：Packages/Development
-3. 自定义选项：默认使用 Profile 里的 Cooked Cultures、Cooked Platforms 等设置；需要覆盖的话请告诉我
+2. 输出路径：../Packages/DevelopmentGameSteam/Windows-<时间戳>
+3. 打包语言：打包的指定语言；默认简体中文和英文，或者指定语言
+4. 自定义选项：默认使用 Profile 里的 Cooked Platforms、Pak、压缩、加密、IoStore 等设置；需要覆盖的话请告诉我
+5. 贴图策略：默认按照项目设置的贴图策略打包；我会先检查项目配置并说明当前是否封顶、压缩到什么程度，或说明没有项目配置
+6. PSO/着色器收集：默认按照项目中现已有收集的 PSO 打包，不进行 PSO 收集；若要收集 PSO，我会先读取 PSO Skill，再列出该 Skill 当前定义的收集策略供你选择
 确认后我再开始打包/验证。
 ```
 
@@ -77,7 +97,7 @@ Profile 内容来自 Skill 内置模板：
 | --- | --- |
 | `{{ProjectName}}` | 当前项目名，不带 `.uproject` 后缀 |
 | `{{ProjectFilePath}}` | 当前 `.uproject` 的完整路径，建议用 `/` 分隔 |
-| `{{PackageDir}}` | 当前配置输出目录，默认 `Packages/<Configuration>` |
+| `{{PackageDir}}` | 当前 Profile 的 UAT staging 根目录，默认位于项目上级目录下的 `Packages/<Configuration><SteamBuildTargetName>/Windows-<yyyyMMdd-HHmmss>`；自动化脚本最终应把 UE 生成的 `<Platform>` 子目录归档为该时间戳目录 |
 | `{{SteamBuildTargetName}}` | Steam 版本 Target，默认 `<ProjectName>Steam`，如项目不同则从 `.Target.cs` 推断或让用户确认 |
 | `{{UnrealEditorCmdPath}}` | 当前引擎的 `UnrealEditor-Cmd.exe` 路径 |
 | `{{SessionOwner}}` | 当前系统用户名 |
@@ -112,8 +132,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-packagi
 可选参数：
 
 - `-SteamBuildTargetName`：默认 `<ProjectName>Steam`。
-- `-OutputRoot`：默认当前项目目录下的 `Packages`。
-- `-Configuration`：默认 `All`，也可指定 `Development`、`Shipping`、`Debug`。
+- `-OutputRoot`：默认项目上级目录下的 `Packages`。
+- `-Timestamp`：默认当前时间，格式 `yyyyMMdd-HHmmss`。`r`n- `-Configuration`：默认 `All`，也可指定 `Development`、`Shipping`、`Debug`。
 
 脚本会写入引擎的 Legacy Project Launcher Profile 目录：
 
@@ -137,6 +157,47 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-packagi
 - 编辑器是否正在占用需要重建的模块 DLL；如果会阻塞编译，先提示用户保存并关闭编辑器。
 - 输出目录是否明确，并确认不会误删用户文件。
 
+## 输出目录命名规则
+
+默认不要再把包写到项目目录内的 `Packages/<Configuration>`。新的最终可见输出目录规则：
+
+```text
+<ProjectRoot>/../Packages/<Configuration><BuildTarget>/<Platform>-<yyyyMMdd-HHmmss>
+```
+
+示例：
+
+```text
+<ProjectRoot>/../Packages/DevelopmentGameSteam/Windows-20260628-153000
+```
+
+命名细节：
+
+- `<Configuration>` 使用 `Development`、`Shipping` 或 `Debug`；如果 UAT 实际配置是 `DebugGame`，目录仍按用户选择的 Profile 标签写 `Debug`，除非用户另有要求。
+- `<BuildTarget>` 使用本次打包的 Steam Target 或用户指定构建目标标签；用户示例是 `GameSteam`，因此目录示例为 `DevelopmentGameSteam`。
+- `<Platform>` 使用最终平台目录名，例如 `Windows`。
+- `<yyyyMMdd-HHmmss>` 在开始本次打包前生成一次，并贯穿日志文件、临时 staging 根和最终输出目录。
+- 自动化 UAT 运行时，如果 UE 固定在 `-stagingdirectory` 下再创建 `<Platform>` 子目录，先使用临时 staging 根；UAT 成功后把生成的 `<Platform>` 子目录移动或重命名成最终的 `<Platform>-<yyyyMMdd-HHmmss>` 目录，避免最终路径出现重复的 `Windows\Windows`。
+- 执行前必须确认目标最终目录不存在，避免覆盖历史包；如果已存在，生成新的时间戳或停止询问用户。
+
+推荐 PowerShell 变量：
+
+```powershell
+$ProjectRoot = Split-Path -Parent $ProjectFile
+$PackageRoot = Join-Path (Split-Path -Parent $ProjectRoot) "Packages"
+$BuildFolder = "$Configuration$SteamBuildTargetName"
+$Stamp = Get-Date -Format "yyyyMMdd-HHmmss"
+$FinalPackageDir = Join-Path (Join-Path $PackageRoot $BuildFolder) "Windows-$Stamp"
+$StageRoot = Join-Path (Join-Path $PackageRoot $BuildFolder) "_Stage-$Stamp"
+```
+
+UAT 成功后：
+
+```powershell
+Move-Item -LiteralPath (Join-Path $StageRoot "Windows") -Destination $FinalPackageDir
+```
+
+最终回复里的输出路径必须报告 `$FinalPackageDir`，不要只报告临时 staging 根。
 ## 执行和验证
 
 执行打包或验证时，优先保留模板/Profile 默认配置，只覆盖用户明确指定的项。
@@ -182,7 +243,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-packagi
 - `-target` 使用 Steam 版本 Target；默认 `<ProjectName>Steam`，但必须以项目实际 `.Target.cs` 为准。
 - Steam Target 使用 `CustomConfig = "Steam"` 时，UAT 验证命令也要显式带 `-CustomConfig=Steam`，并验证 `Config/Custom/Steam/DefaultEngine.ini` 被 Stage。
 - 当前项目打开编辑器时，Cook 要显式带 `-AdditionalCookerOptions="-ini:EditorPerProjectUserSettings:[/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]:bAutoStartServer=False"`，避免 commandlet 和编辑器争用 MCP 端口 `18765`。
-- `-CookCultures`、`-platform`、Pak、压缩、加密等参数来自 Profile 模板，用户未要求覆盖时不要自行改动。
+- `-CookCultures` 来自用户确认的打包语言；用户未指定时默认使用自动检测到的全部 cultures。`-platform`、Pak、压缩、加密等参数来自 Profile 模板，用户未要求覆盖时不要自行改动。
 
 ### Steam CustomConfig 运行时验证
 
@@ -509,6 +570,38 @@ echo %ERRORLEVEL% > "<ExitPath>"
 
 验证：重新 Cook 后日志不再出现 `BinkMediaPlayer`、启动 LoadingScreen Widget 蓝图编译 Error 或 `UnknownCookFailure`；最终仍以 `BUILD SUCCESSFUL` 和 `AutomationTool exiting with ExitCode=0 (Success)` 为准。
 
+### UnrealEditor.modules BuildId 过期导致 Cook 报模块找不到
+
+现象：Steam 打包 Cook 早期失败，日志报插件或游戏模块找不到，例如 `Plugin '<PluginName>' failed to load because module '<ModuleName>' could not be found`，或 `The game module '<ModuleName>' could not be found. Please ensure that this module exists and that it is compiled.`。但对应 DLL 实际存在于 `Binaries/Win64`，`dumpbin /dependents` 也没有显示直接依赖缺失。
+
+常见原因：切换源码引擎、重建引擎或同步不同引擎构建后，项目或插件目录里的 `Binaries/Win64/UnrealEditor.modules` 仍保留旧 `BuildId`。Editor/Cook 会把这些 DLL 视为不匹配当前引擎构建，最终表现成模块找不到，而不是 DLL 文件不存在。
+
+排查顺序：
+
+1. 先对比 `<EngineRoot>/Engine/Binaries/Win64/UnrealEditor.modules` 的 `BuildId` 与 `<ProjectRoot>/Binaries/Win64/UnrealEditor.modules`、`<ProjectRoot>/Plugins/**/Binaries/Win64/UnrealEditor.modules`。
+2. 如果只是一两个插件模块报错，先检查对应插件的 `.modules`；如果随后又报项目游戏模块找不到，再检查项目根 `Binaries/Win64/UnrealEditor.modules`。
+3. 优先尝试重新编译对应 Editor target 或模块，让 UBT 正常刷新 `.modules`。如果 UHT 因无关历史问题阻断重编译，且当前目标只是恢复本次打包验证，可以窄范围同步 `.modules` 的 `BuildId`。
+4. 不要删除或重写 DLL；不要修改安装版引擎；不要把这个问题误判为 Steam SDK delay-load DLL 缺失。
+
+窄范围恢复示例：
+
+```powershell
+$EngineBuildId = (Get-Content -Raw "<EngineRoot>\Engine\Binaries\Win64\UnrealEditor.modules" | ConvertFrom-Json).BuildId
+$ModuleFiles = @(
+	"<ProjectRoot>\Binaries\Win64\UnrealEditor.modules"
+) + (Get-ChildItem "<ProjectRoot>\Plugins" -Recurse -File -Filter "UnrealEditor.modules" | Select-Object -ExpandProperty FullName)
+
+foreach ($Path in $ModuleFiles)
+{
+	if (-not (Test-Path $Path)) { continue }
+	$Text = [System.IO.File]::ReadAllText($Path)
+	$Text = $Text -replace '"BuildId"\s*:\s*"[^"]+"', ('"BuildId": "{0}"' -f $EngineBuildId)
+	$Text = $Text -replace "`r?`n", "`r`n"
+	[System.IO.File]::WriteAllText($Path, $Text, [System.Text.UTF8Encoding]::new($false))
+}
+```
+
+验证：重新运行 UAT 后，日志应越过原先的插件/游戏模块加载错误并进入正常 Cook 初始化。最终仍以 `BUILD SUCCESSFUL`、`AutomationTool exiting with ExitCode=0 (Success)`、输出目录和 Steam CustomConfig manifest 为准。
 ### Steam SDK delay-load DLL 在 Cook 进程中缺失
 
 现象：Steam 包 Cook 早期以 `ExitCode=25` 或 `UnknownCookFailure` 失败，日志里有 `Unhandled Exception: 0xc06d007e`，调用栈包含 `UnrealEditor-<SteamSDKModule>.dll!__delayLoadHelper2()`、`_tailMerge_steam_api64_dll()` 或 Steam SDK wrapper 的默认对象构造函数。
@@ -682,3 +775,53 @@ bIsEditorOnlyActor = true;
 - 输出路径。
 - 成功或失败结论。
 - 如果失败，列出第一个有效错误和对应日志路径。
+
+### IoStore 写 `.ucas` 报 Windows 错误码 112
+
+现象：Cook 已经完成，Stage / IoStore 阶段反复出现类似日志：
+
+```text
+LogFileManager: Error: Error writing to file: <StageRoot>\Windows\<Project>\Content\Paks\pakchunk0-Windows.ucas (112: ...)
+```
+
+原因：Windows 错误码 `112` 是磁盘空间不足。此时通常不是 Cook、代码、插件 RuntimeDependencies 或 IoStore 参数本身的问题，而是 `-stagingdirectory` 所在磁盘已经没有足够空间写 `.ucas`。
+
+修复：
+
+1. 先用 `Get-PSDrive` 确认输出盘剩余空间，并统计本次失败 `_Stage-<Timestamp>` 目录大小。
+2. 只清理本次失败的临时 Stage 目录；执行递归删除前必须 `Resolve-Path` 并确认目标位于本项目打包输出根目录下。
+3. 如果 Cook 已经完成且失败发生在 Stage / IoStore 写包阶段，可把 `-stagingdirectory` 改到空间充足的磁盘，并用同配置 `-skipcook -stage -package` 复用 `Saved/Cooked/<Platform>` 继续验证。
+4. 最终回复必须说明原输出盘空间不足，并报告实际成功包所在的新输出路径。
+
+验证：重跑日志应进入 `LogIoStore: Writing container(s)...` 并最终出现 `BUILD SUCCESSFUL`、`AutomationTool exiting with ExitCode=0 (Success)`；成功包内仍需检查 exe、Pak / IoStore 文件和本次功能所需的 NonUFS 运行库。
+
+### Start-Process 不能把 stdout 和 stderr 重定向到同一文件
+
+现象：用 `Start-Process` 后台启动 UAT，并同时设置 `-RedirectStandardOutput $LogPath -RedirectStandardError $LogPath` 时，PowerShell 直接失败：
+
+```text
+This command cannot be run because "RedirectStandardOutput" and "RedirectStandardError" are same.
+```
+
+原因：`Start-Process` 不允许 stdout 和 stderr 使用同一个重定向目标。
+
+修复：不要把两个 `Start-Process` 重定向参数指向同一个文件。需要单日志时，把 UAT 调用放入包装脚本，在脚本内部用合并流写日志，例如：
+
+```powershell
+& cmd.exe /d /s /c $RunUATCommandLine *> $LogPath
+$Code = $LASTEXITCODE
+```
+
+也可以使用一个独立脚本或管道合并流，但必须保留 `$LASTEXITCODE` 并写出 exitcode 文件，方便轮询进程结束后判断结果。
+
+验证：包装脚本能真正启动 UAT，日志进入 AutomationTool / BuildCookRun，而不是在包装层提前退出。
+
+### PowerShell 直接调用 RunUAT.bat 导致 `-ScriptsForProject` 吞掉后续参数
+
+现象：从 PowerShell 用参数数组直接执行 `RunUAT.bat` 时，AutomationTool 的 `Parsing command line` 把 `BuildCookRun -project=...` 等后续参数全部拼进 `-ScriptsForProject="<ProjectFile> ..."`，随后报项目文件不存在。
+
+原因：Windows PowerShell 调用 `.bat` 时，`-Key=Value` 且 Value 需要引号的参数可能被批处理入口重新拼接，导致引号边界错误。
+
+修复：包装脚本里优先经 `cmd.exe /d /s /c` 调用，并显式使用 `call "<EngineRoot>\\Engine\\Build\\BatchFiles\\RunUAT.bat"`，把 `-ScriptsForProject="<ProjectFile>"`、`-project="<ProjectFile>"`、`-stagingdirectory="<StageRoot>"` 等需要引号的参数拼进同一条命令行。不要把 PowerShell 数组直接传给 `.bat`。
+
+验证：UAT 日志的 `Parsing command line` 应显示 `-ScriptsForProject=<ProjectFile> BuildCookRun -project=<ProjectFile>`，而不是把 `BuildCookRun` 合并到项目路径里；随后进入 `BUILD COMMAND STARTED`。

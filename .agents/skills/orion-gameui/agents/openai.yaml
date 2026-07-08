@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orion GameUI"
+  short_description: "Manage Orion GameUI runtime systems."
+  default_prompt: "Use $orion-gameui to design or modify Orion GameUI features."

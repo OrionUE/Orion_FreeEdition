@@ -266,9 +266,10 @@ $QuickValidate = Get-ChildItem "$env:USERPROFILE\.codex\skills" -Recurse -File -
 	Where-Object { $_.FullName -like "*skill-creator*" } |
 	Select-Object -First 1 -ExpandProperty FullName
 python -X utf8 $QuickValidate .agents\skills\<skill-name>
+powershell -NoProfile -ExecutionPolicy Bypass -File .agents\skills\orion-framework-skill-authoring\scripts\check-skill-portability.ps1 -Path .agents\skills\<skill-name> -CheckCRLF
 ```
 
-验证：命令输出 `Skill is valid!`，然后继续运行本 Skill 的 `check-skill-portability.ps1`。
+验证：命令输出 `Skill is valid!`，然后 `check-skill-portability.ps1` 输出 `OK: ... file(s) checked.`。注意本项目脚本参数名是 `-Path`，不是 `-SkillPath`。
 
 ### init_skill.py 元数据校验失败后留下半成品目录
 

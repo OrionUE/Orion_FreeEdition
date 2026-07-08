@@ -6,6 +6,7 @@
 #pragma once
 
 #include "LoadingScreenManager.h"
+
 #include "OrionLoadingScreenManager.generated.h"
 
 class UOrionFrontendStateComponent;
@@ -16,7 +17,7 @@ class ORIONGAME_API UOrionLoadingScreenManager : public ULoadingScreenManager
 	GENERATED_BODY()
 
 private:
-	virtual bool CheckForAnyNeedToShowLoadingScreen() override;
+	virtual bool CheckForAnyNeedToShowLoadingScreen(float DeltaTime) override;
 
 	virtual void SetIsStartUpLoadingScreen() override;
 

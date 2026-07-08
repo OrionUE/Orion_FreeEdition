@@ -3,6 +3,7 @@
 ## 目录
 
 - 配置和源码入口
+- 深度源码文档
 - Listener 线程规则
 - 虚拟扬声器崩溃修复
 - 常见错误
@@ -22,6 +23,20 @@ ProjectAcoustics 常见运行时入口：
 | `Config/DefaultEngine.ini` 平台音频 section | `SpatializationPlugin`、`SourceDataOverridePlugin`、`ReverbPlugin` 组合。 |
 
 Windows 常见安全组合是 SteamAudio 负责 Spatialization/Reverb，ProjectAcoustics 负责 SourceDataOverride。不要在没有明确验证前把 Reverb 和 Spatialization 拆给互相不兼容的插件。
+
+## 深度源码文档
+
+需要开始制作空间音频或执行 ProjectAcoustics 完整烘焙流程时，先读：
+
+- `references/project-acoustics-bake-workflow.zh-CN.md`
+
+需要梳理 ProjectAcoustics 源码、运行时声学查询、Spatial Reverb、MetaSound 参数、Dynamic Opening、Runtime Volume 或打包验证时，再读：
+
+- `references/project-acoustics-code-study.zh-CN.md`
+
+该文档是源码级研究手册，覆盖 `ProjectAcoustics`、`ProjectAcousticsNative`、`ProjectAcousticsSpatializer` 和 `ProjectAcousticsBakeUI` 的模块分工与制作流程。
+
+World Partition、子关卡、Level Instance 或烘焙专用地图里的 Geometry/Nav 识别问题，直接读该文档的“World Partition、子关卡和 Level Instance 烘焙”小节。
 
 ## Listener 线程规则
 
@@ -87,6 +102,14 @@ FAudioThread::RunCommandOnAudioThread
 原因：虚拟扬声器 Actor 随 World 销毁，但 listener 仍保留裸指针或 speaker/position 数量不一致。
 
 修复：弱引用持有 Actor；`OnWorldChanged`/`OnListenerShutdown` 统一 reset；更新前按数组最小长度遍历。
+
+### Triton 查询线程栈溢出
+
+现象：运行时或 PIE 偶发 `EXCEPTION_STACK_OVERFLOW`，栈里有 `Triton::AzfpCodec::AzfpBlock::Decompress`、`DecodedProbeData::DecompressBlock`、`FProjectAcousticsModule::GetAcousticParameters`，线程名可能是 `UnknownThreadPool #0`。
+
+原因：ProjectAcoustics 查询运行在插件自己的 `FQueuedThreadPool`；如果只调用 `Create(1)`，UE queued thread 默认栈只有 32KB，Triton probe 解压可能栈溢出。
+
+修复：在插件里创建查询线程池时显式传入较大栈，例如 4MB，并给线程池命名为 `ProjectAcousticsQueryThreadPool`；不要修改安装版引擎源码。
 
 ### SourceDataOverride 插件不存在
 

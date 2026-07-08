@@ -218,6 +218,8 @@ private:
 
 namespace OrionSettingsHelpers
 {
+	constexpr float MinimumManualResolutionScale = 50.0f;
+
 	UInputSystemUserSettings* GetInputSystemUserSettings(ULocalPlayer* LocalPlayer)
 	{
 		if (!LocalPlayer)
@@ -310,6 +312,21 @@ namespace OrionSettingsHelpers
 	{
 		return ResolutionQualityRecommendations.Query(FrameRate);
 	}
+
+	float ClampManualResolutionQuality(float ResolutionQuality)
+	{
+		if (FMath::IsNearlyZero(ResolutionQuality))
+		{
+			return 0.0f;
+		}
+
+		if (ResolutionQuality > 0.0f)
+		{
+			return FMath::Clamp(ResolutionQuality, UOrionSettingsLocal::GetMinimumManualResolutionScale(), Scalability::MaxResolutionScale);
+		}
+
+		return ResolutionQuality;
+	}
 	
 	int32 ConstrainFrameRateToBeCompatibleWithOverallQuality(int32 FrameRate, int32 OverallQuality)
 	{
@@ -377,9 +394,14 @@ UOrionSettingsLocal* UOrionSettingsLocal::Get()
 
 void UOrionSettingsLocal::BeginDestroy()
 {
-	if (FSlateApplication::IsInitialized())
+	if (OnApplicationActivationStateChangedHandle.IsValid())
 	{
-		FSlateApplication::Get().OnApplicationActivationStateChanged().Remove(OnApplicationActivationStateChangedHandle);
+		if (FSlateApplication::IsInitialized())
+		{
+			FSlateApplication::Get().OnApplicationActivationStateChanged().Remove(OnApplicationActivationStateChangedHandle);
+		}
+
+		OnApplicationActivationStateChangedHandle.Reset();
 	}
 
 	Super::BeginDestroy();
@@ -414,6 +436,7 @@ void UOrionSettingsLocal::SetToDefaults()
 void UOrionSettingsLocal::LoadSettings(bool bForceReload)
 {
 	Super::LoadSettings(bForceReload);
+	RegisterApplicationActivationStateChanged();
 
 	// Console platforms use rhi.SyncInterval to limit framerate
 	const UGamePlatformSpecificRenderingSettings* PlatformSettings = UGamePlatformSpecificRenderingSettings::Get();
@@ -619,7 +642,8 @@ void UOrionSettingsLocal::SetOverallScalabilityLevel(int32 Value)
 {
 	TGuardValue Guard(bSettingOverallQualityGuard, true);
 
-	Value = FMath::Clamp(Value, 0, 3);
+	const int32 MaxSupportedQualityLevel = GetMaxSupportedOverallQualityLevel();
+	Value = (MaxSupportedQualityLevel >= 0) ? FMath::Clamp(Value, 0, MaxSupportedQualityLevel) : FMath::Max(Value, 0);
 
 	float CurrentMobileResolutionQuality = ScalabilityQuality.ResolutionQuality;
 
@@ -643,6 +667,8 @@ void UOrionSettingsLocal::SetOverallScalabilityLevel(int32 Value)
 void UOrionSettingsLocal::Initialize(ULocalPlayer* LP)
 {
 	OwningLocalPlayer = LP;
+	RegisterApplicationActivationStateChanged();
+	UpdateEffectiveFrameRateLimit();
 
 	if (UInputSystemUserSettings* InputSystemUserSettings = OrionSettingsHelpers::GetInputSystemUserSettings(OwningLocalPlayer.Get()))
 	{
@@ -1198,7 +1224,42 @@ void UOrionSettingsLocal::RunAutoBenchmark(bool bSaveImmediately)
 
 void UOrionSettingsLocal::ApplyScalabilitySettings()
 {
+	ScalabilityQuality.ResolutionQuality = OrionSettingsHelpers::ClampManualResolutionQuality(ScalabilityQuality.ResolutionQuality);
 	Scalability::SetQualityLevels(ScalabilityQuality);
+	SetScreenPercentageCVar(ScalabilityQuality.ResolutionQuality);
+}
+
+void UOrionSettingsLocal::SetScreenPercentageCVar(float Percentage)
+{
+	if (IConsoleVariable* ScreenPercentageCVar = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ScreenPercentage")))
+	{
+		const EConsoleVariableFlags CurrentSetBy = static_cast<EConsoleVariableFlags>(ScreenPercentageCVar->GetFlags() & ECVF_SetByMask);
+		if (CurrentSetBy >= ECVF_SetByGameOverride)
+		{
+			ScreenPercentageCVar->SetWithCurrentPriority(Percentage, NAME_None, ECVF_SetByConsole, ECVF_SetByGameOverride);
+		}
+		else
+		{
+			ScreenPercentageCVar->Set(Percentage, ECVF_SetByGameOverride);
+		}
+	}
+}
+
+float UOrionSettingsLocal::GetMinimumManualResolutionScale()
+{
+	return OrionSettingsHelpers::MinimumManualResolutionScale;
+}
+
+float UOrionSettingsLocal::GetMinimumManualResolutionScaleNormalized()
+{
+	const float ScaleRange = Scalability::MaxResolutionScale - Scalability::MinResolutionScale;
+	if (FMath::IsNearlyZero(ScaleRange))
+	{
+		return 0.0f;
+	}
+
+	const float NormalizedScale = (GetMinimumManualResolutionScale() - Scalability::MinResolutionScale) / ScaleRange;
+	return FMath::Clamp(NormalizedScale, 0.0f, 1.0f);
 }
 
 float UOrionSettingsLocal::GetDisplayGamma() const
@@ -1222,21 +1283,24 @@ void UOrionSettingsLocal::ApplyDisplayGamma()
 
 float UOrionSettingsLocal::GetResolutionScaleNormalized_Lerp() const
 {
-	float CurrentScaleNormalized = GetResolutionScaleNormalized();
-	
-	if (CurrentScaleNormalized == 0.0f)
-		return 100.f;
+	float CurrentScaleNormalized = 0.0f;
+	float CurrentScaleValue = 0.0f;
+	float MinScaleValue = 0.0f;
+	float MaxScaleValue = 0.0f;
+	GetResolutionScaleInformationEx(CurrentScaleNormalized, CurrentScaleValue, MinScaleValue, MaxScaleValue);
 
-	return CurrentScaleNormalized;
+	if (FMath::IsNearlyZero(CurrentScaleValue))
+	{
+		return 1.0f;
+	}
+
+	return FMath::Clamp(CurrentScaleNormalized, GetMinimumManualResolutionScaleNormalized(), 1.0f);
 }
 
 void UOrionSettingsLocal::SetResolutionScaleNormalized_Lerp(float NewScaleNormalized)
 {
-	const float RemappedValue = FMath::Lerp((float)Scalability::MinResolutionScale, (float)Scalability::MaxResolutionScale, NewScaleNormalized);
-	if (RemappedValue == 0.f)
-		return;
-	
-	SetResolutionScaleValueEx(RemappedValue);
+	SetResolutionScaleNormalized(FMath::Clamp(NewScaleNormalized, GetMinimumManualResolutionScaleNormalized(), 1.0f));
+	ApplyScalabilitySettings();
 }
 
 void UOrionSettingsLocal::SetAntiAliasingMethod(EAntiAliasingMethod InAntiAliasingMethod)
@@ -1667,6 +1731,21 @@ bool UOrionSettingsLocal::ShouldUseFrontendPerformanceSettings() const
 #endif
 
 	return bInFrontEndForPerformancePurposes;
+}
+
+void UOrionSettingsLocal::RegisterApplicationActivationStateChanged()
+{
+	if (FSlateApplication::IsInitialized() && !OnApplicationActivationStateChangedHandle.IsValid())
+	{
+		OnApplicationActivationStateChangedHandle = FSlateApplication::Get().OnApplicationActivationStateChanged().AddUObject(
+			this,
+			&UOrionSettingsLocal::HandleApplicationActivationStateChanged);
+	}
+}
+
+void UOrionSettingsLocal::HandleApplicationActivationStateChanged(const bool)
+{
+	UpdateEffectiveFrameRateLimit();
 }
 
 void UOrionSettingsLocal::SetControllerPlatform(const FName InControllerPlatform)

@@ -18,7 +18,7 @@ import shutil
 import threading
 from subprocess import call
 
-search_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..\..\Source\ThirdParty\Win64\Release"))
+search_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), r"..\..\Source\ThirdParty\Win64\Release"))
 sys.path.append(search_path)
 
 # Make sure clr is available
@@ -483,9 +483,34 @@ class AcousticsPythonBridgeImplmentation(unreal.AcousticsPythonBridge):
     submit_monitor = None
     download_ace_monitor = None
 
+    @staticmethod
+    def get_project_acoustics_config_dir():
+        config_dir = os.path.join(unreal.Paths.project_saved_dir(), 'Config')
+        os.makedirs(config_dir, exist_ok=True)
+        return config_dir
+
+    @staticmethod
+    def get_project_acoustics_config_path():
+        return os.path.join(
+            AcousticsPythonBridgeImplmentation.get_project_acoustics_config_dir(),
+            AcousticsPythonBridgeImplmentation.project_acoustics_config_file)
+
+    @staticmethod
+    def get_legacy_project_acoustics_config_path():
+        return os.path.join(
+            unreal.Paths.project_config_dir(),
+            AcousticsPythonBridgeImplmentation.project_acoustics_config_file)
+
+    @staticmethod
+    def migrate_legacy_project_acoustics_config(config_path):
+        legacy_config_path = AcousticsPythonBridgeImplmentation.get_legacy_project_acoustics_config_path()
+        if not os.path.isfile(config_path) and os.path.isfile(legacy_config_path):
+            shutil.copyfile(legacy_config_path, config_path)
+
     @unreal.ufunction(override=True)
     def initialize_projection(self):
-        configPath = os.path.join(self.project_config.config_dir, AcousticsPythonBridgeImplmentation.project_acoustics_config_file)
+        configPath = AcousticsPythonBridgeImplmentation.get_project_acoustics_config_path()
+        AcousticsPythonBridgeImplmentation.migrate_legacy_project_acoustics_config(configPath)
 
         defaultConfig = os.path.join(os.path.dirname(os.path.realpath(__file__)),
             "../../Resources",
@@ -520,8 +545,8 @@ class AcousticsPythonBridgeImplmentation(unreal.AcousticsPythonBridge):
         if not os.path.isfile(self.config_path):
             unreal.log_error("Configuration missing. Check your Project Acoustics plugin installation")
             return
-        # Always save the configuration to the project's Config folder
-        configPath = os.path.join(self.project_config.config_dir, AcousticsPythonBridgeImplmentation.project_acoustics_config_file)
+        # Always save the local bake/editor configuration to Saved/Config.
+        configPath = AcousticsPythonBridgeImplmentation.get_project_acoustics_config_path()
         self.acoustics_configuration =  AcousticsConfiguration(configPath)
 
         # save azure creds

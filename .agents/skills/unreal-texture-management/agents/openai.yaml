@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Texture Management"
+  short_description: "Optimize UE textures and streaming"
+  default_prompt: "Use $unreal-texture-management to audit and optimize Unreal Engine texture size, compression, streaming, and virtual texture settings."

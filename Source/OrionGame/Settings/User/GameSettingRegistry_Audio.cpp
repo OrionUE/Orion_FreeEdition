@@ -18,7 +18,7 @@
 #include "CustomSettings/GameSettingValueDiscreteDynamic_AudioInputDevice.h"
 #include "Player/OrionLocalPlayer.h"
 
-#define LOCTEXT_NAMESPACE "Orion"
+#define LOCTEXT_NAMESPACE "OrionGameUserSetting"
 
 UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG_Platform_Trait_SupportsChangingAudioOutputDevice, "Platform.Trait.SupportsChangingAudioOutputDevice");
 UE_DEFINE_GAMEPLAY_TAG_STATIC(TAG_Platform_Trait_SupportsChangingAudioInputDevice, "Platform.Trait.SupportsChangingAudioInputDevice");

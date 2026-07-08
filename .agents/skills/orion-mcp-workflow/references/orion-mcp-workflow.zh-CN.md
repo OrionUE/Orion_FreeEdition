@@ -265,7 +265,8 @@ MCP Tool Library 路径：
 - Experience、ActionSet、PawnData、AbilitySet、InputConfig、InputAction、IMC 的安全创建和组合。
 - `UGameFeatureAction_AddComponents`、输入绑定、UI entry、Ability entry 等项目结构化写入。
 - 项目 UMG 主题/艺术字 helper。
-- 项目框架语义函数，例如 Experience、PawnData、AbilitySet、InputConfig、GameFeature Action 和安全 UMG 样式 helper。
+- Localization Dashboard target/culture/config/commandlet 自动化。
+- 项目框架语义函数，例如 Experience、PawnData、AbilitySet、InputConfig、GameFeature Action、安全 UMG 样式 helper 和本地化流水线 helper。
 
 结论：`OrionProjectToolsets` 从“补齐 5.6 缺失通用 MCP”降级为“UE 5.8 官方 MCP 之上的项目语义补充”。不要删除整个插件；后续可以逐步删除其中已被官方 5.8 完全覆盖且无项目语义的函数。
 

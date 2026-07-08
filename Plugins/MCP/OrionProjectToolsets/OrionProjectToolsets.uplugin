@@ -31,6 +31,10 @@
 			"Enabled": true
 		},
 		{
+			"Name": "Metasound",
+			"Enabled": true
+		},
+		{
 			"Name": "GameFeatures",
 			"Enabled": true
 		},

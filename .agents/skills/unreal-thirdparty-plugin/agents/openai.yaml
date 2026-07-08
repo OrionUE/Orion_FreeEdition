@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unreal Third-Party Plugin"
+  short_description: "Build UE plugins that wrap external SDKs"
+  default_prompt: "Use $unreal-thirdparty-plugin to design and validate a UE External-module plugin integration."

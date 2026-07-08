@@ -11,6 +11,7 @@ description: Use when creating, editing, validating, or debugging Unreal GameUI,
 
 核心规则：
 
+- 修改 `Source/GameUI` 运行时框架、GameUI Subsystem、CommonUI 层栈、通用弹窗、UIExtension 或跨系统 UI 功能前，先读取 `.agents/skills/orion-gameui/SKILL.md`。
 - UI 逻辑默认写在 C++ 基类或已有框架类中，Widget Blueprint/UMG 主要负责美术层、布局、BindWidget 和默认变量配置；不要把核心业务流程塞进 Widget Blueprint graph。
 - 创建或修改正式 UI 资产前，读取 `.agents/skills/orion-asset-management/SKILL.md`，UI 资产默认放 `Content/UI` 或 GameFeature 插件的 `Content/UI`。
 - UI 进入玩法时优先通过 CommonGame 层栈、GameFeature `Add Widgets` 或 UIExtension 插槽接入；不要直接 `AddToViewport` 绕过 `UPrimaryGameLayout`。
@@ -21,6 +22,7 @@ description: Use when creating, editing, validating, or debugging Unreal GameUI,
 - 处理 `Content/UI` 下 `Art`、`HUD`、`Interaction`、`Menu`、`Online`、`Settings`，或 `BP_UIPolicy`、`W_OverallUILayout`、`BP_CommonInputData`、`DA_GameUIInputActionDomainTable`、`DT_UniversalActions` 这组项目 UI 蓝图框架资产时，先读取 `../orion-ui-blueprint-framework/SKILL.md`。
 - 创建或编辑 Widget Blueprint 时，先读取 `.agents/skills/orion-mcp-workflow/SKILL.md` 和 `.agents/skills/orion-mcp-project-toolsets/SKILL.md`，确认 MCP、保存、`UMGToolSet`、`OrionBlueprintGraphToolset`、`SaveAsset` 的当前可用 schema。
 - 创建或修改 UI toast、击杀提示、错误提示、通知 feed、Widget 监听 gameplay message 或用 GameplayTag channel 驱动 UI 时，读取 `.agents/skills/orion-gameplay-message-router/SKILL.md`。
+- 创建或修改 GameUI Subsystem、通用弹窗、广告/活动/公告弹窗、奖励领取、经验发放、弹窗队列优先级、自定义弹窗内容或 HTML/CSS 嵌入弹窗时，读取 `.agents/skills/orion-gameui/SKILL.md`。
 - 创建或修改玩家可见 UI 文案、TextBlock、RichText、CommonUI 按钮文本、设置项显示名/描述或本地化预览时，读取 `.agents/skills/orion-localization-framework/SKILL.md`，静态文案必须使用可收集 `FText`。
 - 创建或修改 CommonLoadingScreen 加载屏 host、进度条、动画结束回调、shader 编译加载 UI 或加载屏卡住问题时，读取 `.agents/skills/orion-loading-screen-framework/SKILL.md`。
 - 修改编辑器启动或游戏启动 Splash 图片时，文件放在 `Content/Splash`；如果用户提供其他图片格式，先转换并同时产出 `.png` 和 `.bmp`，再保存为对应固定文件名。具体目录和命名规则读取 `.agents/skills/orion-asset-management/SKILL.md`。

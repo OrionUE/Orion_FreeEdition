@@ -13,13 +13,16 @@ Core rules:
 
 - Use CRLF for Windows text code files.
 - Use Tab indentation for all code files. Do not use spaces for indentation, including C++, `.Build.cs`, and `.Target.cs`.
+- In `.h` files, keep trivial inline functions on one line when the body is a single simple expression or `return`; `.cpp` files do not need this one-line rule. Namespace definitions still use Allman braces on separate lines.
 - For project modules, `PublicDependencyModuleNames` must only contain `"Core"`, `"CoreUObject"`, and `"Engine"` unless the user explicitly authorizes otherwise. Put all other dependencies in `PrivateDependencyModuleNames`, and do not delete or rewrite existing business logic just to satisfy dependency placement.
 - Do not add `#include "CoreMinimal.h"` to generated code. Include the actual minimal engine/project headers needed by the types used.
 - Separate top-level code sections with a blank line, including copyright header, pragma, include block, forward declarations, and class/struct declarations.
 - Copyright block comments must be followed by one blank line before `#pragma once`, `#include`, or any other code.
 - In Unreal headers, place the `.generated.h` include after all other includes, separated from the regular include block by a blank line; do not put any include after `.generated.h`.
 - Use `GENERATED_BODY()` for `USTRUCT`; do not generate `GENERATED_USTRUCT_BODY()`.
+- Use `GENERATED_BODY()` for `UCLASS`; do not generate `GENERATED_UCLASS_BODY()`.
 - Class comments use Doxygen block comments (`/** ... */`), not `//` line comments.
+- Doxygen block comments must align the leading `*` with one space after the current Tab indentation: top-level lines use ` *`, nested lines use `\t *`; never write `\t*`.
 - Treat installed Unreal Engine code as read-only. Do not edit, patch, instrument, format, chmod/attrib, or otherwise modify files under an installed engine root; only read them for API/reference lookup. If engine-level diagnostics seem necessary, stop and ask for an explicit source-engine workspace or another project-local approach.
 - Only generate the configured copyright header for code files newly created by this task. Existing code files are not header-fill targets unless the user explicitly asks; if an existing code file already has any copyright header, keep it unchanged even when it differs from the current template.
 - Only add `Author`, `Date`, `Website`, or other custom header lines when the header config template explicitly requests them; do not add ad hoc author lines.

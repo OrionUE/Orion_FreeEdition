@@ -14,6 +14,7 @@
 ## 必读路由
 
 - 资产命名、目录、GameFeature `Content/UI` 规则：读取 `../orion-asset-management/SKILL.md`。
+- `Source/GameUI` 运行时框架、GameUI Subsystem、CommonUI 层栈、通用弹窗队列、HTML 弹窗或 UIExtension 总体架构：读取 `../orion-gameui/SKILL.md`。
 - MCP 创建、编辑、编译、保存 Widget Blueprint：读取 `../orion-mcp-workflow/SKILL.md` 和 `../orion-mcp-project-toolsets/SKILL.md`。
 - UI 输入模式、返回键、点击动作、Action Domain、按键图标：读取 `../unreal-commoninput/SKILL.md`；涉及 `UInputAction`、IMC 或 gameplay action 共用输入资产时再读取 `../unreal-enhancedinput/SKILL.md`。
 - Feature/Experience 添加 UI：读取 `../orion-gamefeatures/SKILL.md`、`../orion-gamemode-experience-framework/SKILL.md` 和 `../orion-mcp-project-toolsets/SKILL.md`。
@@ -94,8 +95,19 @@
 - `ShowConfirmation` 推入 `ConfirmationDialogClass` 到 `UI.Layer.Modal`。
 - `ShowError` 推入 `ErrorDialogClass` 到 `UI.Layer.Modal`。
 - 默认类通过 `DefaultGame.ini` 配置。
+- 通用 popup 队列、`UGameUIPopupDescriptor`、`PopupScreenClass` 多样式弹窗、奖励/公告/广告/HTML 弹窗的完整规则见 `../orion-gameui/SKILL.md`。
 
 需要确认/错误弹窗时优先使用该 subsystem 或 CommonGame dialog descriptor，不要新建散落弹窗流程。
+
+首次显示确认/错误弹窗卡顿时，优先检查项目子类是否在用户触发路径上做了同步资产加载或首次 Widget 构建：
+
+- 不要在 `ShowConfirmation`、`ShowError` 或用户点击回调中调用 `LoadSynchronous()` 加载弹窗类。
+- 初始化阶段使用 `TSoftClassPtr<UCommonGameDialog>` 收集配置路径，并通过 `UAssetManager::Get().GetStreamableManager().RequestAsyncLoad` 异步加载；`Deinitialize` 中取消或释放 `FStreamableHandle`。
+- 弹窗类加载完成后缓存 `TSubclassOf<UCommonGameDialog>`，再创建一次隐藏实例进行预热。优先用 owning player 创建，缺少 player controller 时可退回 game instance 创建；调用 `TakeWidget()` 强制构建 WidgetTree / Slate 资源，但不要 `AddToViewport`。
+- 预热实例必须用 `UPROPERTY(Transient)` 数组持有，避免 GC 回收导致后续仍需要重新初始化资源。
+- 如果异步加载完成前收到 `ShowConfirmation` / `ShowError`，把 `UCommonGameDialogDescriptor` 放入 `UPROPERTY` 持有的 pending request 中，原生 `FCommonMessagingResultDelegate` 可作为非反射成员保存；加载和预热后再 flush 到 `PushWidgetToLayerStack`。
+- 真正显示时仍走 `UPrimaryGameLayout::PushWidgetToLayerStack` 的 `UI.Layer.Modal`，不要为了预热或规避卡顿绕过 CommonUI layer stack。
+- 验证顺序：运行代码格式检查，编译目标模块，首次触发 `ShowConfirmationOk` 观察是否只剩异步等待而不是主线程长时间卡住。
 
 ## 基类选择表
 

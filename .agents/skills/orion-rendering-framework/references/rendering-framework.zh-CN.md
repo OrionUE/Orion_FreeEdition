@@ -53,6 +53,9 @@
 - 用户可选择 None、FXAA、TAA、MSAA、TSR。
 - DLSS Upscale 或 NIS 启用后，项目封装会把 desired anti-aliasing method 改为 TSR 并禁用用户手动改 AA method。
 - 关闭 DLSS/NIS 时，系统会恢复用户保存的抗锯齿方法。
+- DLSS/NIS 和普通 `ResolutionScale` 都会影响 `r.ScreenPercentage`；DLSS Upscale 启用时，视频设置页必须禁用普通 3D Resolution 或明确互斥，避免玩家调整后被 DLSS Mode 覆盖。
+- 关闭 DLSS/NIS 或 BuiltIn fallback 时，不要固定写回 `r.ScreenPercentage 100`；应恢复 `UOrionSettingsLocal` 当前 `ResolutionQuality`。当 `ResolutionQuality=0` 时表示使用项目默认 screen percentage，应写回 `r.ScreenPercentage 0` 或等效默认模式。
+- 不要用 `GEngine->Exec("r.ScreenPercentage ...")` 写 DLSS/NIS 或 3D Resolution 的 screen percentage。Exec 会把 CVar 标记成 `ECVF_SetByConsole`，优先级高于 `ECVF_SetByScalability` 和 `ECVF_SetByGameSetting`，后续 3D Resolution slider 即使保存了新 `ResolutionQuality` 也可能无法改变实际 `r.ScreenPercentage`。项目层应使用统一 helper 写入；如果当前 CVar 已经是高优先级来源，按当前优先级替换，否则使用玩家设置专用优先级。
 - 不要绕过 `UOrionGameRenderSubsystem::CanChangeAntiAliasingMethod`。
 
 显示器、HDR 和动态分辨率的特殊规则：
@@ -105,7 +108,7 @@ RTX 的特殊规则：
 
 模式应用规则：
 
-- BuiltIn：关闭 DLSS 或 NIS，`r.ScreenPercentage 100`，恢复用户抗锯齿。
+- BuiltIn：关闭 DLSS 或 NIS，恢复 `UOrionSettingsLocal` 当前 3D Resolution / `ResolutionQuality`，并恢复用户抗锯齿。
 - DLSS Auto：根据 viewport 或屏幕分辨率调用 `GetDLSSModeInformation`，设置最佳 `r.ScreenPercentage`。
 - DLSS DLAA：启用 DLSS-SR 且 screen percentage 100。
 - DLSS Quality/Balanced/Performance 等：启用 DLSS-SR，使用插件返回的最佳 screen percentage。
@@ -116,6 +119,14 @@ RTX 的特殊规则：
 - `[/Script/DLSS.DLSSSettings]`：编辑器 viewport、PIE、non-production binaries、NGX Application ID。
 - `[/Script/StreamlineRHI.StreamlineSettings]`：debug overlay、Streamline feature 相关配置。
 - `[/Script/Engine.RendererSettings]` 里的 DLSS/NIS/DeepDVC CVar 用于运行时默认行为。
+
+### 3D Resolution 与 UE 5.8 默认 screen percentage
+
+- `UGameUserSettings::SetResolutionScaleNormalized()` 已经负责把 0..1 normalized 值映射到 `Scalability::MinResolutionScale..MaxResolutionScale`，项目 wrapper 不要重复插值后再传值，除非同时保留 `DesiredScreenWidth/Height` 的引擎同步语义。
+- `ResolutionQuality=0` 在 UE 5.8 中表示“使用项目默认 `r.ScreenPercentage.Default`”，但 `Scalability::SetQualityLevels()` 对 0 会 no-op，不会清掉之前由 DLSS/NIS 写入的正数 `r.ScreenPercentage`。如果要恢复默认模式，项目层需要显式把 `r.ScreenPercentage` 设回 0。
+- GameSettings 的 scalar 默认 source range 是 `0..1`；如果底层 `ResolutionQuality=0` 只是默认模式，getter 可以显示为 `1.0`，不能返回 `100.0` 这种 source-range 外的值，否则 StoreInitial、Cancel/Restore 和 slider refresh 会出现异常。
+- 如果曾经通过控制台命令写过 `r.ScreenPercentage`，单纯调用 `Scalability::SetQualityLevels()` 不足以让 3D Resolution 重新生效；需要在 `ApplyScalabilitySettings()` 后显式用统一 CVar helper 写入当前 `ScalabilityQuality.ResolutionQuality`。
+- 普通手动 3D Resolution 的最小值要按项目/UE 有效预设设置，不能把 `Scalability::MinResolutionScale=0` 直接暴露成 slider 下限。低于有效预设的正数应在 registry minimum、setter clamp 和 `ApplyScalabilitySettings()` 旧值修正三处统一处理；保留 `ResolutionQuality=0` 作为默认 screen percentage 哨兵。DLSS/NIS 模式由插件返回自己的最佳 screen percentage，不要被普通手动下限误夹。
 
 ## 配置层地图
 
@@ -289,9 +300,9 @@ Bundled PSO 收集和注入模板：
 
 # 3. 用 UnrealEditor-Cmd 的 ShaderPipelineCacheTools 转换为 stable pipeline cache。
 <EngineRoot>/Engine/Binaries/Win64/UnrealEditor-Cmd.exe -run=ShaderPipelineCacheTools expand `
-  <ProjectRoot>/CollectedPSOs/*.rec.upipelinecache `
-  <ProjectRoot>/CollectedPSOs/*.shk `
-  <ProjectRoot>/CollectedPSOs/PSO_<ProjectName>_<ShaderFormatName>.spc
+	<ProjectRoot>/CollectedPSOs/*.rec.upipelinecache `
+	<ProjectRoot>/CollectedPSOs/*.shk `
+	<ProjectRoot>/CollectedPSOs/PSO_<ProjectName>_<ShaderFormatName>.spc
 
 # 4. 把生成的 .spc 放到下一次 cook 会读取的位置。
 <ProjectRoot>/Build/<Platform>/PipelineCaches/PSO_<ProjectName>_<ShaderFormatName>.spc

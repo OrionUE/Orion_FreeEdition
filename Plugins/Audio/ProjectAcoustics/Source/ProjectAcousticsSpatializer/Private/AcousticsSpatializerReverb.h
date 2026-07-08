@@ -77,7 +77,7 @@ private:
 USTRUCT(BlueprintType)
 struct FAcousticsSpatializerReverbSubmixSettings
 {
-    GENERATED_USTRUCT_BODY()
+    GENERATED_BODY()
 };
 
 

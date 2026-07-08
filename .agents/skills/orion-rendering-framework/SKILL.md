@@ -21,6 +21,7 @@ description: "Use when Codex works on Unreal Engine rendering in this framework:
 - 查类声明、include、模块依赖、引擎源码或插件源码时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 修改 `DefaultEngine.ini`、平台 `Engine.ini`、`DefaultScalability.ini`、平台 `Game.ini`、`GameUserSettings.ini`、DLSS settings 或用户可调参数时，配合 `../orion-project-config/SKILL.md`。
 - 修改视频设置页、`GameSettingRegistry_Video.cpp`、`UOrionSettingsLocal` 的玩家可调渲染字段、设置保存/应用/取消或设置 UI 行为时，配合 `../orion-game-settings-framework/SKILL.md`。
+- 处理贴图太大、包体积大、Texture Streaming Pool 超预算、贴图糊、TextureQuality、TextureLODGroups、`r.Streaming.*`、`r.VT.*`、Virtual Texture 或 Runtime Virtual Texture 优化时，读取 `../unreal-texture-management/SKILL.md`；只查 CVar 表时再配合 `../unreal-render-commands/SKILL.md`。
 - 打包后收集、转换、注入 bundled PSO cache，自动遍历地图/画质记录 `.rec.upipelinecache`，或验证 cook 是否带入 `Build/<Platform>/PipelineCaches` 时，读取 `../orion-pso-caching/SKILL.md`，并配合 `../orion-packaging/SKILL.md`。
 - 判断渲染代码落在框架层、宿主 Game 模块、Editor 模块还是 GameFeature 插件时，配合 `../orion-framework-architecture/SKILL.md`。
 - 渲染入口来自 GameInstance 持有的 runtime manager 或 WorldSubsystem 蓝图桥接时，配合 `../orion-system-framework/SKILL.md` 确认系统层生命周期。

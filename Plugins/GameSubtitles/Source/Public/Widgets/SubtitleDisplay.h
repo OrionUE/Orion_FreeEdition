@@ -15,9 +15,11 @@ struct FSubtitleFormat;
 UCLASS(BlueprintType, Blueprintable, meta = (DisableNativeTick))
 class GAMESUBTITLES_API USubtitleDisplay : public UWidget
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
+	USubtitleDisplay(const FObjectInitializer& ObjectInitializer);
+
 	UPROPERTY(EditAnywhere, Category = "Display Info")
 	FSubtitleFormat Format;
 

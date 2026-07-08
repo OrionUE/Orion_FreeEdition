@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Components/PanelWidget.h"
+
 #include "GameResponsivePanel.generated.h"
 
 class UGameResponsivePanelSlot;
@@ -16,7 +17,10 @@ class UGameResponsivePanelSlot;
 UCLASS()
 class UGameResponsivePanel : public UPanelWidget
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
+
+public:
+	UGameResponsivePanel(const FObjectInitializer& ObjectInitializer);
 
 	/**  */
 	UFUNCTION(BlueprintCallable, Category="Widget")
@@ -30,6 +34,7 @@ class UGameResponsivePanel : public UPanelWidget
 
 	virtual void ReleaseSlateResources(bool bReleaseChildren) override;
 
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Behavior")
 	bool bCanStackVertically = true;
 

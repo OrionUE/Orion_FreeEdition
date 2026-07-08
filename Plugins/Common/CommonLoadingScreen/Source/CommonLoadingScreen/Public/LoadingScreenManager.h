@@ -4,6 +4,8 @@
 
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "Tickable.h"
+#include "Math/IntPoint.h"
+#include "Math/Vector2D.h"
 #include "UObject/WeakInterfacePtr.h"
 
 #include "LoadingScreenManager.generated.h"
@@ -13,6 +15,15 @@ template <typename InterfaceType> class TScriptInterface;
 class IInputProcessor;
 class ILoadingProcessInterface;
 class ILoadingPercentInterface;
+class UUserWidget;
+
+struct FLoadingScreenCursorPositionSnapshot
+{
+	FVector2D AbsolutePosition = FVector2D::ZeroVector;
+	FIntPoint ViewportPosition = FIntPoint::ZeroValue;
+	bool bHasAbsolutePosition = false;
+	bool bHasViewportPosition = false;
+};
 
 DECLARE_DELEGATE(FOnCompilingShadersFinished);
 DECLARE_DELEGATE(FOnLoadingScreenFinished);
@@ -41,16 +52,10 @@ public:
 	//~End of FTickableObjectBase interface
 
 	UFUNCTION(BlueprintCallable, Category=LoadingScreen)
-	FString GetDebugReasonForShowingOrHidingLoadingScreen() const
-	{
-		return DebugReasonForShowingOrHidingLoadingScreen;
-	}
+	FString GetDebugReasonForShowingOrHidingLoadingScreen() const { return DebugReasonForShowingOrHidingLoadingScreen; }
 
 	/** Returns True when the loading screen is currently being shown */
-	bool GetLoadingScreenDisplayStatus() const
-	{
-		return bCurrentlyShowingLoadingScreen;
-	}
+	bool GetLoadingScreenDisplayStatus() const { return bCurrentlyShowingLoadingScreen; }
 
 	/** Called when the loading screen visibility changes  */
 	DECLARE_MULTICAST_DELEGATE_OneParam(FOnLoadingScreenVisibilityChangedDelegate, bool);
@@ -68,10 +73,10 @@ private:
 	void HandlePostLoadMap(UWorld* World);
 
 	/** Determines if we should show or hide the loading screen. Called every frame. */
-	void UpdateLoadingScreen();
+	void UpdateLoadingScreen(float DeltaTime = 0.0f);
 	
 	/** Returns true if we want to be showing the loading screen (if we need to or are artificially forcing it on for other reasons). */
-	bool ShouldShowLoadingScreen();
+	bool ShouldShowLoadingScreen(float DeltaTime);
 
 	/** Returns true if we are in the initial loading flow before this screen should be used */
 	bool IsShowingInitialLoadingScreen() const;
@@ -93,9 +98,21 @@ private:
 
 	void ChangePerformanceSettings(bool bEnabingLoadingScreen);
 
+	void RegisterLoadingPercentInterface(UUserWidget* UserWidget);
+	void BroadcastLoadingPercent();
+	void ResetLoadingProgress();
+	void UpdateLoadingProgress(float TargetProgress, float DeltaTime, float InterpSpeed);
+	float ComputeVisualProgressTarget(float DeterminateProgress, bool bHasReliableProgress) const;
+	bool IsLoadingProgressReadyToDismiss(float DeltaTime);
+	float GetEffectiveProgressDeltaTime(float DeltaTime) const;
+
+	bool CaptureCursorPositionForRestore(FLoadingScreenCursorPositionSnapshot& OutCursorPosition) const;
+	void RestoreCursorPosition(const FLoadingScreenCursorPositionSnapshot& CursorPosition);
+	void RestoreCursorPositionNextTick(const FLoadingScreenCursorPositionSnapshot& CursorPosition);
+
 protected:
 	/** Returns true if we need to be showing the loading screen. */
-	virtual bool CheckForAnyNeedToShowLoadingScreen();
+	virtual bool CheckForAnyNeedToShowLoadingScreen(float DeltaTime);
 
 	virtual void SetIsStartUpLoadingScreen() { }
 
@@ -104,7 +121,7 @@ protected:
 	float ComputeStageProgress(const UGameInstance* GameInstance, const FWorldContext* Context, const UWorld* World, bool& bOutNeedLoading, FString& OutLoadingMessage) const;
 
 	/** 计算关卡加载进度 */
-	float ComputeLevelPackageProgress(const UGameInstance* GameInstance, const UWorld* World, bool& bOutNeedLoading) const;
+	float ComputeLevelPackageProgress(const UGameInstance* GameInstance, const UWorld* World, bool& bOutNeedLoading, bool& bOutHasReliableProgress) const;
 
 	float QueryAsyncPercentage(const FName& PackageName) const;
 
@@ -125,7 +142,7 @@ private:
 	TSharedPtr<SWidget> LoadingScreenWidget;
 	TMap<TWeakObjectPtr<ULocalPlayer>, TSharedPtr<SWidget>> PlayersLoadingScreenWidgets;
 
-	TWeakInterfacePtr<ILoadingPercentInterface> LoadingPercentInterface;
+	TArray<TWeakInterfacePtr<ILoadingPercentInterface>> LoadingPercentInterfaces;
 
 	/** Input processor to eat all input while the loading screen is shown */
 	TSharedPtr<IInputProcessor> InputPreProcessor;
@@ -166,6 +183,9 @@ protected:
 
 	/** 当前显示的进度（0.0 ~ 1.0） */
 	float DisplayPercent = 0.f;
+
+	/** 进度条达到完成阈值的时间 */
+	double TimeLoadingProgressCompleted = -1.0;
 
 	/** 上一次状态加载进度 */
 	float LastStageProgress = 0.f;

@@ -8,16 +8,27 @@
 #include "CommonGameInstance.h"
 #include "CommonSessionSubsystem.h"
 #include "ControlFlowManager.h"
+#include "Engine/AssetManager.h"
+#include "Engine/StreamableManager.h"
+#include "HAL/FileManager.h"
 #include "LoadingScreenManager.h"
+#include "Misc/App.h"
+#include "Misc/CommandLine.h"
+#include "Misc/ConfigCacheIni.h"
+#include "Misc/Paths.h"
+#include "Misc/Parse.h"
 #include "OrionLogChannels.h"
 #include "PrimaryGameLayout.h"
 #include "GameModes/OrionExperienceManagerComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "NativeGameplayTags.h"
+#include "RHIShaderPlatform.h"
+#include "RHIStrings.h"
 #include "ShaderPipelineCache.h"
 #include "Player/OrionUserSubsystem.h"
 #include "Settings/User/OrionSettingsLocal.h"
 #include "System/OrionSystemStatics.h"
+#include "System/Flow/OrionFlowAction.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(OrionFrontendStateComponent)
 
@@ -31,6 +42,76 @@ namespace FrontendLoadingFlow
 {
 	constexpr float StartupLoadingFlowLogoWarningDelaySeconds = 5.0f;
 	constexpr float LobbyBackgroundFlowFallbackDelaySeconds = 10.0f;
+	const TCHAR* StartupPSOCacheSection = TEXT("Orion.StartupPSO");
+	const TCHAR* StartupPSOCacheCompletedStampKey = TEXT("CompletedCacheStamp");
+
+	bool ShouldIgnoreStartupPSOCacheCompletionMarker()
+	{
+		return FParse::Param(FCommandLine::Get(), TEXT("clearPSODriverCache")) ||
+			FParse::Param(FCommandLine::Get(), TEXT("deleteuserpsocache")) ||
+			FParse::Param(FCommandLine::Get(), TEXT("logpso"));
+	}
+
+	bool TryGetStartupPSOCacheStamp(FString& OutStamp)
+	{
+		if (!FPlatformProperties::RequiresCookedData())
+		{
+			return false;
+		}
+
+		const FName ShaderFormat = LegacyShaderPlatformToShaderFormat(GMaxRHIShaderPlatform);
+		const FString CachePath = FPaths::ProjectContentDir() / TEXT("PipelineCaches") / ANSI_TO_TCHAR(FPlatformProperties::IniPlatformName()) /
+			FString::Printf(TEXT("%s_%s.stable.upipelinecache"), FApp::GetProjectName(), *ShaderFormat.ToString());
+		const int64 CacheSize = IFileManager::Get().FileSize(*CachePath);
+		if (CacheSize < 0)
+		{
+			return false;
+		}
+
+		const FDateTime CacheTimestamp = IFileManager::Get().GetTimeStamp(*CachePath);
+		OutStamp = FString::Printf(TEXT("GameVersion=%d;Platform=%s;ShaderFormat=%s;Size=%lld;TimestampTicks=%lld"),
+			FShaderPipelineCache::GetGameVersionForPSOFileCache(),
+			ANSI_TO_TCHAR(FPlatformProperties::IniPlatformName()),
+			*ShaderFormat.ToString(),
+			CacheSize,
+			CacheTimestamp.GetTicks());
+		return true;
+	}
+
+	bool IsStartupPSOCacheMarkedComplete()
+	{
+		if (!GConfig || ShouldIgnoreStartupPSOCacheCompletionMarker())
+		{
+			return false;
+		}
+
+		FString CurrentStamp;
+		if (!TryGetStartupPSOCacheStamp(CurrentStamp))
+		{
+			return false;
+		}
+
+		FString CompletedStamp;
+		return GConfig->GetString(StartupPSOCacheSection, StartupPSOCacheCompletedStampKey, CompletedStamp, GGameUserSettingsIni) && CompletedStamp == CurrentStamp;
+	}
+
+	void MarkStartupPSOCacheComplete()
+	{
+		if (!GConfig)
+		{
+			return;
+		}
+
+		FString CurrentStamp;
+		if (!TryGetStartupPSOCacheStamp(CurrentStamp))
+		{
+			return;
+		}
+
+		GConfig->SetString(StartupPSOCacheSection, StartupPSOCacheCompletedStampKey, *CurrentStamp, GGameUserSettingsIni);
+		GConfig->Flush(false, GGameUserSettingsIni);
+		UE_LOG(LogOrion, Display, TEXT("Marked startup PSO cache complete: %s"), *CurrentStamp);
+	}
 }
 
 UOrionFrontendStateComponent::UOrionFrontendStateComponent(const FObjectInitializer& ObjectInitializer)
@@ -51,6 +132,8 @@ void UOrionFrontendStateComponent::BeginPlay()
 
 	const UGameInstance* GameInstance = UGameplayStatics::GetGameInstance(this);
 	LoadingScreenManager = GameInstance->GetSubsystem<ULoadingScreenManager>();
+	bRunInitialGameStartupFlowSteps = LoadingScreenManager.IsValid() && LoadingScreenManager->GetIsStartUpLoadingScreen();
+
 	if (LoadingScreenManager.IsValid())
 	{
 		LoadingScreenManager->OnLoadingScreenFinished.BindLambda([this]
@@ -62,6 +145,19 @@ void UOrionFrontendStateComponent::BeginPlay()
 
 void UOrionFrontendStateComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	if (StartupPopupFlowActionClassesLoadHandle.IsValid())
+	{
+		StartupPopupFlowActionClassesLoadHandle->CancelHandle();
+		StartupPopupFlowActionClassesLoadHandle.Reset();
+	}
+
+	StartupPopupSubFlow.Reset();
+	StartupPopupPreloadSubFlow.Reset();
+	ActiveStartupPopupFlowActions.Reset();
+	ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+	ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+	bStartupPopupFlowActionsPreloaded = false;
+
 	Super::EndPlay(EndPlayReason);
 }
 
@@ -94,10 +190,12 @@ void UOrionFrontendStateComponent::OnExperienceLoaded(const UCoreExperienceDefin
 		.QueueStep(TEXT("Try Run Benchmark At Startup"), this, &ThisClass::FlowStep_TryRunBenchmarkAtStartup)
 		.QueueStep(TEXT("Try Show Lobby Background Level"), this, &ThisClass::FlowStep_TryShowLobbyBackgroundLevel)
 		.QueueStep(TEXT("Wait For Loading Finish"), this, &ThisClass::FlowStep_WaitForLoadingFinish)
+		.QueueStep(TEXT("Try Preload Startup Popups"), this, &ThisClass::FlowStep_TryPreloadStartupPopups)
 		.QueueStep(TEXT("Try Show Press Start Screen"), this, &ThisClass::FlowStep_TryShowPressStartScreen)
 		.QueueStep(TEXT("Try Join Requested Session"), this, &ThisClass::FlowStep_TryJoinRequestedSession)
 		.QueueStep(TEXT("Try Listen Session Invite"), this, &ThisClass::FlowStep_TryListenSessionInvite)
-		.QueueStep(TEXT("Try Show Main Screen"), this, &ThisClass::FlowStep_TryShowMainScreen);
+		.QueueStep(TEXT("Try Show Main Screen"), this, &ThisClass::FlowStep_TryShowMainScreen)
+		.QueueStep(TEXT("Try Evaluate Startup Popups"), this, &ThisClass::FlowStep_TryEvaluateStartupPopups);
 
 	Flow.ExecuteFlow();
 
@@ -189,7 +287,15 @@ void UOrionFrontendStateComponent::FlowStep_TryCompileShaders(FControlFlowNodeRe
 	if (CheckIfCompileShaders())	// 检查是否需要编译着色器
 	{
 		// 显示编译着色器UI
-		OnCompileShaders.ExecuteIfBound();
+		if (OnCompileShaders.IsBound())
+		{
+			OnCompileShaders.Execute();
+		}
+		else
+		{
+			UE_LOG(LogOrion, Warning, TEXT("Startup PSO compilation is required but no compile shader UI callback is bound. Compiling without UI."));
+			StartCompileShaders();
+		}
 	}
 	else
 	{
@@ -261,6 +367,50 @@ void UOrionFrontendStateComponent::FlowStep_WaitForLoadingFinish(FControlFlowNod
 	}));
 }
 
+void UOrionFrontendStateComponent::FlowStep_TryPreloadStartupPopups(FControlFlowNodeRef SubFlow)
+{
+	CurrentSubFlow = SubFlow;
+
+	if (!ShouldRunInitialGameStartupFlowSteps() || StartupPopupFlowActionClasses.IsEmpty())
+	{
+		SubFlow->ContinueFlow();
+		return;
+	}
+
+	StartupPopupPreloadSubFlow = SubFlow;
+	StartupPopupSubFlow.Reset();
+	ActiveStartupPopupFlowActions.Reset();
+	ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+	ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+	bStartupPopupFlowActionsPreloaded = false;
+
+	TArray<FSoftObjectPath> ActionClassPaths;
+	for (const TSoftClassPtr<UOrionFlowAction>& ActionClass : StartupPopupFlowActionClasses)
+	{
+		if (!ActionClass.IsNull() && !ActionClass.Get())
+		{
+			ActionClassPaths.AddUnique(ActionClass.ToSoftObjectPath());
+		}
+	}
+
+	if (ActionClassPaths.IsEmpty())
+	{
+		HandleStartupPopupFlowActionClassesLoaded();
+		return;
+	}
+
+	if (StartupPopupFlowActionClassesLoadHandle.IsValid())
+	{
+		StartupPopupFlowActionClassesLoadHandle->CancelHandle();
+		StartupPopupFlowActionClassesLoadHandle.Reset();
+	}
+
+	StartupPopupFlowActionClassesLoadHandle = UAssetManager::Get().GetStreamableManager().RequestAsyncLoad(
+		ActionClassPaths,
+		FStreamableDelegate::CreateUObject(this, &ThisClass::HandleStartupPopupFlowActionClassesLoaded),
+		FStreamableManager::AsyncLoadHighPriority);
+}
+
 void UOrionFrontendStateComponent::FlowStep_TryShowPressStartScreen(FControlFlowNodeRef SubFlow)
 {
 	CurrentSubFlow = SubFlow;
@@ -307,6 +457,12 @@ void UOrionFrontendStateComponent::FlowStep_TryShowPressStartScreen(FControlFlow
 void UOrionFrontendStateComponent::FlowStep_TryJoinRequestedSession(FControlFlowNodeRef SubFlow)
 {
 	CurrentSubFlow = SubFlow;
+
+	if (!ShouldRunInitialGameStartupFlowSteps())
+	{
+		SubFlow->ContinueFlow();
+		return;
+	}
 
 	UCommonGameInstance* GameInstance = Cast<UCommonGameInstance>(UGameplayStatics::GetGameInstance(this));
 	if (GameInstance->GetRequestedSession() != nullptr && GameInstance->CanJoinRequestedSession())
@@ -382,6 +538,190 @@ void UOrionFrontendStateComponent::FlowStep_TryShowMainScreen(FControlFlowNodeRe
 	}
 }
 
+void UOrionFrontendStateComponent::FlowStep_TryEvaluateStartupPopups(FControlFlowNodeRef SubFlow)
+{
+	CurrentSubFlow = SubFlow;
+
+	if (!ShouldRunInitialGameStartupFlowSteps())
+	{
+		SubFlow->ContinueFlow();
+		return;
+	}
+
+	StartupPopupSubFlow = SubFlow;
+	ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+
+	if (StartupPopupFlowActionClasses.IsEmpty())
+	{
+		SubFlow->ContinueFlow();
+		return;
+	}
+
+	if (bStartupPopupFlowActionsPreloaded)
+	{
+		ExecuteNextStartupPopupFlowAction();
+		return;
+	}
+
+	ActiveStartupPopupFlowActions.Reset();
+
+	TArray<FSoftObjectPath> ActionClassPaths;
+	for (const TSoftClassPtr<UOrionFlowAction>& ActionClass : StartupPopupFlowActionClasses)
+	{
+		if (!ActionClass.IsNull() && !ActionClass.Get())
+		{
+			ActionClassPaths.AddUnique(ActionClass.ToSoftObjectPath());
+		}
+	}
+
+	if (ActionClassPaths.IsEmpty())
+	{
+		HandleStartupPopupFlowActionClassesLoaded();
+		return;
+	}
+
+	if (StartupPopupFlowActionClassesLoadHandle.IsValid())
+	{
+		StartupPopupFlowActionClassesLoadHandle->CancelHandle();
+		StartupPopupFlowActionClassesLoadHandle.Reset();
+	}
+
+	StartupPopupFlowActionClassesLoadHandle = UAssetManager::Get().GetStreamableManager().RequestAsyncLoad(
+		ActionClassPaths,
+		FStreamableDelegate::CreateUObject(this, &ThisClass::HandleStartupPopupFlowActionClassesLoaded),
+		FStreamableManager::AsyncLoadHighPriority);
+}
+
+void UOrionFrontendStateComponent::HandleStartupPopupFlowActionClassesLoaded()
+{
+	StartupPopupFlowActionClassesLoadHandle.Reset();
+
+	if (StartupPopupPreloadSubFlow.IsValid() && CurrentSubFlow == StartupPopupPreloadSubFlow)
+	{
+		BuildStartupPopupFlowActions();
+		PreloadNextStartupPopupFlowAction();
+		return;
+	}
+
+	if (!StartupPopupSubFlow.IsValid() || CurrentSubFlow != StartupPopupSubFlow)
+	{
+		StartupPopupPreloadSubFlow.Reset();
+		ActiveStartupPopupFlowActions.Reset();
+		ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+		ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+		bStartupPopupFlowActionsPreloaded = false;
+		return;
+	}
+
+	BuildStartupPopupFlowActions();
+	ExecuteNextStartupPopupFlowAction();
+}
+
+void UOrionFrontendStateComponent::BuildStartupPopupFlowActions()
+{
+	ActiveStartupPopupFlowActions.Reset();
+	for (const TSoftClassPtr<UOrionFlowAction>& ActionClassPtr : StartupPopupFlowActionClasses)
+	{
+		UClass* ActionClass = ActionClassPtr.Get();
+		if (!ActionClass)
+		{
+			UE_LOG(LogOrion, Warning, TEXT("Startup popup flow action class failed to load: %s"),
+				*ActionClassPtr.ToSoftObjectPath().ToString());
+			continue;
+		}
+
+		UOrionFlowAction* Action = NewObject<UOrionFlowAction>(this, ActionClass);
+		if (!Action)
+		{
+			UE_LOG(LogOrion, Warning, TEXT("Startup popup flow action failed to instantiate: %s"),
+				*GetPathNameSafe(ActionClass));
+			continue;
+		}
+
+		ActiveStartupPopupFlowActions.Add(Action);
+	}
+}
+
+void UOrionFrontendStateComponent::PreloadNextStartupPopupFlowAction()
+{
+	if (!StartupPopupPreloadSubFlow.IsValid() || CurrentSubFlow != StartupPopupPreloadSubFlow)
+	{
+		StartupPopupPreloadSubFlow.Reset();
+		ActiveStartupPopupFlowActions.Reset();
+		ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+		ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+		bStartupPopupFlowActionsPreloaded = false;
+		return;
+	}
+
+	++ActiveStartupPopupFlowActionPreloadIndex;
+	if (!ActiveStartupPopupFlowActions.IsValidIndex(ActiveStartupPopupFlowActionPreloadIndex))
+	{
+		FControlFlowNodePtr FlowToContinue = StartupPopupPreloadSubFlow;
+		StartupPopupPreloadSubFlow.Reset();
+		ActiveStartupPopupFlowActionPreloadIndex = INDEX_NONE;
+		ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+		bStartupPopupFlowActionsPreloaded = true;
+		FlowToContinue->ContinueFlow();
+		return;
+	}
+
+	UOrionFlowAction* Action = ActiveStartupPopupFlowActions[ActiveStartupPopupFlowActionPreloadIndex];
+	if (!Action)
+	{
+		PreloadNextStartupPopupFlowAction();
+		return;
+	}
+
+	const int32 PreloadingActionIndex = ActiveStartupPopupFlowActionPreloadIndex;
+	Action->PreloadAction(this, FSimpleDelegate::CreateWeakLambda(this, [this, PreloadingActionIndex]
+	{
+		if (ActiveStartupPopupFlowActionPreloadIndex == PreloadingActionIndex)
+		{
+			PreloadNextStartupPopupFlowAction();
+		}
+	}));
+}
+
+void UOrionFrontendStateComponent::ExecuteNextStartupPopupFlowAction()
+{
+	if (!StartupPopupSubFlow.IsValid() || CurrentSubFlow != StartupPopupSubFlow)
+	{
+		ActiveStartupPopupFlowActions.Reset();
+		ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+		bStartupPopupFlowActionsPreloaded = false;
+		return;
+	}
+
+	++ActiveStartupPopupFlowActionIndex;
+	if (!ActiveStartupPopupFlowActions.IsValidIndex(ActiveStartupPopupFlowActionIndex))
+	{
+		FControlFlowNodePtr FlowToContinue = StartupPopupSubFlow;
+		StartupPopupSubFlow.Reset();
+		ActiveStartupPopupFlowActions.Reset();
+		ActiveStartupPopupFlowActionIndex = INDEX_NONE;
+		bStartupPopupFlowActionsPreloaded = false;
+		FlowToContinue->ContinueFlow();
+		return;
+	}
+
+	UOrionFlowAction* Action = ActiveStartupPopupFlowActions[ActiveStartupPopupFlowActionIndex];
+	if (!Action)
+	{
+		ExecuteNextStartupPopupFlowAction();
+		return;
+	}
+
+	const int32 ExecutingActionIndex = ActiveStartupPopupFlowActionIndex;
+	Action->ExecuteAction(this, FSimpleDelegate::CreateWeakLambda(this, [this, ExecutingActionIndex]
+	{
+		if (ActiveStartupPopupFlowActionIndex == ExecutingActionIndex)
+		{
+			ExecuteNextStartupPopupFlowAction();
+		}
+	}));
+}
+
 void UOrionFrontendStateComponent::ContinueFlow()
 {
 	if (CurrentSubFlow)
@@ -413,6 +753,11 @@ void UOrionFrontendStateComponent::CompleteStartupLoadingScreen()
 
 		return false;
 	}));
+}
+
+bool UOrionFrontendStateComponent::ShouldRunInitialGameStartupFlowSteps() const
+{
+	return bRunInitialGameStartupFlowSteps;
 }
 
 void UOrionFrontendStateComponent::OnLoadingScreenLogoFinished()
@@ -450,6 +795,7 @@ void UOrionFrontendStateComponent::StartCompileShaders()
 		LoadingScreenManager->OnCompilingShadersFinished.BindLambda([this]
 		{
 			bCompileShadersFinished = true;
+			FrontendLoadingFlow::MarkStartupPSOCacheComplete();
 			OnCompileShadersPercentChanged.ExecuteIfBound(1.f);
 			OnCompileShadersFinished.ExecuteIfBound();
 
@@ -527,10 +873,21 @@ bool UOrionFrontendStateComponent::CheckIfCompileShaders()
 {
 	if (LoadingScreenManager.IsValid() && LoadingScreenManager->GetIsStartUpLoadingScreen())
 	{
-		if (FShaderPipelineCache::NumPrecompilesRemaining() > 0)
+		const uint32 NumPrecompilesRemaining = FShaderPipelineCache::NumPrecompilesRemaining();
+		if (NumPrecompilesRemaining > 0)
 		{
+			if (FrontendLoadingFlow::IsStartupPSOCacheMarkedComplete())
+			{
+				UE_LOG(LogOrion, Display, TEXT("Skipping blocking startup PSO compilation because this bundled PSO cache already completed once. Remaining precompiles continue in background: %u"),
+					NumPrecompilesRemaining);
+				return false;
+			}
+
+			UE_LOG(LogOrion, Display, TEXT("Startup PSO compilation required: %u precompiles remaining."), NumPrecompilesRemaining);
 			return true;
 		}
+
+		FrontendLoadingFlow::MarkStartupPSOCacheComplete();
 	}
 
 	return false;

@@ -27,10 +27,7 @@ public:
 		return true;
 	}
 
-	virtual bool HandleKeyDownEvent(FSlateApplication& SlateApp, const FKeyEvent& InKeyEvent) override
-	{
-		return true;
-	}
+	virtual bool HandleKeyDownEvent(FSlateApplication& SlateApp, const FKeyEvent& InKeyEvent) override { return true; }
 
 	virtual bool HandleMouseButtonDoubleClickEvent(FSlateApplication& SlateApp, const FPointerEvent& MouseEvent) override
 	{
@@ -38,10 +35,7 @@ public:
 		return true;
 	}
 
-	virtual bool HandleMouseButtonDownEvent(FSlateApplication& SlateApp, const FPointerEvent& MouseEvent) override
-	{
-		return true;
-	}
+	virtual bool HandleMouseButtonDownEvent(FSlateApplication& SlateApp, const FPointerEvent& MouseEvent) override { return true; }
 
 	virtual bool HandleMouseButtonUpEvent(FSlateApplication& SlateApp, const FPointerEvent& MouseEvent) override
 	{
@@ -96,7 +90,7 @@ void UUI_StartUpScreen::HandleKeySelected(FKey InKey)
 	if (!bPressedAnyKey)
 	{
 		bPressedAnyKey = true;
-		
+
 		OnPressedAnyKey();
 	}
 }

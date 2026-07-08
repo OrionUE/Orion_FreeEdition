@@ -69,7 +69,7 @@ public:
 	// Performance stats
 public:
 	/** Fired when the display state for a performance stat has changed, or the settings are applied */
-	DECLARE_EVENT(ULyraSettingsLocal, FPerfStatSettingsChanged);
+	DECLARE_EVENT(UOrionSettingsLocal, FPerfStatSettingsChanged);
 	FPerfStatSettingsChanged& OnPerfStatDisplayStateChanged() { return PerfStatSettingsChangedEvent; }
 
 private:
@@ -226,6 +226,9 @@ public:
 	float GetResolutionScaleNormalized_Lerp() const;
 	UFUNCTION()
 	void SetResolutionScaleNormalized_Lerp(float NewScaleNormalized);
+	static float GetMinimumManualResolutionScale();
+	static float GetMinimumManualResolutionScaleNormalized();
+	static void SetScreenPercentageCVar(float Percentage);
 
 	////////////////////////////////////////////////////////
 	// Graphics - AntiAliasing
@@ -521,5 +524,8 @@ protected:
 	TWeakObjectPtr<ULocalPlayer> OwningLocalPlayer;
 	
 private:
+	void RegisterApplicationActivationStateChanged();
+	void HandleApplicationActivationStateChanged(const bool bIsActive);
+
 	FDelegateHandle OnApplicationActivationStateChangedHandle;
 };

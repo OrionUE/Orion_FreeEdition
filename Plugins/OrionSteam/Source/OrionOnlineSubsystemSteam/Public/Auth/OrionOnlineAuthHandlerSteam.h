@@ -11,6 +11,7 @@
 #include "PacketHandler.h"
 #include "HandlerComponentFactory.h"
 #include "OrionOnlineAuthHandlerTypesSteam.h"
+
 #include "OrionOnlineAuthHandlerSteam.generated.h"
 
 #if WITH_ORIONSTEAM
@@ -57,7 +58,9 @@ protected:
 UCLASS()
 class UOrionOnlineSteamAuthComponentModuleInterface : public UHandlerComponentFactory
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 public:
+	UOrionOnlineSteamAuthComponentModuleInterface(const FObjectInitializer& ObjectInitializer);
+
 	virtual TSharedPtr<HandlerComponent> CreateComponentInstance(FString& Options) override;
 };

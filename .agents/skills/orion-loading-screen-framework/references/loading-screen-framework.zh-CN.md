@@ -135,6 +135,24 @@ ILoadingPercentInterface::Execute_OnLoadingPercentChanged(LoadingWidget, Display
 
 Widget 要实现 `OnLoadingPercentChanged(float)`，把 `0..1` 转为进度条、文字或动画参数。不要让 Widget 自己猜阶段；阶段和 reason 应由 manager 统一提供。
 
+运行期 UMG 加载屏不能在同步 `LoadMap` 阻塞游戏线程时真正异步 tick。遇到用户反馈“关卡加载时进度条不动，加载完就消失”时，先检查两件事：
+
+1. `ULoadingScreenManager` 创建 Widget 后必须注册所有实现 `ILoadingPercentInterface` 的实例，并把进度广播到这些实例；分屏模式要注册每个玩家的 Widget。
+2. 没有可靠包加载百分比时，不要把固定阶段百分比当作真实进度。`StageProgress` 只能当作状态检查点和日志诊断信号，不能参与可视进度目标；否则 `Need at least one local player controller`、分屏缺 PC 等后期检查点会让进度条首帧接近或达到满格。应使用可配置的忙碌式视觉进度，加载结束后再短暂停留并平滑推进到 `100%`，让玩家能看出正在读取。
+3. 每次重新显示加载屏时，要重置 `DisplayPercent`、完成阈值时间和 `bLoadingWidgetCompleted`；否则上一轮 Widget 调过 `SetIsLoadingWidgetCompleted(true)` 后，下一轮加载屏可能一出现就进入完成段。
+
+当前配置字段还包括：
+
+- `bUseIndeterminateProgress`
+- `IndeterminateProgressStartPercent`
+- `IndeterminateProgressTargetPercent`
+- `IndeterminateProgressSecondsToTarget`
+- `CompletionInterpSpeed`
+- `CompletionHoldSeconds`
+- `CompletionVisibleThreshold`
+
+如果需求是真正让同步阻塞期间持续动画，需要另行设计 MoviePlayer/纯 Slate 加载屏；不要声称 UMG viewport widget 能跨游戏线程阻塞继续刷新。
+
 ## 常用接入模板
 
 ### 给一个组件添加加载阻塞

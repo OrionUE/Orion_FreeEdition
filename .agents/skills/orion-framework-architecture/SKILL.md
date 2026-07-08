@@ -1,20 +1,25 @@
 ---
 name: orion-framework-architecture
-description: "Use when Codex needs to orient a reusable Unreal Engine game framework project before coding: root folders, Build/Config/Content/Plugins/Source responsibilities, module ownership, target selection, Build.cs dependency placement, framework modules such as GameCore, GameUI, AnimFramework, BBL, project game/editor modules, GameFeature plugins, core runtime plugins, GameplayMessageRouter, tag-based gameplay messages, asset-folder routing, packaging resources, Build platform app icons, PSO caches, and validation entrypoints."
+description: "Use before Codex writes, modifies, fixes, refactors, reviews, designs, or changes Unreal or Orion gameplay code, Blueprint-facing APIs, plugins, assets, configuration, systems, or features. This Skill requires senior game-architecture analysis before any implementation or edit: translate the user request into use cases, modules/plugins, domain abstractions, architecture patterns, extension points, data/assets, communication, authority, validation, and project layers. Use for broad requests such as write code, change code, fix code, refactor code, add a feature, build a system, implement gameplay, design/refactor architecture, 写代码, 改代码, 修代码, 重构代码, 写功能, 加系统, 做玩法, 改架构, 架构分析, 解耦, 扩展, 抽象, or 蓝图逻辑."
 ---
 
 # Unreal Framework Architecture
 
-本 Skill 用于在写 UE C++、Blueprint、插件、GameFeature、UI、配置或构建相关改动前，先判断代码、资产和配置应该落到哪个框架层级。
+本 Skill 用于在写或改 UE C++、Blueprint、插件、GameFeature、UI、配置或构建相关改动前，先判断要采用哪些架构模式，以及代码、资产和配置应该落到哪个框架层级。
 
 ## 工作流
 
-1. 先读取 `.uproject`、`Source/*.Target.cs`、相关 `*.Build.cs` 和目标插件 `.uplugin`，确认当前项目实际启用的模块、插件、目标和依赖。
-2. 如果用户只说“加一个功能”或“写一段 UE 代码”，先读取 `references/orion-framework-architecture.zh-CN.md` 的模块选型规则。
-3. 先选层级再写代码：可复用运行时放框架核心层，游戏特定逻辑放宿主 Game 模块，编辑器工具放 Editor 模块，蓝图桥接放 BBL，玩法切片放 GameFeature 插件。
-4. 涉及资产创建、命名或目录时，先路由到资产管理 Skill；不要直接凭目录名创建资产。
-5. 涉及具体 UE API、生命周期、反射、委托、网络或引擎版本差异时，先用源码导航 Skill 查真实源码。
-6. 实现前确认模块依赖应该加到 Public 还是 Private；实现后按目标类型选择 Editor/Game/Client/Server/Steam 变体进行验证。
+1. 以高级游戏程序架构师视角先做架构分析；无论是新增代码、修改代码、修 Bug、重构、审查还是生成蓝图相关逻辑，都不要把用户描述直接翻译成流程函数、临时管理器或场景专用类。
+2. 先读取 `.uproject`、`Source/*.Target.cs`、相关 `*.Build.cs` 和目标插件 `.uplugin`，确认当前项目实际启用的模块、插件、目标和依赖。
+3. 如果用户只说“加一个功能”“写一段 UE 代码”“做玩法”或类似宽泛实现需求，读取 `references/orion-framework-architecture.zh-CN.md` 的“高级架构分析模板”“架构模式总表”和“功能落点矩阵”，先输出架构分析摘要，再进入代码实现。
+4. 开始编辑任何代码、资产或配置前，必须先输出架构分析摘要；禁止先改文件再补架构说明。
+5. 架构分析必须把需求转成：核心用例、模块/插件归属、领域模型、抽象基类或接口、扩展点、数据/资产、通信方式、网络权威、验证目标。
+6. 新增或修改任何类或 Blueprint 父类前，必须先判断它是通用领域能力抽象还是某个场景实现；可复用能力不要把当前页面、当前流程节点或当前业务时机写进类名。
+7. 先选模式和层级再写代码：可复用运行时放框架核心层，游戏特定逻辑放宿主 Game 模块，编辑器工具放 Editor 模块，蓝图桥接放 BBL，玩法切片放 GameFeature 插件。
+8. 非平凡功能在实现前明确：所属层级、代码落点、主架构模式、辅助架构模式、数据/资产、通信方式、网络权威、需要联动的 Skill、验证目标。
+9. 涉及资产创建、命名或目录时，先路由到资产管理 Skill；不要直接凭目录名创建资产。
+10. 涉及具体 UE API、生命周期、反射、委托、网络或引擎版本差异时，先用源码导航 Skill 查真实源码。
+11. 实现前确认模块依赖应该加到 Public 还是 Private；实现后按目标类型选择 Editor/Game/Client/Server/Steam 变体进行验证。
 
 ## 路由
 
@@ -39,15 +44,17 @@ description: "Use when Codex needs to orient a reusable Unreal Engine game frame
 - `DefaultGame.ini`、平台 `Game.ini`、`GameUserSettings.ini`、`DefaultCrypto.ini`、Packaging、AssetManager、CommonUI/CommonInput platform traits 或“用户可以配置哪些参数”，配合 `../orion-project-config/SKILL.md`。
 - GameSettings 插件、设置注册表、玩家设置页、`UOrionSettingsLocal` / `UOrionSettingsShared`、设置保存/应用/取消、音频/视频/输入/语言等用户可调选项，配合 `../orion-game-settings-framework/SKILL.md`。
 - `CommonInputSystem`、输入配置、InputTag、PawnData InputConfig、GameFeature 输入接入、玩家改键、手柄/键鼠设置或 Steam 手柄排查，配合 `../orion-input-framework/SKILL.md`。
-- UMG、CommonUI、Widget Blueprint、HUD、UI 输入和 UI 资产，配合 `../orion-umg/SKILL.md`、`../unreal-commoninput/SKILL.md`。
+- GameUI 运行时框架、CommonUI 层栈、UI Subsystem、通用弹窗、UIExtension、UMG、Widget Blueprint、HUD、UI 输入和 UI 资产，配合 `../orion-gameui/SKILL.md`、`../orion-umg/SKILL.md`、`../unreal-commoninput/SKILL.md`。
 - EnhancedInput、CommonInput、InputCore、网络复制、ReplicationGraph、Niagara、Packaging、MCP 自动化分别路由到对应专项 Skill；本 Skill 只负责先判断它们属于哪个框架层。
 
 ## Reference
 
-读取 `references/orion-framework-architecture.zh-CN.md` 获取完整模块职责、插件地图、目标文件规则、资产/配置落点和验证清单。
+读取 `references/orion-framework-architecture.zh-CN.md` 获取完整架构模式总表、模式选型规则、模块职责、插件地图、目标文件规则、资产/配置落点和验证清单。
 
 ## 约束
 
 - 不把游戏名、项目绝对路径、引擎绝对路径、用户名或机器路径写进实现或 Skill。
 - 可以保留公开框架模块名、插件名、类名、配置键和相对路径模板。
 - 不深扫大型 `Content`，除非任务明确需要某个资产；资产规则由 `orion-asset-management` 负责。
+- 不允许以当前场景直接命名通用系统，例如 `ShowStartupPopups`、`ShowShopPopups`、`UStartupPopupDefinition` 这类会导致后续复制粘贴的设计；必须先抽象成通用上下文、Provider、Definition、Policy、Presenter 或数据驱动扩展点。
+- 不允许以当前使用场景命名可复用基类，例如把通用流程动作命名为 `UOrionFrontendFlowAction`；应先抽象为 `UOrionFlowAction`，再用子类表达具体前端、UI 或业务行为。

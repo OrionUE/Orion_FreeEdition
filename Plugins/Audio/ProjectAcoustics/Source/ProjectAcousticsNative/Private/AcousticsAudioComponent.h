@@ -6,6 +6,7 @@
 #include "Components/AudioComponent.h"
 #include "AcousticsDesignParams.h"
 #include "AcousticsSourceDataOverrideSourceSettings.h"
+
 #include "AcousticsAudioComponent.generated.h"
 
 // AcousticsAudioComponent is a normal Unreal AudioComponent that plays sound
@@ -13,31 +14,32 @@
 // settings will overwrite any settings from the Project Acoustics Source
 // Data Override Source Settings
 UCLASS(
-    ClassGroup = Acoustics, AutoExpandCategories = (Transform, StaticMesh, Acoustics),
-    AutoCollapseCategories = (Physics, Collision, Lighting, Rendering, Cooking, Tags), BlueprintType, Blueprintable,
-    meta = (BlueprintSpawnableComponent))
+	ClassGroup = Acoustics, AutoExpandCategories = (Transform, StaticMesh, Acoustics),
+	AutoCollapseCategories = (Physics, Collision, Lighting, Rendering, Cooking, Tags), BlueprintType, Blueprintable,
+	meta = (BlueprintSpawnableComponent))
 class PROJECTACOUSTICSNATIVE_API UAcousticsAudioComponent : public UAudioComponent
 {
-    GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
+	UAcousticsAudioComponent(const FObjectInitializer& ObjectInitializer);
 
-    // The per-source settings for this AcousticsAudioComponent
-    UPROPERTY(
-        EditAnywhere, BlueprintReadWrite, Category = "Acoustics",
-        meta = (ShowOnlyInnerProperties))
-    FAcousticsSourceSettings Settings;
+	// The per-source settings for this AcousticsAudioComponent
+	UPROPERTY(
+		EditAnywhere, BlueprintReadWrite, Category = "Acoustics",
+		meta = (ShowOnlyInnerProperties))
+	FAcousticsSourceSettings Settings;
 
-    virtual bool IsEditorOnly() const override
-    {
-        return false;
-    }
+	virtual bool IsEditorOnly() const override
+	{
+		return false;
+	}
 
-    // Overridden methods
+	// Overridden methods
 #if WITH_EDITOR
-    virtual bool CanEditChange(const FProperty* InProperty) const override;
+	virtual bool CanEditChange(const FProperty* InProperty) const override;
 #endif
 
 private:
-    FName Name() const;
+	FName Name() const;
 };

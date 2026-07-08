@@ -213,6 +213,48 @@ function Test-CopyrightHeaderSpacing
 	}
 }
 
+function Test-DoxygenBlockCommentLayout
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	for ($LineIndex = 0; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		$Line = $Lines[$LineIndex]
+		if ($Line -notmatch '^(\t*)/\*\*\s*$')
+		{
+			continue
+		}
+
+		$ExpectedPrefix = $Matches[1]
+		for ($BlockLineIndex = $LineIndex + 1; $BlockLineIndex -lt $Lines.Count; ++$BlockLineIndex)
+		{
+			$BlockLine = $Lines[$BlockLineIndex]
+			$LineNoTrailing = $BlockLine.TrimEnd()
+			$LineNumber = $BlockLineIndex + 1
+
+			if ($LineNoTrailing -match '^\s*\*/$')
+			{
+				if ($LineNoTrailing -ne "$ExpectedPrefix */")
+				{
+					Add-Failure -File $RelativePath -Message "line $LineNumber has malformed Doxygen block comment closing; use one space before * after the current Tab indentation"
+				}
+
+				break
+			}
+
+			if ($LineNoTrailing.TrimStart().StartsWith("*") -and -not $LineNoTrailing.StartsWith("$ExpectedPrefix *"))
+			{
+				Add-Failure -File $RelativePath -Message "line $LineNumber has malformed Doxygen block comment prefix; use one space before * after the current Tab indentation"
+				return
+			}
+		}
+	}
+}
+
 function Test-NamespaceIndentation
 {
 	param(
@@ -276,6 +318,61 @@ function Test-NamespaceIndentation
 		while ($NamespaceDepths.Count -gt 0 -and $BraceDepth -lt $NamespaceDepths[$NamespaceDepths.Count - 1])
 		{
 			$NamespaceDepths.RemoveAt($NamespaceDepths.Count - 1)
+		}
+	}
+}
+
+function Test-NamespaceBraceLayout
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	for ($LineIndex = 0; $LineIndex -lt $Lines.Count; ++$LineIndex)
+	{
+		$Line = $Lines[$LineIndex]
+		$Trimmed = $Line.Trim()
+		$LineNumber = $LineIndex + 1
+
+		if ($Trimmed -match '^namespace(\s+[A-Za-z_][A-Za-z0-9_:]*)?\s*\{')
+		{
+			Add-Failure -File $RelativePath -Message "line $LineNumber puts a namespace opening brace on the namespace line; use Allman style"
+			return
+		}
+	}
+}
+
+function Test-TrivialFunctionLineLayout
+{
+	param(
+		[string]$RelativePath,
+		[string]$Text
+	)
+
+	$Lines = $Text -split "`r?`n"
+	for ($LineIndex = 0; $LineIndex -lt ($Lines.Count - 3); ++$LineIndex)
+	{
+		$Signature = $Lines[$LineIndex].Trim()
+		$OpenBrace = $Lines[$LineIndex + 1].Trim()
+		$Body = $Lines[$LineIndex + 2].Trim()
+		$CloseBrace = $Lines[$LineIndex + 3].Trim()
+		$LineNumber = $LineIndex + 1
+
+		if ($Signature.StartsWith("#") -or $Signature -match '^(if|for|while|switch|catch|namespace)\b')
+		{
+			continue
+		}
+
+		$LooksLikeFunctionSignature = $Signature -match '^[A-Za-z_~][A-Za-z0-9_:<>,~*&\s]*\s+[A-Za-z_~][A-Za-z0-9_:~]*\s*\([^;{}]*\)\s*(const\b\s*)?(override\b\s*)?(final\b\s*)?(noexcept\b\s*)?$' `
+			-or $Signature -match '^[A-Za-z_~][A-Za-z0-9_:~]*::[A-Za-z_~][A-Za-z0-9_:~]*\s*\([^;{}]*\)\s*(const\b\s*)?(override\b\s*)?(final\b\s*)?(noexcept\b\s*)?$'
+		$LooksTrivialBody = $Body -match '^(return\b\s+.+;|[A-Za-z_][A-Za-z0-9_:.\->\[\]\(\)\s]*;)$'
+
+		if ($LooksLikeFunctionSignature -and $OpenBrace -eq "{" -and $LooksTrivialBody -and $CloseBrace -eq "}")
+		{
+			Add-Failure -File $RelativePath -Message "line $LineNumber is a trivial function split across multiple lines; keep simple getter/setter/inline return functions on one line"
+			return
 		}
 	}
 }
@@ -422,7 +519,14 @@ foreach ($File in $Files)
 
 	if ($File.Extension -in @(".h", ".cpp"))
 	{
+		Test-DoxygenBlockCommentLayout -RelativePath $RelativePath -Text $Text
 		Test-NamespaceIndentation -RelativePath $RelativePath -Text $Text
+		Test-NamespaceBraceLayout -RelativePath $RelativePath -Text $Text
+	}
+
+	if ($File.Extension -eq ".h")
+	{
+		Test-TrivialFunctionLineLayout -RelativePath $RelativePath -Text $Text
 	}
 
 	if ($File.Extension -eq ".h")

@@ -118,7 +118,7 @@ public:
 USTRUCT(BlueprintType)
 struct ORIONSTEAMSHARED_API FOrionSteamAudioInputDeviceInfo
 {
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 
 	FOrionSteamAudioInputDeviceInfo()
 		: DeviceName(""), DeviceId(""), InputChannels(0), PreferredSampleRate(0), bSupportsHardwareAEC(true) {

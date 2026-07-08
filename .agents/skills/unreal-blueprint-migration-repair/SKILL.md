@@ -30,3 +30,16 @@ description: "Use when repairing Unreal Engine Blueprint or UMG assets after mig
 - 检查日志中不再出现原始 missing class/function/variable/struct、orphaned pin 或 stale widget variable 错误。
 - 打开并保存被修复资产，确认重启编辑器后错误不复现。
 - 如果原始问题表现为运行崩溃，必须验证同一启动/PIE/Cook 路径。
+
+## 常见问题
+
+### 迁移后蓝图仍引用旧 C++ 类型导致 PIE 崩溃
+
+- 现象：编辑器或 PIE 日志出现 `Unable to load <ComponentName> ... because its class (<OldClass>) does not exist`，随后调用栈落在组件方法内的空指针访问；或 `.uasset` 原始字符串仍命中旧类名、旧委托签名、旧 GameplayAbility 基类。
+- 原因：Blueprint 资产在旧模块/旧类名下保存过，迁移后 C++ 类型已重命名，但缺少 CoreRedirect 或资产没有在新 redirect 下重新保存。
+- 修复：先在 `Config/DefaultEngine.ini` 补 `ClassRedirects` / `FunctionRedirects` / `StructRedirects`，再用命令let重存受影响资产；不要手工改二进制 `.uasset`。
+- 命令：PowerShell 调外部 exe 时，包含变量的等号参数必须写成字符串，例如 `"-Package=$Package"`、`"-script=$Script"`；裸写 `-Package=$Package` 可能把 `$Package` 原样传给 Unreal。
+- 命令：如果命令行编辑器因本地构建加速插件或工作站插件版本不匹配而在启动阶段失败，可临时追加 `-DisablePlugins=<PluginName>`；如果日志提示包保存 changelist 高于当前编辑器，可追加 `-IgnoreChangelist` 后重存。
+- 命令：项目路径优先传绝对 `.uproject` 路径，避免命令let在不同工作目录下把相对路径解析失败。
+- 验证：重存日志必须出现 `Resaving package`、`packages were resaved` 和 `Success - 0 error(s)`；同时确认不再出现原始 `Unable to load`、旧类名 missing 或旧模块名 missing。
+- 验证：Git LFS 管理的 `.uasset` 历史对比不能只看 `git show <rev>:<asset>`，那通常只是 LFS pointer；需要从本地 LFS 对象或工作区真实文件扫描旧字符串。

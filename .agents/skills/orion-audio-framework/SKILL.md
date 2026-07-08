@@ -15,14 +15,16 @@ description: "Use when Codex works on Unreal Engine audio in this framework: Con
 4. 代码默认写在宿主 Game 模块或 `Plugins/GameFeatures/<FeatureName>`；`Source/GameCore` 是核心基座，除非用户明确允许，不要修改 GameCore。
 5. 语音聊天优先使用 `OrionVoiceChat` 和宿主 Game 模块中的音频输入管理器；不要新建第二套麦克风枚举、输入设备切换或 Opus 传输链路。
 6. 音量、HDR/LDR 动态范围、加载屏混音优先走 `UCoreAudioSettings`、`UOrionSettingsLocal`、`UAudioMixEffectsSubsystem`、`UAudioModulationStatics` 和 `UAudioMixerBlueprintLibrary`。
-7. 空间音频先确认平台插件组合。当前框架模式下，Windows 常用 SteamAudio 做 Spatialization，ProjectAcoustics 做 SourceDataOverride 和 Reverb；不要无意中同时启用两套互相覆盖的 Reverb/Occlusion。
-8. MetaSound 相关任务必须检查 ProjectAcoustics 参数接口和引擎 `IAudioParameterInterfaceRegistry`，不要只按普通 SoundWave/SoundCue 处理。
+7. 空间音频先确认平台插件组合。当前框架模式下，Windows 常用 SteamAudio 做 Spatialization 和 Reverb，ProjectAcoustics 做 SourceDataOverride；不要无意中同时启用两套互相覆盖的 Reverb/Occlusion。
+8. MetaSound 相关任务必须继续读取 `../unreal-metasound/SKILL.md`，检查 Builder API、ProjectAcoustics 参数接口和引擎 `IAudioParameterInterfaceRegistry`，不要只按普通 SoundWave/SoundCue 处理。
 
 ## 路由
 
 - 创建、移动、命名、导入或整理音频资产时，先配合 `../orion-asset-management/SKILL.md`。
 - 判断代码落点、模块职责、插件职责、Target 或构建变体时，配合 `../orion-framework-architecture/SKILL.md`。
+- 处理 SteamAudio / Steam Audio 插件源码、HRTF、Spatialization、Reverb、Occlusion、ProbeVolume、动态几何、烘焙或 GPUAudioAcceleration 时，配合 `../orion-steam-audio/SKILL.md`。
 - 处理 ProjectAcoustics 插件源码、SourceDataOverride、虚拟扬声器、`AcousticsAudioPluginListener`、`OnListenerUpdated` 或 audio thread/Actor 生命周期崩溃时，配合 `../orion-project-acoustics/SKILL.md`。
+- 处理 MetaSound Source/Patch、MetaSound 图节点、Builder API、ProjectAcoustics MetaSound 参数接口或 MCP MetaSound 自动化时，配合 `../unreal-metasound/SKILL.md`。
 - 触碰 `UCoreAudioSettings`、GameCore 音频配置或核心基座边界时，配合 `../orion-gamecore-framework/SKILL.md`。
 - 查真实类、函数、变量、模块依赖、引擎 AudioMixer/AudioModulation/MetaSound 源码时，配合 `../unreal-source-code-navigator/SKILL.md`。
 - 音频设置页、`GameSettingRegistry_Audio`、音量/HDR/设备用户设置保存或 CommonUI 设置界面，先配合 `../orion-game-settings-framework/SKILL.md`；只改 Widget 外观时再配合 `../orion-umg/SKILL.md`。

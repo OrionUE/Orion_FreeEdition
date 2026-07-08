@@ -85,8 +85,8 @@ protected:
 
 	void SetDLSSSRMode(UDLSSMode DLSSMode, FVector2D ScreenResolution = FVector2D::ZeroVector);
 
-	void ExecuteCommand(const FString& InCommand);
 	void SetScreenPercentage(float Percentage);
+	void SetScreenPercentageToUserSetting();
 
 	void SetAntiAliasingMethodUserSetting();
 	void SetAntiAliasingMethodTSR();

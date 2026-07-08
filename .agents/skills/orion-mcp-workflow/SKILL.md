@@ -22,7 +22,8 @@ description: "Use when working with Unreal Engine 5.8 official MCP in this proje
 - `tools/call` 返回 SSE/event-stream；PowerShell 解析时逐条解析 `data:` 行，取最后一个带 `result` 的 JSON 对象。
 - `AssetTools.find_assets` 返回 package path，例如 `/Game/UI/Menu/W_FrontEnd`；传给 `BlueprintTools` 时要转成 object path，例如 `/Game/UI/Menu/W_FrontEnd.W_FrontEnd`。
 - 官方 5.8 已有通用 `AssetTools`、`ObjectTools`、`BlueprintTools`。通用蓝图图表、属性和资产保存优先用官方工具。
-- `OrionProjectToolsets` 只作为项目特定补充：Experience、PawnData、AbilitySet、InputConfig、GameFeature Action 和安全 UMG 样式 helper。
+- `OrionProjectToolsets` 只作为项目特定补充：Experience、PawnData、AbilitySet、InputConfig、GameFeature Action、安全 UMG 样式 helper 和本地化 Dashboard/commandlet 自动化。
+- 如果 MCP 返回 HTTP 502、服务不可用或缺少创建/保存资产的安全工具面，但任务可以通过编辑器命令行 Python 完成，读取 `../orion-python-blueprint-assets/SKILL.md` 并使用 `UnrealEditor-Cmd -run=pythonscript` 兜底。
 
 ## 路由
 

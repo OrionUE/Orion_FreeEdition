@@ -26,6 +26,7 @@ description: Use before creating, renaming, moving, importing, converting, valid
 - 修改编辑器启动或游戏启动 Splash 图片时，配合 `../orion-umg/SKILL.md`；Splash 固定属于 `Content/Splash`，不是普通 `Content/UI` Widget 资产。
 - 用户提供图片并要求裁剪、转换、覆盖 `Content/Splash` 或删除旧 Splash `.uasset` 时，配合 `../splash-image-conversion/SKILL.md` 自动生成 `Splash` / `EdSplash` 的 PNG/BMP 四件套。
 - 创建 Niagara System、Emitter、特效 Blueprint wrapper 时，配合 `../unreal-niagara/SKILL.md`；若是正式资产，不要放测试目录。
+- 导入、批量整理、重命名、压缩、降分辨率、设置 LODGroup/MaxTextureSize/LODBias、修复 sRGB 或排查打包体积过大的 Texture2D/TextureCube/Virtual Texture 时，配合 `../unreal-texture-management/SKILL.md`。
 - 创建 GameFeature 插件内容时，配合 `../orion-gamefeatures/SKILL.md`，并使用本 Skill 的 GameFeatures 子目录规范。
 - 创建玩家账户、玩家 GameplayComponent、玩家生成管理器、玩家资料 UI 或 GameFeature `Content/Player` 资产时，配合 `../orion-player-framework/SKILL.md`。
 - 创建角色蓝图、PawnData、PawnControl 蓝图、PlayerStart、CharacterSpawner、角色输入/能力相关配置资产时，配合 `../orion-character-pawn-framework/SKILL.md`。

@@ -14,7 +14,7 @@
 #include "PlatformDLC.h"
 #include "PlatformDLCModule.h"
 
-#define LOCTEXT_NAMESPACE "Orion"
+#define LOCTEXT_NAMESPACE "OrionGameUserSetting"
 
 static constexpr float DLCStatusTickRate = 0.1f;
 

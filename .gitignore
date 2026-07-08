@@ -90,11 +90,24 @@ Content/Collections/*
 Content/Developers/*
 
 # Don't ignore plugins third party
+!Plugins/**/ThirdParty/
+!Plugins/**/ThirdParty/**
 !Plugins/**/Source/ThirdParty/**
 !Plugins/DLSS/**/Binaries/ThirdParty/
 !Plugins/DLSS/**/Binaries/ThirdParty/**
 !Plugins/Audio/SteamAudio/Source/SteamAudioSDK/
 !Plugins/Audio/SteamAudio/Source/SteamAudioSDK/**
+
+# Orion browser CEF helper is a required runtime binary for installed-engine users.
+!Plugins/OrionBrowser/Binaries/
+Plugins/OrionBrowser/Binaries/*
+!Plugins/OrionBrowser/Binaries/Win64/
+Plugins/OrionBrowser/Binaries/Win64/*
+!Plugins/OrionBrowser/Binaries/Win64/OrionBrowserHelper.exe
+
+# Keep bundled agent tools trackable.
+!.agents/**/*.exe
+!.agents/**/*.dll
 
 # Precompiled modules published without Private source.
 !Plugins/OrionSteam/Binaries/

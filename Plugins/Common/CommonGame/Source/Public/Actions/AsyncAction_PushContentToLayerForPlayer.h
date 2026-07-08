@@ -22,9 +22,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPushContentToLayerForPlayerAsyncDel
 UCLASS(BlueprintType)
 class COMMONGAME_API UAsyncAction_PushContentToLayerForPlayer : public UCancellableAsyncAction
 {
-	GENERATED_UCLASS_BODY()
+	GENERATED_BODY()
 
 public:
+	UAsyncAction_PushContentToLayerForPlayer(const FObjectInitializer& ObjectInitializer);
+
 	virtual void Cancel() override;
 
 	UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(WorldContext = "WorldContextObject", BlueprintInternalUseOnly="true"))
